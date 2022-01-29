@@ -1,0 +1,932 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Botpack.TrainingDM</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\trainingdm.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#TrainingDM">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="trainingctf.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="trainingdom.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="botpack-overview.html">Botpack</a>.TrainingDM</h1>
+<b>Extends:</b> <a href="deathmatchplus.html">DeathMatchPlus</a><br>
+<b>Modifiers:</b> <br>
+<a href="..\Source_botpack\trainingdm.html"><b>Source code</b></a>
+
+<p>
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\info.html">Info</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\gameinfo.html">GameInfo</a>
+            |   
+            +-- <a href="botpack-overview.html">Botpack</a>.<a href="tournamentgameinfo.html">TournamentGameInfo</a>
+                |   
+                +-- <a href="botpack-overview.html">Botpack</a>.<a href="deathmatchplus.html">DeathMatchPlus</a>
+                    |   
+                    +-- <a href="botpack-overview.html">Botpack</a>.<a href="trainingdm.html">TrainingDM</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPause" name="bPause">bPause</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bReadyToSpawn" name="bReadyToSpawn">bReadyToSpawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_DM[24]" name="DM[24]">DM[24]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_EventIndex" name="EventIndex">EventIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_EventTimer" name="EventTimer">EventTimer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_KeyAlias[255]" name="KeyAlias[255]">KeyAlias[255]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastEvent" name="LastEvent">LastEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_LastLocation" name="LastLocation">LastLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Rotator">rotator</a></td><td width="66%"><a href="#_LastRotation" name="LastRotation">LastRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_SoundIndex" name="SoundIndex">SoundIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\playerpawn.html">PlayerPawn</a></td><td width="66%"><a href="#_Trainee" name="Trainee">Trainee</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TutMessage14Parts[2]" name="TutMessage14Parts[2]">TutMessage14Parts[2]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TutMessage15Parts[2]" name="TutMessage15Parts[2]">TutMessage15Parts[2]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TutMessage4Parts[5]" name="TutMessage4Parts[5]">TutMessage4Parts[5]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TutMessage6Parts[2]" name="TutMessage6Parts[2]">TutMessage6Parts[2]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TutMessage[24]" name="TutMessage[24]">TutMessage[24]</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="botpack-overview.html">Botpack</a>.<a href="deathmatchplus.html">DeathMatchPlus</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="deathmatchplus.html#AirControl">AirControl</a>, <a href="deathmatchplus.html#AvgOpponentRating">AvgOpponentRating</a>, <a href="deathmatchplus.html#bAlreadyChanged">bAlreadyChanged</a>, <a href="deathmatchplus.html#bAltScoring">bAltScoring</a>, <a href="deathmatchplus.html#bAlwaysForceRespawn">bAlwaysForceRespawn</a>, <a href="deathmatchplus.html#bChallengeMode">bChallengeMode</a>, <a href="deathmatchplus.html#bChangeLevels">bChangeLevels</a>, <a href="deathmatchplus.html#bDontRestart">bDontRestart</a>, <a href="deathmatchplus.html#bFirstBlood">bFirstBlood</a>, <a href="deathmatchplus.html#bForceRespawn">bForceRespawn</a>, <a href="deathmatchplus.html#bFulfilledSpecial">bFulfilledSpecial</a>, <a href="deathmatchplus.html#bHardCoreMode">bHardCoreMode</a>, <a href="deathmatchplus.html#bJumpMatch">bJumpMatch</a>, <a href="deathmatchplus.html#bMegaSpeed">bMegaSpeed</a>, <a href="deathmatchplus.html#bMultiWeaponStay">bMultiWeaponStay</a>, <a href="deathmatchplus.html#bNetReady">bNetReady</a>, <a href="deathmatchplus.html#bNoviceMode">bNoviceMode</a>, <a href="deathmatchplus.html#BotConfig">BotConfig</a>, <a href="deathmatchplus.html#BotConfigType">BotConfigType</a>, <a href="deathmatchplus.html#bRatedTranslocator">bRatedTranslocator</a>, <a href="deathmatchplus.html#bRequireReady">bRequireReady</a>, <a href="deathmatchplus.html#bStartMatch">bStartMatch</a>, <a href="deathmatchplus.html#bThreePlus">bThreePlus</a>, <a href="deathmatchplus.html#bTournament">bTournament</a>, <a href="deathmatchplus.html#bTutorialGame">bTutorialGame</a>, <a href="deathmatchplus.html#bUseTranslocator">bUseTranslocator</a>, <a href="deathmatchplus.html#CountDown">CountDown</a>, <a href="deathmatchplus.html#CountDownMessage">CountDownMessage</a>, <a href="deathmatchplus.html#ElapsedTime">ElapsedTime</a>, <a href="deathmatchplus.html#EndTime">EndTime</a>, <a href="deathmatchplus.html#FragLimit">FragLimit</a>, <a href="deathmatchplus.html#GameEndedMessage">GameEndedMessage</a>, <a href="deathmatchplus.html#gamegoal">gamegoal</a>, <a href="deathmatchplus.html#IDnum">IDnum</a>, <a href="deathmatchplus.html#InitialBots">InitialBots</a>, <a href="deathmatchplus.html#LadderTypeIndex">LadderTypeIndex</a>, <a href="deathmatchplus.html#LastStartSpot">LastStartSpot</a>, <a href="deathmatchplus.html#LastTauntTime">LastTauntTime</a>, <a href="deathmatchplus.html#LastTaunt[4]">LastTaunt[4]</a>, <a href="deathmatchplus.html#LoseCount">LoseCount</a>, <a href="deathmatchplus.html#MaxCommanders">MaxCommanders</a>, <a href="deathmatchplus.html#MinPlayers">MinPlayers</a>, <a href="deathmatchplus.html#NetWait">NetWait</a>, <a href="deathmatchplus.html#NoNameChange">NoNameChange</a>, <a href="deathmatchplus.html#NotReadyMessage">NotReadyMessage</a>, <a href="deathmatchplus.html#NumBots">NumBots</a>, <a href="deathmatchplus.html#NumCommanders">NumCommanders</a>, <a href="deathmatchplus.html#NumOpp">NumOpp</a>, <a href="deathmatchplus.html#OvertimeMessage">OvertimeMessage</a>, <a href="deathmatchplus.html#PlayerRating">PlayerRating</a>, <a href="deathmatchplus.html#RatedGameLadderObj">RatedGameLadderObj</a>, <a href="deathmatchplus.html#RatedMatchConfig">RatedMatchConfig</a>, <a href="deathmatchplus.html#RatedPlayer">RatedPlayer</a>, <a href="deathmatchplus.html#ReadyMessage">ReadyMessage</a>, <a href="deathmatchplus.html#RemainingBots">RemainingBots</a>, <a href="deathmatchplus.html#RemainingTime">RemainingTime</a>, <a href="deathmatchplus.html#RestartWait">RestartWait</a>, <a href="deathmatchplus.html#SingleWaitingMessage">SingleWaitingMessage</a>, <a href="deathmatchplus.html#StartCount">StartCount</a>, <a href="deathmatchplus.html#StartMessage">StartMessage</a>, <a href="deathmatchplus.html#StartUpMessage">StartUpMessage</a>, <a href="deathmatchplus.html#TimeLimit">TimeLimit</a>, <a href="deathmatchplus.html#TourneyMessage">TourneyMessage</a>, <a href="deathmatchplus.html#WaitingMessage1">WaitingMessage1</a>, <a href="deathmatchplus.html#WaitingMessage2">WaitingMessage2</a>, <a href="deathmatchplus.html#WinCount">WinCount</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="botpack-overview.html">Botpack</a>.<a href="tournamentgameinfo.html">TournamentGameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="tournamentgameinfo.html#bDisallowOverride">bDisallowOverride</a>, <a href="tournamentgameinfo.html#BestFPHs[3]">BestFPHs[3]</a>, <a href="tournamentgameinfo.html#BestPlayers[3]">BestPlayers[3]</a>, <a href="tournamentgameinfo.html#BestRecordDate[3]">BestRecordDate[3]</a>, <a href="tournamentgameinfo.html#bRatedGame">bRatedGame</a>, <a href="tournamentgameinfo.html#BurnedMessage">BurnedMessage</a>, <a href="tournamentgameinfo.html#CorrodedMessage">CorrodedMessage</a>, <a href="tournamentgameinfo.html#DeathMessage[32]">DeathMessage[32]</a>, <a href="tournamentgameinfo.html#DeathModifier[5]">DeathModifier[5]</a>, <a href="tournamentgameinfo.html#DeathPrep">DeathPrep</a>, <a href="tournamentgameinfo.html#DeathTerm">DeathTerm</a>, <a href="tournamentgameinfo.html#DeathVerb">DeathVerb</a>, <a href="tournamentgameinfo.html#DrownedMessage">DrownedMessage</a>, <a href="tournamentgameinfo.html#EndStatsClass">EndStatsClass</a>, <a href="tournamentgameinfo.html#ExplodeMessage">ExplodeMessage</a>, <a href="tournamentgameinfo.html#FallMessage">FallMessage</a>, <a href="tournamentgameinfo.html#FemaleSuicideMessage">FemaleSuicideMessage</a>, <a href="tournamentgameinfo.html#HackedMessage">HackedMessage</a>, <a href="tournamentgameinfo.html#HeadLossMessage[2]">HeadLossMessage[2]</a>, <a href="tournamentgameinfo.html#MajorDeathMessage[8]">MajorDeathMessage[8]</a>, <a href="tournamentgameinfo.html#MaleSuicideMessage">MaleSuicideMessage</a>, <a href="tournamentgameinfo.html#MortarMessage">MortarMessage</a>, <a href="tournamentgameinfo.html#RedeemerClass">RedeemerClass</a>, <a href="tournamentgameinfo.html#SuicideMessage">SuicideMessage</a>, <a href="tournamentgameinfo.html#TotalDeaths">TotalDeaths</a>, <a href="tournamentgameinfo.html#TotalFlags">TotalFlags</a>, <a href="tournamentgameinfo.html#TotalFrags">TotalFrags</a>, <a href="tournamentgameinfo.html#TotalGames">TotalGames</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AddDefaultInventory+" name="AddDefaultInventory">AddDefaultInventory</a> (<a href="..\engine\pawn.html">pawn</a> PlayerPawn)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+FreeRunning2" name="BeginState">BeginState</a> ()<br /><span class="function_state">FreeRunning2</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+FreeRunning3" name="BeginState">BeginState</a> ()<br /><span class="function_state">FreeRunning3</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+ServerTravel" name="BeginState">BeginState</a> ()<br /><span class="function_state">ServerTravel</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent0+" name="DMTutEvent0">DMTutEvent0</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent1+" name="DMTutEvent1">DMTutEvent1</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent10+" name="DMTutEvent10">DMTutEvent10</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent11+" name="DMTutEvent11">DMTutEvent11</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent12+" name="DMTutEvent12">DMTutEvent12</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent13+" name="DMTutEvent13">DMTutEvent13</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent14+" name="DMTutEvent14">DMTutEvent14</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent15+" name="DMTutEvent15">DMTutEvent15</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent16+" name="DMTutEvent16">DMTutEvent16</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent17+" name="DMTutEvent17">DMTutEvent17</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent18+" name="DMTutEvent18">DMTutEvent18</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent19+" name="DMTutEvent19">DMTutEvent19</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent2+" name="DMTutEvent2">DMTutEvent2</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent20+" name="DMTutEvent20">DMTutEvent20</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent21+" name="DMTutEvent21">DMTutEvent21</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent22+" name="DMTutEvent22">DMTutEvent22</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent23+" name="DMTutEvent23">DMTutEvent23</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent3+" name="DMTutEvent3">DMTutEvent3</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent4+" name="DMTutEvent4">DMTutEvent4</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent5+" name="DMTutEvent5">DMTutEvent5</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent6+" name="DMTutEvent6">DMTutEvent6</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent7+" name="DMTutEvent7">DMTutEvent7</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent8+" name="DMTutEvent8">DMTutEvent8</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DMTutEvent9+" name="DMTutEvent9">DMTutEvent9</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndGame+" name="EndGame">EndGame</a> (string Reason)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_InitGame+" name="InitGame">InitGame</a> (string Options, out string Error)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_InitRatedGame+" name="InitRatedGame">InitRatedGame</a> (<a href="ladderinventory.html">LadderInventory</a> LadderObj, <a href="..\engine\playerpawn.html">PlayerPawn</a> LadderPlayer)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_LoadKeyBindings+" name="LoadKeyBindings">LoadKeyBindings</a> (<a href="..\engine\playerpawn.html">PlayerPawn</a> P)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td><a href="..\engine\playerpawn.html">playerpawn</a>&nbsp;</td><td><a href="#_Login+" name="Login">Login</a> (string Portal, string Options, out string Error, class&lt;<a href="..\engine\playerpawn.html">playerpawn</a>&gt; SpawnClass)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PostBeginPlay+" name="PostBeginPlay">PostBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_SuccessfulGame+" name="SuccessfulGame">SuccessfulGame</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+ChunkTheNali" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">ChunkTheNali</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+FreeRunning1" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">FreeRunning1</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+FreeRunning10" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">FreeRunning10</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+FreeRunning2" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">FreeRunning2</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+FreeRunning3" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">FreeRunning3</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+FreeRunning4" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">FreeRunning4</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+FreeRunning5" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">FreeRunning5</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+FreeRunning6" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">FreeRunning6</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+FreeRunning7" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">FreeRunning7</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+FreeRunning8" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">FreeRunning8</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+FreeRunning9" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">FreeRunning9</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+" name="Timer">Timer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+ServerTravel" name="Timer">Timer</a> ()<br /><span class="function_state">ServerTravel</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TutorialSound+" name="TutorialSound">TutorialSound</a> (string NewSound)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="botpack-overview.html">Botpack</a>.<a href="deathmatchplus.html">DeathMatchPlus</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="deathmatchplus.html#AcceptInventory">AcceptInventory</a>, <a href="deathmatchplus.html#AddBot">AddBot</a>, <a href="deathmatchplus.html#AddDefaultInventory">AddDefaultInventory</a>, <a href="deathmatchplus.html#AllowTranslocation">AllowTranslocation</a>, <a href="deathmatchplus.html#AssessBotAttitude">AssessBotAttitude</a>, <a href="deathmatchplus.html#CanSpectate">CanSpectate</a>, <a href="deathmatchplus.html#CanTranslocate">CanTranslocate</a>, <a href="deathmatchplus.html#ChangeName">ChangeName</a>, <a href="deathmatchplus.html#CheckReady">CheckReady</a>, <a href="deathmatchplus.html#CheckThisTranslocator">CheckThisTranslocator</a>, <a href="deathmatchplus.html#EndSpree">EndSpree</a>, <a href="deathmatchplus.html#FindPlayerStart">FindPlayerStart</a>, <a href="deathmatchplus.html#ForceAddBot">ForceAddBot</a>, <a href="deathmatchplus.html#GameThreatAdd">GameThreatAdd</a>, <a href="deathmatchplus.html#GetRules">GetRules</a>, <a href="deathmatchplus.html#GiveWeapon">GiveWeapon</a>, <a href="deathmatchplus.html#InitGame">InitGame</a>, <a href="deathmatchplus.html#InitGameReplicationInfo">InitGameReplicationInfo</a>, <a href="deathmatchplus.html#InitRatedGame">InitRatedGame</a>, <a href="deathmatchplus.html#Killed">Killed</a>, <a href="deathmatchplus.html#LogGameParameters">LogGameParameters</a>, <a href="deathmatchplus.html#Login">Login</a>, <a href="deathmatchplus.html#Logout">Logout</a>, <a href="deathmatchplus.html#ModifyBehaviour">ModifyBehaviour</a>, <a href="deathmatchplus.html#NeedPlayers">NeedPlayers</a>, <a href="deathmatchplus.html#NeverStakeOut">NeverStakeOut</a>, <a href="deathmatchplus.html#NotifySpree">NotifySpree</a>, <a href="deathmatchplus.html#OneOnOne">OneOnOne</a>, <a href="deathmatchplus.html#PickAmbushSpotFor">PickAmbushSpotFor</a>, <a href="deathmatchplus.html#PlayerJumpZScaling">PlayerJumpZScaling</a>, <a href="deathmatchplus.html#PlayStartUpMessage">PlayStartUpMessage</a>, <a href="deathmatchplus.html#PlayTeleportEffect">PlayTeleportEffect</a>, <a href="deathmatchplus.html#PlayWinMessage">PlayWinMessage</a>, <a href="deathmatchplus.html#PostBeginPlay">PostBeginPlay</a>, <a href="deathmatchplus.html#PostLogin">PostLogin</a>, <a href="deathmatchplus.html#PreCacheReferences">PreCacheReferences</a>, <a href="deathmatchplus.html#RateVs">RateVs</a>, <a href="deathmatchplus.html#ReduceDamage">ReduceDamage</a>, <a href="deathmatchplus.html#RestartGame">RestartGame</a>, <a href="deathmatchplus.html#RestartPlayer">RestartPlayer</a>, <a href="deathmatchplus.html#ScoreKill">ScoreKill</a>, <a href="deathmatchplus.html#SendStartMessage">SendStartMessage</a>, <a href="deathmatchplus.html#SetEndCams">SetEndCams</a>, <a href="deathmatchplus.html#SetGameSpeed">SetGameSpeed</a>, <a href="deathmatchplus.html#ShouldRespawn">ShouldRespawn</a>, <a href="deathmatchplus.html#Skip">Skip</a>, <a href="deathmatchplus.html#SkipAll">SkipAll</a>, <a href="deathmatchplus.html#SpawnBot">SpawnBot</a>, <a href="deathmatchplus.html#SpawnRatedBot">SpawnRatedBot</a>, <a href="deathmatchplus.html#SpawnWait">SpawnWait</a>, <a href="deathmatchplus.html#StartMatch">StartMatch</a>, <a href="deathmatchplus.html#SuccessfulGame">SuccessfulGame</a>, <a href="deathmatchplus.html#Timer">Timer</a>, <a href="deathmatchplus.html#TooManyBots">TooManyBots</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="botpack-overview.html">Botpack</a>.<a href="tournamentgameinfo.html">TournamentGameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="tournamentgameinfo.html#AtCapacity">AtCapacity</a>, <a href="tournamentgameinfo.html#BroadcastRegularDeathMessage">BroadcastRegularDeathMessage</a>, <a href="tournamentgameinfo.html#CalcEndStats">CalcEndStats</a>, <a href="tournamentgameinfo.html#CreatureKillMessage">CreatureKillMessage</a>, <a href="tournamentgameinfo.html#DiscardInventory">DiscardInventory</a>, <a href="tournamentgameinfo.html#EmptyBestSlot">EmptyBestSlot</a>, <a href="tournamentgameinfo.html#GetTimeStamp">GetTimeStamp</a>, <a href="tournamentgameinfo.html#KillMessage">KillMessage</a>, <a href="tournamentgameinfo.html#Login">Login</a>, <a href="tournamentgameinfo.html#PlayerKillMessage">PlayerKillMessage</a>, <a href="tournamentgameinfo.html#PlaySpawnEffect">PlaySpawnEffect</a>, <a href="tournamentgameinfo.html#PlayTeleportEffect">PlayTeleportEffect</a>, <a href="tournamentgameinfo.html#ShouldRespawn">ShouldRespawn</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>ChunkTheNali <a href="..\Source_botpack\trainingdm.html#682" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ChunkTheNali <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Tick+ChunkTheNali">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FreeRunning1 <a href="..\Source_botpack\trainingdm.html#309" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FreeRunning1 <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Tick+FreeRunning1">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FreeRunning10 <a href="..\Source_botpack\trainingdm.html#733" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FreeRunning10 <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Tick+FreeRunning10">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FreeRunning2 <a href="..\Source_botpack\trainingdm.html#351" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FreeRunning2 <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+FreeRunning2">BeginState</a>, <a href="#_Tick+FreeRunning2">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FreeRunning3 <a href="..\Source_botpack\trainingdm.html#396" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FreeRunning3 <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+FreeRunning3">BeginState</a>, <a href="#_Tick+FreeRunning3">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FreeRunning4 <a href="..\Source_botpack\trainingdm.html#452" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FreeRunning4 <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Tick+FreeRunning4">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FreeRunning5 <a href="..\Source_botpack\trainingdm.html#494" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FreeRunning5 <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Tick+FreeRunning5">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FreeRunning6 <a href="..\Source_botpack\trainingdm.html#536" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FreeRunning6 <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Tick+FreeRunning6">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FreeRunning7 <a href="..\Source_botpack\trainingdm.html#578" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FreeRunning7 <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Tick+FreeRunning7">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FreeRunning8 <a href="..\Source_botpack\trainingdm.html#618" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FreeRunning8 <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Tick+FreeRunning8">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FreeRunning9 <a href="..\Source_botpack\trainingdm.html#644" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FreeRunning9 <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Tick+FreeRunning9">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>ServerTravel <a href="..\Source_botpack\trainingdm.html#805" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ServerTravel <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+ServerTravel">BeginState</a>, <a href="#_Timer+ServerTravel">Timer</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bPause" class="hidden"></a>bPause <a href="..\Source_botpack\trainingdm.html#22" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPause;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bReadyToSpawn" class="hidden"></a>bReadyToSpawn <a href="..\Source_botpack\trainingdm.html#7" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bReadyToSpawn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DM[24]" class="hidden"></a>DM[24] <a href="..\Source_botpack\trainingdm.html#5" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> DM[<font class="source_int">24</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EventIndex" class="hidden"></a>EventIndex <a href="..\Source_botpack\trainingdm.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> EventIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EventTimer" class="hidden"></a>EventTimer <a href="..\Source_botpack\trainingdm.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> EventTimer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyAlias[255]" class="hidden"></a>KeyAlias[255] <a href="..\Source_botpack\trainingdm.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> KeyAlias[<font class="source_int">255</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastEvent" class="hidden"></a>LastEvent <a href="..\Source_botpack\trainingdm.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> LastEvent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastLocation" class="hidden"></a>LastLocation <a href="..\Source_botpack\trainingdm.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> LastLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastRotation" class="hidden"></a>LastRotation <a href="..\Source_botpack\trainingdm.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> LastRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SoundIndex" class="hidden"></a>SoundIndex <a href="..\Source_botpack\trainingdm.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> SoundIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Trainee" class="hidden"></a>Trainee <a href="..\Source_botpack\trainingdm.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> Trainee;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutMessage14Parts[2]" class="hidden"></a>TutMessage14Parts[2] <a href="..\Source_botpack\trainingdm.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TutMessage14Parts[<font class="source_int">2</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutMessage15Parts[2]" class="hidden"></a>TutMessage15Parts[2] <a href="..\Source_botpack\trainingdm.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TutMessage15Parts[<font class="source_int">2</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutMessage4Parts[5]" class="hidden"></a>TutMessage4Parts[5] <a href="..\Source_botpack\trainingdm.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TutMessage4Parts[<font class="source_int">5</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutMessage6Parts[2]" class="hidden"></a>TutMessage6Parts[2] <a href="..\Source_botpack\trainingdm.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TutMessage6Parts[<font class="source_int">2</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutMessage[24]" class="hidden"></a>TutMessage[24] <a href="..\Source_botpack\trainingdm.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TutMessage[<font class="source_int">24</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddDefaultInventory+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AddDefaultInventory <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#83" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AddDefaultInventory (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+FreeRunning2" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">FreeRunning2</span> <a href="..\Source_botpack\trainingdm.html#370" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+FreeRunning3" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">FreeRunning3</span> <a href="..\Source_botpack\trainingdm.html#415" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+ServerTravel" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">ServerTravel</span> <a href="..\Source_botpack\trainingdm.html#817" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent0+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent0 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#219" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent0 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent1+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent1 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#231" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent1 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent10+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent10 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#390" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent10 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent11+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent11 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#421" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent11 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent12+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent12 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#428" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent12 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent13+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent13 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#435" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent13 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent14+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent14 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#446" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent14 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent15+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent15 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#488" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent15 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent16+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent16 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#530" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent16 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent17+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent17 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#572" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent17 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent18+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent18 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#612" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent18 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent19+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent19 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#638" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent19 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent2+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent2 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#238" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent2 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent20+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent20 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#664" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent20 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent21+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent21 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#710" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent21 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent22+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent22 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#726" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent22 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent23+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent23 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#758" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent23 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent3+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent3 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#245" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent3 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent4+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent4 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#252" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent4 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent5+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent5 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#296" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent5 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent6+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent6 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#303" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent6 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent7+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent7 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#345" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent7 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent8+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent8 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#376" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent8 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DMTutEvent9+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DMTutEvent9 <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#383" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DMTutEvent9 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndGame+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndGame <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#782" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="..\unreali\endgame.html" class="source">EndGame</a></font> (<font class="source_keyword">string</font> Reason)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InitGame+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> InitGame <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> InitGame (<font class="source_keyword">string</font> Options, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InitRatedGame+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> InitRatedGame <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> InitRatedGame (<font class="source_type"><a href="ladderinventory.html" class="source">LadderInventory</a></font> LadderObj, <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> LadderPlayer)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LoadKeyBindings+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> LoadKeyBindings <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#114" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> LoadKeyBindings (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> P)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Login+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Login <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#58" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font> Login (<font class="source_keyword">string</font> Portal,
+    <font class="source_keyword">string</font> Options,
+    <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error,
+    <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font>&gt; SpawnClass)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PostBeginPlay <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#45" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PostBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SuccessfulGame+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SuccessfulGame <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#770" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SuccessfulGame ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+ChunkTheNali" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">ChunkTheNali</span> <a href="..\Source_botpack\trainingdm.html#684" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+FreeRunning1" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">FreeRunning1</span> <a href="..\Source_botpack\trainingdm.html#311" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+FreeRunning10" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">FreeRunning10</span> <a href="..\Source_botpack\trainingdm.html#735" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+FreeRunning2" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">FreeRunning2</span> <a href="..\Source_botpack\trainingdm.html#353" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+FreeRunning3" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">FreeRunning3</span> <a href="..\Source_botpack\trainingdm.html#398" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+FreeRunning4" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">FreeRunning4</span> <a href="..\Source_botpack\trainingdm.html#454" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+FreeRunning5" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">FreeRunning5</span> <a href="..\Source_botpack\trainingdm.html#496" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+FreeRunning6" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">FreeRunning6</span> <a href="..\Source_botpack\trainingdm.html#538" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+FreeRunning7" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">FreeRunning7</span> <a href="..\Source_botpack\trainingdm.html#580" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+FreeRunning8" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">FreeRunning8</span> <a href="..\Source_botpack\trainingdm.html#620" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+FreeRunning9" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">FreeRunning9</span> <a href="..\Source_botpack\trainingdm.html#646" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#126" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+ServerTravel" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state">ServerTravel</span> <a href="..\Source_botpack\trainingdm.html#807" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutorialSound+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TutorialSound <span class="function_state"></span> <a href="..\Source_botpack\trainingdm.html#74" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TutorialSound (<font class="source_keyword">string</font> NewSound)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    bTutorialGame=<font class="source_keyword">True</font>
+    SingleWaitingMessage=<font class="source_string">""</font>
+    Difficulty=<font class="source_int">0</font>
+    BeaconName=<font class="source_string">"DM-Tutorial"</font>
+    GameName=<font class="source_string">"Combat Training: DM"</font>
+    MapPrefix=<font class="source_string">"DM-Tutorial"</font>
+    StartUpMessage=<font class="source_string">""</font>
+    bLoggingGame=<font class="source_keyword">False</font>
+    DM(<font class="source_int">0</font>)=<font class="source_string">"TutVoicedm.dm00"</font>
+    DM(<font class="source_int">1</font>)=<font class="source_string">"TutVoicedm.dm01"</font>
+    DM(<font class="source_int">2</font>)=<font class="source_string">"TutVoicedm.dm02"</font>
+    DM(<font class="source_int">3</font>)=<font class="source_string">"TutVoicedm.dm03"</font>
+    DM(<font class="source_int">4</font>)=<font class="source_string">"TutVoicedm.dm04"</font>
+    DM(<font class="source_int">5</font>)=<font class="source_string">"TutVoicedm.dm05"</font>
+    DM(<font class="source_int">6</font>)=<font class="source_string">"TutVoicedm.dm06"</font>
+    DM(<font class="source_int">7</font>)=<font class="source_string">"TutVoicedm.dm07"</font>
+    DM(<font class="source_int">8</font>)=<font class="source_string">"TutVoicedm.dm08"</font>
+    DM(<font class="source_int">9</font>)=<font class="source_string">"TutVoicedm.dm09"</font>
+    DM(<font class="source_int">10</font>)=<font class="source_string">"TutVoicedm.dm10"</font>
+    DM(<font class="source_int">11</font>)=<font class="source_string">"TutVoicedm.dm11"</font>
+    DM(<font class="source_int">12</font>)=<font class="source_string">"TutVoicedm.dm12"</font>
+    DM(<font class="source_int">13</font>)=<font class="source_string">"TutVoicedm.dm13"</font>
+    DM(<font class="source_int">14</font>)=<font class="source_string">"TutVoicedm.dm14"</font>
+    DM(<font class="source_int">15</font>)=<font class="source_string">"TutVoicedm.dm15"</font>
+    DM(<font class="source_int">16</font>)=<font class="source_string">"TutVoicedm.dm16"</font>
+    DM(<font class="source_int">17</font>)=<font class="source_string">"TutVoicedm.dm17"</font>
+    DM(<font class="source_int">18</font>)=<font class="source_string">"TutVoicedm.dm18"</font>
+    DM(<font class="source_int">19</font>)=<font class="source_string">"TutVoicedm.dm19"</font>
+    DM(<font class="source_int">20</font>)=<font class="source_string">"TutVoicedm.dm20"</font>
+    DM(<font class="source_int">21</font>)=<font class="source_string">"TutVoicedm.dm21"</font>
+    DM(<font class="source_int">22</font>)=<font class="source_string">"TutVoicedm.dm22"</font>
+    DM(<font class="source_int">23</font>)=<font class="source_string">"TutVoicedm.dm23"</font>
+    TutMessage(<font class="source_int">0</font>)=<font class="source_string">"Welcome to Deathmatch combat training. Deathmatch is a sport in which you compete against other gun-wielding players in a fast paced free-for-all. The object is to destroy all of your enemies by any means necessary."</font>
+    TutMessage(<font class="source_int">1</font>)=<font class="source_string">"Every time you take an enemy out you get a point, called a 'frag' in gaming lingo. You can see your frag count on the left side of the screen. At the end of the game the player with the most frags wins the match."</font>
+    TutMessage(<font class="source_int">2</font>)=<font class="source_string">"Remember, if you accidentally blow yourself up or fall into lava you will lose a frag!"</font>
+    TutMessage(<font class="source_int">3</font>)=<font class="source_string">"Let's learn some basics about moving around. A good deathmatch player is always moving, because a moving target is harder to hit than a stationary one."</font>
+    TutMessage(<font class="source_int">4</font>)=<font class="source_string">"The forward key moves you forward while the backward key makes you backpedal. The left key causes you to strafe left, while the right key, you guessed it, strafes right."</font>
+    TutMessage4Parts(<font class="source_int">0</font>)=<font class="source_string">"The forward key"</font>
+    TutMessage4Parts(<font class="source_int">1</font>)=<font class="source_string">"moves you forward while the backward key"</font>
+    TutMessage4Parts(<font class="source_int">2</font>)=<font class="source_string">"makes you backpedal. The left key"</font>
+    TutMessage4Parts(<font class="source_int">3</font>)=<font class="source_string">"causes you to strafe left, while the right key"</font>
+    TutMessage4Parts(<font class="source_int">4</font>)=<font class="source_string">", you guessed it, strafes right."</font>
+    TutMessage(<font class="source_int">5</font>)=<font class="source_string">"Strafing is extremely important in deathmatch because it allows you to move from side to side without turning and losing sight or aim of your foe. Let's try strafing left and right now."</font>
+    TutMessage(<font class="source_int">6</font>)=<font class="source_string">"Another important element of moving around is jumping. Jumping allows you to reach areas of the map that are too high to walk to normally and to cross dangerous pits. Try pressing the jump button and jump around the map."</font>
+    TutMessage6Parts(<font class="source_int">0</font>)=<font class="source_string">"Another important element of moving around is jumping. Jumping allows you to reach areas of the map that are too high to walk to normally and to cross dangerous pits. Try pressing the jump button"</font>
+    TutMessage6Parts(<font class="source_int">1</font>)=<font class="source_string">"and jump around the map."</font>
+    TutMessage(<font class="source_int">7</font>)=<font class="source_string">"Excellent."</font>
+    TutMessage(<font class="source_int">8</font>)=<font class="source_string">"Now we're going to learn about Mouselooking. Move your mouse around and notice how your view shifts. This is how you look around and turn, known as Mouselook."</font>
+    TutMessage(<font class="source_int">9</font>)=<font class="source_string">"Try turning around several times by moving the mouse left to right to see the lovely battle arena."</font>
+    TutMessage(<font class="source_int">10</font>)=<font class="source_string">"Excellent. You can also look vertically to see what's occuring above and below you. In deathmatch your enemies will be attacking from above and below, so remember to always keep your eyes peeled."</font>
+    TutMessage(<font class="source_int">11</font>)=<font class="source_string">"If you feel like you are looking around too quickly you can easily adjust the sensitivity of the mouse in the OPTIONS menu."</font>
+    TutMessage(<font class="source_int">12</font>)=<font class="source_string">"Let's learn about offense. Remember, the only way to win at deathmatch is to destroy your foes with weaponry that you collect."</font>
+    TutMessage(<font class="source_int">13</font>)=<font class="source_string">"I'm going to open the weapons locker and allow access to some guns, let's pick them up and get ready for some target practice."</font>
+    TutMessage(<font class="source_int">14</font>)=<font class="source_string">"Great, now we're armed. The gun you're carrying is commonly called the 'Shock Rifle'. It, like all the weapons in the Tournament, has two firing modes. Let's try shooting the gun now. Press the fire button to emit a lethal electric beam."</font>
+    TutMessage14Parts(<font class="source_int">0</font>)=<font class="source_string">"Great, now we're armed. The gun you're carrying is commonly called the 'Shock Rifle'. It, like all the weapons in the Tournament, has two firing modes. Let's try shooting the gun now. Press the fire button"</font>
+    TutMessage14Parts(<font class="source_int">1</font>)=<font class="source_string">"to emit a lethal electric beam."</font>
+    TutMessage(<font class="source_int">15</font>)=<font class="source_string">"Very good. The Shock Rifle's primary fire will instantly hit the person you shoot at. In Unreal Tournament, every weapon also has an alternate firing mode. Press the alt fire button to shoot a ball of plasma at your enemy."</font>
+    TutMessage15Parts(<font class="source_int">0</font>)=<font class="source_string">"Very good. The Shock Rifle's primary fire will instantly hit the person you shoot at. In Unreal Tournament, every weapon also has an alternate firing mode. Press the alt fire button"</font>
+    TutMessage15Parts(<font class="source_int">1</font>)=<font class="source_string">"to shoot a ball of plasma at your enemy."</font>
+    TutMessage(<font class="source_int">16</font>)=<font class="source_string">"Great! The alt fire on the Shock Rifle is slower moving than the primary fire, but does more damage. Its up to you to decide which attack is right for the situation. Sometimes you might be carrying more than one weapon. I've just put an 'Enforcer' sidearm in your pack. Each weapon has an associated number, as you can see at the bottom of your screen. The Enforcer is weapon number 2. Press 2 and switch to the enforcer. You can switch back to the Shock Rifle by pressing its number."</font>
+    TutMessage(<font class="source_int">17</font>)=<font class="source_string">"Good, now you know how to switch weapons in battle. Every weapon in Unreal Tournament is a projectile weapon except one, the 'Impact Hammer'. Press 1 now to switch to the Impact Hammer."</font>
+    TutMessage(<font class="source_int">18</font>)=<font class="source_string">"The Impact Hammer is a melee, or close combat, weapon. It requires you to be standing very close to the target to do damage. The tradeoff is that a hit will almost always kill your enemy. Press and hold the primary fire button now to charge up the impact hammer."</font>
+    TutMessage(<font class="source_int">19</font>)=<font class="source_string">"Now, run up to the Nali I just spawned. When you get close enough, the Impact Hammer will release blowing him into pieces."</font>
+    TutMessage(<font class="source_int">20</font>)=<font class="source_string">"Look at those gibs fly!  Great job."</font>
+    TutMessage(<font class="source_int">21</font>)=<font class="source_string">"Good job. Now we're going to take out some stationary targets. Shoot all three barrels to proceed."</font>
+    TutMessage(<font class="source_int">22</font>)=<font class="source_string">"Nice shootin' Tex. It's about to get harder. I'm going to release a training human opponent for you to practice on. You'll have to frag him three times to complete the tutorial. Good luck!"</font>
+    TutMessage(<font class="source_int">23</font>)=<font class="source_string">"Congratulations! You have proven yourself to be a worthy Deathmatch player. Now its time to enter the Deathmatch Tournament Ladder."</font>
+    LastEvent=<font class="source_int">24</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\trainingdm.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#TrainingDM">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="trainingctf.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="trainingdom.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:37.500 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

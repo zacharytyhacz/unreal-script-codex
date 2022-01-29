@@ -1,0 +1,418 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - MultiMesh.CustomPlayer</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="multimesh-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_multimesh\customplayer.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#CustomPlayer">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="custombotplayerreplicationinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="customplayerreplicationinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="multimesh-overview.html">MultiMesh</a>.CustomPlayer</h1>
+<b>Extends:</b> <a href="..\botpack\tournamentmale.html">TournamentMale</a><br>
+<b>Modifiers:</b> abstract <br>
+<a href="..\Source_multimesh\customplayer.html"><b>Source code</b></a>
+
+<p>
+CustomPlayer.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\pawn.html">Pawn</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\playerpawn.html">PlayerPawn</a>
+            |   
+            +-- <a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\tournamentplayer.html">TournamentPlayer</a>
+                |   
+                +-- <a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\tournamentmale.html">TournamentMale</a>
+                    |   
+                    +-- <a href="multimesh-overview.html">MultiMesh</a>.<a href="customplayer.html">CustomPlayer</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="tcow.html">TCow</a>, <a href="tnali.html">TNali</a>, <a href="tskaarj.html">TSkaarj</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_Author" name="Author">Author</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AuthorInfo" name="AuthorInfo">AuthorInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_DefaultCustomPackage" name="DefaultCustomPackage">DefaultCustomPackage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_DefaultFace" name="DefaultFace">DefaultFace</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">mesh</td><td width="66%"><a href="#_FallBackMesh" name="FallBackMesh">FallBackMesh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TeamSkin" name="TeamSkin">TeamSkin</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\tournamentplayer.html">TournamentPlayer</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\botpack\tournamentplayer.html#AnnouncerVolume">AnnouncerVolume</a>, <a href="..\botpack\tournamentplayer.html#b3DSound">b3DSound</a>, <a href="..\botpack\tournamentplayer.html#bAutoTaunt">bAutoTaunt</a>, <a href="..\botpack\tournamentplayer.html#bInstantRocket">bInstantRocket</a>, <a href="..\botpack\tournamentplayer.html#bLastJumpAlt">bLastJumpAlt</a>, <a href="..\botpack\tournamentplayer.html#bNeedActivate">bNeedActivate</a>, <a href="..\botpack\tournamentplayer.html#bNoAutoTaunts">bNoAutoTaunts</a>, <a href="..\botpack\tournamentplayer.html#bNoMatureLanguage">bNoMatureLanguage</a>, <a href="..\botpack\tournamentplayer.html#bNoVoiceMessages">bNoVoiceMessages</a>, <a href="..\botpack\tournamentplayer.html#bNoVoiceTaunts">bNoVoiceTaunts</a>, <a href="..\botpack\tournamentplayer.html#BossRef">BossRef</a>, <a href="..\botpack\tournamentplayer.html#breathagain">breathagain</a>, <a href="..\botpack\tournamentplayer.html#ClientPending">ClientPending</a>, <a href="..\botpack\tournamentplayer.html#Deaths[6]">Deaths[6]</a>, <a href="..\botpack\tournamentplayer.html#DefaultPackage">DefaultPackage</a>, <a href="..\botpack\tournamentplayer.html#DefaultSkinName">DefaultSkinName</a>, <a href="..\botpack\tournamentplayer.html#Die2">Die2</a>, <a href="..\botpack\tournamentplayer.html#Die3">Die3</a>, <a href="..\botpack\tournamentplayer.html#Die4">Die4</a>, <a href="..\botpack\tournamentplayer.html#drown">drown</a>, <a href="..\botpack\tournamentplayer.html#FaceSkin">FaceSkin</a>, <a href="..\botpack\tournamentplayer.html#FixedSkin">FixedSkin</a>, <a href="..\botpack\tournamentplayer.html#Footstep1">Footstep1</a>, <a href="..\botpack\tournamentplayer.html#Footstep2">Footstep2</a>, <a href="..\botpack\tournamentplayer.html#Footstep3">Footstep3</a>, <a href="..\botpack\tournamentplayer.html#GaspSound">GaspSound</a>, <a href="..\botpack\tournamentplayer.html#HitSound3">HitSound3</a>, <a href="..\botpack\tournamentplayer.html#HitSound4">HitSound4</a>, <a href="..\botpack\tournamentplayer.html#LandGrunt">LandGrunt</a>, <a href="..\botpack\tournamentplayer.html#LastKillTime">LastKillTime</a>, <a href="..\botpack\tournamentplayer.html#MultiLevel">MultiLevel</a>, <a href="..\botpack\tournamentplayer.html#OldClientWeapon">OldClientWeapon</a>, <a href="..\botpack\tournamentplayer.html#spreenote[10]">spreenote[10]</a>, <a href="..\botpack\tournamentplayer.html#StartSpot">StartSpot</a>, <a href="..\botpack\tournamentplayer.html#StatusBelt">StatusBelt</a>, <a href="..\botpack\tournamentplayer.html#StatusDoll">StatusDoll</a>, <a href="..\botpack\tournamentplayer.html#TeamSkin1">TeamSkin1</a>, <a href="..\botpack\tournamentplayer.html#TeamSkin2">TeamSkin2</a>, <a href="..\botpack\tournamentplayer.html#TimeMessageClass">TimeMessageClass</a>, <a href="..\botpack\tournamentplayer.html#UWHit1">UWHit1</a>, <a href="..\botpack\tournamentplayer.html#UWHit2">UWHit2</a>, <a href="..\botpack\tournamentplayer.html#VoicePackMetaClass">VoicePackMetaClass</a>, <a href="..\botpack\tournamentplayer.html#WeaponUpdate">WeaponUpdate</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+PlayerSpectating" name="BeginState">BeginState</a> ()<br /><span class="function_state">PlayerSpectating</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+PlayerWaiting" name="BeginState">BeginState</a> ()<br /><span class="function_state">PlayerWaiting</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+PlayerWalking" name="BeginState">BeginState</a> ()<br /><span class="function_state">PlayerWalking</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndState+PlayerSpectating" name="EndState">EndState</a> ()<br /><span class="function_state">PlayerSpectating</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndState+PlayerWaiting" name="EndState">EndState</a> ()<br /><span class="function_state">PlayerWaiting</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_GetMultiSkin+" name="GetMultiSkin">GetMultiSkin</a> (<a href="..\engine\actor.html">Actor</a> SkinActor, out string SkinName, out string FaceName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayGutHit+" name="PlayGutHit">PlayGutHit</a> (float tweentime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayHeadHit+" name="PlayHeadHit">PlayHeadHit</a> (float tweentime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayLeftHit+" name="PlayLeftHit">PlayLeftHit</a> (float tweentime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayRightHit+" name="PlayRightHit">PlayRightHit</a> (float tweentime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PostBeginPlay+" name="PostBeginPlay">PostBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetMultiSkin+" name="SetMultiSkin">SetMultiSkin</a> (<a href="..\engine\actor.html">Actor</a> SkinActor, string SkinName, string FaceName, byte TeamNum)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetMyMesh+" name="SetMyMesh">SetMyMesh</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetMyMultiSkin+" name="SetMyMultiSkin">SetMyMultiSkin</a> (<a href="..\engine\actor.html">Actor</a> SkinActor, string SkinName, string FaceName, byte TeamNum)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+" name="Timer">Timer</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\tournamentmale.html">TournamentMale</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\botpack\tournamentmale.html#PlayDecap">PlayDecap</a>, <a href="..\botpack\tournamentmale.html#PlayDying">PlayDying</a>, <a href="..\botpack\tournamentmale.html#PlayGutHit">PlayGutHit</a>, <a href="..\botpack\tournamentmale.html#PlayHeadHit">PlayHeadHit</a>, <a href="..\botpack\tournamentmale.html#PlayLeftHit">PlayLeftHit</a>, <a href="..\botpack\tournamentmale.html#PlayRightHit">PlayRightHit</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\tournamentplayer.html">TournamentPlayer</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\botpack\tournamentplayer.html#AddBotNamed">AddBotNamed</a>, <a href="..\botpack\tournamentplayer.html#Advance">Advance</a>, <a href="..\botpack\tournamentplayer.html#AdvanceAll">AdvanceAll</a>, <a href="..\botpack\tournamentplayer.html#BeginState">BeginState</a>, <a href="..\botpack\tournamentplayer.html#ChangeSetHand">ChangeSetHand</a>, <a href="..\botpack\tournamentplayer.html#CheckBob">CheckBob</a>, <a href="..\botpack\tournamentplayer.html#ClientPlaySound">ClientPlaySound</a>, <a href="..\botpack\tournamentplayer.html#ClientPlayTakeHit">ClientPlayTakeHit</a>, <a href="..\botpack\tournamentplayer.html#ClientPutDown">ClientPutDown</a>, <a href="..\botpack\tournamentplayer.html#ClientReplicateSkins">ClientReplicateSkins</a>, <a href="..\botpack\tournamentplayer.html#ClientVoiceMessage">ClientVoiceMessage</a>, <a href="..\botpack\tournamentplayer.html#DoJump">DoJump</a>, <a href="..\botpack\tournamentplayer.html#EncroachingOn">EncroachingOn</a>, <a href="..\botpack\tournamentplayer.html#EndSpree">EndSpree</a>, <a href="..\botpack\tournamentplayer.html#Fire">Fire</a>, <a href="..\botpack\tournamentplayer.html#FootStepping">FootStepping</a>, <a href="..\botpack\tournamentplayer.html#Gasp">Gasp</a>, <a href="..\botpack\tournamentplayer.html#GetMultiSkin">GetMultiSkin</a>, <a href="..\botpack\tournamentplayer.html#IAmTheOne">IAmTheOne</a>, <a href="..\botpack\tournamentplayer.html#KillAll">KillAll</a>, <a href="..\botpack\tournamentplayer.html#Killed">Killed</a>, <a href="..\botpack\tournamentplayer.html#ListBots">ListBots</a>, <a href="..\botpack\tournamentplayer.html#Loaded">Loaded</a>, <a href="..\botpack\tournamentplayer.html#LoadLeftHand">LoadLeftHand</a>, <a href="..\botpack\tournamentplayer.html#NeedActivate">NeedActivate</a>, <a href="..\botpack\tournamentplayer.html#PlayBeepSound">PlayBeepSound</a>, <a href="..\botpack\tournamentplayer.html#PlayChatting">PlayChatting</a>, <a href="..\botpack\tournamentplayer.html#PlayCrawling">PlayCrawling</a>, <a href="..\botpack\tournamentplayer.html#PlayDeathHit">PlayDeathHit</a>, <a href="..\botpack\tournamentplayer.html#PlayDodge">PlayDodge</a>, <a href="..\botpack\tournamentplayer.html#PlayDuck">PlayDuck</a>, <a href="..\botpack\tournamentplayer.html#PlayDyingSound">PlayDyingSound</a>, <a href="..\botpack\tournamentplayer.html#PlayFeignDeath">PlayFeignDeath</a>, <a href="..\botpack\tournamentplayer.html#PlayFiring">PlayFiring</a>, <a href="..\botpack\tournamentplayer.html#PlayFootStep">PlayFootStep</a>, <a href="..\botpack\tournamentplayer.html#PlayGutHit">PlayGutHit</a>, <a href="..\botpack\tournamentplayer.html#PlayHeadHit">PlayHeadHit</a>, <a href="..\botpack\tournamentplayer.html#PlayHit">PlayHit</a>, <a href="..\botpack\tournamentplayer.html#PlayInAir">PlayInAir</a>, <a href="..\botpack\tournamentplayer.html#PlayLanded">PlayLanded</a>, <a href="..\botpack\tournamentplayer.html#PlayLeftHit">PlayLeftHit</a>, <a href="..\botpack\tournamentplayer.html#PlayRecoil">PlayRecoil</a>, <a href="..\botpack\tournamentplayer.html#PlayRightHit">PlayRightHit</a>, <a href="..\botpack\tournamentplayer.html#PlayRising">PlayRising</a>, <a href="..\botpack\tournamentplayer.html#PlayRunning">PlayRunning</a>, <a href="..\botpack\tournamentplayer.html#PlaySwimming">PlaySwimming</a>, <a href="..\botpack\tournamentplayer.html#PlayTakeHitSound">PlayTakeHitSound</a>, <a href="..\botpack\tournamentplayer.html#PlayTurning">PlayTurning</a>, <a href="..\botpack\tournamentplayer.html#PlayWaiting">PlayWaiting</a>, <a href="..\botpack\tournamentplayer.html#PlayWalking">PlayWalking</a>, <a href="..\botpack\tournamentplayer.html#PlayWeaponSwitch">PlayWeaponSwitch</a>, <a href="..\botpack\tournamentplayer.html#PlayWinMessage">PlayWinMessage</a>, <a href="..\botpack\tournamentplayer.html#Possess">Possess</a>, <a href="..\botpack\tournamentplayer.html#PostBeginPlay">PostBeginPlay</a>, <a href="..\botpack\tournamentplayer.html#PreCacheReferences">PreCacheReferences</a>, <a href="..\botpack\tournamentplayer.html#PreSetMovement">PreSetMovement</a>, <a href="..\botpack\tournamentplayer.html#RealWeapon">RealWeapon</a>, <a href="..\botpack\tournamentplayer.html#ReplicateMove">ReplicateMove</a>, <a href="..\botpack\tournamentplayer.html#SendAltFire">SendAltFire</a>, <a href="..\botpack\tournamentplayer.html#SendClientAltFire">SendClientAltFire</a>, <a href="..\botpack\tournamentplayer.html#SendClientFire">SendClientFire</a>, <a href="..\botpack\tournamentplayer.html#SendFire">SendFire</a>, <a href="..\botpack\tournamentplayer.html#SendGlobalMessage">SendGlobalMessage</a>, <a href="..\botpack\tournamentplayer.html#SendTeamMessage">SendTeamMessage</a>, <a href="..\botpack\tournamentplayer.html#ServerSetInstantRocket">ServerSetInstantRocket</a>, <a href="..\botpack\tournamentplayer.html#ServerSetTaunt">ServerSetTaunt</a>, <a href="..\botpack\tournamentplayer.html#ServerSetVoice">ServerSetVoice</a>, <a href="..\botpack\tournamentplayer.html#SetAirControl">SetAirControl</a>, <a href="..\botpack\tournamentplayer.html#SetAutoTaunt">SetAutoTaunt</a>, <a href="..\botpack\tournamentplayer.html#SetInstantRocket">SetInstantRocket</a>, <a href="..\botpack\tournamentplayer.html#SetMultiSkin">SetMultiSkin</a>, <a href="..\botpack\tournamentplayer.html#SetVoice">SetVoice</a>, <a href="..\botpack\tournamentplayer.html#Summon">Summon</a>, <a href="..\botpack\tournamentplayer.html#TimeMessage">TimeMessage</a>, <a href="..\botpack\tournamentplayer.html#TweenToRunning">TweenToRunning</a>, <a href="..\botpack\tournamentplayer.html#TweenToSwimming">TweenToSwimming</a>, <a href="..\botpack\tournamentplayer.html#TweenToWaiting">TweenToWaiting</a>, <a href="..\botpack\tournamentplayer.html#TweenToWalking">TweenToWalking</a>, <a href="..\botpack\tournamentplayer.html#UpdateRealWeapon">UpdateRealWeapon</a>, <a href="..\botpack\tournamentplayer.html#Verbose">Verbose</a>, <a href="..\botpack\tournamentplayer.html#ViewFlash">ViewFlash</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>PlayerSpectating <a href="..\Source_multimesh\customplayer.html#299" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> PlayerSpectating <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+PlayerSpectating">BeginState</a>, <a href="#_EndState+PlayerSpectating">EndState</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>PlayerWaiting <a href="..\Source_multimesh\customplayer.html#271" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> PlayerWaiting <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+PlayerWaiting">BeginState</a>, <a href="#_EndState+PlayerWaiting">EndState</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>PlayerWalking <a href="..\Source_multimesh\customplayer.html#252" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> PlayerWalking <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+PlayerWalking">BeginState</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Author" class="hidden"></a>Author <a href="..\Source_multimesh\customplayer.html#8" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> Author;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AuthorInfo" class="hidden"></a>AuthorInfo <a href="..\Source_multimesh\customplayer.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> AuthorInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DefaultCustomPackage" class="hidden"></a>DefaultCustomPackage <a href="..\Source_multimesh\customplayer.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> DefaultCustomPackage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DefaultFace" class="hidden"></a>DefaultFace <a href="..\Source_multimesh\customplayer.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> DefaultFace;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FallBackMesh" class="hidden"></a>FallBackMesh <a href="..\Source_multimesh\customplayer.html#7" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">mesh</font> FallBackMesh;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TeamSkin" class="hidden"></a>TeamSkin <a href="..\Source_multimesh\customplayer.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> TeamSkin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BeginState+PlayerSpectating" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">PlayerSpectating</span> <a href="..\Source_multimesh\customplayer.html#303" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+PlayerWaiting" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">PlayerWaiting</span> <a href="..\Source_multimesh\customplayer.html#275" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+PlayerWalking" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">PlayerWalking</span> <a href="..\Source_multimesh\customplayer.html#256" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndState+PlayerSpectating" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndState <span class="function_state">PlayerSpectating</span> <a href="..\Source_multimesh\customplayer.html#316" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndState+PlayerWaiting" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndState <span class="function_state">PlayerWaiting</span> <a href="..\Source_multimesh\customplayer.html#290" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetMultiSkin+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetMultiSkin <span class="function_state"></span> <a href="..\Source_multimesh\customplayer.html#128" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> GetMultiSkin (<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> SkinActor, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> SkinName, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> FaceName)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayGutHit+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayGutHit <span class="function_state"></span> <a href="..\Source_multimesh\customplayer.html#213" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayGutHit (<font class="source_keyword">float</font> tweentime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayHeadHit+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayHeadHit <span class="function_state"></span> <a href="..\Source_multimesh\customplayer.html#226" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayHeadHit (<font class="source_keyword">float</font> tweentime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayLeftHit+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayLeftHit <span class="function_state"></span> <a href="..\Source_multimesh\customplayer.html#234" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayLeftHit (<font class="source_keyword">float</font> tweentime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayRightHit+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayRightHit <span class="function_state"></span> <a href="..\Source_multimesh\customplayer.html#242" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayRightHit (<font class="source_keyword">float</font> tweentime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PostBeginPlay <span class="function_state"></span> <a href="..\Source_multimesh\customplayer.html#147" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PostBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetMultiSkin+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetMultiSkin <span class="function_state"></span> <a href="..\Source_multimesh\customplayer.html#67" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetMultiSkin (<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> SkinActor, <font class="source_keyword">string</font> SkinName, <font class="source_keyword">string</font> FaceName, <font class="source_keyword">byte</font> TeamNum)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetMyMesh+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetMyMesh <span class="function_state"></span> <a href="..\Source_multimesh\customplayer.html#162" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetMyMesh ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetMyMultiSkin+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetMyMultiSkin <span class="function_state"></span> <a href="..\Source_multimesh\customplayer.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetMyMultiSkin (<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> SkinActor, <font class="source_keyword">string</font> SkinName, <font class="source_keyword">string</font> FaceName, <font class="source_keyword">byte</font> TeamNum)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state"></span> <a href="..\Source_multimesh\customplayer.html#195" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state"></span> <a href="..\Source_multimesh\customplayer.html#155" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    PlayerReplicationInfoClass=<font class="source_name">'MultiMesh.CustomPlayerReplicationInfo'</font>
+    Handedness=-<font class="source_int">1.000000</font>
+    FallBackMesh=<font class="source_type">Mesh</font><font class="source_name">'Botpack.Commando'</font>
+    <font class="source_type">Mesh</font>=<font class="source_type">Mesh</font><font class="source_name">'Botpack.Commando'</font>
+    SelectionMesh=<font class="source_string">"Botpack.SelectionMale1"</font>
+    SpecialMesh=<font class="source_string">"Botpack.TrophyMale1"</font>
+    JumpSound=TMJump3
+    LandGrunt=MLand3
+    CarcassType=<font class="source_type"><a href="..\botpack\tmale1carcass.html" class="source">TMale1Carcass</a></font>
+    Menuname=<font class="source_string">"Custom Player"</font>
+    VoiceType=<font class="source_string">"BotPack.VoiceMaleOne"</font>
+    TeamSkin1=<font class="source_int">2</font>
+    TeamSkin2=<font class="source_int">3</font>
+    FixedSkin=<font class="source_int">0</font>
+    FaceSkin=<font class="source_int">1</font>
+    DefaultSkinName=<font class="source_string">"CommandoSkins.cmdo"</font>
+    DefaultPackage=<font class="source_string">"CommandoSkins."</font>
+}</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="multimesh-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_multimesh\customplayer.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#CustomPlayer">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="custombotplayerreplicationinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="customplayerreplicationinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:46:46.187 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

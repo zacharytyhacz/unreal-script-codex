@@ -1,0 +1,338 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - ParticleSystems.ParticleSprayerRI</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="particlesystems-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_particlesystems\particlesprayerri.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#ParticleSprayerRI">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="particlesprayer.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="respawnfire.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="particlesystems-overview.html">ParticleSystems</a>.ParticleSprayerRI</h1>
+<b>Extends:</b> <a href="..\engine\renderiterator.html">RenderIterator</a><br>
+<b>Modifiers:</b> native noexport <br>
+<a href="..\Source_particlesystems\particlesprayerri.html"><b>Source code</b></a>
+
+<p>
+ParticleSprayerRI.uc
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\renderiterator.html">RenderIterator</a>
+    |   
+    +-- <a href="particlesystems-overview.html">ParticleSystems</a>.<a href="particlesprayerri.html">ParticleSprayerRI</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#MaxInt">MaxInt</a>, <a href="..\core\object.html#Pi">Pi</a>, <a href="..\core\object.html#RF_NotForClient">RF_NotForClient</a>, <a href="..\core\object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="..\core\object.html#RF_NotForServer">RF_NotForServer</a>, <a href="..\core\object.html#RF_Public">RF_Public</a>, <a href="..\core\object.html#RF_Transactional">RF_Transactional</a>, <a href="..\core\object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\renderiterator.html#ActorBuffer">ActorBuffer</a></td><td width="66%"><a href="#_Actors[128]" name="Actors[128]">Actors[128]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bClipped" name="bClipped">bClipped</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Cursor" name="Cursor">Cursor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="particlesprayerri.html#DataBuffer">DataBuffer</a></td><td width="66%"><a href="#_Data[128]" name="Data[128]">Data[128]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LargestWeight" name="LargestWeight">LargestWeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_LastLocation" name="LastLocation">LastLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Rotator">rotator</a></td><td width="66%"><a href="#_LastParticleRotation" name="LastParticleRotation">LastParticleRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Rotator">rotator</a></td><td width="66%"><a href="#_LastRotation" name="LastRotation">LastRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NumParticles" name="NumParticles">NumParticles</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ParticleTimer" name="ParticleTimer">ParticleTimer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_PreviousTickTime" name="PreviousTickTime">PreviousTickTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TemplateIndex" name="TemplateIndex">TemplateIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TemplateIteration" name="TemplateIteration">TemplateIteration</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\renderiterator.html">RenderIterator</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\renderiterator.html#Frame">Frame</a>, <a href="..\engine\renderiterator.html#Index">Index</a>, <a href="..\engine\renderiterator.html#MaxItems">MaxItems</a>, <a href="..\engine\renderiterator.html#Observer">Observer</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#Class">Class</a>, <a href="..\core\object.html#Name">Name</a>, <a href="..\core\object.html#ObjectFlags">ObjectFlags</a>, <a href="..\core\object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="..\core\object.html#Outer">Outer</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_DataBuffer" name="DataBuffer">DataBuffer</a><br /><span class="small">GrowRate, GrowTime, GrowTimer, FadeRate, FadeTime, FadeTimer, RotationRate</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\renderiterator.html">RenderIterator</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\renderiterator.html#ActorBuffer">ActorBuffer</a>, <a href="..\engine\renderiterator.html#ActorNode">ActorNode</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#BoundingBox">BoundingBox</a>, <a href="..\core\object.html#BoundingVolume">BoundingVolume</a>, <a href="..\core\object.html#Color">Color</a>, <a href="..\core\object.html#Coords">Coords</a>, <a href="..\core\object.html#Guid">Guid</a>, <a href="..\core\object.html#Plane">Plane</a>, <a href="..\core\object.html#Rotator">Rotator</a>, <a href="..\core\object.html#Scale">Scale</a>, <a href="..\core\object.html#Vector">Vector</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#!">!</a>, <a href="..\core\object.html#!=">!=</a>, <a href="..\core\object.html#$">$</a>, <a href="..\core\object.html#">%</a>, <a href="..\core\object.html#&">&</a>, <a href="..\core\object.html#&&">&&</a>, <a href="..\core\object.html#*">*</a>, <a href="..\core\object.html#**">**</a>, <a href="..\core\object.html#*=">*=</a>, <a href="..\core\object.html#+">+</a>, <a href="..\core\object.html#++">++</a>, <a href="..\core\object.html#+=">+=</a>, <a href="..\core\object.html#-">-</a>, <a href="..\core\object.html#-=">-=</a>, <a href="..\core\object.html#/">/ </a>, <a href="..\core\object.html#/=">/=</a>, <a href="..\core\object.html#&lt;">&lt;</a>, <a href="..\core\object.html#&lt;&lt;">&lt;&lt;</a>, <a href="..\core\object.html#&lt;=">&lt;=</a>, <a href="..\core\object.html#==">==</a>, <a href="..\core\object.html#&gt;">&gt;</a>, <a href="..\core\object.html#&gt;=">&gt;=</a>, <a href="..\core\object.html#&gt;&gt;">&gt;&gt;</a>, <a href="..\core\object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="..\core\object.html#@">@</a>, <a href="..\core\object.html#Abs">Abs</a>, <a href="..\core\object.html#Asc">Asc</a>, <a href="..\core\object.html#Atan">Atan</a>, <a href="..\core\object.html#BeginState">BeginState</a>, <a href="..\core\object.html#Caps">Caps</a>, <a href="..\core\object.html#Chr">Chr</a>, <a href="..\core\object.html#Clamp">Clamp</a>, <a href="..\core\object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="..\core\object.html#Cos">Cos</a>, <a href="..\core\object.html#Cross">Cross</a>, <a href="..\core\object.html#Disable">Disable</a>, <a href="..\core\object.html#Dot">Dot</a>, <a href="..\core\object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="..\core\object.html#Enable">Enable</a>, <a href="..\core\object.html#EndState">EndState</a>, <a href="..\core\object.html#Exp">Exp</a>, <a href="..\core\object.html#FClamp">FClamp</a>, <a href="..\core\object.html#FMax">FMax</a>, <a href="..\core\object.html#FMin">FMin</a>, <a href="..\core\object.html#FRand">FRand</a>, <a href="..\core\object.html#GetAxes">GetAxes</a>, <a href="..\core\object.html#GetEnum">GetEnum</a>, <a href="..\core\object.html#GetPropertyText">GetPropertyText</a>, <a href="..\core\object.html#GetStateName">GetStateName</a>, <a href="..\core\object.html#GetUnAxes">GetUnAxes</a>, <a href="..\core\object.html#GotoState">GotoState</a>, <a href="..\core\object.html#InStr">InStr</a>, <a href="..\core\object.html#Invert">Invert</a>, <a href="..\core\object.html#IsA">IsA</a>, <a href="..\core\object.html#IsInState">IsInState</a>, <a href="..\core\object.html#Left">Left</a>, <a href="..\core\object.html#Len">Len</a>, <a href="..\core\object.html#Lerp">Lerp</a>, <a href="..\core\object.html#Localize">Localize</a>, <a href="..\core\object.html#Log">Log</a>, <a href="..\core\object.html#Loge">Loge</a>, <a href="..\core\object.html#Max">Max</a>, <a href="..\core\object.html#Mid">Mid</a>, <a href="..\core\object.html#Min">Min</a>, <a href="..\core\object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="..\core\object.html#Normal">Normal</a>, <a href="..\core\object.html#Normalize">Normalize</a>, <a href="..\core\object.html#OrthoRotation">OrthoRotation</a>, <a href="..\core\object.html#Rand">Rand</a>, <a href="..\core\object.html#RandRange">RandRange</a>, <a href="..\core\object.html#ResetConfig">ResetConfig</a>, <a href="..\core\object.html#Right">Right</a>, <a href="..\core\object.html#RotRand">RotRand</a>, <a href="..\core\object.html#SaveConfig">SaveConfig</a>, <a href="..\core\object.html#SetPropertyText">SetPropertyText</a>, <a href="..\core\object.html#Sin">Sin</a>, <a href="..\core\object.html#Smerp">Smerp</a>, <a href="..\core\object.html#Sqrt">Sqrt</a>, <a href="..\core\object.html#Square">Square</a>, <a href="..\core\object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="..\core\object.html#Tan">Tan</a>, <a href="..\core\object.html#VRand">VRand</a>, <a href="..\core\object.html#VSize">VSize</a>, <a href="..\core\object.html#Warn">Warn</a>, <a href="..\core\object.html#^">^</a>, <a href="..\core\object.html#^^">^^</a>, <a href="..\core\object.html#|">|</a>, <a href="..\core\object.html#||">||</a>, <a href="..\core\object.html#~">~</a>, <a href="..\core\object.html#~=">~=</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Actors[128]" class="hidden"></a>Actors[128] <a href="..\Source_particlesystems\particlesprayerri.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="..\engine\renderiterator.html#ActorBuffer" class="source">ActorBuffer</a></font> Actors[<font class="source_int">128</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bClipped" class="hidden"></a>bClipped <a href="..\Source_particlesystems\particlesprayerri.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">bool</font> bClipped;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Cursor" class="hidden"></a>Cursor <a href="..\Source_particlesystems\particlesprayerri.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> Cursor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Data[128]" class="hidden"></a>Data[128] <a href="..\Source_particlesystems\particlesprayerri.html#22" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="particlesprayerri.html#DataBuffer" class="source">DataBuffer</a></font> Data[<font class="source_int">128</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LargestWeight" class="hidden"></a>LargestWeight <a href="..\Source_particlesystems\particlesprayerri.html#29" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">float</font> LargestWeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastLocation" class="hidden"></a>LastLocation <a href="..\Source_particlesystems\particlesprayerri.html#32" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> LastLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastParticleRotation" class="hidden"></a>LastParticleRotation <a href="..\Source_particlesystems\particlesprayerri.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> LastParticleRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastRotation" class="hidden"></a>LastRotation <a href="..\Source_particlesystems\particlesprayerri.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> LastRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NumParticles" class="hidden"></a>NumParticles <a href="..\Source_particlesystems\particlesprayerri.html#30" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> NumParticles;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ParticleTimer" class="hidden"></a>ParticleTimer <a href="..\Source_particlesystems\particlesprayerri.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">float</font> ParticleTimer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PreviousTickTime" class="hidden"></a>PreviousTickTime <a href="..\Source_particlesystems\particlesprayerri.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">float</font> PreviousTickTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TemplateIndex" class="hidden"></a>TemplateIndex <a href="..\Source_particlesystems\particlesprayerri.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> TemplateIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TemplateIteration" class="hidden"></a>TemplateIteration <a href="..\Source_particlesystems\particlesprayerri.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> TemplateIteration;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_DataBuffer" class="hidden"></a>DataBuffer <a href="..\Source_particlesystems\particlesprayerri.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="particlesprayerri.html#DataBuffer" class="source">DataBuffer</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_keyword">float</font> FadeRate;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> FadeTime;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> FadeTimer;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> GrowRate;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> GrowTime;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> GrowTimer;<br />
+<font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> RotationRate;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="particlesystems-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_particlesystems\particlesprayerri.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#ParticleSprayerRI">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="particlesprayer.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="respawnfire.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:08.734 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

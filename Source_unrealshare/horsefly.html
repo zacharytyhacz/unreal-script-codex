@@ -1,0 +1,299 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealShare.HorseFly</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\horsefly.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#HorseFly">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="heavywallhiteffect.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="horseflyswarm.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\horsefly.html">HorseFly</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// HorseFly.
+</font><a name="3"></a><font class="source_comment">// Do not add directly.  Rather, add HorseFlySwarms to the world.
+</font><a name="4"></a><font class="source_comment">//=============================================================================
+</font><a name="5"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unrealshare\horsefly.html" class="source">HorseFly</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\unrealshare\flockpawn.html" class="source">FlockPawn</a></font>;
+<a name="6"></a>
+<a name="7"></a><font class="source_macro">#exec MESH IMPORT MESH=Firefly ANIVFILE=MODELS\firefl_a.3D DATAFILE=MODELS\firefl_d.3D  LODSTYLE=2
+</font><a name="8"></a><font class="source_macro">#exec MESH LODPARAMS MESH=FireFly STRENGTH=0.6 
+</font><a name="9"></a><font class="source_macro">#exec MESH ORIGIN MESH=Firefly X=0 Y=00 Z=0 YAW=64
+</font><a name="10"></a>
+<a name="11"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Firefly SEQ=All    STARTFRAME=0   NUMFRAMES=5
+</font><a name="12"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Firefly SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="13"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Firefly SEQ=Flying STARTFRAME=0   NUMFRAMES=4
+</font><a name="14"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Firefly SEQ=FastFly  STARTFRAME=4   NUMFRAMES=2
+</font><a name="15"></a>
+<a name="16"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=JFirefly1 FILE=MODELS\firefly.PCX GROUP=Skins
+</font><a name="17"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=Firefly X=0.006 Y=0.006 Z=0.012
+</font><a name="18"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=firefly NUM=1 TEXTURE=Jfirefly1
+</font><a name="19"></a>
+<a name="20"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Flies\buzz3.WAV" NAME="flybuzz" GROUP="Flies"
+</font><a name="21"></a>
+<a name="22"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="23"></a><font class="source_comment">// Horsefly variables.
+</font><a name="24"></a>
+<a name="25"></a><font class="source_comment">//==============
+</font><a name="26"></a><font class="source_comment">// Encroachment
+</font><a name="27"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> EncroachingOn( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other )
+<a name="28"></a>{
+<a name="29"></a>    <font class="source_keyword">if</font> ( (Other.<font class="source_type"><a href="..\engine\brush.html" class="source">Brush</a></font> != <font class="source_keyword">None</font>) || (<font class="source_type"><a href="..\engine\brush.html" class="source">Brush</a></font>(Other) != <font class="source_keyword">None</font>) )
+<a name="30"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="31"></a>        
+<a name="32"></a>    <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="33"></a>}
+<a name="34"></a>
+<a name="35"></a><font class="source_keyword">function</font> EncroachedBy( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other )
+<a name="36"></a>{
+<a name="37"></a>}
+<a name="38"></a>
+<a name="39"></a><font class="source_keyword">function</font> PlayTakeHit(<font class="source_keyword">float</font> tweentime, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLoc, <font class="source_keyword">int</font> damage)
+<a name="40"></a>{
+<a name="41"></a>}
+<a name="42"></a>
+<a name="43"></a><font class="source_keyword">function</font> Died(<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Killer, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation)
+<a name="44"></a>{
+<a name="45"></a>    GotoState(<font class="source_name">'Dying'</font>);
+<a name="46"></a>}
+<a name="47"></a>
+<a name="48"></a><font class="source_keyword2">auto</font> <font class="source_keyword">state</font> meander
+<a name="49"></a>{
+<a name="50"></a>    <font class="source_keyword">ignores</font> seeplayer, enemynotvisible, footzonechange;
+<a name="51"></a>
+<a name="52"></a>    singular <font class="source_keyword">function</font> ZoneChange( <font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> NewZone )
+<a name="53"></a>    {
+<a name="54"></a>        <font class="source_keyword">if</font> (NewZone.bWaterZone || NewZone.bPainZone)
+<a name="55"></a>        {
+<a name="56"></a>            SetLocation(OldLocation);
+<a name="57"></a>            Velocity = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="58"></a>            Acceleration = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="59"></a>            MoveTimer = -<font class="source_int">1.0</font>;
+<a name="60"></a>        }
+<a name="61"></a>    }
+<a name="62"></a>
+<a name="63"></a>            
+<a name="64"></a>begin:
+<a name="65"></a>    LoopAnim(<font class="source_name">'Flying'</font>);
+<a name="66"></a>    SetPhysics(PHYS_Flying);
+<a name="67"></a>wander:
+<a name="68"></a>    <font class="source_keyword">if</font> ( Owner == <font class="source_keyword">None</font> )
+<a name="69"></a>        Destroy();
+<a name="70"></a>    <font class="source_keyword">if</font> (!LineOfSightTo(Owner))
+<a name="71"></a>        SetLocation(Owner.Location);
+<a name="72"></a>
+<a name="73"></a>    MoveTo(Owner.Location + <font class="source_type"><a href="..\unrealshare\horseflyswarm.html" class="source">HorseflySwarm</a></font>(Owner).swarmradius * (VRand() +  vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0.3</font>)));
+<a name="74"></a>    <font class="source_keyword">if</font> ( Owner == <font class="source_keyword">None</font> )
+<a name="75"></a>        Destroy();
+<a name="76"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\unrealshare\horseflyswarm.html" class="source">HorseflySwarm</a></font>(Owner).bOnlyIfEnemy && (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).Enemy == <font class="source_keyword">None</font>) && (FRand() &lt; <font class="source_int">0.1</font>) )
+<a name="77"></a>    {
+<a name="78"></a>        <font class="source_type"><a href="..\unrealshare\horseflyswarm.html" class="source">HorseflySwarm</a></font>(Owner).swarmsize++;
+<a name="79"></a>        Destroy();
+<a name="80"></a>    }
+<a name="81"></a>    <font class="source_keyword">else</font>
+<a name="82"></a>        Goto(<font class="source_name">'Wander'</font>);
+<a name="83"></a>}
+<a name="84"></a>
+<a name="85"></a><font class="source_keyword">State</font> Dying
+<a name="86"></a>{
+<a name="87"></a>    <font class="source_keyword">ignores</font> seeplayer, enemynotvisible, footzonechange;
+<a name="88"></a>
+<a name="89"></a>    <font class="source_keyword">function</font> Landed(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal)
+<a name="90"></a>    {
+<a name="91"></a>        SetPhysics(PHYS_None);
+<a name="92"></a>    }   
+<a name="93"></a>
+<a name="94"></a>Begin:
+<a name="95"></a>    <font class="source_keyword">if</font> ( Owner != <font class="source_keyword">None</font> )
+<a name="96"></a>    {
+<a name="97"></a>        <font class="source_type"><a href="..\unrealshare\horseflyswarm.html" class="source">HorseflySwarm</a></font>(Owner).totalflies--;
+<a name="98"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\unrealshare\horseflyswarm.html" class="source">HorseflySwarm</a></font>(Owner).totalflies &lt;= <font class="source_int">0</font> )
+<a name="99"></a>            Owner.Destroy();
+<a name="100"></a>    }   
+<a name="101"></a>    SetPhysics(PHYS_Falling);
+<a name="102"></a>    RemoteRole = ROLE_DumbProxy;
+<a name="103"></a>    Sleep(<font class="source_int">15</font>);
+<a name="104"></a>    Destroy();
+<a name="105"></a>}           
+<a name="106"></a>
+<a name="107"></a><font class="source_keyword">defaultproperties</font>
+<a name="108"></a>{
+<a name="109"></a>     AirSpeed=+<font class="source_int">00200.000000</font>
+<a name="110"></a>     Land=<font class="source_keyword">None</font>
+<a name="111"></a>     DrawType=DT_Mesh
+<a name="112"></a>     <font class="source_type">Mesh</font>=UnrealShare.Firefly
+<a name="113"></a>     <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font>=flybuzz
+<a name="114"></a>     SoundRadius=<font class="source_int">7</font>
+<a name="115"></a>     SoundVolume=<font class="source_int">64</font>
+<a name="116"></a>     CollisionRadius=+<font class="source_int">00000.000000</font>
+<a name="117"></a>     CollisionHeight=+<font class="source_int">00000.000000</font>
+<a name="118"></a>     bCollideActors=<font class="source_keyword">False</font>
+<a name="119"></a>     bBlockActors=<font class="source_keyword">False</font>
+<a name="120"></a>     bBlockPlayers=<font class="source_keyword">False</font>
+<a name="121"></a>     bProjTarget=<font class="source_keyword">False</font>
+<a name="122"></a>}
+<a name="123"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\horsefly.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#HorseFly">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="heavywallhiteffect.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="horseflyswarm.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:26:20.000 - Creation time: Wed 26/5/2004 10:48:20.828 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

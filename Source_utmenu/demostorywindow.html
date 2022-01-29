@@ -1,0 +1,301 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTMenu.DemoStoryWindow</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\demostorywindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#DemoStoryWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utweaponprioritywindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="doorarea.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utmenu\utmenu-overview.html">UTMenu</a>.<a href="..\utmenu\demostorywindow.html">DemoStoryWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utmenu\demostorywindow.html" class="source">DemoStoryWindow</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MediumU1 FILE=TEXTURES\U1.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="4"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MediumU2 FILE=TEXTURES\U2.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="5"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MediumU3 FILE=TEXTURES\U3.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="6"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MediumU4 FILE=TEXTURES\U4.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="7"></a>
+<a name="8"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> Title;
+<a name="9"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> Message[<font class="source_int">5</font>];
+<a name="10"></a>
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> YOffset2;
+<a name="12"></a>
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> TimeCount;
+<a name="14"></a>
+<a name="15"></a><font class="source_keyword">event</font> Tick(<font class="source_keyword">float</font> Delta)
+<a name="16"></a>{
+<a name="17"></a>    <font class="source_keyword">Super</font>.Tick(Delta);
+<a name="18"></a>
+<a name="19"></a>    YOffset2 -= Delta*<font class="source_int">20</font>;
+<a name="20"></a>}
+<a name="21"></a>
+<a name="22"></a><font class="source_keyword">function</font> Created()
+<a name="23"></a>{
+<a name="24"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="25"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> W, H;
+<a name="26"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XWidth, YHeight, XMod, YMod, XPos, YPos;
+<a name="27"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> TextColor;
+<a name="28"></a>
+<a name="29"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="30"></a>
+<a name="31"></a>    Root.SetScale(<font class="source_int">1</font>);
+<a name="32"></a>
+<a name="33"></a>    bLeaveOnScreen = <font class="source_keyword">True</font>;
+<a name="34"></a>    bAlwaysOnTop = <font class="source_keyword">True</font>;
+<a name="35"></a>    <font class="source_keyword">class</font><font class="source_name">'UTLadder'</font>.<font class="source_keyword2">Static</font>.SetupWinParams(Self, Root, W, H);
+<a name="36"></a>
+<a name="37"></a>    XMod = <font class="source_int">4</font>*W;
+<a name="38"></a>    YMod = <font class="source_int">3</font>*H;
+<a name="39"></a>
+<a name="40"></a>    YOffset2 = WinHeight;
+<a name="41"></a>
+<a name="42"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bBlackout = <font class="source_keyword">True</font>;
+<a name="43"></a>
+<a name="44"></a>    TimeCount = <font class="source_int">0.1</font>;
+<a name="45"></a>}
+<a name="46"></a>
+<a name="47"></a><font class="source_keyword">function</font> Paint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="48"></a>{
+<a name="49"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> XOffset, YOffset;
+<a name="50"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> W, H, FontSize, i;
+<a name="51"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XWidth, YHeight, XMod, YMod, XPos, YPos, XL, YL, YL2, XScale, YScale;
+<a name="52"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> OldClipX, OldClipY, OldOrgX, OldOrgY;
+<a name="53"></a>
+<a name="54"></a>    <font class="source_keyword">class</font><font class="source_name">'UTLadder'</font>.<font class="source_keyword2">Static</font>.SetupWinParams(Self, Root, W, H);
+<a name="55"></a>
+<a name="56"></a>    XMod = <font class="source_int">4</font>*W;
+<a name="57"></a>    YMod = <font class="source_int">3</font>*H;
+<a name="58"></a>
+<a name="59"></a>    XOffset = (WinWidth - (<font class="source_int">4</font> * W)) / <font class="source_int">2</font>;
+<a name="60"></a>    YOffset = (WinHeight - (<font class="source_int">3</font> * H)) / <font class="source_int">2</font>;
+<a name="61"></a>
+<a name="62"></a>    OldClipX = C.ClipX;
+<a name="63"></a>    OldClipY = C.ClipY;
+<a name="64"></a>    OldOrgX = C.OrgX;
+<a name="65"></a>    OldOrgY = C.OrgY;
+<a name="66"></a>
+<a name="67"></a>    <font class="source_comment">// U symbol.
+</font><a name="68"></a>    XScale = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="69"></a>    YScale = <font class="source_int">256.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="70"></a>
+<a name="71"></a>    DrawStretchedTexture( C, C.ClipX/2 - XScale,      C.ClipY/2 - YScale,      XScale, YScale, <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'MediumU1'</font> );
+<a name="72"></a>    DrawStretchedTexture( C, C.ClipX/2, C.ClipY/2 - YScale,      XScale, YScale, <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'MediumU2'</font> );
+<a name="73"></a>    DrawStretchedTexture( C, C.ClipX/2 - XScale,      C.ClipY/2, XScale, YScale, <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'MediumU3'</font> );
+<a name="74"></a>    DrawStretchedTexture( C, C.ClipX/2, C.ClipY/2, XScale, YScale, <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'MediumU4'</font> );
+<a name="75"></a>
+<a name="76"></a>    C.SetClip(WinWidth*<font class="source_int">2</font>/3, WinHeight);
+<a name="77"></a>    C.SetOrigin(WinWidth/6, <font class="source_int">0</font>);
+<a name="78"></a>
+<a name="79"></a>    C.<font class="source_type">Font</font> = <font class="source_keyword">class</font><font class="source_name">'FontInfo'</font>.<font class="source_keyword2">Static</font>.GetStaticBigFont( C.ClipX );
+<a name="80"></a>    FontSize = <font class="source_int">18</font>;
+<a name="81"></a>
+<a name="82"></a>    C.DrawColor.R = <font class="source_int">255</font>;
+<a name="83"></a>    C.DrawColor.G = <font class="source_int">255</font>;
+<a name="84"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="85"></a>
+<a name="86"></a>    <font class="source_comment">// Title...
+</font><a name="87"></a>    C.StrLen(Title, XL, YL);
+<a name="88"></a>    C.SetPos((C.ClipX - XL)/2, YOffset2 + YL2);
+<a name="89"></a>    C.DrawText(Title, <font class="source_keyword">False</font>);
+<a name="90"></a>    YL2 += YL + FontSize;
+<a name="91"></a>    C.SetPos(<font class="source_int">0.0</font>, YOffset2 + YL2);
+<a name="92"></a>
+<a name="93"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">5</font>; i++)
+<a name="94"></a>    {
+<a name="95"></a>        C.DrawText(Message[i], <font class="source_keyword">False</font>);
+<a name="96"></a>        C.StrLen(Message[i], XL, YL);
+<a name="97"></a>        YL2 += YL + FontSize*<font class="source_int">3</font>;
+<a name="98"></a>        C.SetPos(<font class="source_int">0.0</font>, YOffset2 + YL2);
+<a name="99"></a>    }
+<a name="100"></a>
+<a name="101"></a>    C.SetClip(OldClipX, OldClipY);
+<a name="102"></a>    C.SetOrigin(OldOrgX, OldOrgY);
+<a name="103"></a>
+<a name="104"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bBlackout = <font class="source_keyword">True</font>;
+<a name="105"></a>}
+<a name="106"></a>
+<a name="107"></a><font class="source_keyword">function</font> Close(<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bByParent)
+<a name="108"></a>{
+<a name="109"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bBlackout = <font class="source_keyword">False</font>;
+<a name="110"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bLocked = <font class="source_keyword">False</font>;
+<a name="111"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bNoDrawWorld = Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.ShowDesktop;
+<a name="112"></a>    <font class="source_type"><a href="..\umenu\umenurootwindow.html" class="source">UMenuRootWindow</a></font>(Root).MenuBar.ShowWindow();
+<a name="113"></a>    <font class="source_keyword">Super</font>.Close(bByParent);
+<a name="114"></a>}
+<a name="115"></a>
+<a name="116"></a><font class="source_keyword">defaultproperties</font>
+<a name="117"></a>{
+<a name="118"></a>    Title=<font class="source_string">"Congratulations!"</font>
+<a name="119"></a>    Message(<font class="source_int">0</font>)=<font class="source_string">"Thank you for playing the demo version of Unreal Tournament.  So much more is in store for you in the full version of the game.  You'll get 50 levels of pure gaming excitement, all the weapons, new game modes and much, much more.  For complete information about pricing, availability and the latest news point your web browser to http://www.UnrealTournament.com."</font>
+<a name="120"></a>    Message(<font class="source_int">1</font>)=<font class="source_string">""</font>
+<a name="121"></a>    Message(<font class="source_int">2</font>)=<font class="source_string">"This demo is based on a pre-release version of Unreal Tournament and you might experience problems with it.  We would sincerely appreciate your help in tracking down bugs.  Feel free to report any problems you encountered by sending an email to utbugs@epicgames.com."</font>
+<a name="122"></a>    Message(<font class="source_int">3</font>)=<font class="source_string">"Thanks again for playing the Unreal Tournament demo!"</font>
+<a name="123"></a>    Message(<font class="source_int">4</font>)=<font class="source_string">"Press [ESC] to continue."</font>
+<a name="124"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\demostorywindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#DemoStoryWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utweaponprioritywindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="doorarea.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:22.000 - Creation time: Wed 26/5/2004 10:48:14.531 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Engine.Mutator</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\mutator.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Mutator">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="musicevent.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="navigationpoint.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="engine-overview.html">Engine</a>.Mutator</h1>
+<b>Extends:</b> <a href="info.html">Info</a><br>
+<b>Modifiers:</b> native <br>
+<a href="..\Source_engine\mutator.html"><b>Source code</b></a>
+
+<p>
+Mutator.<br />
+called by the IsRelevant() function of DeathMatchPlus<br />
+by adding new mutators, you can change actors in the level without requiring<br />
+a new game class.  Multiple mutators can be linked together.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a>
+    |   
+    +-- <a href="engine-overview.html">Engine</a>.<a href="info.html">Info</a>
+        |   
+        +-- <a href="engine-overview.html">Engine</a>.<a href="mutator.html">Mutator</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\botpack\arena.html">Arena</a>, <a href="..\botpack\chainsawmelee.html">ChainsawMelee</a>, <a href="..\botpack\dmmutator.html">DMMutator</a>, <a href="..\botpack\fatboy.html">FatBoy</a>, <a href="..\relics\hudmutator.html">HUDMutator</a>, <a href="..\botpack\instantrockets.html">InstantRockets</a>, <a href="..\botpack\jumpmatch.html">JumpMatch</a>, <a href="..\botpack\lowgrav.html">LowGrav</a>, <a href="..\botpack\nopowerups.html">NoPowerups</a>, <a href="..\botpack\noredeemer.html">NoRedeemer</a>, <a href="..\relics\relic.html">Relic</a>, <a href="..\botpack\stealth.html">Stealth</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHUDMutator" name="bHUDMutator">bHUDMutator</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="weapon.html">Weapon</a>&gt;</td><td width="66%"><a href="#_DefaultWeapon" name="DefaultWeapon">DefaultWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="mutator.html">Mutator</a></td><td width="66%"><a href="#_NextDamageMutator" name="NextDamageMutator">NextDamageMutator</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="mutator.html">Mutator</a></td><td width="66%"><a href="#_NextHUDMutator" name="NextHUDMutator">NextHUDMutator</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="mutator.html">Mutator</a></td><td width="66%"><a href="#_NextMessageMutator" name="NextMessageMutator">NextMessageMutator</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="mutator.html">Mutator</a></td><td width="66%"><a href="#_NextMutator" name="NextMutator">NextMutator</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#Acceleration">Acceleration</a>, <a href="actor.html#AmbientGlow">AmbientGlow</a>, <a href="actor.html#AmbientSound">AmbientSound</a>, <a href="actor.html#AnimFrame">AnimFrame</a>, <a href="actor.html#AnimLast">AnimLast</a>, <a href="actor.html#AnimMinRate">AnimMinRate</a>, <a href="actor.html#AnimRate">AnimRate</a>, <a href="actor.html#AnimSequence">AnimSequence</a>, <a href="actor.html#AttachTag">AttachTag</a>, <a href="actor.html#bActorShadows">bActorShadows</a>, <a href="actor.html#bAlwaysRelevant">bAlwaysRelevant</a>, <a href="actor.html#bAlwaysTick">bAlwaysTick</a>, <a href="actor.html#bAnimByOwner">bAnimByOwner</a>, <a href="actor.html#bAnimFinished">bAnimFinished</a>, <a href="actor.html#bAnimLoop">bAnimLoop</a>, <a href="actor.html#bAnimNotify">bAnimNotify</a>, <a href="actor.html#Base">Base</a>, <a href="actor.html#bAssimilated">bAssimilated</a>, <a href="actor.html#bBlockActors">bBlockActors</a>, <a href="actor.html#bBlockPlayers">bBlockPlayers</a>, <a href="actor.html#bBounce">bBounce</a>, <a href="actor.html#bCanTeleport">bCanTeleport</a>, <a href="actor.html#bCarriedItem">bCarriedItem</a>, <a href="actor.html#bClientAnim">bClientAnim</a>, <a href="actor.html#bClientDemoNetFunc">bClientDemoNetFunc</a>, <a href="actor.html#bClientDemoRecording">bClientDemoRecording</a>, <a href="actor.html#bCollideActors">bCollideActors</a>, <a href="actor.html#bCollideWhenPlacing">bCollideWhenPlacing</a>, <a href="actor.html#bCollideWorld">bCollideWorld</a>, <a href="actor.html#bCorona">bCorona</a>, <a href="actor.html#bDeleteMe">bDeleteMe</a>, <a href="actor.html#bDemoRecording">bDemoRecording</a>, <a href="actor.html#bDifficulty0">bDifficulty0</a>, <a href="actor.html#bDifficulty1">bDifficulty1</a>, <a href="actor.html#bDifficulty2">bDifficulty2</a>, <a href="actor.html#bDifficulty3">bDifficulty3</a>, <a href="actor.html#bDirectional">bDirectional</a>, <a href="actor.html#bDynamicLight">bDynamicLight</a>, <a href="actor.html#bEdLocked">bEdLocked</a>, <a href="actor.html#bEdShouldSnap">bEdShouldSnap</a>, <a href="actor.html#bEdSnap">bEdSnap</a>, <a href="actor.html#bFilterByVolume">bFilterByVolume</a>, <a href="actor.html#bFixedRotationDir">bFixedRotationDir</a>, <a href="actor.html#bForcePhysicsUpdate">bForcePhysicsUpdate</a>, <a href="actor.html#bForceStasis">bForceStasis</a>, <a href="actor.html#bGameRelevant">bGameRelevant</a>, <a href="actor.html#bHidden">bHidden</a>, <a href="actor.html#bHiddenEd">bHiddenEd</a>, <a href="actor.html#bHighDetail">bHighDetail</a>, <a href="actor.html#bHighlighted">bHighlighted</a>, <a href="actor.html#bHurtEntry">bHurtEntry</a>, <a href="actor.html#bInterpolating">bInterpolating</a>, <a href="actor.html#bIsItemGoal">bIsItemGoal</a>, <a href="actor.html#bIsKillGoal">bIsKillGoal</a>, <a href="actor.html#bIsMover">bIsMover</a>, <a href="actor.html#bIsPawn">bIsPawn</a>, <a href="actor.html#bIsSecretGoal">bIsSecretGoal</a>, <a href="actor.html#bJustTeleported">bJustTeleported</a>, <a href="actor.html#bLensFlare">bLensFlare</a>, <a href="actor.html#bLightChanged">bLightChanged</a>, <a href="actor.html#bMemorized">bMemorized</a>, <a href="actor.html#bMeshCurvy">bMeshCurvy</a>, <a href="actor.html#bMeshEnviroMap">bMeshEnviroMap</a>, <a href="actor.html#bMovable">bMovable</a>, <a href="actor.html#bNet">bNet</a>, <a href="actor.html#bNetFeel">bNetFeel</a>, <a href="actor.html#bNetHear">bNetHear</a>, <a href="actor.html#bNetInitial">bNetInitial</a>, <a href="actor.html#bNetOptional">bNetOptional</a>, <a href="actor.html#bNetOwner">bNetOwner</a>, <a href="actor.html#bNetRelevant">bNetRelevant</a>, <a href="actor.html#bNetSee">bNetSee</a>, <a href="actor.html#bNetSpecial">bNetSpecial</a>, <a href="actor.html#bNetTemporary">bNetTemporary</a>, <a href="actor.html#bNoDelete">bNoDelete</a>, <a href="actor.html#bNoSmooth">bNoSmooth</a>, <a href="actor.html#bOnlyOwnerSee">bOnlyOwnerSee</a>, <a href="actor.html#bOwnerNoSee">bOwnerNoSee</a>, <a href="actor.html#bParticles">bParticles</a>, <a href="actor.html#bProjTarget">bProjTarget</a>, <a href="actor.html#bRandomFrame">bRandomFrame</a>, <a href="actor.html#bReplicateInstigator">bReplicateInstigator</a>, <a href="actor.html#bRotateToDesired">bRotateToDesired</a>, <a href="actor.html#Brush">Brush</a>, <a href="actor.html#bScriptInitialized">bScriptInitialized</a>, <a href="actor.html#bSelected">bSelected</a>, <a href="actor.html#bShadowCast">bShadowCast</a>, <a href="actor.html#bSimFall">bSimFall</a>, <a href="actor.html#bSimulatedPawn">bSimulatedPawn</a>, <a href="actor.html#bSinglePlayer">bSinglePlayer</a>, <a href="actor.html#bSpecialLit">bSpecialLit</a>, <a href="actor.html#bStasis">bStasis</a>, <a href="actor.html#bStatic">bStatic</a>, <a href="actor.html#bTempEditor">bTempEditor</a>, <a href="actor.html#bTicked">bTicked</a>, <a href="actor.html#bTimerLoop">bTimerLoop</a>, <a href="actor.html#bTrailerPrePivot">bTrailerPrePivot</a>, <a href="actor.html#bTrailerSameRotation">bTrailerSameRotation</a>, <a href="actor.html#bTravel">bTravel</a>, <a href="actor.html#bUnlit">bUnlit</a>, <a href="actor.html#Buoyancy">Buoyancy</a>, <a href="actor.html#CollisionHeight">CollisionHeight</a>, <a href="actor.html#CollisionRadius">CollisionRadius</a>, <a href="actor.html#CollisionTag">CollisionTag</a>, <a href="actor.html#ColLocation">ColLocation</a>, <a href="actor.html#Deleted">Deleted</a>, <a href="actor.html#DesiredRotation">DesiredRotation</a>, <a href="actor.html#DodgeDir">DodgeDir</a>, <a href="actor.html#DrawScale">DrawScale</a>, <a href="actor.html#DrawType">DrawType</a>, <a href="actor.html#Event">Event</a>, <a href="actor.html#ExtraTag">ExtraTag</a>, <a href="actor.html#Fatness">Fatness</a>, <a href="actor.html#Group">Group</a>, <a href="actor.html#HitActor">HitActor</a>, <a href="actor.html#InitialState">InitialState</a>, <a href="actor.html#Instigator">Instigator</a>, <a href="actor.html#Inventory">Inventory</a>, <a href="actor.html#LatentActor">LatentActor</a>, <a href="actor.html#LatentByte">LatentByte</a>, <a href="actor.html#LatentFloat">LatentFloat</a>, <a href="actor.html#LatentInt">LatentInt</a>, <a href="actor.html#Level">Level</a>, <a href="actor.html#LifeSpan">LifeSpan</a>, <a href="actor.html#LightBrightness">LightBrightness</a>, <a href="actor.html#LightCone">LightCone</a>, <a href="actor.html#LightEffect">LightEffect</a>, <a href="actor.html#LightHue">LightHue</a>, <a href="actor.html#LightingTag">LightingTag</a>, <a href="actor.html#LightPeriod">LightPeriod</a>, <a href="actor.html#LightPhase">LightPhase</a>, <a href="actor.html#LightRadius">LightRadius</a>, <a href="actor.html#LightSaturation">LightSaturation</a>, <a href="actor.html#LightType">LightType</a>, <a href="actor.html#Location">Location</a>, <a href="actor.html#LODBias">LODBias</a>, <a href="actor.html#Mass">Mass</a>, <a href="actor.html#Mesh">Mesh</a>, <a href="actor.html#MiscNumber">MiscNumber</a>, <a href="actor.html#MultiSkins[8]">MultiSkins[8]</a>, <a href="actor.html#NetPriority">NetPriority</a>, <a href="actor.html#NetTag">NetTag</a>, <a href="actor.html#NetUpdateFrequency">NetUpdateFrequency</a>, <a href="actor.html#OddsOfAppearing">OddsOfAppearing</a>, <a href="actor.html#OldAnimRate">OldAnimRate</a>, <a href="actor.html#OldLocation">OldLocation</a>, <a href="actor.html#OtherTag">OtherTag</a>, <a href="actor.html#Owner">Owner</a>, <a href="actor.html#PendingTouch">PendingTouch</a>, <a href="actor.html#PhysAlpha">PhysAlpha</a>, <a href="actor.html#Physics">Physics</a>, <a href="actor.html#PhysRate">PhysRate</a>, <a href="actor.html#PrePivot">PrePivot</a>, <a href="actor.html#Region">Region</a>, <a href="actor.html#RemoteRole">RemoteRole</a>, <a href="actor.html#RenderInterface">RenderInterface</a>, <a href="actor.html#RenderIteratorClass">RenderIteratorClass</a>, <a href="actor.html#Role">Role</a>, <a href="actor.html#Rotation">Rotation</a>, <a href="actor.html#RotationRate">RotationRate</a>, <a href="actor.html#ScaleGlow">ScaleGlow</a>, <a href="actor.html#SimAnim">SimAnim</a>, <a href="actor.html#SkelAnim">SkelAnim</a>, <a href="actor.html#Skin">Skin</a>, <a href="actor.html#SoundPitch">SoundPitch</a>, <a href="actor.html#SoundRadius">SoundRadius</a>, <a href="actor.html#SoundVolume">SoundVolume</a>, <a href="actor.html#SpecialTag">SpecialTag</a>, <a href="actor.html#Sprite">Sprite</a>, <a href="actor.html#SpriteProjForward">SpriteProjForward</a>, <a href="actor.html#StandingCount">StandingCount</a>, <a href="actor.html#Style">Style</a>, <a href="actor.html#Tag">Tag</a>, <a href="actor.html#Target">Target</a>, <a href="actor.html#Texture">Texture</a>, <a href="actor.html#TimerCounter">TimerCounter</a>, <a href="actor.html#TimerRate">TimerRate</a>, <a href="actor.html#Touching[4]">Touching[4]</a>, <a href="actor.html#TransientSoundRadius">TransientSoundRadius</a>, <a href="actor.html#TransientSoundVolume">TransientSoundVolume</a>, <a href="actor.html#TweenRate">TweenRate</a>, <a href="actor.html#Velocity">Velocity</a>, <a href="actor.html#VisibilityHeight">VisibilityHeight</a>, <a href="actor.html#VisibilityRadius">VisibilityRadius</a>, <a href="actor.html#VolumeBrightness">VolumeBrightness</a>, <a href="actor.html#VolumeFog">VolumeFog</a>, <a href="actor.html#VolumeRadius">VolumeRadius</a>, <a href="actor.html#XLevel">XLevel</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#EDodgeDir">EDodgeDir</a>, <a href="actor.html#EDrawType">EDrawType</a>, <a href="actor.html#EInputAction">EInputAction</a>, <a href="actor.html#EInputKey">EInputKey</a>, <a href="actor.html#ELightEffect">ELightEffect</a>, <a href="actor.html#ELightType">ELightType</a>, <a href="actor.html#EMusicTransition">EMusicTransition</a>, <a href="actor.html#ENetRole">ENetRole</a>, <a href="actor.html#EPhysics">EPhysics</a>, <a href="actor.html#ERenderStyle">ERenderStyle</a>, <a href="actor.html#ESoundSlot">ESoundSlot</a>, <a href="actor.html#ETravelType">ETravelType</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#PointRegion">PointRegion</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AddMutator+" name="AddMutator">AddMutator</a> (<a href="mutator.html">Mutator</a> M)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_AlwaysKeep+" name="AlwaysKeep">AlwaysKeep</a> (<a href="actor.html">Actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_CheckReplacement+" name="CheckReplacement">CheckReplacement</a> (<a href="actor.html">Actor</a> Other, out byte bSuperRelevant)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandleEndGame+" name="HandleEndGame">HandleEndGame</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandlePickupQuery+" name="HandlePickupQuery">HandlePickupQuery</a> (<a href="pawn.html">Pawn</a> Other, <a href="inventory.html">Inventory</a> item, out byte bAllowPickup)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandleRestartGame+" name="HandleRestartGame">HandleRestartGame</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_IsRelevant+" name="IsRelevant">IsRelevant</a> (<a href="actor.html">Actor</a> Other, out byte bSuperRelevant)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ModifyLogin+" name="ModifyLogin">ModifyLogin</a> (out class&lt;<a href="playerpawn.html">playerpawn</a>&gt; SpawnClass, out string Portal, out string Options)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ModifyPlayer+" name="ModifyPlayer">ModifyPlayer</a> (<a href="pawn.html">Pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Mutate+" name="Mutate">Mutate</a> (string MutateString, <a href="playerpawn.html">PlayerPawn</a> Sender)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>Class&lt;<a href="weapon.html">Weapon</a>&gt;&nbsp;</td><td><a href="#_MutatedDefaultWeapon+" name="MutatedDefaultWeapon">MutatedDefaultWeapon</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_MutatorBroadcastLocalizedMessage+" name="MutatorBroadcastLocalizedMessage">MutatorBroadcastLocalizedMessage</a> (<a href="actor.html">Actor</a> Sender, <a href="pawn.html">Pawn</a> Receiver, out class&lt;<a href="localmessage.html">LocalMessage</a>&gt; Message, out optional int Switch, out optional <a href="playerreplicationinfo.html">PlayerReplicationInfo</a> RelatedPRI_1, out optional <a href="playerreplicationinfo.html">PlayerReplicationInfo</a> RelatedPRI_2, out optional <a href="..\core\object.html">Object</a> OptionalObject)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_MutatorBroadcastMessage+" name="MutatorBroadcastMessage">MutatorBroadcastMessage</a> (<a href="actor.html">Actor</a> Sender, <a href="pawn.html">Pawn</a> Receiver, out coerce string Msg, optional bool bBeep, out optional name Type)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_MutatorTakeDamage+" name="MutatorTakeDamage">MutatorTakeDamage</a> (out int ActualDamage, <a href="pawn.html">Pawn</a> Victim, <a href="pawn.html">Pawn</a> InstigatedBy, out <a href="..\core\object.html#Vector">Vector</a> HitLocation, out <a href="..\core\object.html#Vector">Vector</a> Momentum, name DamageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_MutatorTeamMessage+" name="MutatorTeamMessage">MutatorTeamMessage</a> (<a href="actor.html">Actor</a> Sender, <a href="pawn.html">Pawn</a> Receiver, <a href="playerreplicationinfo.html">PlayerReplicationInfo</a> PRI, coerce string S, name Type, optional bool bBeep)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>Class&lt;<a href="weapon.html">Weapon</a>&gt;&nbsp;</td><td><a href="#_MyDefaultWeapon+" name="MyDefaultWeapon">MyDefaultWeapon</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_PostRender+" name="PostRender">PostRender</a> (<a href="canvas.html">canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_PreBeginPlay+" name="PreBeginPlay">PreBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_PreventDeath+" name="PreventDeath">PreventDeath</a> (<a href="pawn.html">Pawn</a> Killed, <a href="pawn.html">Pawn</a> Killer, name damageType, <a href="..\core\object.html#Vector">vector</a> HitLocation)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RegisterHUDMutator+" name="RegisterHUDMutator">RegisterHUDMutator</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ReplaceWith+" name="ReplaceWith">ReplaceWith</a> (<a href="actor.html">actor</a> Other, string aClassName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ScoreKill+" name="ScoreKill">ScoreKill</a> (<a href="pawn.html">Pawn</a> Killer, <a href="pawn.html">Pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#*">*</a>, <a href="actor.html#+">+</a>, <a href="actor.html#-">-</a>, <a href="actor.html#AllActors">AllActors</a>, <a href="actor.html#AnimEnd">AnimEnd</a>, <a href="actor.html#Attach">Attach</a>, <a href="actor.html#AutonomousPhysics">AutonomousPhysics</a>, <a href="actor.html#BaseChange">BaseChange</a>, <a href="actor.html#BasedActors">BasedActors</a>, <a href="actor.html#BecomeViewTarget">BecomeViewTarget</a>, <a href="actor.html#BeginEvent">BeginEvent</a>, <a href="actor.html#BeginPlay">BeginPlay</a>, <a href="actor.html#BroadcastLocalizedMessage">BroadcastLocalizedMessage</a>, <a href="actor.html#BroadcastMessage">BroadcastMessage</a>, <a href="actor.html#Bump">Bump</a>, <a href="actor.html#ChildActors">ChildActors</a>, <a href="actor.html#ConsoleCommand">ConsoleCommand</a>, <a href="actor.html#DemoPlaySound">DemoPlaySound</a>, <a href="actor.html#Destroy">Destroy</a>, <a href="actor.html#Destroyed">Destroyed</a>, <a href="actor.html#Detach">Detach</a>, <a href="actor.html#EncroachedBy">EncroachedBy</a>, <a href="actor.html#EncroachingOn">EncroachingOn</a>, <a href="actor.html#EndedRotation">EndedRotation</a>, <a href="actor.html#EndEvent">EndEvent</a>, <a href="actor.html#Error">Error</a>, <a href="actor.html#Expired">Expired</a>, <a href="actor.html#Falling">Falling</a>, <a href="actor.html#FastTrace">FastTrace</a>, <a href="actor.html#FellOutOfWorld">FellOutOfWorld</a>, <a href="actor.html#FinishAnim">FinishAnim</a>, <a href="actor.html#FinishInterpolation">FinishInterpolation</a>, <a href="actor.html#GainedChild">GainedChild</a>, <a href="actor.html#GetAnimGroup">GetAnimGroup</a>, <a href="actor.html#GetCacheEntry">GetCacheEntry</a>, <a href="actor.html#GetHumanName">GetHumanName</a>, <a href="actor.html#GetItemName">GetItemName</a>, <a href="actor.html#GetMapName">GetMapName</a>, <a href="actor.html#GetNextInt">GetNextInt</a>, <a href="actor.html#GetNextIntDesc">GetNextIntDesc</a>, <a href="actor.html#GetNextSkin">GetNextSkin</a>, <a href="actor.html#GetSoundDuration">GetSoundDuration</a>, <a href="actor.html#GetURLMap">GetURLMap</a>, <a href="actor.html#HasAnim">HasAnim</a>, <a href="actor.html#HitWall">HitWall</a>, <a href="actor.html#HurtRadius">HurtRadius</a>, <a href="actor.html#InterpolateEnd">InterpolateEnd</a>, <a href="actor.html#IsAnimating">IsAnimating</a>, <a href="actor.html#KillCredit">KillCredit</a>, <a href="actor.html#KilledBy">KilledBy</a>, <a href="actor.html#Landed">Landed</a>, <a href="actor.html#LinkSkelAnim">LinkSkelAnim</a>, <a href="actor.html#LoopAnim">LoopAnim</a>, <a href="actor.html#LostChild">LostChild</a>, <a href="actor.html#MakeNoise">MakeNoise</a>, <a href="actor.html#Move">Move</a>, <a href="actor.html#MoveCacheEntry">MoveCacheEntry</a>, <a href="actor.html#MoveSmooth">MoveSmooth</a>, <a href="actor.html#PlayAnim">PlayAnim</a>, <a href="actor.html#PlayerCanSeeMe">PlayerCanSeeMe</a>, <a href="actor.html#PlayOwnedSound">PlayOwnedSound</a>, <a href="actor.html#PlaySound">PlaySound</a>, <a href="actor.html#PostBeginPlay">PostBeginPlay</a>, <a href="actor.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="actor.html#PostTeleport">PostTeleport</a>, <a href="actor.html#PostTouch">PostTouch</a>, <a href="actor.html#PreBeginPlay">PreBeginPlay</a>, <a href="actor.html#PreTeleport">PreTeleport</a>, <a href="actor.html#RadiusActors">RadiusActors</a>, <a href="actor.html#RenderOverlays">RenderOverlays</a>, <a href="actor.html#RenderTexture">RenderTexture</a>, <a href="actor.html#SetBase">SetBase</a>, <a href="actor.html#SetCollision">SetCollision</a>, <a href="actor.html#SetCollisionSize">SetCollisionSize</a>, <a href="actor.html#SetDefaultDisplayProperties">SetDefaultDisplayProperties</a>, <a href="actor.html#SetDisplayProperties">SetDisplayProperties</a>, <a href="actor.html#SetInitialState">SetInitialState</a>, <a href="actor.html#SetLocation">SetLocation</a>, <a href="actor.html#SetOwner">SetOwner</a>, <a href="actor.html#SetPhysics">SetPhysics</a>, <a href="actor.html#SetRotation">SetRotation</a>, <a href="actor.html#SetTimer">SetTimer</a>, <a href="actor.html#Sleep">Sleep</a>, <a href="actor.html#Spawn">Spawn</a>, <a href="actor.html#Spawned">Spawned</a>, <a href="actor.html#SpecialHandling">SpecialHandling</a>, <a href="actor.html#TakeDamage">TakeDamage</a>, <a href="actor.html#Tick">Tick</a>, <a href="actor.html#Timer">Timer</a>, <a href="actor.html#Touch">Touch</a>, <a href="actor.html#TouchingActors">TouchingActors</a>, <a href="actor.html#Trace">Trace</a>, <a href="actor.html#TraceActors">TraceActors</a>, <a href="actor.html#TravelPostAccept">TravelPostAccept</a>, <a href="actor.html#TravelPreAccept">TravelPreAccept</a>, <a href="actor.html#Trigger">Trigger</a>, <a href="actor.html#TweenAnim">TweenAnim</a>, <a href="actor.html#UnTouch">UnTouch</a>, <a href="actor.html#UnTrigger">UnTrigger</a>, <a href="actor.html#VisibleActors">VisibleActors</a>, <a href="actor.html#VisibleCollidingActors">VisibleCollidingActors</a>, <a href="actor.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bHUDMutator" class="hidden"></a>bHUDMutator <a href="..\Source_engine\mutator.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHUDMutator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DefaultWeapon" class="hidden"></a>DefaultWeapon <a href="..\Source_engine\mutator.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="weapon.html" class="source">Weapon</a></font>&gt; DefaultWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NextDamageMutator" class="hidden"></a>NextDamageMutator <a href="..\Source_engine\mutator.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="mutator.html" class="source">Mutator</a></font> NextDamageMutator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NextHUDMutator" class="hidden"></a>NextHUDMutator <a href="..\Source_engine\mutator.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="mutator.html" class="source">Mutator</a></font> NextHUDMutator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NextMessageMutator" class="hidden"></a>NextMessageMutator <a href="..\Source_engine\mutator.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="mutator.html" class="source">Mutator</a></font> NextMessageMutator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NextMutator" class="hidden"></a>NextMutator <a href="..\Source_engine\mutator.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="mutator.html" class="source">Mutator</a></font> NextMutator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddMutator+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AddMutator <span class="function_state"></span> <a href="..\Source_engine\mutator.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AddMutator (<font class="source_type"><a href="mutator.html" class="source">Mutator</a></font> M)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AlwaysKeep+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AlwaysKeep <span class="function_state"></span> <a href="..\Source_engine\mutator.html#151" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> AlwaysKeep (<font class="source_type"><a href="actor.html" class="source">Actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CheckReplacement+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CheckReplacement <span class="function_state"></span> <a href="..\Source_engine\mutator.html#170" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CheckReplacement (<font class="source_type"><a href="actor.html" class="source">Actor</a></font> Other, <font class="source_keyword2">out</font> <font class="source_keyword">byte</font> bSuperRelevant)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandleEndGame+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandleEndGame <span class="function_state"></span> <a href="..\Source_engine\mutator.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleEndGame ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandlePickupQuery+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandlePickupQuery <span class="function_state"></span> <a href="..\Source_engine\mutator.html#48" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandlePickupQuery (<font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Other, <font class="source_type"><a href="inventory.html" class="source">Inventory</a></font> item, <font class="source_keyword2">out</font> <font class="source_keyword">byte</font> bAllowPickup)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandleRestartGame+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandleRestartGame <span class="function_state"></span> <a href="..\Source_engine\mutator.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleRestartGame ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_IsRelevant+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> IsRelevant <span class="function_state"></span> <a href="..\Source_engine\mutator.html#158" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> IsRelevant (<font class="source_type"><a href="actor.html" class="source">Actor</a></font> Other, <font class="source_keyword2">out</font> <font class="source_keyword">byte</font> bSuperRelevant)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ModifyLogin+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ModifyLogin <span class="function_state"></span> <a href="..\Source_engine\mutator.html#62" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ModifyLogin (<font class="source_keyword2">out</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="playerpawn.html" class="source">playerpawn</a></font>&gt; SpawnClass, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Portal, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Options)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ModifyPlayer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ModifyPlayer <span class="function_state"></span> <a href="..\Source_engine\mutator.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ModifyPlayer (<font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Mutate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Mutate <span class="function_state"></span> <a href="..\Source_engine\mutator.html#175" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Mutate (<font class="source_keyword">string</font> MutateString, <font class="source_type"><a href="playerpawn.html" class="source">PlayerPawn</a></font> Sender)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MutatedDefaultWeapon+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MutatedDefaultWeapon <span class="function_state"></span> <a href="..\Source_engine\mutator.html#77" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="weapon.html" class="source">Weapon</a></font>&gt; MutatedDefaultWeapon ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MutatorBroadcastLocalizedMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MutatorBroadcastLocalizedMessage <span class="function_state"></span> <a href="..\Source_engine\mutator.html#204" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> MutatorBroadcastLocalizedMessage (<font class="source_type"><a href="actor.html" class="source">Actor</a></font> Sender, <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Receiver, <font class="source_keyword2">out</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="localmessage.html" class="source">LocalMessage</a></font>&gt; Message, <font class="source_keyword2">out</font> <font class="source_keyword2">optional</font> <font class="source_keyword">int</font> <font class="source_keyword">Switch</font>, <font class="source_keyword2">out</font> <font class="source_keyword2">optional</font> <font class="source_type"><a href="playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> RelatedPRI_1, <font class="source_keyword2">out</font> <font class="source_keyword2">optional</font> <font class="source_type"><a href="playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> RelatedPRI_2, <font class="source_keyword2">out</font> <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html" class="source">Object</a></font> OptionalObject)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MutatorBroadcastMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MutatorBroadcastMessage <span class="function_state"></span> <a href="..\Source_engine\mutator.html#196" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> MutatorBroadcastMessage (<font class="source_type"><a href="actor.html" class="source">Actor</a></font> Sender, <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Receiver, <font class="source_keyword2">out</font> <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Msg, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bBeep, <font class="source_keyword2">out</font> <font class="source_keyword2">optional</font> <font class="source_keyword">name</font> Type)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MutatorTakeDamage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MutatorTakeDamage <span class="function_state"></span> <a href="..\Source_engine\mutator.html#181" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> MutatorTakeDamage (<font class="source_keyword2">out</font> <font class="source_keyword">int</font> ActualDamage, <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Victim, <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> InstigatedBy, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> HitLocation, 
+                        <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> Momentum, <font class="source_keyword">name</font> <font class="source_type"><a href="damagetype.html" class="source">DamageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MutatorTeamMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MutatorTeamMessage <span class="function_state"></span> <a href="..\Source_engine\mutator.html#188" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> MutatorTeamMessage (<font class="source_type"><a href="actor.html" class="source">Actor</a></font> Sender, <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Receiver, <font class="source_type"><a href="playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> PRI, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S, <font class="source_keyword">name</font> Type, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bBeep)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MyDefaultWeapon+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MyDefaultWeapon <span class="function_state"></span> <a href="..\Source_engine\mutator.html#92" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="weapon.html" class="source">Weapon</a></font>&gt; MyDefaultWeapon ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostRender+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> PostRender <span class="function_state"></span> <a href="..\Source_engine\mutator.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> PostRender (<font class="source_type"><a href="canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PreBeginPlay+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> PreBeginPlay <span class="function_state"></span> <a href="..\Source_engine\mutator.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> PreBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PreventDeath+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PreventDeath <span class="function_state"></span> <a href="..\Source_engine\mutator.html#55" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> PreventDeath (<font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Killed, <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Killer, <font class="source_keyword">name</font> <font class="source_type"><a href="damagetype.html" class="source">damageType</a></font>, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RegisterHUDMutator+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RegisterHUDMutator <span class="function_state"></span> <a href="..\Source_engine\mutator.html#213" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RegisterHUDMutator ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReplaceWith+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ReplaceWith <span class="function_state"></span> <a href="..\Source_engine\mutator.html#111" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ReplaceWith (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other, <font class="source_keyword">string</font> aClassName)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ScoreKill+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ScoreKill <span class="function_state"></span> <a href="..\Source_engine\mutator.html#68" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ScoreKill (<font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Killer, <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\mutator.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Mutator">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="musicevent.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="navigationpoint.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:06.250 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

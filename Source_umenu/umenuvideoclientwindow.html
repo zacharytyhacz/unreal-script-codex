@@ -1,0 +1,1325 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UMenu.UMenuVideoClientWindow</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\umenu\umenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\umenu\umenuvideoclientwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UMenuVideoClientWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="umenutoolsmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="umenuvideoscrollclient.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\umenu\umenu-overview.html">UMenu</a>.<a href="..\umenu\umenuvideoclientwindow.html">UMenuVideoClientWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+00562<br>
+00563<br>
+00564<br>
+00565<br>
+00566<br>
+00567<br>
+00568<br>
+00569<br>
+00570<br>
+00571<br>
+00572<br>
+00573<br>
+00574<br>
+00575<br>
+00576<br>
+00577<br>
+00578<br>
+00579<br>
+00580<br>
+00581<br>
+00582<br>
+00583<br>
+00584<br>
+00585<br>
+00586<br>
+00587<br>
+00588<br>
+00589<br>
+00590<br>
+00591<br>
+00592<br>
+00593<br>
+00594<br>
+00595<br>
+00596<br>
+00597<br>
+00598<br>
+00599<br>
+00600<br>
+00601<br>
+00602<br>
+00603<br>
+00604<br>
+00605<br>
+00606<br>
+00607<br>
+00608<br>
+00609<br>
+00610<br>
+00611<br>
+00612<br>
+00613<br>
+00614<br>
+00615<br>
+00616<br>
+00617<br>
+00618<br>
+00619<br>
+00620<br>
+00621<br>
+00622<br>
+00623<br>
+00624<br>
+00625<br>
+00626<br>
+00627<br>
+00628<br>
+00629<br>
+00630<br>
+00631<br>
+00632<br>
+00633<br>
+00634<br>
+00635<br>
+00636<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\umenu\umenuvideoclientwindow.html" class="source">UMenuVideoClientWindow</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\umenu\umenupagewindow.html" class="source">UMenuPageWindow</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_comment">// Driver
+</font><a name="4"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bInitialized;
+<a name="5"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowlabelcontrol.html" class="source">UWindowLabelControl</a></font> DriverLabel;
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowlabelcontrol.html" class="source">UWindowLabelControl</a></font> DriverDesc;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowsmallbutton.html" class="source">UWindowSmallButton</a></font> DriverButton;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DriverText;
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DriverHelp;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DriverButtonText;
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DriverButtonHelp;
+<a name="12"></a>
+<a name="13"></a><font class="source_comment">// Resolution
+</font><a name="14"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> ResolutionCombo;
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ResolutionText;
+<a name="16"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ResolutionHelp;
+<a name="17"></a>
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> OldSettings;
+<a name="19"></a>
+<a name="20"></a><font class="source_comment">// Color Depth
+</font><a name="21"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> ColorDepthCombo;
+<a name="22"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ColorDepthText;
+<a name="23"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ColorDepthHelp;
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BitsText;
+<a name="25"></a>
+<a name="26"></a><font class="source_comment">// Texture Detail
+</font><a name="27"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> TextureDetailCombo;
+<a name="28"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TextureDetailText;
+<a name="29"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TextureDetailHelp;
+<a name="30"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> Details[<font class="source_int">3</font>];
+<a name="31"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> OldTextureDetail;
+<a name="32"></a>
+<a name="33"></a><font class="source_comment">// Skin Detail
+</font><a name="34"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> SkinDetailCombo;
+<a name="35"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SkinDetailText;
+<a name="36"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SkinDetailHelp;
+<a name="37"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> OldSkinDetail;
+<a name="38"></a>
+<a name="39"></a><font class="source_comment">// Brightness
+</font><a name="40"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> BrightnessSlider;
+<a name="41"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BrightnessText;
+<a name="42"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BrightnessHelp;
+<a name="43"></a>
+<a name="44"></a><font class="source_comment">// GUI Scale
+</font><a name="45"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> ScaleCombo;
+<a name="46"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ScaleText;
+<a name="47"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ScaleHelp;
+<a name="48"></a>
+<a name="49"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ScaleSizes[<font class="source_int">2</font>];
+<a name="50"></a>
+<a name="51"></a><font class="source_comment">// Mouse Speed
+</font><a name="52"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> MouseSlider;
+<a name="53"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MouseText;
+<a name="54"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MouseHelp;
+<a name="55"></a>
+<a name="56"></a><font class="source_comment">// GUI Skin
+</font><a name="57"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> GuiSkinCombo;
+<a name="58"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GuiSkinText;
+<a name="59"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GuiSkinHelp;
+<a name="60"></a>
+<a name="61"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> ControlOffset;
+<a name="62"></a>
+<a name="63"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowmessagebox.html" class="source">UWindowMessageBox</a></font> ConfirmSettings, ConfirmDriver, ConfirmWorldTextureDetail, ConfirmSkinTextureDetail;
+<a name="64"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ConfirmSettingsTitle;
+<a name="65"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ConfirmSettingsText;
+<a name="66"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ConfirmSettingsCancelTitle;
+<a name="67"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ConfirmSettingsCancelText;
+<a name="68"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ConfirmTextureDetailTitle;
+<a name="69"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ConfirmTextureDetailText;
+<a name="70"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ConfirmDriverTitle;
+<a name="71"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ConfirmDriverText;
+<a name="72"></a>
+<a name="73"></a><font class="source_comment">// Show Decals
+</font><a name="74"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> ShowDecalsCheck;
+<a name="75"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowDecalsText;
+<a name="76"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowDecalsHelp;
+<a name="77"></a>
+<a name="78"></a><font class="source_comment">// Min Desired Frame Rate
+</font><a name="79"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font> MinFramerateEdit;
+<a name="80"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MinFramerateText;
+<a name="81"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MinFramerateHelp;
+<a name="82"></a>
+<a name="83"></a><font class="source_comment">// Dynamic Lights
+</font><a name="84"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> DynamicLightsCheck;
+<a name="85"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DynamicLightsText;
+<a name="86"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DynamicLightsHelp;
+<a name="87"></a>
+<a name="88"></a><font class="source_keyword">function</font> Created()
+<a name="89"></a>{
+<a name="90"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bLowSoundQuality;
+<a name="91"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> MusicVolume, SoundVolume;
+<a name="92"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="93"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos;
+<a name="94"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, MinRate;
+<a name="95"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NextLook, NextDesc;
+<a name="96"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> VideoDriverClassName, ClassLeft, ClassRight, VideoDriverDesc;
+<a name="97"></a>
+<a name="98"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="99"></a>
+<a name="100"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="101"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="102"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="103"></a>
+<a name="104"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="105"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="106"></a>    
+<a name="107"></a>    VideoDriverClassName = GetPlayerOwner().ConsoleCommand(<font class="source_string">"get ini:Engine.Engine.GameRenderDevice Class"</font>);
+<a name="108"></a>    i = InStr(VideoDriverClassName, <font class="source_string">"'"</font>);
+<a name="109"></a>    <font class="source_comment">// Get class name from class'...'
+</font><a name="110"></a>    <font class="source_keyword">if</font>(i != -<font class="source_int">1</font>)
+<a name="111"></a>    {
+<a name="112"></a>        VideoDriverClassName = Mid(VideoDriverClassName, i+<font class="source_int">1</font>);
+<a name="113"></a>        i = InStr(VideoDriverClassName, <font class="source_string">"'"</font>);
+<a name="114"></a>        VideoDriverClassName = Left(VideoDriverClassName, i);
+<a name="115"></a>        ClassLeft = Left(VideoDriverClassName, InStr(VideoDriverClassName, <font class="source_string">"."</font>));
+<a name="116"></a>        ClassRight = Mid(VideoDriverClassName, InStr(VideoDriverClassName, <font class="source_string">"."</font>) + <font class="source_int">1</font>);
+<a name="117"></a>        VideoDriverDesc = Localize(ClassRight, <font class="source_string">"ClassCaption"</font>, ClassLeft);
+<a name="118"></a>    }
+<a name="119"></a>    <font class="source_keyword">else</font>
+<a name="120"></a>        VideoDriverDesc = <font class="source_string">"VideoDriverClassName"</font>;
+<a name="121"></a>
+<a name="122"></a>    <font class="source_comment">// Driver
+</font><a name="123"></a>    DriverLabel = <font class="source_type"><a href="..\uwindow\uwindowlabelcontrol.html" class="source">UWindowLabelControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowLabelControl'</font>, ControlLeft, ControlOffset, ControlWidth, <font class="source_int">1</font>));
+<a name="124"></a>    DriverLabel.SetText(DriverText);
+<a name="125"></a>    DriverLabel.SetHelpText(DriverHelp);
+<a name="126"></a>    DriverLabel.SetFont(F_Normal);
+<a name="127"></a>
+<a name="128"></a>    DriverDesc = <font class="source_type"><a href="..\uwindow\uwindowlabelcontrol.html" class="source">UWindowLabelControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowLabelControl'</font>, ControlRight, ControlOffset, ControlWidth, <font class="source_int">1</font>));
+<a name="129"></a>    DriverDesc.SetText(VideoDriverDesc);
+<a name="130"></a>    DriverDesc.SetHelpText(DriverHelp);
+<a name="131"></a>    DriverDesc.SetFont(F_Normal);
+<a name="132"></a>    ControlOffset += <font class="source_int">17</font>;
+<a name="133"></a>
+<a name="134"></a>    DriverButton = <font class="source_type"><a href="..\uwindow\uwindowsmallbutton.html" class="source">UWindowSmallButton</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowSmallButton'</font>, ControlRight, ControlOffset, <font class="source_int">48</font>, <font class="source_int">16</font>));
+<a name="135"></a>    DriverButton.SetText(DriverButtonText);
+<a name="136"></a>    DriverButton.SetFont(F_Normal);
+<a name="137"></a>    DriverButton.SetHelpText(DriverButtonHelp);
+<a name="138"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="139"></a>
+<a name="140"></a>
+<a name="141"></a>    <font class="source_comment">// Resolution
+</font><a name="142"></a>    ResolutionCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="143"></a>    ResolutionCombo.SetText(ResolutionText);
+<a name="144"></a>    ResolutionCombo.SetHelpText(ResolutionHelp);
+<a name="145"></a>    ResolutionCombo.SetFont(F_Normal);
+<a name="146"></a>    ResolutionCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="147"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="148"></a>
+<a name="149"></a>    ColorDepthCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="150"></a>    ColorDepthCombo.SetText(ColorDepthText);
+<a name="151"></a>    ColorDepthCombo.SetHelpText(ColorDepthHelp);
+<a name="152"></a>    ColorDepthCombo.SetFont(F_Normal);
+<a name="153"></a>    ColorDepthCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="154"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="155"></a>
+<a name="156"></a>    <font class="source_comment">// Texture Detail
+</font><a name="157"></a>    TextureDetailCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="158"></a>    TextureDetailCombo.SetText(TextureDetailText);
+<a name="159"></a>    TextureDetailCombo.SetHelpText(TextureDetailHelp);
+<a name="160"></a>    TextureDetailCombo.SetFont(F_Normal);
+<a name="161"></a>    TextureDetailCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="162"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="163"></a>
+<a name="164"></a>    <font class="source_comment">// The display names are localized.  These strings match the enums in UnCamMgr.cpp.
+</font><a name="165"></a>    TextureDetailCombo.AddItem(Details[<font class="source_int">0</font>], <font class="source_string">"High"</font>);
+<a name="166"></a>    TextureDetailCombo.AddItem(Details[<font class="source_int">1</font>], <font class="source_string">"Medium"</font>);
+<a name="167"></a>    TextureDetailCombo.AddItem(Details[<font class="source_int">2</font>], <font class="source_string">"Low"</font>);
+<a name="168"></a>
+<a name="169"></a>    <font class="source_comment">// Skin Detail
+</font><a name="170"></a>    SkinDetailCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="171"></a>    SkinDetailCombo.SetText(SkinDetailText);
+<a name="172"></a>    SkinDetailCombo.SetHelpText(SkinDetailHelp);
+<a name="173"></a>    SkinDetailCombo.SetFont(F_Normal);
+<a name="174"></a>    SkinDetailCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="175"></a>    SkinDetailCombo.AddItem(Details[<font class="source_int">0</font>], <font class="source_string">"High"</font>);
+<a name="176"></a>    SkinDetailCombo.AddItem(Details[<font class="source_int">1</font>], <font class="source_string">"Medium"</font>);
+<a name="177"></a>    SkinDetailCombo.AddItem(Details[<font class="source_int">2</font>], <font class="source_string">"Low"</font>);
+<a name="178"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="179"></a>
+<a name="180"></a>    <font class="source_comment">// Brightness
+</font><a name="181"></a>    BrightnessSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="182"></a>    BrightnessSlider.bNoSlidingNotify = <font class="source_keyword">True</font>;
+<a name="183"></a>    BrightnessSlider.SetRange(<font class="source_int">2</font>, <font class="source_int">10</font>, <font class="source_int">1</font>);
+<a name="184"></a>    BrightnessSlider.SetText(BrightnessText);
+<a name="185"></a>    BrightnessSlider.SetHelpText(BrightnessHelp);
+<a name="186"></a>    BrightnessSlider.SetFont(F_Normal);
+<a name="187"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="188"></a>
+<a name="189"></a>    <font class="source_comment">// GUI Mouse speed
+</font><a name="190"></a>    MouseSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="191"></a>    MouseSlider.bNoSlidingNotify = <font class="source_keyword">True</font>;
+<a name="192"></a>    MouseSlider.SetRange(<font class="source_int">40</font>, <font class="source_int">500</font>, <font class="source_int">5</font>);
+<a name="193"></a>    MouseSlider.SetText(MouseText);
+<a name="194"></a>    MouseSlider.SetHelpText(MouseHelp);
+<a name="195"></a>    MouseSlider.SetFont(F_Normal);
+<a name="196"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="197"></a>
+<a name="198"></a>    <font class="source_comment">// GUI Scale
+</font><a name="199"></a>    ScaleCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="200"></a>    ScaleCombo.SetText(ScaleText);
+<a name="201"></a>    ScaleCombo.SetHelpText(ScaleHelp);
+<a name="202"></a>    ScaleCombo.SetFont(F_Normal);
+<a name="203"></a>    ScaleCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="204"></a>    ScaleCombo.AddItem(ScaleSizes[<font class="source_int">0</font>], <font class="source_string">"10"</font>);
+<a name="205"></a>    ScaleCombo.AddItem(ScaleSizes[<font class="source_int">1</font>], <font class="source_string">"20"</font>);
+<a name="206"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="207"></a>
+<a name="208"></a>    GuiSkinCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="209"></a>    GuiSkinCombo.SetText(GuiSkinText);
+<a name="210"></a>    GuiSkinCombo.SetHelpText(GuiSkinHelp);
+<a name="211"></a>    GuiSkinCombo.SetFont(F_Normal);
+<a name="212"></a>    GuiSkinCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="213"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="214"></a>    i=<font class="source_int">0</font>;
+<a name="215"></a>    GetPlayerOwner().GetNextIntDesc(<font class="source_string">"UWindowLookAndFeel"</font>, <font class="source_int">0</font>, NextLook, NextDesc);
+<a name="216"></a>    <font class="source_keyword">while</font>( (NextLook != <font class="source_string">""</font>) && (i &lt; <font class="source_int">32</font>) )
+<a name="217"></a>    {
+<a name="218"></a>        GuiSkinCombo.AddItem(NextDesc, NextLook);
+<a name="219"></a>        i++;
+<a name="220"></a>        GetPlayerOwner().GetNextIntDesc(<font class="source_string">"UWindowLookAndFeel"</font>, i, NextLook, NextDesc);
+<a name="221"></a>    }
+<a name="222"></a>    GuiSkinCombo.Sort();
+<a name="223"></a>
+<a name="224"></a>    <font class="source_comment">// Min Desired Framerate
+</font><a name="225"></a>    MinFramerateEdit = <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowEditControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="226"></a>    MinFramerateEdit.SetText(MinFramerateText);
+<a name="227"></a>    MinFramerateEdit.SetHelpText(MinFramerateHelp);
+<a name="228"></a>    MinFramerateEdit.SetFont(F_Normal);
+<a name="229"></a>    MinFramerateEdit.SetNumericOnly(<font class="source_keyword">True</font>);
+<a name="230"></a>    MinFramerateEdit.SetMaxLength(<font class="source_int">3</font>);
+<a name="231"></a>    MinFramerateEdit.Align = TA_Left;
+<a name="232"></a>    MinRate = <font class="source_keyword">int</font>(GetPlayerOwner().ConsoleCommand(<font class="source_string">"get ini:Engine.Engine.ViewportManager MinDesiredFrameRate"</font>));
+<a name="233"></a>    MinFramerateEdit.SetValue(<font class="source_keyword">string</font>(MinRate));
+<a name="234"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="235"></a>
+<a name="236"></a>    <font class="source_comment">// Show Decals
+</font><a name="237"></a>    ShowDecalsCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="238"></a>    ShowDecalsCheck.bChecked = <font class="source_keyword">bool</font>(GetPlayerOwner().ConsoleCommand(<font class="source_string">"get ini:Engine.Engine.ViewportManager Decals"</font>));
+<a name="239"></a>    ShowDecalsCheck.SetText(ShowDecalsText);
+<a name="240"></a>    ShowDecalsCheck.SetHelpText(ShowDecalsHelp);
+<a name="241"></a>    ShowDecalsCheck.SetFont(F_Normal);
+<a name="242"></a>    ShowDecalsCheck.Align = TA_Left;
+<a name="243"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="244"></a>
+<a name="245"></a>    <font class="source_comment">// Dynamic Lights
+</font><a name="246"></a>    DynamicLightsCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="247"></a>    DynamicLightsCheck.bChecked = <font class="source_keyword">bool</font>(GetPlayerOwner().ConsoleCommand(<font class="source_string">"get ini:Engine.Engine.ViewportManager NoDynamicLights"</font>));
+<a name="248"></a>    DynamicLightsCheck.bChecked = !DynamicLightsCheck.bChecked;
+<a name="249"></a>    DynamicLightsCheck.SetText(DynamicLightsText);
+<a name="250"></a>    DynamicLightsCheck.SetHelpText(DynamicLightsHelp);
+<a name="251"></a>    DynamicLightsCheck.SetFont(F_Normal);
+<a name="252"></a>    DynamicLightsCheck.Align = TA_Left;
+<a name="253"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="254"></a>
+<a name="255"></a>    LoadAvailableSettings();
+<a name="256"></a>}
+<a name="257"></a>
+<a name="258"></a><font class="source_keyword">function</font> AfterCreate()
+<a name="259"></a>{
+<a name="260"></a>    <font class="source_keyword">Super</font>.AfterCreate();
+<a name="261"></a>
+<a name="262"></a>    DesiredWidth = <font class="source_int">220</font>;
+<a name="263"></a>    DesiredHeight = ControlOffset;
+<a name="264"></a>}
+<a name="265"></a>
+<a name="266"></a><font class="source_keyword">function</font> LoadAvailableSettings()
+<a name="267"></a>{
+<a name="268"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> Brightness;
+<a name="269"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> P;
+<a name="270"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> CurrentDepth;
+<a name="271"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> ParseString;
+<a name="272"></a>
+<a name="273"></a>    bInitialized = <font class="source_keyword">False</font>;
+<a name="274"></a>
+<a name="275"></a>    <font class="source_comment">// Load available video drivers and current video driver here.
+</font><a name="276"></a>
+<a name="277"></a>    ResolutionCombo.Clear();
+<a name="278"></a>    ParseString = GetPlayerOwner().ConsoleCommand(<font class="source_string">"GetRes"</font>);
+<a name="279"></a>    P = InStr(ParseString, <font class="source_string">" "</font>);
+<a name="280"></a>    <font class="source_keyword">while</font> (P != -<font class="source_int">1</font>) 
+<a name="281"></a>    {
+<a name="282"></a>        ResolutionCombo.AddItem(Left(ParseString, P));
+<a name="283"></a>        ParseString = Mid(ParseString, P+<font class="source_int">1</font>);
+<a name="284"></a>        P = InStr(ParseString, <font class="source_string">" "</font>);
+<a name="285"></a>    }
+<a name="286"></a>    ResolutionCombo.AddItem(ParseString);
+<a name="287"></a>    ResolutionCombo.SetValue(GetPlayerOwner().ConsoleCommand(<font class="source_string">"GetCurrentRes"</font>));
+<a name="288"></a>
+<a name="289"></a>    ColorDepthCombo.Clear();
+<a name="290"></a>    ParseString = GetPlayerOwner().ConsoleCommand(<font class="source_string">"GetColorDepths"</font>);
+<a name="291"></a>    P = InStr(ParseString, <font class="source_string">" "</font>);
+<a name="292"></a>    <font class="source_keyword">while</font> (P != -<font class="source_int">1</font>) 
+<a name="293"></a>    {
+<a name="294"></a>        ColorDepthCombo.AddItem(Left(ParseString, P)@BitsText, Left(ParseString, P));
+<a name="295"></a>        ParseString = Mid(ParseString, P+<font class="source_int">1</font>);
+<a name="296"></a>        P = InStr(ParseString, <font class="source_string">" "</font>);
+<a name="297"></a>    }
+<a name="298"></a>    ColorDepthCombo.AddItem(ParseString@BitsText, ParseString);
+<a name="299"></a>    CurrentDepth = GetPlayerOwner().ConsoleCommand(<font class="source_string">"GetCurrentColorDepth"</font>);
+<a name="300"></a>    ColorDepthCombo.SetValue(CurrentDepth@BitsText, CurrentDepth);
+<a name="301"></a>
+<a name="302"></a>    GuiSkinCombo.SetSelectedIndex(Max(GuiSkinCombo.FindItemIndex2(Root.LookAndFeelClass, <font class="source_keyword">True</font>), <font class="source_int">0</font>));
+<a name="303"></a>    OldTextureDetail = Max(<font class="source_int">0</font>, TextureDetailCombo.FindItemIndex2(GetPlayerOwner().ConsoleCommand(<font class="source_string">"get ini:Engine.Engine.ViewportManager TextureDetail"</font>)));
+<a name="304"></a>    TextureDetailCombo.SetSelectedIndex(OldTextureDetail);
+<a name="305"></a>    OldSkinDetail = Max(<font class="source_int">0</font>, SkinDetailCombo.FindItemIndex2(GetPlayerOwner().ConsoleCommand(<font class="source_string">"get ini:Engine.Engine.ViewportManager SkinDetail"</font>)));
+<a name="306"></a>    SkinDetailCombo.SetSelectedIndex(OldSkinDetail);
+<a name="307"></a>    Brightness = <font class="source_keyword">int</font>(<font class="source_keyword">float</font>(GetPlayerOwner().ConsoleCommand(<font class="source_string">"get ini:Engine.Engine.ViewportManager Brightness"</font>)) * <font class="source_int">10</font>);
+<a name="308"></a>    BrightnessSlider.SetValue(Brightness);
+<a name="309"></a>    MouseSlider.SetValue(Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.MouseScale * <font class="source_int">100</font>);
+<a name="310"></a>    ScaleCombo.SetSelectedIndex(Max(ScaleCombo.FindItemIndex2(<font class="source_keyword">string</font>(<font class="source_keyword">int</font>(Root.GUIScale*<font class="source_int">10</font>))), <font class="source_int">0</font>));
+<a name="311"></a>
+<a name="312"></a>    bInitialized = <font class="source_keyword">True</font>;
+<a name="313"></a>}
+<a name="314"></a>
+<a name="315"></a><font class="source_keyword">function</font> ResolutionChanged(<font class="source_keyword">float</font> W, <font class="source_keyword">float</font> H)
+<a name="316"></a>{
+<a name="317"></a>    <font class="source_keyword">Super</font>.ResolutionChanged(H, H);
+<a name="318"></a>    <font class="source_keyword">if</font>(GetPlayerOwner().ConsoleCommand(<font class="source_string">"GetCurrentRes"</font>) != ResolutionCombo.GetValue())
+<a name="319"></a>        LoadAvailableSettings();
+<a name="320"></a>}
+<a name="321"></a>
+<a name="322"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="323"></a>{
+<a name="324"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="325"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos;
+<a name="326"></a>
+<a name="327"></a>    <font class="source_keyword">Super</font>.BeforePaint(C, X, Y);
+<a name="328"></a>
+<a name="329"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="330"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="331"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="332"></a>
+<a name="333"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="334"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="335"></a>
+<a name="336"></a>    DriverLabel.SetSize(CenterWidth-<font class="source_int">100</font>, <font class="source_int">1</font>);
+<a name="337"></a>    DriverLabel.WinLeft = CenterPos;
+<a name="338"></a>
+<a name="339"></a>    DriverDesc.SetSize(<font class="source_int">200</font>, <font class="source_int">1</font>);
+<a name="340"></a>    DriverDesc.WinLeft = CenterPos + CenterWidth - <font class="source_int">100</font>;
+<a name="341"></a>
+<a name="342"></a>    DriverButton.AutoWidth(C);
+<a name="343"></a>    DriverButton.WinLeft = CenterPos + CenterWidth - <font class="source_int">100</font>;
+<a name="344"></a>
+<a name="345"></a>    ResolutionCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="346"></a>    ResolutionCombo.WinLeft = CenterPos;
+<a name="347"></a>    ResolutionCombo.EditBoxWidth = <font class="source_int">100</font>;
+<a name="348"></a>
+<a name="349"></a>    ColorDepthCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="350"></a>    ColorDepthCombo.WinLeft = CenterPos;
+<a name="351"></a>    ColorDepthCombo.EditBoxWidth = <font class="source_int">100</font>;
+<a name="352"></a>
+<a name="353"></a>    TextureDetailCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="354"></a>    TextureDetailCombo.WinLeft = CenterPos;
+<a name="355"></a>    TextureDetailCombo.EditBoxWidth = <font class="source_int">100</font>;
+<a name="356"></a>
+<a name="357"></a>    SkinDetailCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="358"></a>    SkinDetailCombo.WinLeft = CenterPos;
+<a name="359"></a>    SkinDetailCombo.EditBoxWidth = <font class="source_int">100</font>;
+<a name="360"></a>
+<a name="361"></a>    BrightnessSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="362"></a>    BrightnessSlider.SliderWidth = <font class="source_int">100</font>;
+<a name="363"></a>    BrightnessSlider.WinLeft = CenterPos;
+<a name="364"></a>
+<a name="365"></a>    ScaleCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="366"></a>    ScaleCombo.WinLeft = CenterPos;
+<a name="367"></a>    ScaleCombo.EditBoxWidth = <font class="source_int">100</font>;
+<a name="368"></a>
+<a name="369"></a>    MouseSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="370"></a>    MouseSlider.SliderWidth = <font class="source_int">100</font>;
+<a name="371"></a>    MouseSlider.WinLeft = CenterPos;
+<a name="372"></a>
+<a name="373"></a>    GuiSkinCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="374"></a>    GuiSkinCombo.WinLeft = CenterPos;
+<a name="375"></a>    GuiSkinCombo.EditBoxWidth = <font class="source_int">100</font>;
+<a name="376"></a>
+<a name="377"></a>    ShowDecalsCheck.SetSize(CenterWidth-<font class="source_int">100</font>+<font class="source_int">16</font>, <font class="source_int">1</font>);
+<a name="378"></a>    ShowDecalsCheck.WinLeft = CenterPos;
+<a name="379"></a>
+<a name="380"></a>    DynamicLightsCheck.SetSize(CenterWidth-<font class="source_int">100</font>+<font class="source_int">16</font>, <font class="source_int">1</font>);
+<a name="381"></a>    DynamicLightsCheck.WinLeft = CenterPos;
+<a name="382"></a>
+<a name="383"></a>    MinFramerateEdit.SetSize(CenterWidth-<font class="source_int">100</font>+<font class="source_int">30</font>, <font class="source_int">1</font>);
+<a name="384"></a>    MinFramerateEdit.WinLeft = CenterPos;
+<a name="385"></a>    MinFramerateEdit.EditBoxWidth = <font class="source_int">30</font>;
+<a name="386"></a>}
+<a name="387"></a>
+<a name="388"></a><font class="source_keyword">function</font> Notify(<font class="source_type"><a href="..\uwindow\uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></font> C, <font class="source_keyword">byte</font> E)
+<a name="389"></a>{
+<a name="390"></a>    <font class="source_keyword">Super</font>.Notify(C, E);
+<a name="391"></a>
+<a name="392"></a>    <font class="source_keyword">switch</font>(E)
+<a name="393"></a>    {
+<a name="394"></a>    <font class="source_keyword">case</font> DE_Click:
+<a name="395"></a>        <font class="source_keyword">switch</font>(C)
+<a name="396"></a>        {
+<a name="397"></a>        <font class="source_keyword">case</font> DriverButton:
+<a name="398"></a>            DriverChange();
+<a name="399"></a>            <font class="source_keyword">break</font>;
+<a name="400"></a>        }
+<a name="401"></a>        <font class="source_keyword">break</font>;
+<a name="402"></a>    <font class="source_keyword">case</font> DE_Change:
+<a name="403"></a>        <font class="source_keyword">switch</font>(C)
+<a name="404"></a>        {
+<a name="405"></a>        <font class="source_keyword">case</font> ResolutionCombo:
+<a name="406"></a>        <font class="source_keyword">case</font> ColorDepthCombo:
+<a name="407"></a>            SettingsChanged();
+<a name="408"></a>            <font class="source_keyword">break</font>;
+<a name="409"></a>        <font class="source_keyword">case</font> TextureDetailCombo:
+<a name="410"></a>            TextureDetailChanged();
+<a name="411"></a>            <font class="source_keyword">break</font>;
+<a name="412"></a>        <font class="source_keyword">case</font> SkinDetailCombo:
+<a name="413"></a>            SkinDetailChanged();
+<a name="414"></a>            <font class="source_keyword">break</font>;
+<a name="415"></a>        <font class="source_keyword">case</font> BrightnessSlider:
+<a name="416"></a>            BrightnessChanged();
+<a name="417"></a>            <font class="source_keyword">break</font>;
+<a name="418"></a>        <font class="source_keyword">case</font> ScaleCombo:
+<a name="419"></a>            ScaleChanged();
+<a name="420"></a>            <font class="source_keyword">break</font>;
+<a name="421"></a>        <font class="source_keyword">case</font> MouseSlider:
+<a name="422"></a>            MouseChanged();
+<a name="423"></a>            <font class="source_keyword">break</font>;
+<a name="424"></a>        <font class="source_keyword">case</font> ShowDecalsCheck:
+<a name="425"></a>            DecalsChanged();
+<a name="426"></a>            <font class="source_keyword">break</font>;
+<a name="427"></a>        <font class="source_keyword">case</font> DynamicLightsCheck:
+<a name="428"></a>            DynamicChanged();
+<a name="429"></a>            <font class="source_keyword">break</font>;
+<a name="430"></a>        <font class="source_keyword">case</font> MinFramerateEdit:
+<a name="431"></a>            MinFramerateChanged();
+<a name="432"></a>            <font class="source_keyword">break</font>;
+<a name="433"></a>        }
+<a name="434"></a>        <font class="source_keyword">break</font>;
+<a name="435"></a>    }
+<a name="436"></a>}
+<a name="437"></a>
+<a name="438"></a><font class="source_comment">/*
+<a name="439"></a> * Message Crackers
+<a name="440"></a> */</font>
+<a name="441"></a>
+<a name="442"></a>
+<a name="443"></a><font class="source_keyword">function</font> DriverChange()
+<a name="444"></a>{
+<a name="445"></a>    ConfirmDriver = MessageBox(ConfirmDriverTitle, ConfirmDriverText, MB_YesNo, MR_No);
+<a name="446"></a>}
+<a name="447"></a>
+<a name="448"></a><font class="source_keyword">function</font> SettingsChanged()
+<a name="449"></a>{
+<a name="450"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NewSettings;
+<a name="451"></a>
+<a name="452"></a>    <font class="source_keyword">if</font>(bInitialized)
+<a name="453"></a>    {
+<a name="454"></a>        OldSettings = GetPlayerOwner().ConsoleCommand(<font class="source_string">"GetCurrentRes"</font>)$<font class="source_string">"x"</font>$GetPlayerOwner().ConsoleCommand(<font class="source_string">"GetCurrentColorDepth"</font>);
+<a name="455"></a>        NewSettings = ResolutionCombo.GetValue()$<font class="source_string">"x"</font>$ColorDepthCombo.GetValue2();
+<a name="456"></a>
+<a name="457"></a>        <font class="source_keyword">if</font>(NewSettings != OldSettings)
+<a name="458"></a>        {
+<a name="459"></a>            GetPlayerOwner().ConsoleCommand(<font class="source_string">"SetRes "</font>$NewSettings);
+<a name="460"></a>            LoadAvailableSettings();
+<a name="461"></a>            ConfirmSettings = MessageBox(ConfirmSettingsTitle, ConfirmSettingsText, MB_YesNo, MR_No, MR_None, <font class="source_int">10</font>);
+<a name="462"></a>        }
+<a name="463"></a>    }
+<a name="464"></a>}
+<a name="465"></a>
+<a name="466"></a><font class="source_keyword">function</font> MessageBoxDone(<font class="source_type"><a href="..\uwindow\uwindowmessagebox.html" class="source">UWindowMessageBox</a></font> W, <font class="source_type"><a href="..\uwindow\uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></font> Result)
+<a name="467"></a>{
+<a name="468"></a>    <font class="source_keyword">if</font>(W == ConfirmSettings)
+<a name="469"></a>    {
+<a name="470"></a>        ConfirmSettings = <font class="source_keyword">None</font>;
+<a name="471"></a>        <font class="source_keyword">if</font>(Result != MR_Yes)
+<a name="472"></a>        {
+<a name="473"></a>            GetPlayerOwner().ConsoleCommand(<font class="source_string">"SetRes "</font>$OldSettings);
+<a name="474"></a>            LoadAvailableSettings();            
+<a name="475"></a>            MessageBox(ConfirmSettingsCancelTitle, ConfirmSettingsCancelText, MB_OK, MR_OK, MR_OK);
+<a name="476"></a>        }
+<a name="477"></a>    }
+<a name="478"></a>    <font class="source_keyword">else</font>
+<a name="479"></a>    <font class="source_keyword">if</font>(W == ConfirmDriver)
+<a name="480"></a>    {
+<a name="481"></a>        ConfirmDriver = <font class="source_keyword">None</font>;
+<a name="482"></a>        <font class="source_keyword">if</font>(Result == MR_Yes)
+<a name="483"></a>        {
+<a name="484"></a>            GetParent(<font class="source_keyword">class</font><font class="source_name">'UWindowFramedWindow'</font>).Close();
+<a name="485"></a>            Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.CloseUWindow();
+<a name="486"></a>            GetPlayerOwner().ConsoleCommand(<font class="source_string">"RELAUNCH -changevideo"</font>);
+<a name="487"></a>        }
+<a name="488"></a>    }
+<a name="489"></a>    <font class="source_keyword">if</font>(W == ConfirmSkinTextureDetail)
+<a name="490"></a>    {
+<a name="491"></a>        <font class="source_keyword">if</font>(Result == MR_Yes)
+<a name="492"></a>            OldSkinDetail = SkinDetailCombo.GetSelectedIndex();
+<a name="493"></a>        <font class="source_keyword">else</font>
+<a name="494"></a>            SkinDetailCombo.SetSelectedIndex(OldSkinDetail);
+<a name="495"></a>    }
+<a name="496"></a>    <font class="source_keyword">if</font>(W == ConfirmWorldTextureDetail)
+<a name="497"></a>    {
+<a name="498"></a>        <font class="source_keyword">if</font>(Result == MR_Yes)
+<a name="499"></a>            OldTextureDetail = TextureDetailCombo.GetSelectedIndex();
+<a name="500"></a>        <font class="source_keyword">else</font>
+<a name="501"></a>            TextureDetailCombo.SetSelectedIndex(OldTextureDetail);
+<a name="502"></a>    }
+<a name="503"></a>}
+<a name="504"></a>
+<a name="505"></a><font class="source_keyword">function</font> TextureDetailChanged()
+<a name="506"></a>{
+<a name="507"></a>    <font class="source_keyword">if</font>(bInitialized)
+<a name="508"></a>    {
+<a name="509"></a>        TextureDetailSet();
+<a name="510"></a>        <font class="source_keyword">if</font>( TextureDetailCombo.GetSelectedIndex() &lt; OldTextureDetail )
+<a name="511"></a>            ConfirmWorldTextureDetail = MessageBox(ConfirmTextureDetailTitle, ConfirmTextureDetailText, MB_YesNo, MR_No, MR_None);  
+<a name="512"></a>        <font class="source_keyword">else</font>
+<a name="513"></a>            OldTextureDetail = TextureDetailCombo.GetSelectedIndex();
+<a name="514"></a>    }
+<a name="515"></a>}
+<a name="516"></a>
+<a name="517"></a><font class="source_keyword">function</font> TextureDetailSet()
+<a name="518"></a>{
+<a name="519"></a>    GetPlayerOwner().ConsoleCommand(<font class="source_string">"set ini:Engine.Engine.ViewportManager TextureDetail "</font>$TextureDetailCombo.GetValue2());
+<a name="520"></a>}
+<a name="521"></a>
+<a name="522"></a><font class="source_keyword">function</font> SkinDetailChanged()
+<a name="523"></a>{
+<a name="524"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> D;
+<a name="525"></a>    <font class="source_keyword">if</font>(bInitialized)
+<a name="526"></a>    {
+<a name="527"></a>        SkinDetailSet();
+<a name="528"></a>        <font class="source_keyword">if</font>( SkinDetailCombo.GetSelectedIndex() &lt; OldSkinDetail )
+<a name="529"></a>            ConfirmSkinTextureDetail = MessageBox(ConfirmTextureDetailTitle, ConfirmTextureDetailText, MB_YesNo, MR_No, MR_None);   
+<a name="530"></a>        <font class="source_keyword">else</font>
+<a name="531"></a>            OldSkinDetail = SkinDetailCombo.GetSelectedIndex();
+<a name="532"></a>    }
+<a name="533"></a>}
+<a name="534"></a>
+<a name="535"></a><font class="source_keyword">function</font> SkinDetailSet()
+<a name="536"></a>{
+<a name="537"></a>    GetPlayerOwner().ConsoleCommand(<font class="source_string">"set ini:Engine.Engine.ViewportManager SkinDetail "</font>$SkinDetailCombo.GetValue2());
+<a name="538"></a>}
+<a name="539"></a>
+<a name="540"></a><font class="source_keyword">function</font> BrightnessChanged()
+<a name="541"></a>{
+<a name="542"></a>    <font class="source_keyword">if</font>(bInitialized)
+<a name="543"></a>    {
+<a name="544"></a>        GetPlayerOwner().ConsoleCommand(<font class="source_string">"set ini:Engine.Engine.ViewportManager Brightness "</font>$(BrightnessSlider.Value / <font class="source_int">10</font>));
+<a name="545"></a>        GetPlayerOwner().ConsoleCommand(<font class="source_string">"FLUSH"</font>);
+<a name="546"></a>    }
+<a name="547"></a>}
+<a name="548"></a>
+<a name="549"></a><font class="source_keyword">function</font> ScaleChanged()
+<a name="550"></a>{
+<a name="551"></a>    <font class="source_keyword">if</font>(bInitialized)
+<a name="552"></a>    {
+<a name="553"></a>        Root.SetScale(<font class="source_keyword">float</font>(ScaleCombo.GetValue2())/1<font class="source_int">0</font>);
+<a name="554"></a>        Root.SaveConfig();
+<a name="555"></a>    }
+<a name="556"></a>}
+<a name="557"></a>
+<a name="558"></a><font class="source_keyword">function</font> MouseChanged()
+<a name="559"></a>{
+<a name="560"></a>    <font class="source_keyword">if</font>(bInitialized)
+<a name="561"></a>    {
+<a name="562"></a>        Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.MouseScale = (MouseSlider.Value / <font class="source_int">100</font>);
+<a name="563"></a>        Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.SaveConfig();
+<a name="564"></a>    }
+<a name="565"></a>}
+<a name="566"></a>
+<a name="567"></a><font class="source_keyword">function</font> DecalsChanged()
+<a name="568"></a>{
+<a name="569"></a>    GetPlayerOwner().ConsoleCommand(<font class="source_string">"set ini:Engine.Engine.ViewportManager Decals "</font>$ShowDecalsCheck.bChecked);
+<a name="570"></a>}
+<a name="571"></a>
+<a name="572"></a><font class="source_keyword">function</font> DynamicChanged()
+<a name="573"></a>{
+<a name="574"></a>    GetPlayerOwner().ConsoleCommand(<font class="source_string">"set ini:Engine.Engine.ViewportManager NoDynamicLights "</font>$!DynamicLightsCheck.bChecked);
+<a name="575"></a>}
+<a name="576"></a>
+<a name="577"></a><font class="source_keyword">function</font> MinFramerateChanged()
+<a name="578"></a>{
+<a name="579"></a>    GetPlayerOwner().ConsoleCommand(<font class="source_string">"set ini:Engine.Engine.ViewportManager MinDesiredFrameRate "</font>$MinFramerateEdit.EditBox.Value);
+<a name="580"></a>}
+<a name="581"></a>
+<a name="582"></a><font class="source_keyword">function</font> SaveConfigs()
+<a name="583"></a>{
+<a name="584"></a>    GetPlayerOwner().SaveConfig();
+<a name="585"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.SaveConfig();
+<a name="586"></a>    <font class="source_keyword">Super</font>.SaveConfigs();
+<a name="587"></a>    <font class="source_keyword">if</font>(GuiSkinCombo.GetValue2() != Root.LookAndFeelClass)
+<a name="588"></a>        Root.ChangeLookAndFeel(GuiSkinCombo.GetValue2());
+<a name="589"></a>}
+<a name="590"></a>
+<a name="591"></a><font class="source_keyword">defaultproperties</font>
+<a name="592"></a>{
+<a name="593"></a>    ScaleText=<font class="source_string">"Font Size"</font>
+<a name="594"></a>    ScaleHelp=<font class="source_string">"Adjust the size of elements in the User Interface."</font>
+<a name="595"></a>    ScaleSizes(<font class="source_int">0</font>)=<font class="source_string">"Normal"</font>
+<a name="596"></a>    ScaleSizes(<font class="source_int">1</font>)=<font class="source_string">"Double"</font>
+<a name="597"></a>    MouseText=<font class="source_string">"GUI Mouse Speed"</font>
+<a name="598"></a>    MouseHelp=<font class="source_string">"Adjust the speed of the mouse in the User Interface."</font>
+<a name="599"></a>    BrightnessText=<font class="source_string">"Brightness"</font>
+<a name="600"></a>    BrightnessHelp=<font class="source_string">"Adjust display brightness."</font>
+<a name="601"></a>    DriverText=<font class="source_string">"Video Driver"</font>
+<a name="602"></a>    DriverHelp=<font class="source_string">"This is the current video driver.  Use the Change button to change video drivers."</font>
+<a name="603"></a>    DriverButtonText=<font class="source_string">"Change"</font>
+<a name="604"></a>    DriverButtonHelp=<font class="source_string">"Press this button to change your video driver."</font>
+<a name="605"></a>    ConfirmDriverTitle=<font class="source_string">"Change Video Driver"</font>
+<a name="606"></a>    ConfirmDriverText=<font class="source_string">"This option will restart Unreal now, and enable you to change your video driver.  Do you want to do this?"</font>
+<a name="607"></a>    ResolutionText=<font class="source_string">"Resolution"</font>
+<a name="608"></a>    ResolutionHelp=<font class="source_string">"Select a new screen resolution."</font>
+<a name="609"></a>    ColorDepthText=<font class="source_string">"Color Depth"</font>
+<a name="610"></a>    ColorDepthHelp=<font class="source_string">"Select a new color depth."</font>
+<a name="611"></a>    GUISkinText=<font class="source_string">"GUI Skin"</font>
+<a name="612"></a>    GUISkinHelp=<font class="source_string">"Change the look of the User Interface windows to a custom skin."</font>
+<a name="613"></a>    TextureDetailText=<font class="source_string">"World Texture Detail"</font>
+<a name="614"></a>    TextureDetailHelp=<font class="source_string">"Change the texture detail of world geometry.  Use a lower texture detail to improve game performance."</font>
+<a name="615"></a>    SkinDetailText=<font class="source_string">"Skin Detail"</font>
+<a name="616"></a>    SkinDetailHelp=<font class="source_string">"Change the detail of player skins.  Use a lower skin detail to improve game performance."</font>
+<a name="617"></a>    Details(<font class="source_int">0</font>)=<font class="source_string">"High"</font>
+<a name="618"></a>    Details(<font class="source_int">1</font>)=<font class="source_string">"Medium"</font>
+<a name="619"></a>    Details(<font class="source_int">2</font>)=<font class="source_string">"Low"</font>
+<a name="620"></a>    BitsText=<font class="source_string">"bit"</font>
+<a name="621"></a>    ControlOffset=<font class="source_int">20</font>;
+<a name="622"></a>    ConfirmSettingsTitle=<font class="source_string">"Confirm Video Settings Change"</font>
+<a name="623"></a>    ConfirmSettingsText=<font class="source_string">"Are you sure you wish to keep these new video settings?"</font>
+<a name="624"></a>    ConfirmSettingsCancelTitle=<font class="source_string">"Video Settings Change"</font>
+<a name="625"></a>    ConfirmSettingsCancelText=<font class="source_string">"Your previous video settings have been restored."</font>
+<a name="626"></a>    ConfirmTextureDetailTitle=<font class="source_string">"Confirm Texture Detail"</font>
+<a name="627"></a>    ConfirmTextureDetailText=<font class="source_string">"Increasing texture detail above its default value may degrade performance on some machines.\\n\\nAre you sure you want to make this change?"</font>
+<a name="628"></a>    ShowDecalsText=<font class="source_string">"Show Decals"</font>
+<a name="629"></a>    ShowDecalsHelp=<font class="source_string">"If checked, impact and gore decals will be used in game."</font>
+<a name="630"></a>    DynamicLightsText=<font class="source_string">"Use Dynamic Lighting"</font>
+<a name="631"></a>    DynamicLightsHelp=<font class="source_string">"If checked, dynamic lighting will be used in game."</font>
+<a name="632"></a>    MinFramerateText=<font class="source_string">"Min Desired Framerate"</font>
+<a name="633"></a>    MinFramerateHelp=<font class="source_string">"If your framerate falls below this value, Unreal Tournament will reduce special effects to increase your framerate."</font>
+<a name="634"></a>}
+<a name="635"></a>
+<a name="636"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\umenu\umenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\umenu\umenuvideoclientwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UMenuVideoClientWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="umenutoolsmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="umenuvideoscrollclient.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:08.000 - Creation time: Wed 26/5/2004 10:48:55.062 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

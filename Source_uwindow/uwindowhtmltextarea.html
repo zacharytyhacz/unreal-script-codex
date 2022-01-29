@@ -1,0 +1,1875 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UWindow.UWindowHTMLTextArea</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\uwindow\uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="..\uwindow\uwindowhtmltextarea.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UWindowHTMLTextArea">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowhsplitter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindowhtmltextrow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowhtmltextarea.html">UWindowHTMLTextArea</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+00562<br>
+00563<br>
+00564<br>
+00565<br>
+00566<br>
+00567<br>
+00568<br>
+00569<br>
+00570<br>
+00571<br>
+00572<br>
+00573<br>
+00574<br>
+00575<br>
+00576<br>
+00577<br>
+00578<br>
+00579<br>
+00580<br>
+00581<br>
+00582<br>
+00583<br>
+00584<br>
+00585<br>
+00586<br>
+00587<br>
+00588<br>
+00589<br>
+00590<br>
+00591<br>
+00592<br>
+00593<br>
+00594<br>
+00595<br>
+00596<br>
+00597<br>
+00598<br>
+00599<br>
+00600<br>
+00601<br>
+00602<br>
+00603<br>
+00604<br>
+00605<br>
+00606<br>
+00607<br>
+00608<br>
+00609<br>
+00610<br>
+00611<br>
+00612<br>
+00613<br>
+00614<br>
+00615<br>
+00616<br>
+00617<br>
+00618<br>
+00619<br>
+00620<br>
+00621<br>
+00622<br>
+00623<br>
+00624<br>
+00625<br>
+00626<br>
+00627<br>
+00628<br>
+00629<br>
+00630<br>
+00631<br>
+00632<br>
+00633<br>
+00634<br>
+00635<br>
+00636<br>
+00637<br>
+00638<br>
+00639<br>
+00640<br>
+00641<br>
+00642<br>
+00643<br>
+00644<br>
+00645<br>
+00646<br>
+00647<br>
+00648<br>
+00649<br>
+00650<br>
+00651<br>
+00652<br>
+00653<br>
+00654<br>
+00655<br>
+00656<br>
+00657<br>
+00658<br>
+00659<br>
+00660<br>
+00661<br>
+00662<br>
+00663<br>
+00664<br>
+00665<br>
+00666<br>
+00667<br>
+00668<br>
+00669<br>
+00670<br>
+00671<br>
+00672<br>
+00673<br>
+00674<br>
+00675<br>
+00676<br>
+00677<br>
+00678<br>
+00679<br>
+00680<br>
+00681<br>
+00682<br>
+00683<br>
+00684<br>
+00685<br>
+00686<br>
+00687<br>
+00688<br>
+00689<br>
+00690<br>
+00691<br>
+00692<br>
+00693<br>
+00694<br>
+00695<br>
+00696<br>
+00697<br>
+00698<br>
+00699<br>
+00700<br>
+00701<br>
+00702<br>
+00703<br>
+00704<br>
+00705<br>
+00706<br>
+00707<br>
+00708<br>
+00709<br>
+00710<br>
+00711<br>
+00712<br>
+00713<br>
+00714<br>
+00715<br>
+00716<br>
+00717<br>
+00718<br>
+00719<br>
+00720<br>
+00721<br>
+00722<br>
+00723<br>
+00724<br>
+00725<br>
+00726<br>
+00727<br>
+00728<br>
+00729<br>
+00730<br>
+00731<br>
+00732<br>
+00733<br>
+00734<br>
+00735<br>
+00736<br>
+00737<br>
+00738<br>
+00739<br>
+00740<br>
+00741<br>
+00742<br>
+00743<br>
+00744<br>
+00745<br>
+00746<br>
+00747<br>
+00748<br>
+00749<br>
+00750<br>
+00751<br>
+00752<br>
+00753<br>
+00754<br>
+00755<br>
+00756<br>
+00757<br>
+00758<br>
+00759<br>
+00760<br>
+00761<br>
+00762<br>
+00763<br>
+00764<br>
+00765<br>
+00766<br>
+00767<br>
+00768<br>
+00769<br>
+00770<br>
+00771<br>
+00772<br>
+00773<br>
+00774<br>
+00775<br>
+00776<br>
+00777<br>
+00778<br>
+00779<br>
+00780<br>
+00781<br>
+00782<br>
+00783<br>
+00784<br>
+00785<br>
+00786<br>
+00787<br>
+00788<br>
+00789<br>
+00790<br>
+00791<br>
+00792<br>
+00793<br>
+00794<br>
+00795<br>
+00796<br>
+00797<br>
+00798<br>
+00799<br>
+00800<br>
+00801<br>
+00802<br>
+00803<br>
+00804<br>
+00805<br>
+00806<br>
+00807<br>
+00808<br>
+00809<br>
+00810<br>
+00811<br>
+00812<br>
+00813<br>
+00814<br>
+00815<br>
+00816<br>
+00817<br>
+00818<br>
+00819<br>
+00820<br>
+00821<br>
+00822<br>
+00823<br>
+00824<br>
+00825<br>
+00826<br>
+00827<br>
+00828<br>
+00829<br>
+00830<br>
+00831<br>
+00832<br>
+00833<br>
+00834<br>
+00835<br>
+00836<br>
+00837<br>
+00838<br>
+00839<br>
+00840<br>
+00841<br>
+00842<br>
+00843<br>
+00844<br>
+00845<br>
+00846<br>
+00847<br>
+00848<br>
+00849<br>
+00850<br>
+00851<br>
+00852<br>
+00853<br>
+00854<br>
+00855<br>
+00856<br>
+00857<br>
+00858<br>
+00859<br>
+00860<br>
+00861<br>
+00862<br>
+00863<br>
+00864<br>
+00865<br>
+00866<br>
+00867<br>
+00868<br>
+00869<br>
+00870<br>
+00871<br>
+00872<br>
+00873<br>
+00874<br>
+00875<br>
+00876<br>
+00877<br>
+00878<br>
+00879<br>
+00880<br>
+00881<br>
+00882<br>
+00883<br>
+00884<br>
+00885<br>
+00886<br>
+00887<br>
+00888<br>
+00889<br>
+00890<br>
+00891<br>
+00892<br>
+00893<br>
+00894<br>
+00895<br>
+00896<br>
+00897<br>
+00898<br>
+00899<br>
+00900<br>
+00901<br>
+00902<br>
+00903<br>
+00904<br>
+00905<br>
+00906<br>
+00907<br>
+00908<br>
+00909<br>
+00910<br>
+00911<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\uwindow\uwindowhtmltextarea.html" class="source">UWindowHTMLTextArea</a></font> <font class="source_keyword">expands</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextarea.html" class="source">UWindowDynamicTextArea</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_comment">/*
+<a name="4"></a>
+<a name="5"></a>HTML Currently Supported
+<a name="6"></a>========================
+<a name="7"></a>
+<a name="8"></a>Parsed on add
+<a name="9"></a>-------------
+<a name="10"></a>&lt;body bgcolor=#ffffff link=#ffffff alink=#ffffff&gt;...&lt;/body&gt;
+<a name="11"></a>&lt;font color=#ffffff bgcolor=#ffffff&gt;...&lt;/font&gt;
+<a name="12"></a>&lt;br&gt;
+<a name="13"></a>&lt;center&gt;....&lt;/center&gt;
+<a name="14"></a>&lt;p&gt;
+<a name="15"></a>&lt;h1&gt;...&lt;/h1&gt;
+<a name="16"></a>
+<a name="17"></a>Parsed on add and display
+<a name="18"></a>-------------------------
+<a name="19"></a>&lt;nobr&gt;...&lt;/nobr&gt;
+<a name="20"></a>&lt;a href="..."&gt;...&lt;/a&gt;
+<a name="21"></a>&lt;b&gt;...&lt;/b&gt;
+<a name="22"></a>&lt;u&gt;...&lt;/u&gt;
+<a name="23"></a>&lt;blink&gt;...&lt;/blink&gt;
+<a name="24"></a>
+<a name="25"></a>Parsed only on display
+<a name="26"></a>----------------------
+<a name="27"></a>&gt;
+<a name="28"></a>&lt;
+<a name="29"></a>&amp;
+<a name="30"></a>&nbsp;
+<a name="31"></a>
+<a name="32"></a>Planned improvements
+<a name="33"></a>--------------------
+<a name="34"></a>&lt;ul&gt;&lt;li&gt;item 1&lt;li&gt;item 2...&lt;/ul&gt;
+<a name="35"></a>&lt;table&gt;...&lt;/table&gt;
+<a name="36"></a>
+<a name="37"></a>Bugs
+<a name="38"></a>----
+<a name="39"></a>The parsing is pretty slack!
+<a name="40"></a>
+<a name="41"></a>*/</font>
+<a name="42"></a>
+<a name="43"></a><font class="source_comment">// default styles
+</font><a name="44"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">Color</a></font> TextColor;
+<a name="45"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">Color</a></font> BGColor;
+<a name="46"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">Color</a></font> LinkColor;
+<a name="47"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">Color</a></font> ALinkColor;
+<a name="48"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastBlinkTime;
+<a name="49"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bShowBlink;
+<a name="50"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bReleased;
+<a name="51"></a>
+<a name="52"></a><font class="source_keyword">function</font> SetHTML(<font class="source_keyword">string</font> HTML)
+<a name="53"></a>{
+<a name="54"></a>    Clear();
+<a name="55"></a>    ReplaceText(HTML, Chr(<font class="source_int">13</font>)$Chr(<font class="source_int">10</font>), <font class="source_string">" "</font>);
+<a name="56"></a>    ReplaceText(HTML, Chr(<font class="source_int">13</font>), <font class="source_string">" "</font>);
+<a name="57"></a>    ReplaceText(HTML, Chr(<font class="source_int">10</font>), <font class="source_string">" "</font>);
+<a name="58"></a>    AddText(HTML);
+<a name="59"></a>}
+<a name="60"></a>
+<a name="61"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="62"></a>{
+<a name="63"></a>    <font class="source_keyword">Super</font>.BeforePaint(C, X, Y);
+<a name="64"></a>    Cursor = Root.NormalCursor;
+<a name="65"></a>}
+<a name="66"></a>
+<a name="67"></a><font class="source_keyword">function</font> Paint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="68"></a>{
+<a name="69"></a>    C.DrawColor = BGColor;
+<a name="70"></a>    DrawStretchedTexture(C, <font class="source_int">0</font>, <font class="source_int">0</font>, WinWidth, WinHeight, <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'WhiteTexture'</font>);
+<a name="71"></a>    <font class="source_keyword">Super</font>.Paint(C, X, Y);
+<a name="72"></a>    bReleased = <font class="source_keyword">False</font>;
+<a name="73"></a>}
+<a name="74"></a>
+<a name="75"></a><font class="source_keyword">function</font> Click(<font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="76"></a>{
+<a name="77"></a>    <font class="source_keyword">Super</font>.Click(X, Y);
+<a name="78"></a>    bReleased = <font class="source_keyword">True</font>;
+<a name="79"></a>}
+<a name="80"></a>
+<a name="81"></a><font class="source_keyword">function</font> ProcessURL(<font class="source_keyword">string</font> URL)
+<a name="82"></a>{
+<a name="83"></a>    Log(<font class="source_string">"Clicked Link: &gt;&gt;"</font>$URL$<font class="source_string">"&lt;&lt;"</font>);
+<a name="84"></a>
+<a name="85"></a>    <font class="source_keyword">if</font>( Left(URL, <font class="source_int">7</font>) ~= <font class="source_string">"mailto:"</font> )
+<a name="86"></a>        GetPlayerOwner().ConsoleCommand(<font class="source_string">"start "</font>$URL);
+<a name="87"></a>    <font class="source_keyword">if</font>( Left(URL, <font class="source_int">7</font>) ~= <font class="source_string">"http://"</font> )
+<a name="88"></a>        GetPlayerOwner().ConsoleCommand(<font class="source_string">"start "</font>$URL);
+<a name="89"></a>    <font class="source_keyword">if</font>( Left(URL, <font class="source_int">6</font>) ~= <font class="source_string">"ftp://"</font> )
+<a name="90"></a>        GetPlayerOwner().ConsoleCommand(<font class="source_string">"start "</font>$URL);
+<a name="91"></a>    <font class="source_keyword">if</font>( Left(URL, <font class="source_int">9</font>) ~= <font class="source_string">"telnet://"</font> )
+<a name="92"></a>        GetPlayerOwner().ConsoleCommand(<font class="source_string">"start "</font>$URL);
+<a name="93"></a>    <font class="source_keyword">if</font>( Left(URL, <font class="source_int">9</font>) ~= <font class="source_string">"gopher://"</font> )
+<a name="94"></a>        GetPlayerOwner().ConsoleCommand(<font class="source_string">"start "</font>$URL);
+<a name="95"></a>    <font class="source_keyword">if</font>( Left(URL, <font class="source_int">4</font>) ~= <font class="source_string">"www."</font> )
+<a name="96"></a>        GetPlayerOwner().ConsoleCommand(<font class="source_string">"start http://"</font>$URL);
+<a name="97"></a>    <font class="source_keyword">if</font>( Left(URL, <font class="source_int">4</font>) ~= <font class="source_string">"ftp."</font> )
+<a name="98"></a>        GetPlayerOwner().ConsoleCommand(<font class="source_string">"start ftp://"</font>$URL);
+<a name="99"></a>    <font class="source_keyword">else</font>
+<a name="100"></a>    <font class="source_keyword">if</font>( Left(URL, <font class="source_int">9</font>) ~= <font class="source_string">"unreal://"</font> )
+<a name="101"></a>        LaunchUnrealURL(URL);
+<a name="102"></a>}
+<a name="103"></a>
+<a name="104"></a><font class="source_keyword">function</font> OverURL(<font class="source_keyword">string</font> URL)
+<a name="105"></a>{
+<a name="106"></a>}
+<a name="107"></a>
+<a name="108"></a><font class="source_keyword">function</font> LaunchUnrealURL(<font class="source_keyword">string</font> URL)
+<a name="109"></a>{
+<a name="110"></a>    GetPlayerOwner().ClientTravel(URL, TRAVEL_Absolute, <font class="source_keyword">false</font>);
+<a name="111"></a>}
+<a name="112"></a>
+<a name="113"></a><font class="source_keyword">function</font> TextAreaTextSize(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">string</font> Text, <font class="source_keyword2">out</font> <font class="source_keyword">float</font> W, <font class="source_keyword2">out</font> <font class="source_keyword">float</font> H)
+<a name="114"></a>{
+<a name="115"></a>    ReplaceText(Text, <font class="source_string">"&nbsp;"</font>, <font class="source_string">" "</font>);
+<a name="116"></a>    ReplaceText(Text, <font class="source_string">"&gt;"</font>, <font class="source_string">"&gt;"</font>);
+<a name="117"></a>    ReplaceText(Text, <font class="source_string">"&lt;"</font>, <font class="source_string">"&lt;"</font>);
+<a name="118"></a>    ReplaceText(Text, <font class="source_string">"&amp;"</font>, <font class="source_string">"&"</font>);
+<a name="119"></a>
+<a name="120"></a>    TextSize(C, Text, W, H);
+<a name="121"></a>}
+<a name="122"></a>
+<a name="123"></a><font class="source_keyword">function</font> TextAreaClipText(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> DrawX, <font class="source_keyword">float</font> DrawY, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Text, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bCheckHotkey)
+<a name="124"></a>{
+<a name="125"></a>    ReplaceText(Text, <font class="source_string">"&nbsp;"</font>, <font class="source_string">" "</font>);
+<a name="126"></a>    ReplaceText(Text, <font class="source_string">"&gt;"</font>, <font class="source_string">"&gt;"</font>);
+<a name="127"></a>    ReplaceText(Text, <font class="source_string">"&lt;"</font>, <font class="source_string">"&lt;"</font>);
+<a name="128"></a>    ReplaceText(Text, <font class="source_string">"&amp;"</font>, <font class="source_string">"&"</font>);
+<a name="129"></a>
+<a name="130"></a>    ClipText(C, DrawX, DrawY, Text, bCheckHotKey);
+<a name="131"></a>}
+<a name="132"></a>
+<a name="133"></a><font class="source_comment">///////////////////////////////////////////////////////
+</font><a name="134"></a><font class="source_comment">// Overloaded functions from UWindowDynamicTextArea
+</font><a name="135"></a><font class="source_comment">///////////////////////////////////////////////////////
+</font><a name="136"></a>
+<a name="137"></a><font class="source_keyword">function</font> WrapRow(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L)
+<a name="138"></a>{
+<a name="139"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></font> CurrentStyle;
+<a name="140"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font> R;
+<a name="141"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Input, LeftText, HTML, RightText;
+<a name="142"></a>
+<a name="143"></a>    <font class="source_keyword">Super</font>.WrapRow(C, L);
+<a name="144"></a>
+<a name="145"></a>    <font class="source_comment">// Generate the DisplayString and StyleString lines for each row
+</font><a name="146"></a>    R = <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L);
+<a name="147"></a>    <font class="source_keyword">while</font>(R != <font class="source_keyword">None</font> && (R == L || R.WrapParent == L))
+<a name="148"></a>    {
+<a name="149"></a>        R.DisplayString = <font class="source_string">""</font>;
+<a name="150"></a>        R.StyleString = <font class="source_string">""</font>;
+<a name="151"></a>
+<a name="152"></a>        CurrentStyle = R.StartStyle;
+<a name="153"></a>        
+<a name="154"></a>        Input = R.Text;
+<a name="155"></a>        <font class="source_keyword">while</font>(Input != <font class="source_string">""</font>)
+<a name="156"></a>        {
+<a name="157"></a>            ParseHTML(Input, LeftText, HTML, RightText);
+<a name="158"></a>
+<a name="159"></a>            <font class="source_keyword">if</font>(LeftText != <font class="source_string">""</font> || R.DisplayString == <font class="source_string">""</font>)
+<a name="160"></a>            {
+<a name="161"></a>                R.DisplayString = R.DisplayString $ LeftText;
+<a name="162"></a>                R.StyleString = R.StyleString $ WriteStyleText(CurrentStyle, Len(LeftText));
+<a name="163"></a>            }
+<a name="164"></a>
+<a name="165"></a>            ProcessInlineHTML(HTML, CurrentStyle);
+<a name="166"></a>            SetCanvasStyle(C, CurrentStyle);
+<a name="167"></a>
+<a name="168"></a>            Input = RightText;
+<a name="169"></a>        }
+<a name="170"></a>
+<a name="171"></a>        R = <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(R.Next);
+<a name="172"></a>    }   
+<a name="173"></a>}
+<a name="174"></a>
+<a name="175"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> DrawTextLine(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L, <font class="source_keyword">float</font> Y)
+<a name="176"></a>{
+<a name="177"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> X, W, H, MouseX, MouseY;
+<a name="178"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></font> CurrentStyle;
+<a name="179"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> RowHeight;
+<a name="180"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">Color</a></font> OldColor;
+<a name="181"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> StylePos, DisplayPos, i;
+<a name="182"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> S;
+<a name="183"></a>
+<a name="184"></a>    RowHeight = <font class="source_int">0</font>;
+<a name="185"></a>
+<a name="186"></a>    CurrentStyle = <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle;
+<a name="187"></a>    <font class="source_keyword">if</font>(CurrentStyle.bCenter)
+<a name="188"></a>    {
+<a name="189"></a>        W = CalcHTMLTextWidth(C, L.Text, CurrentStyle);
+<a name="190"></a>        <font class="source_keyword">if</font>(VertSB.bWindowVisible)
+<a name="191"></a>            X = <font class="source_keyword">int</font>(((WinWidth - VertSB.WinWidth) - W) / <font class="source_int">2</font>);
+<a name="192"></a>        <font class="source_keyword">else</font>
+<a name="193"></a>            X = <font class="source_keyword">int</font>((WinWidth - W) / <font class="source_int">2</font>);
+<a name="194"></a>    }
+<a name="195"></a>    <font class="source_keyword">else</font>
+<a name="196"></a>        X = <font class="source_int">2</font>;
+<a name="197"></a>
+<a name="198"></a>    <font class="source_keyword">if</font>(GetEntryLevel().TimeSeconds &gt; LastBlinkTime + <font class="source_int">0.5</font>)
+<a name="199"></a>    {
+<a name="200"></a>        bShowBlink = !bShowBlink;
+<a name="201"></a>        LastBlinkTime = GetEntryLevel().TimeSeconds;
+<a name="202"></a>    }
+<a name="203"></a>
+<a name="204"></a>    <font class="source_keyword">if</font>(<font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).DisplayString == <font class="source_string">""</font>)
+<a name="205"></a>        SetCanvasStyle(C, CurrentStyle);
+<a name="206"></a>    <font class="source_keyword">else</font>
+<a name="207"></a>    {
+<a name="208"></a>        <font class="source_keyword">while</font>(DisplayPos &lt; Len(<font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).DisplayString))
+<a name="209"></a>        {
+<a name="210"></a>            i = ReadStyleText(<font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StyleString, StylePos, CurrentStyle);
+<a name="211"></a>            S = Mid(<font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).DisplayString, DisplayPos, i);
+<a name="212"></a>            DisplayPos += i;                    
+<a name="213"></a>            SetCanvasStyle(C, CurrentStyle);
+<a name="214"></a>
+<a name="215"></a>            TextAreaTextSize(C, S, W, H);
+<a name="216"></a>            <font class="source_keyword">if</font>(H &gt; RowHeight)
+<a name="217"></a>                RowHeight = H;
+<a name="218"></a>
+<a name="219"></a>            <font class="source_keyword">if</font>(CurrentStyle.bLink)
+<a name="220"></a>            {
+<a name="221"></a>                GetMouseXY(MouseX, MouseY);
+<a name="222"></a>                <font class="source_keyword">if</font>(X &lt; MouseX && X + W &gt; MouseX && Y &lt; MouseY && Y + H &gt; MouseY)
+<a name="223"></a>                {
+<a name="224"></a>                    Cursor = Root.HandCursor;
+<a name="225"></a>                    OverURL(CurrentStyle.LinkDestination);
+<a name="226"></a>
+<a name="227"></a>                    <font class="source_keyword">if</font>(bMouseDown || bReleased)
+<a name="228"></a>                    {
+<a name="229"></a>                        <font class="source_keyword">if</font>(bReleased)
+<a name="230"></a>                        {
+<a name="231"></a>                            ProcessURL(CurrentStyle.LinkDestination);
+<a name="232"></a>                            bReleased = <font class="source_keyword">False</font>;
+<a name="233"></a>                        }
+<a name="234"></a>                        <font class="source_keyword">else</font>
+<a name="235"></a>                            C.DrawColor = ALinkColor;
+<a name="236"></a>                    }
+<a name="237"></a>                }
+<a name="238"></a>            }
+<a name="239"></a>
+<a name="240"></a>            <font class="source_keyword">if</font>(CurrentStyle.BGColor != BGColor)
+<a name="241"></a>            {   
+<a name="242"></a>                OldColor = C.DrawColor;
+<a name="243"></a>                C.DrawColor = CurrentStyle.BGColor;
+<a name="244"></a>                DrawStretchedTexture(C, X, Y, W, H, <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'WhiteTexture'</font>);
+<a name="245"></a>                C.DrawColor = OldColor;
+<a name="246"></a>            }
+<a name="247"></a>            <font class="source_keyword">if</font>(!CurrentStyle.bBlink || bShowBlink)
+<a name="248"></a>                TextAreaClipText(C, X, Y, S);
+<a name="249"></a>            <font class="source_keyword">if</font>(CurrentStyle.bLink || CurrentStyle.bUnderline)
+<a name="250"></a>                DrawStretchedTexture(C, X, Y+H-<font class="source_int">1</font>, W, <font class="source_int">1</font>, <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'WhiteTexture'</font>);
+<a name="251"></a>
+<a name="252"></a>            X += W;
+<a name="253"></a>        }
+<a name="254"></a>    }
+<a name="255"></a>    <font class="source_keyword">if</font>(RowHeight == <font class="source_int">0</font>)
+<a name="256"></a>        TextAreaTextSize(C, <font class="source_string">"A"</font>, W, RowHeight);
+<a name="257"></a>
+<a name="258"></a>    <font class="source_keyword">return</font> RowHeight;
+<a name="259"></a>}
+<a name="260"></a>
+<a name="261"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> SplitRowAt(<font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L, <font class="source_keyword">int</font> SplitPos)
+<a name="262"></a>{
+<a name="263"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> N;
+<a name="264"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></font> CurrentStyle;
+<a name="265"></a>
+<a name="266"></a>    N = <font class="source_keyword">Super</font>.SplitRowAt(L, SplitPos);
+<a name="267"></a>
+<a name="268"></a>    <font class="source_comment">// update the style by processing from the start of L to the split position.
+</font><a name="269"></a>    <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(N).EndStyle = <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).EndStyle;
+<a name="270"></a>    CurrentStyle = <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle;
+<a name="271"></a>    HTMLUpdateStyle(L.Text, CurrentStyle);
+<a name="272"></a>    <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).EndStyle = CurrentStyle;
+<a name="273"></a>    <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(N).StartStyle = CurrentStyle;
+<a name="274"></a>
+<a name="275"></a>    <font class="source_keyword">return</font> N;
+<a name="276"></a>}
+<a name="277"></a>
+<a name="278"></a><font class="source_keyword">function</font> RemoveWrap(<font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L)
+<a name="279"></a>{
+<a name="280"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> N;
+<a name="281"></a>
+<a name="282"></a>    <font class="source_comment">// copy final endstyle to current row
+</font><a name="283"></a>    N = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(L.Next);
+<a name="284"></a>    <font class="source_keyword">while</font>(N != <font class="source_keyword">None</font> && N.WrapParent == L)
+<a name="285"></a>    {
+<a name="286"></a>        <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).EndStyle = <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(N).EndStyle;
+<a name="287"></a>        N = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(N.Next);
+<a name="288"></a>    }
+<a name="289"></a>
+<a name="290"></a>    <font class="source_keyword">Super</font>.RemoveWrap(L);
+<a name="291"></a>}
+<a name="292"></a>
+<a name="293"></a><font class="source_keyword">function</font> <font class="source_keyword">int</font> GetWrapPos(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L, <font class="source_keyword">float</font> MaxWidth)
+<a name="294"></a>{
+<a name="295"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> W, LineWidth, NextWordWidth;
+<a name="296"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Input, NextWord;
+<a name="297"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> WordsThisRow, WrapPos;
+<a name="298"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></font> CurrentStyle;
+<a name="299"></a>
+<a name="300"></a>    CurrentStyle = <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle;
+<a name="301"></a>
+<a name="302"></a>    <font class="source_comment">// quick check
+</font><a name="303"></a>    <font class="source_keyword">if</font>(CalcHTMLTextWidth(C, L.Text, CurrentStyle) &lt;= MaxWidth)
+<a name="304"></a>        <font class="source_keyword">return</font> -<font class="source_int">1</font>;
+<a name="305"></a>
+<a name="306"></a>    Input = L.Text;
+<a name="307"></a>    WordsThisRow = <font class="source_int">0</font>;
+<a name="308"></a>    LineWidth = <font class="source_int">0</font>;
+<a name="309"></a>    WrapPos = <font class="source_int">0</font>;
+<a name="310"></a>    NextWord = <font class="source_string">""</font>;
+<a name="311"></a>    CurrentStyle = <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle;
+<a name="312"></a>
+<a name="313"></a>    <font class="source_keyword">while</font>(Input != <font class="source_string">""</font> || NextWord != <font class="source_string">""</font>)
+<a name="314"></a>    {
+<a name="315"></a>        <font class="source_keyword">if</font>(NextWord == <font class="source_string">""</font>)
+<a name="316"></a>        {
+<a name="317"></a>            RemoveNextWord(Input, NextWord);
+<a name="318"></a>            NextWordWidth = CalcHTMLTextWidth(C, NextWord, CurrentStyle);
+<a name="319"></a>        }
+<a name="320"></a>        <font class="source_keyword">if</font>(WordsThisRow &gt; <font class="source_int">0</font> && LineWidth + NextWordWidth &gt; MaxWidth)
+<a name="321"></a>        {
+<a name="322"></a>            <font class="source_keyword">return</font> WrapPos;
+<a name="323"></a>        }
+<a name="324"></a>        <font class="source_keyword">else</font>
+<a name="325"></a>        {
+<a name="326"></a>            WrapPos += Len(NextWord);
+<a name="327"></a>            LineWidth += NextWordWidth;
+<a name="328"></a>            NextWord = <font class="source_string">""</font>;
+<a name="329"></a>            WordsThisRow++;
+<a name="330"></a>        }
+<a name="331"></a>    }
+<a name="332"></a>    <font class="source_keyword">return</font> -<font class="source_int">1</font>;
+<a name="333"></a>}
+<a name="334"></a>
+<a name="335"></a><font class="source_comment">// Find the next word - but don't split up HTML tags.
+</font><a name="336"></a><font class="source_keyword">function</font> RemoveNextWord(<font class="source_keyword2">out</font> <font class="source_keyword">string</font> Text, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> NextWord)
+<a name="337"></a>{
+<a name="338"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="339"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bInsideTag;
+<a name="340"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Ch;
+<a name="341"></a>    
+<a name="342"></a>    bInsideTag = <font class="source_keyword">False</font>;
+<a name="343"></a>
+<a name="344"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>;i&lt;Len(Text);i++)
+<a name="345"></a>    {
+<a name="346"></a>        Ch = Mid(Text, i, <font class="source_int">1</font>);
+<a name="347"></a>        <font class="source_keyword">if</font>(Ch == <font class="source_string">"&gt;"</font>)
+<a name="348"></a>            bInsideTag = <font class="source_keyword">False</font>;
+<a name="349"></a>        <font class="source_keyword">if</font>(Ch == <font class="source_string">"&lt;"</font>)
+<a name="350"></a>            bInsideTag = <font class="source_keyword">True</font>;
+<a name="351"></a>        <font class="source_keyword">if</font>(Ch == <font class="source_string">" "</font> && !bInsideTag)
+<a name="352"></a>            <font class="source_keyword">break</font>;
+<a name="353"></a>    }
+<a name="354"></a>    <font class="source_keyword">while</font>(Mid(Text, i, <font class="source_int">1</font>) == <font class="source_string">" "</font>)
+<a name="355"></a>        i++;    
+<a name="356"></a>    NextWord = Left(Text, i);
+<a name="357"></a>    Text = Mid(Text, i);
+<a name="358"></a>}
+<a name="359"></a>
+<a name="360"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> AddText(<font class="source_keyword">string</font> NewLine)
+<a name="361"></a>{
+<a name="362"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Input, Output, LeftText, RightText, HTML, Temp;
+<a name="363"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="364"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L;
+<a name="365"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></font> CurrentStyle, StartStyle;
+<a name="366"></a>
+<a name="367"></a>    <font class="source_keyword">if</font>(List.Last == List)
+<a name="368"></a>    {
+<a name="369"></a>        CurrentStyle.BulletLevel = <font class="source_int">0</font>;
+<a name="370"></a>        CurrentStyle.LinkDestination = <font class="source_string">""</font>;
+<a name="371"></a>        CurrentStyle.TextColor = TextColor;
+<a name="372"></a>        CurrentStyle.BGColor = BGColor;
+<a name="373"></a>        CurrentStyle.bCenter = bHCenter;
+<a name="374"></a>        CurrentStyle.bLink = <font class="source_keyword">False</font>;
+<a name="375"></a>        CurrentStyle.bUnderline = <font class="source_keyword">False</font>;
+<a name="376"></a>        CurrentStyle.bNoBR = <font class="source_keyword">False</font>;
+<a name="377"></a>        CurrentStyle.bHeading = <font class="source_keyword">False</font>;
+<a name="378"></a>        CurrentStyle.bBold = <font class="source_keyword">False</font>;
+<a name="379"></a>        CurrentStyle.bBlink = <font class="source_keyword">False</font>;
+<a name="380"></a>    }
+<a name="381"></a>    <font class="source_keyword">else</font>
+<a name="382"></a>        CurrentStyle = <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(List.Last).EndStyle;
+<a name="383"></a>    StartStyle = CurrentStyle;
+<a name="384"></a>
+<a name="385"></a>    <font class="source_comment">// convert \\n's -&gt; &lt;br&gt;'s
+</font><a name="386"></a>    i = InStr(NewLine, <font class="source_string">"\\n"</font>);
+<a name="387"></a>    <font class="source_keyword">while</font>(i != -<font class="source_int">1</font>)
+<a name="388"></a>    {
+<a name="389"></a>        NewLine = Left(NewLine, i) $ <font class="source_string">"&lt;br&gt;"</font> $ Mid(NewLine, i + <font class="source_int">2</font>);
+<a name="390"></a>        i = InStr(NewLine, <font class="source_string">"\\n"</font>);
+<a name="391"></a>    }
+<a name="392"></a>
+<a name="393"></a>    Input = NewLine;
+<a name="394"></a>    Output = <font class="source_string">""</font>;
+<a name="395"></a>    <font class="source_keyword">while</font>(Input != <font class="source_string">""</font>)
+<a name="396"></a>    {
+<a name="397"></a>        ParseHTML(Input, LeftText, HTML, RightText);
+<a name="398"></a>        
+<a name="399"></a>        <font class="source_keyword">switch</font>(GetTag(HTML))
+<a name="400"></a>        {
+<a name="401"></a>        <font class="source_comment">// multiline HTML tags
+</font><a name="402"></a>        <font class="source_keyword">case</font> <font class="source_string">"P"</font>:
+<a name="403"></a>            <font class="source_keyword">if</font>((Output $ LeftText) != <font class="source_string">""</font>)
+<a name="404"></a>            {
+<a name="405"></a>                L = <font class="source_keyword">Super</font>.AddText(Output $ LeftText);
+<a name="406"></a>                Output = <font class="source_string">""</font>;
+<a name="407"></a>                <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle = StartStyle;
+<a name="408"></a>                <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).EndStyle = CurrentStyle;
+<a name="409"></a>            }
+<a name="410"></a>            StartStyle = CurrentStyle;
+<a name="411"></a>            L = <font class="source_keyword">Super</font>.AddText(<font class="source_string">""</font>);
+<a name="412"></a>            <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle = StartStyle;
+<a name="413"></a>            <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).EndStyle = CurrentStyle;
+<a name="414"></a>            <font class="source_keyword">break</font>;
+<a name="415"></a>        <font class="source_keyword">case</font> <font class="source_string">"BR"</font>:
+<a name="416"></a>            L = <font class="source_keyword">Super</font>.AddText(Output $ LeftText);
+<a name="417"></a>            Output = <font class="source_string">""</font>;
+<a name="418"></a>            <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle = StartStyle;
+<a name="419"></a>            <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).EndStyle = CurrentStyle;
+<a name="420"></a>            StartStyle = CurrentStyle;
+<a name="421"></a>            <font class="source_keyword">break</font>;
+<a name="422"></a>        <font class="source_keyword">case</font> <font class="source_string">"BODY"</font>:
+<a name="423"></a>            Temp = GetOption(HTML, <font class="source_string">"BGCOLOR="</font>);
+<a name="424"></a>            <font class="source_keyword">if</font>(Temp != <font class="source_string">""</font>)
+<a name="425"></a>            {
+<a name="426"></a>                BGColor = ParseColor(Temp);
+<a name="427"></a>                CurrentStyle.BGColor = BGColor;
+<a name="428"></a>                StartStyle.BGColor = BGColor;
+<a name="429"></a>            }
+<a name="430"></a>
+<a name="431"></a>            Temp = GetOption(HTML, <font class="source_string">"LINK="</font>);
+<a name="432"></a>            <font class="source_keyword">if</font>(Temp != <font class="source_string">""</font>)
+<a name="433"></a>                LinkColor = ParseColor(Temp);
+<a name="434"></a>
+<a name="435"></a>            Temp = GetOption(HTML, <font class="source_string">"ALINK="</font>);
+<a name="436"></a>            <font class="source_keyword">if</font>(Temp != <font class="source_string">""</font>)
+<a name="437"></a>                ALinkColor = ParseColor(Temp);
+<a name="438"></a>
+<a name="439"></a>            Temp = GetOption(HTML, <font class="source_string">"TEXT="</font>);
+<a name="440"></a>            <font class="source_keyword">if</font>(Temp != <font class="source_string">""</font>)
+<a name="441"></a>            {
+<a name="442"></a>                TextColor = ParseColor(Temp);
+<a name="443"></a>                CurrentStyle.TextColor = TextColor;
+<a name="444"></a>            }
+<a name="445"></a>            Output = Output $ LeftText;
+<a name="446"></a>            <font class="source_keyword">break</font>;
+<a name="447"></a>        <font class="source_keyword">case</font> <font class="source_string">"CENTER"</font>:
+<a name="448"></a>            <font class="source_keyword">if</font>((Output $ LeftText) != <font class="source_string">""</font>)
+<a name="449"></a>            {
+<a name="450"></a>                L = <font class="source_keyword">Super</font>.AddText(Output $ LeftText);
+<a name="451"></a>                Output = <font class="source_string">""</font>;
+<a name="452"></a>                <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle = StartStyle;
+<a name="453"></a>                <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).EndStyle = CurrentStyle;
+<a name="454"></a>            }
+<a name="455"></a>            CurrentStyle.bCenter = <font class="source_keyword">True</font>;
+<a name="456"></a>            StartStyle = CurrentStyle;
+<a name="457"></a>            <font class="source_keyword">break</font>;
+<a name="458"></a>        <font class="source_keyword">case</font> <font class="source_string">"/CENTER"</font>:
+<a name="459"></a>            L = <font class="source_keyword">Super</font>.AddText(Output $ LeftText);
+<a name="460"></a>            Output = <font class="source_string">""</font>;
+<a name="461"></a>            <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle = StartStyle;
+<a name="462"></a>            <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).EndStyle = CurrentStyle;
+<a name="463"></a>            CurrentStyle.bCenter = <font class="source_keyword">False</font>;
+<a name="464"></a>            StartStyle = CurrentStyle;
+<a name="465"></a>            <font class="source_keyword">break</font>;          
+<a name="466"></a>        <font class="source_comment">// Inline HTML tags
+</font><a name="467"></a>        <font class="source_keyword">case</font> <font class="source_string">"H1"</font>:
+<a name="468"></a>            <font class="source_keyword">if</font>((Output $ LeftText) != <font class="source_string">""</font>)
+<a name="469"></a>            {
+<a name="470"></a>                L = <font class="source_keyword">Super</font>.AddText(Output $ LeftText);
+<a name="471"></a>                Output = <font class="source_string">""</font>;
+<a name="472"></a>                <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle = StartStyle;
+<a name="473"></a>                <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).EndStyle = CurrentStyle;
+<a name="474"></a>            }
+<a name="475"></a>            CurrentStyle.bHeading = <font class="source_keyword">True</font>;
+<a name="476"></a>            StartStyle = CurrentStyle;
+<a name="477"></a>            <font class="source_keyword">break</font>;
+<a name="478"></a>        <font class="source_keyword">case</font> <font class="source_string">"/H1"</font>:
+<a name="479"></a>            L = <font class="source_keyword">Super</font>.AddText(Output $ LeftText);
+<a name="480"></a>            Output = <font class="source_string">""</font>;
+<a name="481"></a>            <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle = StartStyle;
+<a name="482"></a>            <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).EndStyle = CurrentStyle;
+<a name="483"></a>            CurrentStyle.bHeading = <font class="source_keyword">False</font>;
+<a name="484"></a>            StartStyle = CurrentStyle;
+<a name="485"></a>            <font class="source_keyword">break</font>;          
+<a name="486"></a>        <font class="source_keyword">case</font> <font class="source_string">"FONT"</font>:
+<a name="487"></a>            Output = Output $ LeftText $ HTML;
+<a name="488"></a>            Temp = GetOption(HTML, <font class="source_string">"COLOR="</font>);
+<a name="489"></a>            <font class="source_keyword">if</font>(Temp != <font class="source_string">""</font>)
+<a name="490"></a>                CurrentStyle.TextColor = ParseColor(Temp);
+<a name="491"></a>            Temp = GetOption(HTML, <font class="source_string">"BGCOLOR="</font>);
+<a name="492"></a>            <font class="source_keyword">if</font>(Temp != <font class="source_string">""</font>)
+<a name="493"></a>                CurrentStyle.BGColor = ParseColor(Temp);
+<a name="494"></a>            <font class="source_keyword">break</font>;
+<a name="495"></a>        <font class="source_keyword">case</font> <font class="source_string">"/FONT"</font>:
+<a name="496"></a>            Output = Output $ LeftText $ HTML;
+<a name="497"></a>            CurrentStyle.TextColor = TextColor;
+<a name="498"></a>            CurrentStyle.BGColor = BGColor;
+<a name="499"></a>            <font class="source_keyword">break</font>;
+<a name="500"></a>        <font class="source_keyword">case</font> <font class="source_string">"B"</font>:
+<a name="501"></a>            Output = Output $ LeftText $ HTML;
+<a name="502"></a>            CurrentStyle.bBold = <font class="source_keyword">True</font>;
+<a name="503"></a>            <font class="source_keyword">break</font>;
+<a name="504"></a>        <font class="source_keyword">case</font> <font class="source_string">"/B"</font>:
+<a name="505"></a>            Output = Output $ LeftText $ HTML;
+<a name="506"></a>            CurrentStyle.bBold = <font class="source_keyword">False</font>;
+<a name="507"></a>            <font class="source_keyword">break</font>;
+<a name="508"></a>        <font class="source_keyword">case</font> <font class="source_string">"U"</font>:
+<a name="509"></a>            Output = Output $ LeftText $ HTML;
+<a name="510"></a>            CurrentStyle.bUnderline = <font class="source_keyword">True</font>;
+<a name="511"></a>            <font class="source_keyword">break</font>;
+<a name="512"></a>        <font class="source_keyword">case</font> <font class="source_string">"/U"</font>:
+<a name="513"></a>            Output = Output $ LeftText $ HTML;
+<a name="514"></a>            CurrentStyle.bUnderline = <font class="source_keyword">False</font>;
+<a name="515"></a>            <font class="source_keyword">break</font>;
+<a name="516"></a>        <font class="source_keyword">case</font> <font class="source_string">"A"</font>:
+<a name="517"></a>            Output = Output $ LeftText $ HTML;
+<a name="518"></a>            CurrentStyle.bLink = <font class="source_keyword">True</font>;
+<a name="519"></a>            CurrentStyle.LinkDestination = GetOption(HTML, <font class="source_string">"HREF="</font>);
+<a name="520"></a>            <font class="source_keyword">break</font>;
+<a name="521"></a>        <font class="source_keyword">case</font> <font class="source_string">"/A"</font>:
+<a name="522"></a>            Output = Output $ LeftText $ HTML;
+<a name="523"></a>            CurrentStyle.bLink = <font class="source_keyword">False</font>;
+<a name="524"></a>            CurrentStyle.LinkDestination = <font class="source_string">""</font>;
+<a name="525"></a>            <font class="source_keyword">break</font>;
+<a name="526"></a>        <font class="source_keyword">case</font> <font class="source_string">"NOBR"</font>:
+<a name="527"></a>            Output = Output $ LeftText $ HTML;
+<a name="528"></a>            CurrentStyle.bNoBR = <font class="source_keyword">True</font>;
+<a name="529"></a>            <font class="source_keyword">break</font>;
+<a name="530"></a>        <font class="source_keyword">case</font> <font class="source_string">"/NOBR"</font>:
+<a name="531"></a>            Output = Output $ LeftText $ HTML;
+<a name="532"></a>            CurrentStyle.bNoBR = <font class="source_keyword">False</font>;
+<a name="533"></a>            <font class="source_keyword">break</font>;
+<a name="534"></a>        <font class="source_keyword">case</font> <font class="source_string">"BLINK"</font>:
+<a name="535"></a>            Output = Output $ LeftText $ HTML;
+<a name="536"></a>            CurrentStyle.bBlink = <font class="source_keyword">True</font>;
+<a name="537"></a>            <font class="source_keyword">break</font>;
+<a name="538"></a>        <font class="source_keyword">case</font> <font class="source_string">"/BLINK"</font>:
+<a name="539"></a>            Output = Output $ LeftText $ HTML;
+<a name="540"></a>            CurrentStyle.bBlink = <font class="source_keyword">False</font>;
+<a name="541"></a>            <font class="source_keyword">break</font>;
+<a name="542"></a>        default:
+<a name="543"></a>            Output = Output $ LeftText;
+<a name="544"></a>            <font class="source_keyword">break</font>;
+<a name="545"></a>        }
+<a name="546"></a>        Input = RightText;
+<a name="547"></a>    }
+<a name="548"></a>
+<a name="549"></a>    L = <font class="source_keyword">Super</font>.AddText(Output);
+<a name="550"></a>    <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).StartStyle = StartStyle;
+<a name="551"></a>    <font class="source_type"><a href="..\uwindow\uwindowhtmltextrow.html" class="source">UWindowHTMLTextRow</a></font>(L).EndStyle = CurrentStyle;
+<a name="552"></a>
+<a name="553"></a>    <font class="source_keyword">return</font> L;
+<a name="554"></a>}
+<a name="555"></a>
+<a name="556"></a><font class="source_comment">///////////////////////////////////////////////////
+</font><a name="557"></a><font class="source_comment">// HTML Text Processing
+</font><a name="558"></a><font class="source_comment">///////////////////////////////////////////////////
+</font><a name="559"></a>
+<a name="560"></a><font class="source_comment">// Get the next HTML tag, the text before it and everthing after it.
+</font><a name="561"></a><font class="source_keyword">function</font> ParseHTML(<font class="source_keyword">string</font> Input, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> LeftText, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> HTML, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> RightText)
+<a name="562"></a>{
+<a name="563"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="564"></a>    
+<a name="565"></a>    i = InStr(Input, <font class="source_string">"&lt;"</font>);
+<a name="566"></a>    <font class="source_keyword">if</font>(i == -<font class="source_int">1</font>)
+<a name="567"></a>    {
+<a name="568"></a>        LeftText = Input;
+<a name="569"></a>        HTML = <font class="source_string">""</font>;
+<a name="570"></a>        RightText = <font class="source_string">""</font>;
+<a name="571"></a>        <font class="source_keyword">return</font>;
+<a name="572"></a>    }
+<a name="573"></a>
+<a name="574"></a>    LeftText = Left(Input, i);
+<a name="575"></a>    HTML = Mid(Input, i);
+<a name="576"></a>
+<a name="577"></a>    i = InStr(HTML, <font class="source_string">"&gt;"</font>);
+<a name="578"></a>    <font class="source_keyword">if</font>(i == -<font class="source_int">1</font>)
+<a name="579"></a>    {
+<a name="580"></a>        RightText = <font class="source_string">""</font>;
+<a name="581"></a>        <font class="source_keyword">return</font>;
+<a name="582"></a>    }
+<a name="583"></a>
+<a name="584"></a>    RightText = Mid(HTML, i+<font class="source_int">1</font>);
+<a name="585"></a>    HTML = Left(HTML, i+<font class="source_int">1</font>); 
+<a name="586"></a>}
+<a name="587"></a>
+<a name="588"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> CalcHTMLTextWidth(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">string</font> Text, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\uwindow\uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></font> CurrentStyle)
+<a name="589"></a>{
+<a name="590"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Input, LeftText, HTML, RightText;
+<a name="591"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> W, H, Width;
+<a name="592"></a>
+<a name="593"></a>    Width = <font class="source_int">0</font>;
+<a name="594"></a>    Input = Text;
+<a name="595"></a>    <font class="source_keyword">while</font>(Input != <font class="source_string">""</font>)
+<a name="596"></a>    {
+<a name="597"></a>        ParseHTML(Input, LeftText, HTML, RightText);
+<a name="598"></a>
+<a name="599"></a>        SetCanvasStyle(C, CurrentStyle);
+<a name="600"></a>        TextAreaTextSize(C, LeftText, W, H);
+<a name="601"></a>        Width += W;
+<a name="602"></a>                    
+<a name="603"></a>        ProcessInlineHTML(HTML, CurrentStyle);
+<a name="604"></a>
+<a name="605"></a>        Input = RightText;
+<a name="606"></a>    }
+<a name="607"></a>
+<a name="608"></a>    <font class="source_keyword">return</font> Width;
+<a name="609"></a>}
+<a name="610"></a>
+<a name="611"></a><font class="source_comment">// Update CurrentStyle based on the contents of the HTML tag provided
+</font><a name="612"></a><font class="source_keyword">function</font> ProcessInlineHTML(<font class="source_keyword">string</font> HTML, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\uwindow\uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></font> CurrentStyle)
+<a name="613"></a>{
+<a name="614"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Temp;
+<a name="615"></a>
+<a name="616"></a>    <font class="source_keyword">if</font>(HTML == <font class="source_string">""</font>)  
+<a name="617"></a>        <font class="source_keyword">return</font>;
+<a name="618"></a>
+<a name="619"></a>    <font class="source_keyword">switch</font>(GetTag(HTML))
+<a name="620"></a>    {
+<a name="621"></a>    <font class="source_keyword">case</font> <font class="source_string">"H1"</font>:
+<a name="622"></a>        CurrentStyle.bHeading = <font class="source_keyword">True</font>;
+<a name="623"></a>        <font class="source_keyword">break</font>;
+<a name="624"></a>    <font class="source_keyword">case</font> <font class="source_string">"/H1"</font>:
+<a name="625"></a>        CurrentStyle.bHeading = <font class="source_keyword">False</font>;
+<a name="626"></a>        <font class="source_keyword">break</font>;          
+<a name="627"></a>    <font class="source_keyword">case</font> <font class="source_string">"FONT"</font>:
+<a name="628"></a>        Temp = GetOption(HTML, <font class="source_string">"COLOR="</font>);
+<a name="629"></a>        <font class="source_keyword">if</font>(Temp != <font class="source_string">""</font>)
+<a name="630"></a>            CurrentStyle.TextColor = ParseColor(Temp);
+<a name="631"></a>        Temp = GetOption(HTML, <font class="source_string">"BGCOLOR="</font>);
+<a name="632"></a>        <font class="source_keyword">if</font>(Temp != <font class="source_string">""</font>)
+<a name="633"></a>            CurrentStyle.BGColor = ParseColor(Temp);
+<a name="634"></a>        <font class="source_keyword">break</font>;
+<a name="635"></a>    <font class="source_keyword">case</font> <font class="source_string">"/FONT"</font>:
+<a name="636"></a>        CurrentStyle.TextColor = TextColor;
+<a name="637"></a>        CurrentStyle.BGColor = BGColor;
+<a name="638"></a>        <font class="source_keyword">break</font>;
+<a name="639"></a>    <font class="source_keyword">case</font> <font class="source_string">"B"</font>:
+<a name="640"></a>        CurrentStyle.bBold = <font class="source_keyword">True</font>;
+<a name="641"></a>        <font class="source_keyword">break</font>;
+<a name="642"></a>    <font class="source_keyword">case</font> <font class="source_string">"/B"</font>:
+<a name="643"></a>        CurrentStyle.bBold = <font class="source_keyword">False</font>;
+<a name="644"></a>        <font class="source_keyword">break</font>;
+<a name="645"></a>    <font class="source_keyword">case</font> <font class="source_string">"U"</font>:
+<a name="646"></a>        CurrentStyle.bUnderline = <font class="source_keyword">True</font>;
+<a name="647"></a>        <font class="source_keyword">break</font>;
+<a name="648"></a>    <font class="source_keyword">case</font> <font class="source_string">"/U"</font>:
+<a name="649"></a>        CurrentStyle.bUnderline = <font class="source_keyword">False</font>;
+<a name="650"></a>        <font class="source_keyword">break</font>;
+<a name="651"></a>    <font class="source_keyword">case</font> <font class="source_string">"A"</font>:
+<a name="652"></a>        CurrentStyle.bLink = <font class="source_keyword">True</font>;
+<a name="653"></a>        CurrentStyle.LinkDestination = GetOption(HTML, <font class="source_string">"HREF="</font>);
+<a name="654"></a>        <font class="source_keyword">break</font>;
+<a name="655"></a>    <font class="source_keyword">case</font> <font class="source_string">"/A"</font>:
+<a name="656"></a>        CurrentStyle.bLink = <font class="source_keyword">False</font>;
+<a name="657"></a>        CurrentStyle.LinkDestination = <font class="source_string">""</font>;
+<a name="658"></a>        <font class="source_keyword">break</font>;
+<a name="659"></a>    <font class="source_keyword">case</font> <font class="source_string">"NOBR"</font>:
+<a name="660"></a>        CurrentStyle.bNoBR = <font class="source_keyword">True</font>;
+<a name="661"></a>        <font class="source_keyword">break</font>;
+<a name="662"></a>    <font class="source_keyword">case</font> <font class="source_string">"/NOBR"</font>:
+<a name="663"></a>        CurrentStyle.bNoBR = <font class="source_keyword">False</font>;
+<a name="664"></a>        <font class="source_keyword">break</font>;
+<a name="665"></a>    <font class="source_keyword">case</font> <font class="source_string">"BLINK"</font>:
+<a name="666"></a>        CurrentStyle.bBlink = <font class="source_keyword">True</font>;
+<a name="667"></a>        <font class="source_keyword">break</font>;
+<a name="668"></a>    <font class="source_keyword">case</font> <font class="source_string">"/BLINK"</font>:
+<a name="669"></a>        CurrentStyle.bBlink = <font class="source_keyword">False</font>;
+<a name="670"></a>        <font class="source_keyword">break</font>;
+<a name="671"></a>    }
+<a name="672"></a>}
+<a name="673"></a>
+<a name="674"></a><font class="source_comment">// update the current style based on some text input
+</font><a name="675"></a><font class="source_keyword">function</font> HTMLUpdateStyle(<font class="source_keyword">string</font> Input, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\uwindow\uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></font> CurrentStyle)
+<a name="676"></a>{
+<a name="677"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> LeftText, HTML, RightText; 
+<a name="678"></a>
+<a name="679"></a>    <font class="source_keyword">while</font>(Input != <font class="source_string">""</font>)
+<a name="680"></a>    {
+<a name="681"></a>        ParseHTML(Input, LeftText, HTML, RightText);
+<a name="682"></a>        ProcessInlineHTML(HTML, CurrentStyle);
+<a name="683"></a>        Input = RightText;
+<a name="684"></a>    }
+<a name="685"></a>}
+<a name="686"></a>
+<a name="687"></a><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetOption(<font class="source_keyword">string</font> HTML, <font class="source_keyword">string</font> Option)
+<a name="688"></a>{
+<a name="689"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, j;
+<a name="690"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> s;
+<a name="691"></a>    
+<a name="692"></a>    i = InStr(Caps(HTML), Caps(Option));
+<a name="693"></a>
+<a name="694"></a>    <font class="source_keyword">if</font>(i == <font class="source_int">1</font> || Mid(HTML, i-<font class="source_int">1</font>, <font class="source_int">1</font>) == <font class="source_string">" "</font>) 
+<a name="695"></a>    {
+<a name="696"></a>        s = Mid(HTML, i+Len(Option));
+<a name="697"></a>        j = FirstMatching(InStr(s, <font class="source_string">"&gt;"</font>), InStr(s, <font class="source_string">" "</font>));
+<a name="698"></a>        s = Left(s, j);
+<a name="699"></a>
+<a name="700"></a>        <font class="source_keyword">if</font>(Left(s, <font class="source_int">1</font>) == <font class="source_string">"\""</font>)
+<a name="701"></a>            s = Mid(s, <font class="source_int">1</font>);
+<a name="702"></a>
+<a name="703"></a>        <font class="source_keyword">if</font>(Right(s, <font class="source_int">1</font>) == <font class="source_string">"\""</font>)
+<a name="704"></a>            s = Left(s, Len(s) - <font class="source_int">1</font>);
+<a name="705"></a>
+<a name="706"></a>        <font class="source_keyword">return</font> s;
+<a name="707"></a>    }
+<a name="708"></a>    <font class="source_keyword">return</font> <font class="source_string">""</font>;
+<a name="709"></a>}
+<a name="710"></a>
+<a name="711"></a><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetTag(<font class="source_keyword">string</font> HTML)
+<a name="712"></a>{
+<a name="713"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="714"></a>
+<a name="715"></a>    <font class="source_keyword">if</font>(HTML == <font class="source_string">""</font>)
+<a name="716"></a>        <font class="source_keyword">return</font> <font class="source_string">""</font>;
+<a name="717"></a>
+<a name="718"></a>    HTML = Mid(HTML, <font class="source_int">1</font>); <font class="source_comment">// lose &lt;
+</font><a name="719"></a>
+<a name="720"></a>    i = FirstMatching(InStr(HTML, <font class="source_string">"&gt;"</font>), InStr(HTML, <font class="source_string">" "</font>));
+<a name="721"></a>    <font class="source_keyword">if</font>(i == -<font class="source_int">1</font>)
+<a name="722"></a>        <font class="source_keyword">return</font> Caps(HTML);
+<a name="723"></a>    <font class="source_keyword">else</font>
+<a name="724"></a>        <font class="source_keyword">return</font> Caps(Left(HTML, i));
+<a name="725"></a>}
+<a name="726"></a>
+<a name="727"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">Color</a></font> ParseColor(<font class="source_keyword">string</font> S)
+<a name="728"></a>{
+<a name="729"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">Color</a></font> C;
+<a name="730"></a>
+<a name="731"></a>    <font class="source_keyword">if</font>(Left(S, <font class="source_int">1</font>) == <font class="source_string">"#"</font>)
+<a name="732"></a>        S = Mid(S, <font class="source_int">1</font>);
+<a name="733"></a>
+<a name="734"></a>    C.R = <font class="source_int">16</font> * GetHexDigit(Mid(S, <font class="source_int">0</font>, <font class="source_int">1</font>)) + GetHexDigit(Mid(S, <font class="source_int">1</font>, <font class="source_int">1</font>));
+<a name="735"></a>    C.G = <font class="source_int">16</font> * GetHexDigit(Mid(S, <font class="source_int">2</font>, <font class="source_int">1</font>)) + GetHexDigit(Mid(S, <font class="source_int">3</font>, <font class="source_int">1</font>));
+<a name="736"></a>    C.B = <font class="source_int">16</font> * GetHexDigit(Mid(S, <font class="source_int">4</font>, <font class="source_int">1</font>)) + GetHexDigit(Mid(S, <font class="source_int">5</font>, <font class="source_int">1</font>));
+<a name="737"></a>
+<a name="738"></a>    <font class="source_keyword">return</font> C;
+<a name="739"></a>}
+<a name="740"></a>
+<a name="741"></a><font class="source_keyword">function</font> <font class="source_keyword">int</font> GetHexDigit(<font class="source_keyword">string</font> D)
+<a name="742"></a>{
+<a name="743"></a>    <font class="source_keyword">switch</font>(caps(D))
+<a name="744"></a>    {
+<a name="745"></a>    <font class="source_keyword">case</font> <font class="source_string">"0"</font>: <font class="source_keyword">return</font> <font class="source_int">0</font>;
+<a name="746"></a>    <font class="source_keyword">case</font> <font class="source_string">"1"</font>: <font class="source_keyword">return</font> <font class="source_int">1</font>;
+<a name="747"></a>    <font class="source_keyword">case</font> <font class="source_string">"2"</font>: <font class="source_keyword">return</font> <font class="source_int">2</font>;
+<a name="748"></a>    <font class="source_keyword">case</font> <font class="source_string">"3"</font>: <font class="source_keyword">return</font> <font class="source_int">3</font>;
+<a name="749"></a>    <font class="source_keyword">case</font> <font class="source_string">"4"</font>: <font class="source_keyword">return</font> <font class="source_int">4</font>;
+<a name="750"></a>    <font class="source_keyword">case</font> <font class="source_string">"5"</font>: <font class="source_keyword">return</font> <font class="source_int">5</font>; 
+<a name="751"></a>    <font class="source_keyword">case</font> <font class="source_string">"6"</font>: <font class="source_keyword">return</font> <font class="source_int">6</font>; 
+<a name="752"></a>    <font class="source_keyword">case</font> <font class="source_string">"7"</font>: <font class="source_keyword">return</font> <font class="source_int">7</font>; 
+<a name="753"></a>    <font class="source_keyword">case</font> <font class="source_string">"8"</font>: <font class="source_keyword">return</font> <font class="source_int">8</font>; 
+<a name="754"></a>    <font class="source_keyword">case</font> <font class="source_string">"9"</font>: <font class="source_keyword">return</font> <font class="source_int">9</font>; 
+<a name="755"></a>    <font class="source_keyword">case</font> <font class="source_string">"A"</font>: <font class="source_keyword">return</font> <font class="source_int">10</font>; 
+<a name="756"></a>    <font class="source_keyword">case</font> <font class="source_string">"B"</font>: <font class="source_keyword">return</font> <font class="source_int">11</font>; 
+<a name="757"></a>    <font class="source_keyword">case</font> <font class="source_string">"C"</font>: <font class="source_keyword">return</font> <font class="source_int">12</font>; 
+<a name="758"></a>    <font class="source_keyword">case</font> <font class="source_string">"D"</font>: <font class="source_keyword">return</font> <font class="source_int">13</font>; 
+<a name="759"></a>    <font class="source_keyword">case</font> <font class="source_string">"E"</font>: <font class="source_keyword">return</font> <font class="source_int">14</font>; 
+<a name="760"></a>    <font class="source_keyword">case</font> <font class="source_string">"F"</font>: <font class="source_keyword">return</font> <font class="source_int">15</font>; 
+<a name="761"></a>    }
+<a name="762"></a>
+<a name="763"></a>    <font class="source_keyword">return</font> <font class="source_int">0</font>;
+<a name="764"></a>}
+<a name="765"></a>
+<a name="766"></a><font class="source_keyword">function</font> <font class="source_keyword">int</font> FirstMatching(<font class="source_keyword">int</font> i, <font class="source_keyword">int</font> j)
+<a name="767"></a>{
+<a name="768"></a>    <font class="source_keyword">if</font>(i == -<font class="source_int">1</font>)
+<a name="769"></a>        <font class="source_keyword">return</font> j;
+<a name="770"></a>
+<a name="771"></a>    <font class="source_keyword">if</font>(j == -<font class="source_int">1</font>)
+<a name="772"></a>        <font class="source_keyword">return</font> i;
+<a name="773"></a>    <font class="source_keyword">else</font>
+<a name="774"></a>        <font class="source_keyword">return</font> Min(i, j);
+<a name="775"></a>}
+<a name="776"></a>
+<a name="777"></a><font class="source_keyword">function</font> SetCanvasStyle(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_type"><a href="..\uwindow\uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></font> CurrentStyle)
+<a name="778"></a>{
+<a name="779"></a>    <font class="source_keyword">if</font>(CurrentStyle.bLink)
+<a name="780"></a>        C.DrawColor = LinkColor;
+<a name="781"></a>    <font class="source_keyword">else</font>
+<a name="782"></a>        C.DrawColor = CurrentStyle.TextColor;
+<a name="783"></a>
+<a name="784"></a>    <font class="source_keyword">if</font>(CurrentStyle.bHeading)
+<a name="785"></a>        C.<font class="source_type">Font</font> = Root.Fonts[F_LargeBold];
+<a name="786"></a>    <font class="source_keyword">else</font>
+<a name="787"></a>    <font class="source_keyword">if</font>(CurrentStyle.bBold)
+<a name="788"></a>        C.<font class="source_type">Font</font> = Root.Fonts[F_Bold];
+<a name="789"></a>    <font class="source_keyword">else</font>
+<a name="790"></a>        C.<font class="source_type">Font</font> = Root.Fonts[F_Normal];
+<a name="791"></a>}
+<a name="792"></a>
+<a name="793"></a><font class="source_keyword">function</font> <font class="source_keyword">string</font> WriteStyleText(<font class="source_type"><a href="..\uwindow\uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></font> CurrentStyle, <font class="source_keyword">int</font> CharCount)
+<a name="794"></a>{
+<a name="795"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Pad;
+<a name="796"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Temp;
+<a name="797"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Output;
+<a name="798"></a>
+<a name="799"></a>    Pad = <font class="source_string">"0000"</font>;
+<a name="800"></a>
+<a name="801"></a>    Temp = <font class="source_keyword">string</font>(CharCount);
+<a name="802"></a>    Output = Left(Pad, <font class="source_int">4</font> - Len(Temp)) $ Temp;
+<a name="803"></a>        
+<a name="804"></a>    Temp = <font class="source_keyword">string</font>(Len(CurrentStyle.LinkDestination));
+<a name="805"></a>    Output = Output $ Left(Pad, <font class="source_int">4</font> - Len(Temp)) $ Temp $ CurrentStyle.LinkDestination;
+<a name="806"></a>
+<a name="807"></a>    Temp = <font class="source_keyword">string</font>(CurrentStyle.TextColor.R);
+<a name="808"></a>    Output = Output $ Left(Pad, <font class="source_int">3</font> - Len(Temp)) $ Temp;
+<a name="809"></a>    Temp = <font class="source_keyword">string</font>(CurrentStyle.TextColor.G);
+<a name="810"></a>    Output = Output $ Left(Pad, <font class="source_int">3</font> - Len(Temp)) $ Temp;
+<a name="811"></a>    Temp = <font class="source_keyword">string</font>(CurrentStyle.TextColor.B);
+<a name="812"></a>    Output = Output $ Left(Pad, <font class="source_int">3</font> - Len(Temp)) $ Temp;
+<a name="813"></a>
+<a name="814"></a>    Temp = <font class="source_keyword">string</font>(CurrentStyle.BGColor.R);
+<a name="815"></a>    Output = Output $ Left(Pad, <font class="source_int">3</font> - Len(Temp)) $ Temp;
+<a name="816"></a>    Temp = <font class="source_keyword">string</font>(CurrentStyle.BGColor.G);
+<a name="817"></a>    Output = Output $ Left(Pad, <font class="source_int">3</font> - Len(Temp)) $ Temp;
+<a name="818"></a>    Temp = <font class="source_keyword">string</font>(CurrentStyle.BGColor.B);
+<a name="819"></a>    Output = Output $ Left(Pad, <font class="source_int">3</font> - Len(Temp)) $ Temp;
+<a name="820"></a>
+<a name="821"></a>    <font class="source_keyword">if</font>(CurrentStyle.bCenter)
+<a name="822"></a>        Output = Output $ <font class="source_string">"T"</font>;
+<a name="823"></a>    <font class="source_keyword">else</font>
+<a name="824"></a>        Output = Output $ <font class="source_string">"F"</font>;
+<a name="825"></a>
+<a name="826"></a>    <font class="source_keyword">if</font>(CurrentStyle.bLink)
+<a name="827"></a>        Output = Output $ <font class="source_string">"T"</font>;
+<a name="828"></a>    <font class="source_keyword">else</font>
+<a name="829"></a>        Output = Output $ <font class="source_string">"F"</font>;
+<a name="830"></a>
+<a name="831"></a>    <font class="source_keyword">if</font>(CurrentStyle.bUnderline)
+<a name="832"></a>        Output = Output $ <font class="source_string">"T"</font>;
+<a name="833"></a>    <font class="source_keyword">else</font>
+<a name="834"></a>        Output = Output $ <font class="source_string">"F"</font>;
+<a name="835"></a>
+<a name="836"></a>    <font class="source_keyword">if</font>(CurrentStyle.bNoBR)
+<a name="837"></a>        Output = Output $ <font class="source_string">"T"</font>;
+<a name="838"></a>    <font class="source_keyword">else</font>
+<a name="839"></a>        Output = Output $ <font class="source_string">"F"</font>;
+<a name="840"></a>
+<a name="841"></a>    <font class="source_keyword">if</font>(CurrentStyle.bHeading)
+<a name="842"></a>        Output = Output $ <font class="source_string">"T"</font>;
+<a name="843"></a>    <font class="source_keyword">else</font>
+<a name="844"></a>        Output = Output $ <font class="source_string">"F"</font>;
+<a name="845"></a>
+<a name="846"></a>    <font class="source_keyword">if</font>(CurrentStyle.bBold)
+<a name="847"></a>        Output = Output $ <font class="source_string">"T"</font>;
+<a name="848"></a>    <font class="source_keyword">else</font>
+<a name="849"></a>        Output = Output $ <font class="source_string">"F"</font>;
+<a name="850"></a>
+<a name="851"></a>    <font class="source_keyword">if</font>(CurrentStyle.bBlink)
+<a name="852"></a>        Output = Output $ <font class="source_string">"T"</font>;
+<a name="853"></a>    <font class="source_keyword">else</font>
+<a name="854"></a>        Output = Output $ <font class="source_string">"F"</font>;
+<a name="855"></a>
+<a name="856"></a>    <font class="source_keyword">return</font> Output;
+<a name="857"></a>}
+<a name="858"></a>
+<a name="859"></a><font class="source_keyword">function</font> <font class="source_keyword">int</font> ReadStyleText(<font class="source_keyword">string</font> StyleString, <font class="source_keyword2">out</font> <font class="source_keyword">int</font> StylePos, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\uwindow\uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></font> CurrentStyle)
+<a name="860"></a>{
+<a name="861"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Temp;
+<a name="862"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CharCount;
+<a name="863"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;    
+<a name="864"></a>
+<a name="865"></a>    CharCount = <font class="source_keyword">Int</font>(Mid(StyleString, StylePos, <font class="source_int">4</font>));
+<a name="866"></a>    StylePos += <font class="source_int">4</font>;
+<a name="867"></a>
+<a name="868"></a>    i = <font class="source_keyword">Int</font>(Mid(StyleString, StylePos, <font class="source_int">4</font>));
+<a name="869"></a>    StylePos += <font class="source_int">4</font>;
+<a name="870"></a>        
+<a name="871"></a>    CurrentStyle.LinkDestination = Mid(StyleString, StylePos, i);
+<a name="872"></a>    StylePos += i;
+<a name="873"></a>
+<a name="874"></a>    CurrentStyle.TextColor.R = <font class="source_keyword">Int</font>(Mid(StyleString, StylePos, <font class="source_int">3</font>));
+<a name="875"></a>    StylePos += <font class="source_int">3</font>;
+<a name="876"></a>    CurrentStyle.TextColor.G = <font class="source_keyword">Int</font>(Mid(StyleString, StylePos, <font class="source_int">3</font>));
+<a name="877"></a>    StylePos += <font class="source_int">3</font>;
+<a name="878"></a>    CurrentStyle.TextColor.B = <font class="source_keyword">Int</font>(Mid(StyleString, StylePos, <font class="source_int">3</font>));
+<a name="879"></a>    StylePos += <font class="source_int">3</font>;
+<a name="880"></a>
+<a name="881"></a>    CurrentStyle.BGColor.R = <font class="source_keyword">Int</font>(Mid(StyleString, StylePos, <font class="source_int">3</font>));
+<a name="882"></a>    StylePos += <font class="source_int">3</font>;
+<a name="883"></a>    CurrentStyle.BGColor.G = <font class="source_keyword">Int</font>(Mid(StyleString, StylePos, <font class="source_int">3</font>));
+<a name="884"></a>    StylePos += <font class="source_int">3</font>;
+<a name="885"></a>    CurrentStyle.BGColor.B = <font class="source_keyword">Int</font>(Mid(StyleString, StylePos, <font class="source_int">3</font>));
+<a name="886"></a>    StylePos += <font class="source_int">3</font>;
+<a name="887"></a>
+<a name="888"></a>    CurrentStyle.bCenter = Mid(StyleString, StylePos++, <font class="source_int">1</font>) == <font class="source_string">"T"</font>;
+<a name="889"></a>    CurrentStyle.bLink = Mid(StyleString, StylePos++, <font class="source_int">1</font>) == <font class="source_string">"T"</font>;
+<a name="890"></a>    CurrentStyle.bUnderline = Mid(StyleString, StylePos++, <font class="source_int">1</font>) == <font class="source_string">"T"</font>;
+<a name="891"></a>    CurrentStyle.bNoBR = Mid(StyleString, StylePos++, <font class="source_int">1</font>) == <font class="source_string">"T"</font>;
+<a name="892"></a>    CurrentStyle.bHeading = Mid(StyleString, StylePos++, <font class="source_int">1</font>) == <font class="source_string">"T"</font>;
+<a name="893"></a>    CurrentStyle.bBold = Mid(StyleString, StylePos++, <font class="source_int">1</font>) == <font class="source_string">"T"</font>;
+<a name="894"></a>    CurrentStyle.bBlink = Mid(StyleString, StylePos++, <font class="source_int">1</font>) == <font class="source_string">"T"</font>;
+<a name="895"></a>
+<a name="896"></a>    <font class="source_keyword">return</font> CharCount;
+<a name="897"></a>}
+<a name="898"></a>
+<a name="899"></a><font class="source_keyword">defaultproperties</font>
+<a name="900"></a>{
+<a name="901"></a>    RowClass=<font class="source_keyword">class</font><font class="source_name">'UWindowHTMLTextRow'</font>
+<a name="902"></a>    TextColor=(R=<font class="source_int">255</font>,G=<font class="source_int">255</font>,B=<font class="source_int">255</font>)
+<a name="903"></a>    BGColor=(R=<font class="source_int">0</font>,G=<font class="source_int">0</font>,B=<font class="source_int">0</font>)
+<a name="904"></a>    LinkColor=(R=<font class="source_int">0</font>,G=<font class="source_int">0</font>,B=<font class="source_int">255</font>)
+<a name="905"></a>    ALinkColor=(R=<font class="source_int">255</font>,G=<font class="source_int">0</font>,B=<font class="source_int">0</font>)
+<a name="906"></a>    bIgnoreLDoubleClick=<font class="source_keyword">True</font>
+<a name="907"></a>    bAutoScrollbar=<font class="source_keyword">True</font>
+<a name="908"></a>    bTopCentric=<font class="source_keyword">True</font>
+<a name="909"></a>    bVariableRowHeight=<font class="source_keyword">True</font>
+<a name="910"></a>}
+<a name="911"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\uwindow\uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="..\uwindow\uwindowhtmltextarea.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UWindowHTMLTextArea">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowhsplitter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindowhtmltextrow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:58.000 - Creation time: Wed 26/5/2004 10:49:04.437 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

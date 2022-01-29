@@ -1,0 +1,275 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealI.WarlordCarcass</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\warlordcarcass.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#WarlordCarcass">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="warlord.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="warlordrocket.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unreali\unreali-overview.html">UnrealI</a>.<a href="..\unreali\warlordcarcass.html">WarlordCarcass</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// WarlordCarcass.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unreali\warlordcarcass.html" class="source">WarlordCarcass</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\unrealshare\creaturecarcass.html" class="source">CreatureCarcass</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec MESH IMPORT MESH=WarlordArm ANIVFILE=MODELS\g_wara_a.3D DATAFILE=MODELS\g_wara_d.3D X=0 Y=0 Z=0
+</font><a name="7"></a><font class="source_macro">#exec MESH ORIGIN MESH=WarlordArm X=0 Y=0 Z=0 YAW=64
+</font><a name="8"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordArm SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="9"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordArm SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="10"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgwar1  FILE=MODELS\g_war1.PCX GROUP=Skins 
+</font><a name="11"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=WarlordArm X=0.09 Y=0.09 Z=0.18
+</font><a name="12"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=WarlordArm NUM=1 TEXTURE=Jgwar1
+</font><a name="13"></a>
+<a name="14"></a><font class="source_macro">#exec MESH IMPORT MESH=WarlordFoot ANIVFILE=MODELS\g_warf_a.3D DATAFILE=MODELS\g_warf_d.3D X=0 Y=0 Z=0
+</font><a name="15"></a><font class="source_macro">#exec MESH ORIGIN MESH=WarlordFoot X=0 Y=0 Z=0 YAW=64
+</font><a name="16"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordFoot SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="17"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordFoot SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="18"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgwar2  FILE=MODELS\g_war2.PCX GROUP=Skins 
+</font><a name="19"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=WarlordFoot X=0.09 Y=0.09 Z=0.18
+</font><a name="20"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=WarlordFoot NUM=1 TEXTURE=Jgwar2
+</font><a name="21"></a>
+<a name="22"></a><font class="source_macro">#exec MESH IMPORT MESH=WarlordGun ANIVFILE=MODELS\g_warg_a.3D DATAFILE=MODELS\g_warg_d.3D X=0 Y=0 Z=0
+</font><a name="23"></a><font class="source_macro">#exec MESH ORIGIN MESH=WarlordGun X=0 Y=0 Z=0 YAW=64
+</font><a name="24"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordGun SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="25"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordGun SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="26"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgwar1  FILE=MODELS\g_war1.PCX GROUP=Skins 
+</font><a name="27"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=WarlordGun X=0.09 Y=0.09 Z=0.18
+</font><a name="28"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=WarlordGun NUM=1 TEXTURE=Jgwar1
+</font><a name="29"></a>
+<a name="30"></a><font class="source_macro">#exec MESH IMPORT MESH=WarlordHand ANIVFILE=MODELS\g_warh_a.3D DATAFILE=MODELS\g_warh_d.3D X=0 Y=0 Z=0
+</font><a name="31"></a><font class="source_macro">#exec MESH ORIGIN MESH=WarlordHand X=0 Y=0 Z=0 YAW=64
+</font><a name="32"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordHand SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="33"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordHand SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="34"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgwar2  FILE=MODELS\g_war2.PCX GROUP=Skins 
+</font><a name="35"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=WarlordHand X=0.09 Y=0.09 Z=0.18
+</font><a name="36"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=WarlordHand NUM=1 TEXTURE=Jgwar2
+</font><a name="37"></a>
+<a name="38"></a><font class="source_macro">#exec MESH IMPORT MESH=WarlordHead ANIVFILE=MODELS\g_warz_a.3D DATAFILE=MODELS\g_warz_d.3D X=0 Y=0 Z=0
+</font><a name="39"></a><font class="source_macro">#exec MESH ORIGIN MESH=WarlordHead X=0 Y=0 Z=0 YAW=64
+</font><a name="40"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordHead SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="41"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordHead SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="42"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgwar2  FILE=MODELS\g_war2.PCX GROUP=Skins 
+</font><a name="43"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=WarlordHead X=0.09 Y=0.09 Z=0.18
+</font><a name="44"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=WarlordHead NUM=1 TEXTURE=Jgwar2
+</font><a name="45"></a>
+<a name="46"></a><font class="source_macro">#exec MESH IMPORT MESH=WarlordLeg ANIVFILE=MODELS\g_warl_a.3D DATAFILE=MODELS\g_warl_d.3D X=0 Y=0 Z=0
+</font><a name="47"></a><font class="source_macro">#exec MESH ORIGIN MESH=WarlordLeg X=0 Y=0 Z=0 YAW=64
+</font><a name="48"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordLeg SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="49"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordLeg SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="50"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgwar1  FILE=MODELS\g_war1.PCX GROUP=Skins 
+</font><a name="51"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=WarlordLeg X=0.09 Y=0.09 Z=0.18
+</font><a name="52"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=WarlordLeg NUM=1 TEXTURE=Jgwar1
+</font><a name="53"></a>
+<a name="54"></a><font class="source_macro">#exec MESH IMPORT MESH=WarlordWing ANIVFILE=MODELS\g_warw_a.3D DATAFILE=MODELS\g_warw_d.3D X=0 Y=0 Z=0
+</font><a name="55"></a><font class="source_macro">#exec MESH ORIGIN MESH=WarlordWing X=0 Y=0 Z=0 YAW=64
+</font><a name="56"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordWing SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="57"></a><font class="source_macro">#exec MESH SEQUENCE MESH=WarlordWing SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="58"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgwar1  FILE=MODELS\g_war1.PCX GROUP=Skins 
+</font><a name="59"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=WarlordWing X=0.09 Y=0.09 Z=0.18
+</font><a name="60"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=WarlordWing NUM=1 TEXTURE=Jgwar1
+</font><a name="61"></a>
+<a name="62"></a><font class="source_keyword">function</font> AnimEnd()
+<a name="63"></a>{
+<a name="64"></a>    <font class="source_keyword">if</font> ( AnimSequence == <font class="source_name">'Dead2A'</font> )
+<a name="65"></a>    {
+<a name="66"></a>        <font class="source_keyword">if</font> ( Physics == PHYS_None )
+<a name="67"></a>        {
+<a name="68"></a>            LieStill();
+<a name="69"></a>            PlayAnim(<font class="source_name">'Dead2B'</font>, <font class="source_int">0.7</font>, <font class="source_int">0.07</font>);
+<a name="70"></a>        }
+<a name="71"></a>        <font class="source_keyword">else</font>
+<a name="72"></a>            LoopAnim(<font class="source_name">'Fall'</font>);
+<a name="73"></a>    } 
+<a name="74"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Physics == PHYS_None )
+<a name="75"></a>        LieStill();
+<a name="76"></a>}
+<a name="77"></a>
+<a name="78"></a><font class="source_keyword">function</font> Landed(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal)
+<a name="79"></a>{
+<a name="80"></a>    <font class="source_keyword">if</font> ( AnimSequence == <font class="source_name">'Fall'</font> )
+<a name="81"></a>    {
+<a name="82"></a>        LieStill();
+<a name="83"></a>        PlayAnim(<font class="source_name">'Dead2B'</font>, <font class="source_int">0.7</font>, <font class="source_int">0.07</font>);
+<a name="84"></a>    }
+<a name="85"></a>    SetPhysics(PHYS_None);
+<a name="86"></a>}
+<a name="87"></a>
+<a name="88"></a><font class="source_keyword">state</font> Dead 
+<a name="89"></a>{
+<a name="90"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="91"></a>    {
+<a name="92"></a>    }
+<a name="93"></a>}
+<a name="94"></a>
+<a name="95"></a><font class="source_keyword">defaultproperties</font>
+<a name="96"></a>{
+<a name="97"></a>      LifeSpan=+<font class="source_int">00000.000000</font>
+<a name="98"></a>      bodyparts(<font class="source_int">0</font>)=WarlordWing
+<a name="99"></a>      bodyparts(<font class="source_int">1</font>)=WarlordHead
+<a name="100"></a>      bodyparts(<font class="source_int">2</font>)=WarlordLeg
+<a name="101"></a>      bodyparts(<font class="source_int">3</font>)=WarlordArm
+<a name="102"></a>      bodyparts(<font class="source_int">4</font>)=WarlordLeg
+<a name="103"></a>      bodyparts(<font class="source_int">5</font>)=WarlordGun
+<a name="104"></a>      bodyparts(<font class="source_int">6</font>)=WarlordFoot
+<a name="105"></a>      bodyparts(<font class="source_int">7</font>)=WarlordHand
+<a name="106"></a>      ZOffset(<font class="source_int">1</font>)=+<font class="source_int">00000.500000</font>
+<a name="107"></a>      ZOffset(<font class="source_int">2</font>)=-<font class="source_int">00000.500000</font>
+<a name="108"></a>      ZOffset(<font class="source_int">4</font>)=-<font class="source_int">00000.500000</font>
+<a name="109"></a>      ZOffset(<font class="source_int">6</font>)=-<font class="source_int">00000.700000</font>
+<a name="110"></a>}
+<a name="111"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\warlordcarcass.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#WarlordCarcass">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="warlord.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="warlordrocket.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:46.000 - Creation time: Wed 26/5/2004 10:49:06.984 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,655 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealShare.BiterFish</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\biterfish.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#BiterFish">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="bird1.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="biterfishschool.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\biterfish.html">BiterFish</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// BiterFish.
+</font><a name="3"></a><font class="source_comment">// Do not add directly - rather add BiterFishSchools to the world
+</font><a name="4"></a><font class="source_comment">//=============================================================================
+</font><a name="5"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unrealshare\biterfish.html" class="source">BiterFish</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\unrealshare\flockpawn.html" class="source">FlockPawn</a></font>;
+<a name="6"></a>
+<a name="7"></a><font class="source_macro">#exec MESH IMPORT MESH=AmbientFish ANIVFILE=MODELS\fish1_a.3D DATAFILE=MODELS\fish1_d.3D ZEROTEX=1
+</font><a name="8"></a><font class="source_macro">#exec MESH ORIGIN MESH=AmbientFish X=00 Y=-20 Z=00 YAW=-64
+</font><a name="9"></a>
+<a name="10"></a><font class="source_macro">#exec MESH SEQUENCE MESH=AmbientFish SEQ=All    STARTFRAME=0   NUMFRAMES=11
+</font><a name="11"></a><font class="source_macro">#exec MESH SEQUENCE MESH=AmbientFish SEQ=Swim1  STARTFRAME=0   NUMFRAMES=8
+</font><a name="12"></a><font class="source_macro">#exec MESH SEQUENCE MESH=AmbientFish SEQ=Bite   STARTFRAME=8   NUMFRAMES=3
+</font><a name="13"></a>
+<a name="14"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jfish21  FILE=MODELS\fish1.PCX GROUP=Skins 
+</font><a name="15"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=AmbientFish X=0.06 Y=0.06 Z=0.12
+</font><a name="16"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=AmbientFish NUM=0 TEXTURE=Jfish21 TLOD=200 
+</font><a name="17"></a>
+<a name="18"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jfish22  FILE=MODELS\fish2.PCX GROUP=Skins 
+</font><a name="19"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jfish23  FILE=MODELS\fish3.PCX GROUP=Skins 
+</font><a name="20"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jfish24  FILE=MODELS\fish4.PCX GROUP=Skins 
+</font><a name="21"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jfish25  FILE=MODELS\fish5.PCX GROUP=Skins 
+</font><a name="22"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jfish26  FILE=MODELS\fish6.PCX GROUP=Skins 
+</font><a name="23"></a>
+<a name="24"></a><font class="source_keyword">var</font>() <font class="source_keyword">byte</font> BiteDamage;
+<a name="25"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> AirTime;
+<a name="26"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> OldSchoolDestination;
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\unrealshare\biterfishschool.html" class="source">BiterFishSchool</a></font> School;
+<a name="28"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> FishSkins[<font class="source_int">6</font>];
+<a name="29"></a>
+<a name="30"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="31"></a>{
+<a name="32"></a>    School = <font class="source_type"><a href="..\unrealshare\biterfishschool.html" class="source">BiterfishSchool</a></font>(Owner); 
+<a name="33"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="34"></a>    <font class="source_keyword">if</font> ( School == <font class="source_keyword">None</font> )
+<a name="35"></a>    {
+<a name="36"></a>        log(<font class="source_string">"Warning - can't add biterfish independently from biterfish schools"</font>);
+<a name="37"></a>        destroy();
+<a name="38"></a>    }
+<a name="39"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( School.fishcolor &gt; <font class="source_int">5</font> )
+<a name="40"></a>        skin = FishSkins[Rand(<font class="source_int">6</font>)];
+<a name="41"></a>    <font class="source_keyword">else</font>
+<a name="42"></a>        skin = FishSkins[School.fishcolor];
+<a name="43"></a>}
+<a name="44"></a>
+<a name="45"></a><font class="source_keyword">function</font> TakeDamage( <font class="source_keyword">int</font> Damage, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> instigatedBy, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> hitlocation, 
+<a name="46"></a>                        <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> momentum, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>)
+<a name="47"></a>{
+<a name="48"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bAlreadyDead;
+<a name="49"></a>
+<a name="50"></a>    bAlreadyDead = (<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &lt;= <font class="source_int">0</font>);
+<a name="51"></a>
+<a name="52"></a>    <font class="source_keyword">if</font> (Physics == PHYS_None)
+<a name="53"></a>        SetMovementPhysics();
+<a name="54"></a>    <font class="source_keyword">if</font> (Physics == PHYS_Walking)
+<a name="55"></a>        momentum.Z = <font class="source_int">0.4</font> * Vsize(momentum);
+<a name="56"></a>    <font class="source_keyword">if</font> ( instigatedBy == self )
+<a name="57"></a>        momentum *= <font class="source_int">0.6</font>;
+<a name="58"></a>    momentum = momentum/Mass;
+<a name="59"></a>    AddVelocity( momentum ); 
+<a name="60"></a>    <font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> -= Damage;
+<a name="61"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &lt; -<font class="source_int">20</font> )
+<a name="62"></a>    {
+<a name="63"></a>        Spawn(<font class="source_keyword">class</font><font class="source_name">'Bloodspurt'</font>);
+<a name="64"></a>        Destroy();
+<a name="65"></a>    }
+<a name="66"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( !bAlreadyDead && (<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &lt; <font class="source_int">0</font>) )
+<a name="67"></a>        Died(instigatedBy, <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>, hitLocation);
+<a name="68"></a>}
+<a name="69"></a>
+<a name="70"></a><font class="source_keyword">function</font> Landed(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal)
+<a name="71"></a>{
+<a name="72"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> newRotation;
+<a name="73"></a>
+<a name="74"></a>    SetPhysics(PHYS_None);
+<a name="75"></a>    SetTimer(<font class="source_int">0.2</font> + FRand(), <font class="source_keyword">false</font>);
+<a name="76"></a>    newRotation = Rotation;
+<a name="77"></a>    newRotation.Pitch = <font class="source_int">0</font>;
+<a name="78"></a>    newRotation.Roll = <font class="source_int">16384</font>;
+<a name="79"></a>    SetRotation(newRotation);
+<a name="80"></a>    GotoState(<font class="source_name">'Flopping'</font>);
+<a name="81"></a>}
+<a name="82"></a>
+<a name="83"></a><font class="source_keyword">function</font> PreSetMovement()
+<a name="84"></a>{
+<a name="85"></a>    bCanSwim = <font class="source_keyword">true</font>;
+<a name="86"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="87"></a>        SetPhysics(PHYS_Swimming);
+<a name="88"></a>    <font class="source_keyword">else</font>
+<a name="89"></a>        SetPhysics(PHYS_Falling);
+<a name="90"></a>    MinHitWall = -<font class="source_int">0.6</font>;
+<a name="91"></a>}
+<a name="92"></a>
+<a name="93"></a><font class="source_keyword">function</font> ZoneChange( <font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> NewZone )
+<a name="94"></a>{
+<a name="95"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> newRotation;
+<a name="96"></a>    <font class="source_keyword">if</font> (NewZone.bWaterZone)
+<a name="97"></a>    {
+<a name="98"></a>        <font class="source_keyword">if</font> ( !<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone && (Physics != PHYS_Swimming) )
+<a name="99"></a>        {
+<a name="100"></a>            newRotation = Rotation;
+<a name="101"></a>            newRotation.Roll = <font class="source_int">0</font>;
+<a name="102"></a>            SetRotation(newRotation);
+<a name="103"></a>            MoveTimer = -<font class="source_int">1.0</font>;
+<a name="104"></a>        }
+<a name="105"></a>        AirTime = <font class="source_int">0</font>;
+<a name="106"></a>        SetPhysics(PHYS_Swimming);
+<a name="107"></a>        <font class="source_keyword">if</font> ( !IsInState(<font class="source_name">'Swimming'</font>) ) 
+<a name="108"></a>            GotoState(<font class="source_name">'Swimming'</font>);
+<a name="109"></a>    }
+<a name="110"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Physics != PHYS_Falling)
+<a name="111"></a>    {
+<a name="112"></a>        MoveTimer = -<font class="source_int">1</font>;
+<a name="113"></a>        SetPhysics(PHYS_Falling);
+<a name="114"></a>    }
+<a name="115"></a>}
+<a name="116"></a>
+<a name="117"></a><font class="source_keyword">function</font> FootZoneChange(<font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> newFootZone)
+<a name="118"></a>{
+<a name="119"></a>    <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.TimeSeconds - SplashTime &gt; <font class="source_int">3</font>) && 
+<a name="120"></a>        !FootRegion.Zone.bWaterZone && newFootZone.bWaterZone )
+<a name="121"></a>    {
+<a name="122"></a>        SplashTime = <font class="source_type">Level</font>.TimeSeconds;
+<a name="123"></a>        PlaySound(<font class="source_type">sound</font> <font class="source_name">'LSplash'</font>, SLOT_Interact, <font class="source_int">0.4</font>,,<font class="source_int">500</font>);
+<a name="124"></a>        Spawn(<font class="source_keyword">class</font> <font class="source_name">'WaterImpact'</font>,,,Location - CollisionHeight * vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">1</font>));
+<a name="125"></a>    }
+<a name="126"></a>    
+<a name="127"></a>    <font class="source_keyword">if</font> ( FootRegion.Zone.bPainZone )
+<a name="128"></a>    {
+<a name="129"></a>        <font class="source_keyword">if</font> ( !newFootZone.bPainZone )
+<a name="130"></a>            PainTime = -<font class="source_int">1.0</font>;
+<a name="131"></a>    }
+<a name="132"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (newFootZone.bPainZone)
+<a name="133"></a>        PainTime = <font class="source_int">0.01</font>;
+<a name="134"></a>}
+<a name="135"></a>
+<a name="136"></a><font class="source_keyword">function</font> Died(<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Killer, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation)
+<a name="137"></a>{
+<a name="138"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> newRot;
+<a name="139"></a>
+<a name="140"></a>    newRot = Rotation;
+<a name="141"></a>    <font class="source_keyword">if</font> ( FRand() &lt; <font class="source_int">0.5</font> )
+<a name="142"></a>        newRot.Roll = <font class="source_int">16384</font>;
+<a name="143"></a>    <font class="source_keyword">else</font> 
+<a name="144"></a>        newRot.Roll = -<font class="source_int">16384</font>;
+<a name="145"></a>    SetRotation(newRot);
+<a name="146"></a>    SetPhysics(PHYS_Falling);
+<a name="147"></a>    SetCollision(<font class="source_keyword">true</font>,<font class="source_keyword">false</font>,<font class="source_keyword">false</font>);
+<a name="148"></a>    Buoyancy = <font class="source_int">1.05</font> * mass;
+<a name="149"></a>    Velocity.Z = FMax(<font class="source_int">0</font>, Velocity.Z);
+<a name="150"></a>    AnimRate = <font class="source_int">0.0</font>;
+<a name="151"></a>
+<a name="152"></a>    school.FishDied();
+<a name="153"></a>    RemoteRole = ROLE_DumbProxy;
+<a name="154"></a>    GotoState(<font class="source_name">'Dying'</font>);
+<a name="155"></a>}
+<a name="156"></a>
+<a name="157"></a><font class="source_keyword2">Auto</font> <font class="source_keyword">State</font> Swimming
+<a name="158"></a>{
+<a name="159"></a>    <font class="source_keyword">function</font> PickDestination()
+<a name="160"></a>    {
+<a name="161"></a>        <font class="source_keyword">if</font> ( (School.IsInState(<font class="source_name">'Stasis'</font>)) && !PlayerCanSeeMe() )
+<a name="162"></a>        {
+<a name="163"></a>            School.Remove(self);
+<a name="164"></a>            <font class="source_keyword">return</font>;
+<a name="165"></a>        }
+<a name="166"></a>        <font class="source_keyword">if</font> ( School.validDest )
+<a name="167"></a>            OldSchoolDestination = School.Location;
+<a name="168"></a>        Destination = OldSchoolDestination +
+<a name="169"></a>             <font class="source_int">0.5</font> * School.schoolradius * ( Normal(Location - School.Location) + VRand());
+<a name="170"></a>    }
+<a name="171"></a>
+<a name="172"></a>    <font class="source_keyword">function</font> Touch(<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other)
+<a name="173"></a>    {
+<a name="174"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other) == School.Enemy )
+<a name="175"></a>            Other.TakeDamage(<font class="source_int">2</font>, self, location, vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>), <font class="source_name">'bitten'</font>);
+<a name="176"></a>    }
+<a name="177"></a>        
+<a name="178"></a>Begin:
+<a name="179"></a>    <font class="source_keyword">if</font> ( School.bNonAggressive )
+<a name="180"></a>        Disable(<font class="source_name">'Touch'</font>);
+<a name="181"></a>    <font class="source_keyword">if</font> (!<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="182"></a>        GotoState(<font class="source_name">'Flopping'</font>);
+<a name="183"></a>    SetPhysics(PHYS_Swimming);
+<a name="184"></a>Swim:
+<a name="185"></a>    Enable(<font class="source_name">'HitWall'</font>);
+<a name="186"></a>    LoopAnim(<font class="source_name">'Swim1'</font>, <font class="source_int">0.7</font> + FRand());
+<a name="187"></a>    <font class="source_keyword">if</font> ( (!School.bNonAggressive || (FRand() &lt; <font class="source_int">0.5</font>)) 
+<a name="188"></a>        && (School.Enemy!=<font class="source_keyword">None</font>) && (School.MoveTarget == School.Enemy) && (FRand()&lt;<font class="source_int">0.5</font>) )
+<a name="189"></a>        MoveToward(School.Enemy);
+<a name="190"></a>    <font class="source_keyword">else</font>
+<a name="191"></a>    {
+<a name="192"></a>        PickDestination();
+<a name="193"></a>        MoveTo(Destination);
+<a name="194"></a>School:
+<a name="195"></a>        <font class="source_keyword">if</font> ( (FRand() &lt; <font class="source_int">0.75</font>) && (OldSchoolDestination == School.Location) 
+<a name="196"></a>            && ((School.Enemy == <font class="source_keyword">None</font>) || !School.Enemy.<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone) )
+<a name="197"></a>        {
+<a name="198"></a>            Velocity = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="199"></a>            Acceleration = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="200"></a>            Sleep(<font class="source_int">3.3</font> * FRand());
+<a name="201"></a>            Goto(<font class="source_name">'School'</font>);
+<a name="202"></a>        }
+<a name="203"></a>    }
+<a name="204"></a>    Velocity = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="205"></a>    Acceleration = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="206"></a>    Sleep(<font class="source_int">0.7</font> * FRand());
+<a name="207"></a>    Goto(<font class="source_name">'Swim'</font>);
+<a name="208"></a>}
+<a name="209"></a>
+<a name="210"></a><font class="source_keyword">State</font> Flopping
+<a name="211"></a>{
+<a name="212"></a>
+<a name="213"></a>    <font class="source_keyword">function</font> Landed(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal)
+<a name="214"></a>    {
+<a name="215"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> newRotation;
+<a name="216"></a>
+<a name="217"></a>        SetPhysics(PHYS_None);
+<a name="218"></a>        SetTimer(<font class="source_int">0.3</font> + <font class="source_int">0.3</font> * AirTime * FRand(), <font class="source_keyword">false</font>);
+<a name="219"></a>        newRotation = Rotation;
+<a name="220"></a>        newRotation.Pitch = <font class="source_int">0</font>;
+<a name="221"></a>        newRotation.Roll = <font class="source_int">16384</font>;
+<a name="222"></a>        SetRotation(newRotation);
+<a name="223"></a>    }
+<a name="224"></a>        
+<a name="225"></a>    <font class="source_keyword">function</font> Timer()
+<a name="226"></a>    {
+<a name="227"></a>        AirTime += <font class="source_int">1</font>;
+<a name="228"></a>        <font class="source_keyword">if</font> (AirTime &gt; <font class="source_int">25</font> + <font class="source_int">20</font> * FRand())
+<a name="229"></a>            GotoState(<font class="source_name">'Dying'</font>);
+<a name="230"></a>        <font class="source_keyword">else</font>
+<a name="231"></a>        {
+<a name="232"></a>            SetPhysics(PHYS_Falling);
+<a name="233"></a>            Velocity = <font class="source_int">200</font> * VRand();
+<a name="234"></a>            Velocity.Z = <font class="source_int">60</font> + <font class="source_int">160</font> * FRand();
+<a name="235"></a>            DesiredRotation.Pitch = Rand(<font class="source_int">8192</font>) - <font class="source_int">4096</font>;
+<a name="236"></a>            DesiredRotation.Yaw = Rand(<font class="source_int">65535</font>);
+<a name="237"></a>        }       
+<a name="238"></a>    }
+<a name="239"></a>
+<a name="240"></a>    <font class="source_keyword">function</font> AnimEnd()
+<a name="241"></a>    {
+<a name="242"></a>        <font class="source_keyword">if</font> (FRand() &lt; <font class="source_int">0.5</font>)
+<a name="243"></a>            PlayAnim(<font class="source_name">'Swim1'</font>, <font class="source_int">0.1</font> * FRand());
+<a name="244"></a>        <font class="source_keyword">else</font>
+<a name="245"></a>            PlayAnim(<font class="source_name">'Bite'</font>, <font class="source_int">0.1</font> * FRand());
+<a name="246"></a>    }
+<a name="247"></a>
+<a name="248"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="249"></a>    {
+<a name="250"></a>        SetPhysics(PHYS_Falling);
+<a name="251"></a>    }
+<a name="252"></a>}
+<a name="253"></a>
+<a name="254"></a><font class="source_keyword">State</font> Dying
+<a name="255"></a>{
+<a name="256"></a>    <font class="source_keyword">ignores</font> zonechange, headzonechange, falling, hitwall;
+<a name="257"></a>
+<a name="258"></a>    <font class="source_keyword">function</font> Landed(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal)
+<a name="259"></a>    {
+<a name="260"></a>        SetPhysics(PHYS_None);
+<a name="261"></a>    }   
+<a name="262"></a>
+<a name="263"></a>    <font class="source_keyword">function</font> Timer()
+<a name="264"></a>    {
+<a name="265"></a>        <font class="source_keyword">if</font> ( !PlayerCanSeeMe() )
+<a name="266"></a>            Destroy();
+<a name="267"></a>    }
+<a name="268"></a>
+<a name="269"></a>Begin:
+<a name="270"></a>    Sleep(<font class="source_int">12</font>);
+<a name="271"></a>    SetTimer(<font class="source_int">4.0</font>, <font class="source_keyword">true</font>);
+<a name="272"></a>}           
+<a name="273"></a>        
+<a name="274"></a><font class="source_keyword">defaultproperties</font>
+<a name="275"></a>{
+<a name="276"></a>     Fishskins(<font class="source_int">0</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Jfish21'</font>
+<a name="277"></a>     Fishskins(<font class="source_int">1</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Jfish22'</font>
+<a name="278"></a>     Fishskins(<font class="source_int">2</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Jfish23'</font>
+<a name="279"></a>     Fishskins(<font class="source_int">3</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Jfish24'</font>
+<a name="280"></a>     Fishskins(<font class="source_int">4</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Jfish25'</font>
+<a name="281"></a>     Fishskins(<font class="source_int">5</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Jfish26'</font>
+<a name="282"></a>     <font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font>=<font class="source_int">5</font>
+<a name="283"></a>     ReducedDamageType=exploded
+<a name="284"></a>     ReducedDamagePct=+<font class="source_int">00000.900000</font>
+<a name="285"></a>     UnderWaterTime=-<font class="source_int">00001.000000</font>
+<a name="286"></a>     bCanStrafe=<font class="source_keyword">True</font>
+<a name="287"></a>     SightRadius=+<font class="source_int">03000.000000</font>
+<a name="288"></a>     WaterSpeed=+<font class="source_int">00180.000000</font>
+<a name="289"></a>     AccelRate=+<font class="source_int">00700.000000</font>
+<a name="290"></a>     DrawType=DT_Mesh
+<a name="291"></a>     <font class="source_type">Mesh</font>=AmbientFish
+<a name="292"></a>     Skin=JFish21
+<a name="293"></a>     CollisionRadius=+<font class="source_int">00008.000000</font>
+<a name="294"></a>     CollisionHeight=+<font class="source_int">00006.000000</font>
+<a name="295"></a>     bBlockPlayers=<font class="source_keyword">False</font>
+<a name="296"></a>     bProjTarget=<font class="source_keyword">True</font>
+<a name="297"></a>     Mass=+<font class="source_int">00005.000000</font>
+<a name="298"></a>     Buoyancy=+<font class="source_int">00005.000000</font>
+<a name="299"></a>     RotationRate=(Pitch=<font class="source_int">8192</font>,Yaw=<font class="source_int">128000</font>,Roll=<font class="source_int">16384</font>)
+<a name="300"></a>}
+<a name="301"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\biterfish.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#BiterFish">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="bird1.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="biterfishschool.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:54.000 - Creation time: Wed 26/5/2004 10:48:07.328 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,646 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - UTMenu.UTLadder</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="utmenu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_utmenu\utladder.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UTLadder">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utinputoptionscw.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utladderas.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="utmenu-overview.html">UTMenu</a>.UTLadder</h1>
+<b>Extends:</b> <a href="utladderstub.html">UTLadderStub</a><br>
+<b>Modifiers:</b> abstract <br>
+<a href="..\Source_utmenu\utladder.html"><b>Source code</b></a>
+
+<p>
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowbase.html">UWindowBase</a>
+    |   
+    +-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowwindow.html">UWindowWindow</a>
+        |   
+        +-- <a href="utmenu-overview.html">UTMenu</a>.<a href="notifywindow.html">NotifyWindow</a>
+            |   
+            +-- <a href="utmenu-overview.html">UTMenu</a>.<a href="utladderstub.html">UTLadderStub</a>
+                |   
+                +-- <a href="utmenu-overview.html">UTMenu</a>.<a href="utladder.html">UTLadder</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="utladderas.html">UTLadderAS</a>, <a href="utladderchal.html">UTLadderChal</a>, <a href="utladderctf.html">UTLadderCTF</a>, <a href="utladderdm.html">UTLadderDM</a>, <a href="utladderdom.html">UTLadderDOM</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ArrowPos" name="ArrowPos">ArrowPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_ArrowTex" name="ArrowTex">ArrowTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AuthorText" name="AuthorText">AuthorText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="notifybutton.html">NotifyButton</a></td><td width="66%"><a href="#_BackButton" name="BackButton">BackButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_BaseMatch" name="BaseMatch">BaseMatch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_BG1[4]" name="BG1[4]">BG1[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_BG2[4]" name="BG2[4]">BG2[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_BG3[4]" name="BG3[4]">BG3[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BGName1[4]" name="BGName1[4]">BGName1[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BGName2[4]" name="BGName2[4]">BGName2[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BGName3[4]" name="BGName3[4]">BGName3[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bGOTY" name="bGOTY">bGOTY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInitialized" name="bInitialized">bInitialized</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMapStatic" name="bMapStatic">bMapStatic</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTrophyTravelPending" name="bTrophyTravelPending">bTrophyTravelPending</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Class&lt;<a href="..\botpack\ladder.html">Ladder</a>&gt;</td><td width="66%"><a href="#_DemoLadder" name="DemoLadder">DemoLadder</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_FragText" name="FragText">FragText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameType" name="GameType">GameType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Class&lt;<a href="..\botpack\ladder.html">Ladder</a>&gt;</td><td width="66%"><a href="#_GOTYLadder" name="GOTYLadder">GOTYLadder</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="notifybutton.html">NotifyButton</a></td><td width="66%"><a href="#_InfoScrolldown" name="InfoScrolldown">InfoScrolldown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="notifybutton.html">NotifyButton</a></td><td width="66%"><a href="#_InfoScrollup" name="InfoScrollup">InfoScrollup</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Class&lt;<a href="..\botpack\ladder.html">Ladder</a>&gt;</td><td width="66%"><a href="#_Ladder" name="Ladder">Ladder</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LadderName" name="LadderName">LadderName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\botpack\ladderinventory.html">LadderInventory</a></td><td width="66%"><a href="#_LadderObj" name="LadderObj">LadderObj</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LadderPos" name="LadderPos">LadderPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LadderRank" name="LadderRank">LadderRank</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_LadderTrophy" name="LadderTrophy">LadderTrophy</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="utfadetextarea.html">UTFadeTextArea</a></td><td width="66%"><a href="#_MapInfoArea" name="MapInfoArea">MapInfoArea</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_MapShot" name="MapShot">MapShot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="staticarea.html">StaticArea</a></td><td width="66%"><a href="#_MapStatic" name="MapStatic">MapStatic</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MapText" name="MapText">MapText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="matchbutton.html">MatchButton</a></td><td width="66%"><a href="#_Matches[32]" name="Matches[32]">Matches[32]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MaxBaseMatch" name="MaxBaseMatch">MaxBaseMatch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="notifybutton.html">NotifyButton</a></td><td width="66%"><a href="#_NextButton" name="NextButton">NextButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_NotAvailableString" name="NotAvailableString">NotAvailableString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_PendingPos" name="PendingPos">PendingPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_RequiredRungs" name="RequiredRungs">RequiredRungs</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="notifybutton.html">NotifyButton</a></td><td width="66%"><a href="#_Scrolldown" name="Scrolldown">Scrolldown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="notifybutton.html">NotifyButton</a></td><td width="66%"><a href="#_Scrollup" name="Scrollup">Scrollup</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_SelectedMatch" name="SelectedMatch">SelectedMatch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_StaticScale" name="StaticScale">StaticScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_StaticTex" name="StaticTex">StaticTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TeamScoreText" name="TeamScoreText">TeamScoreText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="notifybutton.html">NotifyButton</a></td><td width="66%"><a href="#_Title1" name="Title1">Title1</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TrophyMap" name="TrophyMap">TrophyMap</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="utmenu-overview.html">UTMenu</a>.<a href="utladderstub.html">UTLadderStub</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="utladderstub.html#StubClass">StubClass</a>, <a href="utladderstub.html#StubClassName">StubClassName</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BackPressed+" name="BackPressed">BackPressed</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeforePaint+" name="BeforePaint">BeforePaint</a> (<a href="..\engine\canvas.html">Canvas</a> C, float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CheckOpenCondition+" name="CheckOpenCondition">CheckOpenCondition</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Close+" name="Close">Close</a> (optional bool bByParent)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CloseUp+" name="CloseUp">CloseUp</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Created+" name="Created">Created</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EscClose+" name="EscClose">EscClose</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EvaluateMatch+" name="EvaluateMatch">EvaluateMatch</a> (optional bool bTrophyVictory)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_FillInfoArea+" name="FillInfoArea">FillInfoArea</a> (int i)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_HideWindow+" name="HideWindow">HideWindow</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_NextPressed+" name="NextPressed">NextPressed</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Notify+" name="Notify">Notify</a> (<a href="..\uwindow\uwindowwindow.html">UWindowWindow</a> B, byte E)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Paint+" name="Paint">Paint</a> (<a href="..\engine\canvas.html">Canvas</a> C, float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetMapShot+" name="SetMapShot">SetMapShot</a> (int i)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetupLadder+" name="SetupLadder">SetupLadder</a> (int Pos, int Rank)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ShowWindow+" name="ShowWindow">ShowWindow</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_StartMap+" name="StartMap">StartMap</a> (string StartMap, int Rung, string GameType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+" name="Tick">Tick</a> (float Delta)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="utmenu-overview.html">UTMenu</a>.<a href="utladderstub.html">UTLadderStub</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="utladderstub.html#DemoHasTuts">DemoHasTuts</a>, <a href="utladderstub.html#EvaluateMatch">EvaluateMatch</a>, <a href="utladderstub.html#GetACompletelyUnreadableFont">GetACompletelyUnreadableFont</a>, <a href="utladderstub.html#GetAReallySmallFont">GetAReallySmallFont</a>, <a href="utladderstub.html#GetBigFont">GetBigFont</a>, <a href="utladderstub.html#GetHugeFont">GetHugeFont</a>, <a href="utladderstub.html#GetSmallestFont">GetSmallestFont</a>, <a href="utladderstub.html#GetSmallFont">GetSmallFont</a>, <a href="utladderstub.html#GetStubClass">GetStubClass</a>, <a href="utladderstub.html#IsDemo">IsDemo</a>, <a href="utladderstub.html#SetupWinParams">SetupWinParams</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="utmenu-overview.html">UTMenu</a>.<a href="notifywindow.html">NotifyWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="notifywindow.html#Notify">Notify</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ArrowPos" class="hidden"></a>ArrowPos <a href="..\Source_utmenu\utladder.html#47" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> ArrowPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ArrowTex" class="hidden"></a>ArrowTex <a href="..\Source_utmenu\utladder.html#45" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> ArrowTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AuthorText" class="hidden"></a>AuthorText <a href="..\Source_utmenu\utladder.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AuthorText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BackButton" class="hidden"></a>BackButton <a href="..\Source_utmenu\utladder.html#67" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="notifybutton.html" class="source">NotifyButton</a></font> BackButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BaseMatch" class="hidden"></a>BaseMatch <a href="..\Source_utmenu\utladder.html#72" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> BaseMatch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BG1[4]" class="hidden"></a>BG1[4] <a href="..\Source_utmenu\utladder.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> BG1[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BG2[4]" class="hidden"></a>BG2[4] <a href="..\Source_utmenu\utladder.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> BG2[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BG3[4]" class="hidden"></a>BG3[4] <a href="..\Source_utmenu\utladder.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> BG3[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BGName1[4]" class="hidden"></a>BGName1[4] <a href="..\Source_utmenu\utladder.html#41" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> BGName1[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BGName2[4]" class="hidden"></a>BGName2[4] <a href="..\Source_utmenu\utladder.html#42" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> BGName2[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BGName3[4]" class="hidden"></a>BGName3[4] <a href="..\Source_utmenu\utladder.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> BGName3[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bGOTY" class="hidden"></a>bGOTY <a href="..\Source_utmenu\utladder.html#102" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> bGOTY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bInitialized" class="hidden"></a>bInitialized <a href="..\Source_utmenu\utladder.html#101" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bInitialized;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bMapStatic" class="hidden"></a>bMapStatic <a href="..\Source_utmenu\utladder.html#81" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bMapStatic;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTrophyTravelPending" class="hidden"></a>bTrophyTravelPending <a href="..\Source_utmenu\utladder.html#95" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTrophyTravelPending;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DemoLadder" class="hidden"></a>DemoLadder <a href="..\Source_utmenu\utladder.html#90" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font>&gt; DemoLadder;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FragText" class="hidden"></a>FragText <a href="..\Source_utmenu\utladder.html#55" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FragText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GameType" class="hidden"></a>GameType <a href="..\Source_utmenu\utladder.html#51" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> GameType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GOTYLadder" class="hidden"></a>GOTYLadder <a href="..\Source_utmenu\utladder.html#91" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font>&gt; GOTYLadder;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InfoScrolldown" class="hidden"></a>InfoScrolldown <a href="..\Source_utmenu\utladder.html#86" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="notifybutton.html" class="source">NotifyButton</a></font> InfoScrolldown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InfoScrollup" class="hidden"></a>InfoScrollup <a href="..\Source_utmenu\utladder.html#85" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="notifybutton.html" class="source">NotifyButton</a></font> InfoScrollup;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Ladder" class="hidden"></a>Ladder <a href="..\Source_utmenu\utladder.html#89" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font>&gt; <font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LadderName" class="hidden"></a>LadderName <a href="..\Source_utmenu\utladder.html#64" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> LadderName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LadderObj" class="hidden"></a>LadderObj <a href="..\Source_utmenu\utladder.html#60" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\botpack\ladderinventory.html" class="source">LadderInventory</a></font> LadderObj;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LadderPos" class="hidden"></a>LadderPos <a href="..\Source_utmenu\utladder.html#98" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> LadderPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LadderRank" class="hidden"></a>LadderRank <a href="..\Source_utmenu\utladder.html#97" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> LadderRank;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LadderTrophy" class="hidden"></a>LadderTrophy <a href="..\Source_utmenu\utladder.html#96" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> LadderTrophy;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MapInfoArea" class="hidden"></a>MapInfoArea <a href="..\Source_utmenu\utladder.html#84" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="utfadetextarea.html" class="source">UTFadeTextArea</a></font> MapInfoArea;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MapShot" class="hidden"></a>MapShot <a href="..\Source_utmenu\utladder.html#79" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> MapShot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MapStatic" class="hidden"></a>MapStatic <a href="..\Source_utmenu\utladder.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="staticarea.html" class="source">StaticArea</a></font> MapStatic;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MapText" class="hidden"></a>MapText <a href="..\Source_utmenu\utladder.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MapText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Matches[32]" class="hidden"></a>Matches[32] <a href="..\Source_utmenu\utladder.html#71" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="matchbutton.html" class="source">MatchButton</a></font> Matches[<font class="source_int">32</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxBaseMatch" class="hidden"></a>MaxBaseMatch <a href="..\Source_utmenu\utladder.html#72" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> MaxBaseMatch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NextButton" class="hidden"></a>NextButton <a href="..\Source_utmenu\utladder.html#68" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="notifybutton.html" class="source">NotifyButton</a></font> NextButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NotAvailableString" class="hidden"></a>NotAvailableString <a href="..\Source_utmenu\utladder.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> NotAvailableString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PendingPos" class="hidden"></a>PendingPos <a href="..\Source_utmenu\utladder.html#46" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> PendingPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RequiredRungs" class="hidden"></a>RequiredRungs <a href="..\Source_utmenu\utladder.html#99" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> RequiredRungs;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Scrolldown" class="hidden"></a>Scrolldown <a href="..\Source_utmenu\utladder.html#74" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="notifybutton.html" class="source">NotifyButton</a></font> Scrolldown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Scrollup" class="hidden"></a>Scrollup <a href="..\Source_utmenu\utladder.html#73" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="notifybutton.html" class="source">NotifyButton</a></font> Scrollup;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SelectedMatch" class="hidden"></a>SelectedMatch <a href="..\Source_utmenu\utladder.html#75" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> SelectedMatch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StaticScale" class="hidden"></a>StaticScale <a href="..\Source_utmenu\utladder.html#78" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> StaticScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StaticTex" class="hidden"></a>StaticTex <a href="..\Source_utmenu\utladder.html#49" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> StaticTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TeamScoreText" class="hidden"></a>TeamScoreText <a href="..\Source_utmenu\utladder.html#56" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TeamScoreText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Title1" class="hidden"></a>Title1 <a href="..\Source_utmenu\utladder.html#63" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="notifybutton.html" class="source">NotifyButton</a></font> Title1;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TrophyMap" class="hidden"></a>TrophyMap <a href="..\Source_utmenu\utladder.html#57" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TrophyMap;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BackPressed+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BackPressed <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#700" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BackPressed ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeforePaint+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeforePaint <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#376" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeforePaint (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CheckOpenCondition+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CheckOpenCondition <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#808" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CheckOpenCondition ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Close+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Close <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#688" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Close (<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bByParent)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CloseUp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CloseUp <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#782" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CloseUp ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Created+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Created <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#104" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Created ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EscClose+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EscClose <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#695" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EscClose ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EvaluateMatch+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EvaluateMatch <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#707" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EvaluateMatch (<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bTrophyVictory)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FillInfoArea+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FillInfoArea <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#623" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> FillInfoArea (<font class="source_keyword">int</font> i)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HideWindow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HideWindow <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#801" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> HideWindow ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NextPressed+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> NextPressed <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#864" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> NextPressed ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Notify+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Notify <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#627" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Notify (<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font> B, <font class="source_keyword">byte</font> E)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Paint+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Paint <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#538" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Paint (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetMapShot+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetMapShot <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#850" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetMapShot (<font class="source_keyword">int</font> i)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetupLadder+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetupLadder <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#611" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetupLadder (<font class="source_keyword">int</font> Pos, <font class="source_keyword">int</font> Rank)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShowWindow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ShowWindow <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#790" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ShowWindow ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StartMap+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> StartMap <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#763" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> StartMap (<font class="source_keyword">string</font> StartMap, <font class="source_keyword">int</font> Rung, <font class="source_keyword">string</font> GameType)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state"></span> <a href="..\Source_utmenu\utladder.html#817" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    ArrowTex=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'LadrArrow.arrow_a00'</font>
+    StaticTex=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Botpack.LadrStatic.Static_a00'</font>
+    MapText=<font class="source_string">"Map:"</font>
+    AuthorText=<font class="source_string">"Author:"</font>
+    FragText=<font class="source_string">"Frag Limit:"</font>
+    TeamScoreText=<font class="source_string">"Team Score Limit:"</font>
+    BGName1(<font class="source_int">0</font>)=<font class="source_string">"UTMenu.Ladr11"</font>
+    BGName1(<font class="source_int">1</font>)=<font class="source_string">"UTMenu.Ladr12"</font>
+    BGName1(<font class="source_int">2</font>)=<font class="source_string">"UTMenu.Ladr13"</font>
+    BGName1(<font class="source_int">3</font>)=<font class="source_string">"UTMenu.Ladr14"</font>
+    BGName2(<font class="source_int">0</font>)=<font class="source_string">"UTMenu.Ladr21"</font>
+    BGName2(<font class="source_int">1</font>)=<font class="source_string">"UTMenu.Ladr22"</font>
+    BGName2(<font class="source_int">2</font>)=<font class="source_string">"UTMenu.Ladr23"</font>
+    BGName2(<font class="source_int">3</font>)=<font class="source_string">"UTMenu.Ladr24"</font>
+    BGName3(<font class="source_int">0</font>)=<font class="source_string">"UTMenu.Ladr31"</font>
+    BGName3(<font class="source_int">1</font>)=<font class="source_string">"UTMenu.Ladr32"</font>
+    BGName3(<font class="source_int">2</font>)=<font class="source_string">"UTMenu.Ladr33"</font>
+    BGName3(<font class="source_int">3</font>)=<font class="source_string">"UTMenu.Ladr34"</font>
+    NotAvailableString=<font class="source_string">"Not Available In Demo"</font>
+    RequiredRungs=<font class="source_int">4</font>
+}</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="utmenu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_utmenu\utladder.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UTLadder">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utinputoptionscw.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utladderas.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:49.937 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

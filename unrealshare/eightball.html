@@ -1,0 +1,456 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - UnrealShare.Eightball</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="unrealshare-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_unrealshare\eightball.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Eightball">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="effectlight.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="electricity.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="unrealshare-overview.html">UnrealShare</a>.Eightball</h1>
+<b>Extends:</b> <a href="..\engine\weapon.html">Weapon</a><br>
+<b>Modifiers:</b> <br>
+<a href="..\Source_unrealshare\eightball.html"><b>Source code</b></a>
+
+<p>
+Eightball.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\inventory.html">Inventory</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\weapon.html">Weapon</a>
+            |   
+            +-- <a href="unrealshare-overview.html">UnrealShare</a>.<a href="eightball.html">Eightball</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFireLoad" name="bFireLoad">bFireLoad</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTightWad" name="bTightWad">bTightWad</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\actor.html">Actor</a></td><td width="66%"><a href="#_LockedTarget" name="LockedTarget">LockedTarget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\actor.html">Actor</a></td><td width="66%"><a href="#_NewTarget" name="NewTarget">NewTarget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\actor.html">Actor</a></td><td width="66%"><a href="#_OldTarget" name="OldTarget">OldTarget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_RocketRad" name="RocketRad">RocketRad</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_RocketsLoaded" name="RocketsLoaded">RocketsLoaded</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\weapon.html">Weapon</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\weapon.html#AdjustedAim">AdjustedAim</a>, <a href="..\engine\weapon.html#AimError">AimError</a>, <a href="..\engine\weapon.html#AIRating">AIRating</a>, <a href="..\engine\weapon.html#AltDamageType">AltDamageType</a>, <a href="..\engine\weapon.html#AltFireSound">AltFireSound</a>, <a href="..\engine\weapon.html#AltProjectileClass">AltProjectileClass</a>, <a href="..\engine\weapon.html#AltProjectileSpeed">AltProjectileSpeed</a>, <a href="..\engine\weapon.html#AltRefireRate">AltRefireRate</a>, <a href="..\engine\weapon.html#AmmoName">AmmoName</a>, <a href="..\engine\weapon.html#AmmoType">AmmoType</a>, <a href="..\engine\weapon.html#bAltInstantHit">bAltInstantHit</a>, <a href="..\engine\weapon.html#bAltWarnTarget">bAltWarnTarget</a>, <a href="..\engine\weapon.html#bCanThrow">bCanThrow</a>, <a href="..\engine\weapon.html#bChangeWeapon">bChangeWeapon</a>, <a href="..\engine\weapon.html#bDrawMuzzleFlash">bDrawMuzzleFlash</a>, <a href="..\engine\weapon.html#bHideWeapon">bHideWeapon</a>, <a href="..\engine\weapon.html#bInstantHit">bInstantHit</a>, <a href="..\engine\weapon.html#bLockedOn">bLockedOn</a>, <a href="..\engine\weapon.html#bMeleeWeapon">bMeleeWeapon</a>, <a href="..\engine\weapon.html#bMuzzleFlash">bMuzzleFlash</a>, <a href="..\engine\weapon.html#bOwnsCrosshair">bOwnsCrosshair</a>, <a href="..\engine\weapon.html#bPointing">bPointing</a>, <a href="..\engine\weapon.html#bRapidFire">bRapidFire</a>, <a href="..\engine\weapon.html#bRecommendAltSplashDamage">bRecommendAltSplashDamage</a>, <a href="..\engine\weapon.html#bRecommendSplashDamage">bRecommendSplashDamage</a>, <a href="..\engine\weapon.html#bSetFlashTime">bSetFlashTime</a>, <a href="..\engine\weapon.html#bSpecialIcon">bSpecialIcon</a>, <a href="..\engine\weapon.html#bSplashDamage">bSplashDamage</a>, <a href="..\engine\weapon.html#bWarnTarget">bWarnTarget</a>, <a href="..\engine\weapon.html#bWeaponStay">bWeaponStay</a>, <a href="..\engine\weapon.html#bWeaponUp">bWeaponUp</a>, <a href="..\engine\weapon.html#CockingSound">CockingSound</a>, <a href="..\engine\weapon.html#DeathMessage">DeathMessage</a>, <a href="..\engine\weapon.html#FireOffset">FireOffset</a>, <a href="..\engine\weapon.html#FireSound">FireSound</a>, <a href="..\engine\weapon.html#FiringSpeed">FiringSpeed</a>, <a href="..\engine\weapon.html#FlareOffset">FlareOffset</a>, <a href="..\engine\weapon.html#FlashC">FlashC</a>, <a href="..\engine\weapon.html#FlashLength">FlashLength</a>, <a href="..\engine\weapon.html#FlashO">FlashO</a>, <a href="..\engine\weapon.html#FlashS">FlashS</a>, <a href="..\engine\weapon.html#FlashTime">FlashTime</a>, <a href="..\engine\weapon.html#FlashY">FlashY</a>, <a href="..\engine\weapon.html#MaxTargetRange">MaxTargetRange</a>, <a href="..\engine\weapon.html#MessageNoAmmo">MessageNoAmmo</a>, <a href="..\engine\weapon.html#MFTexture">MFTexture</a>, <a href="..\engine\weapon.html#Misc1Sound">Misc1Sound</a>, <a href="..\engine\weapon.html#Misc2Sound">Misc2Sound</a>, <a href="..\engine\weapon.html#Misc3Sound">Misc3Sound</a>, <a href="..\engine\weapon.html#MuzzleFlare">MuzzleFlare</a>, <a href="..\engine\weapon.html#MuzzleScale">MuzzleScale</a>, <a href="..\engine\weapon.html#MyDamageType">MyDamageType</a>, <a href="..\engine\weapon.html#NameColor">NameColor</a>, <a href="..\engine\weapon.html#PickupAmmoCount">PickupAmmoCount</a>, <a href="..\engine\weapon.html#ProjectileClass">ProjectileClass</a>, <a href="..\engine\weapon.html#ProjectileSpeed">ProjectileSpeed</a>, <a href="..\engine\weapon.html#RefireRate">RefireRate</a>, <a href="..\engine\weapon.html#ReloadCount">ReloadCount</a>, <a href="..\engine\weapon.html#SelectSound">SelectSound</a>, <a href="..\engine\weapon.html#ShakeMag">ShakeMag</a>, <a href="..\engine\weapon.html#ShakeTime">ShakeTime</a>, <a href="..\engine\weapon.html#ShakeVert">ShakeVert</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\inventory.html">Inventory</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\inventory.html#AbsorptionPriority">AbsorptionPriority</a>, <a href="..\engine\inventory.html#ActivateSound">ActivateSound</a>, <a href="..\engine\inventory.html#ArmorAbsorption">ArmorAbsorption</a>, <a href="..\engine\inventory.html#AutoSwitchPriority">AutoSwitchPriority</a>, <a href="..\engine\inventory.html#bActivatable">bActivatable</a>, <a href="..\engine\inventory.html#bActive">bActive</a>, <a href="..\engine\inventory.html#bAmbientGlow">bAmbientGlow</a>, <a href="..\engine\inventory.html#bDisplayableInv">bDisplayableInv</a>, <a href="..\engine\inventory.html#bFirstFrame">bFirstFrame</a>, <a href="..\engine\inventory.html#bHeldItem">bHeldItem</a>, <a href="..\engine\inventory.html#bInstantRespawn">bInstantRespawn</a>, <a href="..\engine\inventory.html#bIsAnArmor">bIsAnArmor</a>, <a href="..\engine\inventory.html#bMuzzleFlashParticles">bMuzzleFlashParticles</a>, <a href="..\engine\inventory.html#BobDamping">BobDamping</a>, <a href="..\engine\inventory.html#bRotatingPickup">bRotatingPickup</a>, <a href="..\engine\inventory.html#bSleepTouch">bSleepTouch</a>, <a href="..\engine\inventory.html#bSteadyFlash3rd">bSteadyFlash3rd</a>, <a href="..\engine\inventory.html#bSteadyToggle">bSteadyToggle</a>, <a href="..\engine\inventory.html#bToggleSteadyFlash">bToggleSteadyFlash</a>, <a href="..\engine\inventory.html#bTossedOut">bTossedOut</a>, <a href="..\engine\inventory.html#Charge">Charge</a>, <a href="..\engine\inventory.html#DeActivateSound">DeActivateSound</a>, <a href="..\engine\inventory.html#FlashCount">FlashCount</a>, <a href="..\engine\inventory.html#Icon">Icon</a>, <a href="..\engine\inventory.html#InventoryGroup">InventoryGroup</a>, <a href="..\engine\inventory.html#ItemArticle">ItemArticle</a>, <a href="..\engine\inventory.html#ItemMessageClass">ItemMessageClass</a>, <a href="..\engine\inventory.html#ItemName">ItemName</a>, <a href="..\engine\inventory.html#MaxDesireability">MaxDesireability</a>, <a href="..\engine\inventory.html#MuzzleFlashMesh">MuzzleFlashMesh</a>, <a href="..\engine\inventory.html#MuzzleFlashScale">MuzzleFlashScale</a>, <a href="..\engine\inventory.html#MuzzleFlashStyle">MuzzleFlashStyle</a>, <a href="..\engine\inventory.html#MuzzleFlashTexture">MuzzleFlashTexture</a>, <a href="..\engine\inventory.html#MyMarker">MyMarker</a>, <a href="..\engine\inventory.html#M_Activated">M_Activated</a>, <a href="..\engine\inventory.html#M_Deactivated">M_Deactivated</a>, <a href="..\engine\inventory.html#M_Selected">M_Selected</a>, <a href="..\engine\inventory.html#NextArmor">NextArmor</a>, <a href="..\engine\inventory.html#OldFlashCount">OldFlashCount</a>, <a href="..\engine\inventory.html#PickupMessage">PickupMessage</a>, <a href="..\engine\inventory.html#PickupMessageClass">PickupMessageClass</a>, <a href="..\engine\inventory.html#PickupSound">PickupSound</a>, <a href="..\engine\inventory.html#PickupViewMesh">PickupViewMesh</a>, <a href="..\engine\inventory.html#PickupViewScale">PickupViewScale</a>, <a href="..\engine\inventory.html#PlayerLastTouched">PlayerLastTouched</a>, <a href="..\engine\inventory.html#PlayerViewMesh">PlayerViewMesh</a>, <a href="..\engine\inventory.html#PlayerViewOffset">PlayerViewOffset</a>, <a href="..\engine\inventory.html#PlayerViewScale">PlayerViewScale</a>, <a href="..\engine\inventory.html#ProtectionType1">ProtectionType1</a>, <a href="..\engine\inventory.html#ProtectionType2">ProtectionType2</a>, <a href="..\engine\inventory.html#RespawnSound">RespawnSound</a>, <a href="..\engine\inventory.html#RespawnTime">RespawnTime</a>, <a href="..\engine\inventory.html#StatusIcon">StatusIcon</a>, <a href="..\engine\inventory.html#ThirdPersonMesh">ThirdPersonMesh</a>, <a href="..\engine\inventory.html#ThirdPersonScale">ThirdPersonScale</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AltFire+" name="AltFire">AltFire</a> (float Value)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AltFire+FireRockets" name="AltFire">AltFire</a> (float F)<br /><span class="function_state">FireRockets</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BarrelTurn+" name="BarrelTurn">BarrelTurn</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+AltFiring" name="BeginState">BeginState</a> ()<br /><span class="function_state">AltFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+FireRockets" name="BeginState">BeginState</a> ()<br /><span class="function_state">FireRockets</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+NormalFire" name="BeginState">BeginState</a> ()<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="..\engine\actor.html">Actor</a>&nbsp;</td><td><a href="#_CheckTarget+" name="CheckTarget">CheckTarget</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Fire+" name="Fire">Fire</a> (float Value)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Fire+FireRockets" name="Fire">Fire</a> (float F)<br /><span class="function_state">FireRockets</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PostRender+" name="PostRender">PostRender</a> (<a href="..\engine\canvas.html">canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_RateSelf+" name="RateSelf">RateSelf</a> (out int bUseAltMode)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_SuggestAttackStyle+" name="SuggestAttackStyle">SuggestAttackStyle</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+AltFiring" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">AltFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+NormalFire" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+Idle" name="Timer">Timer</a> ()<br /><span class="function_state">Idle</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\weapon.html">Weapon</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\weapon.html#AltFire">AltFire</a>, <a href="..\engine\weapon.html#AnimEnd">AnimEnd</a>, <a href="..\engine\weapon.html#BecomePickup">BecomePickup</a>, <a href="..\engine\weapon.html#BeginState">BeginState</a>, <a href="..\engine\weapon.html#BotDesireability">BotDesireability</a>, <a href="..\engine\weapon.html#BringUp">BringUp</a>, <a href="..\engine\weapon.html#CheckVisibility">CheckVisibility</a>, <a href="..\engine\weapon.html#ClientAltFire">ClientAltFire</a>, <a href="..\engine\weapon.html#ClientFire">ClientFire</a>, <a href="..\engine\weapon.html#ClientPutDown">ClientPutDown</a>, <a href="..\engine\weapon.html#ClientWeaponEvent">ClientWeaponEvent</a>, <a href="..\engine\weapon.html#Destroyed">Destroyed</a>, <a href="..\engine\weapon.html#DropFrom">DropFrom</a>, <a href="..\engine\weapon.html#Finish">Finish</a>, <a href="..\engine\weapon.html#Fire">Fire</a>, <a href="..\engine\weapon.html#ForceAltFire">ForceAltFire</a>, <a href="..\engine\weapon.html#ForceFire">ForceFire</a>, <a href="..\engine\weapon.html#GiveAmmo">GiveAmmo</a>, <a href="..\engine\weapon.html#HandlePickupQuery">HandlePickupQuery</a>, <a href="..\engine\weapon.html#PlayAltFiring">PlayAltFiring</a>, <a href="..\engine\weapon.html#PlayFiring">PlayFiring</a>, <a href="..\engine\weapon.html#PlayIdleAnim">PlayIdleAnim</a>, <a href="..\engine\weapon.html#PlayPostSelect">PlayPostSelect</a>, <a href="..\engine\weapon.html#PlaySelect">PlaySelect</a>, <a href="..\engine\weapon.html#PostBeginPlay">PostBeginPlay</a>, <a href="..\engine\weapon.html#PostRender">PostRender</a>, <a href="..\engine\weapon.html#PreRender">PreRender</a>, <a href="..\engine\weapon.html#ProcessTraceHit">ProcessTraceHit</a>, <a href="..\engine\weapon.html#ProjectileFire">ProjectileFire</a>, <a href="..\engine\weapon.html#PutDown">PutDown</a>, <a href="..\engine\weapon.html#RaiseUp">RaiseUp</a>, <a href="..\engine\weapon.html#RateSelf">RateSelf</a>, <a href="..\engine\weapon.html#RecommendWeapon">RecommendWeapon</a>, <a href="..\engine\weapon.html#RenderOverlays">RenderOverlays</a>, <a href="..\engine\weapon.html#setHand">setHand</a>, <a href="..\engine\weapon.html#SetSwitchPriority">SetSwitchPriority</a>, <a href="..\engine\weapon.html#SetWeaponStay">SetWeaponStay</a>, <a href="..\engine\weapon.html#SpawnCopy">SpawnCopy</a>, <a href="..\engine\weapon.html#SplashJump">SplashJump</a>, <a href="..\engine\weapon.html#SuggestAttackStyle">SuggestAttackStyle</a>, <a href="..\engine\weapon.html#SuggestDefenseStyle">SuggestDefenseStyle</a>, <a href="..\engine\weapon.html#SwitchPriority">SwitchPriority</a>, <a href="..\engine\weapon.html#TraceFire">TraceFire</a>, <a href="..\engine\weapon.html#TravelPostAccept">TravelPostAccept</a>, <a href="..\engine\weapon.html#TweenDown">TweenDown</a>, <a href="..\engine\weapon.html#TweenSelect">TweenSelect</a>, <a href="..\engine\weapon.html#TweenToStill">TweenToStill</a>, <a href="..\engine\weapon.html#WeaponChange">WeaponChange</a>, <a href="..\engine\weapon.html#WeaponSet">WeaponSet</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\inventory.html">Inventory</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\inventory.html#Activate">Activate</a>, <a href="..\engine\inventory.html#ActivateTranslator">ActivateTranslator</a>, <a href="..\engine\inventory.html#AltFire">AltFire</a>, <a href="..\engine\inventory.html#ArmorAbsorbDamage">ArmorAbsorbDamage</a>, <a href="..\engine\inventory.html#ArmorImpactEffect">ArmorImpactEffect</a>, <a href="..\engine\inventory.html#ArmorPriority">ArmorPriority</a>, <a href="..\engine\inventory.html#BecomeItem">BecomeItem</a>, <a href="..\engine\inventory.html#BecomePickup">BecomePickup</a>, <a href="..\engine\inventory.html#BeginState">BeginState</a>, <a href="..\engine\inventory.html#BotDesireability">BotDesireability</a>, <a href="..\engine\inventory.html#CalcDrawOffset">CalcDrawOffset</a>, <a href="..\engine\inventory.html#ChangedWeapon">ChangedWeapon</a>, <a href="..\engine\inventory.html#CheckTouching">CheckTouching</a>, <a href="..\engine\inventory.html#Destroyed">Destroyed</a>, <a href="..\engine\inventory.html#DrawStatusIconAt">DrawStatusIconAt</a>, <a href="..\engine\inventory.html#DropFrom">DropFrom</a>, <a href="..\engine\inventory.html#DropInventory">DropInventory</a>, <a href="..\engine\inventory.html#EndState">EndState</a>, <a href="..\engine\inventory.html#Fire">Fire</a>, <a href="..\engine\inventory.html#GetHumanName">GetHumanName</a>, <a href="..\engine\inventory.html#GiveTo">GiveTo</a>, <a href="..\engine\inventory.html#HandlePickupQuery">HandlePickupQuery</a>, <a href="..\engine\inventory.html#InventoryCapsFloat">InventoryCapsFloat</a>, <a href="..\engine\inventory.html#InventoryCapsString">InventoryCapsString</a>, <a href="..\engine\inventory.html#Landed">Landed</a>, <a href="..\engine\inventory.html#OwnerJumped">OwnerJumped</a>, <a href="..\engine\inventory.html#PostBeginPlay">PostBeginPlay</a>, <a href="..\engine\inventory.html#PrioritizeArmor">PrioritizeArmor</a>, <a href="..\engine\inventory.html#RecommendWeapon">RecommendWeapon</a>, <a href="..\engine\inventory.html#ReduceDamage">ReduceDamage</a>, <a href="..\engine\inventory.html#RenderOverlays">RenderOverlays</a>, <a href="..\engine\inventory.html#SelectNext">SelectNext</a>, <a href="..\engine\inventory.html#SetOwnerDisplay">SetOwnerDisplay</a>, <a href="..\engine\inventory.html#SetRespawn">SetRespawn</a>, <a href="..\engine\inventory.html#SpawnCopy">SpawnCopy</a>, <a href="..\engine\inventory.html#Timer">Timer</a>, <a href="..\engine\inventory.html#Touch">Touch</a>, <a href="..\engine\inventory.html#TravelPreAccept">TravelPreAccept</a>, <a href="..\engine\inventory.html#Use">Use</a>, <a href="..\engine\inventory.html#ValidTouch">ValidTouch</a>, <a href="..\engine\inventory.html#WeaponChange">WeaponChange</a>, <a href="..\engine\inventory.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>AltFiring <a href="..\Source_unrealshare\eightball.html#158" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> AltFiring <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+AltFiring">BeginState</a>, <a href="#_Tick+AltFiring">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FireRockets <a href="..\Source_unrealshare\eightball.html#292" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FireRockets <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+FireRockets">AltFire</a>, <a href="#_BeginState+FireRockets">BeginState</a>, <a href="#_Fire+FireRockets">Fire</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Idle <a href="..\Source_unrealshare\eightball.html#249" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Idle <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Timer+Idle">Timer</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>NormalFire <a href="..\Source_unrealshare\eightball.html#190" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> NormalFire <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+NormalFire">BeginState</a>, <a href="#_Tick+NormalFire">Tick</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bFireLoad" class="hidden"></a>bFireLoad <a href="..\Source_unrealshare\eightball.html#51" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bFireLoad;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTightWad" class="hidden"></a>bTightWad <a href="..\Source_unrealshare\eightball.html#51" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTightWad;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LockedTarget" class="hidden"></a>LockedTarget <a href="..\Source_unrealshare\eightball.html#52" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> LockedTarget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NewTarget" class="hidden"></a>NewTarget <a href="..\Source_unrealshare\eightball.html#52" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> NewTarget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldTarget" class="hidden"></a>OldTarget <a href="..\Source_unrealshare\eightball.html#52" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> OldTarget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RocketRad" class="hidden"></a>RocketRad <a href="..\Source_unrealshare\eightball.html#50" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> RocketRad;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RocketsLoaded" class="hidden"></a>RocketsLoaded <a href="..\Source_unrealshare\eightball.html#50" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> RocketsLoaded;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AltFire+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AltFire <span class="function_state"></span> <a href="..\Source_unrealshare\eightball.html#127" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AltFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AltFire+FireRockets" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AltFire <span class="function_state">FireRockets</span> <a href="..\Source_unrealshare\eightball.html#295" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AltFire (<font class="source_keyword">float</font> F)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BarrelTurn+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BarrelTurn <span class="function_state"></span> <a href="..\Source_unrealshare\eightball.html#112" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BarrelTurn ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+AltFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">AltFiring</span> <a href="..\Source_unrealshare\eightball.html#166" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+FireRockets" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">FireRockets</span> <a href="..\Source_unrealshare\eightball.html#297" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+NormalFire" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">NormalFire</span> <a href="..\Source_unrealshare\eightball.html#207" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CheckTarget+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CheckTarget <span class="function_state"></span> <a href="..\Source_unrealshare\eightball.html#137" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> CheckTarget ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Fire+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Fire <span class="function_state"></span> <a href="..\Source_unrealshare\eightball.html#117" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Fire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Fire+FireRockets" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Fire <span class="function_state">FireRockets</span> <a href="..\Source_unrealshare\eightball.html#294" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Fire (<font class="source_keyword">float</font> F)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostRender+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PostRender <span class="function_state"></span> <a href="..\Source_unrealshare\eightball.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PostRender (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RateSelf+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RateSelf <span class="function_state"></span> <a href="..\Source_unrealshare\eightball.html#68" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> RateSelf (<font class="source_keyword2">out</font> <font class="source_keyword">int</font> bUseAltMode)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SuggestAttackStyle+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SuggestAttackStyle <span class="function_state"></span> <a href="..\Source_unrealshare\eightball.html#101" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> SuggestAttackStyle ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+AltFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">AltFiring</span> <a href="..\Source_unrealshare\eightball.html#160" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+NormalFire" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">NormalFire</span> <a href="..\Source_unrealshare\eightball.html#192" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+Idle" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state">Idle</span> <a href="..\Source_unrealshare\eightball.html#251" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     itemname=<font class="source_string">"Eightball"</font>
+     ProjectileClass=<font class="source_keyword">class</font><font class="source_name">'UnrealShare.Rocket'</font>
+     AltProjectileClass=<font class="source_keyword">class</font><font class="source_name">'UnrealShare.Grenade'</font>
+     AmmoName=<font class="source_keyword">Class</font><font class="source_name">'UnrealShare.RocketCan'</font>
+     PickupAmmoCount=<font class="source_int">6</font>
+     bWarnTarget=<font class="source_keyword">True</font>
+     bAltWarnTarget=<font class="source_keyword">True</font>
+     bSplashDamage=<font class="source_keyword">True</font>
+     bRecommendSplashDamage=<font class="source_keyword">True</font>
+     shakemag=<font class="source_int">350.000000</font>
+     shaketime=<font class="source_int">0.200000</font>
+     shakevert=<font class="source_int">7.500000</font>
+     AIRating=<font class="source_int">0.700000</font>
+     RefireRate=<font class="source_int">0.250000</font>
+     AltRefireRate=<font class="source_int">0.250000</font>
+     AltFireSound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Eightball.EightAltFire'</font>
+     CockingSound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Eightball.Loading'</font>
+     SelectSound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Eightball.Selecting'</font>
+     Misc1Sound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Eightball.SeekLock'</font>
+     Misc2Sound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Eightball.SeekLost'</font>
+     Misc3Sound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Eightball.BarrelMove'</font>
+     AutoSwitchPriority=<font class="source_int">5</font>
+     InventoryGroup=<font class="source_int">5</font>
+     PickupMessage=<font class="source_string">"You got the Eightball gun"</font>
+     PlayerViewOffset=(X=<font class="source_int">1.900000</font>,Z=-<font class="source_int">1.890000</font>)
+     PlayerViewMesh=<font class="source_type">Mesh</font><font class="source_name">'UnrealShare.EightB'</font>
+     BobDamping=<font class="source_int">0.985000</font>
+     PickupViewMesh=<font class="source_type">Mesh</font><font class="source_name">'UnrealShare.EightPick'</font>
+     ThirdPersonMesh=<font class="source_type">Mesh</font><font class="source_name">'UnrealShare.8Ball3rd'</font>
+     PickupSound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Pickups.WeaponPickup'</font>
+     <font class="source_type">Mesh</font>=<font class="source_type">Mesh</font><font class="source_name">'UnrealShare.EightPick'</font>
+     bNoSmooth=<font class="source_keyword">False</font>
+     bMeshCurvy=<font class="source_keyword">False</font>
+     CollisionHeight=<font class="source_int">10.000000</font>
+     DeathMessage=<font class="source_string">"%o was smacked down multiple times by %k's %w."</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="unrealshare-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_unrealshare\eightball.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Eightball">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="effectlight.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="electricity.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:46:49.500 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

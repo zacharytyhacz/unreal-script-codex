@@ -1,0 +1,917 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UMenu.UMenuPlayerSetupClient</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\umenu\umenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\umenu\umenuplayersetupclient.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UMenuPlayerSetupClient">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="umenuplayermeshclient.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="umenuplayersetupscrollclient.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\umenu\umenu-overview.html">UMenu</a>.<a href="..\umenu\umenuplayersetupclient.html">UMenuPlayerSetupClient</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\umenu\umenuplayersetupclient.html" class="source">UMenuPlayerSetupClient</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\umenu\umenudialogclientwindow.html" class="source">UMenuDialogClientWindow</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font> ControlOffset;
+<a name="4"></a>
+<a name="5"></a><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>&gt; NewPlayerClass;
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> MeshName;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> Initialized;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenuplayermeshclient.html" class="source">UMenuPlayerMeshClient</a></font> MeshWindow;
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> PlayerBaseClass;
+<a name="10"></a>
+<a name="11"></a><font class="source_comment">// Player Name
+</font><a name="12"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font> NameEdit;
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> NameText;
+<a name="14"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> NameHelp;
+<a name="15"></a>
+<a name="16"></a><font class="source_comment">// Team Combo
+</font><a name="17"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> TeamCombo;
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TeamText;
+<a name="19"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> Teams[<font class="source_int">4</font>];
+<a name="20"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> NoTeam;
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TeamHelp;
+<a name="22"></a>
+<a name="23"></a><font class="source_comment">// Class Combo
+</font><a name="24"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> ClassCombo;
+<a name="25"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ClassText;
+<a name="26"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ClassHelp;
+<a name="27"></a>
+<a name="28"></a><font class="source_comment">// Skin Combo
+</font><a name="29"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> SkinCombo;
+<a name="30"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SkinText;
+<a name="31"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SkinHelp;
+<a name="32"></a>
+<a name="33"></a><font class="source_comment">// Face Combo
+</font><a name="34"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> FaceCombo;
+<a name="35"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FaceText;
+<a name="36"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FaceHelp;
+<a name="37"></a>
+<a name="38"></a><font class="source_keyword">function</font> Created()
+<a name="39"></a>{
+<a name="40"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> SkinName, FaceName;
+<a name="41"></a>
+<a name="42"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="43"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos;
+<a name="44"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> I;
+<a name="45"></a>    
+<a name="46"></a>    MeshWindow = <font class="source_type"><a href="..\umenu\umenuplayermeshclient.html" class="source">UMenuPlayerMeshClient</a></font>(<font class="source_type"><a href="..\umenu\umenuplayerclientwindow.html" class="source">UMenuPlayerClientWindow</a></font>(ParentWindow.ParentWindow.ParentWindow).Splitter.RightClientWindow);
+<a name="47"></a>
+<a name="48"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="49"></a>
+<a name="50"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="51"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="52"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="53"></a>
+<a name="54"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="55"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="56"></a>
+<a name="57"></a>    NewPlayerClass = GetPlayerOwner().<font class="source_keyword">Class</font>;
+<a name="58"></a>
+<a name="59"></a>    <font class="source_comment">// Player Name
+</font><a name="60"></a>    NameEdit = <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowEditControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="61"></a>    NameEdit.SetText(NameText);
+<a name="62"></a>    NameEdit.SetHelpText(NameHelp);
+<a name="63"></a>    NameEdit.SetFont(F_Normal);
+<a name="64"></a>    NameEdit.SetNumericOnly(<font class="source_keyword">False</font>);
+<a name="65"></a>    NameEdit.SetMaxLength(<font class="source_int">20</font>);
+<a name="66"></a>    NameEdit.SetDelayedNotify(<font class="source_keyword">True</font>);
+<a name="67"></a>
+<a name="68"></a>    <font class="source_comment">// Team
+</font><a name="69"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="70"></a>    TeamCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="71"></a>    TeamCombo.SetText(TeamText);
+<a name="72"></a>    TeamCombo.SetHelpText(TeamHelp);
+<a name="73"></a>    TeamCombo.SetFont(F_Normal);
+<a name="74"></a>    TeamCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="75"></a>    TeamCombo.AddItem(NoTeam, <font class="source_keyword">String</font>(<font class="source_int">255</font>));
+<a name="76"></a>    <font class="source_keyword">for</font> (I=<font class="source_int">0</font>; I&lt;<font class="source_int">4</font>; I++)
+<a name="77"></a>        TeamCombo.AddItem(Teams[I], <font class="source_keyword">String</font>(i));
+<a name="78"></a>
+<a name="79"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="80"></a>    <font class="source_comment">// Load Classes
+</font><a name="81"></a>    ClassCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="82"></a>    ClassCombo.SetText(ClassText);
+<a name="83"></a>    ClassCombo.SetHelpText(ClassHelp);
+<a name="84"></a>    ClassCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="85"></a>    ClassCombo.SetFont(F_Normal);
+<a name="86"></a>
+<a name="87"></a>    <font class="source_comment">// Skin
+</font><a name="88"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="89"></a>    SkinCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="90"></a>    SkinCombo.SetText(SkinText);
+<a name="91"></a>    SkinCombo.SetHelpText(SkinHelp);
+<a name="92"></a>    SkinCombo.SetFont(F_Normal);
+<a name="93"></a>    SkinCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="94"></a>
+<a name="95"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="96"></a>    FaceCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="97"></a>    FaceCombo.SetText(FaceText);
+<a name="98"></a>    FaceCombo.SetHelpText(FaceHelp);
+<a name="99"></a>    FaceCombo.SetFont(F_Normal);
+<a name="100"></a>    FaceCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="101"></a>
+<a name="102"></a>    LoadClasses();
+<a name="103"></a>}
+<a name="104"></a>
+<a name="105"></a>
+<a name="106"></a><font class="source_keyword">function</font> AfterCreate()
+<a name="107"></a>{
+<a name="108"></a>    <font class="source_keyword">Super</font>.AfterCreate();
+<a name="109"></a>
+<a name="110"></a>    DesiredWidth = <font class="source_int">220</font>;
+<a name="111"></a>    DesiredHeight = ControlOffset + <font class="source_int">25</font>;
+<a name="112"></a>
+<a name="113"></a>    LoadCurrent();
+<a name="114"></a>    UseSelected();
+<a name="115"></a>        
+<a name="116"></a>    Initialized = <font class="source_keyword">True</font>;
+<a name="117"></a>}
+<a name="118"></a>
+<a name="119"></a><font class="source_keyword">function</font> LoadClasses()
+<a name="120"></a>{
+<a name="121"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> NumPlayerClasses;
+<a name="122"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NextPlayer, NextDesc;
+<a name="123"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> SortWeight;
+<a name="124"></a>
+<a name="125"></a>    GetPlayerOwner().GetNextIntDesc(PlayerBaseClass, <font class="source_int">0</font>, NextPlayer, NextDesc);
+<a name="126"></a>    <font class="source_keyword">while</font>( (NextPlayer != <font class="source_string">""</font>) && (NumPlayerClasses &lt; <font class="source_int">64</font>) )
+<a name="127"></a>    {
+<a name="128"></a>        ClassCombo.AddItem(NextDesc, NextPlayer, SortWeight);
+<a name="129"></a>        NumPlayerClasses++;
+<a name="130"></a>        GetPlayerOwner().GetNextIntDesc(PlayerBaseClass, NumPlayerClasses, NextPlayer, NextDesc);
+<a name="131"></a>    }
+<a name="132"></a>    ClassCombo.Sort();
+<a name="133"></a>}
+<a name="134"></a>
+<a name="135"></a><font class="source_keyword">function</font> LoadCurrent()
+<a name="136"></a>{
+<a name="137"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> SN, FN;
+<a name="138"></a>
+<a name="139"></a>    NameEdit.SetValue(GetPlayerOwner().<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName);
+<a name="140"></a>    TeamCombo.SetSelectedIndex(Max(TeamCombo.FindItemIndex2(<font class="source_keyword">string</font>(GetPlayerOwner().<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Team)), <font class="source_int">0</font>));
+<a name="141"></a>    <font class="source_keyword">if</font>(GetLevel().Game != <font class="source_keyword">None</font> && GetLevel().Game.IsA(<font class="source_name">'UTIntro'</font>))
+<a name="142"></a>    {
+<a name="143"></a>        SN = GetPlayerOwner().GetDefaultURL(<font class="source_string">"Skin"</font>);
+<a name="144"></a>        FN = GetPlayerOwner().GetDefaultURL(<font class="source_string">"Face"</font>);
+<a name="145"></a>        ClassCombo.SetSelectedIndex(Max(ClassCombo.FindItemIndex2(GetPlayerOwner().GetDefaultURL(<font class="source_string">"Class"</font>), <font class="source_keyword">True</font>), <font class="source_int">0</font>));
+<a name="146"></a>    }
+<a name="147"></a>    <font class="source_keyword">else</font>
+<a name="148"></a>    {
+<a name="149"></a>        ClassCombo.SetSelectedIndex(Max(ClassCombo.FindItemIndex2(<font class="source_keyword">string</font>(GetPlayerOwner().<font class="source_keyword">Class</font>), <font class="source_keyword">True</font>), <font class="source_int">0</font>));
+<a name="150"></a>        GetPlayerOwner().<font class="source_keyword2">static</font>.GetMultiSkin(GetPlayerOwner(), SN, FN);
+<a name="151"></a>    }
+<a name="152"></a>    SkinCombo.SetSelectedIndex(Max(SkinCombo.FindItemIndex2(SN, <font class="source_keyword">True</font>), <font class="source_int">0</font>));
+<a name="153"></a>    FaceCombo.SetSelectedIndex(Max(FaceCombo.FindItemIndex2(FN, <font class="source_keyword">True</font>), <font class="source_int">0</font>));
+<a name="154"></a>}
+<a name="155"></a>
+<a name="156"></a><font class="source_keyword">function</font> SaveConfigs()
+<a name="157"></a>{
+<a name="158"></a>    <font class="source_keyword">Super</font>.SaveConfigs();
+<a name="159"></a>    GetPlayerOwner().SaveConfig();
+<a name="160"></a>    GetPlayerOwner().<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.SaveConfig();
+<a name="161"></a>}
+<a name="162"></a>
+<a name="163"></a><font class="source_keyword">function</font> IterateSkins()
+<a name="164"></a>{
+<a name="165"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> SkinName, SkinDesc, TestName, Temp, FaceName;
+<a name="166"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="167"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bNewFormat;
+<a name="168"></a>
+<a name="169"></a>    SkinCombo.Clear();
+<a name="170"></a>
+<a name="171"></a>    <font class="source_keyword">if</font>( ClassIsChildOf(NewPlayerClass, <font class="source_keyword">class</font><font class="source_name">'Spectator'</font>) )
+<a name="172"></a>    {
+<a name="173"></a>        SkinCombo.HideWindow();
+<a name="174"></a>        <font class="source_keyword">return</font>;
+<a name="175"></a>    }
+<a name="176"></a>    <font class="source_keyword">else</font>
+<a name="177"></a>        SkinCombo.ShowWindow();
+<a name="178"></a>
+<a name="179"></a>    bNewFormat = NewPlayerClass.default.bIsMultiSkinned;
+<a name="180"></a>
+<a name="181"></a>    SkinName = <font class="source_string">"None"</font>;
+<a name="182"></a>    TestName = <font class="source_string">""</font>;
+<a name="183"></a>    <font class="source_keyword">while</font> ( <font class="source_keyword">True</font> )
+<a name="184"></a>    {
+<a name="185"></a>        GetPlayerOwner().GetNextSkin(MeshName, SkinName, <font class="source_int">1</font>, SkinName, SkinDesc);
+<a name="186"></a>
+<a name="187"></a>        <font class="source_keyword">if</font>( SkinName == TestName )
+<a name="188"></a>            <font class="source_keyword">break</font>;
+<a name="189"></a>
+<a name="190"></a>        <font class="source_keyword">if</font>( TestName == <font class="source_string">""</font> )
+<a name="191"></a>            TestName = SkinName;
+<a name="192"></a>
+<a name="193"></a>        <font class="source_keyword">if</font>( !bNewFormat )
+<a name="194"></a>        {
+<a name="195"></a>            Temp = GetPlayerOwner().GetItemName(SkinName);
+<a name="196"></a>            <font class="source_keyword">if</font>( Left(Temp, <font class="source_int">2</font>) != <font class="source_string">"T_"</font> )
+<a name="197"></a>                SkinCombo.AddItem(Temp, SkinName);
+<a name="198"></a>        }
+<a name="199"></a>        <font class="source_keyword">else</font>
+<a name="200"></a>        {
+<a name="201"></a>            <font class="source_comment">// Multiskin format
+</font><a name="202"></a>            <font class="source_keyword">if</font>( SkinDesc != <font class="source_string">""</font>)
+<a name="203"></a>            {           
+<a name="204"></a>                Temp = GetPlayerOwner().GetItemName(SkinName);
+<a name="205"></a>                <font class="source_keyword">if</font>(Mid(Temp, <font class="source_int">5</font>, <font class="source_int">64</font>) == <font class="source_string">""</font>)
+<a name="206"></a>                    <font class="source_comment">// This is a skin
+</font><a name="207"></a>                    SkinCombo.AddItem(SkinDesc, Left(SkinName, Len(SkinName) - Len(Temp)) $ Left(Temp, <font class="source_int">4</font>));         
+<a name="208"></a>            }
+<a name="209"></a>        }
+<a name="210"></a>    }
+<a name="211"></a>    SkinCombo.Sort();
+<a name="212"></a>}
+<a name="213"></a>
+<a name="214"></a><font class="source_keyword">function</font> IterateFaces(<font class="source_keyword">string</font> InSkinName)
+<a name="215"></a>{
+<a name="216"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> SkinName, SkinDesc, TestName, Temp, FaceName;
+<a name="217"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bNewFormat;
+<a name="218"></a>
+<a name="219"></a>    FaceCombo.Clear();
+<a name="220"></a>
+<a name="221"></a>    <font class="source_comment">// New format only
+</font><a name="222"></a>    <font class="source_keyword">if</font>( !NewPlayerClass.default.bIsMultiSkinned )
+<a name="223"></a>    {
+<a name="224"></a>        FaceCombo.HideWindow();
+<a name="225"></a>        <font class="source_keyword">return</font>;
+<a name="226"></a>    }
+<a name="227"></a>    <font class="source_keyword">else</font>
+<a name="228"></a>        FaceCombo.ShowWindow();
+<a name="229"></a>
+<a name="230"></a>
+<a name="231"></a>    SkinName = <font class="source_string">"None"</font>;
+<a name="232"></a>    TestName = <font class="source_string">""</font>;
+<a name="233"></a>    <font class="source_keyword">while</font> ( <font class="source_keyword">True</font> )
+<a name="234"></a>    {
+<a name="235"></a>        GetPlayerOwner().GetNextSkin(MeshName, SkinName, <font class="source_int">1</font>, SkinName, SkinDesc);
+<a name="236"></a>
+<a name="237"></a>        <font class="source_keyword">if</font>( SkinName == TestName )
+<a name="238"></a>            <font class="source_keyword">break</font>;
+<a name="239"></a>
+<a name="240"></a>        <font class="source_keyword">if</font>( TestName == <font class="source_string">""</font> )
+<a name="241"></a>            TestName = SkinName;
+<a name="242"></a>
+<a name="243"></a>        <font class="source_comment">// Multiskin format
+</font><a name="244"></a>        <font class="source_keyword">if</font>( SkinDesc != <font class="source_string">""</font>)
+<a name="245"></a>        {           
+<a name="246"></a>            Temp = GetPlayerOwner().GetItemName(SkinName);
+<a name="247"></a>            <font class="source_keyword">if</font>(Mid(Temp, <font class="source_int">5</font>) != <font class="source_string">""</font> && Left(Temp, <font class="source_int">4</font>) == GetPlayerOwner().GetItemName(InSkinName))
+<a name="248"></a>                FaceCombo.AddItem(SkinDesc, Left(SkinName, Len(SkinName) - Len(Temp)) $ Mid(Temp, <font class="source_int">5</font>));
+<a name="249"></a>        }
+<a name="250"></a>    }
+<a name="251"></a>    FaceCombo.Sort();
+<a name="252"></a>}
+<a name="253"></a>
+<a name="254"></a>
+<a name="255"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="256"></a>{
+<a name="257"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="258"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos;
+<a name="259"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> W;
+<a name="260"></a>
+<a name="261"></a>    W = Min(WinWidth, <font class="source_int">220</font>);
+<a name="262"></a>
+<a name="263"></a>    ControlWidth = W/3;
+<a name="264"></a>    ControlLeft = (W/2 - ControlWidth)/2;
+<a name="265"></a>    ControlRight = W/2 + ControlLeft;
+<a name="266"></a>
+<a name="267"></a>    CenterWidth = (W/7)*<font class="source_int">6</font>;
+<a name="268"></a>    CenterPos = (W - CenterWidth)/2;
+<a name="269"></a>
+<a name="270"></a>    NameEdit.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="271"></a>    NameEdit.WinLeft = CenterPos;
+<a name="272"></a>    NameEdit.EditBoxWidth = <font class="source_int">105</font>;
+<a name="273"></a>
+<a name="274"></a>    TeamCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="275"></a>    TeamCombo.WinLeft = CenterPos;
+<a name="276"></a>    TeamCombo.EditBoxWidth = <font class="source_int">105</font>;
+<a name="277"></a>
+<a name="278"></a>    SkinCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="279"></a>    SkinCombo.WinLeft = CenterPos;
+<a name="280"></a>    SkinCombo.EditBoxWidth = <font class="source_int">105</font>;
+<a name="281"></a>
+<a name="282"></a>    FaceCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="283"></a>    FaceCombo.WinLeft = CenterPos;
+<a name="284"></a>    FaceCombo.EditBoxWidth = <font class="source_int">105</font>;
+<a name="285"></a>
+<a name="286"></a>    ClassCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="287"></a>    ClassCombo.WinLeft = CenterPos;
+<a name="288"></a>    ClassCombo.EditBoxWidth = <font class="source_int">105</font>;
+<a name="289"></a>
+<a name="290"></a>}
+<a name="291"></a>
+<a name="292"></a><font class="source_keyword">function</font> Notify(<font class="source_type"><a href="..\uwindow\uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></font> C, <font class="source_keyword">byte</font> E)
+<a name="293"></a>{
+<a name="294"></a>    <font class="source_keyword">Super</font>.Notify(C, E);
+<a name="295"></a>
+<a name="296"></a>    <font class="source_keyword">switch</font>(E)
+<a name="297"></a>    {
+<a name="298"></a>    <font class="source_keyword">case</font> DE_Change:
+<a name="299"></a>        <font class="source_keyword">switch</font>(C)
+<a name="300"></a>        {
+<a name="301"></a>            <font class="source_keyword">case</font> NameEdit:
+<a name="302"></a>                NameChanged();
+<a name="303"></a>                <font class="source_keyword">break</font>;
+<a name="304"></a>            <font class="source_keyword">case</font> TeamCombo:
+<a name="305"></a>                TeamChanged();
+<a name="306"></a>                <font class="source_keyword">break</font>;
+<a name="307"></a>            <font class="source_keyword">case</font> SkinCombo:
+<a name="308"></a>                SkinChanged();
+<a name="309"></a>                <font class="source_keyword">break</font>;
+<a name="310"></a>            <font class="source_keyword">case</font> ClassCombo:
+<a name="311"></a>                ClassChanged();
+<a name="312"></a>                <font class="source_keyword">break</font>;
+<a name="313"></a>            <font class="source_keyword">case</font> FaceCombo:
+<a name="314"></a>                FaceChanged();
+<a name="315"></a>                <font class="source_keyword">break</font>;
+<a name="316"></a>        }
+<a name="317"></a>    }
+<a name="318"></a>}
+<a name="319"></a>
+<a name="320"></a><font class="source_keyword">function</font> NameChanged()
+<a name="321"></a>{
+<a name="322"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> N;
+<a name="323"></a>    <font class="source_keyword">if</font> (Initialized)
+<a name="324"></a>    {
+<a name="325"></a>        Initialized = <font class="source_keyword">False</font>;
+<a name="326"></a>        N = NameEdit.GetValue();
+<a name="327"></a>        ReplaceText(N, <font class="source_string">" "</font>, <font class="source_string">"_"</font>);
+<a name="328"></a>        NameEdit.SetValue(N);
+<a name="329"></a>        Initialized = <font class="source_keyword">True</font>;
+<a name="330"></a>
+<a name="331"></a>        GetPlayerOwner().ChangeName(NameEdit.GetValue());
+<a name="332"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Name"</font>, NameEdit.GetValue(), <font class="source_keyword">True</font>);
+<a name="333"></a>    }
+<a name="334"></a>}
+<a name="335"></a>
+<a name="336"></a><font class="source_keyword">function</font> TeamChanged()
+<a name="337"></a>{
+<a name="338"></a>    <font class="source_keyword">if</font> (Initialized)
+<a name="339"></a>        UseSelected();
+<a name="340"></a>}
+<a name="341"></a>
+<a name="342"></a><font class="source_keyword">function</font> SkinChanged()
+<a name="343"></a>{
+<a name="344"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> OldInitialized;
+<a name="345"></a>
+<a name="346"></a>    OldInitialized = Initialized;
+<a name="347"></a>    Initialized = <font class="source_keyword">False</font>;
+<a name="348"></a>    IterateFaces(SkinCombo.GetValue2());
+<a name="349"></a>    FaceCombo.SetSelectedIndex(<font class="source_int">0</font>);
+<a name="350"></a>    Initialized = OldInitialized;
+<a name="351"></a>
+<a name="352"></a>    <font class="source_keyword">if</font> (Initialized)
+<a name="353"></a>        UseSelected();
+<a name="354"></a>}
+<a name="355"></a>
+<a name="356"></a><font class="source_keyword">function</font> FaceChanged()
+<a name="357"></a>{
+<a name="358"></a>    <font class="source_keyword">if</font> (Initialized)
+<a name="359"></a>        UseSelected();
+<a name="360"></a>}
+<a name="361"></a>
+<a name="362"></a><font class="source_keyword">function</font> ClassChanged()
+<a name="363"></a>{
+<a name="364"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> SkinName, SkinDesc;
+<a name="365"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> OldInitialized;
+<a name="366"></a>
+<a name="367"></a>    <font class="source_comment">// Get the class.
+</font><a name="368"></a>    NewPlayerClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>&gt;(DynamicLoadObject(ClassCombo.GetValue2(), <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="369"></a>
+<a name="370"></a>    <font class="source_comment">// Get the meshname
+</font><a name="371"></a>    MeshName = GetPlayerOwner().GetItemName(<font class="source_keyword">String</font>(NewPlayerClass.Default.<font class="source_type">Mesh</font>));
+<a name="372"></a>
+<a name="373"></a>    OldInitialized = Initialized;
+<a name="374"></a>    Initialized = <font class="source_keyword">False</font>;
+<a name="375"></a>
+<a name="376"></a>    IterateSkins();
+<a name="377"></a>    SkinCombo.SetSelectedIndex(<font class="source_int">0</font>);
+<a name="378"></a>    IterateFaces(SkinCombo.GetValue2());
+<a name="379"></a>    FaceCombo.SetSelectedIndex(<font class="source_int">0</font>);
+<a name="380"></a>    Initialized = OldInitialized;
+<a name="381"></a>
+<a name="382"></a>    <font class="source_keyword">if</font> (Initialized)
+<a name="383"></a>        UseSelected();
+<a name="384"></a>}
+<a name="385"></a>
+<a name="386"></a>
+<a name="387"></a><font class="source_keyword">function</font> UseSelected()
+<a name="388"></a>{
+<a name="389"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> NewTeam;
+<a name="390"></a>
+<a name="391"></a>    <font class="source_keyword">if</font> (Initialized)
+<a name="392"></a>    {
+<a name="393"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Class"</font>, ClassCombo.GetValue2(), <font class="source_keyword">True</font>);
+<a name="394"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Skin"</font>, SkinCombo.GetValue2(), <font class="source_keyword">True</font>);
+<a name="395"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Face"</font>, FaceCombo.GetValue2(), <font class="source_keyword">True</font>);
+<a name="396"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Team"</font>, TeamCombo.GetValue2(), <font class="source_keyword">True</font>);
+<a name="397"></a>
+<a name="398"></a>        NewTeam = <font class="source_keyword">Int</font>(TeamCombo.GetValue2());
+<a name="399"></a>
+<a name="400"></a>        <font class="source_comment">// if the same class as current class, change skin
+</font><a name="401"></a>        <font class="source_keyword">if</font>( ClassCombo.GetValue2() ~= <font class="source_keyword">String</font>( GetPlayerOwner().<font class="source_keyword">Class</font> ))
+<a name="402"></a>            GetPlayerOwner().ServerChangeSkin(SkinCombo.GetValue2(), FaceCombo.GetValue2(), NewTeam);
+<a name="403"></a>
+<a name="404"></a>        <font class="source_keyword">if</font>( GetPlayerOwner().<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Team != NewTeam )
+<a name="405"></a>            GetPlayerOwner().ChangeTeam(NewTeam);
+<a name="406"></a>    }
+<a name="407"></a>
+<a name="408"></a>    MeshWindow.SetMeshString(NewPlayerClass.Default.SelectionMesh);
+<a name="409"></a>    MeshWindow.ClearSkins();
+<a name="410"></a>    NewPlayerClass.<font class="source_keyword2">static</font>.SetMultiSkin(MeshWindow.<font class="source_type"><a href="..\umenu\meshactor.html" class="source">MeshActor</a></font>, SkinCombo.GetValue2(), FaceCombo.GetValue2(), <font class="source_keyword">Int</font>(TeamCombo.GetValue2()));
+<a name="411"></a>}
+<a name="412"></a>
+<a name="413"></a><font class="source_keyword">defaultproperties</font>
+<a name="414"></a>{
+<a name="415"></a>    NameText=<font class="source_string">"Name:"</font>
+<a name="416"></a>    NameHelp=<font class="source_string">"Set your player name."</font>
+<a name="417"></a>    TeamText=<font class="source_string">"Team:"</font>
+<a name="418"></a>    TeamHelp=<font class="source_string">"Select the team you wish to play on."</font>
+<a name="419"></a>    SkinText=<font class="source_string">"Skin:"</font>
+<a name="420"></a>    SkinHelp=<font class="source_string">"Choose a skin for your player."</font>
+<a name="421"></a>    FaceText=<font class="source_string">"Face:"</font>
+<a name="422"></a>    FaceHelp=<font class="source_string">"Choose a face for your player."</font>
+<a name="423"></a>    ClassText=<font class="source_string">"Class:"</font>
+<a name="424"></a>    ClassHelp=<font class="source_string">"Select your player class."</font>
+<a name="425"></a>    Teams(<font class="source_int">0</font>)=<font class="source_string">"Red"</font>
+<a name="426"></a>    Teams(<font class="source_int">1</font>)=<font class="source_string">"Blue"</font>
+<a name="427"></a>    Teams(<font class="source_int">2</font>)=<font class="source_string">"Green"</font>
+<a name="428"></a>    Teams(<font class="source_int">3</font>)=<font class="source_string">"Gold"</font>
+<a name="429"></a>    NoTeam=<font class="source_string">"None"</font>
+<a name="430"></a>    PlayerBaseClass=<font class="source_string">"UnrealiPlayer"</font>
+<a name="431"></a>    ControlOffset=<font class="source_int">25</font>
+<a name="432"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\umenu\umenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\umenu\umenuplayersetupclient.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UMenuPlayerSetupClient">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="umenuplayermeshclient.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="umenuplayersetupscrollclient.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:04.000 - Creation time: Wed 26/5/2004 10:48:54.109 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

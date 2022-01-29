@@ -1,0 +1,407 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.VoiceBoss</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\voiceboss.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#VoiceBoss">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="visibleteleporter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="voicebotboss.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\voiceboss.html">VoiceBoss</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// VoiceBoss.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\voiceboss.html" class="source">VoiceBoss</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\botpack\challengevoicepack.html" class="source">ChallengeVoicePack</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec OBJ LOAD FILE=..\Sounds\BossVoice.uax PACKAGE=BossVoice
+</font><a name="7"></a>
+<a name="8"></a><font class="source_keyword">function</font> SetOtherMessage(<font class="source_keyword">int</font> messageIndex, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword2">out</font> <font class="source_type">Sound</font> MessageSound, <font class="source_keyword2">out</font> <font class="source_keyword">Float</font> MessageTime)
+<a name="9"></a>{
+<a name="10"></a>    <font class="source_keyword">if</font> ( messageIndex == <font class="source_int">3</font> )
+<a name="11"></a>    {
+<a name="12"></a>        <font class="source_keyword">if</font> ( FRand() &lt; <font class="source_int">0.3</font> )
+<a name="13"></a>            messageIndex = <font class="source_int">7</font>;
+<a name="14"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( FRand() &lt; <font class="source_int">0.5</font> )
+<a name="15"></a>            messageIndex = <font class="source_int">15</font>;
+<a name="16"></a>    }
+<a name="17"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( messageIndex == <font class="source_int">4</font> )
+<a name="18"></a>    {
+<a name="19"></a>        <font class="source_keyword">if</font> ( FRand() &lt; <font class="source_int">0.3</font> )
+<a name="20"></a>            messageIndex = <font class="source_int">6</font>;
+<a name="21"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( FRand() &lt; <font class="source_int">0.5</font> )
+<a name="22"></a>            messageIndex = <font class="source_int">13</font>;
+<a name="23"></a>    }
+<a name="24"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( messageIndex == <font class="source_int">10</font> )
+<a name="25"></a>    {
+<a name="26"></a>        SetTimer(<font class="source_int">3</font> + FRand(), <font class="source_keyword">false</font>); <font class="source_comment">// wait for initial request to be spoken
+</font><a name="27"></a>        <font class="source_keyword">if</font> ( FRand() &lt; <font class="source_int">0.5</font> )
+<a name="28"></a>        {
+<a name="29"></a>            DelayedResponse = AckString[<font class="source_int">2</font>]$CommaText$GetCallSign(recipient);
+<a name="30"></a>            Phrase[<font class="source_int">0</font>] = AckSound[<font class="source_int">2</font>];
+<a name="31"></a>            PhraseTime[<font class="source_int">0</font>] = AckTime[<font class="source_int">2</font>];
+<a name="32"></a>            <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.NetMode == NM_Standalone) && (recipient.TeamID == <font class="source_int">0</font>) )
+<a name="33"></a>            {
+<a name="34"></a>                Phrase[<font class="source_int">1</font>] = NameSound[recipient.Team];
+<a name="35"></a>                PhraseTime[<font class="source_int">1</font>] = NameTime[recipient.Team];
+<a name="36"></a>            }
+<a name="37"></a>            <font class="source_keyword">return</font>;
+<a name="38"></a>        }
+<a name="39"></a>    }
+<a name="40"></a>    <font class="source_keyword">Super</font>.SetOtherMessage(messageIndex, Recipient, MessageSound, MessageTime);
+<a name="41"></a>}
+<a name="42"></a>
+<a name="43"></a><font class="source_keyword">defaultproperties</font>
+<a name="44"></a>{
+<a name="45"></a>    NameSound(<font class="source_int">0</font>)=BossVoice.BRedLeader
+<a name="46"></a>    NameSound(<font class="source_int">1</font>)=BossVoice.BBlueLeader
+<a name="47"></a>    NameSound(<font class="source_int">2</font>)=BossVoice.BGreenLeader
+<a name="48"></a>    NameSound(<font class="source_int">3</font>)=BossVoice.BGoldLeader
+<a name="49"></a>    NameTime(<font class="source_int">0</font>)=<font class="source_int">0.96</font>
+<a name="50"></a>    NameTime(<font class="source_int">1</font>)=<font class="source_int">1.10</font>
+<a name="51"></a>    NameTime(<font class="source_int">2</font>)=<font class="source_int">1.02</font>
+<a name="52"></a>    NameTime(<font class="source_int">3</font>)=<font class="source_int">0.99</font>
+<a name="53"></a>
+<a name="54"></a>    numAcks=<font class="source_int">3</font>
+<a name="55"></a>    AckSound(<font class="source_int">0</font>)=BossVoice.BGotIt
+<a name="56"></a>    AckSound(<font class="source_int">1</font>)=BossVoice.BRoger
+<a name="57"></a>    AckSound(<font class="source_int">2</font>)=BossVoice.BOnMyWay
+<a name="58"></a>    AckTime(<font class="source_int">0</font>)=<font class="source_int">0.78</font>
+<a name="59"></a>    AckTime(<font class="source_int">1</font>)=<font class="source_int">0.81</font>
+<a name="60"></a>    AckTime(<font class="source_int">2</font>)=<font class="source_int">0.98</font>
+<a name="61"></a>    AckString(<font class="source_int">0</font>)=<font class="source_string">"Got it"</font>
+<a name="62"></a>    AckString(<font class="source_int">1</font>)=<font class="source_string">"Roger"</font>
+<a name="63"></a>    AckString(<font class="source_int">2</font>)=<font class="source_string">"On my way"</font>
+<a name="64"></a>
+<a name="65"></a>    numFFires=<font class="source_int">2</font>
+<a name="66"></a>    FFireSound(<font class="source_int">0</font>)=BossVoice.BOnYourTeam
+<a name="67"></a>    FFireSound(<font class="source_int">1</font>)=BossVoice.BSameTeam
+<a name="68"></a>    FFireString(<font class="source_int">0</font>)=<font class="source_string">"I'm on your team!"</font>
+<a name="69"></a>    FFireAbbrev(<font class="source_int">0</font>)=<font class="source_string">"On your team!"</font>
+<a name="70"></a>    FFireString(<font class="source_int">1</font>)=<font class="source_string">"Same team!"</font>
+<a name="71"></a>
+<a name="72"></a>    numTaunts=<font class="source_int">20</font>
+<a name="73"></a>    TauntSound(<font class="source_int">0</font>)=BossVoice.BBowDown
+<a name="74"></a>    TauntSound(<font class="source_int">1</font>)=BossVoice.BDieHuman
+<a name="75"></a>    TauntSound(<font class="source_int">2</font>)=BossVoice.BEliminated
+<a name="76"></a>    TauntSound(<font class="source_int">3</font>)=BossVoice.BYouDie
+<a name="77"></a>    TauntSound(<font class="source_int">4</font>)=BossVoice.BUseless
+<a name="78"></a>    TauntSound(<font class="source_int">5</font>)=BossVoice.BFearMe
+<a name="79"></a>    TauntSound(<font class="source_int">6</font>)=BossVoice.BInferior
+<a name="80"></a>    TauntSound(<font class="source_int">7</font>)=BossVoice.BObsolete
+<a name="81"></a>    TauntSound(<font class="source_int">8</font>)=BossVoice.BOmega
+<a name="82"></a>    TauntSound(<font class="source_int">9</font>)=BossVoice.BRunHuman
+<a name="83"></a>    TauntSound(<font class="source_int">10</font>)=BossVoice.BStepAside
+<a name="84"></a>    TauntSound(<font class="source_int">11</font>)=BossVoice.BSuperior
+<a name="85"></a>    TauntSound(<font class="source_int">12</font>)=BossVoice.BPerfection
+<a name="86"></a>    TauntSound(<font class="source_int">13</font>)=BossVoice.BBoom
+<a name="87"></a>    TauntSound(<font class="source_int">14</font>)=BossVoice.BMyHouse
+<a name="88"></a>    TauntSound(<font class="source_int">15</font>)=BossVoice.BNext
+<a name="89"></a>    TauntSound(<font class="source_int">16</font>)=BossVoice.BBurnbaby
+<a name="90"></a>    TauntSound(<font class="source_int">17</font>)=BossVoice.BWantSome
+<a name="91"></a>    TauntSound(<font class="source_int">18</font>)=BossVoice.BHadtoHurt
+<a name="92"></a>    TauntSound(<font class="source_int">19</font>)=BossVoice.BImOnFire
+<a name="93"></a>    TauntString(<font class="source_int">0</font>)=<font class="source_string">"Bow down!"</font>
+<a name="94"></a>    TauntString(<font class="source_int">1</font>)=<font class="source_string">"Die, human."</font>
+<a name="95"></a>    TauntString(<font class="source_int">2</font>)=<font class="source_string">"Target lifeform eliminated."</font>
+<a name="96"></a>    TauntAbbrev(<font class="source_int">2</font>)=<font class="source_string">"Target lifeform."</font>
+<a name="97"></a>    TauntString(<font class="source_int">3</font>)=<font class="source_string">"You die too easily."</font>
+<a name="98"></a>    TauntString(<font class="source_int">4</font>)=<font class="source_string">"Useless."</font>
+<a name="99"></a>    TauntString(<font class="source_int">5</font>)=<font class="source_string">"Fear me."</font>
+<a name="100"></a>    TauntString(<font class="source_int">6</font>)=<font class="source_string">"You are inferior."</font>
+<a name="101"></a>    TauntString(<font class="source_int">7</font>)=<font class="source_string">"You are obsolete."</font>
+<a name="102"></a>    TauntString(<font class="source_int">8</font>)=<font class="source_string">"I am the alpha and the omega."</font>
+<a name="103"></a>    TauntAbbrev(<font class="source_int">8</font>)=<font class="source_string">"Alpha/Omega"</font>
+<a name="104"></a>    TauntString(<font class="source_int">9</font>)=<font class="source_string">"Run, human."</font>
+<a name="105"></a>    TauntString(<font class="source_int">10</font>)=<font class="source_string">"Step aside."</font>
+<a name="106"></a>    TauntString(<font class="source_int">11</font>)=<font class="source_string">"I am superior."</font>
+<a name="107"></a>    TauntString(<font class="source_int">12</font>)=<font class="source_string">"Witness my perfection."</font>
+<a name="108"></a>    TauntString(<font class="source_int">13</font>)=<font class="source_string">"Boom!"</font>
+<a name="109"></a>    TauntString(<font class="source_int">14</font>)=<font class="source_string">"My house."</font>
+<a name="110"></a>    TauntString(<font class="source_int">15</font>)=<font class="source_string">"Next."</font>
+<a name="111"></a>    TauntString(<font class="source_int">16</font>)=<font class="source_string">"Burn, baby"</font>
+<a name="112"></a>    TauntString(<font class="source_int">17</font>)=<font class="source_string">"Anyone else want some?"</font>
+<a name="113"></a>    TauntString(<font class="source_int">18</font>)=<font class="source_string">"That had to hurt."</font>
+<a name="114"></a>    TauntString(<font class="source_int">19</font>)=<font class="source_string">"I'm on fire"</font>
+<a name="115"></a>
+<a name="116"></a>    OrderSound(<font class="source_int">0</font>)=BossVoice.BDefendTheBase
+<a name="117"></a>    OrderSound(<font class="source_int">1</font>)=BossVoice.BHoldPosit
+<a name="118"></a>    OrderSound(<font class="source_int">2</font>)=BossVoice.BAssaultBase
+<a name="119"></a>    OrderSound(<font class="source_int">3</font>)=BossVoice.BCoverme
+<a name="120"></a>    OrderSound(<font class="source_int">4</font>)=BossVoice.BEngage
+<a name="121"></a>    OrderSound(<font class="source_int">10</font>)=BossVoice.BTakeTheirFlag
+<a name="122"></a>    OrderSound(<font class="source_int">11</font>)=BossVoice.Bsandd
+<a name="123"></a>    OrderString(<font class="source_int">0</font>)=<font class="source_string">"Defend the base."</font>
+<a name="124"></a>    OrderAbbrev(<font class="source_int">0</font>)=<font class="source_string">"Defend"</font>
+<a name="125"></a>    OrderString(<font class="source_int">1</font>)=<font class="source_string">"Hold this position."</font>
+<a name="126"></a>    OrderString(<font class="source_int">2</font>)=<font class="source_string">"Assault the base."</font>
+<a name="127"></a>    OrderAbbrev(<font class="source_int">2</font>)=<font class="source_string">"Attack"</font>
+<a name="128"></a>    OrderString(<font class="source_int">3</font>)=<font class="source_string">"Cover me."</font>
+<a name="129"></a>    OrderString(<font class="source_int">4</font>)=<font class="source_string">"Engage according to operational parameters."</font>
+<a name="130"></a>    OrderAbbrev(<font class="source_int">4</font>)=<font class="source_string">"Freelance."</font>
+<a name="131"></a>    OrderString(<font class="source_int">10</font>)=<font class="source_string">"Take their flag."</font>
+<a name="132"></a>    OrderString(<font class="source_int">11</font>)=<font class="source_string">"Search and destroy."</font>
+<a name="133"></a>
+<a name="134"></a>    OtherSound(<font class="source_int">0</font>)=BossVoice.BBaseUnc
+<a name="135"></a>    OtherSound(<font class="source_int">1</font>)=BossVoice.Bgetourflag
+<a name="136"></a>    OtherSound(<font class="source_int">2</font>)=BossVoice.BGotTheFlag
+<a name="137"></a>    OtherSound(<font class="source_int">3</font>)=BossVoice.Bgotyourback
+<a name="138"></a>    OtherSound(<font class="source_int">4</font>)=BossVoice.BImHit
+<a name="139"></a>    OtherSound(<font class="source_int">5</font>)=BossVoice.BManDown
+<a name="140"></a>    OtherSound(<font class="source_int">6</font>)=BossVoice.BUnderAttack
+<a name="141"></a>    OtherSound(<font class="source_int">7</font>)=BossVoice.BYouGotPoint
+<a name="142"></a>    OtherSound(<font class="source_int">8</font>)=BossVoice.BGotOurFlag
+<a name="143"></a>    OtherSound(<font class="source_int">9</font>)=BossVoice.BInPosition
+<a name="144"></a>    OtherSound(<font class="source_int">10</font>)=BossVoice.BHangInThere
+<a name="145"></a>    OtherSound(<font class="source_int">11</font>)=BossVoice.BConPointSecure
+<a name="146"></a>    OtherSound(<font class="source_int">12</font>)=BossVoice.BFlagCarrierHer
+<a name="147"></a>    OtherSound(<font class="source_int">13</font>)=BossVoice.BBackup
+<a name="148"></a>    OtherSound(<font class="source_int">14</font>)=BossVoice.BIncoming
+<a name="149"></a>    OtherSound(<font class="source_int">15</font>)=BossVoice.BGotYourBack
+<a name="150"></a>    OtherSound(<font class="source_int">16</font>)=BossVoice.BObjectiveDest
+<a name="151"></a>    OtherString(<font class="source_int">0</font>)=<font class="source_string">"Base is uncovered!"</font>
+<a name="152"></a>    OtherString(<font class="source_int">1</font>)=<font class="source_string">"Get our flag back!"</font>
+<a name="153"></a>    OtherAbbrev(<font class="source_int">1</font>)=<font class="source_string">"Get our flag!"</font>
+<a name="154"></a>    OtherString(<font class="source_int">2</font>)=<font class="source_string">"I've got the flag."</font>
+<a name="155"></a>    OtherAbbrev(<font class="source_int">2</font>)=<font class="source_string">"Got the flag."</font>
+<a name="156"></a>    OtherString(<font class="source_int">3</font>)=<font class="source_string">"I've got your back."</font>
+<a name="157"></a>    OtherAbbrev(<font class="source_int">3</font>)=<font class="source_string">"Got your back."</font>
+<a name="158"></a>    OtherString(<font class="source_int">4</font>)=<font class="source_string">"I'm hit!"</font>
+<a name="159"></a>    OtherString(<font class="source_int">5</font>)=<font class="source_string">"Man down!"</font>
+<a name="160"></a>    OtherString(<font class="source_int">6</font>)=<font class="source_string">"I'm under heavy attack!"</font>
+<a name="161"></a>    OtherAbbrev(<font class="source_int">6</font>)=<font class="source_string">"Under attack!"</font>
+<a name="162"></a>    OtherString(<font class="source_int">7</font>)=<font class="source_string">"You got point."</font>
+<a name="163"></a>    OtherString(<font class="source_int">8</font>)=<font class="source_string">"I've got our flag."</font>
+<a name="164"></a>    OtherAbbrev(<font class="source_int">8</font>)=<font class="source_string">"Got our flag."</font>
+<a name="165"></a>    OtherString(<font class="source_int">9</font>)=<font class="source_string">"I'm in position."</font>
+<a name="166"></a>    OtherAbbrev(<font class="source_int">9</font>)=<font class="source_string">"In position."</font>
+<a name="167"></a>    OtherString(<font class="source_int">10</font>)=<font class="source_string">"Hang in there."</font>
+<a name="168"></a>    OtherString(<font class="source_int">11</font>)=<font class="source_string">"Control point is secure."</font>
+<a name="169"></a>    OtherAbbrev(<font class="source_int">11</font>)=<font class="source_string">"Point is secure."</font>
+<a name="170"></a>    OtherString(<font class="source_int">12</font>)=<font class="source_string">"Enemy flag carrier is here."</font>
+<a name="171"></a>    OtherAbbrev(<font class="source_int">12</font>)=<font class="source_string">"Enemy carrier here."</font>
+<a name="172"></a>    OtherString(<font class="source_int">13</font>)=<font class="source_string">"I need some backup."</font>
+<a name="173"></a>    OtherString(<font class="source_int">14</font>)=<font class="source_string">"Incoming!"</font>
+<a name="174"></a>    OtherString(<font class="source_int">15</font>)=<font class="source_string">"I've got your back."</font>
+<a name="175"></a>    OtherAbbrev(<font class="source_int">15</font>)=<font class="source_string">"Got your back."</font>
+<a name="176"></a>    OtherString(<font class="source_int">16</font>)=<font class="source_string">"Objective destroyed."</font>
+<a name="177"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\voiceboss.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#VoiceBoss">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="visibleteleporter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="voicebotboss.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:22:58.000 - Creation time: Wed 26/5/2004 10:49:06.078 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.RatedTeamInfo</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ratedteaminfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#RatedTeamInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ratedmatchinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ratedteaminfo1.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\ratedteaminfo.html">RatedTeamInfo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\ratedteaminfo.html" class="source">RatedTeamInfo</a></font> <font class="source_keyword">expands</font> <font class="source_type"><a href="..\engine\info.html" class="source">Info</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>      TeamName;
+<a name="4"></a><font class="source_keyword">var</font>() <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font>       TeamSymbol;
+<a name="5"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>      TeamBio;
+<a name="6"></a>
+<a name="7"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>      BotNames[<font class="source_int">8</font>];
+<a name="8"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>      BotClassifications[<font class="source_int">8</font>];
+<a name="9"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font>         BotSkills[<font class="source_int">8</font>];
+<a name="10"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font>         BotAccuracy[<font class="source_int">8</font>];
+<a name="11"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font>         CombatStyle[<font class="source_int">8</font>];
+<a name="12"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font>         Camping[<font class="source_int">8</font>];
+<a name="13"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>        FavoriteWeapon[<font class="source_int">8</font>];
+<a name="14"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>        BotClasses[<font class="source_int">8</font>];
+<a name="15"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>        BotSkins[<font class="source_int">8</font>];
+<a name="16"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>        BotFaces[<font class="source_int">8</font>];
+<a name="17"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>      BotBio[<font class="source_int">8</font>];
+<a name="18"></a><font class="source_keyword">var</font>() <font class="source_keyword">byte</font>          BotJumpy[<font class="source_int">8</font>];
+<a name="19"></a>
+<a name="20"></a><font class="source_keyword">var</font>() <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\tournamentplayer.html" class="source">TournamentPlayer</a></font>&gt; MaleClass;
+<a name="21"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>        MaleSkin;
+<a name="22"></a>
+<a name="23"></a><font class="source_keyword">var</font>() <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\tournamentplayer.html" class="source">TournamentPlayer</a></font>&gt; FemaleClass;
+<a name="24"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>        FemaleSkin;
+<a name="25"></a>
+<a name="26"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetBotName(<font class="source_keyword">int</font> n)
+<a name="27"></a>{
+<a name="28"></a>    <font class="source_keyword">return</font> Default.BotNames[n];
+<a name="29"></a>}
+<a name="30"></a>
+<a name="31"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetBotDesc(<font class="source_keyword">int</font> n)
+<a name="32"></a>{
+<a name="33"></a>    <font class="source_keyword">return</font> Default.BotBio[n];
+<a name="34"></a>}
+<a name="35"></a>
+<a name="36"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetBotClassification(<font class="source_keyword">int</font> n)
+<a name="37"></a>{
+<a name="38"></a>    <font class="source_keyword">return</font> Default.BotClassifications[n];
+<a name="39"></a>}
+<a name="40"></a>
+<a name="41"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetBotSkin(<font class="source_keyword">int</font> n)
+<a name="42"></a>{
+<a name="43"></a>    <font class="source_keyword">return</font> Default.BotSkins[n];
+<a name="44"></a>}
+<a name="45"></a>
+<a name="46"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetBotFace(<font class="source_keyword">int</font> n)
+<a name="47"></a>{
+<a name="48"></a>    <font class="source_keyword">return</font> Default.BotFaces[n];
+<a name="49"></a>}
+<a name="50"></a>
+<a name="51"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetBotClassName(<font class="source_keyword">int</font> n)
+<a name="52"></a>{
+<a name="53"></a>    <font class="source_keyword">return</font> Default.BotClasses[n];
+<a name="54"></a>}
+<a name="55"></a>
+<a name="56"></a><font class="source_keyword">function</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\bot.html" class="source">bot</a></font>&gt; GetBotClass(<font class="source_keyword">int</font> n)
+<a name="57"></a>{
+<a name="58"></a>    <font class="source_keyword">return</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\bot.html" class="source">bot</a></font>&gt;( DynamicLoadObject(BotClasses[n], <font class="source_keyword">class</font><font class="source_name">'Class'</font>) );
+<a name="59"></a>}
+<a name="60"></a>
+<a name="61"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetTeamName()
+<a name="62"></a>{
+<a name="63"></a>    <font class="source_keyword">return</font> Default.TeamName;
+<a name="64"></a>}
+<a name="65"></a>
+<a name="66"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetTeamBio()
+<a name="67"></a>{
+<a name="68"></a>    <font class="source_keyword">return</font> Default.TeamBio;
+<a name="69"></a>}
+<a name="70"></a>
+<a name="71"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> GetTeamSymbol()
+<a name="72"></a>{
+<a name="73"></a>    <font class="source_keyword">return</font> Default.TeamSymbol;
+<a name="74"></a>}
+<a name="75"></a>
+<a name="76"></a><font class="source_keyword">function</font> Individualize(<font class="source_type"><a href="..\botpack\bot.html" class="source">bot</a></font> NewBot, <font class="source_keyword">int</font> n, <font class="source_keyword">int</font> NumBots, <font class="source_keyword">bool</font> bEnemy, <font class="source_keyword">float</font> BaseDifficulty)
+<a name="77"></a>{
+<a name="78"></a>    <font class="source_keyword">if</font> ( (n&lt;<font class="source_int">0</font>) || (n&gt;<font class="source_int">7</font>) )
+<a name="79"></a>    {
+<a name="80"></a>        log(<font class="source_string">"Accessed RatedTeamInfo out of range!"</font>);
+<a name="81"></a>        <font class="source_keyword">return</font>;
+<a name="82"></a>    }
+<a name="83"></a>
+<a name="84"></a>    <font class="source_comment">// Set bot's name.
+</font><a name="85"></a>    <font class="source_type">Level</font>.Game.ChangeName( NewBot, BotNames[n], <font class="source_keyword">false</font> );
+<a name="86"></a>    <font class="source_keyword">if</font> ( BotNames[n] != NewBot.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName )
+<a name="87"></a>        <font class="source_type">Level</font>.Game.ChangeName( NewBot, <font class="source_string">"Bot"</font>, <font class="source_keyword">false</font>);
+<a name="88"></a>
+<a name="89"></a>    <font class="source_comment">// Set Bot Team
+</font><a name="90"></a>    <font class="source_keyword">if</font> ( bEnemy )
+<a name="91"></a>    {
+<a name="92"></a>        <font class="source_keyword">if</font> (<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>(<font class="source_type">Level</font>.Game).RatedPlayer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Team == <font class="source_int">1</font>)
+<a name="93"></a>            NewBot.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Team = <font class="source_int">0</font>;
+<a name="94"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> (<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>(<font class="source_type">Level</font>.Game).RatedPlayer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Team == <font class="source_int">0</font>)
+<a name="95"></a>            NewBot.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Team = <font class="source_int">1</font>;
+<a name="96"></a>    } <font class="source_keyword">else</font> {
+<a name="97"></a>        NewBot.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Team = <font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>(<font class="source_type">Level</font>.Game).RatedPlayer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Team;
+<a name="98"></a>    }
+<a name="99"></a>
+<a name="100"></a>    NewBot.<font class="source_keyword2">Static</font>.SetMultiSkin(NewBot, BotSkins[n], BotFaces[n], NewBot.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Team);
+<a name="101"></a>
+<a name="102"></a>    <font class="source_comment">// adjust bot skill
+</font><a name="103"></a>    NewBot.InitializeSkill(BaseDifficulty + BotSkills[n]);
+<a name="104"></a>
+<a name="105"></a>    <font class="source_keyword">if</font> ( (FavoriteWeapon[n] != <font class="source_string">""</font>) && (FavoriteWeapon[n] != <font class="source_string">"None"</font>) )
+<a name="106"></a>        NewBot.FavoriteWeapon = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>&gt;(DynamicLoadObject(FavoriteWeapon[n],<font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="107"></a>    NewBot.CombatStyle = NewBot.Default.CombatStyle + <font class="source_int">0.7</font> * CombatStyle[n];
+<a name="108"></a>    NewBot.BaseAggressiveness = <font class="source_int">0.5</font> * (NewBot.Default.Aggressiveness + NewBot.CombatStyle);
+<a name="109"></a>    NewBot.CampingRate = Camping[n];
+<a name="110"></a>    NewBot.bJumpy = ( BotJumpy[n] != <font class="source_int">0</font> );
+<a name="111"></a>    NewBot.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.VoiceType = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\voicepack.html" class="source">VoicePack</a></font>&gt;(DynamicLoadObject(NewBot.VoiceType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="112"></a>}
+<a name="113"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ratedteaminfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#RatedTeamInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ratedmatchinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ratedteaminfo1.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:22:08.000 - Creation time: Wed 26/5/2004 10:48:33.156 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,453 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTMenu.UTServerSetupPage</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utserversetuppage.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTServerSetupPage">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utrulessclient.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utserversetupsc.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utmenu\utmenu-overview.html">UTMenu</a>.<a href="..\utmenu\utserversetuppage.html">UTServerSetupPage</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utmenu\utserversetuppage.html" class="source">UTServerSetupPage</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\umenu\umenuserversetuppage.html" class="source">UMenuServerSetupPage</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font> GamePasswordEdit;
+<a name="4"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GamePasswordText;
+<a name="5"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GamePasswordHelp;
+<a name="6"></a>
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font> AdminPasswordEdit;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AdminPasswordText;
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AdminPasswordHelp;
+<a name="10"></a>
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> EnableWebserverCheck;
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> EnableWebserverText;
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> EnableWebserverHelp;
+<a name="14"></a>
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font> WebAdminUsernameEdit;
+<a name="16"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WebAdminUsernameText;
+<a name="17"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WebAdminUsernameHelp;
+<a name="18"></a>
+<a name="19"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font> WebAdminPasswordEdit;
+<a name="20"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WebAdminPasswordText;
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WebAdminPasswordHelp;
+<a name="22"></a>
+<a name="23"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font> ListenPortEdit;
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ListenPortText;
+<a name="25"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ListenPortHelp;
+<a name="26"></a>
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bInitialized;
+<a name="28"></a>
+<a name="29"></a><font class="source_keyword">function</font> Created()
+<a name="30"></a>{
+<a name="31"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="32"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos;
+<a name="33"></a>
+<a name="34"></a>    ControlOffset = <font class="source_int">20</font>;
+<a name="35"></a>    bInitialized = <font class="source_keyword">False</font>;
+<a name="36"></a>
+<a name="37"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="38"></a>
+<a name="39"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="40"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="41"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="42"></a>
+<a name="43"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="44"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="45"></a>
+<a name="46"></a>    GamePasswordEdit = <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowEditControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="47"></a>    GamePasswordEdit.SetText(GamePasswordText);
+<a name="48"></a>    GamePasswordEdit.SetHelpText(GamePasswordHelp);
+<a name="49"></a>    GamePasswordEdit.SetFont(F_Normal);
+<a name="50"></a>    GamePasswordEdit.SetNumericOnly(<font class="source_keyword">False</font>);
+<a name="51"></a>    GamePasswordEdit.SetMaxLength(<font class="source_int">16</font>);
+<a name="52"></a>    GamePasswordEdit.SetDelayedNotify(<font class="source_keyword">True</font>);
+<a name="53"></a>    GamePasswordEdit.SetValue(GetPlayerOwner().ConsoleCommand(<font class="source_string">"get engine.gameinfo GamePassword"</font>));
+<a name="54"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="55"></a>
+<a name="56"></a>    AdminPasswordEdit = <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowEditControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="57"></a>    AdminPasswordEdit.SetText(AdminPasswordText);
+<a name="58"></a>    AdminPasswordEdit.SetHelpText(AdminPasswordHelp);
+<a name="59"></a>    AdminPasswordEdit.SetFont(F_Normal);
+<a name="60"></a>    AdminPasswordEdit.SetNumericOnly(<font class="source_keyword">False</font>);
+<a name="61"></a>    AdminPasswordEdit.SetMaxLength(<font class="source_int">16</font>);
+<a name="62"></a>    AdminPasswordEdit.SetDelayedNotify(<font class="source_keyword">True</font>);
+<a name="63"></a>    AdminPasswordEdit.SetValue(GetPlayerOwner().ConsoleCommand(<font class="source_string">"get engine.gameinfo AdminPassword"</font>));
+<a name="64"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="65"></a>
+<a name="66"></a>    EnableWebserverCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="67"></a>    EnableWebserverCheck.SetText(EnableWebserverText);
+<a name="68"></a>    EnableWebserverCheck.SetHelpText(EnableWebserverHelp);
+<a name="69"></a>    EnableWebserverCheck.SetFont(F_Normal);
+<a name="70"></a>    EnableWebserverCheck.Align = TA_Left;
+<a name="71"></a>    EnableWebserverCheck.bChecked = <font class="source_keyword">class</font><font class="source_name">'WebServer'</font>.default.bEnabled;
+<a name="72"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="73"></a>
+<a name="74"></a>    WebAdminUsernameEdit = <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowEditControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="75"></a>    WebAdminUsernameEdit.SetText(WebAdminUsernameText);
+<a name="76"></a>    WebAdminUsernameEdit.SetHelpText(WebAdminUsernameHelp);
+<a name="77"></a>    WebAdminUsernameEdit.SetFont(F_Normal);
+<a name="78"></a>    WebAdminUsernameEdit.SetNumericOnly(<font class="source_keyword">False</font>);
+<a name="79"></a>    WebAdminUsernameEdit.SetMaxLength(<font class="source_int">16</font>);
+<a name="80"></a>    WebAdminUsernameEdit.SetDelayedNotify(<font class="source_keyword">True</font>);
+<a name="81"></a>    WebAdminUsernameEdit.SetValue(<font class="source_keyword">class</font><font class="source_name">'UTServerAdmin'</font>.default.AdminUsername);
+<a name="82"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="83"></a>
+<a name="84"></a>    WebAdminPasswordEdit = <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowEditControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="85"></a>    WebAdminPasswordEdit.SetText(WebAdminPasswordText);
+<a name="86"></a>    WebAdminPasswordEdit.SetHelpText(WebAdminPasswordHelp);
+<a name="87"></a>    WebAdminPasswordEdit.SetFont(F_Normal);
+<a name="88"></a>    WebAdminPasswordEdit.SetNumericOnly(<font class="source_keyword">False</font>);
+<a name="89"></a>    WebAdminPasswordEdit.SetMaxLength(<font class="source_int">16</font>);
+<a name="90"></a>    WebAdminPasswordEdit.SetDelayedNotify(<font class="source_keyword">True</font>);
+<a name="91"></a>    WebAdminPasswordEdit.SetValue(<font class="source_keyword">class</font><font class="source_name">'UTServerAdmin'</font>.default.AdminPassword);
+<a name="92"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="93"></a>
+<a name="94"></a>    ListenPortEdit = <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowEditControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="95"></a>    ListenPortEdit.SetText(ListenPortText);
+<a name="96"></a>    ListenPortEdit.SetHelpText(ListenPortHelp);
+<a name="97"></a>    ListenPortEdit.SetFont(F_Normal);
+<a name="98"></a>    ListenPortEdit.SetNumericOnly(<font class="source_keyword">True</font>);
+<a name="99"></a>    ListenPortEdit.SetMaxLength(<font class="source_int">16</font>);
+<a name="100"></a>    ListenPortEdit.SetDelayedNotify(<font class="source_keyword">True</font>);
+<a name="101"></a>    ListenPortEdit.SetValue(<font class="source_keyword">string</font>(<font class="source_keyword">class</font><font class="source_name">'WebServer'</font>.default.ListenPort));
+<a name="102"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="103"></a>
+<a name="104"></a>    bInitialized = <font class="source_keyword">True</font>;
+<a name="105"></a>}
+<a name="106"></a>
+<a name="107"></a><font class="source_keyword">function</font> Notify(<font class="source_type"><a href="..\uwindow\uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></font> C, <font class="source_keyword">byte</font> E)
+<a name="108"></a>{
+<a name="109"></a>    <font class="source_keyword">if</font>(bInitialized)
+<a name="110"></a>    {
+<a name="111"></a>        <font class="source_keyword">switch</font>(E)
+<a name="112"></a>        {
+<a name="113"></a>        <font class="source_keyword">case</font> DE_Change:
+<a name="114"></a>            <font class="source_keyword">switch</font>(C)
+<a name="115"></a>            {
+<a name="116"></a>            <font class="source_keyword">case</font> GamePasswordEdit:
+<a name="117"></a>                GetPlayerOwner().ConsoleCommand(<font class="source_string">"set engine.gameinfo GamePassword "</font>$GamePasswordEdit.GetValue());
+<a name="118"></a>                <font class="source_keyword">break</font>;
+<a name="119"></a>            <font class="source_keyword">case</font> AdminPasswordEdit:
+<a name="120"></a>                GetPlayerOwner().ConsoleCommand(<font class="source_string">"set engine.gameinfo AdminPassword "</font>$AdminPasswordEdit.GetValue());
+<a name="121"></a>                <font class="source_keyword">break</font>;
+<a name="122"></a>            <font class="source_keyword">case</font> EnableWebserverCheck:
+<a name="123"></a>                <font class="source_keyword">class</font><font class="source_name">'WebServer'</font>.default.bEnabled = EnableWebserverCheck.bChecked;
+<a name="124"></a>                <font class="source_keyword">class</font><font class="source_name">'WebServer'</font>.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="125"></a>                <font class="source_keyword">break</font>;
+<a name="126"></a>            <font class="source_keyword">case</font> WebAdminUsernameEdit:
+<a name="127"></a>                <font class="source_keyword">class</font><font class="source_name">'UTServerAdmin'</font>.default.AdminUsername = WebAdminUsernameEdit.GetValue();
+<a name="128"></a>                <font class="source_keyword">class</font><font class="source_name">'UTServerAdmin'</font>.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="129"></a>                <font class="source_keyword">break</font>;
+<a name="130"></a>            <font class="source_keyword">case</font> WebAdminPasswordEdit:
+<a name="131"></a>                <font class="source_keyword">class</font><font class="source_name">'UTServerAdmin'</font>.default.AdminPassword = WebAdminPasswordEdit.GetValue();
+<a name="132"></a>                <font class="source_keyword">class</font><font class="source_name">'UTServerAdmin'</font>.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="133"></a>                <font class="source_keyword">break</font>;
+<a name="134"></a>            <font class="source_keyword">case</font> ListenPortEdit:
+<a name="135"></a>                <font class="source_keyword">class</font><font class="source_name">'WebServer'</font>.default.ListenPort = <font class="source_keyword">Int</font>(ListenPortEdit.GetValue());
+<a name="136"></a>                <font class="source_keyword">class</font><font class="source_name">'WebServer'</font>.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="137"></a>                <font class="source_keyword">break</font>;
+<a name="138"></a>            }
+<a name="139"></a>        }
+<a name="140"></a>    }
+<a name="141"></a>    <font class="source_keyword">Super</font>.Notify(C, E);
+<a name="142"></a>}
+<a name="143"></a>
+<a name="144"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="145"></a>{
+<a name="146"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="147"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos;
+<a name="148"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> EditWidth;
+<a name="149"></a>
+<a name="150"></a>    <font class="source_keyword">Super</font>.BeforePaint(C, X, Y);
+<a name="151"></a>
+<a name="152"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="153"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="154"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="155"></a>
+<a name="156"></a>    CenterWidth = (WinWidth/7)*<font class="source_int">6</font>;
+<a name="157"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="158"></a>    
+<a name="159"></a>    EditWidth = CenterWidth - <font class="source_int">100</font>;
+<a name="160"></a>
+<a name="161"></a>    GamePasswordEdit.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="162"></a>    GamePasswordEdit.WinLeft = CenterPos;
+<a name="163"></a>    GamePasswordEdit.EditBoxWidth = EditWidth;
+<a name="164"></a>
+<a name="165"></a>    AdminPasswordEdit.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="166"></a>    AdminPasswordEdit.WinLeft = CenterPos;
+<a name="167"></a>    AdminPasswordEdit.EditBoxWidth = EditWidth;
+<a name="168"></a>
+<a name="169"></a>    WebAdminPasswordEdit.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="170"></a>    WebAdminPasswordEdit.WinLeft = CenterPos;
+<a name="171"></a>    WebAdminPasswordEdit.EditBoxWidth = EditWidth;
+<a name="172"></a>
+<a name="173"></a>    WebAdminUsernameEdit.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="174"></a>    WebAdminUsernameEdit.WinLeft = CenterPos;
+<a name="175"></a>    WebAdminUsernameEdit.EditBoxWidth = EditWidth;
+<a name="176"></a>
+<a name="177"></a>    EnableWebserverCheck.SetSize(CenterWidth-EditWidth+<font class="source_int">16</font>, <font class="source_int">1</font>);
+<a name="178"></a>    EnableWebserverCheck.WinLeft = CenterPos;
+<a name="179"></a>
+<a name="180"></a>    ListenPortEdit.SetSize(CenterWidth-EditWidth+<font class="source_int">35</font>, <font class="source_int">1</font>);
+<a name="181"></a>    ListenPortEdit.WinLeft = CenterPos;
+<a name="182"></a>    ListenPortEdit.EditBoxWidth = <font class="source_int">35</font>;
+<a name="183"></a>}
+<a name="184"></a>
+<a name="185"></a><font class="source_keyword">defaultproperties</font>
+<a name="186"></a>{
+<a name="187"></a>    GamePasswordText=<font class="source_string">"Game Password"</font>
+<a name="188"></a>    GamePasswordHelp=<font class="source_string">"If this is set, a player needs use this password to be allowed to login to the server."</font>
+<a name="189"></a>    AdminPasswordText=<font class="source_string">"Admin Password"</font>
+<a name="190"></a>    AdminPasswordHelp=<font class="source_string">"If this is set, a player can join your server using this password and have access to admin-only console commands."</font>
+<a name="191"></a>    EnableWebserverText=<font class="source_string">"WWW Remote Admin"</font>
+<a name="192"></a>    EnableWebserverHelp=<font class="source_string">"If checked, you will be able to administer your UT server remotely using a web browser."</font>
+<a name="193"></a>    WebAdminUsernameText=<font class="source_string">"WWW Username"</font>
+<a name="194"></a>    WebAdminUsernameHelp=<font class="source_string">"The username needed to login to the WWW-based remote server administration."</font>
+<a name="195"></a>    WebAdminPasswordText=<font class="source_string">"WWW Password"</font>
+<a name="196"></a>    WebAdminPasswordHelp=<font class="source_string">"The password needed to login to the WWW-based remote server administration."</font>
+<a name="197"></a>    ListenPortText=<font class="source_string">"Webserver Port No."</font>
+<a name="198"></a>    ListenPortHelp=<font class="source_string">"The port number that the remote administration webserver will listen on for incoming connections."</font>
+<a name="199"></a>}
+<a name="200"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utserversetuppage.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTServerSetupPage">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utrulessclient.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utserversetupsc.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:40.000 - Creation time: Wed 26/5/2004 10:49:00.296 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

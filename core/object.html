@@ -1,0 +1,1542 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Core.Object</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="core-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_core\object.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Object">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="locale.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="simplecommandlet.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="core-overview.html">Core</a>.Object</h1>
+<b>Extends:</b> <br>
+<b>Modifiers:</b> native noexport <br>
+<a href="..\Source_core\object.html"><b>Source code</b></a>
+
+<p>
+Object: The base class all objects.<br />
+This is a built-in Unreal class and it shouldn't be modified.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="core-overview.html">Core</a>.<a href="object.html">Object</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\engine\actor.html">Actor</a>, <a href="..\engine\bitmap.html">Bitmap</a>, <a href="..\editor\brushbuilder.html">BrushBuilder</a>, <a href="..\engine\canvas.html">Canvas</a>, <a href="commandlet.html">Commandlet</a>, <a href="..\engine\console.html">Console</a>, <a href="..\engine\levelsummary.html">LevelSummary</a>, <a href="..\utserveradmin\listitem.html">ListItem</a>, <a href="locale.html">Locale</a>, <a href="..\engine\palette.html">Palette</a>, <a href="..\engine\player.html">Player</a>, <a href="..\engine\renderiterator.html">RenderIterator</a>, <a href="..\setup\setupobject.html">SetupObject</a>, <a href="subsystem.html">Subsystem</a>, <a href="..\engine\testobj.html">TestObj</a>, <a href="time.html">Time</a>, <a href="..\utmenu\utextrakeybindings.html">UTExtraKeyBindings</a>, <a href="..\uwindow\uwindowbase.html">UWindowBase</a>, <a href="..\uweb\webapplication.html">WebApplication</a>, <a href="..\uweb\webrequest.html">WebRequest</a>, <a href="..\uweb\webresponse.html">WebResponse</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_MaxInt" name="MaxInt">MaxInt</a></td><td width="10%">=</td><td width="50%">0x7fffffff</td></tr>
+<tr><td width="40%"><a href="#_Pi" name="Pi">Pi</a></td><td width="10%">=</td><td width="50%">3.1415926535897932</td></tr>
+<tr><td width="40%"><a href="#_RF_NotForClient" name="RF_NotForClient">RF_NotForClient</a></td><td width="10%">=</td><td width="50%">0x00100000</td></tr>
+<tr><td width="40%"><a href="#_RF_NotForEdit" name="RF_NotForEdit">RF_NotForEdit</a></td><td width="10%">=</td><td width="50%">0x00400000</td></tr>
+<tr><td width="40%"><a href="#_RF_NotForServer" name="RF_NotForServer">RF_NotForServer</a></td><td width="10%">=</td><td width="50%">0x00200000</td></tr>
+<tr><td width="40%"><a href="#_RF_Public" name="RF_Public">RF_Public</a></td><td width="10%">=</td><td width="50%">0x00000004</td></tr>
+<tr><td width="40%"><a href="#_RF_Transactional" name="RF_Transactional">RF_Transactional</a></td><td width="10%">=</td><td width="50%">0x00000001</td></tr>
+<tr><td width="40%"><a href="#_RF_Transient" name="RF_Transient">RF_Transient</a></td><td width="10%">=</td><td width="50%">0x00004000</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ObjectFlags" name="ObjectFlags">ObjectFlags</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ObjectInternal[6]" name="ObjectInternal[6]">ObjectInternal[6]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="object.html">object</a></td><td width="66%"><a href="#_Outer" name="Outer">Outer</a></td></tr>
+<tr><th colspan="2" class="small">Object</th></tr>
+<tr><td nowrap="nowrap" width="33%">class</td><td width="66%"><a href="#_Class" name="Class">Class</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_Name" name="Name">Name</a></td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_ESheerAxis" name="ESheerAxis">ESheerAxis</a><br /><span class="small">SHEER_None,
+SHEER_XY,
+SHEER_XZ,
+SHEER_YX,
+SHEER_YZ,
+SHEER_ZX,
+SHEER_ZY,
+</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_BoundingBox" name="BoundingBox">BoundingBox</a><br /><span class="small">Min, Max, IsValid</span></td></tr>
+<tr><td><a href="#_BoundingVolume" name="BoundingVolume">BoundingVolume</a><br /><span class="small">Sphere</span></td></tr>
+<tr><td><a href="#_Color" name="Color">Color</a><br /><span class="small">R, G, B, A</span></td></tr>
+<tr><td><a href="#_Coords" name="Coords">Coords</a><br /><span class="small">Origin, XAxis, YAxis, ZAxis</span></td></tr>
+<tr><td><a href="#_Guid" name="Guid">Guid</a><br /><span class="small">A, B, C, D</span></td></tr>
+<tr><td><a href="#_Plane" name="Plane">Plane</a><br /><span class="small">W</span></td></tr>
+<tr><td><a href="#_Rotator" name="Rotator">Rotator</a><br /><span class="small">Pitch, Yaw, Roll</span></td></tr>
+<tr><td><a href="#_Scale" name="Scale">Scale</a><br /><span class="small">Scale, SheerRate, SheerAxis</span></td></tr>
+<tr><td><a href="#_Vector" name="Vector">Vector</a><br /><span class="small">X, Y, Z</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="preoperator" title="preoperator"></td><td>bool&nbsp;</td><td><a href="#_!+" name="!">!</a> (bool A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_!=+" name="!=">!=</a> (<a href="object.html#Vector">vector</a> A, <a href="object.html#Vector">vector</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_!=+" name="!=">!=</a> (<a href="object.html#Rotator">rotator</a> A, <a href="object.html#Rotator">rotator</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_!=+" name="!=">!=</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_!=+" name="!=">!=</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_!=+" name="!=">!=</a> (string A, string B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_!=+" name="!=">!=</a> (<a href="object.html">Object</a> A, <a href="object.html">Object</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_!=+" name="!=">!=</a> (bool A, bool B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_!=+" name="!=">!=</a> (name A, name B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>string&nbsp;</td><td><a href="#_$+" name="$">$</a> (coerce string A, coerce string B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>float&nbsp;</td><td><a href="#_%+" name="%">%</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_&+" name="&">&</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&&+" name="&&">&&</a> (bool A, skip bool B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>float&nbsp;</td><td><a href="#_*+" name="*">*</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_*+" name="*">*</a> (<a href="object.html#Rotator">rotator</a> A, float   <a href="object.html#Rotator">rotator</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_*+" name="*">*</a> (float    A, <a href="object.html#Rotator">rotator</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_*+" name="*">*</a> (<a href="object.html#Vector">vector</a> A, <a href="object.html#Vector">vector</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_*+" name="*">*</a> (<a href="object.html#Vector">vector</a> A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_*+" name="*">*</a> (float A, <a href="object.html#Vector">vector</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_*+" name="*">*</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>float&nbsp;</td><td><a href="#_**+" name="**">**</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_*=+" name="*=">*=</a> (out <a href="object.html#Vector">vector</a> A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>float&nbsp;</td><td><a href="#_*=+" name="*=">*=</a> (out float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_*=+" name="*=">*=</a> (out int A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>byte&nbsp;</td><td><a href="#_*=+" name="*=">*=</a> (out byte A, byte B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_*=+" name="*=">*=</a> (out <a href="object.html#Vector">vector</a> A, <a href="object.html#Vector">vector</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_*=+" name="*=">*=</a> (out <a href="object.html#Rotator">rotator</a> A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>float&nbsp;</td><td><a href="#_++" name="+">+</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_++" name="+">+</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_++" name="+">+</a> (<a href="object.html#Rotator">rotator</a> A, <a href="object.html#Rotator">rotator</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_++" name="+">+</a> (<a href="object.html#Vector">vector</a> A, <a href="object.html#Vector">vector</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="postoperator" title="postoperator"></td><td>int&nbsp;</td><td><a href="#_+++" name="++">++</a> (out int A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="preoperator" title="preoperator"></td><td>int&nbsp;</td><td><a href="#_+++" name="++">++</a> (out int A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="preoperator" title="preoperator"></td><td>byte&nbsp;</td><td><a href="#_+++" name="++">++</a> (out byte A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="postoperator" title="postoperator"></td><td>byte&nbsp;</td><td><a href="#_+++" name="++">++</a> (out byte A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>byte&nbsp;</td><td><a href="#_+=+" name="+=">+=</a> (out byte A, byte B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_+=+" name="+=">+=</a> (out <a href="object.html#Vector">vector</a> A, <a href="object.html#Vector">vector</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>float&nbsp;</td><td><a href="#_+=+" name="+=">+=</a> (out float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_+=+" name="+=">+=</a> (out <a href="object.html#Rotator">rotator</a> A, <a href="object.html#Rotator">rotator</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_+=+" name="+=">+=</a> (out int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_-+" name="-">-</a> (<a href="object.html#Vector">vector</a> A, <a href="object.html#Vector">vector</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_-+" name="-">-</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="preoperator" title="preoperator"></td><td>int&nbsp;</td><td><a href="#_-+" name="-">-</a> (int A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>float&nbsp;</td><td><a href="#_-+" name="-">-</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="preoperator" title="preoperator"></td><td>byte&nbsp;</td><td><a href="#_-+" name="-">-</a> (( out byte A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="postoperator" title="postoperator"></td><td>byte&nbsp;</td><td><a href="#_-+" name="-">-</a> (( out byte A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="preoperator" title="preoperator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_-+" name="-">-</a> (<a href="object.html#Vector">vector</a> A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_-+" name="-">-</a> (<a href="object.html#Rotator">rotator</a> A, <a href="object.html#Rotator">rotator</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="preoperator" title="preoperator"></td><td>float&nbsp;</td><td><a href="#_-+" name="-">-</a> (float A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="preoperator" title="preoperator"></td><td>int&nbsp;</td><td><a href="#_-+" name="-">-</a> (( out int A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="postoperator" title="postoperator"></td><td>int&nbsp;</td><td><a href="#_-+" name="-">-</a> (( out int A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>float&nbsp;</td><td><a href="#_-=+" name="-=">-=</a> (out float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>byte&nbsp;</td><td><a href="#_-=+" name="-=">-=</a> (out byte A, byte B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_-=+" name="-=">-=</a> (out <a href="object.html#Vector">vector</a> A, <a href="object.html#Vector">vector</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_-=+" name="-=">-=</a> (out int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_-=+" name="-=">-=</a> (out <a href="object.html#Rotator">rotator</a> A, <a href="object.html#Rotator">rotator</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>float&nbsp;</td><td><a href="#_/ +" name="/ ">/ </a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_/ +" name="/ ">/ </a> (<a href="object.html#Rotator">rotator</a> A, float   <a href="object.html#Rotator">rotator</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_/ +" name="/ ">/ </a> (<a href="object.html#Vector">vector</a> A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_/ +" name="/ ">/ </a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_/=+" name="/=">/=</a> (out <a href="object.html#Rotator">rotator</a> A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_/=+" name="/=">/=</a> (out int A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_/=+" name="/=">/=</a> (out <a href="object.html#Vector">vector</a> A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>byte&nbsp;</td><td><a href="#_/=+" name="/=">/=</a> (out byte A, byte B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>float&nbsp;</td><td><a href="#_/=+" name="/=">/=</a> (out float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&lt;+" name="&lt;">&lt;</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&lt;+" name="&lt;">&lt;</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&lt;+" name="&lt;">&lt;</a> (string A, string B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_&lt;&lt;+" name="&lt;&lt;">&lt;&lt;</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_&lt;&lt;+" name="&lt;&lt;">&lt;&lt;</a> (<a href="object.html#Vector">vector</a> A, <a href="object.html#Rotator">rotator</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&lt;=+" name="&lt;=">&lt;=</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&lt;=+" name="&lt;=">&lt;=</a> (string A, string B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&lt;=+" name="&lt;=">&lt;=</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_==+" name="==">==</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_==+" name="==">==</a> (<a href="object.html#Vector">vector</a> A, <a href="object.html#Vector">vector</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_==+" name="==">==</a> (bool A, bool B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_==+" name="==">==</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_==+" name="==">==</a> (name A, name B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_==+" name="==">==</a> (string A, string B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_==+" name="==">==</a> (<a href="object.html">Object</a> A, <a href="object.html">Object</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_==+" name="==">==</a> (<a href="object.html#Rotator">rotator</a> A, <a href="object.html#Rotator">rotator</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&gt;+" name="&gt;">&gt;</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&gt;+" name="&gt;">&gt;</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&gt;+" name="&gt;">&gt;</a> (string A, string B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&gt;=+" name="&gt;=">&gt;=</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&gt;=+" name="&gt;=">&gt;=</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_&gt;=+" name="&gt;=">&gt;=</a> (string A, string B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_&gt;&gt;+" name="&gt;&gt;">&gt;&gt;</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_&gt;&gt;+" name="&gt;&gt;">&gt;&gt;</a> (<a href="object.html#Vector">vector</a> A, <a href="object.html#Rotator">rotator</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_&gt;&gt;&gt;+" name="&gt;&gt;&gt;">&gt;&gt;&gt;</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>string&nbsp;</td><td><a href="#_@+" name="@">@</a> (coerce string A, coerce string B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_Abs+" name="Abs">Abs</a> (float A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_Asc+" name="Asc">Asc</a> (string S)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_Atan+" name="Atan">Atan</a> (float A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_BeginState+" name="BeginState">BeginState</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_Caps+" name="Caps">Caps</a> (coerce string S)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_Chr+" name="Chr">Chr</a> (int i)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_Clamp+" name="Clamp">Clamp</a> (int V, int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ClassIsChildOf+" name="ClassIsChildOf">ClassIsChildOf</a> (class TestClass, class ParentClass)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_Cos+" name="Cos">Cos</a> (float A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_Cross+" name="Cross">Cross</a> (<a href="object.html#Vector">vector</a> A, <a href="object.html#Vector">vector</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Disable+" name="Disable">Disable</a> (name ProbeFunc)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>float&nbsp;</td><td><a href="#_Dot+" name="Dot">Dot</a> (<a href="object.html#Vector">vector</a> A, <a href="object.html#Vector">vector</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="object.html">object</a>&nbsp;</td><td><a href="#_DynamicLoadObject+" name="DynamicLoadObject">DynamicLoadObject</a> (string ObjectName, class ObjectClass, optional bool MayFail)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Enable+" name="Enable">Enable</a> (name ProbeFunc)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_EndState+" name="EndState">EndState</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_Exp+" name="Exp">Exp</a> (float A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_FClamp+" name="FClamp">FClamp</a> (float V, float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_FMax+" name="FMax">FMax</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_FMin+" name="FMin">FMin</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_FRand+" name="FRand">FRand</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_GetAxes+" name="GetAxes">GetAxes</a> (<a href="object.html#Rotator">rotator</a> A, out <a href="object.html#Vector">vector</a> X, out <a href="object.html#Vector">vector</a> Y, out <a href="object.html#Vector">vector</a> Z)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>name&nbsp;</td><td><a href="#_GetEnum+" name="GetEnum">GetEnum</a> (<a href="object.html">object</a> E, int i)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetPropertyText+" name="GetPropertyText">GetPropertyText</a> (string PropName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>name&nbsp;</td><td><a href="#_GetStateName+" name="GetStateName">GetStateName</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_GetUnAxes+" name="GetUnAxes">GetUnAxes</a> (<a href="object.html#Rotator">rotator</a> A, out <a href="object.html#Vector">vector</a> X, out <a href="object.html#Vector">vector</a> Y, out <a href="object.html#Vector">vector</a> Z)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_GotoState+" name="GotoState">GotoState</a> (optional name NewState, optional name Label)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_InStr+" name="InStr">InStr</a> (coerce string S, coerce string t)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Invert+" name="Invert">Invert</a> (out <a href="object.html#Vector">vector</a> X, out <a href="object.html#Vector">vector</a> Y, out <a href="object.html#Vector">vector</a> Z)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_IsA+" name="IsA">IsA</a> (name ClassName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_IsInState+" name="IsInState">IsInState</a> (name TestState)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_Left+" name="Left">Left</a> (coerce string S, int i)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_Len+" name="Len">Len</a> (coerce string S)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_Lerp+" name="Lerp">Lerp</a> (float Alpha, float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_Localize+" name="Localize">Localize</a> (string SectionName, string KeyName, string PackageName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Log+" name="Log">Log</a> (coerce string S, optional name Tag)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_Loge+" name="Loge">Loge</a> (float A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_Max+" name="Max">Max</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_Mid+" name="Mid">Mid</a> (coerce string S, int i, optional int j)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_Min+" name="Min">Min</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_MirrorVectorByNormal+" name="MirrorVectorByNormal">MirrorVectorByNormal</a> (<a href="object.html#Vector">vector</a> Vect, <a href="object.html#Vector">vector</a> Normal)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_Normal+" name="Normal">Normal</a> (<a href="object.html#Vector">vector</a> A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_Normalize+" name="Normalize">Normalize</a> (<a href="object.html#Rotator">rotator</a> Rot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_OrthoRotation+" name="OrthoRotation">OrthoRotation</a> (<a href="object.html#Vector">vector</a> X, <a href="object.html#Vector">vector</a> Y, <a href="object.html#Vector">vector</a> Z)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_Rand+" name="Rand">Rand</a> (int Max)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_RandRange+" name="RandRange">RandRange</a> (float Min, float Max)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ResetConfig+" name="ResetConfig">ResetConfig</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_Right+" name="Right">Right</a> (coerce string S, int i)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="object.html#Rotator">rotator</a>&nbsp;</td><td><a href="#_RotRand+" name="RotRand">RotRand</a> (optional bool bRoll)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SaveConfig+" name="SaveConfig">SaveConfig</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetPropertyText+" name="SetPropertyText">SetPropertyText</a> (string PropName, string PropValue)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_Sin+" name="Sin">Sin</a> (float A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_Smerp+" name="Smerp">Smerp</a> (float Alpha, float A, float B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_Sqrt+" name="Sqrt">Sqrt</a> (float A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_Square+" name="Square">Square</a> (float A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_StaticSaveConfig+" name="StaticSaveConfig">StaticSaveConfig</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_Tan+" name="Tan">Tan</a> (float A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="object.html#Vector">vector</a>&nbsp;</td><td><a href="#_VRand+" name="VRand">VRand</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_VSize+" name="VSize">VSize</a> (<a href="object.html#Vector">vector</a> A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Warn+" name="Warn">Warn</a> (coerce string S)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_^+" name="^">^</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_^^+" name="^^">^^</a> (bool A, bool B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>int&nbsp;</td><td><a href="#_|+" name="|">|</a> (int A, int B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_||+" name="||">||</a> (bool A, skip bool B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="preoperator" title="preoperator"></td><td>int&nbsp;</td><td><a href="#_~+" name="~">~</a> (int A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_~=+" name="~=">~=</a> (string A, string B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_operator.gif" alt="operator" title="operator"></td><td>bool&nbsp;</td><td><a href="#_~=+" name="~=">~=</a> (float A, float B)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_MaxInt" class="hidden"></a>MaxInt <a href="..\Source_core\object.html#99" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> MaxInt = <font class="source_int">0x7fffffff</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Pi" class="hidden"></a>Pi <a href="..\Source_core\object.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> Pi = <font class="source_int">3.1415926535897932</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RF_NotForClient" class="hidden"></a>RF_NotForClient <a href="..\Source_core\object.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> RF_NotForClient = <font class="source_int">0x00100000</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RF_NotForEdit" class="hidden"></a>RF_NotForEdit <a href="..\Source_core\object.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> RF_NotForEdit = <font class="source_int">0x00400000</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RF_NotForServer" class="hidden"></a>RF_NotForServer <a href="..\Source_core\object.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> RF_NotForServer = <font class="source_int">0x00200000</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RF_Public" class="hidden"></a>RF_Public <a href="..\Source_core\object.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> RF_Public = <font class="source_int">0x00000004</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RF_Transactional" class="hidden"></a>RF_Transactional <a href="..\Source_core\object.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> RF_Transactional = <font class="source_int">0x00000001</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RF_Transient" class="hidden"></a>RF_Transient <a href="..\Source_core\object.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> RF_Transient = <font class="source_int">0x00004000</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ObjectFlags" class="hidden"></a>ObjectFlags <a href="..\Source_core\object.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">native</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> ObjectFlags;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ObjectInternal[6]" class="hidden"></a>ObjectInternal[6] <a href="..\Source_core\object.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">native</font> <font class="source_keyword2">private</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> ObjectInternal[<font class="source_int">6</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Outer" class="hidden"></a>Outer <a href="..\Source_core\object.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">native</font> <font class="source_keyword">const</font> <font class="source_type"><a href="object.html" class="source">object</a></font> Outer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Object</h3>
+<h4><a name="_Class" class="hidden"></a>Class <a href="..\Source_core\object.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type"><a href="object.html" class="source">Object</a></font>) <font class="source_keyword2">native</font> <font class="source_keyword">const</font> <font class="source_keyword2">editconst</font> <font class="source_keyword">class</font> <font class="source_keyword">Class</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Name" class="hidden"></a>Name <a href="..\Source_core\object.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type"><a href="object.html" class="source">Object</a></font>) <font class="source_keyword2">native</font> <font class="source_keyword">const</font> <font class="source_keyword2">editconst</font> <font class="source_keyword">name</font> <font class="source_keyword">Name</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ESheerAxis" class="hidden"></a>ESheerAxis <a href="..\Source_core\object.html#65" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="object.html#ESheerAxis" class="source">ESheerAxis</a></font><br />
+{<blockquote>SHEER_None,
+SHEER_XY,
+SHEER_XZ,
+SHEER_YX,
+SHEER_YZ,
+SHEER_ZX,
+SHEER_ZY,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BoundingBox" class="hidden"></a>BoundingBox <a href="..\Source_core\object.html#84" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="object.html#BoundingBox" class="source">BoundingBox</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_keyword">byte</font> IsValid;<br />
+<font class="source_keyword">var</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Max;<br />
+<font class="source_keyword">var</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Min;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BoundingVolume" class="hidden"></a>BoundingVolume <a href="..\Source_core\object.html#91" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="object.html#BoundingVolume" class="source">BoundingVolume</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="object.html#BoundingBox" class="source">boundingbox</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_type"><a href="object.html#Plane" class="source">plane</a></font> Sphere;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Color" class="hidden"></a>Color <a href="..\Source_core\object.html#78" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="object.html#Color" class="source">Color</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">byte</font> A;<br />
+<font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">byte</font> B;<br />
+<font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">byte</font> G;<br />
+<font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">byte</font> R;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Coords" class="hidden"></a>Coords <a href="..\Source_core\object.html#55" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="object.html#Coords" class="source">Coords</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Origin;<br />
+<font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> XAxis;<br />
+<font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> YAxis;<br />
+<font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> ZAxis;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Guid" class="hidden"></a>Guid <a href="..\Source_core\object.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="object.html#Guid" class="source">Guid</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_keyword">int</font> A;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">int</font> B;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">int</font> C;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">int</font> D;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Plane" class="hidden"></a>Plane <a href="..\Source_core\object.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="object.html#Plane" class="source">Plane</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="object.html#Vector" class="source">Vector</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">float</font> W;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Rotator" class="hidden"></a>Rotator <a href="..\Source_core\object.html#49" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="object.html#Rotator" class="source">Rotator</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> Pitch;<br />
+<font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> Roll;<br />
+<font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> Yaw;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Scale" class="hidden"></a>Scale <a href="..\Source_core\object.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="object.html#Scale" class="source">Scale</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> <font class="source_type"><a href="object.html#Scale" class="source">Scale</a></font>;<br />
+<font class="source_keyword">var</font> <font class="source_type"><a href="object.html#ESheerAxis" class="source">ESheerAxis</a></font> SheerAxis;<br />
+<font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">float</font> SheerRate;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Vector" class="hidden"></a>Vector <a href="..\Source_core\object.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="object.html#Vector" class="source">Vector</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">float</font> X;<br />
+<font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">float</font> Y;<br />
+<font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">float</font> Z;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_!+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="preoperator"> ! <span class="function_state"></span> <a href="..\Source_core\object.html#106" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">preoperator</font> <font class="source_keyword">bool</font> ! (<font class="source_keyword">bool</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_!=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> != <span class="function_state"></span> <a href="..\Source_core\object.html#205" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> != (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_!=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> != <span class="function_state"></span> <a href="..\Source_core\object.html#223" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> != (<font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_!=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> != <span class="function_state"></span> <a href="..\Source_core\object.html#138" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> != (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_!=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> != <span class="function_state"></span> <a href="..\Source_core\object.html#171" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> != (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_!=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> != <span class="function_state"></span> <a href="..\Source_core\object.html#247" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> != (<font class="source_keyword">string</font> A, <font class="source_keyword">string</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_!=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> != <span class="function_state"></span> <a href="..\Source_core\object.html#262" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> != (<font class="source_type"><a href="object.html" class="source">Object</a></font> A, <font class="source_type"><a href="object.html" class="source">Object</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_!=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> != <span class="function_state"></span> <a href="..\Source_core\object.html#108" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> != (<font class="source_keyword">bool</font> A, <font class="source_keyword">bool</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_!=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> != <span class="function_state"></span> <a href="..\Source_core\object.html#266" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> != (<font class="source_keyword">name</font> A, <font class="source_keyword">name</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_$+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> $ <span class="function_state"></span> <a href="..\Source_core\object.html#240" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">string</font> $ (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> A, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_%+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> % <span class="function_state"></span> <a href="..\Source_core\object.html#162" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">float</font> % (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> & <span class="function_state"></span> <a href="..\Source_core\object.html#139" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> & (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&&+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> && <span class="function_state"></span> <a href="..\Source_core\object.html#109" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> && (<font class="source_keyword">bool</font> A, skip <font class="source_keyword">bool</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> * <span class="function_state"></span> <a href="..\Source_core\object.html#160" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">float</font> * (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> * <span class="function_state"></span> <a href="..\Source_core\object.html#224" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> * (<font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_keyword">float</font>    B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> * <span class="function_state"></span> <a href="..\Source_core\object.html#225" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> * (<font class="source_keyword">float</font>    A, <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> * <span class="function_state"></span> <a href="..\Source_core\object.html#198" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> * (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> * <span class="function_state"></span> <a href="..\Source_core\object.html#196" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> * (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> * <span class="function_state"></span> <a href="..\Source_core\object.html#197" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> * (<font class="source_keyword">float</font> A, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> * <span class="function_state"></span> <a href="..\Source_core\object.html#126" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> * (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_**+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> ** <span class="function_state"></span> <a href="..\Source_core\object.html#159" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">float</font> ** (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> *= <span class="function_state"></span> <a href="..\Source_core\object.html#208" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> *= (<font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> *= <span class="function_state"></span> <a href="..\Source_core\object.html#172" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">float</font> *= (<font class="source_keyword2">out</font> <font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> *= <span class="function_state"></span> <a href="..\Source_core\object.html#142" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> *= (<font class="source_keyword2">out</font> <font class="source_keyword">int</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> *= <span class="function_state"></span> <a href="..\Source_core\object.html#114" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">byte</font> *= (<font class="source_keyword2">out</font> <font class="source_keyword">byte</font> A, <font class="source_keyword">byte</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> *= <span class="function_state"></span> <a href="..\Source_core\object.html#209" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> *= (<font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_*=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> *= <span class="function_state"></span> <a href="..\Source_core\object.html#227" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> *= (<font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_++" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> + <span class="function_state"></span> <a href="..\Source_core\object.html#163" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">float</font> + (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_++" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> + <span class="function_state"></span> <a href="..\Source_core\object.html#128" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> + (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_++" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> + <span class="function_state"></span> <a href="..\Source_core\object.html#229" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> + (<font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_++" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> + <span class="function_state"></span> <a href="..\Source_core\object.html#200" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> + (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_+++" class="hidden"></a><img src="..\img_operator.gif" alt="" title="postoperator"> ++ <span class="function_state"></span> <a href="..\Source_core\object.html#148" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">postoperator</font> <font class="source_keyword">int</font> ++ (<font class="source_keyword2">out</font> <font class="source_keyword">int</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_+++" class="hidden"></a><img src="..\img_operator.gif" alt="" title="preoperator"> ++ <span class="function_state"></span> <a href="..\Source_core\object.html#146" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">preoperator</font> <font class="source_keyword">int</font> ++ (<font class="source_keyword2">out</font> <font class="source_keyword">int</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_+++" class="hidden"></a><img src="..\img_operator.gif" alt="" title="preoperator"> ++ <span class="function_state"></span> <a href="..\Source_core\object.html#118" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">preoperator</font> <font class="source_keyword">byte</font> ++ (<font class="source_keyword2">out</font> <font class="source_keyword">byte</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_+++" class="hidden"></a><img src="..\img_operator.gif" alt="" title="postoperator"> ++ <span class="function_state"></span> <a href="..\Source_core\object.html#120" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">postoperator</font> <font class="source_keyword">byte</font> ++ (<font class="source_keyword2">out</font> <font class="source_keyword">byte</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_+=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> += <span class="function_state"></span> <a href="..\Source_core\object.html#116" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">byte</font> += (<font class="source_keyword2">out</font> <font class="source_keyword">byte</font> A, <font class="source_keyword">byte</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_+=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> += <span class="function_state"></span> <a href="..\Source_core\object.html#211" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> += (<font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_+=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> += <span class="function_state"></span> <a href="..\Source_core\object.html#174" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">float</font> += (<font class="source_keyword2">out</font> <font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_+=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> += <span class="function_state"></span> <a href="..\Source_core\object.html#231" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> += (<font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_+=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> += <span class="function_state"></span> <a href="..\Source_core\object.html#144" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> += (<font class="source_keyword2">out</font> <font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> - <span class="function_state"></span> <a href="..\Source_core\object.html#201" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> - (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> - <span class="function_state"></span> <a href="..\Source_core\object.html#129" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> - (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="preoperator"> - <span class="function_state"></span> <a href="..\Source_core\object.html#125" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">preoperator</font> <font class="source_keyword">int</font> - (<font class="source_keyword">int</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> - <span class="function_state"></span> <a href="..\Source_core\object.html#164" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">float</font> - (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="preoperator"> - <span class="function_state"></span> <a href="..\Source_core\object.html#119" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">preoperator</font> <font class="source_keyword">byte</font> - (( <font class="source_keyword2">out</font> <font class="source_keyword">byte</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="postoperator"> - <span class="function_state"></span> <a href="..\Source_core\object.html#121" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">postoperator</font> <font class="source_keyword">byte</font> - (( <font class="source_keyword2">out</font> <font class="source_keyword">byte</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="preoperator"> - <span class="function_state"></span> <a href="..\Source_core\object.html#195" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">preoperator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> - (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> - <span class="function_state"></span> <a href="..\Source_core\object.html#230" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> - (<font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="preoperator"> - <span class="function_state"></span> <a href="..\Source_core\object.html#158" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">preoperator</font> <font class="source_keyword">float</font> - (<font class="source_keyword">float</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="preoperator"> - <span class="function_state"></span> <a href="..\Source_core\object.html#147" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">preoperator</font> <font class="source_keyword">int</font> - (( <font class="source_keyword2">out</font> <font class="source_keyword">int</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="postoperator"> - <span class="function_state"></span> <a href="..\Source_core\object.html#149" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">postoperator</font> <font class="source_keyword">int</font> - (( <font class="source_keyword2">out</font> <font class="source_keyword">int</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> -= <span class="function_state"></span> <a href="..\Source_core\object.html#175" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">float</font> -= (<font class="source_keyword2">out</font> <font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> -= <span class="function_state"></span> <a href="..\Source_core\object.html#117" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">byte</font> -= (<font class="source_keyword2">out</font> <font class="source_keyword">byte</font> A, <font class="source_keyword">byte</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> -= <span class="function_state"></span> <a href="..\Source_core\object.html#212" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> -= (<font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> -= <span class="function_state"></span> <a href="..\Source_core\object.html#145" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> -= (<font class="source_keyword2">out</font> <font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_-=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> -= <span class="function_state"></span> <a href="..\Source_core\object.html#232" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> -= (<font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_/ +" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> /  <span class="function_state"></span> <a href="..\Source_core\object.html#161" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">float</font> /  (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_/ +" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> /  <span class="function_state"></span> <a href="..\Source_core\object.html#226" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> /  (<font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_keyword">float</font>    B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_/ +" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> /  <span class="function_state"></span> <a href="..\Source_core\object.html#199" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> /  (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_/ +" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> /  <span class="function_state"></span> <a href="..\Source_core\object.html#127" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> /  (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_/=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> /= <span class="function_state"></span> <a href="..\Source_core\object.html#228" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> /= (<font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_/=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> /= <span class="function_state"></span> <a href="..\Source_core\object.html#143" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> /= (<font class="source_keyword2">out</font> <font class="source_keyword">int</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_/=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> /= <span class="function_state"></span> <a href="..\Source_core\object.html#210" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> /= (<font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_/=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> /= <span class="function_state"></span> <a href="..\Source_core\object.html#115" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">byte</font> /= (<font class="source_keyword2">out</font> <font class="source_keyword">byte</font> A, <font class="source_keyword">byte</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_/=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> /= <span class="function_state"></span> <a href="..\Source_core\object.html#173" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">float</font> /= (<font class="source_keyword2">out</font> <font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&lt;+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &lt; <span class="function_state"></span> <a href="..\Source_core\object.html#133" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &lt; (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&lt;+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &lt; <span class="function_state"></span> <a href="..\Source_core\object.html#165" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &lt; (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&lt;+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &lt; <span class="function_state"></span> <a href="..\Source_core\object.html#242" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &lt; (<font class="source_keyword">string</font> A, <font class="source_keyword">string</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&lt;&lt;+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &lt;&lt; <span class="function_state"></span> <a href="..\Source_core\object.html#130" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> &lt;&lt; (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&lt;&lt;+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &lt;&lt; <span class="function_state"></span> <a href="..\Source_core\object.html#202" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> &lt;&lt; (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&lt;=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &lt;= <span class="function_state"></span> <a href="..\Source_core\object.html#135" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &lt;= (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&lt;=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &lt;= <span class="function_state"></span> <a href="..\Source_core\object.html#244" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &lt;= (<font class="source_keyword">string</font> A, <font class="source_keyword">string</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&lt;=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &lt;= <span class="function_state"></span> <a href="..\Source_core\object.html#167" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &lt;= (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_==+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> == <span class="function_state"></span> <a href="..\Source_core\object.html#169" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> == (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_==+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> == <span class="function_state"></span> <a href="..\Source_core\object.html#204" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> == (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_==+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> == <span class="function_state"></span> <a href="..\Source_core\object.html#107" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> == (<font class="source_keyword">bool</font> A, <font class="source_keyword">bool</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_==+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> == <span class="function_state"></span> <a href="..\Source_core\object.html#137" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> == (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_==+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> == <span class="function_state"></span> <a href="..\Source_core\object.html#265" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> == (<font class="source_keyword">name</font> A, <font class="source_keyword">name</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_==+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> == <span class="function_state"></span> <a href="..\Source_core\object.html#246" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> == (<font class="source_keyword">string</font> A, <font class="source_keyword">string</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_==+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> == <span class="function_state"></span> <a href="..\Source_core\object.html#261" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> == (<font class="source_type"><a href="object.html" class="source">Object</a></font> A, <font class="source_type"><a href="object.html" class="source">Object</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_==+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> == <span class="function_state"></span> <a href="..\Source_core\object.html#222" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> == (<font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&gt;+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &gt; <span class="function_state"></span> <a href="..\Source_core\object.html#134" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &gt; (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&gt;+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &gt; <span class="function_state"></span> <a href="..\Source_core\object.html#166" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &gt; (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&gt;+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &gt; <span class="function_state"></span> <a href="..\Source_core\object.html#243" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &gt; (<font class="source_keyword">string</font> A, <font class="source_keyword">string</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&gt;=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &gt;= <span class="function_state"></span> <a href="..\Source_core\object.html#168" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &gt;= (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&gt;=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &gt;= <span class="function_state"></span> <a href="..\Source_core\object.html#136" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &gt;= (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&gt;=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &gt;= <span class="function_state"></span> <a href="..\Source_core\object.html#245" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> &gt;= (<font class="source_keyword">string</font> A, <font class="source_keyword">string</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&gt;&gt;+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &gt;&gt; <span class="function_state"></span> <a href="..\Source_core\object.html#131" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> &gt;&gt; (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&gt;&gt;+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &gt;&gt; <span class="function_state"></span> <a href="..\Source_core\object.html#203" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> &gt;&gt; (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_&gt;&gt;&gt;+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> &gt;&gt;&gt; <span class="function_state"></span> <a href="..\Source_core\object.html#132" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> &gt;&gt;&gt; (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_@+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> @ <span class="function_state"></span> <a href="..\Source_core\object.html#241" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">string</font> @ (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> A, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Abs+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Abs <span class="function_state"></span> <a href="..\Source_core\object.html#178" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> Abs (<font class="source_keyword">float</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Asc+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Asc <span class="function_state"></span> <a href="..\Source_core\object.html#258" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> Asc (<font class="source_keyword">string</font> S)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Atan+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Atan <span class="function_state"></span> <a href="..\Source_core\object.html#182" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> Atan (<font class="source_keyword">float</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> BeginState <span class="function_state"></span> <a href="..\Source_core\object.html#317" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Caps+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Caps <span class="function_state"></span> <a href="..\Source_core\object.html#256" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> Caps (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Chr+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Chr <span class="function_state"></span> <a href="..\Source_core\object.html#257" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> Chr (<font class="source_keyword">int</font> i)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Clamp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Clamp <span class="function_state"></span> <a href="..\Source_core\object.html#155" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> Clamp (<font class="source_keyword">int</font> V, <font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClassIsChildOf+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClassIsChildOf <span class="function_state"></span> <a href="..\Source_core\object.html#282" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClassIsChildOf (<font class="source_keyword">class</font> TestClass, <font class="source_keyword">class</font> ParentClass)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Cos+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Cos <span class="function_state"></span> <a href="..\Source_core\object.html#180" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> Cos (<font class="source_keyword">float</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Cross+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> Cross <span class="function_state"></span> <a href="..\Source_core\object.html#207" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Cross (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Disable+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Disable <span class="function_state"></span> <a href="..\Source_core\object.html#287" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Disable (<font class="source_keyword">name</font> ProbeFunc)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Dot+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> Dot <span class="function_state"></span> <a href="..\Source_core\object.html#206" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">float</font> Dot (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DynamicLoadObject+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DynamicLoadObject <span class="function_state"></span> <a href="..\Source_core\object.html#293" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="object.html" class="source">object</a></font> DynamicLoadObject (<font class="source_keyword">string</font> ObjectName, <font class="source_keyword">class</font> ObjectClass, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> MayFail)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Enable+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Enable <span class="function_state"></span> <a href="..\Source_core\object.html#286" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Enable (<font class="source_keyword">name</font> ProbeFunc)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndState+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> EndState <span class="function_state"></span> <a href="..\Source_core\object.html#323" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> EndState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Exp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Exp <span class="function_state"></span> <a href="..\Source_core\object.html#183" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> Exp (<font class="source_keyword">float</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FClamp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FClamp <span class="function_state"></span> <a href="..\Source_core\object.html#190" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> FClamp (<font class="source_keyword">float</font> V, <font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FMax+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FMax <span class="function_state"></span> <a href="..\Source_core\object.html#189" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> FMax (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FMin+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FMin <span class="function_state"></span> <a href="..\Source_core\object.html#188" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> FMin (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FRand+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FRand <span class="function_state"></span> <a href="..\Source_core\object.html#187" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> FRand ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetAxes+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetAxes <span class="function_state"></span> <a href="..\Source_core\object.html#233" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> GetAxes (<font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> X, <font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Y, <font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Z)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetEnum+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetEnum <span class="function_state"></span> <a href="..\Source_core\object.html#292" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">name</font> GetEnum (<font class="source_type"><a href="object.html" class="source">object</a></font> E, <font class="source_keyword">int</font> i)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetPropertyText+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetPropertyText <span class="function_state"></span> <a href="..\Source_core\object.html#290" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetPropertyText (<font class="source_keyword">string</font> PropName)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetStateName+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetStateName <span class="function_state"></span> <a href="..\Source_core\object.html#279" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">name</font> GetStateName ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetUnAxes+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetUnAxes <span class="function_state"></span> <a href="..\Source_core\object.html#234" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> GetUnAxes (<font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> A, <font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> X, <font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Y, <font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Z)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GotoState+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GotoState <span class="function_state"></span> <a href="..\Source_core\object.html#277" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> GotoState (<font class="source_keyword2">optional</font> <font class="source_keyword">name</font> NewState, <font class="source_keyword2">optional</font> <font class="source_keyword">name</font> Label)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InStr+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> InStr <span class="function_state"></span> <a href="..\Source_core\object.html#252" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> InStr (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> t)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Invert+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Invert <span class="function_state"></span> <a href="..\Source_core\object.html#217" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Invert (<font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> X, <font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Y, <font class="source_keyword2">out</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Z)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_IsA+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> IsA <span class="function_state"></span> <a href="..\Source_core\object.html#283" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> IsA (<font class="source_keyword">name</font> ClassName)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_IsInState+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> IsInState <span class="function_state"></span> <a href="..\Source_core\object.html#278" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> IsInState (<font class="source_keyword">name</font> TestState)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Left+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Left <span class="function_state"></span> <a href="..\Source_core\object.html#254" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> Left (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S, <font class="source_keyword">int</font> i)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Len+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Len <span class="function_state"></span> <a href="..\Source_core\object.html#251" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> Len (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Lerp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Lerp <span class="function_state"></span> <a href="..\Source_core\object.html#191" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> Lerp (<font class="source_keyword">float</font> Alpha, <font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Localize+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Localize <span class="function_state"></span> <a href="..\Source_core\object.html#274" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> Localize (<font class="source_keyword">string</font> SectionName, <font class="source_keyword">string</font> KeyName, <font class="source_keyword">string</font> PackageName)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Log+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Log <span class="function_state"></span> <a href="..\Source_core\object.html#272" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Log (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S, <font class="source_keyword2">optional</font> <font class="source_keyword">name</font> Tag)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Loge+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Loge <span class="function_state"></span> <a href="..\Source_core\object.html#184" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> Loge (<font class="source_keyword">float</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Max+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Max <span class="function_state"></span> <a href="..\Source_core\object.html#154" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> Max (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Mid+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Mid <span class="function_state"></span> <a href="..\Source_core\object.html#253" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> Mid (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S, <font class="source_keyword">int</font> i, <font class="source_keyword2">optional</font> <font class="source_keyword">int</font> j)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Min+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Min <span class="function_state"></span> <a href="..\Source_core\object.html#153" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> Min (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MirrorVectorByNormal+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MirrorVectorByNormal <span class="function_state"></span> <a href="..\Source_core\object.html#219" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> MirrorVectorByNormal (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Vect, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Normal)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Normal+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Normal <span class="function_state"></span> <a href="..\Source_core\object.html#216" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Normal (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Normalize+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Normalize <span class="function_state"></span> <a href="..\Source_core\object.html#237" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> Normalize (<font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> Rot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OrthoRotation+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> OrthoRotation <span class="function_state"></span> <a href="..\Source_core\object.html#236" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> OrthoRotation (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> X, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Y, <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> Z)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Rand+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Rand <span class="function_state"></span> <a href="..\Source_core\object.html#152" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> Rand (<font class="source_keyword">int</font> Max)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RandRange+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RandRange <span class="function_state"></span> <a href="..\Source_core\object.html#302" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> RandRange (<font class="source_keyword">float</font> Min, <font class="source_keyword">float</font> Max)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ResetConfig+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ResetConfig <span class="function_state"></span> <a href="..\Source_core\object.html#298" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ResetConfig ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Right+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Right <span class="function_state"></span> <a href="..\Source_core\object.html#255" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> Right (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S, <font class="source_keyword">int</font> i)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RotRand+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RotRand <span class="function_state"></span> <a href="..\Source_core\object.html#235" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="object.html#Rotator" class="source">rotator</a></font> RotRand (<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bRoll)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SaveConfig+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SaveConfig <span class="function_state"></span> <a href="..\Source_core\object.html#296" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SaveConfig ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetPropertyText+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetPropertyText <span class="function_state"></span> <a href="..\Source_core\object.html#291" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetPropertyText (<font class="source_keyword">string</font> PropName, <font class="source_keyword">string</font> PropValue)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Sin+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Sin <span class="function_state"></span> <a href="..\Source_core\object.html#179" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> Sin (<font class="source_keyword">float</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Smerp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Smerp <span class="function_state"></span> <a href="..\Source_core\object.html#192" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> Smerp (<font class="source_keyword">float</font> Alpha, <font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Sqrt+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Sqrt <span class="function_state"></span> <a href="..\Source_core\object.html#185" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> Sqrt (<font class="source_keyword">float</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Square+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Square <span class="function_state"></span> <a href="..\Source_core\object.html#186" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> Square (<font class="source_keyword">float</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StaticSaveConfig+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> StaticSaveConfig <span class="function_state"></span> <a href="..\Source_core\object.html#297" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> StaticSaveConfig ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tan+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tan <span class="function_state"></span> <a href="..\Source_core\object.html#181" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> Tan (<font class="source_keyword">float</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_VRand+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> VRand <span class="function_state"></span> <a href="..\Source_core\object.html#218" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> VRand ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_VSize+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> VSize <span class="function_state"></span> <a href="..\Source_core\object.html#215" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> VSize (<font class="source_type"><a href="object.html#Vector" class="source">vector</a></font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Warn+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Warn <span class="function_state"></span> <a href="..\Source_core\object.html#273" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Warn (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_^+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> ^ <span class="function_state"></span> <a href="..\Source_core\object.html#140" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> ^ (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_^^+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> ^^ <span class="function_state"></span> <a href="..\Source_core\object.html#110" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> ^^ (<font class="source_keyword">bool</font> A, <font class="source_keyword">bool</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_|+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> | <span class="function_state"></span> <a href="..\Source_core\object.html#141" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">int</font> | (<font class="source_keyword">int</font> A, <font class="source_keyword">int</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_||+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> || <span class="function_state"></span> <a href="..\Source_core\object.html#111" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> || (<font class="source_keyword">bool</font> A, skip <font class="source_keyword">bool</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_~+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="preoperator"> ~ <span class="function_state"></span> <a href="..\Source_core\object.html#124" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">preoperator</font> <font class="source_keyword">int</font> ~ (<font class="source_keyword">int</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_~=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> ~= <span class="function_state"></span> <a href="..\Source_core\object.html#248" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> ~= (<font class="source_keyword">string</font> A, <font class="source_keyword">string</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_~=+" class="hidden"></a><img src="..\img_operator.gif" alt="" title="operator"> ~= <span class="function_state"></span> <a href="..\Source_core\object.html#170" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">operator</font> <font class="source_keyword">bool</font> ~= (<font class="source_keyword">float</font> A, <font class="source_keyword">float</font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="core-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_core\object.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Object">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="locale.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="simplecommandlet.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:07.578 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

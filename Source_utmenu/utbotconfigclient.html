@@ -1,0 +1,497 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTMenu.UTBotConfigClient</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utbotconfigclient.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTBotConfigClient">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utaudioclientwindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utbotconfigsclient.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utmenu\utmenu-overview.html">UTMenu</a>.<a href="..\utmenu\utbotconfigclient.html">UTBotConfigClient</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utmenu\utbotconfigclient.html" class="source">UTBotConfigClient</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\umenu\umenubotconfigbase.html" class="source">UMenuBotConfigBase</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_comment">// Botconfig
+</font><a name="4"></a><font class="source_keyword">var</font> <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\botpack\challengebotinfo.html" class="source">ChallengeBotInfo</a></font>&gt; BotConfig;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> BalanceTeamsCheck;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BalanceTeamsText;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BalanceTeamsHelp;
+<a name="9"></a>
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> DumbDownCheck;
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DumbDownText;
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DumbDownHelp;
+<a name="13"></a>
+<a name="14"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MinPlayersText;
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MinPlayersHelp;
+<a name="16"></a>
+<a name="17"></a><font class="source_keyword">function</font> Created()
+<a name="18"></a>{
+<a name="19"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="20"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos, ButtonWidth, ButtonLeft;
+<a name="21"></a>
+<a name="22"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="23"></a>
+<a name="24"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="25"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="26"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="27"></a>
+<a name="28"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="29"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="30"></a>
+<a name="31"></a>    <font class="source_keyword">if</font>(BotmatchParent.bNetworkGame)
+<a name="32"></a>    {
+<a name="33"></a>        NumBotsEdit.SetText(MinPlayersText);
+<a name="34"></a>        NumBotsEdit.SetHelpText(MinPlayersHelp);
+<a name="35"></a>    }
+<a name="36"></a>
+<a name="37"></a>    <font class="source_keyword">if</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(BotmatchParent.GameClass) != <font class="source_keyword">None</font>)
+<a name="38"></a>    {
+<a name="39"></a>        <font class="source_comment">// Balance Teams
+</font><a name="40"></a>        BalanceTeamsCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, ControlLeft, ControlOffset, ControlWidth, <font class="source_int">1</font>));
+<a name="41"></a>        BalanceTeamsCheck.SetText(BalanceTeamsText);
+<a name="42"></a>        BalanceTeamsCheck.SetHelpText(BalanceTeamsHelp);
+<a name="43"></a>        BalanceTeamsCheck.SetFont(F_Normal);
+<a name="44"></a>        BalanceTeamsCheck.Align = TA_Right;
+<a name="45"></a>
+<a name="46"></a>        <font class="source_keyword">if</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\domination.html" class="source">Domination</a></font>&gt;(BotmatchParent.GameClass) != <font class="source_keyword">None</font>)
+<a name="47"></a>        {
+<a name="48"></a>            DumbDownCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, ControlRight, ControlOffset, ControlWidth, <font class="source_int">1</font>));
+<a name="49"></a>            DumbDownCheck.SetText(DumbDownText);
+<a name="50"></a>            DumbDownCheck.SetHelpText(DumbDownHelp);
+<a name="51"></a>            DumbDownCheck.SetFont(F_Normal);
+<a name="52"></a>            DumbDownCheck.Align = TA_Right;
+<a name="53"></a>        }
+<a name="54"></a>
+<a name="55"></a>        ControlOffset += <font class="source_int">25</font>;
+<a name="56"></a>    }
+<a name="57"></a>}
+<a name="58"></a>
+<a name="59"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="60"></a>{
+<a name="61"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="62"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos, ButtonWidth, ButtonLeft;
+<a name="63"></a>
+<a name="64"></a>    <font class="source_keyword">Super</font>.BeforePaint(C, X, Y);
+<a name="65"></a>
+<a name="66"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="67"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="68"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="69"></a>
+<a name="70"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="71"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="72"></a>
+<a name="73"></a>    <font class="source_keyword">if</font>(BalanceTeamsCheck != <font class="source_keyword">None</font>)
+<a name="74"></a>    {
+<a name="75"></a>        BalanceTeamsCheck.SetSize(ControlWidth + <font class="source_int">10</font>, <font class="source_int">1</font>);
+<a name="76"></a>        BalanceTeamsCheck.WinLeft = ControlLeft - <font class="source_int">5</font>;
+<a name="77"></a>    }
+<a name="78"></a>
+<a name="79"></a>    <font class="source_keyword">if</font>(DumbDownCheck != <font class="source_keyword">None</font>)
+<a name="80"></a>    {
+<a name="81"></a>        DumbDownCheck.SetSize(ControlWidth + <font class="source_int">10</font>, <font class="source_int">1</font>);
+<a name="82"></a>        DumbDownCheck.WinLeft = ControlRight - <font class="source_int">5</font>;
+<a name="83"></a>    }
+<a name="84"></a>}
+<a name="85"></a>
+<a name="86"></a><font class="source_keyword">function</font> AutoAdjustChecked()
+<a name="87"></a>{
+<a name="88"></a>    BotConfig.Default.bAdjustSkill = AutoAdjustCheck.bChecked;
+<a name="89"></a>    BotConfig.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="90"></a>}
+<a name="91"></a>
+<a name="92"></a><font class="source_keyword">function</font> RandomChecked()
+<a name="93"></a>{
+<a name="94"></a>    BotConfig.Default.bRandomOrder = RandomCheck.bChecked;
+<a name="95"></a>    BotConfig.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="96"></a>}
+<a name="97"></a>
+<a name="98"></a><font class="source_keyword">function</font> ConfigureIndivBots()
+<a name="99"></a>{
+<a name="100"></a>    <font class="source_keyword">if</font>(<font class="source_keyword">int</font>(NumBotsEdit.GetValue()) == <font class="source_int">0</font>)
+<a name="101"></a>        MessageBox(AtLeastOneBotTitle, AtLeastOneBotText, MB_OK, MR_OK, MR_OK);
+<a name="102"></a>    <font class="source_keyword">else</font>
+<a name="103"></a>        GetParent(<font class="source_keyword">class</font><font class="source_name">'UWindowFramedWindow'</font>).ShowModal(Root.CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UTConfigIndivBotsWindow'</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Self));
+<a name="104"></a>}
+<a name="105"></a>
+<a name="106"></a><font class="source_comment">// replaces UMenuBotConfigClientWindow's version
+</font><a name="107"></a><font class="source_keyword">function</font> LoadCurrentValues()
+<a name="108"></a>{
+<a name="109"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="110"></a>
+<a name="111"></a>    BotConfig = <font class="source_keyword">class</font><font class="source_name">'DeathMatchPlus'</font>.default.BotConfigType;
+<a name="112"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>;i&lt;<font class="source_int">8</font>;i++)
+<a name="113"></a>        Skills[i] = BotConfig.default.Skills[i];
+<a name="114"></a>
+<a name="115"></a>    BaseCombo.SetSelectedIndex(Min(BotConfig.default.Difficulty, <font class="source_int">7</font>));
+<a name="116"></a>
+<a name="117"></a>    TauntLabel.SetText(SkillTaunts[BaseCombo.GetSelectedIndex()]);
+<a name="118"></a>
+<a name="119"></a>    AutoAdjustCheck.bChecked = BotConfig.Default.bAdjustSkill;
+<a name="120"></a>    RandomCheck.bChecked = BotConfig.Default.bRandomOrder;
+<a name="121"></a>
+<a name="122"></a>    <font class="source_keyword">if</font>(BotmatchParent.bNetworkGame)
+<a name="123"></a>        NumBotsEdit.SetValue(<font class="source_keyword">string</font>(<font class="source_keyword">class</font><font class="source_name">'DeathMatchPlus'</font>.Default.MinPlayers));
+<a name="124"></a>    <font class="source_keyword">else</font>
+<a name="125"></a>        NumBotsEdit.SetValue(<font class="source_keyword">string</font>(<font class="source_keyword">class</font><font class="source_name">'DeathMatchPlus'</font>.Default.InitialBots));
+<a name="126"></a>
+<a name="127"></a>    <font class="source_keyword">if</font>(BalanceTeamsCheck != <font class="source_keyword">None</font>)
+<a name="128"></a>        BalanceTeamsCheck.bChecked = <font class="source_keyword">class</font><font class="source_name">'TeamGamePlus'</font>.Default.bBalanceTeams;
+<a name="129"></a>
+<a name="130"></a>    <font class="source_keyword">if</font>(DumbDownCheck != <font class="source_keyword">None</font>)
+<a name="131"></a>        DumbDownCheck.bChecked = !<font class="source_keyword">class</font><font class="source_name">'Domination'</font>.Default.bDumbDown;
+<a name="132"></a>}
+<a name="133"></a>
+<a name="134"></a><font class="source_comment">// replaces UMenuBotConfigClientWindow's version
+</font><a name="135"></a><font class="source_keyword">function</font> BaseChanged()
+<a name="136"></a>{
+<a name="137"></a>    TauntLabel.SetText(SkillTaunts[BaseCombo.GetSelectedIndex()]);
+<a name="138"></a>    BotConfig.Default.Difficulty = BaseCombo.GetSelectedIndex();
+<a name="139"></a>    BotConfig.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="140"></a>}
+<a name="141"></a>
+<a name="142"></a><font class="source_comment">// replaces UMenuBotConfigClientWindow's version
+</font><a name="143"></a><font class="source_keyword">function</font> NumBotsChanged()
+<a name="144"></a>{
+<a name="145"></a>    <font class="source_keyword">if</font> (<font class="source_keyword">int</font>(NumBotsEdit.GetValue()) &gt; <font class="source_int">16</font>)
+<a name="146"></a>        NumBotsEdit.SetValue(<font class="source_string">"16"</font>);
+<a name="147"></a>
+<a name="148"></a>    <font class="source_keyword">if</font>(BotmatchParent.bNetworkGame)
+<a name="149"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(BotmatchParent.GameClass).default.MinPlayers = <font class="source_keyword">int</font>(NumBotsEdit.GetValue());
+<a name="150"></a>    <font class="source_keyword">else</font>
+<a name="151"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(BotmatchParent.GameClass).default.InitialBots = <font class="source_keyword">int</font>(NumBotsEdit.GetValue());
+<a name="152"></a>    BotmatchParent.GameClass.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="153"></a>}
+<a name="154"></a>
+<a name="155"></a><font class="source_keyword">function</font> BalanceTeamsChanged()
+<a name="156"></a>{
+<a name="157"></a>    <font class="source_keyword">class</font><font class="source_name">'TeamGamePlus'</font>.Default.bBalanceTeams = BalanceTeamsCheck.bChecked;
+<a name="158"></a>    Log(<font class="source_string">"Set BalanceTeams to: "</font>$<font class="source_keyword">class</font><font class="source_name">'TeamGamePlus'</font>.Default.bBalanceTeams);
+<a name="159"></a>    <font class="source_keyword">class</font><font class="source_name">'TeamGamePlus'</font>.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="160"></a>}
+<a name="161"></a>
+<a name="162"></a><font class="source_keyword">function</font> DumbDownChanged()
+<a name="163"></a>{
+<a name="164"></a>    <font class="source_keyword">class</font><font class="source_name">'Domination'</font>.Default.bDumbDown = !DumbDownCheck.bChecked;
+<a name="165"></a>    <font class="source_keyword">class</font><font class="source_name">'Domination'</font>.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="166"></a>}
+<a name="167"></a>
+<a name="168"></a><font class="source_keyword">function</font> SaveConfigs()
+<a name="169"></a>{
+<a name="170"></a>    <font class="source_keyword">Super</font>.SaveConfigs();
+<a name="171"></a>}
+<a name="172"></a>
+<a name="173"></a><font class="source_keyword">function</font> Notify(<font class="source_type"><a href="..\uwindow\uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></font> C, <font class="source_keyword">byte</font> E)
+<a name="174"></a>{
+<a name="175"></a>    <font class="source_keyword">if</font> (!Initialized)
+<a name="176"></a>        <font class="source_keyword">return</font>;
+<a name="177"></a>
+<a name="178"></a>    <font class="source_keyword">Super</font>.Notify(C, E);
+<a name="179"></a>
+<a name="180"></a>    <font class="source_keyword">switch</font>(E)
+<a name="181"></a>    {
+<a name="182"></a>    <font class="source_keyword">case</font> DE_Change:
+<a name="183"></a>        <font class="source_keyword">switch</font>(C)
+<a name="184"></a>        {
+<a name="185"></a>        <font class="source_keyword">case</font> BalanceTeamsCheck:
+<a name="186"></a>            BalanceTeamsChanged();
+<a name="187"></a>            <font class="source_keyword">break</font>;
+<a name="188"></a>        <font class="source_keyword">case</font> DumbDownCheck:
+<a name="189"></a>            DumbDownChanged();
+<a name="190"></a>            <font class="source_keyword">break</font>;
+<a name="191"></a>        }
+<a name="192"></a>        <font class="source_keyword">break</font>;
+<a name="193"></a>    }
+<a name="194"></a>}
+<a name="195"></a>
+<a name="196"></a><font class="source_keyword">defaultproperties</font>
+<a name="197"></a>{
+<a name="198"></a>    Skills(<font class="source_int">0</font>)=<font class="source_string">"Novice"</font>
+<a name="199"></a>    Skills(<font class="source_int">1</font>)=<font class="source_string">"Average"</font>
+<a name="200"></a>    Skills(<font class="source_int">2</font>)=<font class="source_string">"Experienced"</font>
+<a name="201"></a>    Skills(<font class="source_int">3</font>)=<font class="source_string">"Skilled"</font>
+<a name="202"></a>    Skills(<font class="source_int">4</font>)=<font class="source_string">"Adept"</font>
+<a name="203"></a>    Skills(<font class="source_int">5</font>)=<font class="source_string">"Masterful"</font>
+<a name="204"></a>    Skills(<font class="source_int">6</font>)=<font class="source_string">"Inhuman"</font>
+<a name="205"></a>    Skills(<font class="source_int">7</font>)=<font class="source_string">"Godlike"</font>
+<a name="206"></a>    SkillTaunts(<font class="source_int">0</font>)=<font class="source_string">"They won't hurt you...much."</font>
+<a name="207"></a>    SkillTaunts(<font class="source_int">1</font>)=<font class="source_string">"They know how to kill."</font>
+<a name="208"></a>    SkillTaunts(<font class="source_int">2</font>)=<font class="source_string">"Don't get cocky."</font>
+<a name="209"></a>    SkillTaunts(<font class="source_int">3</font>)=<font class="source_string">"You think you're tough?"</font>
+<a name="210"></a>    SkillTaunts(<font class="source_int">4</font>)=<font class="source_string">"You'd better be good."</font>
+<a name="211"></a>    SkillTaunts(<font class="source_int">5</font>)=<font class="source_string">"I hope you like to respawn."</font>
+<a name="212"></a>    SkillTaunts(<font class="source_int">6</font>)=<font class="source_string">"You're already dead."</font>
+<a name="213"></a>    SkillTaunts(<font class="source_int">7</font>)=<font class="source_string">"I am the Alpha and the Omega."</font>
+<a name="214"></a>    BalanceTeamsText=<font class="source_string">"Balance Teams"</font>
+<a name="215"></a>    BalanceTeamsHelp=<font class="source_string">"If this setting is checked, bots will automatically change teams to ensure there is a balanced number of members on each team."</font>
+<a name="216"></a>    MinPlayersText=<font class="source_string">"Min. Total Players"</font>
+<a name="217"></a>    MinPlayersHelp=<font class="source_string">"Bots will fill out the game to ensure there are always this many players.  Set this number to 0 to disable bots."</font>
+<a name="218"></a>    DumbDownText=<font class="source_string">"Enhanced Team AI"</font>
+<a name="219"></a>    DumbDownHelp=<font class="source_string">"Enable enhanced team artificial intelligence features for the bots in this game."</font>
+<a name="220"></a>}
+<a name="221"></a>
+<a name="222"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utbotconfigclient.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTBotConfigClient">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utaudioclientwindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utbotconfigsclient.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:32.000 - Creation time: Wed 26/5/2004 10:48:57.781 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

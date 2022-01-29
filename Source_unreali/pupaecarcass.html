@@ -1,0 +1,201 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealI.PupaeCarcass</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\pupaecarcass.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#PupaeCarcass">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="pupae.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="quadshot.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unreali\unreali-overview.html">UnrealI</a>.<a href="..\unreali\pupaecarcass.html">PupaeCarcass</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// PupaeCarcass.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unreali\pupaecarcass.html" class="source">PupaeCarcass</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\unrealshare\creaturecarcass.html" class="source">CreatureCarcass</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec MESH IMPORT MESH=PupaeBody ANIVFILE=MODELS\g_pupb_a.3D DATAFILE=MODELS\g_pupb_d.3D X=0 Y=0 Z=0
+</font><a name="7"></a><font class="source_macro">#exec MESH ORIGIN MESH=PupaeBody X=0 Y=0 Z=0 YAW=64
+</font><a name="8"></a><font class="source_macro">#exec MESH SEQUENCE MESH=PupaeBody SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="9"></a><font class="source_macro">#exec MESH SEQUENCE MESH=PupaeBody SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="10"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgpupae1  FILE=MODELS\g_pupae.PCX GROUP=Skins 
+</font><a name="11"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=PupaeBody X=0.09 Y=0.09 Z=0.18
+</font><a name="12"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=PupaeBody NUM=1 TEXTURE=Jgpupae1
+</font><a name="13"></a>
+<a name="14"></a><font class="source_macro">#exec MESH IMPORT MESH=PupaeHead ANIVFILE=MODELS\g_puph_a.3D DATAFILE=MODELS\g_puph_d.3D X=0 Y=0 Z=0
+</font><a name="15"></a><font class="source_macro">#exec MESH ORIGIN MESH=PupaeHead X=0 Y=0 Z=0 YAW=64
+</font><a name="16"></a><font class="source_macro">#exec MESH SEQUENCE MESH=PupaeHead SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="17"></a><font class="source_macro">#exec MESH SEQUENCE MESH=PupaeHead SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="18"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgpupae1  FILE=MODELS\g_pupae.PCX GROUP=Skins 
+</font><a name="19"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=PupaeHead X=0.09 Y=0.09 Z=0.18
+</font><a name="20"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=PupaeHead NUM=1 TEXTURE=Jgpupae1
+</font><a name="21"></a>
+<a name="22"></a><font class="source_macro">#exec MESH IMPORT MESH=PupaeLeg1 ANIVFILE=MODELS\g_pupl_a.3D DATAFILE=MODELS\g_pupl_d.3D X=0 Y=0 Z=0
+</font><a name="23"></a><font class="source_macro">#exec MESH ORIGIN MESH=PupaeLeg1 X=0 Y=0 Z=0 YAW=64
+</font><a name="24"></a><font class="source_macro">#exec MESH SEQUENCE MESH=PupaeLeg1 SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="25"></a><font class="source_macro">#exec MESH SEQUENCE MESH=PupaeLeg1 SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="26"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgpupae1  FILE=MODELS\g_pupae.PCX GROUP=Skins 
+</font><a name="27"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=PupaeLeg1 X=0.09 Y=0.09 Z=0.18
+</font><a name="28"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=PupaeLeg1 NUM=1 TEXTURE=Jgpupae1
+</font><a name="29"></a>
+<a name="30"></a><font class="source_macro">#exec MESH IMPORT MESH=PupaeLeg2 ANIVFILE=MODELS\g_pup2_a.3D DATAFILE=MODELS\g_pup2_d.3D X=0 Y=0 Z=0
+</font><a name="31"></a><font class="source_macro">#exec MESH ORIGIN MESH=PupaeLeg2 X=0 Y=0 Z=0 YAW=64
+</font><a name="32"></a><font class="source_macro">#exec MESH SEQUENCE MESH=PupaeLeg2 SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="33"></a><font class="source_macro">#exec MESH SEQUENCE MESH=PupaeLeg2 SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="34"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgpupae1  FILE=MODELS\g_pupae.PCX GROUP=Skins 
+</font><a name="35"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=PupaeLeg2 X=0.09 Y=0.09 Z=0.18
+</font><a name="36"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=PupaeLeg2 NUM=1 TEXTURE=Jgpupae1
+</font><a name="37"></a>
+<a name="38"></a><font class="source_macro">#exec MESH IMPORT MESH=PupaeLeg3 ANIVFILE=MODELS\g_pup3_a.3D DATAFILE=MODELS\g_pup3_d.3D X=0 Y=0 Z=0
+</font><a name="39"></a><font class="source_macro">#exec MESH ORIGIN MESH=PupaeLeg3 X=0 Y=0 Z=0 YAW=64
+</font><a name="40"></a><font class="source_macro">#exec MESH SEQUENCE MESH=PupaeLeg3 SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="41"></a><font class="source_macro">#exec MESH SEQUENCE MESH=PupaeLeg3 SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="42"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jgpupae1  FILE=MODELS\g_pupae.PCX GROUP=Skins 
+</font><a name="43"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=PupaeLeg3 X=0.09 Y=0.09 Z=0.18
+</font><a name="44"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=PupaeLeg3 NUM=1 TEXTURE=Jgpupae1
+</font><a name="45"></a>
+<a name="46"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Pupae\thump1.WAV" NAME="thumppp" GROUP="Pupae"
+</font><a name="47"></a>
+<a name="48"></a><font class="source_keyword2">static</font> <font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> AllowChunk(<font class="source_keyword">int</font> N, <font class="source_keyword">name</font> A)
+<a name="49"></a>{
+<a name="50"></a>    <font class="source_keyword">if</font> ( (A == <font class="source_name">'Dead2'</font>) && (N == <font class="source_int">4</font>) )
+<a name="51"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="52"></a>    <font class="source_keyword">if</font> ( (A == <font class="source_name">'Dead3'</font>) && (N == <font class="source_int">3</font>) )
+<a name="53"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="54"></a>
+<a name="55"></a>    <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="56"></a>}
+<a name="57"></a>
+<a name="58"></a><font class="source_keyword">defaultproperties</font>
+<a name="59"></a>{
+<a name="60"></a>     bodyparts(<font class="source_int">0</font>)=PupaeBody
+<a name="61"></a>     bodyparts(<font class="source_int">1</font>)=PupaeLeg3
+<a name="62"></a>     bodyparts(<font class="source_int">2</font>)=PupaeLeg1
+<a name="63"></a>     bodyparts(<font class="source_int">3</font>)=PupaeLeg2
+<a name="64"></a>     bodyparts(<font class="source_int">4</font>)=PupaeHead
+<a name="65"></a>     bodyparts(<font class="source_int">5</font>)=<font class="source_keyword">None</font>
+<a name="66"></a>     ZOffset(<font class="source_int">0</font>)=+<font class="source_int">00000.000000</font>
+<a name="67"></a>     ZOffset(<font class="source_int">1</font>)=+<font class="source_int">00000.000000</font>
+<a name="68"></a>     LandedSound=thumppp
+<a name="69"></a>     <font class="source_type">Mesh</font>=pupae1
+<a name="70"></a>     CollisionRadius=+<font class="source_int">00028.000000</font>
+<a name="71"></a>     CollisionHeight=+<font class="source_int">00009.000000</font>
+<a name="72"></a>     Mass=+<font class="source_int">00080.000000</font>
+<a name="73"></a>}
+<a name="74"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\pupaecarcass.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#PupaeCarcass">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="pupae.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="quadshot.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:36.000 - Creation time: Wed 26/5/2004 10:48:30.890 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

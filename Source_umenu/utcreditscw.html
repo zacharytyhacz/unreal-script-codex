@@ -1,0 +1,505 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UMenu.UTCreditsCW</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\umenu\umenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\umenu\utcreditscw.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTCreditsCW">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="unrealconsole.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utcreditswindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\umenu\umenu-overview.html">UMenu</a>.<a href="..\umenu\utcreditscw.html">UTCreditsCW</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\umenu\utcreditscw.html" class="source">UTCreditsCW</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\umenu\umenudialogclientwindow.html" class="source">UMenuDialogClientWindow</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> ProgrammersHeader;
+<a name="4"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ProgrammersText;
+<a name="5"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> ProgrammerLabels[<font class="source_int">10</font>];
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> ProgrammerNames[<font class="source_int">10</font>];
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> MaxProgs;
+<a name="8"></a>
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> LevelDesignHeader;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> LevelDesignText;
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> DesignerLabels[<font class="source_int">10</font>];
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> DesignerNames[<font class="source_int">10</font>];
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> MaxDesigners;
+<a name="14"></a>
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> ArtHeader;
+<a name="16"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ArtText;
+<a name="17"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> ArtLabels[<font class="source_int">10</font>];
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> ArtNames[<font class="source_int">10</font>];
+<a name="19"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> MaxArts;
+<a name="20"></a>
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> MusicSoundHeader;
+<a name="22"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MusicSoundText;
+<a name="23"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> MusicLabels[<font class="source_int">10</font>];
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> MusicNames[<font class="source_int">10</font>];
+<a name="25"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> MaxMusics;
+<a name="26"></a>
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> BizHeader;
+<a name="28"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BizText;
+<a name="29"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> BizLabels[<font class="source_int">10</font>];
+<a name="30"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> BizNames[<font class="source_int">10</font>];
+<a name="31"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> MaxBiz;
+<a name="32"></a>
+<a name="33"></a><font class="source_keyword">function</font> Created()
+<a name="34"></a>{
+<a name="35"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="36"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="37"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos, ButtonWidth, ButtonLeft;
+<a name="38"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> ControlOffset, BaseOffset;
+<a name="39"></a>
+<a name="40"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="41"></a>
+<a name="42"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="43"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="44"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="45"></a>
+<a name="46"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="47"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="48"></a>
+<a name="49"></a>    ButtonWidth = WinWidth - <font class="source_int">140</font>;
+<a name="50"></a>    ButtonLeft = WinWidth - ButtonWidth - <font class="source_int">40</font>;
+<a name="51"></a>
+<a name="52"></a>    ControlOffset = <font class="source_int">25</font>;
+<a name="53"></a>    ProgrammersHeader = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="54"></a>    ProgrammersHeader.SetText(ProgrammersText);
+<a name="55"></a>    ProgrammersHeader.SetFont(F_Bold);
+<a name="56"></a>    ProgrammersHeader.Align = TA_Left;
+<a name="57"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;MaxProgs; i++)
+<a name="58"></a>    {
+<a name="59"></a>        ControlOffset += <font class="source_int">10</font>;
+<a name="60"></a>        ProgrammerLabels[i] = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="61"></a>        ProgrammerLabels[i].SetText(ProgrammerNames[i]);
+<a name="62"></a>        ProgrammerLabels[i].SetFont(F_Normal);
+<a name="63"></a>        ProgrammerLabels[i].Align = TA_Left;
+<a name="64"></a>    }
+<a name="65"></a>
+<a name="66"></a>    ControlOffset = <font class="source_int">25</font>;
+<a name="67"></a>    LevelDesignHeader = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="68"></a>    LevelDesignHeader.SetText(LevelDesignText);
+<a name="69"></a>    LevelDesignHeader.SetFont(F_Bold);
+<a name="70"></a>    LevelDesignHeader.Align = TA_Right;
+<a name="71"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;MaxDesigners; i++)
+<a name="72"></a>    {
+<a name="73"></a>        ControlOffset += <font class="source_int">10</font>;
+<a name="74"></a>        DesignerLabels[i] = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="75"></a>        DesignerLabels[i].SetText(DesignerNames[i]);
+<a name="76"></a>        DesignerLabels[i].SetFont(F_Normal);
+<a name="77"></a>        DesignerLabels[i].Align = TA_Right;
+<a name="78"></a>    }
+<a name="79"></a>
+<a name="80"></a>    Controloffset += <font class="source_int">25</font>;
+<a name="81"></a>    BaseOffset = ControlOffset;
+<a name="82"></a>    ArtHeader = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="83"></a>    ArtHeader.SetText(ArtText);
+<a name="84"></a>    ArtHeader.SetFont(F_Bold);
+<a name="85"></a>    ArtHeader.Align = TA_Left;
+<a name="86"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;MaxArts; i++)
+<a name="87"></a>    {
+<a name="88"></a>        ControlOffset += <font class="source_int">10</font>;
+<a name="89"></a>        ArtLabels[i] = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="90"></a>        ArtLabels[i].SetText(ArtNames[i]);
+<a name="91"></a>        ArtLabels[i].SetFont(F_Normal);
+<a name="92"></a>        ArtLabels[i].Align = TA_Left;
+<a name="93"></a>    }
+<a name="94"></a>
+<a name="95"></a>    ControlOffset = BaseOffset;
+<a name="96"></a>    MusicSoundHeader = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="97"></a>    MusicSoundHeader.SetText(MusicSoundText);
+<a name="98"></a>    MusicSoundHeader.SetFont(F_Bold);
+<a name="99"></a>    MusicSoundHeader.Align = TA_Right;
+<a name="100"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;MaxMusics; i++)
+<a name="101"></a>    {
+<a name="102"></a>        ControlOffset += <font class="source_int">10</font>;
+<a name="103"></a>        MusicLabels[i] = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="104"></a>        MusicLabels[i].SetText(MusicNames[i]);
+<a name="105"></a>        MusicLabels[i].SetFont(F_Normal);
+<a name="106"></a>        MusicLabels[i].Align = TA_Right;
+<a name="107"></a>    }
+<a name="108"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="109"></a>
+<a name="110"></a>    BizHeader = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="111"></a>    BizHeader.SetText(BizText);
+<a name="112"></a>    BizHeader.SetFont(F_Bold);
+<a name="113"></a>    BizHeader.Align = TA_Center;
+<a name="114"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;MaxBiz; i++)
+<a name="115"></a>    {
+<a name="116"></a>        ControlOffset += <font class="source_int">10</font>;
+<a name="117"></a>        BizLabels[i] = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="118"></a>        BizLabels[i].SetText(BizNames[i]);
+<a name="119"></a>        BizLabels[i].SetFont(F_Normal);
+<a name="120"></a>        BizLabels[i].Align = TA_Center;
+<a name="121"></a>    }
+<a name="122"></a>}
+<a name="123"></a>
+<a name="124"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="125"></a>{
+<a name="126"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="127"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="128"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos, ButtonWidth, ButtonLeft;
+<a name="129"></a>
+<a name="130"></a>    <font class="source_keyword">Super</font>.BeforePaint(C, X, Y);
+<a name="131"></a>
+<a name="132"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="133"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="134"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="135"></a>
+<a name="136"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="137"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="138"></a>
+<a name="139"></a>    ProgrammersHeader.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="140"></a>    ProgrammersHeader.WinLeft = CenterPos;
+<a name="141"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;MaxProgs; i++)
+<a name="142"></a>    {
+<a name="143"></a>        ProgrammerLabels[i].SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="144"></a>        ProgrammerLabels[i].WinLeft = CenterPos;
+<a name="145"></a>    }
+<a name="146"></a>
+<a name="147"></a>    LevelDesignHeader.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="148"></a>    LevelDesignHeader.WinLeft = CenterPos;
+<a name="149"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;MaxDesigners; i++)
+<a name="150"></a>    {
+<a name="151"></a>        DesignerLabels[i].SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="152"></a>        DesignerLabels[i].WinLeft = CenterPos;
+<a name="153"></a>    }
+<a name="154"></a>
+<a name="155"></a>    ArtHeader.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="156"></a>    ArtHeader.WinLeft = CenterPos;
+<a name="157"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;MaxArts; i++)
+<a name="158"></a>    {
+<a name="159"></a>        ArtLabels[i].SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="160"></a>        ArtLabels[i].WinLeft = CenterPos;
+<a name="161"></a>    }
+<a name="162"></a>
+<a name="163"></a>    MusicSoundHeader.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="164"></a>    MusicSoundHeader.WinLeft = CenterPos;
+<a name="165"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;MaxMusics; i++)
+<a name="166"></a>    {
+<a name="167"></a>        MusicLabels[i].SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="168"></a>        MusicLabels[i].WinLeft = CenterPos;
+<a name="169"></a>    }
+<a name="170"></a>
+<a name="171"></a>    BizHeader.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="172"></a>    BizHeader.WinLeft = CenterPos;
+<a name="173"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;MaxBiz; i++)
+<a name="174"></a>    {
+<a name="175"></a>        BizLabels[i].SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="176"></a>        BizLabels[i].WinLeft = CenterPos;
+<a name="177"></a>    }
+<a name="178"></a>}
+<a name="179"></a>
+<a name="180"></a><font class="source_keyword">defaultproperties</font>
+<a name="181"></a>{
+<a name="182"></a>    ProgrammersText=<font class="source_string">"Programming"</font>
+<a name="183"></a>    ProgrammerNames(<font class="source_int">0</font>)=<font class="source_string">"Erik de Neve"</font>
+<a name="184"></a>    ProgrammerNames(<font class="source_int">1</font>)=<font class="source_string">"Steve Polge"</font>
+<a name="185"></a>    ProgrammerNames(<font class="source_int">2</font>)=<font class="source_string">"Jack Porter"</font>
+<a name="186"></a>    ProgrammerNames(<font class="source_int">3</font>)=<font class="source_string">"Brandon Reinhart"</font>
+<a name="187"></a>    ProgrammerNames(<font class="source_int">4</font>)=<font class="source_string">"Tim Sweeney"</font>
+<a name="188"></a>    ProgrammerNames(<font class="source_int">5</font>)=<font class="source_string">"Carlo Vogelsang"</font>
+<a name="189"></a>    MaxProgs=<font class="source_int">6</font>
+<a name="190"></a>
+<a name="191"></a>    LevelDesignText=<font class="source_string">"Level Design"</font>
+<a name="192"></a>    DesignerNames(<font class="source_int">0</font>)=<font class="source_string">"Cliff Bleszinski"</font>
+<a name="193"></a>    DesignerNames(<font class="source_int">1</font>)=<font class="source_string">"Elliot Cannon"</font>
+<a name="194"></a>    DesignerNames(<font class="source_int">2</font>)=<font class="source_string">"Shane Caudle"</font>
+<a name="195"></a>    DesignerNames(<font class="source_int">3</font>)=<font class="source_string">"Pancho Eekels"</font>
+<a name="196"></a>    DesignerNames(<font class="source_int">4</font>)=<font class="source_string">"Dave Ewing"</font>
+<a name="197"></a>    DesignerNames(<font class="source_int">5</font>)=<font class="source_string">"Cedric Fiorentino"</font>
+<a name="198"></a>    DesignerNames(<font class="source_int">6</font>)=<font class="source_string">"Alan Willard"</font>
+<a name="199"></a>    MaxDesigners=<font class="source_int">7</font>
+<a name="200"></a>
+<a name="201"></a>    ArtText=<font class="source_string">"Art & Models"</font>
+<a name="202"></a>    ArtNames(<font class="source_int">0</font>)=<font class="source_string">"Dave Carter"</font>
+<a name="203"></a>    ArtNames(<font class="source_int">1</font>)=<font class="source_string">"Shane Caudle"</font>
+<a name="204"></a>    ArtNames(<font class="source_int">2</font>)=<font class="source_string">"Pancho Eekels"</font>
+<a name="205"></a>    ArtNames(<font class="source_int">3</font>)=<font class="source_string">"Steve Garofalo"</font>
+<a name="206"></a>    ArtNames(<font class="source_int">4</font>)=<font class="source_string">"Mike Leatham"</font>
+<a name="207"></a>    ArtNames(<font class="source_int">5</font>)=<font class="source_string">"Everton Richards"</font>
+<a name="208"></a>    ArtNames(<font class="source_int">6</font>)=<font class="source_string">"Dan Sarkar"</font>
+<a name="209"></a>    ArtNames(<font class="source_int">7</font>)=<font class="source_string">"James Schmalz"</font>
+<a name="210"></a>    MaxArts=<font class="source_int">8</font>
+<a name="211"></a>
+<a name="212"></a>    MusicSoundText=<font class="source_string">"Music & Sound"</font>
+<a name="213"></a>    MusicNames(<font class="source_int">0</font>)=<font class="source_string">"Alexander Brandon"</font>
+<a name="214"></a>    MusicNames(<font class="source_int">1</font>)=<font class="source_string">"Sascha Dikiciyan"</font>
+<a name="215"></a>    MusicNames(<font class="source_int">2</font>)=<font class="source_string">"Dave Ewing"</font>
+<a name="216"></a>    MusicNames(<font class="source_int">3</font>)=<font class="source_string">"Lani Minella"</font>
+<a name="217"></a>    MusicNames(<font class="source_int">4</font>)=<font class="source_string">"Shannon Newans"</font>
+<a name="218"></a>    MusicNames(<font class="source_int">5</font>)=<font class="source_string">"Michiel Van De Bos"</font>
+<a name="219"></a>    MaxMusics=<font class="source_int">6</font>
+<a name="220"></a>
+<a name="221"></a>    BizText=<font class="source_string">"Biz"</font>
+<a name="222"></a>    BizNames(<font class="source_int">0</font>)=<font class="source_string">"Mark Rein"</font>
+<a name="223"></a>    BizNames(<font class="source_int">1</font>)=<font class="source_string">"Jay Wilbur"</font>
+<a name="224"></a>    MaxBiz=<font class="source_int">2</font>
+<a name="225"></a>}
+<a name="226"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\umenu\umenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\umenu\utcreditscw.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTCreditsCW">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="unrealconsole.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utcreditswindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:10.000 - Creation time: Wed 26/5/2004 10:48:58.656 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

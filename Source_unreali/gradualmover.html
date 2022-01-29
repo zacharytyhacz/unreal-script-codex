@@ -1,0 +1,529 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealI.GradualMover</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\gradualmover.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#GradualMover">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="giantmanta.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="hugecannon.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unreali\unreali-overview.html">UnrealI</a>.<a href="..\unreali\gradualmover.html">GradualMover</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// GradualMover.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unreali\gradualmover.html" class="source">GradualMover</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\mover.html" class="source">Mover</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font>(GradualProperties) <font class="source_keyword">float</font> OpenTimes [<font class="source_int">6</font>];
+<a name="7"></a><font class="source_keyword">var</font>(GradualProperties) <font class="source_keyword">float</font> CloseTimes[<font class="source_int">6</font>];
+<a name="8"></a><font class="source_keyword">var</font>(GradualProperties) <font class="source_keyword">name</font>  Tags      [<font class="source_int">6</font>];
+<a name="9"></a><font class="source_keyword">var</font>(GradualProperties) <font class="source_keyword">name</font>  Events    [<font class="source_int">6</font>];
+<a name="10"></a>
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font>  LastKeyNum;
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bIsFullyOpen;
+<a name="13"></a>
+<a name="14"></a><font class="source_comment">// The strategy is to dynamically modify the Tag and Event 
+</font><a name="15"></a><font class="source_comment">// data members, which, I assume, are automatically checked 
+</font><a name="16"></a><font class="source_comment">// when making Event-&gt;Tag matches, using the Tags[] and 
+</font><a name="17"></a><font class="source_comment">// Events[] arrays.
+</font><a name="18"></a><font class="source_comment">// When the Mover has finished its' opening stage, the
+</font><a name="19"></a><font class="source_comment">// open state lasts for the duration specified by the
+</font><a name="20"></a><font class="source_comment">// StayOpenTime data member, whereupon the closing sequence
+</font><a name="21"></a><font class="source_comment">// begins, unless bTriggerOnceOnly is set True.
+</font><a name="22"></a>
+<a name="23"></a><font class="source_keyword">function</font> BeginPlay() {
+<a name="24"></a>
+<a name="25"></a>
+<a name="26"></a>    <font class="source_comment">// Set Tag/Event to the first set in the Tags[] and
+</font><a name="27"></a>    <font class="source_comment">// Events[] arrays.
+</font><a name="28"></a>    Tag   = Tags[<font class="source_int">0</font>];
+<a name="29"></a>    <font class="source_keyword">Event</font> = Events[<font class="source_int">0</font>];
+<a name="30"></a>    KeyNum = <font class="source_int">0</font>;
+<a name="31"></a>    bIsFullyOpen = <font class="source_keyword">false</font>;
+<a name="32"></a>    <font class="source_keyword">Super</font>.BeginPlay();
+<a name="33"></a>}
+<a name="34"></a>
+<a name="35"></a>
+<a name="36"></a><font class="source_keyword">function</font> DoOpen() 
+<a name="37"></a>{
+<a name="38"></a>
+<a name="39"></a>    <font class="source_comment">// Open through to the next keyframe.
+</font><a name="40"></a>    <font class="source_comment">//
+</font><a name="41"></a>    bOpening = <font class="source_keyword">true</font>;
+<a name="42"></a>    bDelaying = <font class="source_keyword">false</font>;
+<a name="43"></a>    LastKeyNum = KeyNum;
+<a name="44"></a>    InterpolateTo (KeyNum+<font class="source_int">1</font>, OpenTimes[Keynum]);
+<a name="45"></a>    PlaySound (OpeningSound);
+<a name="46"></a>    <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font> = MoveAmbientSound;
+<a name="47"></a>}
+<a name="48"></a>
+<a name="49"></a><font class="source_keyword">function</font> DoClose() 
+<a name="50"></a>{
+<a name="51"></a>
+<a name="52"></a>    <font class="source_comment">// Close through to the next keyframe.
+</font><a name="53"></a>    <font class="source_comment">//
+</font><a name="54"></a>    bOpening = <font class="source_keyword">false</font>;
+<a name="55"></a>    bDelaying = <font class="source_keyword">false</font>;
+<a name="56"></a>    LastKeyNum = KeyNum;
+<a name="57"></a>    InterpolateTo (KeyNum-<font class="source_int">1</font>, CloseTimes[Keynum-<font class="source_int">1</font>]);
+<a name="58"></a>    PlaySound (ClosingSound);
+<a name="59"></a>    <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font> = MoveAmbientSound;
+<a name="60"></a>}
+<a name="61"></a>
+<a name="62"></a><font class="source_comment">//=======================================================================
+</font><a name="63"></a><font class="source_comment">// The various states
+</font><a name="64"></a>
+<a name="65"></a><font class="source_comment">// When triggered, open, wait, then close.
+</font><a name="66"></a><font class="source_comment">//
+</font><a name="67"></a><font class="source_keyword">state</font>() GradualTriggerOpenTimed 
+<a name="68"></a>{
+<a name="69"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleDoor(<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Other)
+<a name="70"></a>    {
+<a name="71"></a>        <font class="source_keyword">return</font> HandleTriggerDoor(Other);
+<a name="72"></a>    }
+<a name="73"></a>
+<a name="74"></a>    <font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font>( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> EventInstigator )
+<a name="75"></a>    {
+<a name="76"></a>        SavedTrigger = Other;
+<a name="77"></a>        Instigator = EventInstigator;
+<a name="78"></a>        <font class="source_keyword">if</font> ( SavedTrigger != <font class="source_keyword">None</font> )
+<a name="79"></a>            SavedTrigger.BeginEvent();
+<a name="80"></a>        GotoState( <font class="source_name">'GradualTriggerOpenTimed'</font>, <font class="source_name">'Open'</font> );
+<a name="81"></a>    }
+<a name="82"></a>
+<a name="83"></a>    <font class="source_keyword">function</font> InterpolateEnd(<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other) 
+<a name="84"></a>    {   
+<a name="85"></a>    }
+<a name="86"></a>
+<a name="87"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="88"></a>    {
+<a name="89"></a>        bOpening = <font class="source_keyword">false</font>;
+<a name="90"></a>    }
+<a name="91"></a>
+<a name="92"></a>Open:
+<a name="93"></a>    Disable (<font class="source_name">'Trigger'</font>);
+<a name="94"></a>    DoOpen();
+<a name="95"></a>    FinishInterpolation();
+<a name="96"></a>    FinishedOpening();
+<a name="97"></a>
+<a name="98"></a>    <font class="source_comment">// Check if this is the fully opened position,
+</font><a name="99"></a>    <font class="source_comment">// for which a delay is necessary.
+</font><a name="100"></a>    <font class="source_comment">//
+</font><a name="101"></a>    <font class="source_keyword">if</font> (KeyNum == NumKeys-<font class="source_int">1</font>) {      <font class="source_comment">// Note: NumKeys=0 means one key frame
+</font><a name="102"></a>        Sleep (StayOpenTime);
+<a name="103"></a>        <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font> = <font class="source_keyword">None</font>;
+<a name="104"></a>        <font class="source_keyword">if</font>( bTriggerOnceOnly )
+<a name="105"></a>            <font class="source_comment">// Stays in this position forever
+</font><a name="106"></a>            GotoState (<font class="source_name">''</font>);
+<a name="107"></a>        <font class="source_keyword">else</font> 
+<a name="108"></a>            <font class="source_comment">// The closing sequence must begin
+</font><a name="109"></a>            GotoState (<font class="source_name">'GradualTriggerOpenTimed'</font>, <font class="source_name">'Close'</font>);
+<a name="110"></a>    }
+<a name="111"></a>    
+<a name="112"></a>    <font class="source_comment">// Check if the next Tag is the same as the current,
+</font><a name="113"></a>    <font class="source_comment">// which would continue interpolating to the next
+</font><a name="114"></a>    <font class="source_comment">// key-frame.
+</font><a name="115"></a>    <font class="source_comment">//
+</font><a name="116"></a>    <font class="source_keyword">if</font> (Tags[KeyNum] == Tags[LastKeyNum]) {
+<a name="117"></a>        GotoState (<font class="source_name">'GradualTriggerOpenTimed'</font>, <font class="source_name">'Open'</font>);
+<a name="118"></a>    }
+<a name="119"></a>    Tag   = Tags[KeyNum];       <font class="source_comment">// Change the next open conditions
+</font><a name="120"></a>    <font class="source_keyword">Event</font> = Events[KeyNum];
+<a name="121"></a>    Enable (<font class="source_name">'Trigger'</font>);
+<a name="122"></a>    Stop;
+<a name="123"></a>    
+<a name="124"></a>Close:
+<a name="125"></a>    Disable (<font class="source_name">'Trigger'</font>);
+<a name="126"></a>    DoClose();
+<a name="127"></a>    FinishInterpolation();
+<a name="128"></a>    FinishedClosing();  <font class="source_comment">// throw the current Event, if exists
+</font><a name="129"></a>
+<a name="130"></a>    <font class="source_keyword">if</font> (KeyNum &gt; <font class="source_int">0</font>)         <font class="source_comment">// Still more key-frames to go through
+</font><a name="131"></a>        GotoState (<font class="source_name">'GradualTriggerOpenTimed'</font>, <font class="source_name">'Close'</font>);
+<a name="132"></a>
+<a name="133"></a>    Tag   = Tags[<font class="source_int">0</font>];        <font class="source_comment">// Reset the initial state
+</font><a name="134"></a>    <font class="source_keyword">Event</font> = Events[<font class="source_int">0</font>];
+<a name="135"></a>    <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font> = <font class="source_keyword">None</font>;
+<a name="136"></a>    Enable (<font class="source_name">'Trigger'</font>);
+<a name="137"></a>}
+<a name="138"></a>
+<a name="139"></a>
+<a name="140"></a><font class="source_comment">// Start pounding when triggered.
+</font><a name="141"></a><font class="source_comment">//
+</font><a name="142"></a><font class="source_keyword">state</font>() GradualTriggerPound
+<a name="143"></a>{
+<a name="144"></a>    <font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font>( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> EventInstigator )
+<a name="145"></a>    {
+<a name="146"></a>        SavedTrigger = Other;
+<a name="147"></a>        Instigator = EventInstigator;
+<a name="148"></a>        GotoState( <font class="source_name">'GradualTriggerPound'</font>, <font class="source_name">'Open'</font> );
+<a name="149"></a>    }
+<a name="150"></a>    <font class="source_keyword">function</font> UnTrigger( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> EventInstigator )
+<a name="151"></a>    {
+<a name="152"></a>        SavedTrigger = <font class="source_keyword">None</font>;
+<a name="153"></a>        Instigator = <font class="source_keyword">None</font>;
+<a name="154"></a>        GotoState( <font class="source_name">'GradualTriggerPound'</font>, <font class="source_name">'Close'</font> );
+<a name="155"></a>    }
+<a name="156"></a>Open:
+<a name="157"></a>    Disable (<font class="source_name">'Trigger'</font>);
+<a name="158"></a>    DoOpen();
+<a name="159"></a>    FinishInterpolation();
+<a name="160"></a>    FinishedOpening();
+<a name="161"></a>
+<a name="162"></a>    <font class="source_comment">// If the next key frame is not the last, then
+</font><a name="163"></a>    <font class="source_comment">// keep playing back the frames.
+</font><a name="164"></a>    <font class="source_comment">//
+</font><a name="165"></a>    <font class="source_keyword">if</font> (Keynum &lt; NumKeys-<font class="source_int">1</font>) {
+<a name="166"></a>        GotoState (<font class="source_name">'GradualTriggerOpenTimed'</font>, <font class="source_name">'Open'</font>);
+<a name="167"></a>    }
+<a name="168"></a>Close:
+<a name="169"></a>    Disable (<font class="source_name">'Trigger'</font>);
+<a name="170"></a>    DoClose();
+<a name="171"></a>    FinishInterpolation();
+<a name="172"></a>    FinishedClosing();  <font class="source_comment">// throw the current Event, if exists
+</font><a name="173"></a>
+<a name="174"></a>    <font class="source_keyword">if</font> (KeyNum &gt; <font class="source_int">0</font>)         <font class="source_comment">// Still more key-frames to go through
+</font><a name="175"></a>        GotoState (<font class="source_name">'GradualTriggerOpenTimed'</font>, <font class="source_name">'Close'</font>);
+<a name="176"></a>
+<a name="177"></a>    Sleep(StayOpenTime);
+<a name="178"></a>    <font class="source_keyword">if</font>( bTriggerOnceOnly )
+<a name="179"></a>    {
+<a name="180"></a>        <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font> = <font class="source_keyword">None</font>;
+<a name="181"></a>        GotoState(<font class="source_name">''</font>);
+<a name="182"></a>    }
+<a name="183"></a>    <font class="source_keyword">if</font>( SavedTrigger != <font class="source_keyword">None</font> )
+<a name="184"></a>        goto <font class="source_name">'Open'</font>;
+<a name="185"></a>}
+<a name="186"></a>
+<a name="187"></a><font class="source_keyword">state</font>() GradualTriggerToggle
+<a name="188"></a>{
+<a name="189"></a>    <font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font>( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> EventInstigator )
+<a name="190"></a>    {
+<a name="191"></a>        SavedTrigger = Other;
+<a name="192"></a>        Instigator = EventInstigator;
+<a name="193"></a>        SavedTrigger.BeginEvent();
+<a name="194"></a>        <font class="source_keyword">if</font>( bIsFullyOpen )
+<a name="195"></a>            GotoState( <font class="source_name">'GradualTriggerToggle'</font>, <font class="source_name">'Close'</font> );
+<a name="196"></a>        <font class="source_keyword">else</font>
+<a name="197"></a>            GotoState( <font class="source_name">'GradualTriggerToggle'</font>, <font class="source_name">'Open'</font> );
+<a name="198"></a>    }
+<a name="199"></a>
+<a name="200"></a>    <font class="source_keyword">function</font> InterpolateEnd(<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other) {  
+<a name="201"></a>    }
+<a name="202"></a>
+<a name="203"></a>Open:
+<a name="204"></a>    Disable (<font class="source_name">'Trigger'</font>);
+<a name="205"></a>    DoOpen();
+<a name="206"></a>    FinishInterpolation();
+<a name="207"></a>    FinishedOpening();
+<a name="208"></a>
+<a name="209"></a>    <font class="source_comment">// Check if this is the fully opened position,
+</font><a name="210"></a>    <font class="source_comment">// which we wait in until another triggering event occurs.
+</font><a name="211"></a>    <font class="source_comment">//
+</font><a name="212"></a>    <font class="source_keyword">if</font> (KeyNum == NumKeys-<font class="source_int">1</font>) {      <font class="source_comment">// Note: NumKeys=0 means one key frame
+</font><a name="213"></a>        bIsFullyOpen = <font class="source_keyword">true</font>;
+<a name="214"></a>        <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font> = <font class="source_keyword">None</font>;
+<a name="215"></a>        Enable (<font class="source_name">'Trigger'</font>);
+<a name="216"></a>        Stop;
+<a name="217"></a>    }
+<a name="218"></a>    
+<a name="219"></a>    GotoState (<font class="source_name">'GradualTriggerToggle'</font>, <font class="source_name">'Open'</font>);
+<a name="220"></a>    
+<a name="221"></a>Close:
+<a name="222"></a>    Disable (<font class="source_name">'Trigger'</font>);
+<a name="223"></a>    DoClose();
+<a name="224"></a>    FinishInterpolation();
+<a name="225"></a>    FinishedClosing();  <font class="source_comment">// throw the current Event, if exists
+</font><a name="226"></a>
+<a name="227"></a>    <font class="source_keyword">if</font> (KeyNum &gt; <font class="source_int">0</font>)         <font class="source_comment">// Still more key-frames to go through
+</font><a name="228"></a>        GotoState (<font class="source_name">'GradualTriggerToggle'</font>, <font class="source_name">'Close'</font>);
+<a name="229"></a>
+<a name="230"></a>    bIsFullyOpen = <font class="source_keyword">false</font>;
+<a name="231"></a>    <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font> = <font class="source_keyword">None</font>;
+<a name="232"></a>    Enable (<font class="source_name">'Trigger'</font>);
+<a name="233"></a>}
+<a name="234"></a>
+<a name="235"></a><font class="source_keyword">defaultproperties</font>
+<a name="236"></a>{
+<a name="237"></a>}
+<a name="238"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\gradualmover.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#GradualMover">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="giantmanta.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="hugecannon.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:26.000 - Creation time: Wed 26/5/2004 10:48:20.187 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

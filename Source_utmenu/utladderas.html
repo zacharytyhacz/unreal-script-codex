@@ -1,0 +1,187 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTMenu.UTLadderAS</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utladderas.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTLadderAS">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utladder.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utladderchal.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utmenu\utmenu-overview.html">UTMenu</a>.<a href="..\utmenu\utladderas.html">UTLadderAS</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utmenu\utladderas.html" class="source">UTLadderAS</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\utmenu\utladder.html" class="source">UTLadder</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">function</font> Created()
+<a name="4"></a>{
+<a name="5"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="6"></a>
+<a name="7"></a>    <font class="source_keyword">if</font> (LadderObj.ASPosition == -<font class="source_int">1</font>) {
+<a name="8"></a>        LadderObj.ASPosition = <font class="source_int">1</font>;
+<a name="9"></a>        SelectedMatch = <font class="source_int">0</font>;
+<a name="10"></a>    } <font class="source_keyword">else</font> {
+<a name="11"></a>        SelectedMatch = LadderObj.ASPosition;
+<a name="12"></a>    }
+<a name="13"></a>    SetupLadder(LadderObj.ASPosition, LadderObj.ASRank);
+<a name="14"></a>}
+<a name="15"></a>
+<a name="16"></a><font class="source_keyword">function</font> FillInfoArea(<font class="source_keyword">int</font> i)
+<a name="17"></a>{
+<a name="18"></a>    MapInfoArea.Clear();
+<a name="19"></a>    MapInfoArea.AddText(MapText$<font class="source_string">" "</font>$<font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font>.<font class="source_keyword2">Static</font>.GetMapTitle(i));
+<a name="20"></a>    MapInfoArea.AddText(<font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font>.<font class="source_keyword2">Static</font>.GetDesc(i));
+<a name="21"></a>}
+<a name="22"></a>
+<a name="23"></a><font class="source_keyword">function</font> NextPressed()
+<a name="24"></a>{
+<a name="25"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utmenu\objectivebrowser.html" class="source">ObjectiveBrowser</a></font> OB;
+<a name="26"></a>
+<a name="27"></a>    <font class="source_keyword">if</font> (PendingPos &gt; ArrowPos)
+<a name="28"></a>        <font class="source_keyword">return</font>;
+<a name="29"></a>
+<a name="30"></a>    HideWindow();
+<a name="31"></a>    OB = <font class="source_type"><a href="..\utmenu\objectivebrowser.html" class="source">ObjectiveBrowser</a></font>(Root.CreateWindow(<font class="source_keyword">class</font><font class="source_name">'ObjectiveBrowser'</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>));
+<a name="32"></a>    OB.LadderWindow = Self;
+<a name="33"></a>    OB.<font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font> = <font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font>;
+<a name="34"></a>    OB.Match = SelectedMatch;
+<a name="35"></a>    OB.GameType = GameType;
+<a name="36"></a>    OB.Initialize();
+<a name="37"></a>}
+<a name="38"></a>
+<a name="39"></a><font class="source_keyword">function</font> EvaluateMatch(<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bTrophyVictory)
+<a name="40"></a>{
+<a name="41"></a>    <font class="source_keyword">if</font> (LadderObj.PendingPosition &gt; LadderObj.ASPosition)
+<a name="42"></a>    {
+<a name="43"></a>        PendingPos = LadderObj.PendingPosition;
+<a name="44"></a>        LadderObj.ASPosition = LadderObj.PendingPosition;
+<a name="45"></a>    }
+<a name="46"></a>    <font class="source_keyword">if</font> (LadderObj.PendingRank &gt; LadderObj.ASRank)
+<a name="47"></a>    {
+<a name="48"></a>        LadderObj.ASRank = LadderObj.PendingRank;
+<a name="49"></a>        LadderObj.PendingRank = <font class="source_int">0</font>;
+<a name="50"></a>    }
+<a name="51"></a>    LadderPos = LadderObj.ASPosition;
+<a name="52"></a>    LadderRank = LadderObj.ASRank;
+<a name="53"></a>    <font class="source_keyword">if</font> (LadderObj.ASRank == <font class="source_int">6</font>)
+<a name="54"></a>        <font class="source_keyword">Super</font>.EvaluateMatch(<font class="source_keyword">True</font>);
+<a name="55"></a>    <font class="source_keyword">else</font>
+<a name="56"></a>        <font class="source_keyword">Super</font>.EvaluateMatch();
+<a name="57"></a>}
+<a name="58"></a>
+<a name="59"></a><font class="source_keyword">defaultproperties</font>
+<a name="60"></a>{
+<a name="61"></a>    GameType=<font class="source_string">"Botpack.Assault"</font>
+<a name="62"></a>    LadderName=<font class="source_string">"Assault"</font>
+<a name="63"></a>    <font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font>=<font class="source_keyword">class</font><font class="source_name">'Botpack.LadderAS'</font>
+<a name="64"></a>    TrophyMap=<font class="source_string">"EOL_Assault.unr"</font>
+<a name="65"></a>    LadderTrophy=TrophyAS
+<a name="66"></a>}
+<a name="67"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utladderas.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTLadderAS">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utladder.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utladderchal.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:36.000 - Creation time: Wed 26/5/2004 10:48:59.343 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,1017 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTMenu.UTConsole</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utconsole.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTConsole">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utconfigindivbotswindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utcustomizeclientwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utmenu\utmenu-overview.html">UTMenu</a>.<a href="..\utmenu\utconsole.html">UTConsole</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utmenu\utconsole.html" class="source">UTConsole</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\botpack\tournamentconsole.html" class="source">TournamentConsole</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_comment">// Speech
+</font><a name="4"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>        <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>;
+<a name="5"></a><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">byte</font>   SpeechKey;
+<a name="6"></a>
+<a name="7"></a><font class="source_comment">// Timedemo
+</font><a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                bTimeDemoIsEntry;
+<a name="9"></a>
+<a name="10"></a><font class="source_comment">// Message
+</font><a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                bShowMessage, bWasShowingMessage;
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\messagewindow.html" class="source">MessageWindow</a></font>       <font class="source_type"><a href="..\utmenu\messagewindow.html" class="source">MessageWindow</a></font>;
+<a name="13"></a>
+<a name="14"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> ManagerWindowClass;
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> UTLadderDMClass;
+<a name="16"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> UTLadderCTFClass;
+<a name="17"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> UTLadderDOMClass;
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> UTLadderASClass;
+<a name="19"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> UTLadderChalClass;
+<a name="20"></a>
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> UTLadderDMTestClass;
+<a name="22"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> UTLadderDOMTestClass;
+<a name="23"></a>
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> InterimObjectType;
+<a name="25"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> SlotWindowType;
+<a name="26"></a>
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> SavedPasswords[<font class="source_int">10</font>];
+<a name="28"></a>
+<a name="29"></a><font class="source_keyword">event</font> PostRender( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> )
+<a name="30"></a>{
+<a name="31"></a>    <font class="source_keyword">Super</font>.PostRender(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>);
+<a name="32"></a>
+<a name="33"></a>    <font class="source_keyword">if</font>(bShowSpeech || bShowMessage)
+<a name="34"></a>        RenderUWindow( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> );
+<a name="35"></a>}
+<a name="36"></a>
+<a name="37"></a><font class="source_keyword">event</font> <font class="source_keyword">bool</font> KeyEvent( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta )
+<a name="38"></a>{
+<a name="39"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utmenu\managerwindowstub.html" class="source">ManagerWindowStub</a></font> ManagerMenu;
+<a name="40"></a>
+<a name="41"></a>    <font class="source_keyword">if</font>( Action!=IST_Press )
+<a name="42"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="43"></a>
+<a name="44"></a>    <font class="source_keyword">if</font>( Key==SpeechKey )
+<a name="45"></a>    {
+<a name="46"></a>        <font class="source_keyword">if</font> ( !bShowSpeech && !bTyping )
+<a name="47"></a>        {
+<a name="48"></a>            ShowSpeech();
+<a name="49"></a>            bQuickKeyEnable = <font class="source_keyword">True</font>;
+<a name="50"></a>            LaunchUWindow();
+<a name="51"></a>        }
+<a name="52"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="53"></a>    }
+<a name="54"></a>
+<a name="55"></a>    <font class="source_keyword">if</font>( Key == IK_Escape )
+<a name="56"></a>    {
+<a name="57"></a>        <font class="source_keyword">if</font> ( (<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.NetMode == NM_Standalone)
+<a name="58"></a>             && <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.Game.IsA(<font class="source_name">'TrophyGame'</font>) )
+<a name="59"></a>        {
+<a name="60"></a>            bQuickKeyEnable = <font class="source_keyword">False</font>;
+<a name="61"></a>            LaunchUWindow();
+<a name="62"></a>            bLocked = <font class="source_keyword">True</font>;
+<a name="63"></a>            <font class="source_type"><a href="..\umenu\umenurootwindow.html" class="source">UMenuRootWindow</a></font>(Root).MenuBar.HideWindow();
+<a name="64"></a>            ManagerMenu = <font class="source_type"><a href="..\utmenu\managerwindowstub.html" class="source">ManagerWindowStub</a></font>(Root.CreateWindow(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(ManagerWindowClass, <font class="source_keyword">Class</font><font class="source_name">'Class'</font>)), <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>));
+<a name="65"></a>            <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="66"></a>        }
+<a name="67"></a>    }
+<a name="68"></a>    <font class="source_keyword">return</font> <font class="source_keyword">Super</font>.KeyEvent(Key, Action, Delta );
+<a name="69"></a>}
+<a name="70"></a>
+<a name="71"></a><font class="source_keyword">event</font> Tick( <font class="source_keyword">float</font> Delta )
+<a name="72"></a>{
+<a name="73"></a>    <font class="source_keyword">Super</font>.Tick( Delta );
+<a name="74"></a>
+<a name="75"></a>    <font class="source_keyword">if</font> ( (Root != <font class="source_keyword">None</font>) && bShowMessage )
+<a name="76"></a>        Root.DoTick( Delta );
+<a name="77"></a>}
+<a name="78"></a>
+<a name="79"></a><font class="source_keyword">state</font> UWindow
+<a name="80"></a>{
+<a name="81"></a>    <font class="source_keyword">event</font> <font class="source_keyword">bool</font> KeyEvent( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta )
+<a name="82"></a>    {
+<a name="83"></a>        <font class="source_keyword">if</font>(Action==IST_Release && Key==SpeechKey)
+<a name="84"></a>        {
+<a name="85"></a>            <font class="source_keyword">if</font> (bShowSpeech)
+<a name="86"></a>                HideSpeech();
+<a name="87"></a>            <font class="source_keyword">return</font> <font class="source_keyword">True</font>;
+<a name="88"></a>        }
+<a name="89"></a>    
+<a name="90"></a>        <font class="source_keyword">if</font> ( bShowSpeech && (<font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font> != <font class="source_keyword">None</font>) )
+<a name="91"></a>        {
+<a name="92"></a>            
+<a name="93"></a>            <font class="source_comment">//forward input to speech window
+</font><a name="94"></a>            <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>.KeyEvent(Key, Action, Delta) )
+<a name="95"></a>                <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="96"></a>        }
+<a name="97"></a>
+<a name="98"></a>        <font class="source_keyword">return</font> <font class="source_keyword">Super</font>.KeyEvent(Key, Action, Delta);
+<a name="99"></a>    }
+<a name="100"></a>
+<a name="101"></a>    <font class="source_keyword">event</font> Tick( <font class="source_keyword">float</font> Delta )
+<a name="102"></a>    {
+<a name="103"></a>        <font class="source_keyword">local</font> <font class="source_type">Music</font> MenuSong;
+<a name="104"></a>
+<a name="105"></a>        <font class="source_keyword">Super</font>.Tick( Delta );
+<a name="106"></a>        <font class="source_keyword">if</font> (Root == <font class="source_keyword">None</font>)
+<a name="107"></a>            <font class="source_keyword">return</font>;
+<a name="108"></a>        <font class="source_keyword">if</font> (Root.GetPlayerOwner().Song == <font class="source_keyword">None</font>)
+<a name="109"></a>        {
+<a name="110"></a>            MenuSong = <font class="source_type">Music</font>(DynamicLoadObject(<font class="source_string">"utmenu23.utmenu23"</font>, <font class="source_keyword">class</font><font class="source_name">'Music'</font>));
+<a name="111"></a>            Root.GetPlayerOwner().ClientSetMusic( MenuSong, <font class="source_int">0</font>, <font class="source_int">0</font>, MTRAN_Fade );
+<a name="112"></a>        }
+<a name="113"></a>    }
+<a name="114"></a>    <font class="source_keyword2">exec</font> <font class="source_keyword">function</font> MenuCmd(<font class="source_keyword">int</font> <font class="source_type"><a href="..\engine\menu.html" class="source">Menu</a></font>, <font class="source_keyword">int</font> Item)
+<a name="115"></a>    {
+<a name="116"></a>    }
+<a name="117"></a>}
+<a name="118"></a>
+<a name="119"></a><font class="source_keyword">state</font> Typing
+<a name="120"></a>{
+<a name="121"></a>    <font class="source_keyword2">exec</font> <font class="source_keyword">function</font> MenuCmd(<font class="source_keyword">int</font> <font class="source_type"><a href="..\engine\menu.html" class="source">Menu</a></font>, <font class="source_keyword">int</font> Item)
+<a name="122"></a>    {
+<a name="123"></a>    }
+<a name="124"></a>}
+<a name="125"></a>
+<a name="126"></a><font class="source_keyword">function</font> LaunchUWindow()
+<a name="127"></a>{
+<a name="128"></a>    <font class="source_keyword">Super</font>.LaunchUWindow();
+<a name="129"></a>
+<a name="130"></a>    <font class="source_keyword">if</font>( !bQuickKeyEnable && 
+<a name="131"></a>        ( Left(<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.GetLocalURL(), <font class="source_int">9</font>) ~= <font class="source_string">"cityintro"</font> || 
+<a name="132"></a>          Left(<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.GetLocalURL(), <font class="source_int">9</font>) ~= <font class="source_string">"utcredits"</font>) )
+<a name="133"></a>        <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.ClientTravel( <font class="source_string">"?entry"</font>, TRAVEL_Absolute, <font class="source_keyword">False</font> );
+<a name="134"></a>
+<a name="135"></a>    <font class="source_keyword">if</font> (bShowMessage)
+<a name="136"></a>    {
+<a name="137"></a>        bWasShowingMessage = <font class="source_keyword">True</font>;
+<a name="138"></a>        HideMessage();
+<a name="139"></a>    }
+<a name="140"></a>}
+<a name="141"></a>
+<a name="142"></a><font class="source_keyword">function</font> CloseUWindow()
+<a name="143"></a>{
+<a name="144"></a>    <font class="source_keyword">Super</font>.CloseUWindow();
+<a name="145"></a>
+<a name="146"></a>    <font class="source_keyword">if</font> (bWasShowingMessage)
+<a name="147"></a>        ShowMessage();
+<a name="148"></a>}
+<a name="149"></a>
+<a name="150"></a><font class="source_keyword">function</font> CreateRootWindow(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)
+<a name="151"></a>{
+<a name="152"></a>    <font class="source_keyword">Super</font>.CreateRootWindow(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>);
+<a name="153"></a>
+<a name="154"></a>    <font class="source_comment">// Create the speech window.
+</font><a name="155"></a>    CreateSpeech();
+<a name="156"></a>
+<a name="157"></a>    <font class="source_comment">// Create the message window.
+</font><a name="158"></a>    CreateMessage();
+<a name="159"></a>}
+<a name="160"></a>
+<a name="161"></a><font class="source_keyword">function</font> EvaluateMatch(<font class="source_keyword">int</font> PendingChange, <font class="source_keyword">bool</font> Evaluate)
+<a name="162"></a>{
+<a name="163"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utmenu\utladderstub.html" class="source">UTLadderStub</a></font> LadderMenu;
+<a name="164"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utmenu\managerwindowstub.html" class="source">ManagerWindowStub</a></font> ManagerMenu;
+<a name="165"></a>
+<a name="166"></a>    LaunchUWindow();
+<a name="167"></a>    bNoDrawWorld = <font class="source_keyword">True</font>;
+<a name="168"></a>    bLocked = <font class="source_keyword">True</font>;
+<a name="169"></a>    <font class="source_type"><a href="..\umenu\umenurootwindow.html" class="source">UMenuRootWindow</a></font>(Root).MenuBar.HideWindow();
+<a name="170"></a>
+<a name="171"></a>    <font class="source_keyword">switch</font> (PendingChange)
+<a name="172"></a>    {
+<a name="173"></a>        <font class="source_keyword">case</font> <font class="source_int">0</font>:
+<a name="174"></a>            ManagerMenu = <font class="source_type"><a href="..\utmenu\managerwindowstub.html" class="source">ManagerWindowStub</a></font>(Root.CreateWindow(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(ManagerWindowClass, <font class="source_keyword">Class</font><font class="source_name">'Class'</font>)), <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>));
+<a name="175"></a>            <font class="source_keyword">break</font>;
+<a name="176"></a>        <font class="source_keyword">case</font> <font class="source_int">1</font>:
+<a name="177"></a>            LadderMenu = <font class="source_type"><a href="..\utmenu\utladderstub.html" class="source">UTLadderStub</a></font>(Root.CreateWindow(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(UTLadderDMClass, <font class="source_keyword">Class</font><font class="source_name">'Class'</font>)), <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>));
+<a name="178"></a>            <font class="source_keyword">if</font> (Evaluate)
+<a name="179"></a>                LadderMenu.EvaluateMatch();
+<a name="180"></a>            <font class="source_keyword">break</font>;
+<a name="181"></a>        <font class="source_keyword">case</font> <font class="source_int">2</font>:
+<a name="182"></a>            LadderMenu = <font class="source_type"><a href="..\utmenu\utladderstub.html" class="source">UTLadderStub</a></font>(Root.CreateWindow(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(UTLadderCTFClass, <font class="source_keyword">Class</font><font class="source_name">'Class'</font>)), <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>));
+<a name="183"></a>            <font class="source_keyword">if</font> (Evaluate)
+<a name="184"></a>                LadderMenu.EvaluateMatch();
+<a name="185"></a>            <font class="source_keyword">break</font>;
+<a name="186"></a>        <font class="source_keyword">case</font> <font class="source_int">3</font>:
+<a name="187"></a>            LadderMenu = <font class="source_type"><a href="..\utmenu\utladderstub.html" class="source">UTLadderStub</a></font>(Root.CreateWindow(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(UTLadderDOMClass, <font class="source_keyword">Class</font><font class="source_name">'Class'</font>)), <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>));
+<a name="188"></a>            <font class="source_keyword">if</font> (Evaluate)
+<a name="189"></a>                LadderMenu.EvaluateMatch();
+<a name="190"></a>            <font class="source_keyword">break</font>;
+<a name="191"></a>        <font class="source_keyword">case</font> <font class="source_int">4</font>:
+<a name="192"></a>            LadderMenu = <font class="source_type"><a href="..\utmenu\utladderstub.html" class="source">UTLadderStub</a></font>(Root.CreateWindow(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(UTLadderASClass, <font class="source_keyword">Class</font><font class="source_name">'Class'</font>)), <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>));
+<a name="193"></a>            <font class="source_keyword">if</font> (Evaluate)
+<a name="194"></a>                LadderMenu.EvaluateMatch();
+<a name="195"></a>            <font class="source_keyword">break</font>;
+<a name="196"></a>        <font class="source_keyword">case</font> <font class="source_int">5</font>:
+<a name="197"></a>            LadderMenu = <font class="source_type"><a href="..\utmenu\utladderstub.html" class="source">UTLadderStub</a></font>(Root.CreateWindow(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(UTLadderChalClass, <font class="source_keyword">Class</font><font class="source_name">'Class'</font>)), <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>));
+<a name="198"></a>            <font class="source_keyword">if</font> (Evaluate)
+<a name="199"></a>                LadderMenu.EvaluateMatch();
+<a name="200"></a>            <font class="source_keyword">break</font>;
+<a name="201"></a>        <font class="source_keyword">case</font> <font class="source_int">6</font>:
+<a name="202"></a>            LadderMenu = <font class="source_type"><a href="..\utmenu\utladderstub.html" class="source">UTLadderStub</a></font>(Root.CreateWindow(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(UTLadderDMTestClass, <font class="source_keyword">Class</font><font class="source_name">'Class'</font>)), <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>));
+<a name="203"></a>            <font class="source_keyword">if</font> (Evaluate)
+<a name="204"></a>                LadderMenu.EvaluateMatch();
+<a name="205"></a>            <font class="source_keyword">break</font>;
+<a name="206"></a>        <font class="source_keyword">case</font> <font class="source_int">7</font>:
+<a name="207"></a>            LadderMenu = <font class="source_type"><a href="..\utmenu\utladderstub.html" class="source">UTLadderStub</a></font>(Root.CreateWindow(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(UTLadderDOMTestClass, <font class="source_keyword">Class</font><font class="source_name">'Class'</font>)), <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>));
+<a name="208"></a>            <font class="source_keyword">if</font> (Evaluate)
+<a name="209"></a>                LadderMenu.EvaluateMatch();
+<a name="210"></a>            <font class="source_keyword">break</font>;
+<a name="211"></a>    }
+<a name="212"></a>}
+<a name="213"></a>
+<a name="214"></a><font class="source_keyword">function</font> StartNewGame()
+<a name="215"></a>{
+<a name="216"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\info.html" class="source">Info</a></font>&gt; InterimObjectClass;
+<a name="217"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\info.html" class="source">Info</a></font> InterimObject;
+<a name="218"></a>
+<a name="219"></a>    Log(<font class="source_string">"Starting a new game..."</font>);
+<a name="220"></a>    InterimObjectClass = <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\engine\info.html" class="source">Info</a></font>&gt;(DynamicLoadObject(InterimObjectType, <font class="source_keyword">Class</font><font class="source_name">'Class'</font>));
+<a name="221"></a>    InterimObject = Root.GetPlayerOwner().Spawn(InterimObjectClass, Root.GetPlayerOwner());
+<a name="222"></a>}
+<a name="223"></a>
+<a name="224"></a><font class="source_keyword">function</font> LoadGame()
+<a name="225"></a>{
+<a name="226"></a>    <font class="source_comment">// Clear all slots.
+</font><a name="227"></a>    Root.GetPlayerOwner().PlaySound(<font class="source_type">sound</font><font class="source_name">'LadderSounds.ladvance'</font>, SLOT_None, <font class="source_int">0.1</font>);
+<a name="228"></a>    Root.GetPlayerOwner().PlaySound(<font class="source_type">sound</font><font class="source_name">'LadderSounds.ladvance'</font>, SLOT_Misc, <font class="source_int">0.1</font>);
+<a name="229"></a>    Root.GetPlayerOwner().PlaySound(<font class="source_type">sound</font><font class="source_name">'LadderSounds.ladvance'</font>, SLOT_Pain, <font class="source_int">0.1</font>);
+<a name="230"></a>    Root.GetPlayerOwner().PlaySound(<font class="source_type">sound</font><font class="source_name">'LadderSounds.ladvance'</font>, SLOT_Interact, <font class="source_int">0.1</font>);
+<a name="231"></a>    Root.GetPlayerOwner().PlaySound(<font class="source_type">sound</font><font class="source_name">'LadderSounds.ladvance'</font>, SLOT_Talk, <font class="source_int">0.1</font>);
+<a name="232"></a>    Root.GetPlayerOwner().PlaySound(<font class="source_type">sound</font><font class="source_name">'LadderSounds.ladvance'</font>, SLOT_Interface, <font class="source_int">0.1</font>);
+<a name="233"></a>
+<a name="234"></a>    <font class="source_comment">// Create load game dialog.
+</font><a name="235"></a>    bNoDrawWorld = <font class="source_keyword">True</font>;
+<a name="236"></a>    bLocked = <font class="source_keyword">True</font>;
+<a name="237"></a>    <font class="source_type"><a href="..\umenu\umenurootwindow.html" class="source">UMenuRootWindow</a></font>(Root).MenuBar.HideWindow();
+<a name="238"></a>
+<a name="239"></a>    <font class="source_comment">// Go to the slot window.
+</font><a name="240"></a>    Root.CreateWindow(<font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(SlotWindowType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>)), <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>);
+<a name="241"></a>}
+<a name="242"></a>
+<a name="243"></a><font class="source_keyword">function</font> NotifyLevelChange()
+<a name="244"></a>{
+<a name="245"></a>    <font class="source_keyword">Super</font>.NotifyLevelChange();
+<a name="246"></a>
+<a name="247"></a>    bWasShowingMessage = <font class="source_keyword">False</font>;
+<a name="248"></a>    HideMessage();
+<a name="249"></a>}
+<a name="250"></a>
+<a name="251"></a><font class="source_comment">/*
+<a name="252"></a> * Speech
+<a name="253"></a> */</font>
+<a name="254"></a>
+<a name="255"></a><font class="source_keyword">function</font> CreateSpeech()
+<a name="256"></a>{
+<a name="257"></a>    <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font> = <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>(Root.CreateWindow(<font class="source_keyword">Class</font><font class="source_name">'SpeechWindow'</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>));
+<a name="258"></a>    <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>.bLeaveOnScreen = <font class="source_keyword">True</font>;
+<a name="259"></a>    <font class="source_keyword">if</font>(bShowSpeech)
+<a name="260"></a>    {
+<a name="261"></a>        Root.SetMousePos(<font class="source_int">0</font>, <font class="source_int">132.0</font>/7<font class="source_int">68</font> * Root.WinWidth);
+<a name="262"></a>        <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>.HideWindow();
+<a name="263"></a>        <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>.SlideInWindow();
+<a name="264"></a>    } 
+<a name="265"></a>    <font class="source_keyword">else</font>
+<a name="266"></a>        <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>.HideWindow();
+<a name="267"></a>}
+<a name="268"></a>
+<a name="269"></a><font class="source_keyword">function</font> ShowSpeech()
+<a name="270"></a>{
+<a name="271"></a>    <font class="source_keyword">if</font> ( bUWindowActive )
+<a name="272"></a>        <font class="source_keyword">return</font>;
+<a name="273"></a>    bShowSpeech = <font class="source_keyword">True</font>;
+<a name="274"></a>    <font class="source_keyword">if</font>(!bCreatedRoot)
+<a name="275"></a>        CreateRootWindow(<font class="source_keyword">None</font>);
+<a name="276"></a>
+<a name="277"></a>    Root.SetMousePos(<font class="source_int">0</font>, <font class="source_int">132.0</font>/7<font class="source_int">68</font> * Root.WinWidth);
+<a name="278"></a>    <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>.SlideInWindow();
+<a name="279"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font>(<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD) != <font class="source_keyword">None</font> )
+<a name="280"></a>        <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font>(<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD).bHideCenterMessages = <font class="source_keyword">true</font>;
+<a name="281"></a>}
+<a name="282"></a>
+<a name="283"></a><font class="source_keyword">function</font> HideSpeech()
+<a name="284"></a>{
+<a name="285"></a>    bShowSpeech = <font class="source_keyword">False</font>;
+<a name="286"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font>(<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD) != <font class="source_keyword">None</font> )
+<a name="287"></a>        <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font>(<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD).bHideCenterMessages = <font class="source_keyword">false</font>;
+<a name="288"></a>
+<a name="289"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font> != <font class="source_keyword">None</font>)
+<a name="290"></a>        <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>.SlideOutWindow();
+<a name="291"></a>}
+<a name="292"></a>
+<a name="293"></a><font class="source_comment">/*
+<a name="294"></a> * Tutorial Message Interface
+<a name="295"></a> */</font>
+<a name="296"></a>
+<a name="297"></a><font class="source_keyword">function</font> CreateMessage()
+<a name="298"></a>{
+<a name="299"></a>    <font class="source_type"><a href="..\utmenu\messagewindow.html" class="source">MessageWindow</a></font> = <font class="source_type"><a href="..\utmenu\messagewindow.html" class="source">MessageWindow</a></font>(Root.CreateWindow(<font class="source_keyword">Class</font><font class="source_name">'MessageWindow'</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>));
+<a name="300"></a>    <font class="source_type"><a href="..\utmenu\messagewindow.html" class="source">MessageWindow</a></font>.bLeaveOnScreen = <font class="source_keyword">True</font>;
+<a name="301"></a>    <font class="source_type"><a href="..\utmenu\messagewindow.html" class="source">MessageWindow</a></font>.HideWindow();
+<a name="302"></a>}
+<a name="303"></a>
+<a name="304"></a><font class="source_keyword">function</font> ShowMessage()
+<a name="305"></a>{
+<a name="306"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\utmenu\messagewindow.html" class="source">MessageWindow</a></font> != <font class="source_keyword">None</font>)
+<a name="307"></a>    {
+<a name="308"></a>        bWasShowingMessage = <font class="source_keyword">False</font>;
+<a name="309"></a>        bShowMessage = <font class="source_keyword">True</font>;
+<a name="310"></a>        <font class="source_type"><a href="..\utmenu\messagewindow.html" class="source">MessageWindow</a></font>.ShowWindow();
+<a name="311"></a>    }
+<a name="312"></a>}
+<a name="313"></a>
+<a name="314"></a><font class="source_keyword">function</font> HideMessage()
+<a name="315"></a>{
+<a name="316"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\utmenu\messagewindow.html" class="source">MessageWindow</a></font> != <font class="source_keyword">None</font>)
+<a name="317"></a>    {
+<a name="318"></a>        bShowMessage = <font class="source_keyword">False</font>;
+<a name="319"></a>        <font class="source_type"><a href="..\utmenu\messagewindow.html" class="source">MessageWindow</a></font>.HideWindow();
+<a name="320"></a>    }
+<a name="321"></a>}
+<a name="322"></a>
+<a name="323"></a><font class="source_keyword">function</font> AddMessage( <font class="source_keyword">string</font> NewMessage )
+<a name="324"></a>{
+<a name="325"></a>    <font class="source_type"><a href="..\utmenu\messagewindow.html" class="source">MessageWindow</a></font>.AddMessage( NewMessage );
+<a name="326"></a>}
+<a name="327"></a>
+<a name="328"></a><font class="source_keyword2">exec</font> <font class="source_keyword">function</font> ShowObjectives()
+<a name="329"></a>{
+<a name="330"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font> GRI;
+<a name="331"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt; AssaultClass, GameClass;
+<a name="332"></a>    
+<a name="333"></a>    <font class="source_keyword">if</font>(!bCreatedRoot)
+<a name="334"></a>        CreateRootWindow(<font class="source_keyword">None</font>);
+<a name="335"></a>
+<a name="336"></a>    AssaultClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(<font class="source_string">"Botpack.Assault"</font>, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="337"></a>
+<a name="338"></a>    <font class="source_keyword">foreach</font> Root.GetPlayerOwner().AllActors(<font class="source_keyword">class</font><font class="source_name">'GameReplicationInfo'</font>, GRI)
+<a name="339"></a>    {
+<a name="340"></a>        GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(GRI.GameClass, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="341"></a>        <font class="source_keyword">if</font> ( ClassIsChildOf(GameClass, AssaultClass) )
+<a name="342"></a>        {
+<a name="343"></a>            bLocked = <font class="source_keyword">True</font>;
+<a name="344"></a>            bNoDrawWorld = <font class="source_keyword">True</font>;
+<a name="345"></a>            <font class="source_type"><a href="..\umenu\umenurootwindow.html" class="source">UMenuRootWindow</a></font>(Root).MenuBar.HideWindow();
+<a name="346"></a>            LaunchUWindow();
+<a name="347"></a>            Root.CreateWindow(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(<font class="source_string">"UTMenu.InGameObjectives"</font>, <font class="source_keyword">class</font><font class="source_name">'Class'</font>)), <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">100</font>);
+<a name="348"></a>        }
+<a name="349"></a>    }
+<a name="350"></a>}
+<a name="351"></a>
+<a name="352"></a><font class="source_keyword">event</font> ConnectFailure( <font class="source_keyword">string</font> FailCode, <font class="source_keyword">string</font> URL )
+<a name="353"></a>{
+<a name="354"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, j;
+<a name="355"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Server;
+<a name="356"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utmenu\utpasswordwindow.html" class="source">UTPasswordWindow</a></font> W;
+<a name="357"></a>
+<a name="358"></a>    <font class="source_keyword">if</font>(FailCode == <font class="source_string">"NEEDPW"</font>)
+<a name="359"></a>    {
+<a name="360"></a>        Server = Left(URL, InStr(URL, <font class="source_string">"/"</font>));
+<a name="361"></a>        <font class="source_keyword">for</font>(i=<font class="source_int">0</font>; i&lt;<font class="source_int">10</font>; i++)
+<a name="362"></a>        {
+<a name="363"></a>            j = InStr(SavedPasswords[i], <font class="source_string">"="</font>);
+<a name="364"></a>            <font class="source_keyword">if</font>(Left(SavedPasswords[i], j) == Server)
+<a name="365"></a>            {
+<a name="366"></a>                <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.ClearProgressMessages();
+<a name="367"></a>                <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.ClientTravel(URL$<font class="source_string">"?password="</font>$Mid(SavedPasswords[i], j+<font class="source_int">1</font>), TRAVEL_Absolute, <font class="source_keyword">false</font>);
+<a name="368"></a>                <font class="source_keyword">return</font>;
+<a name="369"></a>            }
+<a name="370"></a>        }
+<a name="371"></a>    }
+<a name="372"></a>
+<a name="373"></a>    <font class="source_keyword">if</font>(FailCode == <font class="source_string">"NEEDPW"</font> || FailCode == <font class="source_string">"WRONGPW"</font>)
+<a name="374"></a>    {
+<a name="375"></a>        <font class="source_keyword">if</font>(FailCode==<font class="source_string">"NEEDPW"</font>)
+<a name="376"></a>            <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.ClearProgressMessages();
+<a name="377"></a>        CloseUWindow();
+<a name="378"></a>        bQuickKeyEnable = <font class="source_keyword">True</font>;
+<a name="379"></a>        LaunchUWindow();
+<a name="380"></a>        W = <font class="source_type"><a href="..\utmenu\utpasswordwindow.html" class="source">UTPasswordWindow</a></font>(Root.CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UTPasswordWindow'</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">100</font>));
+<a name="381"></a>        <font class="source_type"><a href="..\utmenu\utpasswordcw.html" class="source">UTPasswordCW</a></font>(W.ClientArea).URL = URL;
+<a name="382"></a>    }
+<a name="383"></a>}
+<a name="384"></a>
+<a name="385"></a><font class="source_keyword">function</font> ConnectWithPassword(<font class="source_keyword">string</font> URL, <font class="source_keyword">string</font> Password)
+<a name="386"></a>{
+<a name="387"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="388"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Server;
+<a name="389"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bFound;
+<a name="390"></a>
+<a name="391"></a>    <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.ClearProgressMessages();
+<a name="392"></a>
+<a name="393"></a>    <font class="source_keyword">if</font>(Password == <font class="source_string">""</font>)
+<a name="394"></a>    {
+<a name="395"></a>        <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.ClientTravel(URL, TRAVEL_Absolute, <font class="source_keyword">false</font>);
+<a name="396"></a>        <font class="source_keyword">return</font>;
+<a name="397"></a>    }
+<a name="398"></a>
+<a name="399"></a>    bFound = <font class="source_keyword">False</font>;
+<a name="400"></a>    Server = Left(URL, InStr(URL, <font class="source_string">"/"</font>));
+<a name="401"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>; i&lt;<font class="source_int">10</font>; i++)
+<a name="402"></a>    {
+<a name="403"></a>        <font class="source_keyword">if</font>(Left(SavedPasswords[i], InStr(SavedPasswords[i], <font class="source_string">"="</font>)) == Server)
+<a name="404"></a>        {
+<a name="405"></a>            SavedPasswords[i] = Server$<font class="source_string">"="</font>$Password;
+<a name="406"></a>            bFound = <font class="source_keyword">True</font>;
+<a name="407"></a>            <font class="source_keyword">break</font>;
+<a name="408"></a>        }
+<a name="409"></a>    }
+<a name="410"></a>    <font class="source_keyword">if</font>(!bFound)
+<a name="411"></a>    {
+<a name="412"></a>        <font class="source_keyword">for</font>(i=<font class="source_int">9</font>; i&gt;<font class="source_int">0</font>; i--)
+<a name="413"></a>            SavedPasswords[i] = SavedPasswords[i-<font class="source_int">1</font>];
+<a name="414"></a>        SavedPasswords[<font class="source_int">0</font>] = Server$<font class="source_string">"="</font>$Password;    
+<a name="415"></a>    }
+<a name="416"></a>    SaveConfig();
+<a name="417"></a>    <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.ClientTravel(URL$<font class="source_string">"?password="</font>$Password, TRAVEL_Absolute, <font class="source_keyword">false</font>);
+<a name="418"></a>}
+<a name="419"></a>
+<a name="420"></a><font class="source_keyword2">exec</font> <font class="source_keyword">function</font> MenuCmd(<font class="source_keyword">int</font> <font class="source_type"><a href="..\engine\menu.html" class="source">Menu</a></font>, <font class="source_keyword">int</font> Item)
+<a name="421"></a>{
+<a name="422"></a>    <font class="source_keyword">if</font> (bLocked)
+<a name="423"></a>        <font class="source_keyword">return</font>;
+<a name="424"></a>
+<a name="425"></a>    bQuickKeyEnable = <font class="source_keyword">False</font>;
+<a name="426"></a>    LaunchUWindow();
+<a name="427"></a>    <font class="source_keyword">if</font>(!bCreatedRoot) 
+<a name="428"></a>        CreateRootWindow(<font class="source_keyword">None</font>);
+<a name="429"></a>    <font class="source_type"><a href="..\umenu\umenurootwindow.html" class="source">UMenuRootWindow</a></font>(Root).MenuBar.MenuCmd(<font class="source_type"><a href="..\engine\menu.html" class="source">Menu</a></font>, Item);
+<a name="430"></a>}
+<a name="431"></a>
+<a name="432"></a><font class="source_keyword">function</font> StartTimeDemo()
+<a name="433"></a>{
+<a name="434"></a>    TimeDemoFont = <font class="source_keyword">None</font>;
+<a name="435"></a>    <font class="source_keyword">Super</font>.StartTimeDemo();
+<a name="436"></a>    bTimeDemoIsEntry =      <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.Game != <font class="source_keyword">None</font>
+<a name="437"></a>                        &&  <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.Game.IsA(<font class="source_name">'UTIntro'</font>) 
+<a name="438"></a>                        &&  !(Left(<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.GetLocalURL(), <font class="source_int">9</font>) ~= <font class="source_string">"cityintro"</font>);
+<a name="439"></a>}
+<a name="440"></a>
+<a name="441"></a><font class="source_keyword">function</font> TimeDemoRender( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C )
+<a name="442"></a>{
+<a name="443"></a>    <font class="source_keyword">if</font>( TimeDemoFont == <font class="source_keyword">None</font> )
+<a name="444"></a>        TimeDemoFont = <font class="source_keyword">class</font><font class="source_name">'FontInfo'</font>.<font class="source_keyword2">Static</font>.GetStaticSmallFont(C.ClipX);
+<a name="445"></a>
+<a name="446"></a>    <font class="source_keyword">if</font>( !bTimeDemoIsEntry )
+<a name="447"></a>        <font class="source_keyword">Super</font>.TimeDemoRender(C);
+<a name="448"></a>    <font class="source_keyword">else</font>
+<a name="449"></a>    {
+<a name="450"></a>        <font class="source_keyword">if</font>( <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.Game == <font class="source_keyword">None</font> ||
+<a name="451"></a>            !<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.Game.IsA(<font class="source_name">'UTIntro'</font>) ||
+<a name="452"></a>            (Left(<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.GetLocalURL(), <font class="source_int">9</font>) ~= <font class="source_string">"cityintro"</font>)
+<a name="453"></a>        )
+<a name="454"></a>        {
+<a name="455"></a>            bTimeDemoIsEntry = <font class="source_keyword">False</font>;
+<a name="456"></a>            <font class="source_keyword">Super</font>.TimeDemoRender(C);
+<a name="457"></a>        }
+<a name="458"></a>    }
+<a name="459"></a>}
+<a name="460"></a>
+<a name="461"></a><font class="source_keyword">function</font> PrintTimeDemoResult()
+<a name="462"></a>{
+<a name="463"></a>    <font class="source_keyword">if</font>( !bTimeDemoIsEntry )
+<a name="464"></a>        <font class="source_keyword">Super</font>.PrintTimeDemoResult();
+<a name="465"></a>}
+<a name="466"></a>
+<a name="467"></a><font class="source_keyword">defaultproperties</font>
+<a name="468"></a>{
+<a name="469"></a>    ManagerWindowClass=<font class="source_string">"UTMenu.ManagerWindow"</font>
+<a name="470"></a>    UTLadderDMClass=<font class="source_string">"UTMenu.UTLadderDM"</font>
+<a name="471"></a>    UTLadderCTFClass=<font class="source_string">"UTMenu.UTLadderCTF"</font>
+<a name="472"></a>    UTLadderDOMClass=<font class="source_string">"UTMenu.UTLadderDOM"</font>
+<a name="473"></a>    UTLadderASClass=<font class="source_string">"UTMenu.UTLadderAS"</font>
+<a name="474"></a>    UTLadderChalClass=<font class="source_string">"UTMenu.UTLadderChal"</font>
+<a name="475"></a>    UTLadderDMTestClass=<font class="source_string">"UTMenu.UTLadderDMTest"</font>
+<a name="476"></a>    UTLadderDOMTestClass=<font class="source_string">"UTMenu.UTLadderDOMTest"</font>
+<a name="477"></a>    <font class="source_comment">// IK_V
+</font><a name="478"></a>    SpeechKey=<font class="source_int">86</font>
+<a name="479"></a>
+<a name="480"></a>    InterimObjectType=<font class="source_string">"UTMenu.NewGameInterimObject"</font>
+<a name="481"></a>    SlotWindowType=<font class="source_string">"UTMenu.SlotWindow"</font>
+<a name="482"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utconsole.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTConsole">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utconfigindivbotswindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utcustomizeclientwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:34.000 - Creation time: Wed 26/5/2004 10:48:58.546 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,534 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Botpack.ChallengeVoicePack</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\challengevoicepack.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#ChallengeVoicePack">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="challengeteamhud.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="cheolhud.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="botpack-overview.html">Botpack</a>.ChallengeVoicePack</h1>
+<b>Extends:</b> <a href="..\engine\voicepack.html">VoicePack</a><br>
+<b>Modifiers:</b> abstract <br>
+<a href="..\Source_botpack\challengevoicepack.html"><b>Source code</b></a>
+
+<p>
+ChallengeVoicePack.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\info.html">Info</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\voicepack.html">VoicePack</a>
+            |   
+            +-- <a href="botpack-overview.html">Botpack</a>.<a href="challengevoicepack.html">ChallengeVoicePack</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="voiceboss.html">VoiceBoss</a>, <a href="voicefemale.html">VoiceFemale</a>, <a href="voicemale.html">VoiceMale</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AckAbbrev[16]" name="AckAbbrev[16]">AckAbbrev[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_AckSound[16]" name="AckSound[16]">AckSound[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AckString[16]" name="AckString[16]">AckString[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_AckTime[16]" name="AckTime[16]">AckTime[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDelayedResponse" name="bDelayedResponse">bDelayedResponse</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_CommaText" name="CommaText">CommaText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_DelayedResponse" name="DelayedResponse">DelayedResponse</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a></td><td width="66%"><a href="#_DelayedSender" name="DelayedSender">DelayedSender</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_FFireAbbrev[16]" name="FFireAbbrev[16]">FFireAbbrev[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_FFireSound[16]" name="FFireSound[16]">FFireSound[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_FFireString[16]" name="FFireString[16]">FFireString[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_LeaderSign[4]" name="LeaderSign[4]">LeaderSign[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_MatureTaunt[32]" name="MatureTaunt[32]">MatureTaunt[32]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_NameSound[4]" name="NameSound[4]">NameSound[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_NameTime[4]" name="NameTime[4]">NameTime[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numAcks" name="numAcks">numAcks</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numFFires" name="numFFires">numFFires</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numTaunts" name="numTaunts">numTaunts</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_OrderAbbrev[16]" name="OrderAbbrev[16]">OrderAbbrev[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_OrderSound[16]" name="OrderSound[16]">OrderSound[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_OrderString[16]" name="OrderString[16]">OrderString[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_OtherAbbrev[32]" name="OtherAbbrev[32]">OtherAbbrev[32]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_OtherSound[32]" name="OtherSound[32]">OtherSound[32]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_OtherString[32]" name="OtherString[32]">OtherString[32]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_PhraseNum" name="PhraseNum">PhraseNum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_PhraseTime[8]" name="PhraseTime[8]">PhraseTime[8]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_Phrase[8]" name="Phrase[8]">Phrase[8]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_SendType[5]" name="SendType[5]">SendType[5]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TauntAbbrev[32]" name="TauntAbbrev[32]">TauntAbbrev[32]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_TauntSound[32]" name="TauntSound[32]">TauntSound[32]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TauntString[32]" name="TauntString[32]">TauntString[32]</a></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BotInitialize+" name="BotInitialize">BotInitialize</a> (<a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Sender, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, name messagetype, byte messageIndex)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ClientInitialize+" name="ClientInitialize">ClientInitialize</a> (<a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Sender, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, name messagetype, byte messageIndex)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetAckString+" name="GetAckString">GetAckString</a> (int i)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetCallSign+" name="GetCallSign">GetCallSign</a> (<a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> P)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetFFireString+" name="GetFFireString">GetFFireString</a> (int i)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetOrderString+" name="GetOrderString">GetOrderString</a> (int i, string GameType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetOtherString+" name="GetOtherString">GetOtherString</a> (int i)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetTauntString+" name="GetTauntString">GetTauntString</a> (int i)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayerSpeech+" name="PlayerSpeech">PlayerSpeech</a> (int Type, int Index, int Callsign)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetAckMessage+" name="SetAckMessage">SetAckMessage</a> (int messageIndex, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, out Sound MessageSound, out Float MessageTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetClientAckMessage+" name="SetClientAckMessage">SetClientAckMessage</a> (int messageIndex, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, out Sound MessageSound, out Float MessageTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetClientFFireMessage+" name="SetClientFFireMessage">SetClientFFireMessage</a> (int messageIndex, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, out Sound MessageSound, out Float MessageTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetClientOrderMessage+" name="SetClientOrderMessage">SetClientOrderMessage</a> (int messageIndex, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, out Sound MessageSound, out Float MessageTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetClientOtherMessage+" name="SetClientOtherMessage">SetClientOtherMessage</a> (int messageIndex, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, out Sound MessageSound, out Float MessageTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetClientTauntMessage+" name="SetClientTauntMessage">SetClientTauntMessage</a> (int messageIndex, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, out Sound MessageSound, out Float MessageTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetFFireMessage+" name="SetFFireMessage">SetFFireMessage</a> (int messageIndex, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, out Sound MessageSound, out Float MessageTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetOrderMessage+" name="SetOrderMessage">SetOrderMessage</a> (int messageIndex, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, out Sound MessageSound, out Float MessageTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetOtherMessage+" name="SetOtherMessage">SetOtherMessage</a> (int messageIndex, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, out Sound MessageSound, out Float MessageTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetTauntMessage+" name="SetTauntMessage">SetTauntMessage</a> (int messageIndex, <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> Recipient, out Sound MessageSound, out Float MessageTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+" name="Timer">Timer</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\voicepack.html">VoicePack</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\voicepack.html#ClientInitialize">ClientInitialize</a>, <a href="..\engine\voicepack.html#PlayerSpeech">PlayerSpeech</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AckAbbrev[16]" class="hidden"></a>AckAbbrev[16] <a href="..\Source_botpack\challengevoicepack.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AckAbbrev[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AckSound[16]" class="hidden"></a>AckSound[16] <a href="..\Source_botpack\challengevoicepack.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">Sound</font> AckSound[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AckString[16]" class="hidden"></a>AckString[16] <a href="..\Source_botpack\challengevoicepack.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AckString[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AckTime[16]" class="hidden"></a>AckTime[16] <a href="..\Source_botpack\challengevoicepack.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">float</font> AckTime[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bDelayedResponse" class="hidden"></a>bDelayedResponse <a href="..\Source_botpack\challengevoicepack.html#60" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDelayedResponse;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CommaText" class="hidden"></a>CommaText <a href="..\Source_botpack\challengevoicepack.html#41" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CommaText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DelayedResponse" class="hidden"></a>DelayedResponse <a href="..\Source_botpack\challengevoicepack.html#59" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> DelayedResponse;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DelayedSender" class="hidden"></a>DelayedSender <a href="..\Source_botpack\challengevoicepack.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> DelayedSender;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FFireAbbrev[16]" class="hidden"></a>FFireAbbrev[16] <a href="..\Source_botpack\challengevoicepack.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FFireAbbrev[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FFireSound[16]" class="hidden"></a>FFireSound[16] <a href="..\Source_botpack\challengevoicepack.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">Sound</font> FFireSound[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FFireString[16]" class="hidden"></a>FFireString[16] <a href="..\Source_botpack\challengevoicepack.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FFireString[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LeaderSign[4]" class="hidden"></a>LeaderSign[4] <a href="..\Source_botpack\challengevoicepack.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">String</font> LeaderSign[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MatureTaunt[32]" class="hidden"></a>MatureTaunt[32] <a href="..\Source_botpack\challengevoicepack.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">byte</font> MatureTaunt[<font class="source_int">32</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NameSound[4]" class="hidden"></a>NameSound[4] <a href="..\Source_botpack\challengevoicepack.html#7" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">Sound</font> NameSound[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NameTime[4]" class="hidden"></a>NameTime[4] <a href="..\Source_botpack\challengevoicepack.html#8" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">float</font> NameTime[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_numAcks" class="hidden"></a>numAcks <a href="..\Source_botpack\challengevoicepack.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> numAcks;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_numFFires" class="hidden"></a>numFFires <a href="..\Source_botpack\challengevoicepack.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> numFFires;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_numTaunts" class="hidden"></a>numTaunts <a href="..\Source_botpack\challengevoicepack.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> numTaunts;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OrderAbbrev[16]" class="hidden"></a>OrderAbbrev[16] <a href="..\Source_botpack\challengevoicepack.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> OrderAbbrev[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OrderSound[16]" class="hidden"></a>OrderSound[16] <a href="..\Source_botpack\challengevoicepack.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">Sound</font> OrderSound[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OrderString[16]" class="hidden"></a>OrderString[16] <a href="..\Source_botpack\challengevoicepack.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> OrderString[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OtherAbbrev[32]" class="hidden"></a>OtherAbbrev[32] <a href="..\Source_botpack\challengevoicepack.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> OtherAbbrev[<font class="source_int">32</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OtherSound[32]" class="hidden"></a>OtherSound[32] <a href="..\Source_botpack\challengevoicepack.html#52" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">Sound</font> OtherSound[<font class="source_int">32</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OtherString[32]" class="hidden"></a>OtherString[32] <a href="..\Source_botpack\challengevoicepack.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> OtherString[<font class="source_int">32</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PhraseNum" class="hidden"></a>PhraseNum <a href="..\Source_botpack\challengevoicepack.html#58" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> PhraseNum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PhraseTime[8]" class="hidden"></a>PhraseTime[8] <a href="..\Source_botpack\challengevoicepack.html#57" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> PhraseTime[<font class="source_int">8</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Phrase[8]" class="hidden"></a>Phrase[8] <a href="..\Source_botpack\challengevoicepack.html#56" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">Sound</font> Phrase[<font class="source_int">8</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SendType[5]" class="hidden"></a>SendType[5] <a href="..\Source_botpack\challengevoicepack.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">name</font> SendType[<font class="source_int">5</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TauntAbbrev[32]" class="hidden"></a>TauntAbbrev[32] <a href="..\Source_botpack\challengevoicepack.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TauntAbbrev[<font class="source_int">32</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TauntSound[32]" class="hidden"></a>TauntSound[32] <a href="..\Source_botpack\challengevoicepack.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">Sound</font> TauntSound[<font class="source_int">32</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TauntString[32]" class="hidden"></a>TauntString[32] <a href="..\Source_botpack\challengevoicepack.html#22" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TauntString[<font class="source_int">32</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BotInitialize+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BotInitialize <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#73" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BotInitialize (<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Sender, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword">name</font> messagetype, <font class="source_keyword">byte</font> messageIndex)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientInitialize+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientInitialize <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#116" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ClientInitialize (<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Sender, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword">name</font> messagetype, <font class="source_keyword">byte</font> messageIndex)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetAckString+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetAckString <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#425" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetAckString (<font class="source_keyword">int</font> i)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetCallSign+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetCallSign <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#63" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetCallSign (<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> P)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetFFireString+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetFFireString <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#433" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetFFireString (<font class="source_keyword">int</font> i)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetOrderString+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetOrderString <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#286" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetOrderString (<font class="source_keyword">int</font> i, <font class="source_keyword">string</font> GameType)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetOtherString+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetOtherString <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#449" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetOtherString (<font class="source_keyword">int</font> i)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetTauntString+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetTauntString <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#441" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetTauntString (<font class="source_keyword">int</font> i)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayerSpeech+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayerSpeech <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#369" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayerSpeech (<font class="source_keyword">int</font> Type, <font class="source_keyword">int</font> Index, <font class="source_keyword">int</font> Callsign)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetAckMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetAckMessage <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#195" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetAckMessage (<font class="source_keyword">int</font> messageIndex, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword2">out</font> <font class="source_type">Sound</font> MessageSound, <font class="source_keyword2">out</font> <font class="source_keyword">Float</font> MessageTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetClientAckMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetClientAckMessage <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#175" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetClientAckMessage (<font class="source_keyword">int</font> messageIndex, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword2">out</font> <font class="source_type">Sound</font> MessageSound, <font class="source_keyword2">out</font> <font class="source_keyword">Float</font> MessageTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetClientFFireMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetClientFFireMessage <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#208" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetClientFFireMessage (<font class="source_keyword">int</font> messageIndex, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword2">out</font> <font class="source_type">Sound</font> MessageSound, <font class="source_keyword2">out</font> <font class="source_keyword">Float</font> MessageTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetClientOrderMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetClientOrderMessage <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#263" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetClientOrderMessage (<font class="source_keyword">int</font> messageIndex, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword2">out</font> <font class="source_type">Sound</font> MessageSound, <font class="source_keyword2">out</font> <font class="source_keyword">Float</font> MessageTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetClientOtherMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetClientOtherMessage <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#312" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetClientOtherMessage (<font class="source_keyword">int</font> messageIndex, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword2">out</font> <font class="source_type">Sound</font> MessageSound, <font class="source_keyword2">out</font> <font class="source_keyword">Float</font> MessageTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetClientTauntMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetClientTauntMessage <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#222" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetClientTauntMessage (<font class="source_keyword">int</font> messageIndex, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword2">out</font> <font class="source_type">Sound</font> MessageSound, <font class="source_keyword2">out</font> <font class="source_keyword">Float</font> MessageTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetFFireMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetFFireMessage <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#216" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetFFireMessage (<font class="source_keyword">int</font> messageIndex, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword2">out</font> <font class="source_type">Sound</font> MessageSound, <font class="source_keyword2">out</font> <font class="source_keyword">Float</font> MessageTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetOrderMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetOrderMessage <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#269" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetOrderMessage (<font class="source_keyword">int</font> messageIndex, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword2">out</font> <font class="source_type">Sound</font> MessageSound, <font class="source_keyword2">out</font> <font class="source_keyword">Float</font> MessageTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetOtherMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetOtherMessage <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#318" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetOtherMessage (<font class="source_keyword">int</font> messageIndex, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword2">out</font> <font class="source_type">Sound</font> MessageSound, <font class="source_keyword2">out</font> <font class="source_keyword">Float</font> MessageTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetTauntMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetTauntMessage <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#243" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetTauntMessage (<font class="source_keyword">int</font> messageIndex, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Recipient, <font class="source_keyword2">out</font> <font class="source_type">Sound</font> MessageSound, <font class="source_keyword2">out</font> <font class="source_keyword">Float</font> MessageTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state"></span> <a href="..\Source_botpack\challengevoicepack.html#324" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    LeaderSign(<font class="source_int">0</font>)=<font class="source_string">"Red Leader"</font>
+    LeaderSign(<font class="source_int">1</font>)=<font class="source_string">"Blue Leader"</font>
+    LeaderSign(<font class="source_int">2</font>)=<font class="source_string">"Green Leader"</font>
+    LeaderSign(<font class="source_int">3</font>)=<font class="source_string">"Gold Leader"</font>
+    LifeSpan=<font class="source_int">10.0</font>
+    SendType(<font class="source_int">0</font>)=ACK
+    SendType(<font class="source_int">1</font>)=FRIENDLYFIRE
+    SendType(<font class="source_int">2</font>)=ORDER
+    SendType(<font class="source_int">3</font>)=TAUNT
+    SendType(<font class="source_int">4</font>)=OTHER
+    CommaText=<font class="source_string">", "</font>
+}</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\challengevoicepack.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#ChallengeVoicePack">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="challengeteamhud.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="cheolhud.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:46:44.125 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

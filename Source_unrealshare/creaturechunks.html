@@ -1,0 +1,763 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealShare.CreatureChunks</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\creaturechunks.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#CreatureChunks">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="creaturecarcass.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="creaturefactory.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\creaturechunks.html">CreatureChunks</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// CreatureChunks.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unrealshare\creaturechunks.html" class="source">CreatureChunks</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\carcass.html" class="source">Carcass</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec MESH IMPORT MESH=CowBody1 ANIVFILE=MODELS\g_cow2_a.3D DATAFILE=MODELS\g_cow2_d.3D X=0 Y=0 Z=0
+</font><a name="7"></a><font class="source_macro">#exec MESH ORIGIN MESH=CowBody1 X=0 Y=0 Z=0 YAW=64
+</font><a name="8"></a><font class="source_macro">#exec MESH SEQUENCE MESH=CowBody1 SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="9"></a><font class="source_macro">#exec MESH SEQUENCE MESH=CowBody1 SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="10"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=JGCow1  FILE=MODELS\Nc_1.PCX GROUP=Skins 
+</font><a name="11"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=CowBody1 X=0.06 Y=0.06 Z=0.12
+</font><a name="12"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=CowBody1 NUM=1 TEXTURE=JGCow1
+</font><a name="13"></a>
+<a name="14"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Gibs\gibP1.WAV" NAME="gibP1" GROUP="Gibs"
+</font><a name="15"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Gibs\gibP3.WAV" NAME="gibP3" GROUP="Gibs"
+</font><a name="16"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Gibs\gibP4.WAV" NAME="gibP4" GROUP="Gibs"
+</font><a name="17"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Gibs\gibP5.WAV" NAME="gibP5" GROUP="Gibs"
+</font><a name="18"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Gibs\gibP6.WAV" NAME="gibP6" GROUP="Gibs"
+</font><a name="19"></a>
+<a name="20"></a><font class="source_keyword">var</font>     <font class="source_type"><a href="..\unrealshare\bloodtrail.html" class="source">Bloodtrail</a></font>      trail;
+<a name="21"></a><font class="source_keyword">var</font>     <font class="source_keyword">float</font>           TrailSize;
+<a name="22"></a><font class="source_keyword">var</font>     <font class="source_keyword">bool</font>            bGreenBlood;
+<a name="23"></a><font class="source_keyword">var</font>     <font class="source_keyword">bool</font>            bMasterChunk;
+<a name="24"></a><font class="source_keyword">var</font>     <font class="source_keyword">bool</font>            bMustSpawnChunks;
+<a name="25"></a><font class="source_keyword">var</font>     <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\unrealshare\creaturecarcass.html" class="source">CreatureCarcass</a></font>&gt;  CarcassClass;
+<a name="26"></a><font class="source_keyword">var</font>     <font class="source_keyword">name</font>            CarcassAnim;        
+<a name="27"></a><font class="source_keyword">var</font>     <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font>          CarcLocation;
+<a name="28"></a><font class="source_keyword">var</font>     <font class="source_keyword">float</font>           CarcHeight;
+<a name="29"></a>
+<a name="30"></a><font class="source_keyword">replication</font>
+<a name="31"></a>{
+<a name="32"></a>    <font class="source_comment">// Things the server should send to the client.
+</font><a name="33"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="34"></a>        bGreenBlood, bMasterChunk, CarcassClass, CarcassAnim, CarcLocation, CarcHeight;
+<a name="35"></a>}
+<a name="36"></a>
+<a name="37"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PostBeginPlay()
+<a name="38"></a>{
+<a name="39"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bDestructive || ((<font class="source_type">Level</font>.Game != <font class="source_keyword">None</font>) && <font class="source_type">Level</font>.Game.bLowGore) )
+<a name="40"></a>    {
+<a name="41"></a>        Destroy();
+<a name="42"></a>        <font class="source_keyword">return</font>;
+<a name="43"></a>    }
+<a name="44"></a>    <font class="source_keyword">if</font> ( bMasterChunk && (<font class="source_type">Level</font>.NetMode == NM_Client) ) <font class="source_comment">//only if client
+</font><a name="45"></a>        ClientExtraChunks(<font class="source_keyword">true</font>);
+<a name="46"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.NetMode == NM_Client )
+<a name="47"></a>        SetTimer(<font class="source_int">0.05</font>, <font class="source_keyword">false</font>);
+<a name="48"></a>
+<a name="49"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="50"></a>}
+<a name="51"></a>
+<a name="52"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> ClientExtraChunks(<font class="source_keyword">bool</font> bSpawnChunks)
+<a name="53"></a>{
+<a name="54"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\unrealshare\creaturechunks.html" class="source">CreatureChunks</a></font> carc;
+<a name="55"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\unrealshare\bloodpuff.html" class="source">bloodpuff</a></font> Blood;
+<a name="56"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\unrealshare\bloodspurt.html" class="source">bloodspurt</a></font> b;
+<a name="57"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> n;
+<a name="58"></a>
+<a name="59"></a>    <font class="source_keyword">If</font> ( <font class="source_type">Level</font>.NetMode == NM_DedicatedServer )
+<a name="60"></a>        <font class="source_keyword">return</font>;
+<a name="61"></a>
+<a name="62"></a>    bMustSpawnChunks = <font class="source_keyword">false</font>;
+<a name="63"></a>    b = Spawn(<font class="source_keyword">class</font> <font class="source_name">'Bloodspurt'</font>,,,,rot(<font class="source_int">16384</font>,<font class="source_int">0</font>,<font class="source_int">0</font>));
+<a name="64"></a>    <font class="source_keyword">if</font> ( bGreenBlood )
+<a name="65"></a>        b.GreenBlood();
+<a name="66"></a>    b.RemoteRole = ROLE_None;
+<a name="67"></a>
+<a name="68"></a>    <font class="source_keyword">if</font> ( !bSpawnChunks || (CarcassClass == <font class="source_keyword">None</font>) )
+<a name="69"></a>        <font class="source_keyword">return</font>;
+<a name="70"></a>
+<a name="71"></a>    n = <font class="source_int">1</font>;
+<a name="72"></a>
+<a name="73"></a>    <font class="source_keyword">while</font> ( (n&lt;<font class="source_int">8</font>) && (CarcassClass.Default.bodyparts[n] != <font class="source_keyword">none</font>) )
+<a name="74"></a>    {
+<a name="75"></a>        <font class="source_keyword">if</font> ( CarcassClass.<font class="source_keyword2">Static</font>.AllowChunk(n, CarcassAnim) )
+<a name="76"></a>        {
+<a name="77"></a>            <font class="source_keyword">if</font> ( CarcLocation == vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>) ) CarcLocation = Location; 
+<a name="78"></a>            carc = Spawn(<font class="source_keyword">class</font> <font class="source_name">'CreatureChunks'</font>,,, CarcLocation 
+<a name="79"></a>                        + CarcassClass.Default.ZOffset[n] * CarcHeight * vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">1</font>));
+<a name="80"></a>            <font class="source_keyword">if</font> (carc != <font class="source_keyword">None</font>)
+<a name="81"></a>            {
+<a name="82"></a>                carc.TrailSize = CarcassClass.Default.Trails[n];
+<a name="83"></a>                carc.<font class="source_type">Mesh</font> = CarcassClass.Default.bodyparts[n];
+<a name="84"></a>                carc.Initfor(self);
+<a name="85"></a>                carc.RemoteRole = ROLE_None;
+<a name="86"></a>            }
+<a name="87"></a>        }
+<a name="88"></a>        n++;
+<a name="89"></a>    }
+<a name="90"></a>
+<a name="91"></a>    <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.bHighDetailMode && !bGreenBlood )
+<a name="92"></a>    {
+<a name="93"></a>        Blood = spawn(<font class="source_keyword">class</font><font class="source_name">'BloodPuff'</font>,,, CarcLocation);
+<a name="94"></a>        Blood.drawscale = <font class="source_int">0.2</font> * CollisionRadius;
+<a name="95"></a>        Blood.RemoteRole = ROLE_None;
+<a name="96"></a>    }
+<a name="97"></a>}
+<a name="98"></a>
+<a name="99"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> ZoneChange( <font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> NewZone )
+<a name="100"></a>{
+<a name="101"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> splashsize;
+<a name="102"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> <font class="source_type"><a href="..\unrealshare\splash.html" class="source">splash</a></font>;
+<a name="103"></a>
+<a name="104"></a>    <font class="source_keyword">if</font> ( NewZone.bWaterZone )
+<a name="105"></a>    {
+<a name="106"></a>        <font class="source_keyword">if</font> ( trail != <font class="source_keyword">None</font> )
+<a name="107"></a>        {
+<a name="108"></a>            <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.bHighDetailMode )
+<a name="109"></a>                bUnlit = <font class="source_keyword">false</font>;
+<a name="110"></a>            trail.Destroy();
+<a name="111"></a>        }
+<a name="112"></a>        <font class="source_keyword">if</font> ( Mass &lt;= Buoyancy )
+<a name="113"></a>            SetCollisionSize(<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="114"></a>        <font class="source_keyword">if</font> ( bSplash && !<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone && (Abs(Velocity.Z) &lt; <font class="source_int">80</font>) )
+<a name="115"></a>            RotationRate *= <font class="source_int">0.6</font>;
+<a name="116"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( !<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone && (Velocity.Z &lt; -<font class="source_int">200</font>) )
+<a name="117"></a>        {
+<a name="118"></a>            <font class="source_comment">// else play a splash
+</font><a name="119"></a>            splashSize = FClamp(<font class="source_int">0.0001</font> * Mass * (<font class="source_int">250</font> - <font class="source_int">0.5</font> * FMax(-<font class="source_int">600</font>,Velocity.Z)), <font class="source_int">1.0</font>, <font class="source_int">3.0</font> );
+<a name="120"></a>            <font class="source_keyword">if</font> ( NewZone.EntrySound != <font class="source_keyword">None</font> )
+<a name="121"></a>                PlaySound(NewZone.EntrySound, SLOT_Interact, splashSize);
+<a name="122"></a>            <font class="source_keyword">if</font> ( NewZone.EntryActor != <font class="source_keyword">None</font> )
+<a name="123"></a>            {
+<a name="124"></a>                <font class="source_type"><a href="..\unrealshare\splash.html" class="source">splash</a></font> = Spawn(NewZone.EntryActor); 
+<a name="125"></a>                <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\unrealshare\splash.html" class="source">splash</a></font> != <font class="source_keyword">None</font> )
+<a name="126"></a>                    <font class="source_type"><a href="..\unrealshare\splash.html" class="source">splash</a></font>.DrawScale = splashSize;
+<a name="127"></a>            }
+<a name="128"></a>        }
+<a name="129"></a>        bSplash = <font class="source_keyword">true</font>;
+<a name="130"></a>    }
+<a name="131"></a>
+<a name="132"></a>    <font class="source_keyword">if</font> ( NewZone.bDestructive || (NewZone.bPainZone  && (NewZone.DamagePerSec &gt; <font class="source_int">0</font>)) )
+<a name="133"></a>        Destroy();
+<a name="134"></a>}
+<a name="135"></a>    
+<a name="136"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> Destroyed()
+<a name="137"></a>{
+<a name="138"></a>    <font class="source_keyword">if</font> ( trail != <font class="source_keyword">None</font> )
+<a name="139"></a>        trail.Destroy();
+<a name="140"></a>    <font class="source_keyword">Super</font>.Destroyed();
+<a name="141"></a>}
+<a name="142"></a>
+<a name="143"></a><font class="source_keyword">function</font> Initfor(<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other)
+<a name="144"></a>{
+<a name="145"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> RandDir;
+<a name="146"></a>
+<a name="147"></a>    <font class="source_keyword">if</font> ( Other.IsA(<font class="source_name">'Carcass'</font>) )
+<a name="148"></a>        PlayerOwner = <font class="source_type"><a href="..\engine\carcass.html" class="source">Carcass</a></font>(Other).PlayerOwner;
+<a name="149"></a>    bDecorative = <font class="source_keyword">false</font>;
+<a name="150"></a>    DrawScale = Other.DrawScale;
+<a name="151"></a>    <font class="source_keyword">if</font> ( DrawScale != <font class="source_int">1.0</font> )
+<a name="152"></a>        SetCollisionSize(CollisionRadius * <font class="source_int">0.5</font> * (<font class="source_int">1</font> + DrawScale), CollisionHeight * <font class="source_int">0.5</font> * (<font class="source_int">1</font> + DrawScale));
+<a name="153"></a>    RotationRate.Yaw = Rand(<font class="source_int">200000</font>) - <font class="source_int">100000</font>;
+<a name="154"></a>    RotationRate.Pitch = Rand(<font class="source_int">200000</font> - Abs(RotationRate.Yaw)) - <font class="source_int">0.5</font> * (<font class="source_int">200000</font> - Abs(RotationRate.Yaw));
+<a name="155"></a>    RandDir = <font class="source_int">700</font> * FRand() * VRand();
+<a name="156"></a>    RandDir.Z = <font class="source_int">200</font> * FRand() - <font class="source_int">50</font>;
+<a name="157"></a>    <font class="source_keyword">if</font> ( bMasterChunk )
+<a name="158"></a>        SetAsMaster(Other);
+<a name="159"></a>    <font class="source_keyword">else</font>
+<a name="160"></a>    {
+<a name="161"></a>        Velocity = (<font class="source_int">0.2</font> + FRand()) * (other.Velocity + RandDir);
+<a name="162"></a>        <font class="source_keyword">If</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="163"></a>            Velocity *= <font class="source_int">0.5</font>;
+<a name="164"></a>    }
+<a name="165"></a>    <font class="source_keyword">if</font> ( TrailSize &gt; <font class="source_int">0</font> )
+<a name="166"></a>    {
+<a name="167"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\unrealshare\creaturecarcass.html" class="source">CreatureCarcass</a></font>(Other) != <font class="source_keyword">None</font> )
+<a name="168"></a>            bGreenBlood = <font class="source_type"><a href="..\unrealshare\creaturecarcass.html" class="source">CreatureCarcass</a></font>(Other).bGreenBlood;
+<a name="169"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (<font class="source_type"><a href="..\unrealshare\creaturechunks.html" class="source">CreatureChunks</a></font>(Other) != <font class="source_keyword">None</font>) )
+<a name="170"></a>            bGreenBlood = <font class="source_type"><a href="..\unrealshare\creaturechunks.html" class="source">CreatureChunks</a></font>(Other).bGreenBlood;
+<a name="171"></a>    }
+<a name="172"></a>            
+<a name="173"></a>    <font class="source_keyword">if</font> ( FRand() &lt; <font class="source_int">0.3</font> )
+<a name="174"></a>        Buoyancy = <font class="source_int">1.06</font> * Mass; <font class="source_comment">// float corpse
+</font><a name="175"></a>    <font class="source_keyword">else</font>
+<a name="176"></a>        Buoyancy = <font class="source_int">0.94</font> * Mass;
+<a name="177"></a>
+<a name="178"></a>    <font class="source_keyword">if</font> ( bMasterChunk ) <font class="source_comment">// only if server
+</font><a name="179"></a>        ClientExtraChunks(bMustSpawnChunks);
+<a name="180"></a>}
+<a name="181"></a>
+<a name="182"></a><font class="source_keyword">function</font> SetAsMaster(<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other)
+<a name="183"></a>{
+<a name="184"></a>    Velocity = Other.Velocity;
+<a name="185"></a>    CarcassClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\unrealshare\creaturecarcass.html" class="source">CreatureCarcass</a></font>&gt;(Other.<font class="source_keyword">Class</font>);
+<a name="186"></a>    CarcassAnim = Other.AnimSequence;
+<a name="187"></a>    CarcLocation = Other.Location;
+<a name="188"></a>    CarcHeight = Other.CollisionHeight;
+<a name="189"></a>}
+<a name="190"></a>
+<a name="191"></a><font class="source_keyword">function</font> ChunkUp(<font class="source_keyword">int</font> Damage)
+<a name="192"></a>{
+<a name="193"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\unrealshare\bloodspurt.html" class="source">BloodSpurt</a></font> b;
+<a name="194"></a>
+<a name="195"></a>    <font class="source_keyword">if</font> (bHidden)
+<a name="196"></a>        <font class="source_keyword">return</font>;
+<a name="197"></a>    b = Spawn(<font class="source_keyword">class</font> <font class="source_name">'Bloodspurt'</font>,,,,rot(<font class="source_int">16384</font>,<font class="source_int">0</font>,<font class="source_int">0</font>));
+<a name="198"></a>    <font class="source_keyword">if</font> ( bGreenBlood )      
+<a name="199"></a>        b.GreenBlood(); 
+<a name="200"></a>    <font class="source_keyword">if</font> (bPlayerCarcass)
+<a name="201"></a>    {
+<a name="202"></a>        bHidden = <font class="source_keyword">true</font>;
+<a name="203"></a>        SetPhysics(PHYS_None);
+<a name="204"></a>        SetCollision(<font class="source_keyword">false</font>,<font class="source_keyword">false</font>,<font class="source_keyword">false</font>);
+<a name="205"></a>        bProjTarget = <font class="source_keyword">false</font>;
+<a name="206"></a>        <font class="source_keyword">if</font> ( Trail != <font class="source_keyword">None</font> )
+<a name="207"></a>            Trail.Destroy();
+<a name="208"></a>    }
+<a name="209"></a>    <font class="source_keyword">else</font>
+<a name="210"></a>        destroy();
+<a name="211"></a>}
+<a name="212"></a>
+<a name="213"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> Landed(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal)
+<a name="214"></a>{
+<a name="215"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> finalRot;
+<a name="216"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\unrealshare\bloodspurt.html" class="source">BloodSpurt</a></font> b;
+<a name="217"></a>
+<a name="218"></a>    <font class="source_keyword">if</font> ( trail != <font class="source_keyword">None</font> )
+<a name="219"></a>    {
+<a name="220"></a>        <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.bHighDetailMode )
+<a name="221"></a>            bUnlit = <font class="source_keyword">false</font>;
+<a name="222"></a>        trail.Destroy();
+<a name="223"></a>        trail = <font class="source_keyword">None</font>;
+<a name="224"></a>    }
+<a name="225"></a>    finalRot = Rotation;
+<a name="226"></a>    finalRot.Roll = <font class="source_int">0</font>;
+<a name="227"></a>    finalRot.Pitch = <font class="source_int">0</font>;
+<a name="228"></a>    setRotation(finalRot);
+<a name="229"></a>    <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.NetMode != NM_DedicatedServer )
+<a name="230"></a>    {
+<a name="231"></a>        b = Spawn(<font class="source_keyword">class</font> <font class="source_name">'Bloodspurt'</font>,,,,rot(<font class="source_int">16384</font>,<font class="source_int">0</font>,<font class="source_int">0</font>));
+<a name="232"></a>        <font class="source_keyword">if</font> ( bGreenBlood )
+<a name="233"></a>            b.GreenBlood();     
+<a name="234"></a>        b.RemoteRole = ROLE_None;
+<a name="235"></a>    }
+<a name="236"></a>    SetPhysics(PHYS_None);
+<a name="237"></a>    SetCollision(<font class="source_keyword">true</font>, <font class="source_keyword">false</font>, <font class="source_keyword">false</font>);
+<a name="238"></a>}
+<a name="239"></a>
+<a name="240"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> HitWall(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal, <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Wall)
+<a name="241"></a>{
+<a name="242"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> speed, decision;
+<a name="243"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\unrealshare\bloodspurt.html" class="source">BloodSpurt</a></font> b;
+<a name="244"></a>
+<a name="245"></a>    Velocity = <font class="source_int">0.8</font> * (Velocity - <font class="source_int">2</font> * HitNormal * (Velocity Dot HitNormal));
+<a name="246"></a>    Velocity.Z = FMin(Velocity.Z * <font class="source_int">0.8</font>, <font class="source_int">700</font>);
+<a name="247"></a>    speed = VSize(Velocity);
+<a name="248"></a>    <font class="source_keyword">if</font> ( speed &lt; <font class="source_int">250</font> )
+<a name="249"></a>    {
+<a name="250"></a>        <font class="source_keyword">if</font> ( trail != <font class="source_keyword">None</font> )
+<a name="251"></a>        {
+<a name="252"></a>            <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.bHighDetailMode )
+<a name="253"></a>                bUnlit = <font class="source_keyword">false</font>;
+<a name="254"></a>            trail.Destroy();
+<a name="255"></a>            trail = <font class="source_keyword">None</font>;
+<a name="256"></a>        }
+<a name="257"></a>        <font class="source_keyword">if</font> ( speed &lt; <font class="source_int">120</font> )
+<a name="258"></a>        {
+<a name="259"></a>            bBounce = <font class="source_keyword">false</font>;
+<a name="260"></a>            Disable(<font class="source_name">'HitWall'</font>);
+<a name="261"></a>        }
+<a name="262"></a>    }
+<a name="263"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( speed &gt; <font class="source_int">350</font> )
+<a name="264"></a>    {
+<a name="265"></a>        <font class="source_keyword">if</font> ( speed &gt; <font class="source_int">700</font> )
+<a name="266"></a>            velocity *= <font class="source_int">0.8</font>;
+<a name="267"></a>        <font class="source_keyword">if</font> (  <font class="source_type">Level</font>.NetMode != NM_DedicatedServer )
+<a name="268"></a>        {
+<a name="269"></a>            decision = FRand();
+<a name="270"></a>            <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.2</font> )
+<a name="271"></a>                PlaySound(<font class="source_type">sound</font> <font class="source_name">'gibP1'</font>);
+<a name="272"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.4</font> )
+<a name="273"></a>                PlaySound(<font class="source_type">sound</font> <font class="source_name">'gibP3'</font>);
+<a name="274"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.6</font> )
+<a name="275"></a>                PlaySound(<font class="source_type">sound</font> <font class="source_name">'gibP4'</font>);
+<a name="276"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.8</font> )
+<a name="277"></a>                PlaySound(<font class="source_type">sound</font> <font class="source_name">'gibP5'</font>);
+<a name="278"></a>            <font class="source_keyword">else</font> 
+<a name="279"></a>                PlaySound(<font class="source_type">sound</font> <font class="source_name">'gibP6'</font>);
+<a name="280"></a>        }
+<a name="281"></a>    }
+<a name="282"></a>    <font class="source_keyword">if</font> ( (trail == <font class="source_keyword">None</font>) && (<font class="source_type">Level</font>.NetMode != NM_DedicatedServer) )
+<a name="283"></a>    {
+<a name="284"></a>        b = Spawn(<font class="source_keyword">class</font> <font class="source_name">'Bloodspurt'</font>,,,,<font class="source_type"><a href="..\core\object.html#Rotator" class="source">Rotator</a></font>(HitNormal));
+<a name="285"></a>        <font class="source_keyword">if</font> ( bGreenBlood )
+<a name="286"></a>            b.GreenBlood();     
+<a name="287"></a>        b.RemoteRole = ROLE_None;
+<a name="288"></a>    }
+<a name="289"></a>}
+<a name="290"></a>
+<a name="291"></a><font class="source_keyword">function</font> TakeDamage( <font class="source_keyword">int</font> Damage, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> instigatedBy, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> hitlocation, 
+<a name="292"></a>                        <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> momentum, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>)
+<a name="293"></a>{
+<a name="294"></a>    SetPhysics(PHYS_Falling);
+<a name="295"></a>    bBobbing = <font class="source_keyword">false</font>;
+<a name="296"></a>    Velocity += momentum/Mass;
+<a name="297"></a>    CumulativeDamage += Damage;
+<a name="298"></a>    <font class="source_keyword">If</font> ( Damage &gt; FMin(<font class="source_int">15</font>, Mass) || (CumulativeDamage &gt; Mass) )
+<a name="299"></a>        ChunkUp(Damage);
+<a name="300"></a>}
+<a name="301"></a>
+<a name="302"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> Timer()
+<a name="303"></a>{
+<a name="304"></a>    <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.NetMode == NM_Client) && bMasterChunk )
+<a name="305"></a>        ClientExtraChunks(bMustSpawnChunks);
+<a name="306"></a>}
+<a name="307"></a>            
+<a name="308"></a>
+<a name="309"></a><font class="source_keyword2">auto</font> <font class="source_keyword">state</font> Dying
+<a name="310"></a>{
+<a name="311"></a>    <font class="source_keyword">ignores</font> TakeDamage;
+<a name="312"></a>
+<a name="313"></a>Begin:
+<a name="314"></a>    <font class="source_keyword">if</font> ( bDecorative )
+<a name="315"></a>        SetPhysics(PHYS_None);
+<a name="316"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (TrailSize &gt; <font class="source_int">0</font>) && !<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone )
+<a name="317"></a>    {
+<a name="318"></a>        trail = Spawn(<font class="source_keyword">class</font><font class="source_name">'BloodTrail'</font>,self);
+<a name="319"></a><font class="source_comment">//		trail.DrawScale = TrailSize;
+</font><a name="320"></a>        <font class="source_keyword">if</font> ( bGreenBlood )
+<a name="321"></a>            trail.GreenBlood();
+<a name="322"></a>    }
+<a name="323"></a>    Sleep(<font class="source_int">0.35</font>);
+<a name="324"></a>    SetCollision(<font class="source_keyword">true</font>, <font class="source_keyword">false</font>, <font class="source_keyword">false</font>);
+<a name="325"></a>    bMasterChunk = <font class="source_keyword">false</font>;
+<a name="326"></a>    GotoState(<font class="source_name">'Dead'</font>);
+<a name="327"></a>}   
+<a name="328"></a>
+<a name="329"></a><font class="source_keyword">state</font> Dead 
+<a name="330"></a>{
+<a name="331"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="332"></a>    {
+<a name="333"></a>        <font class="source_keyword">if</font> ( bDecorative )
+<a name="334"></a>            lifespan = <font class="source_int">0.0</font>;
+<a name="335"></a>        <font class="source_keyword">else</font>
+<a name="336"></a>            SetTimer(<font class="source_int">5.0</font>, <font class="source_keyword">false</font>);
+<a name="337"></a>    }
+<a name="338"></a>}
+<a name="339"></a>
+<a name="340"></a><font class="source_keyword">defaultproperties</font>
+<a name="341"></a>{
+<a name="342"></a>     TrailSize=<font class="source_int">3.000000</font>
+<a name="343"></a>     RemoteRole=ROLE_SimulatedProxy
+<a name="344"></a>     LifeSpan=<font class="source_int">20.000000</font>
+<a name="345"></a>     <font class="source_type">Mesh</font>=<font class="source_type">Mesh</font><font class="source_name">'UnrealShare.CowBody1'</font>
+<a name="346"></a>     bCollideActors=<font class="source_keyword">False</font>
+<a name="347"></a>     bBounce=<font class="source_keyword">True</font>
+<a name="348"></a>     bFixedRotationDir=<font class="source_keyword">True</font>
+<a name="349"></a>     bUnlit=<font class="source_keyword">True</font>
+<a name="350"></a>     Mass=<font class="source_int">30.000000</font>
+<a name="351"></a>     Buoyancy=<font class="source_int">27.000000</font>
+<a name="352"></a>     RotationRate=(Pitch=<font class="source_int">30000</font>,Roll=<font class="source_int">30000</font>)
+<a name="353"></a>     bMustSpawnChunks=<font class="source_keyword">true</font>
+<a name="354"></a>}
+<a name="355"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\creaturechunks.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#CreatureChunks">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="creaturecarcass.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="creaturefactory.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:26:04.000 - Creation time: Wed 26/5/2004 10:48:12.468 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

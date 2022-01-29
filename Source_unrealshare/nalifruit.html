@@ -1,0 +1,229 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealShare.NaliFruit</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\nalifruit.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#NaliFruit">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="nalicarcass.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="nalimasterchunk.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\nalifruit.html">NaliFruit</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// NaliFruit.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unrealshare\nalifruit.html" class="source">NaliFruit</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec MESH IMPORT MESH=NaliFruitMesh ANIVFILE=MODELS\nalipl_a.3D DATAFILE=MODELS\nalipl_d.3D LODSTYLE=2
+</font><a name="7"></a><font class="source_macro">#exec MESH LODPARAMS MESH=NaliFruitMesh STRENGTH=0.1
+</font><a name="8"></a>
+<a name="9"></a><font class="source_macro">#exec  MESH ORIGIN MESH=NaliFruitMesh X=0 Y=0 Z=70 YAW=0
+</font><a name="10"></a><font class="source_macro">#exec  MESH SEQUENCE MESH=NaliFruitMesh SEQ=All    STARTFRAME=0  NUMFRAMES=29
+</font><a name="11"></a><font class="source_macro">#exec  MESH SEQUENCE MESH=NaliFruitMesh SEQ=Still  STARTFRAME=0  NUMFRAMES=1
+</font><a name="12"></a><font class="source_macro">#exec  MESH SEQUENCE MESH=NaliFruitMesh SEQ=Root   STARTFRAME=1  NUMFRAMES=1
+</font><a name="13"></a><font class="source_macro">#exec  MESH SEQUENCE MESH=NaliFruitMesh SEQ=Grow  STARTFRAME=1  NUMFRAMES=26
+</font><a name="14"></a><font class="source_macro">#exec  MESH SEQUENCE MESH=NaliFruitMesh SEQ=Waver STARTFRAME=27  NUMFRAMES=2
+</font><a name="15"></a><font class="source_macro">#exec  TEXTURE IMPORT NAME=JNaliFruit1 FILE=MODELS\Nalipl.PCX GROUP="Skins" FLAGS=2
+</font><a name="16"></a><font class="source_macro">#exec  MESHMAP SCALE MESHMAP=NaliFruitMesh X=0.15 Y=0.15 Z=0.3
+</font><a name="17"></a><font class="source_macro">#exec  MESHMAP SETTEXTURE MESHMAP=NaliFruitMesh NUM=1 TEXTURE=JNaliFruit1
+</font><a name="18"></a>
+<a name="19"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bGrowWhenSeen;
+<a name="20"></a>
+<a name="21"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="22"></a>{
+<a name="23"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="24"></a>    bStasis = bGrowWhenSeen;
+<a name="25"></a>}
+<a name="26"></a>
+<a name="27"></a><font class="source_keyword">event</font> <font class="source_keyword">float</font> BotDesireability(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> <font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>)
+<a name="28"></a>{
+<a name="29"></a>    <font class="source_keyword">if</font> ( HealingAmount &lt; <font class="source_int">3</font> )
+<a name="30"></a>        <font class="source_keyword">return</font> <font class="source_int">0</font>;
+<a name="31"></a>
+<a name="32"></a>    <font class="source_keyword">return</font> <font class="source_keyword">Super</font>.BotDesireability(<font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>);
+<a name="33"></a>}
+<a name="34"></a>
+<a name="35"></a><font class="source_keyword2">auto</font> <font class="source_keyword">state</font> <font class="source_type"><a href="..\engine\pickup.html" class="source">Pickup</a></font>
+<a name="36"></a>{   
+<a name="37"></a>    <font class="source_keyword">function</font> Timer()
+<a name="38"></a>    {
+<a name="39"></a>        HealingAmount += <font class="source_int">1</font>;
+<a name="40"></a>        SetTimer(<font class="source_int">0.5</font>,<font class="source_keyword">True</font>);
+<a name="41"></a>    }
+<a name="42"></a>
+<a name="43"></a>    <font class="source_keyword">function</font> Touch( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other )
+<a name="44"></a>    {
+<a name="45"></a>        <font class="source_keyword">local</font> <font class="source_keyword">int</font> HealMax;
+<a name="46"></a>    
+<a name="47"></a>        <font class="source_keyword">if</font> ( !ValidTouch(Other) || (HealingAmount&lt;<font class="source_int">2</font>) )
+<a name="48"></a>            <font class="source_keyword">Return</font>;
+<a name="49"></a>    
+<a name="50"></a>        <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.LocalLog != <font class="source_keyword">None</font>)
+<a name="51"></a>            <font class="source_type">Level</font>.Game.LocalLog.LogPickup(Self, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other));
+<a name="52"></a>        <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.WorldLog != <font class="source_keyword">None</font>)
+<a name="53"></a>            <font class="source_type">Level</font>.Game.WorldLog.LogPickup(Self, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other));
+<a name="54"></a>
+<a name="55"></a>        HealMax = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).default.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font>;
+<a name="56"></a>        <font class="source_keyword">if</font> (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &lt; HealMax) 
+<a name="57"></a>        {
+<a name="58"></a>            <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> += HealingAmount;
+<a name="59"></a>            <font class="source_keyword">if</font> (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &gt; HealMax) <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> = HealMax;
+<a name="60"></a>            <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).ClientMessage(PickupMessage$HealingAmount, <font class="source_name">'Pickup'</font>);
+<a name="61"></a>            PlaySound (PickupSound);            
+<a name="62"></a>            SetRespawn();
+<a name="63"></a>            <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.Game.Difficulty &gt; <font class="source_int">1</font> )
+<a name="64"></a>                Other.MakeNoise(<font class="source_int">0.1</font> * <font class="source_type">Level</font>.Game.Difficulty);       
+<a name="65"></a>        }
+<a name="66"></a>    }
+<a name="67"></a>Begin:
+<a name="68"></a>    PlayAnim(<font class="source_name">'Root'</font>);
+<a name="69"></a>    FinishAnim();
+<a name="70"></a>    HealingAmount = <font class="source_int">0</font>;
+<a name="71"></a>    Sleep(FRand()*<font class="source_int">3</font>);
+<a name="72"></a>    SetTimer(<font class="source_int">8.5</font>,<font class="source_keyword">False</font>);
+<a name="73"></a>    PlayAnim(<font class="source_name">'Grow'</font>,<font class="source_int">0.036</font>);
+<a name="74"></a>    FinishAnim();
+<a name="75"></a>    SetTimer(<font class="source_int">0.0</font>,<font class="source_keyword">False</font>);
+<a name="76"></a>    LoopAnim(<font class="source_name">'Waver'</font>,<font class="source_int">0.1</font>);
+<a name="77"></a>}
+<a name="78"></a>
+<a name="79"></a><font class="source_keyword">defaultproperties</font>
+<a name="80"></a>{
+<a name="81"></a>     HealingAmount=<font class="source_int">0</font>
+<a name="82"></a>     PickupMessage=<font class="source_string">"You picked the Nali Healing Fruit +"</font>
+<a name="83"></a>     RespawnTime=<font class="source_int">5.000000</font>
+<a name="84"></a>     PickupViewMesh=<font class="source_type">Mesh</font><font class="source_name">'UnrealShare.NaliFruitMesh'</font>
+<a name="85"></a>     <font class="source_type">Mesh</font>=<font class="source_type">Mesh</font><font class="source_name">'UnrealShare.NaliFruitMesh'</font>
+<a name="86"></a>     CollisionHeight=<font class="source_int">21.000000</font>
+<a name="87"></a>}
+<a name="88"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\nalifruit.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#NaliFruit">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="nalicarcass.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="nalimasterchunk.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:26:30.000 - Creation time: Wed 26/5/2004 10:48:27.109 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

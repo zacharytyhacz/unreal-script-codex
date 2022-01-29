@@ -1,0 +1,455 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UBrowser.UBrowserMainClientWindow</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\ubrowser\ubrowser-overview.html">Package</a></td>
+	<td class="header"><a href="..\ubrowser\ubrowsermainclientwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserMainClientWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserlocallink.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowsermainwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\ubrowser\ubrowser-overview.html">UBrowser</a>.<a href="..\ubrowser\ubrowsermainclientwindow.html">UBrowserMainClientWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// UBrowserMainClientWindow - The main client area
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\ubrowser\ubrowsermainclientwindow.html" class="source">UBrowserMainClientWindow</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\uwindow\uwindowclientwindow.html" class="source">UWindowClientWindow</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">string</font>     LANTabName;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">name</font> ServerListNames[<font class="source_int">50</font>];
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bKeepMasterServer;
+<a name="9"></a>
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowpagecontrol.html" class="source">UWindowPageControl</a></font>      PageControl;
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowpagecontrolpage.html" class="source">UWindowPageControlPage</a></font>  Favorites, IRC, MOTD;
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>        FavoritesName, IRCName, MOTDName;
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font>                  ServerListWindowClass;
+<a name="14"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font>                  FavoriteServersClass;
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font>                  UpdateServerClass;
+<a name="16"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowpagecontrolpage.html" class="source">UWindowPageControlPage</a></font>  LANPage;
+<a name="17"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowtabcontrolitem.html" class="source">UWindowTabControlItem</a></font>   PageBeforeLAN;
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\ubrowser\ubrowserserverlistwindow.html" class="source">UBrowserServerListWindow</a></font> FactoryWindows[<font class="source_int">50</font>];
+<a name="19"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\ubrowser\ubrowserinfowindow.html" class="source">UBrowserInfoWindow</a></font>      InfoWindow;
+<a name="20"></a>
+<a name="21"></a><font class="source_keyword">function</font> Created() 
+<a name="22"></a>{
+<a name="23"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, f, j;
+<a name="24"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowpagecontrolpage.html" class="source">UWindowPageControlPage</a></font> P;
+<a name="25"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\ubrowser\ubrowserserverlistwindow.html" class="source">UBrowserServerListWindow</a></font> W;
+<a name="26"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\ubrowser\ubrowserserverlistwindow.html" class="source">UBrowserServerListWindow</a></font>&gt; C;
+<a name="27"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\ubrowser\ubrowserfavoriteservers.html" class="source">UBrowserFavoriteServers</a></font>&gt; FC;
+<a name="28"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\ubrowser\ubrowserupdateserverwindow.html" class="source">UBrowserUpdateServerWindow</a></font>&gt; MC;
+<a name="29"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NextWindowClass, NextWindowDesc;
+<a name="30"></a>
+<a name="31"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="32"></a>
+<a name="33"></a>    InfoWindow = <font class="source_type"><a href="..\ubrowser\ubrowserinfowindow.html" class="source">UBrowserInfoWindow</a></font>(Root.CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UBrowserInfoWindow'</font>, <font class="source_int">10</font>, <font class="source_int">40</font>, <font class="source_int">310</font>, <font class="source_int">170</font>));
+<a name="34"></a>    InfoWindow.HideWindow();
+<a name="35"></a>
+<a name="36"></a>    PageControl = <font class="source_type"><a href="..\uwindow\uwindowpagecontrol.html" class="source">UWindowPageControl</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UWindowPageControl'</font>, <font class="source_int">0</font>, <font class="source_int">0</font>, WinWidth, WinHeight));
+<a name="37"></a>    PageControl.SetMultiLine(<font class="source_keyword">True</font>);
+<a name="38"></a>
+<a name="39"></a>    <font class="source_comment">// Add MOTD
+</font><a name="40"></a>    MC = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\ubrowser\ubrowserupdateserverwindow.html" class="source">UBrowserUpdateServerWindow</a></font>&gt;(DynamicLoadObject(UpdateServerClass, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="41"></a>    MOTD = PageControl.AddPage(MOTDName, MC);
+<a name="42"></a>
+<a name="43"></a>    IRC = PageControl.AddPage(IRCName, <font class="source_keyword">class</font><font class="source_name">'UBrowserIRCWindow'</font>);
+<a name="44"></a>
+<a name="45"></a>    <font class="source_comment">// Add favorites
+</font><a name="46"></a>    FC = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\ubrowser\ubrowserfavoriteservers.html" class="source">UBrowserFavoriteServers</a></font>&gt;(DynamicLoadObject(FavoriteServersClass, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="47"></a>    Favorites = PageControl.AddPage(FavoritesName, FC);
+<a name="48"></a>
+<a name="49"></a>    C = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\ubrowser\ubrowserserverlistwindow.html" class="source">UBrowserServerListWindow</a></font>&gt;(DynamicLoadObject(ServerListWindowClass, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="50"></a>
+<a name="51"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>; i&lt;<font class="source_int">50</font>; i++)
+<a name="52"></a>    {
+<a name="53"></a>        <font class="source_keyword">if</font>(ServerListNames[i] == <font class="source_name">''</font>)
+<a name="54"></a>            <font class="source_keyword">break</font>;
+<a name="55"></a>
+<a name="56"></a>        P = PageControl.AddPage(<font class="source_string">""</font>, C, ServerListNames[i]);
+<a name="57"></a>        <font class="source_keyword">if</font>(<font class="source_keyword">string</font>(ServerListNames[i]) ~= LANTabName)
+<a name="58"></a>            LANPage = P;
+<a name="59"></a>
+<a name="60"></a>        W = <font class="source_type"><a href="..\ubrowser\ubrowserserverlistwindow.html" class="source">UBrowserServerListWindow</a></font>(P.Page);
+<a name="61"></a>        <font class="source_keyword">if</font>(W.bHidden)
+<a name="62"></a>            PageControl.DeletePage(P);
+<a name="63"></a>
+<a name="64"></a>        <font class="source_keyword">if</font>(W.ServerListTitle != <font class="source_string">""</font>)
+<a name="65"></a>            P.SetCaption(W.ServerListTitle);
+<a name="66"></a>        <font class="source_keyword">else</font>
+<a name="67"></a>            P.SetCaption(Localize(<font class="source_string">"ServerListTitles"</font>, <font class="source_keyword">string</font>(ServerListNames[i]), <font class="source_string">"UBrowser"</font>));
+<a name="68"></a>
+<a name="69"></a>        FactoryWindows[i] = W;
+<a name="70"></a>    }
+<a name="71"></a>
+<a name="72"></a>    <font class="source_comment">// Load custom UBrowser pages
+</font><a name="73"></a>    <font class="source_keyword">if</font>(i &lt; <font class="source_int">50</font>)
+<a name="74"></a>    {
+<a name="75"></a>        j = <font class="source_int">0</font>;
+<a name="76"></a>        GetPlayerOwner().GetNextIntDesc(ServerListWindowClass, j, NextWindowClass, NextWindowDesc); 
+<a name="77"></a>        <font class="source_keyword">while</font>( NextWindowClass != <font class="source_string">""</font> && i &lt; <font class="source_int">50</font> )
+<a name="78"></a>        {
+<a name="79"></a>            C = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\ubrowser\ubrowserserverlistwindow.html" class="source">UBrowserServerListWindow</a></font>&gt;(DynamicLoadObject(NextWindowClass, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="80"></a>            <font class="source_keyword">if</font>( C != <font class="source_keyword">None</font> )
+<a name="81"></a>            {
+<a name="82"></a>                ServerListNames[i] = <font class="source_name">''</font>;
+<a name="83"></a>                P = PageControl.AddPage(<font class="source_string">""</font>, C);
+<a name="84"></a>                W = <font class="source_type"><a href="..\ubrowser\ubrowserserverlistwindow.html" class="source">UBrowserServerListWindow</a></font>(P.Page);
+<a name="85"></a>                <font class="source_keyword">if</font>(W.bHidden)
+<a name="86"></a>                    PageControl.DeletePage(P);
+<a name="87"></a>                <font class="source_keyword">if</font>(W.ServerListTitle != <font class="source_string">""</font>)
+<a name="88"></a>                    P.SetCaption(W.ServerListTitle);
+<a name="89"></a>                <font class="source_keyword">else</font>
+<a name="90"></a>                    P.SetCaption(NextWindowDesc);
+<a name="91"></a>                FactoryWindows[i] = W;  
+<a name="92"></a>                i++;
+<a name="93"></a>            }
+<a name="94"></a>            j++;
+<a name="95"></a>            GetPlayerOwner().GetNextIntDesc(ServerListWindowClass, j, NextWindowClass, NextWindowDesc); 
+<a name="96"></a>        }
+<a name="97"></a>    }
+<a name="98"></a>}
+<a name="99"></a>
+<a name="100"></a><font class="source_keyword">function</font> SelectLAN()
+<a name="101"></a>{
+<a name="102"></a>    <font class="source_keyword">if</font>(LANPage != <font class="source_keyword">None</font>)
+<a name="103"></a>    {
+<a name="104"></a>        PageBeforeLAN = PageControl.SelectedTab;
+<a name="105"></a>        PageControl.GotoTab(LANPage, <font class="source_keyword">True</font>);
+<a name="106"></a>    }
+<a name="107"></a>}
+<a name="108"></a>
+<a name="109"></a><font class="source_keyword">function</font> SelectInternet()
+<a name="110"></a>{
+<a name="111"></a>    <font class="source_keyword">if</font>(PageBeforeLAN != <font class="source_keyword">None</font> && PageControl.SelectedTab == LANPage)
+<a name="112"></a>        PageControl.GotoTab(PageBeforeLAN, <font class="source_keyword">True</font>);
+<a name="113"></a>    PageBeforeLAN = <font class="source_keyword">None</font>;
+<a name="114"></a>}
+<a name="115"></a>
+<a name="116"></a><font class="source_keyword">function</font> NewMasterServer(<font class="source_keyword">string</font> M)
+<a name="117"></a>{
+<a name="118"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, j;
+<a name="119"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NewServers[<font class="source_int">10</font>];
+<a name="120"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> T;
+<a name="121"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bHadNewServer;
+<a name="122"></a>
+<a name="123"></a>    i = <font class="source_int">0</font>;
+<a name="124"></a>    <font class="source_keyword">while</font>(M != <font class="source_string">""</font>)
+<a name="125"></a>    {
+<a name="126"></a>        j = InStr(M, Chr(<font class="source_int">13</font>));
+<a name="127"></a>        <font class="source_keyword">if</font>(j != -<font class="source_int">1</font>)
+<a name="128"></a>        {
+<a name="129"></a>            T = Left(M, j);
+<a name="130"></a>            M = Mid(M, j+<font class="source_int">1</font>);
+<a name="131"></a>        }
+<a name="132"></a>        <font class="source_keyword">else</font>
+<a name="133"></a>        {
+<a name="134"></a>            T = M;
+<a name="135"></a>            M = <font class="source_string">""</font>;
+<a name="136"></a>        }
+<a name="137"></a>        <font class="source_keyword">if</font>(T != <font class="source_string">""</font>)
+<a name="138"></a>            NewServers[i++] = T;
+<a name="139"></a>    }   
+<a name="140"></a>
+<a name="141"></a>    <font class="source_keyword">if</font>(!bKeepMasterServer)
+<a name="142"></a>    {
+<a name="143"></a>        <font class="source_keyword">for</font>(i=<font class="source_int">0</font>; i&lt;<font class="source_int">20</font>; i++)
+<a name="144"></a>        {
+<a name="145"></a>            <font class="source_keyword">if</font>(ServerListNames[i] == <font class="source_name">'UBrowserAll'</font>)
+<a name="146"></a>            {
+<a name="147"></a>                bHadNewServer = <font class="source_keyword">False</font>;
+<a name="148"></a>                <font class="source_keyword">for</font>(j=<font class="source_int">0</font>; j&lt;<font class="source_int">9</font>; j++)
+<a name="149"></a>                {
+<a name="150"></a>                    <font class="source_keyword">if</font>(FactoryWindows[i].ListFactories[j] != NewServers[j])
+<a name="151"></a>                    {
+<a name="152"></a>                        Log(<font class="source_string">"Received new master server ["</font>$j$<font class="source_string">"] from UpdateServer: "</font>$NewServers[j]);
+<a name="153"></a>                        FactoryWindows[i].ListFactories[j] = NewServers[j];
+<a name="154"></a>                        FactoryWindows[i].ListFactories[j+<font class="source_int">1</font>] = <font class="source_string">""</font>;
+<a name="155"></a>                        bHadNewServer = <font class="source_keyword">True</font>;
+<a name="156"></a>                    }
+<a name="157"></a>                }
+<a name="158"></a>                <font class="source_keyword">if</font>(bHadNewServer)
+<a name="159"></a>                {
+<a name="160"></a>                    <font class="source_keyword">if</font>(FactoryWindows[i].bHadInitialRefresh)
+<a name="161"></a>                        FactoryWindows[i].Refresh(<font class="source_keyword">False</font>, <font class="source_keyword">True</font>);
+<a name="162"></a>                    FactoryWindows[i].SaveConfig();
+<a name="163"></a>                }
+<a name="164"></a>            }
+<a name="165"></a>        }
+<a name="166"></a>    }
+<a name="167"></a>}
+<a name="168"></a>
+<a name="169"></a><font class="source_keyword">function</font> NewIRCServer(<font class="source_keyword">string</font> S)
+<a name="170"></a>{
+<a name="171"></a>    <font class="source_type"><a href="..\ubrowser\ubrowserircwindow.html" class="source">UBrowserIRCWindow</a></font>(IRC.Page).SystemPage.SetupClient.NewIRCServer(S);
+<a name="172"></a>}
+<a name="173"></a>
+<a name="174"></a><font class="source_keyword">function</font> Paint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="175"></a>{
+<a name="176"></a>    DrawStretchedTexture(C, <font class="source_int">0</font>, <font class="source_int">0</font>, WinWidth, WinHeight, <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'BlackTexture'</font>);
+<a name="177"></a>}
+<a name="178"></a>
+<a name="179"></a><font class="source_keyword">function</font> Resized()
+<a name="180"></a>{
+<a name="181"></a>    <font class="source_keyword">Super</font>.Resized();
+<a name="182"></a>    PageControl.SetSize(WinWidth, WinHeight);
+<a name="183"></a>}
+<a name="184"></a>
+<a name="185"></a><font class="source_keyword">function</font> SaveConfigs()
+<a name="186"></a>{
+<a name="187"></a>    SaveConfig();
+<a name="188"></a>}
+<a name="189"></a>
+<a name="190"></a><font class="source_keyword">defaultproperties</font>
+<a name="191"></a>{
+<a name="192"></a>    FavoritesName=<font class="source_string">"Favorites"</font>
+<a name="193"></a>    IRCName=<font class="source_string">"Chat"</font>
+<a name="194"></a>    MOTDName=<font class="source_string">"News"</font>
+<a name="195"></a>    ServerListWindowClass=<font class="source_string">"UBrowser.UBrowserServerListWindow"</font>
+<a name="196"></a>    FavoriteServersClass=<font class="source_string">"UBrowser.UBrowserFavoriteServers"</font>
+<a name="197"></a>    UpdateServerClass=<font class="source_string">"UBrowser.UBrowserUpdateServerWindow"</font>
+<a name="198"></a>    bKeepMasterServer=<font class="source_keyword">False</font>
+<a name="199"></a>    LANTabName=<font class="source_string">"UBrowserLAN"</font>
+<a name="200"></a>}
+<a name="201"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\ubrowser\ubrowser-overview.html">Package</a></td>
+	<td class="header"><a href="..\ubrowser\ubrowsermainclientwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserMainClientWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserlocallink.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowsermainwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:24:36.000 - Creation time: Wed 26/5/2004 10:48:49.390 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

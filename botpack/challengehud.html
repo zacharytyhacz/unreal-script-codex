@@ -1,0 +1,1284 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Botpack.ChallengeHUD</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\challengehud.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#ChallengeHUD">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="challengedominationhud.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="challengeintro.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="botpack-overview.html">Botpack</a>.ChallengeHUD</h1>
+<b>Extends:</b> <a href="..\engine\hud.html">HUD</a><br>
+<b>Modifiers:</b> config <br>
+<a href="..\Source_botpack\challengehud.html"><b>Source code</b></a>
+
+<p>
+ChallengeHUD<br />
+Heads up display
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\hud.html">HUD</a>
+        |   
+        +-- <a href="botpack-overview.html">Botpack</a>.<a href="challengehud.html">ChallengeHUD</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="challengeteamhud.html">ChallengeTeamHUD</a>, <a href="cheolhud.html">CHEOLHud</a>, <a href="chnullhud.html">CHNullHud</a>, <a href="chspectatorhud.html">CHSpectatorHud</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AuthorString" name="AuthorString">AuthorString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AuthorString2" name="AuthorString2">AuthorString2</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAlwaysHideFrags" name="bAlwaysHideFrags">bAlwaysHideFrags</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_BaseColor" name="BaseColor">BaseColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDrawFaceArea" name="bDrawFaceArea">bDrawFaceArea</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDrawMessageArea" name="bDrawMessageArea">bDrawMessageArea</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bForceScores" name="bForceScores">bForceScores</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHideAllWeapons" name="bHideAllWeapons">bHideAllWeapons</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHideAmmo" name="bHideAmmo">bHideAmmo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHideCenterMessages" name="bHideCenterMessages">bHideCenterMessages</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHideFaces" name="bHideFaces">bHideFaces</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHideFrags" name="bHideFrags">bHideFrags</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHideHUD" name="bHideHUD">bHideHUD</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHideNoviceMessages" name="bHideNoviceMessages">bHideNoviceMessages</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHideStatus" name="bHideStatus">bHideStatus</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHideTeamInfo" name="bHideTeamInfo">bHideTeamInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLowRes" name="bLowRes">bLowRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_BlueColor" name="BlueColor">BlueColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bResChanged" name="bResChanged">bResChanged</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowInfo" name="bShowInfo">bShowInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bStartUpMessage" name="bStartUpMessage">bStartUpMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTiedScore" name="bTiedScore">bTiedScore</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTimeValid" name="bTimeValid">bTimeValid</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseTeamColor" name="bUseTeamColor">bUseTeamColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Count" name="Count">Count</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_CrosshairColor" name="CrosshairColor">CrosshairColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CrosshairCount" name="CrosshairCount">CrosshairCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_CrossHairs[20]" name="CrossHairs[20]">CrossHairs[20]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_CrossHairTextures[20]" name="CrossHairTextures[20]">CrossHairTextures[20]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_CurrentMessage" name="CurrentMessage">CurrentMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_CyanColor" name="CyanColor">CyanColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FaceAreaOffset" name="FaceAreaOffset">FaceAreaOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_FaceColor" name="FaceColor">FaceColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_FaceTeam" name="FaceTeam">FaceTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_FaceTexture" name="FaceTexture">FaceTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FaceTime" name="FaceTime">FaceTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_FavoriteHUDColor" name="FavoriteHUDColor">FavoriteHUDColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_FontInfoClass" name="FontInfoClass">FontInfoClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_FP1[3]" name="FP1[3]">FP1[3]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_FP2[3]" name="FP2[3]">FP2[3]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_FP3[3]" name="FP3[3]">FP3[3]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_GoldColor" name="GoldColor">GoldColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_GrayColor" name="GrayColor">GrayColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_GrayWeapons[11]" name="GrayWeapons[11]">GrayWeapons[11]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_GreenColor" name="GreenColor">GreenColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_HitDamage[4]" name="HitDamage[4]">HitDamage[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_HitPos[4]" name="HitPos[4]">HitPos[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_HitTime[4]" name="HitTime[4]">HitTime[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_HUDColor" name="HUDColor">HUDColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_HUDScale" name="HUDScale">HUDScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_IdentifyCallsign" name="IdentifyCallsign">IdentifyCallsign</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_IdentifyFadeTime" name="IdentifyFadeTime">IdentifyFadeTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_IdentifyHealth" name="IdentifyHealth">IdentifyHealth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_IdentifyName" name="IdentifyName">IdentifyName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a></td><td width="66%"><a href="#_IdentifyTarget" name="IdentifyTarget">IdentifyTarget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastReportedTime" name="LastReportedTime">LastReportedTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_lead" name="lead">lead</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LiveFeed" name="LiveFeed">LiveFeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\hud.html#HUDLocalizedMessage">HUDLocalizedMessage</a></td><td width="66%"><a href="#_LocalMessages[10]" name="LocalMessages[10]">LocalMessages[10]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MapTitleString" name="MapTitleString">MapTitleString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MapTitleString2" name="MapTitleString2">MapTitleString2</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MessageFadeCount" name="MessageFadeCount">MessageFadeCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MessageFadeTime" name="MessageFadeTime">MessageFadeTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MinFaceAreaOffset" name="MinFaceAreaOffset">MinFaceAreaOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MOTDFadeOutTime" name="MOTDFadeOutTime">MOTDFadeOutTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="fontinfo.html">FontInfo</a></td><td width="66%"><a href="#_MyFonts" name="MyFonts">MyFonts</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_OldClipX" name="OldClipX">OldClipX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_Opacity" name="Opacity">Opacity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\pawn.html">Pawn</a></td><td width="66%"><a href="#_PawnOwner" name="PawnOwner">PawnOwner</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_PickupTime" name="PickupTime">PickupTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_PlayerCount" name="PlayerCount">PlayerCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PlayerCountString" name="PlayerCountString">PlayerCountString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_PurpleColor" name="PurpleColor">PurpleColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_rank" name="rank">rank</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_RankString" name="RankString">RankString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ReceivedMessage" name="ReceivedMessage">ReceivedMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ReceivedName" name="ReceivedName">ReceivedName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ReceivedTime" name="ReceivedTime">ReceivedTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\zoneinfo.html">ZoneInfo</a></td><td width="66%"><a href="#_ReceivedZone" name="ReceivedZone">ReceivedZone</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_RedColor" name="RedColor">RedColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Scale" name="Scale">Scale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ScoreTime" name="ScoreTime">ScoreTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="serverinfo.html">ServerInfo</a></td><td width="66%"><a href="#_ServerInfo" name="ServerInfo">ServerInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="serverinfo.html">ServerInfo</a>&gt;</td><td width="66%"><a href="#_ServerInfoClass" name="ServerInfoClass">ServerInfoClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\hud.html#HUDLocalizedMessage">HUDLocalizedMessage</a></td><td width="66%"><a href="#_ShortMessageQueue[4]" name="ShortMessageQueue[4]">ShortMessageQueue[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_SizeY" name="SizeY">SizeY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_SolidHUDColor" name="SolidHUDColor">SolidHUDColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_SpreadString" name="SpreadString">SpreadString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_StatusScale" name="StatusScale">StatusScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_Style" name="Style">Style</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="criticaleventplus.html">CriticalEventPlus</a>&gt;</td><td width="66%"><a href="#_TimeMessageClass" name="TimeMessageClass">TimeMessageClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_TurqColor" name="TurqColor">TurqColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TutIconBlink" name="TutIconBlink">TutIconBlink</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_TutIconTex" name="TutIconTex">TutIconTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TutIconX" name="TutIconX">TutIconX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TutIconY" name="TutIconY">TutIconY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_UnitColor" name="UnitColor">UnitColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_VersionMessage" name="VersionMessage">VersionMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_WeaponNameFade" name="WeaponNameFade">WeaponNameFade</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_WeaponScale" name="WeaponScale">WeaponScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_WhiteColor" name="WhiteColor">WhiteColor</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\hud.html">HUD</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\hud.html#Crosshair">Crosshair</a>, <a href="..\engine\hud.html#HUDConfigWindowType">HUDConfigWindowType</a>, <a href="..\engine\hud.html#HudMode">HudMode</a>, <a href="..\engine\hud.html#HUDMutator">HUDMutator</a>, <a href="..\engine\hud.html#MainMenu">MainMenu</a>, <a href="..\engine\hud.html#MainMenuType">MainMenuType</a>, <a href="..\engine\hud.html#PlayerOwner">PlayerOwner</a>, <a href="..\engine\hud.html#WhiteColor">WhiteColor</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\actor.html#Acceleration">Acceleration</a>, <a href="..\engine\actor.html#AmbientGlow">AmbientGlow</a>, <a href="..\engine\actor.html#AmbientSound">AmbientSound</a>, <a href="..\engine\actor.html#AnimFrame">AnimFrame</a>, <a href="..\engine\actor.html#AnimLast">AnimLast</a>, <a href="..\engine\actor.html#AnimMinRate">AnimMinRate</a>, <a href="..\engine\actor.html#AnimRate">AnimRate</a>, <a href="..\engine\actor.html#AnimSequence">AnimSequence</a>, <a href="..\engine\actor.html#AttachTag">AttachTag</a>, <a href="..\engine\actor.html#bActorShadows">bActorShadows</a>, <a href="..\engine\actor.html#bAlwaysRelevant">bAlwaysRelevant</a>, <a href="..\engine\actor.html#bAlwaysTick">bAlwaysTick</a>, <a href="..\engine\actor.html#bAnimByOwner">bAnimByOwner</a>, <a href="..\engine\actor.html#bAnimFinished">bAnimFinished</a>, <a href="..\engine\actor.html#bAnimLoop">bAnimLoop</a>, <a href="..\engine\actor.html#bAnimNotify">bAnimNotify</a>, <a href="..\engine\actor.html#Base">Base</a>, <a href="..\engine\actor.html#bAssimilated">bAssimilated</a>, <a href="..\engine\actor.html#bBlockActors">bBlockActors</a>, <a href="..\engine\actor.html#bBlockPlayers">bBlockPlayers</a>, <a href="..\engine\actor.html#bBounce">bBounce</a>, <a href="..\engine\actor.html#bCanTeleport">bCanTeleport</a>, <a href="..\engine\actor.html#bCarriedItem">bCarriedItem</a>, <a href="..\engine\actor.html#bClientAnim">bClientAnim</a>, <a href="..\engine\actor.html#bClientDemoNetFunc">bClientDemoNetFunc</a>, <a href="..\engine\actor.html#bClientDemoRecording">bClientDemoRecording</a>, <a href="..\engine\actor.html#bCollideActors">bCollideActors</a>, <a href="..\engine\actor.html#bCollideWhenPlacing">bCollideWhenPlacing</a>, <a href="..\engine\actor.html#bCollideWorld">bCollideWorld</a>, <a href="..\engine\actor.html#bCorona">bCorona</a>, <a href="..\engine\actor.html#bDeleteMe">bDeleteMe</a>, <a href="..\engine\actor.html#bDemoRecording">bDemoRecording</a>, <a href="..\engine\actor.html#bDifficulty0">bDifficulty0</a>, <a href="..\engine\actor.html#bDifficulty1">bDifficulty1</a>, <a href="..\engine\actor.html#bDifficulty2">bDifficulty2</a>, <a href="..\engine\actor.html#bDifficulty3">bDifficulty3</a>, <a href="..\engine\actor.html#bDirectional">bDirectional</a>, <a href="..\engine\actor.html#bDynamicLight">bDynamicLight</a>, <a href="..\engine\actor.html#bEdLocked">bEdLocked</a>, <a href="..\engine\actor.html#bEdShouldSnap">bEdShouldSnap</a>, <a href="..\engine\actor.html#bEdSnap">bEdSnap</a>, <a href="..\engine\actor.html#bFilterByVolume">bFilterByVolume</a>, <a href="..\engine\actor.html#bFixedRotationDir">bFixedRotationDir</a>, <a href="..\engine\actor.html#bForcePhysicsUpdate">bForcePhysicsUpdate</a>, <a href="..\engine\actor.html#bForceStasis">bForceStasis</a>, <a href="..\engine\actor.html#bGameRelevant">bGameRelevant</a>, <a href="..\engine\actor.html#bHidden">bHidden</a>, <a href="..\engine\actor.html#bHiddenEd">bHiddenEd</a>, <a href="..\engine\actor.html#bHighDetail">bHighDetail</a>, <a href="..\engine\actor.html#bHighlighted">bHighlighted</a>, <a href="..\engine\actor.html#bHurtEntry">bHurtEntry</a>, <a href="..\engine\actor.html#bInterpolating">bInterpolating</a>, <a href="..\engine\actor.html#bIsItemGoal">bIsItemGoal</a>, <a href="..\engine\actor.html#bIsKillGoal">bIsKillGoal</a>, <a href="..\engine\actor.html#bIsMover">bIsMover</a>, <a href="..\engine\actor.html#bIsPawn">bIsPawn</a>, <a href="..\engine\actor.html#bIsSecretGoal">bIsSecretGoal</a>, <a href="..\engine\actor.html#bJustTeleported">bJustTeleported</a>, <a href="..\engine\actor.html#bLensFlare">bLensFlare</a>, <a href="..\engine\actor.html#bLightChanged">bLightChanged</a>, <a href="..\engine\actor.html#bMemorized">bMemorized</a>, <a href="..\engine\actor.html#bMeshCurvy">bMeshCurvy</a>, <a href="..\engine\actor.html#bMeshEnviroMap">bMeshEnviroMap</a>, <a href="..\engine\actor.html#bMovable">bMovable</a>, <a href="..\engine\actor.html#bNet">bNet</a>, <a href="..\engine\actor.html#bNetFeel">bNetFeel</a>, <a href="..\engine\actor.html#bNetHear">bNetHear</a>, <a href="..\engine\actor.html#bNetInitial">bNetInitial</a>, <a href="..\engine\actor.html#bNetOptional">bNetOptional</a>, <a href="..\engine\actor.html#bNetOwner">bNetOwner</a>, <a href="..\engine\actor.html#bNetRelevant">bNetRelevant</a>, <a href="..\engine\actor.html#bNetSee">bNetSee</a>, <a href="..\engine\actor.html#bNetSpecial">bNetSpecial</a>, <a href="..\engine\actor.html#bNetTemporary">bNetTemporary</a>, <a href="..\engine\actor.html#bNoDelete">bNoDelete</a>, <a href="..\engine\actor.html#bNoSmooth">bNoSmooth</a>, <a href="..\engine\actor.html#bOnlyOwnerSee">bOnlyOwnerSee</a>, <a href="..\engine\actor.html#bOwnerNoSee">bOwnerNoSee</a>, <a href="..\engine\actor.html#bParticles">bParticles</a>, <a href="..\engine\actor.html#bProjTarget">bProjTarget</a>, <a href="..\engine\actor.html#bRandomFrame">bRandomFrame</a>, <a href="..\engine\actor.html#bReplicateInstigator">bReplicateInstigator</a>, <a href="..\engine\actor.html#bRotateToDesired">bRotateToDesired</a>, <a href="..\engine\actor.html#Brush">Brush</a>, <a href="..\engine\actor.html#bScriptInitialized">bScriptInitialized</a>, <a href="..\engine\actor.html#bSelected">bSelected</a>, <a href="..\engine\actor.html#bShadowCast">bShadowCast</a>, <a href="..\engine\actor.html#bSimFall">bSimFall</a>, <a href="..\engine\actor.html#bSimulatedPawn">bSimulatedPawn</a>, <a href="..\engine\actor.html#bSinglePlayer">bSinglePlayer</a>, <a href="..\engine\actor.html#bSpecialLit">bSpecialLit</a>, <a href="..\engine\actor.html#bStasis">bStasis</a>, <a href="..\engine\actor.html#bStatic">bStatic</a>, <a href="..\engine\actor.html#bTempEditor">bTempEditor</a>, <a href="..\engine\actor.html#bTicked">bTicked</a>, <a href="..\engine\actor.html#bTimerLoop">bTimerLoop</a>, <a href="..\engine\actor.html#bTrailerPrePivot">bTrailerPrePivot</a>, <a href="..\engine\actor.html#bTrailerSameRotation">bTrailerSameRotation</a>, <a href="..\engine\actor.html#bTravel">bTravel</a>, <a href="..\engine\actor.html#bUnlit">bUnlit</a>, <a href="..\engine\actor.html#Buoyancy">Buoyancy</a>, <a href="..\engine\actor.html#CollisionHeight">CollisionHeight</a>, <a href="..\engine\actor.html#CollisionRadius">CollisionRadius</a>, <a href="..\engine\actor.html#CollisionTag">CollisionTag</a>, <a href="..\engine\actor.html#ColLocation">ColLocation</a>, <a href="..\engine\actor.html#Deleted">Deleted</a>, <a href="..\engine\actor.html#DesiredRotation">DesiredRotation</a>, <a href="..\engine\actor.html#DodgeDir">DodgeDir</a>, <a href="..\engine\actor.html#DrawScale">DrawScale</a>, <a href="..\engine\actor.html#DrawType">DrawType</a>, <a href="..\engine\actor.html#Event">Event</a>, <a href="..\engine\actor.html#ExtraTag">ExtraTag</a>, <a href="..\engine\actor.html#Fatness">Fatness</a>, <a href="..\engine\actor.html#Group">Group</a>, <a href="..\engine\actor.html#HitActor">HitActor</a>, <a href="..\engine\actor.html#InitialState">InitialState</a>, <a href="..\engine\actor.html#Instigator">Instigator</a>, <a href="..\engine\actor.html#Inventory">Inventory</a>, <a href="..\engine\actor.html#LatentActor">LatentActor</a>, <a href="..\engine\actor.html#LatentByte">LatentByte</a>, <a href="..\engine\actor.html#LatentFloat">LatentFloat</a>, <a href="..\engine\actor.html#LatentInt">LatentInt</a>, <a href="..\engine\actor.html#Level">Level</a>, <a href="..\engine\actor.html#LifeSpan">LifeSpan</a>, <a href="..\engine\actor.html#LightBrightness">LightBrightness</a>, <a href="..\engine\actor.html#LightCone">LightCone</a>, <a href="..\engine\actor.html#LightEffect">LightEffect</a>, <a href="..\engine\actor.html#LightHue">LightHue</a>, <a href="..\engine\actor.html#LightingTag">LightingTag</a>, <a href="..\engine\actor.html#LightPeriod">LightPeriod</a>, <a href="..\engine\actor.html#LightPhase">LightPhase</a>, <a href="..\engine\actor.html#LightRadius">LightRadius</a>, <a href="..\engine\actor.html#LightSaturation">LightSaturation</a>, <a href="..\engine\actor.html#LightType">LightType</a>, <a href="..\engine\actor.html#Location">Location</a>, <a href="..\engine\actor.html#LODBias">LODBias</a>, <a href="..\engine\actor.html#Mass">Mass</a>, <a href="..\engine\actor.html#Mesh">Mesh</a>, <a href="..\engine\actor.html#MiscNumber">MiscNumber</a>, <a href="..\engine\actor.html#MultiSkins[8]">MultiSkins[8]</a>, <a href="..\engine\actor.html#NetPriority">NetPriority</a>, <a href="..\engine\actor.html#NetTag">NetTag</a>, <a href="..\engine\actor.html#NetUpdateFrequency">NetUpdateFrequency</a>, <a href="..\engine\actor.html#OddsOfAppearing">OddsOfAppearing</a>, <a href="..\engine\actor.html#OldAnimRate">OldAnimRate</a>, <a href="..\engine\actor.html#OldLocation">OldLocation</a>, <a href="..\engine\actor.html#OtherTag">OtherTag</a>, <a href="..\engine\actor.html#Owner">Owner</a>, <a href="..\engine\actor.html#PendingTouch">PendingTouch</a>, <a href="..\engine\actor.html#PhysAlpha">PhysAlpha</a>, <a href="..\engine\actor.html#Physics">Physics</a>, <a href="..\engine\actor.html#PhysRate">PhysRate</a>, <a href="..\engine\actor.html#PrePivot">PrePivot</a>, <a href="..\engine\actor.html#Region">Region</a>, <a href="..\engine\actor.html#RemoteRole">RemoteRole</a>, <a href="..\engine\actor.html#RenderInterface">RenderInterface</a>, <a href="..\engine\actor.html#RenderIteratorClass">RenderIteratorClass</a>, <a href="..\engine\actor.html#Role">Role</a>, <a href="..\engine\actor.html#Rotation">Rotation</a>, <a href="..\engine\actor.html#RotationRate">RotationRate</a>, <a href="..\engine\actor.html#ScaleGlow">ScaleGlow</a>, <a href="..\engine\actor.html#SimAnim">SimAnim</a>, <a href="..\engine\actor.html#SkelAnim">SkelAnim</a>, <a href="..\engine\actor.html#Skin">Skin</a>, <a href="..\engine\actor.html#SoundPitch">SoundPitch</a>, <a href="..\engine\actor.html#SoundRadius">SoundRadius</a>, <a href="..\engine\actor.html#SoundVolume">SoundVolume</a>, <a href="..\engine\actor.html#SpecialTag">SpecialTag</a>, <a href="..\engine\actor.html#Sprite">Sprite</a>, <a href="..\engine\actor.html#SpriteProjForward">SpriteProjForward</a>, <a href="..\engine\actor.html#StandingCount">StandingCount</a>, <a href="..\engine\actor.html#Style">Style</a>, <a href="..\engine\actor.html#Tag">Tag</a>, <a href="..\engine\actor.html#Target">Target</a>, <a href="..\engine\actor.html#Texture">Texture</a>, <a href="..\engine\actor.html#TimerCounter">TimerCounter</a>, <a href="..\engine\actor.html#TimerRate">TimerRate</a>, <a href="..\engine\actor.html#Touching[4]">Touching[4]</a>, <a href="..\engine\actor.html#TransientSoundRadius">TransientSoundRadius</a>, <a href="..\engine\actor.html#TransientSoundVolume">TransientSoundVolume</a>, <a href="..\engine\actor.html#TweenRate">TweenRate</a>, <a href="..\engine\actor.html#Velocity">Velocity</a>, <a href="..\engine\actor.html#VisibilityHeight">VisibilityHeight</a>, <a href="..\engine\actor.html#VisibilityRadius">VisibilityRadius</a>, <a href="..\engine\actor.html#VolumeBrightness">VolumeBrightness</a>, <a href="..\engine\actor.html#VolumeFog">VolumeFog</a>, <a href="..\engine\actor.html#VolumeRadius">VolumeRadius</a>, <a href="..\engine\actor.html#XLevel">XLevel</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\actor.html#EDodgeDir">EDodgeDir</a>, <a href="..\engine\actor.html#EDrawType">EDrawType</a>, <a href="..\engine\actor.html#EInputAction">EInputAction</a>, <a href="..\engine\actor.html#EInputKey">EInputKey</a>, <a href="..\engine\actor.html#ELightEffect">ELightEffect</a>, <a href="..\engine\actor.html#ELightType">ELightType</a>, <a href="..\engine\actor.html#EMusicTransition">EMusicTransition</a>, <a href="..\engine\actor.html#ENetRole">ENetRole</a>, <a href="..\engine\actor.html#EPhysics">EPhysics</a>, <a href="..\engine\actor.html#ERenderStyle">ERenderStyle</a>, <a href="..\engine\actor.html#ESoundSlot">ESoundSlot</a>, <a href="..\engine\actor.html#ETravelType">ETravelType</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\hud.html">HUD</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\hud.html#HUDLocalizedMessage">HUDLocalizedMessage</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\actor.html#PointRegion">PointRegion</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ChangeCrosshair+" name="ChangeCrosshair">ChangeCrosshair</a> (int d)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Destroyed+" name="Destroyed">Destroyed</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_DisplayMessages+" name="DisplayMessages">DisplayMessages</a> (<a href="..\engine\canvas.html">canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DisplayProgressMessage+" name="DisplayProgressMessage">DisplayProgressMessage</a> (<a href="..\engine\canvas.html">canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawAmmo+" name="DrawAmmo">DrawAmmo</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawBigNum+" name="DrawBigNum">DrawBigNum</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas, int Value, int X, int Y, optional float ScaleFactor)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawCrossHair+" name="DrawCrossHair">DrawCrossHair</a> (<a href="..\engine\canvas.html">canvas</a> Canvas, int X, int Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawDigit+" name="DrawDigit">DrawDigit</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas, int d, int Step, float UpScale, out byte bMinus)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawFragCount+" name="DrawFragCount">DrawFragCount</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawGameSynopsis+" name="DrawGameSynopsis">DrawGameSynopsis</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_DrawIdentifyInfo+" name="DrawIdentifyInfo">DrawIdentifyInfo</a> (<a href="..\engine\canvas.html">canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawMOTD+" name="DrawMOTD">DrawMOTD</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_DrawNextMessagePart+" name="DrawNextMessagePart">DrawNextMessagePart</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas, string MString, float XOffset, int YPos)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_DrawSpeechArea+" name="DrawSpeechArea">DrawSpeechArea</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas, float XL, float YL)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawStatus+" name="DrawStatus">DrawStatus</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawTalkFace+" name="DrawTalkFace">DrawTalkFace</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas, int i, float YPos)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawTwoColorID+" name="DrawTwoColorID">DrawTwoColorID</a> (<a href="..\engine\canvas.html">canvas</a> Canvas, string TitleString, string ValueString, int YStart)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawTypingPrompt+" name="DrawTypingPrompt">DrawTypingPrompt</a> (<a href="..\engine\canvas.html">canvas</a> Canvas, <a href="..\engine\console.html">console</a> Console)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawWeapons+" name="DrawWeapons">DrawWeapons</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_GrowHUD+" name="GrowHUD">GrowHUD</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_HUDSetup+" name="HUDSetup">HUDSetup</a> (<a href="..\engine\canvas.html">canvas</a> canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="..\engine\texture.html">Texture</a>&nbsp;</td><td><a href="#_LoadCrosshair+" name="LoadCrosshair">LoadCrosshair</a> (int c)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_LocalizedMessage+" name="LocalizedMessage">LocalizedMessage</a> (class&lt;<a href="..\engine\localmessage.html">LocalMessage</a>&gt; Message, optional int Switch, optional <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> RelatedPRI_1, optional <a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> RelatedPRI_2, optional <a href="..\core\object.html">Object</a> OptionalObject, optional String CriticalString)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Message+" name="Message">Message</a> (<a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> PRI, coerce string Msg, name MsgType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PostBeginPlay+" name="PostBeginPlay">PostBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PostRender+" name="PostRender">PostRender</a> (<a href="..\engine\canvas.html">canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetDamage+" name="SetDamage">SetDamage</a> (<a href="..\core\object.html#Vector">vector</a> HitLoc, float damage)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetHUDB+" name="SetHUDB">SetHUDB</a> (int n)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetHUDG+" name="SetHUDG">SetHUDG</a> (int n)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetHUDR+" name="SetHUDR">SetHUDR</a> (int n)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetIDColor+" name="SetIDColor">SetIDColor</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas, int type)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ShowServerInfo+" name="ShowServerInfo">ShowServerInfo</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ShrinkHUD+" name="ShrinkHUD">ShrinkHUD</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_SpecialIdentify+" name="SpecialIdentify">SpecialIdentify</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas, <a href="..\engine\actor.html">Actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TellTime+" name="TellTime">TellTime</a> (int num)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+" name="Timer">Timer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_TraceIdentify+" name="TraceIdentify">TraceIdentify</a> (<a href="..\engine\canvas.html">canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_UpdateRankAndSpread+" name="UpdateRankAndSpread">UpdateRankAndSpread</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\hud.html">HUD</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\hud.html#ChangeCrosshair">ChangeCrosshair</a>, <a href="..\engine\hud.html#ChangeHud">ChangeHud</a>, <a href="..\engine\hud.html#ClearMessage">ClearMessage</a>, <a href="..\engine\hud.html#CopyMessage">CopyMessage</a>, <a href="..\engine\hud.html#DisplayMessages">DisplayMessages</a>, <a href="..\engine\hud.html#DrawCrossHair">DrawCrossHair</a>, <a href="..\engine\hud.html#InputNumber">InputNumber</a>, <a href="..\engine\hud.html#LocalizedMessage">LocalizedMessage</a>, <a href="..\engine\hud.html#Message">Message</a>, <a href="..\engine\hud.html#PlayReceivedMessage">PlayReceivedMessage</a>, <a href="..\engine\hud.html#PostRender">PostRender</a>, <a href="..\engine\hud.html#PreRender">PreRender</a>, <a href="..\engine\hud.html#ProcessKeyEvent">ProcessKeyEvent</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\actor.html#*">*</a>, <a href="..\engine\actor.html#+">+</a>, <a href="..\engine\actor.html#-">-</a>, <a href="..\engine\actor.html#AllActors">AllActors</a>, <a href="..\engine\actor.html#AnimEnd">AnimEnd</a>, <a href="..\engine\actor.html#Attach">Attach</a>, <a href="..\engine\actor.html#AutonomousPhysics">AutonomousPhysics</a>, <a href="..\engine\actor.html#BaseChange">BaseChange</a>, <a href="..\engine\actor.html#BasedActors">BasedActors</a>, <a href="..\engine\actor.html#BecomeViewTarget">BecomeViewTarget</a>, <a href="..\engine\actor.html#BeginEvent">BeginEvent</a>, <a href="..\engine\actor.html#BeginPlay">BeginPlay</a>, <a href="..\engine\actor.html#BroadcastLocalizedMessage">BroadcastLocalizedMessage</a>, <a href="..\engine\actor.html#BroadcastMessage">BroadcastMessage</a>, <a href="..\engine\actor.html#Bump">Bump</a>, <a href="..\engine\actor.html#ChildActors">ChildActors</a>, <a href="..\engine\actor.html#ConsoleCommand">ConsoleCommand</a>, <a href="..\engine\actor.html#DemoPlaySound">DemoPlaySound</a>, <a href="..\engine\actor.html#Destroy">Destroy</a>, <a href="..\engine\actor.html#Destroyed">Destroyed</a>, <a href="..\engine\actor.html#Detach">Detach</a>, <a href="..\engine\actor.html#EncroachedBy">EncroachedBy</a>, <a href="..\engine\actor.html#EncroachingOn">EncroachingOn</a>, <a href="..\engine\actor.html#EndedRotation">EndedRotation</a>, <a href="..\engine\actor.html#EndEvent">EndEvent</a>, <a href="..\engine\actor.html#Error">Error</a>, <a href="..\engine\actor.html#Expired">Expired</a>, <a href="..\engine\actor.html#Falling">Falling</a>, <a href="..\engine\actor.html#FastTrace">FastTrace</a>, <a href="..\engine\actor.html#FellOutOfWorld">FellOutOfWorld</a>, <a href="..\engine\actor.html#FinishAnim">FinishAnim</a>, <a href="..\engine\actor.html#FinishInterpolation">FinishInterpolation</a>, <a href="..\engine\actor.html#GainedChild">GainedChild</a>, <a href="..\engine\actor.html#GetAnimGroup">GetAnimGroup</a>, <a href="..\engine\actor.html#GetCacheEntry">GetCacheEntry</a>, <a href="..\engine\actor.html#GetHumanName">GetHumanName</a>, <a href="..\engine\actor.html#GetItemName">GetItemName</a>, <a href="..\engine\actor.html#GetMapName">GetMapName</a>, <a href="..\engine\actor.html#GetNextInt">GetNextInt</a>, <a href="..\engine\actor.html#GetNextIntDesc">GetNextIntDesc</a>, <a href="..\engine\actor.html#GetNextSkin">GetNextSkin</a>, <a href="..\engine\actor.html#GetSoundDuration">GetSoundDuration</a>, <a href="..\engine\actor.html#GetURLMap">GetURLMap</a>, <a href="..\engine\actor.html#HasAnim">HasAnim</a>, <a href="..\engine\actor.html#HitWall">HitWall</a>, <a href="..\engine\actor.html#HurtRadius">HurtRadius</a>, <a href="..\engine\actor.html#InterpolateEnd">InterpolateEnd</a>, <a href="..\engine\actor.html#IsAnimating">IsAnimating</a>, <a href="..\engine\actor.html#KillCredit">KillCredit</a>, <a href="..\engine\actor.html#KilledBy">KilledBy</a>, <a href="..\engine\actor.html#Landed">Landed</a>, <a href="..\engine\actor.html#LinkSkelAnim">LinkSkelAnim</a>, <a href="..\engine\actor.html#LoopAnim">LoopAnim</a>, <a href="..\engine\actor.html#LostChild">LostChild</a>, <a href="..\engine\actor.html#MakeNoise">MakeNoise</a>, <a href="..\engine\actor.html#Move">Move</a>, <a href="..\engine\actor.html#MoveCacheEntry">MoveCacheEntry</a>, <a href="..\engine\actor.html#MoveSmooth">MoveSmooth</a>, <a href="..\engine\actor.html#PlayAnim">PlayAnim</a>, <a href="..\engine\actor.html#PlayerCanSeeMe">PlayerCanSeeMe</a>, <a href="..\engine\actor.html#PlayOwnedSound">PlayOwnedSound</a>, <a href="..\engine\actor.html#PlaySound">PlaySound</a>, <a href="..\engine\actor.html#PostBeginPlay">PostBeginPlay</a>, <a href="..\engine\actor.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="..\engine\actor.html#PostTeleport">PostTeleport</a>, <a href="..\engine\actor.html#PostTouch">PostTouch</a>, <a href="..\engine\actor.html#PreBeginPlay">PreBeginPlay</a>, <a href="..\engine\actor.html#PreTeleport">PreTeleport</a>, <a href="..\engine\actor.html#RadiusActors">RadiusActors</a>, <a href="..\engine\actor.html#RenderOverlays">RenderOverlays</a>, <a href="..\engine\actor.html#RenderTexture">RenderTexture</a>, <a href="..\engine\actor.html#SetBase">SetBase</a>, <a href="..\engine\actor.html#SetCollision">SetCollision</a>, <a href="..\engine\actor.html#SetCollisionSize">SetCollisionSize</a>, <a href="..\engine\actor.html#SetDefaultDisplayProperties">SetDefaultDisplayProperties</a>, <a href="..\engine\actor.html#SetDisplayProperties">SetDisplayProperties</a>, <a href="..\engine\actor.html#SetInitialState">SetInitialState</a>, <a href="..\engine\actor.html#SetLocation">SetLocation</a>, <a href="..\engine\actor.html#SetOwner">SetOwner</a>, <a href="..\engine\actor.html#SetPhysics">SetPhysics</a>, <a href="..\engine\actor.html#SetRotation">SetRotation</a>, <a href="..\engine\actor.html#SetTimer">SetTimer</a>, <a href="..\engine\actor.html#Sleep">Sleep</a>, <a href="..\engine\actor.html#Spawn">Spawn</a>, <a href="..\engine\actor.html#Spawned">Spawned</a>, <a href="..\engine\actor.html#SpecialHandling">SpecialHandling</a>, <a href="..\engine\actor.html#TakeDamage">TakeDamage</a>, <a href="..\engine\actor.html#Tick">Tick</a>, <a href="..\engine\actor.html#Timer">Timer</a>, <a href="..\engine\actor.html#Touch">Touch</a>, <a href="..\engine\actor.html#TouchingActors">TouchingActors</a>, <a href="..\engine\actor.html#Trace">Trace</a>, <a href="..\engine\actor.html#TraceActors">TraceActors</a>, <a href="..\engine\actor.html#TravelPostAccept">TravelPostAccept</a>, <a href="..\engine\actor.html#TravelPreAccept">TravelPreAccept</a>, <a href="..\engine\actor.html#Trigger">Trigger</a>, <a href="..\engine\actor.html#TweenAnim">TweenAnim</a>, <a href="..\engine\actor.html#UnTouch">UnTouch</a>, <a href="..\engine\actor.html#UnTrigger">UnTrigger</a>, <a href="..\engine\actor.html#VisibleActors">VisibleActors</a>, <a href="..\engine\actor.html#VisibleCollidingActors">VisibleCollidingActors</a>, <a href="..\engine\actor.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AuthorString" class="hidden"></a>AuthorString <a href="..\Source_botpack\challengehud.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AuthorString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AuthorString2" class="hidden"></a>AuthorString2 <a href="..\Source_botpack\challengehud.html#62" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AuthorString2;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bAlwaysHideFrags" class="hidden"></a>bAlwaysHideFrags <a href="..\Source_botpack\challengehud.html#92" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bAlwaysHideFrags;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BaseColor" class="hidden"></a>BaseColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> BaseColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bDrawFaceArea" class="hidden"></a>bDrawFaceArea <a href="..\Source_botpack\challengehud.html#122" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDrawFaceArea;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bDrawMessageArea" class="hidden"></a>bDrawMessageArea <a href="..\Source_botpack\challengehud.html#121" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDrawMessageArea;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bForceScores" class="hidden"></a>bForceScores <a href="..\Source_botpack\challengehud.html#85" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bForceScores;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHideAllWeapons" class="hidden"></a>bHideAllWeapons <a href="..\Source_botpack\challengehud.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bHideAllWeapons;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHideAmmo" class="hidden"></a>bHideAmmo <a href="..\Source_botpack\challengehud.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bHideAmmo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHideCenterMessages" class="hidden"></a>bHideCenterMessages <a href="..\Source_botpack\challengehud.html#92" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHideCenterMessages;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHideFaces" class="hidden"></a>bHideFaces <a href="..\Source_botpack\challengehud.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bHideFaces;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHideFrags" class="hidden"></a>bHideFrags <a href="..\Source_botpack\challengehud.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bHideFrags;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHideHUD" class="hidden"></a>bHideHUD <a href="..\Source_botpack\challengehud.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bHideHUD;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHideNoviceMessages" class="hidden"></a>bHideNoviceMessages <a href="..\Source_botpack\challengehud.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bHideNoviceMessages;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHideStatus" class="hidden"></a>bHideStatus <a href="..\Source_botpack\challengehud.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bHideStatus;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHideTeamInfo" class="hidden"></a>bHideTeamInfo <a href="..\Source_botpack\challengehud.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bHideTeamInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bLowRes" class="hidden"></a>bLowRes <a href="..\Source_botpack\challengehud.html#87" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bLowRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BlueColor" class="hidden"></a>BlueColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> BlueColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bResChanged" class="hidden"></a>bResChanged <a href="..\Source_botpack\challengehud.html#88" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bResChanged;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bShowInfo" class="hidden"></a>bShowInfo <a href="..\Source_botpack\challengehud.html#128" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bShowInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bStartUpMessage" class="hidden"></a>bStartUpMessage <a href="..\Source_botpack\challengehud.html#85" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bStartUpMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTiedScore" class="hidden"></a>bTiedScore <a href="..\Source_botpack\challengehud.html#68" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTiedScore;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTimeValid" class="hidden"></a>bTimeValid <a href="..\Source_botpack\challengehud.html#86" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTimeValid;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bUseTeamColor" class="hidden"></a>bUseTeamColor <a href="..\Source_botpack\challengehud.html#94" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bUseTeamColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Count" class="hidden"></a>Count <a href="..\Source_botpack\challengehud.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> Count;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CrosshairColor" class="hidden"></a>CrosshairColor <a href="..\Source_botpack\challengehud.html#97" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> CrosshairColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CrosshairCount" class="hidden"></a>CrosshairCount <a href="..\Source_botpack\challengehud.html#78" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">int</font> CrosshairCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CrossHairs[20]" class="hidden"></a>CrossHairs[20] <a href="..\Source_botpack\challengehud.html#79" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">string</font> CrossHairs[<font class="source_int">20</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CrossHairTextures[20]" class="hidden"></a>CrossHairTextures[20] <a href="..\Source_botpack\challengehud.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> CrossHairTextures[<font class="source_int">20</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CurrentMessage" class="hidden"></a>CurrentMessage <a href="..\Source_botpack\challengehud.html#44" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> CurrentMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CyanColor" class="hidden"></a>CyanColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> CyanColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FaceAreaOffset" class="hidden"></a>FaceAreaOffset <a href="..\Source_botpack\challengehud.html#123" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> FaceAreaOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FaceColor" class="hidden"></a>FaceColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> FaceColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FaceTeam" class="hidden"></a>FaceTeam <a href="..\Source_botpack\challengehud.html#58" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> FaceTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FaceTexture" class="hidden"></a>FaceTexture <a href="..\Source_botpack\challengehud.html#56" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> FaceTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FaceTime" class="hidden"></a>FaceTime <a href="..\Source_botpack\challengehud.html#57" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> FaceTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FavoriteHUDColor" class="hidden"></a>FavoriteHUDColor <a href="..\Source_botpack\challengehud.html#97" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> FavoriteHUDColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FontInfoClass" class="hidden"></a>FontInfoClass <a href="..\Source_botpack\challengehud.html#132" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">string</font> FontInfoClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FP1[3]" class="hidden"></a>FP1[3] <a href="..\Source_botpack\challengehud.html#83" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> FP1[<font class="source_int">3</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FP2[3]" class="hidden"></a>FP2[3] <a href="..\Source_botpack\challengehud.html#83" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> FP2[<font class="source_int">3</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FP3[3]" class="hidden"></a>FP3[3] <a href="..\Source_botpack\challengehud.html#83" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> FP3[<font class="source_int">3</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GoldColor" class="hidden"></a>GoldColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> GoldColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GrayColor" class="hidden"></a>GrayColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> GrayColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GrayWeapons[11]" class="hidden"></a>GrayWeapons[11] <a href="..\Source_botpack\challengehud.html#82" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> GrayWeapons[<font class="source_int">11</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GreenColor" class="hidden"></a>GreenColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> GreenColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HitDamage[4]" class="hidden"></a>HitDamage[4] <a href="..\Source_botpack\challengehud.html#114" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> HitDamage[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HitPos[4]" class="hidden"></a>HitPos[4] <a href="..\Source_botpack\challengehud.html#112" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitPos[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HitTime[4]" class="hidden"></a>HitTime[4] <a href="..\Source_botpack\challengehud.html#113" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> HitTime[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HUDColor" class="hidden"></a>HUDColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> HUDColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HUDScale" class="hidden"></a>HUDScale <a href="..\Source_botpack\challengehud.html#96" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">float</font> HUDScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_IdentifyCallsign" class="hidden"></a>IdentifyCallsign <a href="..\Source_botpack\challengehud.html#104" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> IdentifyCallsign;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_IdentifyFadeTime" class="hidden"></a>IdentifyFadeTime <a href="..\Source_botpack\challengehud.html#47" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> IdentifyFadeTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_IdentifyHealth" class="hidden"></a>IdentifyHealth <a href="..\Source_botpack\challengehud.html#104" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> IdentifyHealth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_IdentifyName" class="hidden"></a>IdentifyName <a href="..\Source_botpack\challengehud.html#104" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> IdentifyName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_IdentifyTarget" class="hidden"></a>IdentifyTarget <a href="..\Source_botpack\challengehud.html#48" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> IdentifyTarget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastReportedTime" class="hidden"></a>LastReportedTime <a href="..\Source_botpack\challengehud.html#84" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> LastReportedTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_lead" class="hidden"></a>lead <a href="..\Source_botpack\challengehud.html#109" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> lead;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LiveFeed" class="hidden"></a>LiveFeed <a href="..\Source_botpack\challengehud.html#105" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> LiveFeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LocalMessages[10]" class="hidden"></a>LocalMessages[10] <a href="..\Source_botpack\challengehud.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\hud.html#HUDLocalizedMessage" class="source">HUDLocalizedMessage</a></font> LocalMessages[<font class="source_int">10</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MapTitleString" class="hidden"></a>MapTitleString <a href="..\Source_botpack\challengehud.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MapTitleString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MapTitleString2" class="hidden"></a>MapTitleString2 <a href="..\Source_botpack\challengehud.html#62" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MapTitleString2;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MessageFadeCount" class="hidden"></a>MessageFadeCount <a href="..\Source_botpack\challengehud.html#120" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> MessageFadeCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MessageFadeTime" class="hidden"></a>MessageFadeTime <a href="..\Source_botpack\challengehud.html#119" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MessageFadeTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinFaceAreaOffset" class="hidden"></a>MinFaceAreaOffset <a href="..\Source_botpack\challengehud.html#123" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MinFaceAreaOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MOTDFadeOutTime" class="hidden"></a>MOTDFadeOutTime <a href="..\Source_botpack\challengehud.html#45" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MOTDFadeOutTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MyFonts" class="hidden"></a>MyFonts <a href="..\Source_botpack\challengehud.html#50" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="fontinfo.html" class="source">FontInfo</a></font> MyFonts;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldClipX" class="hidden"></a>OldClipX <a href="..\Source_botpack\challengehud.html#89" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> OldClipX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Opacity" class="hidden"></a>Opacity <a href="..\Source_botpack\challengehud.html#95" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">byte</font> Opacity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PawnOwner" class="hidden"></a>PawnOwner <a href="..\Source_botpack\challengehud.html#49" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> PawnOwner;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PickupTime" class="hidden"></a>PickupTime <a href="..\Source_botpack\challengehud.html#116" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> PickupTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayerCount" class="hidden"></a>PlayerCount <a href="..\Source_botpack\challengehud.html#67" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> PlayerCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayerCountString" class="hidden"></a>PlayerCountString <a href="..\Source_botpack\challengehud.html#60" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PlayerCountString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PurpleColor" class="hidden"></a>PurpleColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> PurpleColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_rank" class="hidden"></a>rank <a href="..\Source_botpack\challengehud.html#109" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> rank;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RankString" class="hidden"></a>RankString <a href="..\Source_botpack\challengehud.html#64" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> RankString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReceivedMessage" class="hidden"></a>ReceivedMessage <a href="..\Source_botpack\challengehud.html#70" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> ReceivedMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReceivedName" class="hidden"></a>ReceivedName <a href="..\Source_botpack\challengehud.html#71" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> ReceivedName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReceivedTime" class="hidden"></a>ReceivedTime <a href="..\Source_botpack\challengehud.html#73" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> ReceivedTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReceivedZone" class="hidden"></a>ReceivedZone <a href="..\Source_botpack\challengehud.html#72" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> ReceivedZone;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RedColor" class="hidden"></a>RedColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> RedColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Scale" class="hidden"></a>Scale <a href="..\Source_botpack\challengehud.html#98" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> <font class="source_type"><a href="..\core\object.html#Scale" class="source">Scale</a></font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ScoreTime" class="hidden"></a>ScoreTime <a href="..\Source_botpack\challengehud.html#108" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> ScoreTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerInfo" class="hidden"></a>ServerInfo <a href="..\Source_botpack\challengehud.html#127" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="serverinfo.html" class="source">ServerInfo</a></font> <font class="source_type"><a href="serverinfo.html" class="source">ServerInfo</a></font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerInfoClass" class="hidden"></a>ServerInfoClass <a href="..\Source_botpack\challengehud.html#130" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="serverinfo.html" class="source">ServerInfo</a></font>&gt; ServerInfoClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShortMessageQueue[4]" class="hidden"></a>ShortMessageQueue[4] <a href="..\Source_botpack\challengehud.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\hud.html#HUDLocalizedMessage" class="source">HUDLocalizedMessage</a></font> ShortMessageQueue[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SizeY" class="hidden"></a>SizeY <a href="..\Source_botpack\challengehud.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> SizeY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SolidHUDColor" class="hidden"></a>SolidHUDColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> SolidHUDColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpreadString" class="hidden"></a>SpreadString <a href="..\Source_botpack\challengehud.html#65" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SpreadString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StatusScale" class="hidden"></a>StatusScale <a href="..\Source_botpack\challengehud.html#96" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">float</font> StatusScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Style" class="hidden"></a>Style <a href="..\Source_botpack\challengehud.html#99" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">byte</font> Style;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimeMessageClass" class="hidden"></a>TimeMessageClass <a href="..\Source_botpack\challengehud.html#124" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="criticaleventplus.html" class="source">CriticalEventPlus</a></font>&gt; TimeMessageClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TurqColor" class="hidden"></a>TurqColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> TurqColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutIconBlink" class="hidden"></a>TutIconBlink <a href="..\Source_botpack\challengehud.html#76" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> TutIconBlink;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutIconTex" class="hidden"></a>TutIconTex <a href="..\Source_botpack\challengehud.html#74" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> TutIconTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutIconX" class="hidden"></a>TutIconX <a href="..\Source_botpack\challengehud.html#75" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> TutIconX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutIconY" class="hidden"></a>TutIconY <a href="..\Source_botpack\challengehud.html#75" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> TutIconY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UnitColor" class="hidden"></a>UnitColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> UnitColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_VersionMessage" class="hidden"></a>VersionMessage <a href="..\Source_botpack\challengehud.html#60" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> VersionMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WeaponNameFade" class="hidden"></a>WeaponNameFade <a href="..\Source_botpack\challengehud.html#118" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> WeaponNameFade;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WeaponScale" class="hidden"></a>WeaponScale <a href="..\Source_botpack\challengehud.html#96" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">float</font> WeaponScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WhiteColor" class="hidden"></a>WhiteColor <a href="..\Source_botpack\challengehud.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> WhiteColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ChangeCrosshair+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ChangeCrosshair <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#269" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ChangeCrosshair (<font class="source_keyword">int</font> d)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Destroyed+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Destroyed <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#134" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Destroyed ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DisplayMessages+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DisplayMessages <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1566" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> DisplayMessages (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DisplayProgressMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DisplayProgressMessage <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#828" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DisplayProgressMessage (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawAmmo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawAmmo <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#574" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawAmmo (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawBigNum+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawBigNum <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#348" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawBigNum (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">int</font> Value, <font class="source_keyword">int</font> X, <font class="source_keyword">int</font> Y, <font class="source_keyword2">optional</font> <font class="source_keyword">float</font> ScaleFactor)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawCrossHair+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawCrossHair <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1430" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawCrossHair (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">int</font> X, <font class="source_keyword">int</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawDigit+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawDigit <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#330" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawDigit (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">int</font> d, <font class="source_keyword">int</font> Step, <font class="source_keyword">float</font> UpScale, <font class="source_keyword2">out</font> <font class="source_keyword">byte</font> bMinus)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawFragCount+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawFragCount <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#598" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawFragCount (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawGameSynopsis+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawGameSynopsis <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#642" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawGameSynopsis (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawIdentifyInfo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawIdentifyInfo <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1645" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> DrawIdentifyInfo (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawMOTD+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawMOTD <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1380" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawMOTD (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawNextMessagePart+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawNextMessagePart <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1571" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> DrawNextMessagePart (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">string</font> MString, <font class="source_keyword">float</font> XOffset, <font class="source_keyword">int</font> YPos)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawSpeechArea+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawSpeechArea <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#888" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> DrawSpeechArea (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">float</font> XL, <font class="source_keyword">float</font> YL)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawStatus+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawStatus <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#399" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawStatus (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawTalkFace+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawTalkFace <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#872" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawTalkFace (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">int</font> i, <font class="source_keyword">float</font> YPos)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawTwoColorID+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawTwoColorID <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1625" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawTwoColorID (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">string</font> TitleString, <font class="source_keyword">string</font> ValueString, <font class="source_keyword">int</font> YStart)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawTypingPrompt+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawTypingPrompt <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1470" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawTypingPrompt (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_type"><a href="..\engine\console.html" class="source">console</a></font> <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawWeapons+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawWeapons <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#682" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawWeapons (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GrowHUD+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GrowHUD <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#229" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> GrowHUD ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HUDSetup+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HUDSetup <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#285" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> HUDSetup (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LoadCrosshair+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> LoadCrosshair <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#279" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font> LoadCrosshair (<font class="source_keyword">int</font> c)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LocalizedMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> LocalizedMessage <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1661" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> LocalizedMessage (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\localmessage.html" class="source">LocalMessage</a></font>&gt; Message, <font class="source_keyword2">optional</font> <font class="source_keyword">int</font> <font class="source_keyword">Switch</font>, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> RelatedPRI_1, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> RelatedPRI_2, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html" class="source">Object</a></font> OptionalObject, <font class="source_keyword2">optional</font> <font class="source_keyword">String</font> CriticalString)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Message+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Message <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1499" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Message (<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> PRI, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Msg, <font class="source_keyword">name</font> MsgType)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PostBeginPlay <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#185" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PostBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostRender+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PostRender <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#930" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PostRender (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetDamage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetDamage <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#141" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetDamage (<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLoc, <font class="source_keyword">float</font> damage)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetHUDB+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetHUDB <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#213" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetHUDB (<font class="source_keyword">int</font> n)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetHUDG+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetHUDG <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#208" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetHUDG (<font class="source_keyword">int</font> n)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetHUDR+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetHUDR <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#203" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetHUDR (<font class="source_keyword">int</font> n)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetIDColor+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetIDColor <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1616" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetIDColor (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">int</font> type)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShowServerInfo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ShowServerInfo <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#218" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ShowServerInfo ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShrinkHUD+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ShrinkHUD <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#249" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ShrinkHUD ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpecialIdentify+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SpecialIdentify <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1611" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SpecialIdentify (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TellTime+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TellTime <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1334" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TellTime (<font class="source_keyword">int</font> num)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1339" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1236" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TraceIdentify+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TraceIdentify <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1584" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> TraceIdentify (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UpdateRankAndSpread+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> UpdateRankAndSpread <span class="function_state"></span> <a href="..\Source_botpack\challengehud.html#1297" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> UpdateRankAndSpread ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    bUseTeamColor=<font class="source_keyword">true</font>
+    FavoriteHUDColor=(R=<font class="source_int">0</font>,G=<font class="source_int">0</font>,B=<font class="source_int">16</font>)
+    CrosshairColor=(R=<font class="source_int">0</font>,G=<font class="source_int">16</font>,B=<font class="source_int">0</font>)
+    ScoreTime=-<font class="source_int">10000000.0</font>
+    CrosshairCount=<font class="source_int">9</font>
+    Crosshairs(<font class="source_int">0</font>)=<font class="source_string">"Botpack.CHair1"</font>
+    Crosshairs(<font class="source_int">1</font>)=<font class="source_string">"Botpack.CHair2"</font>
+    Crosshairs(<font class="source_int">2</font>)=<font class="source_string">"Botpack.CHair3"</font>
+    Crosshairs(<font class="source_int">3</font>)=<font class="source_string">"Botpack.CHair4"</font>
+    Crosshairs(<font class="source_int">4</font>)=<font class="source_string">"Botpack.CHair5"</font>
+    Crosshairs(<font class="source_int">5</font>)=<font class="source_string">"Botpack.CHair6"</font>
+    Crosshairs(<font class="source_int">6</font>)=<font class="source_string">"Botpack.CHair7"</font>
+    Crosshairs(<font class="source_int">7</font>)=<font class="source_string">"Botpack.CHair8"</font>
+    Crosshairs(<font class="source_int">8</font>)=<font class="source_string">"Botpack.CHair9"</font>
+    Style=<font class="source_int">3</font>
+    HudScale=+<font class="source_int">1.0</font>
+    Opacity=<font class="source_int">15</font>
+    IdentifyName=<font class="source_string">"Name:"</font>
+    IdentifyHealth=<font class="source_string">"Health:"</font>
+    VersionMessage=<font class="source_string">"Version"</font>
+    bStartUpMessage=<font class="source_keyword">True</font>
+    IdentifyCallsign=<font class="source_string">"Callsign:"</font>
+    PlayerCountString=<font class="source_string">"Ideal Player Load:"</font>
+    WhiteColor=(R=<font class="source_int">255</font>,G=<font class="source_int">255</font>,B=<font class="source_int">255</font>)
+    RedColor=(R=<font class="source_int">255</font>,G=<font class="source_int">0</font>,B=<font class="source_int">0</font>)
+    BlueColor=(R=<font class="source_int">0</font>,G=<font class="source_int">0</font>,B=<font class="source_int">255</font>)
+    GreenColor=(R=<font class="source_int">0</font>,G=<font class="source_int">255</font>,B=<font class="source_int">0</font>)
+    GoldColor=(R=<font class="source_int">255</font>,G=<font class="source_int">255</font>,B=<font class="source_int">0</font>)
+    TurqColor=(R=<font class="source_int">0</font>,G=<font class="source_int">128</font>,B=<font class="source_int">255</font>)
+    GrayColor=(R=<font class="source_int">200</font>,G=<font class="source_int">200</font>,B=<font class="source_int">200</font>)
+    FaceColor=(R=<font class="source_int">50</font>,G=<font class="source_int">50</font>,B=<font class="source_int">50</font>)
+    CyanColor=(R=<font class="source_int">0</font>,G=<font class="source_int">255</font>,B=<font class="source_int">255</font>)
+    PurpleColor=(R=<font class="source_int">255</font>,G=<font class="source_int">0</font>,B=<font class="source_int">255</font>)
+    UnitColor=(R=<font class="source_int">1</font>,G=<font class="source_int">1</font>,B=<font class="source_int">1</font>)
+    MapTitleString=<font class="source_string">"in"</font>
+    MapTitleString2=<font class="source_string">"Map:"</font>
+    AuthorString=<font class="source_string">"by"</font>
+    AuthorString2=<font class="source_string">"Author:"</font>
+    GrayWeapons(<font class="source_int">1</font>)=GreyMPact
+    GrayWeapons(<font class="source_int">2</font>)=GreyAutom
+    GrayWeapons(<font class="source_int">3</font>)=GreyBio
+    GrayWeapons(<font class="source_int">4</font>)=GreyASMD
+    GrayWeapons(<font class="source_int">5</font>)=GreyPulse
+    GrayWeapons(<font class="source_int">6</font>)=GreyRazJk
+    GrayWeapons(<font class="source_int">7</font>)=GreyMini
+    GrayWeapons(<font class="source_int">8</font>)=GreyFlak
+    GrayWeapons(<font class="source_int">9</font>)=GreyRockt
+    GrayWeapons(<font class="source_int">10</font>)=GreyRifle
+    StatusScale=<font class="source_int">1.0</font>
+    WeaponScale=<font class="source_int">0.8</font>
+    HUDConfigWindowType=<font class="source_string">"UTMenu.UTChallengeHUDConfig"</font>
+    LiveFeed=<font class="source_string">"Live Feed from "</font>
+    RankString=<font class="source_string">"Rank:"</font>
+    SpreadString=<font class="source_string">"Spread:"</font>
+    ServerInfoClass=<font class="source_keyword">class</font><font class="source_name">'ServerInfo'</font>
+    FP1(<font class="source_int">0</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'FacePanel1'</font>
+    FP1(<font class="source_int">1</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'FacePanel1b'</font>
+    FP1(<font class="source_int">2</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'FacePanel1a'</font>
+    FP2(<font class="source_int">0</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'FacePanel2'</font>
+    FP2(<font class="source_int">1</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'FacePanel2b'</font>
+    FP2(<font class="source_int">2</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'FacePanel2a'</font>
+    FP3(<font class="source_int">0</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'FacePanel3'</font>
+    FP3(<font class="source_int">1</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'FacePanel3b'</font>
+    FP3(<font class="source_int">2</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'FacePanel3a'</font>
+    FontInfoClass=<font class="source_string">"Botpack.FontInfo"</font>
+}
+
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\challengehud.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#ChallengeHUD">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="challengedominationhud.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="challengeintro.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:46:43.984 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,581 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - UWindow.WindowConsole</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="uwindow-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_uwindow\windowconsole.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#WindowConsole">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowwrappedtextarea.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindowbase.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="uwindow-overview.html">UWindow</a>.WindowConsole</h1>
+<b>Extends:</b> <a href="..\engine\console.html">Console</a><br>
+<b>Modifiers:</b> <br>
+<a href="..\Source_uwindow\windowconsole.html"><b>Source code</b></a>
+
+<p>
+WindowConsole - console replacer to implement UWindow UI System
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\console.html">Console</a>
+    |   
+    +-- <a href="uwindow-overview.html">UWindow</a>.<a href="windowconsole.html">WindowConsole</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\ubrowser\ubrowserconsole.html">UBrowserConsole</a>, <a href="..\umenu\unrealconsole.html">UnrealConsole</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\console.html">Console</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\console.html#MaxBorder">MaxBorder</a>, <a href="..\engine\console.html#MaxHistory">MaxHistory</a>, <a href="..\engine\console.html#MaxLines">MaxLines</a>, <a href="..\engine\console.html#TextMsgSize">TextMsgSize</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#MaxInt">MaxInt</a>, <a href="..\core\object.html#Pi">Pi</a>, <a href="..\core\object.html#RF_NotForClient">RF_NotForClient</a>, <a href="..\core\object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="..\core\object.html#RF_NotForServer">RF_NotForServer</a>, <a href="..\core\object.html#RF_Public">RF_Public</a>, <a href="..\core\object.html#RF_Transactional">RF_Transactional</a>, <a href="..\core\object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bBlackout" name="bBlackout">bBlackout</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCreatedRoot" name="bCreatedRoot">bCreatedRoot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLevelChange" name="bLevelChange">bLevelChange</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLocked" name="bLocked">bLocked</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bQuickKeyEnable" name="bQuickKeyEnable">bQuickKeyEnable</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowConsole" name="bShowConsole">bShowConsole</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUWindowActive" name="bUWindowActive">bUWindowActive</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUWindowType" name="bUWindowType">bUWindowType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="uwindowconsolewindow.html">UWindowConsoleWindow</a>&gt;</td><td width="66%"><a href="#_ConsoleClass" name="ConsoleClass">ConsoleClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_ConsoleKey" name="ConsoleKey">ConsoleKey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="uwindowconsolewindow.html">UWindowConsoleWindow</a></td><td width="66%"><a href="#_ConsoleWindow" name="ConsoleWindow">ConsoleWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MouseScale" name="MouseScale">MouseScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MouseX" name="MouseX">MouseX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MouseY" name="MouseY">MouseY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_OldClipX" name="OldClipX">OldClipX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_OldClipY" name="OldClipY">OldClipY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_OldLevel" name="OldLevel">OldLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="uwindowrootwindow.html">UWindowRootWindow</a></td><td width="66%"><a href="#_Root" name="Root">Root</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_RootWindow" name="RootWindow">RootWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_ShowDesktop" name="ShowDesktop">ShowDesktop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\console.html#EInputKey">EInputKey</a></td><td width="66%"><a href="#_UWindowKey" name="UWindowKey">UWindowKey</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\console.html">Console</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\console.html#AvgText">AvgText</a>, <a href="..\engine\console.html#bNoDrawWorld">bNoDrawWorld</a>, <a href="..\engine\console.html#bNoStuff">bNoStuff</a>, <a href="..\engine\console.html#Border">Border</a>, <a href="..\engine\console.html#BorderLines">BorderLines</a>, <a href="..\engine\console.html#BorderPixels">BorderPixels</a>, <a href="..\engine\console.html#BorderSize">BorderSize</a>, <a href="..\engine\console.html#bRestartTimeDemo">bRestartTimeDemo</a>, <a href="..\engine\console.html#bSaveTimeDemoToFile">bSaveTimeDemoToFile</a>, <a href="..\engine\console.html#bStartTimeDemo">bStartTimeDemo</a>, <a href="..\engine\console.html#bTimeDemo">bTimeDemo</a>, <a href="..\engine\console.html#bTyping">bTyping</a>, <a href="..\engine\console.html#ConBackground">ConBackground</a>, <a href="..\engine\console.html#ConnectingMessage">ConnectingMessage</a>, <a href="..\engine\console.html#ConsoleDest">ConsoleDest</a>, <a href="..\engine\console.html#ConsoleLines">ConsoleLines</a>, <a href="..\engine\console.html#ConsolePos">ConsolePos</a>, <a href="..\engine\console.html#ExtraTime">ExtraTime</a>, <a href="..\engine\console.html#fpsText">fpsText</a>, <a href="..\engine\console.html#FrameCount">FrameCount</a>, <a href="..\engine\console.html#FrameRateText">FrameRateText</a>, <a href="..\engine\console.html#FramesText">FramesText</a>, <a href="..\engine\console.html#FrameX">FrameX</a>, <a href="..\engine\console.html#FrameY">FrameY</a>, <a href="..\engine\console.html#HistoryBot">HistoryBot</a>, <a href="..\engine\console.html#HistoryCur">HistoryCur</a>, <a href="..\engine\console.html#HistoryTop">HistoryTop</a>, <a href="..\engine\console.html#History[16]">History[16]</a>, <a href="..\engine\console.html#LastFrameTime">LastFrameTime</a>, <a href="..\engine\console.html#LastSecFPS">LastSecFPS</a>, <a href="..\engine\console.html#LastSecondFrameCount">LastSecondFrameCount</a>, <a href="..\engine\console.html#LastSecondStartTime">LastSecondStartTime</a>, <a href="..\engine\console.html#LastSecText">LastSecText</a>, <a href="..\engine\console.html#LoadingMessage">LoadingMessage</a>, <a href="..\engine\console.html#MaxFPS">MaxFPS</a>, <a href="..\engine\console.html#MaxText">MaxText</a>, <a href="..\engine\console.html#MinFPS">MinFPS</a>, <a href="..\engine\console.html#MinText">MinText</a>, <a href="..\engine\console.html#MsgPlayer[64]">MsgPlayer[64]</a>, <a href="..\engine\console.html#MsgText[64]">MsgText[64]</a>, <a href="..\engine\console.html#MsgTickTime">MsgTickTime</a>, <a href="..\engine\console.html#MsgTick[64]">MsgTick[64]</a>, <a href="..\engine\console.html#MsgTime">MsgTime</a>, <a href="..\engine\console.html#MsgType[64]">MsgType[64]</a>, <a href="..\engine\console.html#NumLines">NumLines</a>, <a href="..\engine\console.html#PausedMessage">PausedMessage</a>, <a href="..\engine\console.html#PrecachingMessage">PrecachingMessage</a>, <a href="..\engine\console.html#SavingMessage">SavingMessage</a>, <a href="..\engine\console.html#Scrollback">Scrollback</a>, <a href="..\engine\console.html#SecondsText">SecondsText</a>, <a href="..\engine\console.html#StartTime">StartTime</a>, <a href="..\engine\console.html#TextLines">TextLines</a>, <a href="..\engine\console.html#TimeDemoFont">TimeDemoFont</a>, <a href="..\engine\console.html#TopLine">TopLine</a>, <a href="..\engine\console.html#TypedStr">TypedStr</a>, <a href="..\engine\console.html#Viewport">Viewport</a>, <a href="..\engine\console.html#vtblOut">vtblOut</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#Class">Class</a>, <a href="..\core\object.html#Name">Name</a>, <a href="..\core\object.html#ObjectFlags">ObjectFlags</a>, <a href="..\core\object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="..\core\object.html#Outer">Outer</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\console.html">Console</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\console.html#EInputAction">EInputAction</a>, <a href="..\engine\console.html#EInputKey">EInputKey</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#BoundingBox">BoundingBox</a>, <a href="..\core\object.html#BoundingVolume">BoundingVolume</a>, <a href="..\core\object.html#Color">Color</a>, <a href="..\core\object.html#Coords">Coords</a>, <a href="..\core\object.html#Guid">Guid</a>, <a href="..\core\object.html#Plane">Plane</a>, <a href="..\core\object.html#Rotator">Rotator</a>, <a href="..\core\object.html#Scale">Scale</a>, <a href="..\core\object.html#Vector">Vector</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_AddString+" name="AddString">AddString</a> (coerce string Msg)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CloseUWindow+" name="CloseUWindow">CloseUWindow</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CreateRootWindow+" name="CreateRootWindow">CreateRootWindow</a> (<a href="..\engine\canvas.html">Canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_HideConsole+" name="HideConsole">HideConsole</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_HistoryDown+" name="HistoryDown">HistoryDown</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_HistoryUp+" name="HistoryUp">HistoryUp</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>bool&nbsp;</td><td><a href="#_KeyEvent+" name="KeyEvent">KeyEvent</a> (<a href="..\engine\console.html#EInputKey">EInputKey</a> Key, <a href="..\engine\console.html#EInputAction">EInputAction</a> Action, FLOAT Delta)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>bool&nbsp;</td><td><a href="#_KeyEvent+UWindow" name="KeyEvent">KeyEvent</a> (<a href="..\engine\console.html#EInputKey">EInputKey</a> Key, <a href="..\engine\console.html#EInputAction">EInputAction</a> Action, FLOAT Delta)<br /><span class="function_state">UWindow</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>bool&nbsp;</td><td><a href="#_KeyType+UWindow" name="KeyType">KeyType</a> (<a href="..\engine\console.html#EInputKey">EInputKey</a> Key)<br /><span class="function_state">UWindow</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_LaunchUWindow+" name="LaunchUWindow">LaunchUWindow</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_Message+" name="Message">Message</a> (<a href="..\engine\playerreplicationinfo.html">PlayerReplicationInfo</a> PRI, coerce string Msg, name N)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_NotifyLevelChange+" name="NotifyLevelChange">NotifyLevelChange</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_PostRender+UWindow" name="PostRender">PostRender</a> (<a href="..\engine\canvas.html">canvas</a> Canvas)<br /><span class="function_state">UWindow</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RenderUWindow+" name="RenderUWindow">RenderUWindow</a> (<a href="..\engine\canvas.html">canvas</a> Canvas)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ResetUWindow+" name="ResetUWindow">ResetUWindow</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ShowConsole+" name="ShowConsole">ShowConsole</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_Tick+" name="Tick">Tick</a> (float Delta)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_Tick+UWindow" name="Tick">Tick</a> (float Delta)<br /><span class="function_state">UWindow</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ToggleUWindow+" name="ToggleUWindow">ToggleUWindow</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_UpdateHistory+" name="UpdateHistory">UpdateHistory</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\console.html">Console</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\console.html#AddString">AddString</a>, <a href="..\engine\console.html#BeginState">BeginState</a>, <a href="..\engine\console.html#ClearMessages">ClearMessages</a>, <a href="..\engine\console.html#ConnectFailure">ConnectFailure</a>, <a href="..\engine\console.html#ConsoleCommand">ConsoleCommand</a>, <a href="..\engine\console.html#DrawConsoleView">DrawConsoleView</a>, <a href="..\engine\console.html#DrawLevelAction">DrawLevelAction</a>, <a href="..\engine\console.html#DrawSingleView">DrawSingleView</a>, <a href="..\engine\console.html#EndState">EndState</a>, <a href="..\engine\console.html#FormatFloat">FormatFloat</a>, <a href="..\engine\console.html#GetMsgPlayer">GetMsgPlayer</a>, <a href="..\engine\console.html#GetMsgText">GetMsgText</a>, <a href="..\engine\console.html#GetMsgTick">GetMsgTick</a>, <a href="..\engine\console.html#GetMsgType">GetMsgType</a>, <a href="..\engine\console.html#KeyEvent">KeyEvent</a>, <a href="..\engine\console.html#KeyType">KeyType</a>, <a href="..\engine\console.html#Message">Message</a>, <a href="..\engine\console.html#NotifyLevelChange">NotifyLevelChange</a>, <a href="..\engine\console.html#PostRender">PostRender</a>, <a href="..\engine\console.html#PreRender">PreRender</a>, <a href="..\engine\console.html#PrintActionMessage">PrintActionMessage</a>, <a href="..\engine\console.html#PrintTimeDemoResult">PrintTimeDemoResult</a>, <a href="..\engine\console.html#SaveTimeDemo">SaveTimeDemo</a>, <a href="..\engine\console.html#SetMsgPlayer">SetMsgPlayer</a>, <a href="..\engine\console.html#SetMsgText">SetMsgText</a>, <a href="..\engine\console.html#SetMsgTick">SetMsgTick</a>, <a href="..\engine\console.html#SetMsgType">SetMsgType</a>, <a href="..\engine\console.html#StartTimeDemo">StartTimeDemo</a>, <a href="..\engine\console.html#StopTimeDemo">StopTimeDemo</a>, <a href="..\engine\console.html#Talk">Talk</a>, <a href="..\engine\console.html#TeamTalk">TeamTalk</a>, <a href="..\engine\console.html#Tick">Tick</a>, <a href="..\engine\console.html#TimeDemo">TimeDemo</a>, <a href="..\engine\console.html#TimeDemoCalc">TimeDemoCalc</a>, <a href="..\engine\console.html#TimeDemoRender">TimeDemoRender</a>, <a href="..\engine\console.html#Type">Type</a>, <a href="..\engine\console.html#VideoChange">VideoChange</a>, <a href="..\engine\console.html#ViewDown">ViewDown</a>, <a href="..\engine\console.html#ViewUp">ViewUp</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#!">!</a>, <a href="..\core\object.html#!=">!=</a>, <a href="..\core\object.html#$">$</a>, <a href="..\core\object.html#">%</a>, <a href="..\core\object.html#&">&</a>, <a href="..\core\object.html#&&">&&</a>, <a href="..\core\object.html#*">*</a>, <a href="..\core\object.html#**">**</a>, <a href="..\core\object.html#*=">*=</a>, <a href="..\core\object.html#+">+</a>, <a href="..\core\object.html#++">++</a>, <a href="..\core\object.html#+=">+=</a>, <a href="..\core\object.html#-">-</a>, <a href="..\core\object.html#-=">-=</a>, <a href="..\core\object.html#/">/ </a>, <a href="..\core\object.html#/=">/=</a>, <a href="..\core\object.html#&lt;">&lt;</a>, <a href="..\core\object.html#&lt;&lt;">&lt;&lt;</a>, <a href="..\core\object.html#&lt;=">&lt;=</a>, <a href="..\core\object.html#==">==</a>, <a href="..\core\object.html#&gt;">&gt;</a>, <a href="..\core\object.html#&gt;=">&gt;=</a>, <a href="..\core\object.html#&gt;&gt;">&gt;&gt;</a>, <a href="..\core\object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="..\core\object.html#@">@</a>, <a href="..\core\object.html#Abs">Abs</a>, <a href="..\core\object.html#Asc">Asc</a>, <a href="..\core\object.html#Atan">Atan</a>, <a href="..\core\object.html#BeginState">BeginState</a>, <a href="..\core\object.html#Caps">Caps</a>, <a href="..\core\object.html#Chr">Chr</a>, <a href="..\core\object.html#Clamp">Clamp</a>, <a href="..\core\object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="..\core\object.html#Cos">Cos</a>, <a href="..\core\object.html#Cross">Cross</a>, <a href="..\core\object.html#Disable">Disable</a>, <a href="..\core\object.html#Dot">Dot</a>, <a href="..\core\object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="..\core\object.html#Enable">Enable</a>, <a href="..\core\object.html#EndState">EndState</a>, <a href="..\core\object.html#Exp">Exp</a>, <a href="..\core\object.html#FClamp">FClamp</a>, <a href="..\core\object.html#FMax">FMax</a>, <a href="..\core\object.html#FMin">FMin</a>, <a href="..\core\object.html#FRand">FRand</a>, <a href="..\core\object.html#GetAxes">GetAxes</a>, <a href="..\core\object.html#GetEnum">GetEnum</a>, <a href="..\core\object.html#GetPropertyText">GetPropertyText</a>, <a href="..\core\object.html#GetStateName">GetStateName</a>, <a href="..\core\object.html#GetUnAxes">GetUnAxes</a>, <a href="..\core\object.html#GotoState">GotoState</a>, <a href="..\core\object.html#InStr">InStr</a>, <a href="..\core\object.html#Invert">Invert</a>, <a href="..\core\object.html#IsA">IsA</a>, <a href="..\core\object.html#IsInState">IsInState</a>, <a href="..\core\object.html#Left">Left</a>, <a href="..\core\object.html#Len">Len</a>, <a href="..\core\object.html#Lerp">Lerp</a>, <a href="..\core\object.html#Localize">Localize</a>, <a href="..\core\object.html#Log">Log</a>, <a href="..\core\object.html#Loge">Loge</a>, <a href="..\core\object.html#Max">Max</a>, <a href="..\core\object.html#Mid">Mid</a>, <a href="..\core\object.html#Min">Min</a>, <a href="..\core\object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="..\core\object.html#Normal">Normal</a>, <a href="..\core\object.html#Normalize">Normalize</a>, <a href="..\core\object.html#OrthoRotation">OrthoRotation</a>, <a href="..\core\object.html#Rand">Rand</a>, <a href="..\core\object.html#RandRange">RandRange</a>, <a href="..\core\object.html#ResetConfig">ResetConfig</a>, <a href="..\core\object.html#Right">Right</a>, <a href="..\core\object.html#RotRand">RotRand</a>, <a href="..\core\object.html#SaveConfig">SaveConfig</a>, <a href="..\core\object.html#SetPropertyText">SetPropertyText</a>, <a href="..\core\object.html#Sin">Sin</a>, <a href="..\core\object.html#Smerp">Smerp</a>, <a href="..\core\object.html#Sqrt">Sqrt</a>, <a href="..\core\object.html#Square">Square</a>, <a href="..\core\object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="..\core\object.html#Tan">Tan</a>, <a href="..\core\object.html#VRand">VRand</a>, <a href="..\core\object.html#VSize">VSize</a>, <a href="..\core\object.html#Warn">Warn</a>, <a href="..\core\object.html#^">^</a>, <a href="..\core\object.html#^^">^^</a>, <a href="..\core\object.html#|">|</a>, <a href="..\core\object.html#||">||</a>, <a href="..\core\object.html#~">~</a>, <a href="..\core\object.html#~=">~=</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>UWindow <a href="..\Source_uwindow\windowconsole.html#107" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> UWindow <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_KeyEvent+UWindow">KeyEvent</a>, <a href="#_KeyType+UWindow">KeyType</a>, <a href="#_PostRender+UWindow">PostRender</a>, <a href="#_Tick+UWindow">Tick</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bBlackout" class="hidden"></a>bBlackout <a href="..\Source_uwindow\windowconsole.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bBlackout;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bCreatedRoot" class="hidden"></a>bCreatedRoot <a href="..\Source_uwindow\windowconsole.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bCreatedRoot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bLevelChange" class="hidden"></a>bLevelChange <a href="..\Source_uwindow\windowconsole.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bLevelChange;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bLocked" class="hidden"></a>bLocked <a href="..\Source_uwindow\windowconsole.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bLocked;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bQuickKeyEnable" class="hidden"></a>bQuickKeyEnable <a href="..\Source_uwindow\windowconsole.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bQuickKeyEnable;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bShowConsole" class="hidden"></a>bShowConsole <a href="..\Source_uwindow\windowconsole.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> bShowConsole;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bUWindowActive" class="hidden"></a>bUWindowActive <a href="..\Source_uwindow\windowconsole.html#22" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bUWindowActive;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bUWindowType" class="hidden"></a>bUWindowType <a href="..\Source_uwindow\windowconsole.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bUWindowType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ConsoleClass" class="hidden"></a>ConsoleClass <a href="..\Source_uwindow\windowconsole.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="uwindowconsolewindow.html" class="source">UWindowConsoleWindow</a></font>&gt; ConsoleClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ConsoleKey" class="hidden"></a>ConsoleKey <a href="..\Source_uwindow\windowconsole.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">byte</font> ConsoleKey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ConsoleWindow" class="hidden"></a>ConsoleWindow <a href="..\Source_uwindow\windowconsole.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="uwindowconsolewindow.html" class="source">UWindowConsoleWindow</a></font> ConsoleWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MouseScale" class="hidden"></a>MouseScale <a href="..\Source_uwindow\windowconsole.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">float</font> MouseScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MouseX" class="hidden"></a>MouseX <a href="..\Source_uwindow\windowconsole.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MouseX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MouseY" class="hidden"></a>MouseY <a href="..\Source_uwindow\windowconsole.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MouseY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldClipX" class="hidden"></a>OldClipX <a href="..\Source_uwindow\windowconsole.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> OldClipX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldClipY" class="hidden"></a>OldClipY <a href="..\Source_uwindow\windowconsole.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> OldClipY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldLevel" class="hidden"></a>OldLevel <a href="..\Source_uwindow\windowconsole.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> OldLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Root" class="hidden"></a>Root <a href="..\Source_uwindow\windowconsole.html#6" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="uwindowrootwindow.html" class="source">UWindowRootWindow</a></font> Root;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RootWindow" class="hidden"></a>RootWindow <a href="..\Source_uwindow\windowconsole.html#7" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> RootWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShowDesktop" class="hidden"></a>ShowDesktop <a href="..\Source_uwindow\windowconsole.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> ShowDesktop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UWindowKey" class="hidden"></a>UWindowKey <a href="..\Source_uwindow\windowconsole.html#29" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> UWindowKey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddString+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> AddString <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#418" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> AddString (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Msg)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CloseUWindow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CloseUWindow <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#254" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CloseUWindow ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CreateRootWindow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CreateRootWindow <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#270" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CreateRootWindow (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HideConsole+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HideConsole <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#85" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> HideConsole ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HistoryDown+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HistoryDown <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#448" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> HistoryDown ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HistoryUp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HistoryUp <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#439" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> HistoryUp ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyEvent+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> KeyEvent <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#44" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> <font class="source_keyword">bool</font> KeyEvent (<font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyEvent+UWindow" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> KeyEvent <span class="function_state">UWindow</span> <a href="..\Source_uwindow\windowconsole.html#136" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> <font class="source_keyword">bool</font> KeyEvent (<font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyType+UWindow" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> KeyType <span class="function_state">UWindow</span> <a href="..\Source_uwindow\windowconsole.html#129" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> <font class="source_keyword">bool</font> KeyType (<font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LaunchUWindow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> LaunchUWindow <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#232" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> LaunchUWindow ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Message+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Message <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#398" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> Message (<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> PRI, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Msg, <font class="source_keyword">name</font> N)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NotifyLevelChange+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> NotifyLevelChange <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#457" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> NotifyLevelChange ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostRender+UWindow" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> PostRender <span class="function_state">UWindow</span> <a href="..\Source_uwindow\windowconsole.html#116" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> PostRender (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RenderUWindow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RenderUWindow <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#330" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RenderUWindow (<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ResetUWindow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ResetUWindow <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ResetUWindow ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShowConsole+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ShowConsole <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#78" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ShowConsole ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Tick <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> Tick (<font class="source_keyword">float</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+UWindow" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Tick <span class="function_state">UWindow</span> <a href="..\Source_uwindow\windowconsole.html#109" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> Tick (<font class="source_keyword">float</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ToggleUWindow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ToggleUWindow <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#228" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ToggleUWindow ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UpdateHistory+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> UpdateHistory <span class="function_state"></span> <a href="..\Source_uwindow\windowconsole.html#429" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> UpdateHistory ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    MouseScale=<font class="source_int">0.6</font>
+    RootWindow=<font class="source_string">"UWindow.UWindowRootWindow"</font>
+    UWindowKey=IK_Esc
+    ConsoleKey=<font class="source_int">192</font>
+    ConsoleClass=<font class="source_keyword">class</font><font class="source_name">'UWindowConsoleWindow'</font>
+    bShowConsole=<font class="source_keyword">False</font>
+    bLevelChange=<font class="source_keyword">False</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="uwindow-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_uwindow\windowconsole.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#WindowConsole">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowwrappedtextarea.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindowbase.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:48:00.218 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

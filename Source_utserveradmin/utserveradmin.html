@@ -1,0 +1,3003 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTServerAdmin.UTServerAdmin</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utserveradmin\utserveradmin-overview.html">Package</a></td>
+	<td class="header"><a href="..\utserveradmin\utserveradmin.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTServerAdmin">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utimageserver.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utserveradminspectator.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utserveradmin\utserveradmin-overview.html">UTServerAdmin</a>.<a href="..\utserveradmin\utserveradmin.html">UTServerAdmin</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+00562<br>
+00563<br>
+00564<br>
+00565<br>
+00566<br>
+00567<br>
+00568<br>
+00569<br>
+00570<br>
+00571<br>
+00572<br>
+00573<br>
+00574<br>
+00575<br>
+00576<br>
+00577<br>
+00578<br>
+00579<br>
+00580<br>
+00581<br>
+00582<br>
+00583<br>
+00584<br>
+00585<br>
+00586<br>
+00587<br>
+00588<br>
+00589<br>
+00590<br>
+00591<br>
+00592<br>
+00593<br>
+00594<br>
+00595<br>
+00596<br>
+00597<br>
+00598<br>
+00599<br>
+00600<br>
+00601<br>
+00602<br>
+00603<br>
+00604<br>
+00605<br>
+00606<br>
+00607<br>
+00608<br>
+00609<br>
+00610<br>
+00611<br>
+00612<br>
+00613<br>
+00614<br>
+00615<br>
+00616<br>
+00617<br>
+00618<br>
+00619<br>
+00620<br>
+00621<br>
+00622<br>
+00623<br>
+00624<br>
+00625<br>
+00626<br>
+00627<br>
+00628<br>
+00629<br>
+00630<br>
+00631<br>
+00632<br>
+00633<br>
+00634<br>
+00635<br>
+00636<br>
+00637<br>
+00638<br>
+00639<br>
+00640<br>
+00641<br>
+00642<br>
+00643<br>
+00644<br>
+00645<br>
+00646<br>
+00647<br>
+00648<br>
+00649<br>
+00650<br>
+00651<br>
+00652<br>
+00653<br>
+00654<br>
+00655<br>
+00656<br>
+00657<br>
+00658<br>
+00659<br>
+00660<br>
+00661<br>
+00662<br>
+00663<br>
+00664<br>
+00665<br>
+00666<br>
+00667<br>
+00668<br>
+00669<br>
+00670<br>
+00671<br>
+00672<br>
+00673<br>
+00674<br>
+00675<br>
+00676<br>
+00677<br>
+00678<br>
+00679<br>
+00680<br>
+00681<br>
+00682<br>
+00683<br>
+00684<br>
+00685<br>
+00686<br>
+00687<br>
+00688<br>
+00689<br>
+00690<br>
+00691<br>
+00692<br>
+00693<br>
+00694<br>
+00695<br>
+00696<br>
+00697<br>
+00698<br>
+00699<br>
+00700<br>
+00701<br>
+00702<br>
+00703<br>
+00704<br>
+00705<br>
+00706<br>
+00707<br>
+00708<br>
+00709<br>
+00710<br>
+00711<br>
+00712<br>
+00713<br>
+00714<br>
+00715<br>
+00716<br>
+00717<br>
+00718<br>
+00719<br>
+00720<br>
+00721<br>
+00722<br>
+00723<br>
+00724<br>
+00725<br>
+00726<br>
+00727<br>
+00728<br>
+00729<br>
+00730<br>
+00731<br>
+00732<br>
+00733<br>
+00734<br>
+00735<br>
+00736<br>
+00737<br>
+00738<br>
+00739<br>
+00740<br>
+00741<br>
+00742<br>
+00743<br>
+00744<br>
+00745<br>
+00746<br>
+00747<br>
+00748<br>
+00749<br>
+00750<br>
+00751<br>
+00752<br>
+00753<br>
+00754<br>
+00755<br>
+00756<br>
+00757<br>
+00758<br>
+00759<br>
+00760<br>
+00761<br>
+00762<br>
+00763<br>
+00764<br>
+00765<br>
+00766<br>
+00767<br>
+00768<br>
+00769<br>
+00770<br>
+00771<br>
+00772<br>
+00773<br>
+00774<br>
+00775<br>
+00776<br>
+00777<br>
+00778<br>
+00779<br>
+00780<br>
+00781<br>
+00782<br>
+00783<br>
+00784<br>
+00785<br>
+00786<br>
+00787<br>
+00788<br>
+00789<br>
+00790<br>
+00791<br>
+00792<br>
+00793<br>
+00794<br>
+00795<br>
+00796<br>
+00797<br>
+00798<br>
+00799<br>
+00800<br>
+00801<br>
+00802<br>
+00803<br>
+00804<br>
+00805<br>
+00806<br>
+00807<br>
+00808<br>
+00809<br>
+00810<br>
+00811<br>
+00812<br>
+00813<br>
+00814<br>
+00815<br>
+00816<br>
+00817<br>
+00818<br>
+00819<br>
+00820<br>
+00821<br>
+00822<br>
+00823<br>
+00824<br>
+00825<br>
+00826<br>
+00827<br>
+00828<br>
+00829<br>
+00830<br>
+00831<br>
+00832<br>
+00833<br>
+00834<br>
+00835<br>
+00836<br>
+00837<br>
+00838<br>
+00839<br>
+00840<br>
+00841<br>
+00842<br>
+00843<br>
+00844<br>
+00845<br>
+00846<br>
+00847<br>
+00848<br>
+00849<br>
+00850<br>
+00851<br>
+00852<br>
+00853<br>
+00854<br>
+00855<br>
+00856<br>
+00857<br>
+00858<br>
+00859<br>
+00860<br>
+00861<br>
+00862<br>
+00863<br>
+00864<br>
+00865<br>
+00866<br>
+00867<br>
+00868<br>
+00869<br>
+00870<br>
+00871<br>
+00872<br>
+00873<br>
+00874<br>
+00875<br>
+00876<br>
+00877<br>
+00878<br>
+00879<br>
+00880<br>
+00881<br>
+00882<br>
+00883<br>
+00884<br>
+00885<br>
+00886<br>
+00887<br>
+00888<br>
+00889<br>
+00890<br>
+00891<br>
+00892<br>
+00893<br>
+00894<br>
+00895<br>
+00896<br>
+00897<br>
+00898<br>
+00899<br>
+00900<br>
+00901<br>
+00902<br>
+00903<br>
+00904<br>
+00905<br>
+00906<br>
+00907<br>
+00908<br>
+00909<br>
+00910<br>
+00911<br>
+00912<br>
+00913<br>
+00914<br>
+00915<br>
+00916<br>
+00917<br>
+00918<br>
+00919<br>
+00920<br>
+00921<br>
+00922<br>
+00923<br>
+00924<br>
+00925<br>
+00926<br>
+00927<br>
+00928<br>
+00929<br>
+00930<br>
+00931<br>
+00932<br>
+00933<br>
+00934<br>
+00935<br>
+00936<br>
+00937<br>
+00938<br>
+00939<br>
+00940<br>
+00941<br>
+00942<br>
+00943<br>
+00944<br>
+00945<br>
+00946<br>
+00947<br>
+00948<br>
+00949<br>
+00950<br>
+00951<br>
+00952<br>
+00953<br>
+00954<br>
+00955<br>
+00956<br>
+00957<br>
+00958<br>
+00959<br>
+00960<br>
+00961<br>
+00962<br>
+00963<br>
+00964<br>
+00965<br>
+00966<br>
+00967<br>
+00968<br>
+00969<br>
+00970<br>
+00971<br>
+00972<br>
+00973<br>
+00974<br>
+00975<br>
+00976<br>
+00977<br>
+00978<br>
+00979<br>
+00980<br>
+00981<br>
+00982<br>
+00983<br>
+00984<br>
+00985<br>
+00986<br>
+00987<br>
+00988<br>
+00989<br>
+00990<br>
+00991<br>
+00992<br>
+00993<br>
+00994<br>
+00995<br>
+00996<br>
+00997<br>
+00998<br>
+00999<br>
+01000<br>
+01001<br>
+01002<br>
+01003<br>
+01004<br>
+01005<br>
+01006<br>
+01007<br>
+01008<br>
+01009<br>
+01010<br>
+01011<br>
+01012<br>
+01013<br>
+01014<br>
+01015<br>
+01016<br>
+01017<br>
+01018<br>
+01019<br>
+01020<br>
+01021<br>
+01022<br>
+01023<br>
+01024<br>
+01025<br>
+01026<br>
+01027<br>
+01028<br>
+01029<br>
+01030<br>
+01031<br>
+01032<br>
+01033<br>
+01034<br>
+01035<br>
+01036<br>
+01037<br>
+01038<br>
+01039<br>
+01040<br>
+01041<br>
+01042<br>
+01043<br>
+01044<br>
+01045<br>
+01046<br>
+01047<br>
+01048<br>
+01049<br>
+01050<br>
+01051<br>
+01052<br>
+01053<br>
+01054<br>
+01055<br>
+01056<br>
+01057<br>
+01058<br>
+01059<br>
+01060<br>
+01061<br>
+01062<br>
+01063<br>
+01064<br>
+01065<br>
+01066<br>
+01067<br>
+01068<br>
+01069<br>
+01070<br>
+01071<br>
+01072<br>
+01073<br>
+01074<br>
+01075<br>
+01076<br>
+01077<br>
+01078<br>
+01079<br>
+01080<br>
+01081<br>
+01082<br>
+01083<br>
+01084<br>
+01085<br>
+01086<br>
+01087<br>
+01088<br>
+01089<br>
+01090<br>
+01091<br>
+01092<br>
+01093<br>
+01094<br>
+01095<br>
+01096<br>
+01097<br>
+01098<br>
+01099<br>
+01100<br>
+01101<br>
+01102<br>
+01103<br>
+01104<br>
+01105<br>
+01106<br>
+01107<br>
+01108<br>
+01109<br>
+01110<br>
+01111<br>
+01112<br>
+01113<br>
+01114<br>
+01115<br>
+01116<br>
+01117<br>
+01118<br>
+01119<br>
+01120<br>
+01121<br>
+01122<br>
+01123<br>
+01124<br>
+01125<br>
+01126<br>
+01127<br>
+01128<br>
+01129<br>
+01130<br>
+01131<br>
+01132<br>
+01133<br>
+01134<br>
+01135<br>
+01136<br>
+01137<br>
+01138<br>
+01139<br>
+01140<br>
+01141<br>
+01142<br>
+01143<br>
+01144<br>
+01145<br>
+01146<br>
+01147<br>
+01148<br>
+01149<br>
+01150<br>
+01151<br>
+01152<br>
+01153<br>
+01154<br>
+01155<br>
+01156<br>
+01157<br>
+01158<br>
+01159<br>
+01160<br>
+01161<br>
+01162<br>
+01163<br>
+01164<br>
+01165<br>
+01166<br>
+01167<br>
+01168<br>
+01169<br>
+01170<br>
+01171<br>
+01172<br>
+01173<br>
+01174<br>
+01175<br>
+01176<br>
+01177<br>
+01178<br>
+01179<br>
+01180<br>
+01181<br>
+01182<br>
+01183<br>
+01184<br>
+01185<br>
+01186<br>
+01187<br>
+01188<br>
+01189<br>
+01190<br>
+01191<br>
+01192<br>
+01193<br>
+01194<br>
+01195<br>
+01196<br>
+01197<br>
+01198<br>
+01199<br>
+01200<br>
+01201<br>
+01202<br>
+01203<br>
+01204<br>
+01205<br>
+01206<br>
+01207<br>
+01208<br>
+01209<br>
+01210<br>
+01211<br>
+01212<br>
+01213<br>
+01214<br>
+01215<br>
+01216<br>
+01217<br>
+01218<br>
+01219<br>
+01220<br>
+01221<br>
+01222<br>
+01223<br>
+01224<br>
+01225<br>
+01226<br>
+01227<br>
+01228<br>
+01229<br>
+01230<br>
+01231<br>
+01232<br>
+01233<br>
+01234<br>
+01235<br>
+01236<br>
+01237<br>
+01238<br>
+01239<br>
+01240<br>
+01241<br>
+01242<br>
+01243<br>
+01244<br>
+01245<br>
+01246<br>
+01247<br>
+01248<br>
+01249<br>
+01250<br>
+01251<br>
+01252<br>
+01253<br>
+01254<br>
+01255<br>
+01256<br>
+01257<br>
+01258<br>
+01259<br>
+01260<br>
+01261<br>
+01262<br>
+01263<br>
+01264<br>
+01265<br>
+01266<br>
+01267<br>
+01268<br>
+01269<br>
+01270<br>
+01271<br>
+01272<br>
+01273<br>
+01274<br>
+01275<br>
+01276<br>
+01277<br>
+01278<br>
+01279<br>
+01280<br>
+01281<br>
+01282<br>
+01283<br>
+01284<br>
+01285<br>
+01286<br>
+01287<br>
+01288<br>
+01289<br>
+01290<br>
+01291<br>
+01292<br>
+01293<br>
+01294<br>
+01295<br>
+01296<br>
+01297<br>
+01298<br>
+01299<br>
+01300<br>
+01301<br>
+01302<br>
+01303<br>
+01304<br>
+01305<br>
+01306<br>
+01307<br>
+01308<br>
+01309<br>
+01310<br>
+01311<br>
+01312<br>
+01313<br>
+01314<br>
+01315<br>
+01316<br>
+01317<br>
+01318<br>
+01319<br>
+01320<br>
+01321<br>
+01322<br>
+01323<br>
+01324<br>
+01325<br>
+01326<br>
+01327<br>
+01328<br>
+01329<br>
+01330<br>
+01331<br>
+01332<br>
+01333<br>
+01334<br>
+01335<br>
+01336<br>
+01337<br>
+01338<br>
+01339<br>
+01340<br>
+01341<br>
+01342<br>
+01343<br>
+01344<br>
+01345<br>
+01346<br>
+01347<br>
+01348<br>
+01349<br>
+01350<br>
+01351<br>
+01352<br>
+01353<br>
+01354<br>
+01355<br>
+01356<br>
+01357<br>
+01358<br>
+01359<br>
+01360<br>
+01361<br>
+01362<br>
+01363<br>
+01364<br>
+01365<br>
+01366<br>
+01367<br>
+01368<br>
+01369<br>
+01370<br>
+01371<br>
+01372<br>
+01373<br>
+01374<br>
+01375<br>
+01376<br>
+01377<br>
+01378<br>
+01379<br>
+01380<br>
+01381<br>
+01382<br>
+01383<br>
+01384<br>
+01385<br>
+01386<br>
+01387<br>
+01388<br>
+01389<br>
+01390<br>
+01391<br>
+01392<br>
+01393<br>
+01394<br>
+01395<br>
+01396<br>
+01397<br>
+01398<br>
+01399<br>
+01400<br>
+01401<br>
+01402<br>
+01403<br>
+01404<br>
+01405<br>
+01406<br>
+01407<br>
+01408<br>
+01409<br>
+01410<br>
+01411<br>
+01412<br>
+01413<br>
+01414<br>
+01415<br>
+01416<br>
+01417<br>
+01418<br>
+01419<br>
+01420<br>
+01421<br>
+01422<br>
+01423<br>
+01424<br>
+01425<br>
+01426<br>
+01427<br>
+01428<br>
+01429<br>
+01430<br>
+01431<br>
+01432<br>
+01433<br>
+01434<br>
+01435<br>
+01436<br>
+01437<br>
+01438<br>
+01439<br>
+01440<br>
+01441<br>
+01442<br>
+01443<br>
+01444<br>
+01445<br>
+01446<br>
+01447<br>
+01448<br>
+01449<br>
+01450<br>
+01451<br>
+01452<br>
+01453<br>
+01454<br>
+01455<br>
+01456<br>
+01457<br>
+01458<br>
+01459<br>
+01460<br>
+01461<br>
+01462<br>
+01463<br>
+01464<br>
+01465<br>
+01466<br>
+01467<br>
+01468<br>
+01469<br>
+01470<br>
+01471<br>
+01472<br>
+01473<br>
+01474<br>
+01475<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utserveradmin\utserveradmin.html" class="source">UTServerAdmin</a></font> <font class="source_keyword">expands</font> <font class="source_type"><a href="..\uweb\webapplication.html" class="source">WebApplication</a></font> <font class="source_keyword2">config</font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font>() <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\utserveradmin\utserveradminspectator.html" class="source">UTServerAdminSpectator</a></font>&gt; SpectatorType;
+<a name="4"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utserveradmin\utserveradminspectator.html" class="source">UTServerAdminSpectator</a></font> <font class="source_type"><a href="..\engine\spectator.html" class="source">Spectator</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> GameTypeList;
+<a name="7"></a>
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> IncludeMaps;
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> ExcludeMaps;
+<a name="10"></a>
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> IncludeMutators;
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> ExcludeMutators;
+<a name="13"></a>
+<a name="14"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> MenuPage;
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> RootPage;
+<a name="16"></a>
+<a name="17"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> CurrentPage;
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> CurrentMenuPage;
+<a name="19"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> CurrentIndexPage;
+<a name="20"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> CurrentPlayersPage;
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> CurrentGamePage;
+<a name="22"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> CurrentConsolePage;
+<a name="23"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> CurrentConsoleLogPage;
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> CurrentConsoleSendPage;
+<a name="25"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> DefaultSendText;
+<a name="26"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> CurrentMutatorsPage;
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> CurrentRestartPage;
+<a name="28"></a>
+<a name="29"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> DefaultsPage;
+<a name="30"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> DefaultsMenuPage;
+<a name="31"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> DefaultsMapsPage;
+<a name="32"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> DefaultsRulesPage;
+<a name="33"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> DefaultsSettingsPage;
+<a name="34"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> DefaultsBotsPage;
+<a name="35"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> DefaultsServerPage;
+<a name="36"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> DefaultsIPPolicyPage;
+<a name="37"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> DefaultsRestartPage;
+<a name="38"></a>
+<a name="39"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> MessageUHTM;
+<a name="40"></a>
+<a name="41"></a>
+<a name="42"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> DefaultBG;
+<a name="43"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> HighlightedBG;
+<a name="44"></a>
+<a name="45"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> AdminRealm;
+<a name="46"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> AdminUsername;
+<a name="47"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> AdminPassword;
+<a name="48"></a>
+<a name="49"></a><font class="source_keyword">event</font> <font class="source_keyword2">Init</font>()
+<a name="50"></a>{
+<a name="51"></a>    <font class="source_keyword">Super</font>.<font class="source_keyword2">Init</font>();
+<a name="52"></a>    
+<a name="53"></a>    <font class="source_keyword">if</font> (SpectatorType != <font class="source_keyword">None</font>)
+<a name="54"></a>        <font class="source_type"><a href="..\engine\spectator.html" class="source">Spectator</a></font> = <font class="source_type">Level</font>.Spawn(SpectatorType);
+<a name="55"></a>    <font class="source_keyword">else</font>
+<a name="56"></a>        <font class="source_type"><a href="..\engine\spectator.html" class="source">Spectator</a></font> = <font class="source_type">Level</font>.Spawn(<font class="source_keyword">class</font><font class="source_name">'UTServerAdminSpectator'</font>);
+<a name="57"></a>    
+<a name="58"></a>    <font class="source_comment">// won't change as long as the server is up
+</font><a name="59"></a>    LoadGameTypes();    
+<a name="60"></a>    LoadMutators();
+<a name="61"></a>}
+<a name="62"></a>
+<a name="63"></a><font class="source_keyword">function</font> LoadGameTypes()
+<a name="64"></a>{
+<a name="65"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;   TempClass;
+<a name="66"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font>            NextGame;
+<a name="67"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font>  TempItem;
+<a name="68"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font>               i, Pos;
+<a name="69"></a>
+<a name="70"></a>    <font class="source_comment">// reinitialize list if needed
+</font><a name="71"></a>    GameTypeList = <font class="source_keyword">None</font>;
+<a name="72"></a>    
+<a name="73"></a>    <font class="source_comment">// Compile a list of all gametypes.
+</font><a name="74"></a>    TempClass = <font class="source_keyword">class</font><font class="source_name">'TournamentGameInfo'</font>;
+<a name="75"></a>    NextGame = <font class="source_type">Level</font>.GetNextInt(<font class="source_string">"TournamentGameInfo"</font>, <font class="source_int">0</font>); 
+<a name="76"></a>    <font class="source_keyword">while</font> (NextGame != <font class="source_string">""</font>)
+<a name="77"></a>    {
+<a name="78"></a>        Pos = InStr(NextGame, <font class="source_string">"."</font>);
+<a name="79"></a>        TempClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(NextGame, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="80"></a>
+<a name="81"></a>        TempItem = new(<font class="source_keyword">None</font>) <font class="source_keyword">class</font><font class="source_name">'ListItem'</font>;
+<a name="82"></a>        TempItem.Tag = TempClass.Default.GameName;
+<a name="83"></a>        TempItem.Data = NextGame;
+<a name="84"></a>
+<a name="85"></a>        <font class="source_keyword">if</font> (GameTypeList == <font class="source_keyword">None</font>)
+<a name="86"></a>            GameTypeList = TempItem;
+<a name="87"></a>        <font class="source_keyword">else</font>
+<a name="88"></a>            GameTypeList.AddElement(TempItem);
+<a name="89"></a>
+<a name="90"></a>        NextGame = <font class="source_type">Level</font>.GetNextInt(<font class="source_string">"TournamentGameInfo"</font>, ++i);
+<a name="91"></a>    }
+<a name="92"></a>}   
+<a name="93"></a>
+<a name="94"></a><font class="source_keyword">function</font> LoadMutators()
+<a name="95"></a>{
+<a name="96"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> NumMutatorClasses;
+<a name="97"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NextMutator, NextDesc;
+<a name="98"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">listitem</a></font> TempItem;
+<a name="99"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\mutator.html" class="source">Mutator</a></font> M;
+<a name="100"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> j;
+<a name="101"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> k;
+<a name="102"></a>
+<a name="103"></a>    ExcludeMutators = <font class="source_keyword">None</font>;
+<a name="104"></a>
+<a name="105"></a>    <font class="source_type">Level</font>.GetNextIntDesc(<font class="source_string">"Engine.Mutator"</font>, <font class="source_int">0</font>, NextMutator, NextDesc);
+<a name="106"></a>    <font class="source_keyword">while</font>( (NextMutator != <font class="source_string">""</font>) && (NumMutatorClasses &lt; <font class="source_int">50</font>) )
+<a name="107"></a>    {
+<a name="108"></a>        TempItem = new(<font class="source_keyword">None</font>) <font class="source_keyword">class</font><font class="source_name">'ListItem'</font>;
+<a name="109"></a>        
+<a name="110"></a>        k = InStr(NextDesc, <font class="source_string">","</font>);
+<a name="111"></a>        <font class="source_keyword">if</font> (k == -<font class="source_int">1</font>)
+<a name="112"></a>            TempItem.Tag = NextDesc;
+<a name="113"></a>        <font class="source_keyword">else</font>
+<a name="114"></a>            TempItem.Tag = Left(NextDesc, k);
+<a name="115"></a>
+<a name="116"></a>        TempItem.Data = NextMutator;
+<a name="117"></a>
+<a name="118"></a>        <font class="source_keyword">if</font> (ExcludeMutators == <font class="source_keyword">None</font>)
+<a name="119"></a>            ExcludeMutators = TempItem;
+<a name="120"></a>        <font class="source_keyword">else</font>
+<a name="121"></a>            ExcludeMutators.AddSortedElement(ExcludeMutators, TempItem);
+<a name="122"></a>        NumMutatorClasses++;
+<a name="123"></a>        <font class="source_type">Level</font>.GetNextIntDesc(<font class="source_string">"Engine.Mutator"</font>, NumMutatorClasses, NextMutator, NextDesc);
+<a name="124"></a>    }
+<a name="125"></a>
+<a name="126"></a>    IncludeMutators = <font class="source_keyword">None</font>;
+<a name="127"></a>    
+<a name="128"></a>    <font class="source_keyword">for</font> (M = <font class="source_type">Level</font>.Game.BaseMutator.NextMutator; M != <font class="source_keyword">None</font>; M = M.NextMutator) {
+<a name="129"></a>        TempItem = ExcludeMutators.DeleteElement(ExcludeMutators, <font class="source_keyword">String</font>(M.<font class="source_keyword">Class</font>));
+<a name="130"></a>        
+<a name="131"></a>        <font class="source_keyword">if</font> (TempItem != <font class="source_keyword">None</font>) {
+<a name="132"></a>            <font class="source_keyword">if</font> (IncludeMutators == <font class="source_keyword">None</font>)
+<a name="133"></a>                IncludeMutators = TempItem;
+<a name="134"></a>            <font class="source_keyword">else</font>
+<a name="135"></a>                IncludeMutators.AddElement(TempItem);
+<a name="136"></a>        }
+<a name="137"></a>        <font class="source_keyword">else</font>
+<a name="138"></a>            log(<font class="source_string">"Unknown Mutator in use: "</font>@<font class="source_keyword">String</font>(M.<font class="source_keyword">Class</font>));
+<a name="139"></a>    }
+<a name="140"></a>}
+<a name="141"></a>
+<a name="142"></a><font class="source_keyword">function</font> <font class="source_keyword">String</font> UsedMutators()
+<a name="143"></a>{
+<a name="144"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> TempItem;
+<a name="145"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> OutStr;
+<a name="146"></a>    
+<a name="147"></a>    <font class="source_keyword">if</font>(IncludeMutators == <font class="source_keyword">None</font>)
+<a name="148"></a>        <font class="source_keyword">return</font> <font class="source_string">""</font>;
+<a name="149"></a>
+<a name="150"></a>    OutStr = IncludeMutators.Data;
+<a name="151"></a>    <font class="source_keyword">for</font> (TempItem = IncludeMutators.Next; TempItem != <font class="source_keyword">None</font>; TempItem = TempItem.Next)
+<a name="152"></a>    {
+<a name="153"></a>        OutStr = OutStr$<font class="source_string">","</font>$TempItem.Data;
+<a name="154"></a>    }
+<a name="155"></a>    
+<a name="156"></a>    <font class="source_keyword">return</font> OutStr;
+<a name="157"></a>}
+<a name="158"></a>
+<a name="159"></a><font class="source_keyword">function</font> <font class="source_keyword">String</font> GenerateMutatorListSelect(<font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> MutatorList)
+<a name="160"></a>{
+<a name="161"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> TempItem;
+<a name="162"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> ResponseStr, SelectedStr;
+<a name="163"></a>    
+<a name="164"></a>    <font class="source_keyword">if</font> (MutatorList == <font class="source_keyword">None</font>)
+<a name="165"></a>        <font class="source_keyword">return</font> <font class="source_string">"&lt;option value=\"\"&gt;*** None ***&lt;/option&gt;"</font>;
+<a name="166"></a>        
+<a name="167"></a>    <font class="source_keyword">for</font> (TempItem = MutatorList; TempItem != <font class="source_keyword">None</font>; TempItem = TempItem.Next) {
+<a name="168"></a>        SelectedStr = <font class="source_string">""</font>;
+<a name="169"></a>        <font class="source_keyword">if</font> (TempItem.bJustMoved) {
+<a name="170"></a>            SelectedStr = <font class="source_string">" selected"</font>;
+<a name="171"></a>            TempItem.bJustMoved=<font class="source_keyword">false</font>;
+<a name="172"></a>        }
+<a name="173"></a>        ResponseStr = ResponseStr$<font class="source_string">"&lt;option value=\""</font>$TempItem.Data$<font class="source_string">"\""</font>$SelectedStr$<font class="source_string">"&gt;"</font>$TempItem.Tag$<font class="source_string">"&lt;/option&gt;"</font>;
+<a name="174"></a>    }
+<a name="175"></a>    <font class="source_keyword">return</font> ResponseStr;
+<a name="176"></a>}
+<a name="177"></a>
+<a name="178"></a><font class="source_keyword">function</font> <font class="source_keyword">String</font> PadLeft(<font class="source_keyword">String</font> InStr, <font class="source_keyword">int</font> Width, <font class="source_keyword">String</font> PadStr)
+<a name="179"></a>{
+<a name="180"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> OutStr;
+<a name="181"></a>    
+<a name="182"></a>    <font class="source_keyword">if</font> (Len(PadStr) == <font class="source_int">0</font>)
+<a name="183"></a>        PadStr = <font class="source_string">" "</font>;
+<a name="184"></a>        
+<a name="185"></a>    <font class="source_keyword">for</font> (OutStr=InStr; Len(OutStr) &lt; Width; OutStr=PadStr$OutStr);
+<a name="186"></a>    
+<a name="187"></a>    <font class="source_keyword">return</font> Right(OutStr, Width); <font class="source_comment">// in case PadStr is more than one character
+</font><a name="188"></a>}
+<a name="189"></a>
+<a name="190"></a><font class="source_keyword">function</font> ApplyMapList(<font class="source_keyword2">out</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> ExcludeMaps, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> IncludeMaps, <font class="source_keyword">String</font> GameType, <font class="source_keyword">String</font> MapListType)
+<a name="191"></a>{
+<a name="192"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\maplist.html" class="source">MapList</a></font>&gt; MapListClass;
+<a name="193"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> TempItem;
+<a name="194"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> IncludeCount, i;
+<a name="195"></a>    
+<a name="196"></a>    MapListClass = <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\engine\maplist.html" class="source">MapList</a></font>&gt;(DynamicLoadObject(MapListType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="197"></a>    
+<a name="198"></a>    IncludeMaps = <font class="source_keyword">None</font>;
+<a name="199"></a>    ReloadExcludeMaps(ExcludeMaps, GameType);
+<a name="200"></a>    
+<a name="201"></a>    IncludeCount = ArrayCount(MapListClass.Default.Maps);
+<a name="202"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>;i&lt;IncludeCount;i++)
+<a name="203"></a>    {
+<a name="204"></a>        <font class="source_keyword">if</font>(MapListClass.Default.Maps[i] == <font class="source_string">""</font>)
+<a name="205"></a>            <font class="source_keyword">break</font>;
+<a name="206"></a>        <font class="source_keyword">if</font> (ExcludeMaps != <font class="source_keyword">None</font>)
+<a name="207"></a>        {
+<a name="208"></a>            TempItem = ExcludeMaps.DeleteElement(ExcludeMaps, MapListClass.Default.Maps[i]);
+<a name="209"></a>            
+<a name="210"></a>            <font class="source_keyword">if</font>(TempItem != <font class="source_keyword">None</font>)
+<a name="211"></a>            {
+<a name="212"></a>                <font class="source_keyword">if</font> (IncludeMaps == <font class="source_keyword">None</font>)
+<a name="213"></a>                    IncludeMaps = TempItem;
+<a name="214"></a>                <font class="source_keyword">else</font>
+<a name="215"></a>                    IncludeMaps.AddElement(TempItem);
+<a name="216"></a>            }
+<a name="217"></a>            <font class="source_keyword">else</font>
+<a name="218"></a>                Log(<font class="source_string">"*** Unknown map in Map List: "</font>$MapListClass.Default.Maps[i]);
+<a name="219"></a>        }
+<a name="220"></a>        <font class="source_keyword">else</font>
+<a name="221"></a>            Log(<font class="source_string">"*** Empty exclude list, i="</font>$i);
+<a name="222"></a>    }
+<a name="223"></a>}
+<a name="224"></a>
+<a name="225"></a><font class="source_keyword">function</font> ReloadExcludeMaps(<font class="source_keyword2">out</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> ExcludeMaps, <font class="source_keyword">String</font> GameType)
+<a name="226"></a>{
+<a name="227"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;   GameClass;
+<a name="228"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> FirstMap, NextMap, TestMap, MapName;
+<a name="229"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> TempItem;
+<a name="230"></a>
+<a name="231"></a>    GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="232"></a>    
+<a name="233"></a>    ExcludeMaps = <font class="source_keyword">None</font>;
+<a name="234"></a>    <font class="source_keyword">if</font>(GameClass.Default.MapPrefix == <font class="source_string">""</font>)
+<a name="235"></a>        <font class="source_keyword">return</font>;
+<a name="236"></a>    FirstMap = <font class="source_type">Level</font>.GetMapName(GameClass.Default.MapPrefix, <font class="source_string">""</font>, <font class="source_int">0</font>);
+<a name="237"></a>    NextMap = FirstMap;
+<a name="238"></a>    <font class="source_keyword">while</font> (!(FirstMap ~= TestMap) && FirstMap != <font class="source_string">""</font>)
+<a name="239"></a>    {
+<a name="240"></a>        <font class="source_keyword">if</font>(!(Left(NextMap, Len(NextMap) - <font class="source_int">4</font>) ~= (GameClass.Default.MapPrefix$<font class="source_string">"-tutorial"</font>)))
+<a name="241"></a>        {
+<a name="242"></a>            <font class="source_comment">// Add the map.
+</font><a name="243"></a>            TempItem = new(<font class="source_keyword">None</font>) <font class="source_keyword">class</font><font class="source_name">'ListItem'</font>;
+<a name="244"></a>            TempItem.Data = NextMap;
+<a name="245"></a>            
+<a name="246"></a>            <font class="source_keyword">if</font>(Right(NextMap, <font class="source_int">4</font>) ~= <font class="source_string">".unr"</font>)
+<a name="247"></a>                TempItem.Tag = Left(NextMap, Len(NextMap) - <font class="source_int">4</font>);
+<a name="248"></a>            <font class="source_keyword">else</font>
+<a name="249"></a>                TempItem.Tag = NextMap;
+<a name="250"></a>                
+<a name="251"></a>            <font class="source_keyword">if</font> (ExcludeMaps == <font class="source_keyword">None</font>)
+<a name="252"></a>                ExcludeMaps = TempItem;
+<a name="253"></a>            <font class="source_keyword">else</font>
+<a name="254"></a>                ExcludeMaps.AddSortedElement(ExcludeMaps, TempItem);
+<a name="255"></a>        }
+<a name="256"></a>            
+<a name="257"></a>        NextMap = <font class="source_type">Level</font>.GetMapName(GameClass.Default.MapPrefix, NextMap, <font class="source_int">1</font>);
+<a name="258"></a>        TestMap = NextMap;
+<a name="259"></a>    }
+<a name="260"></a>}
+<a name="261"></a>
+<a name="262"></a><font class="source_keyword">function</font> ReloadIncludeMaps(<font class="source_keyword2">out</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> ExcludeMaps, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> IncludeMaps, <font class="source_keyword">String</font> GameType)
+<a name="263"></a>{
+<a name="264"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt; GameClass;
+<a name="265"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> TempItem;
+<a name="266"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="267"></a>
+<a name="268"></a>    GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="269"></a>    <font class="source_keyword">if</font>(GameClass.Default.MapListType == <font class="source_keyword">None</font>)
+<a name="270"></a>        <font class="source_keyword">return</font>;
+<a name="271"></a>    <font class="source_keyword">if</font> (GameClass != <font class="source_keyword">None</font>)
+<a name="272"></a>    {
+<a name="273"></a>        <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;ArrayCount(GameClass.Default.MapListType.Default.Maps) && GameClass.Default.MapListType.Default.Maps[i] != <font class="source_string">""</font>; i++)
+<a name="274"></a>        {
+<a name="275"></a>            <font class="source_comment">// Add the map.
+</font><a name="276"></a>            TempItem = ExcludeMaps.DeleteElement(ExcludeMaps, GameClass.Default.MapListType.Default.Maps[i]);
+<a name="277"></a>            <font class="source_keyword">if</font> (TempItem == <font class="source_keyword">None</font>)
+<a name="278"></a>            {
+<a name="279"></a>                TempItem = new(<font class="source_keyword">None</font>) <font class="source_keyword">class</font><font class="source_name">'ListItem'</font>;
+<a name="280"></a>                TempItem.Data = GameClass.Default.MapListType.Default.Maps[i];
+<a name="281"></a>                
+<a name="282"></a>                <font class="source_keyword">if</font>(Right(TempItem.Data, <font class="source_int">4</font>) ~= <font class="source_string">".unr"</font>)
+<a name="283"></a>                    TempItem.Tag = Left(TempItem.Data, Len(TempItem.Data) - <font class="source_int">4</font>);
+<a name="284"></a>                <font class="source_keyword">else</font>
+<a name="285"></a>                    TempItem.Tag = TempItem.Data;
+<a name="286"></a>            }           
+<a name="287"></a>            <font class="source_keyword">else</font>
+<a name="288"></a>            {
+<a name="289"></a>                <font class="source_keyword">if</font> (IncludeMaps == <font class="source_keyword">None</font>)
+<a name="290"></a>                    IncludeMaps = TempItem;
+<a name="291"></a>                <font class="source_keyword">else</font>
+<a name="292"></a>                    IncludeMaps.AddElement(TempItem);
+<a name="293"></a>            }
+<a name="294"></a>        }
+<a name="295"></a>    }
+<a name="296"></a>}
+<a name="297"></a>
+<a name="298"></a><font class="source_keyword">function</font> UpdateDefaultMaps(<font class="source_keyword">String</font> GameType, <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> TempItem)
+<a name="299"></a>{
+<a name="300"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt; GameClass;
+<a name="301"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="302"></a>    
+<a name="303"></a>    GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="304"></a>
+<a name="305"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;ArrayCount(GameClass.Default.MapListType.Default.Maps); i++)
+<a name="306"></a>    {
+<a name="307"></a>        <font class="source_keyword">if</font> (TempItem != <font class="source_keyword">None</font>)
+<a name="308"></a>        {
+<a name="309"></a>            GameClass.Default.MapListType.Default.Maps[i] = TempItem.Data;
+<a name="310"></a>            TempItem = TempItem.Next;
+<a name="311"></a>        }
+<a name="312"></a>        <font class="source_keyword">else</font>
+<a name="313"></a>            GameClass.Default.MapListType.Default.Maps[i] = <font class="source_string">""</font>;
+<a name="314"></a>    }
+<a name="315"></a>    
+<a name="316"></a>    GameClass.<font class="source_keyword2">Static</font>.StaticSaveConfig();
+<a name="317"></a>}
+<a name="318"></a>
+<a name="319"></a><font class="source_keyword">function</font> <font class="source_keyword">String</font> GenerateGameTypeOptions(<font class="source_keyword">String</font> CurrentGameType)
+<a name="320"></a>{
+<a name="321"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> TempItem;
+<a name="322"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> SelectedStr, OptionStr;
+<a name="323"></a>
+<a name="324"></a>    <font class="source_keyword">for</font> (TempItem = GameTypeList; TempItem != <font class="source_keyword">None</font>; TempItem = TempItem.Next)
+<a name="325"></a>    {
+<a name="326"></a>        <font class="source_keyword">if</font> (CurrentGameType ~= TempItem.Data)
+<a name="327"></a>            SelectedStr = <font class="source_string">" selected"</font>;
+<a name="328"></a>        <font class="source_keyword">else</font>
+<a name="329"></a>            SelectedStr = <font class="source_string">""</font>;
+<a name="330"></a>                
+<a name="331"></a>        OptionStr = OptionStr$<font class="source_string">"&lt;option value=\""</font>$TempItem.Data$<font class="source_string">"\""</font>$SelectedStr$<font class="source_string">"&gt;"</font>$TempItem.Tag$<font class="source_string">"&lt;/option&gt;"</font>;
+<a name="332"></a>    }
+<a name="333"></a>    <font class="source_keyword">return</font> OptionStr;
+<a name="334"></a>}
+<a name="335"></a>
+<a name="336"></a><font class="source_keyword">function</font> <font class="source_keyword">String</font> GenerateMapListOptions(<font class="source_keyword">String</font> GameType, <font class="source_keyword">String</font> MapListType)
+<a name="337"></a>{
+<a name="338"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt; GameClass;
+<a name="339"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> DefaultBaseClass, NextDefault, NextDesc, SelectedStr, OptionStr;
+<a name="340"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> NumDefaultClasses;
+<a name="341"></a>    
+<a name="342"></a>    GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="343"></a>    <font class="source_keyword">if</font>(GameClass == <font class="source_keyword">None</font>)
+<a name="344"></a>        <font class="source_keyword">return</font> <font class="source_string">""</font>;
+<a name="345"></a>
+<a name="346"></a>    DefaultBaseClass = <font class="source_keyword">String</font>(GameClass.Default.MapListType);
+<a name="347"></a>
+<a name="348"></a>    <font class="source_keyword">if</font>(DefaultBaseClass == <font class="source_string">""</font>)
+<a name="349"></a>        <font class="source_keyword">return</font> <font class="source_string">""</font>;
+<a name="350"></a>
+<a name="351"></a>    NextDefault = <font class="source_string">"Custom"</font>;
+<a name="352"></a>    NextDesc = <font class="source_string">"Custom"</font>;
+<a name="353"></a>    
+<a name="354"></a>    <font class="source_keyword">if</font>(DynamicLoadObject(DefaultBaseClass, <font class="source_keyword">class</font><font class="source_name">'Class'</font>) == <font class="source_keyword">None</font>)
+<a name="355"></a>        <font class="source_keyword">return</font> <font class="source_string">""</font>;
+<a name="356"></a>    <font class="source_keyword">while</font>( (NextDefault != <font class="source_string">""</font>) && (NumDefaultClasses &lt; <font class="source_int">50</font>) )
+<a name="357"></a>    {
+<a name="358"></a>        <font class="source_keyword">if</font> (MapListType ~= NextDefault)
+<a name="359"></a>            SelectedStr = <font class="source_string">" selected"</font>;
+<a name="360"></a>        <font class="source_keyword">else</font>
+<a name="361"></a>            SelectedStr = <font class="source_string">""</font>;
+<a name="362"></a>            
+<a name="363"></a>        OptionStr = OptionStr$<font class="source_string">"&lt;option value=\""</font>$NextDefault$<font class="source_string">"\""</font>$SelectedStr$<font class="source_string">"&gt;"</font>$NextDesc$<font class="source_string">"&lt;/option&gt;"</font>;
+<a name="364"></a>            
+<a name="365"></a>        <font class="source_type">Level</font>.GetNextIntDesc(DefaultBaseClass, NumDefaultClasses++, NextDefault, NextDesc);
+<a name="366"></a>    }               
+<a name="367"></a>    <font class="source_keyword">return</font> OptionStr;
+<a name="368"></a>}
+<a name="369"></a>
+<a name="370"></a><font class="source_keyword">function</font> <font class="source_keyword">String</font> GenerateMapListSelect(<font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> <font class="source_type"><a href="..\engine\maplist.html" class="source">MapList</a></font>, <font class="source_keyword2">optional</font> <font class="source_keyword">string</font> SelectedItem)
+<a name="371"></a>{
+<a name="372"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> TempItem;
+<a name="373"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> ResponseStr, SelectedStr;
+<a name="374"></a>    
+<a name="375"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\engine\maplist.html" class="source">MapList</a></font> == <font class="source_keyword">None</font>)
+<a name="376"></a>        <font class="source_keyword">return</font> <font class="source_string">"&lt;option value=\"\"&gt;*** None ***&lt;/option&gt;"</font>;
+<a name="377"></a>        
+<a name="378"></a>    <font class="source_keyword">for</font> (TempItem = <font class="source_type"><a href="..\engine\maplist.html" class="source">MapList</a></font>; TempItem != <font class="source_keyword">None</font>; TempItem = TempItem.Next) {
+<a name="379"></a>        SelectedStr = <font class="source_string">""</font>;
+<a name="380"></a>        <font class="source_keyword">if</font> (TempItem.Data ~= SelectedItem || TempItem.bJustMoved)
+<a name="381"></a>            SelectedStr = <font class="source_string">" selected"</font>;
+<a name="382"></a>        ResponseStr = ResponseStr$<font class="source_string">"&lt;option value=\""</font>$TempItem.Data$<font class="source_string">"\""</font>$SelectedStr$<font class="source_string">"&gt;"</font>$TempItem.Tag$<font class="source_string">"&lt;/option&gt;"</font>;
+<a name="383"></a>    }
+<a name="384"></a>    
+<a name="385"></a>    <font class="source_keyword">return</font> ResponseStr;
+<a name="386"></a>}
+<a name="387"></a>
+<a name="388"></a>
+<a name="389"></a><font class="source_comment">//*****************************************************************************
+</font><a name="390"></a><font class="source_keyword">event</font> Query(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="391"></a>{
+<a name="392"></a>    <font class="source_comment">// Check authentication:
+</font><a name="393"></a>    <font class="source_keyword">if</font> ((AdminUsername != <font class="source_string">""</font> && Caps(Request.Username) != Caps(AdminUsername)) || (AdminPassword != <font class="source_string">""</font> && Caps(Request.Password) != Caps(AdminPassword))) {
+<a name="394"></a>        Response.FailAuthentication(AdminRealm);
+<a name="395"></a>        <font class="source_keyword">return</font>;
+<a name="396"></a>    }
+<a name="397"></a>    
+<a name="398"></a>    Response.Subst(<font class="source_string">"BugAddress"</font>, <font class="source_string">"utbugs"</font>$<font class="source_type">Level</font>.EngineVersion$<font class="source_string">"@epicgames.com"</font>);
+<a name="399"></a>
+<a name="400"></a>    <font class="source_comment">// Match query function.  checks URI and calls appropriate input/output function
+</font><a name="401"></a>    <font class="source_keyword">switch</font> (Mid(Request.URI, <font class="source_int">1</font>)) {
+<a name="402"></a>    <font class="source_keyword">case</font> <font class="source_string">""</font>:
+<a name="403"></a>    <font class="source_keyword">case</font> RootPage:
+<a name="404"></a>        QueryRoot(Request, Response); <font class="source_keyword">break</font>;
+<a name="405"></a>    <font class="source_keyword">case</font> MenuPage:
+<a name="406"></a>        QueryMenu(Request, Response); <font class="source_keyword">break</font>;
+<a name="407"></a>    <font class="source_keyword">case</font> CurrentPage:
+<a name="408"></a>        QueryCurrent(Request, Response); <font class="source_keyword">break</font>;
+<a name="409"></a>    <font class="source_keyword">case</font> CurrentMenuPage:
+<a name="410"></a>        QueryCurrentMenu(Request, Response); <font class="source_keyword">break</font>;
+<a name="411"></a>    <font class="source_keyword">case</font> CurrentPlayersPage:
+<a name="412"></a>        QueryCurrentPlayers(Request, Response); <font class="source_keyword">break</font>;
+<a name="413"></a>    <font class="source_keyword">case</font> CurrentGamePage:
+<a name="414"></a>        QueryCurrentGame(Request, Response); <font class="source_keyword">break</font>;
+<a name="415"></a>    <font class="source_keyword">case</font> CurrentConsolePage:
+<a name="416"></a>        QueryCurrentConsole(Request, Response); <font class="source_keyword">break</font>;
+<a name="417"></a>    <font class="source_keyword">case</font> CurrentConsoleLogPage:
+<a name="418"></a>        QueryCurrentConsoleLog(Request, Response); <font class="source_keyword">break</font>;
+<a name="419"></a>    <font class="source_keyword">case</font> CurrentConsoleSendPage:
+<a name="420"></a>        QueryCurrentConsoleSend(Request, Response); <font class="source_keyword">break</font>;
+<a name="421"></a>    <font class="source_keyword">case</font> CurrentMutatorsPage:
+<a name="422"></a>        QueryCurrentMutators(Request, Response); <font class="source_keyword">break</font>;
+<a name="423"></a>    <font class="source_keyword">case</font> CurrentRestartPage:
+<a name="424"></a>    <font class="source_keyword">case</font> DefaultsRestartPage:
+<a name="425"></a>        QueryRestartPage(Request, Response); <font class="source_keyword">break</font>;
+<a name="426"></a>    <font class="source_keyword">case</font> DefaultsPage:
+<a name="427"></a>        QueryDefaults(Request, Response); <font class="source_keyword">break</font>;
+<a name="428"></a>    <font class="source_keyword">case</font> DefaultsMenuPage:
+<a name="429"></a>        QueryDefaultsMenu(Request, Response); <font class="source_keyword">break</font>;
+<a name="430"></a>    <font class="source_keyword">case</font> DefaultsMapsPage:
+<a name="431"></a>        QueryDefaultsMaps(Request, Response); <font class="source_keyword">break</font>;
+<a name="432"></a>    <font class="source_keyword">case</font> DefaultsRulesPage:
+<a name="433"></a>        QueryDefaultsRules(Request, Response); <font class="source_keyword">break</font>;
+<a name="434"></a>    <font class="source_keyword">case</font> DefaultsSettingsPage:
+<a name="435"></a>        QueryDefaultsSettings(Request, Response); <font class="source_keyword">break</font>;
+<a name="436"></a>    <font class="source_keyword">case</font> DefaultsBotsPage:
+<a name="437"></a>        QueryDefaultsBots(Request, Response); <font class="source_keyword">break</font>;
+<a name="438"></a>    <font class="source_keyword">case</font> DefaultsServerPage:
+<a name="439"></a>        QueryDefaultsServer(Request, Response); <font class="source_keyword">break</font>;
+<a name="440"></a>    <font class="source_keyword">case</font> DefaultsIPPolicyPage:
+<a name="441"></a>        QueryDefaultsIPPolicy(Request, Response); <font class="source_keyword">break</font>;
+<a name="442"></a>    default:
+<a name="443"></a>        Response.SendText(<font class="source_string">"ERROR: Page not found or enabled."</font>);
+<a name="444"></a>
+<a name="445"></a>    }       
+<a name="446"></a>}
+<a name="447"></a>
+<a name="448"></a><font class="source_comment">//*****************************************************************************
+</font><a name="449"></a><font class="source_keyword">function</font> QueryRoot(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="450"></a>{
+<a name="451"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> GroupPage;
+<a name="452"></a>    
+<a name="453"></a>    GroupPage = Request.GetVariable(<font class="source_string">"Group"</font>, CurrentPage);
+<a name="454"></a>    
+<a name="455"></a>    Response.Subst(<font class="source_string">"MenuURI"</font>, MenuPage$<font class="source_string">"?Group="</font>$GroupPage);
+<a name="456"></a>    Response.Subst(<font class="source_string">"MainURI"</font>, GroupPage);
+<a name="457"></a>    
+<a name="458"></a>    Response.IncludeUHTM(<font class="source_string">"root.uhtm"</font>);
+<a name="459"></a>}
+<a name="460"></a>
+<a name="461"></a>
+<a name="462"></a><font class="source_keyword">function</font> QueryMenu(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="463"></a>{
+<a name="464"></a>    Response.Subst(<font class="source_string">"CurrentBG"</font>,     DefaultBG);
+<a name="465"></a>    Response.Subst(<font class="source_string">"DefaultsBG"</font>,    DefaultBG);
+<a name="466"></a>    
+<a name="467"></a>    
+<a name="468"></a>    <font class="source_keyword">switch</font>(Request.GetVariable(<font class="source_string">"Group"</font>, DefaultsPage)) {
+<a name="469"></a>    <font class="source_keyword">case</font> CurrentPage:
+<a name="470"></a>        Response.Subst(<font class="source_string">"CurrentBG"</font>,     HighlightedBG); <font class="source_keyword">break</font>;
+<a name="471"></a>    <font class="source_keyword">case</font> DefaultsPage:
+<a name="472"></a>        Response.Subst(<font class="source_string">"DefaultsBG"</font>,    HighlightedBG); <font class="source_keyword">break</font>;
+<a name="473"></a>    }
+<a name="474"></a>
+<a name="475"></a>    <font class="source_comment">// Set URIs
+</font><a name="476"></a>    Response.Subst(<font class="source_string">"CurrentURI"</font>,    RootPage$<font class="source_string">"?Group="</font>$CurrentPage);
+<a name="477"></a>    Response.Subst(<font class="source_string">"DefaultsURI"</font>,   RootPage$<font class="source_string">"?Group="</font>$DefaultsPage);
+<a name="478"></a>
+<a name="479"></a>    Response.IncludeUHTM(MenuPage$<font class="source_string">".uhtm"</font>);
+<a name="480"></a>    Response.ClearSubst();  
+<a name="481"></a>    
+<a name="482"></a>}
+<a name="483"></a>
+<a name="484"></a><font class="source_comment">//*****************************************************************************
+</font><a name="485"></a><font class="source_keyword">function</font> QueryCurrent(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="486"></a>{
+<a name="487"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> Page;
+<a name="488"></a>    
+<a name="489"></a>    <font class="source_comment">// if no page specified, use the default
+</font><a name="490"></a>    Page = Request.GetVariable(<font class="source_string">"Page"</font>, CurrentGamePage);
+<a name="491"></a>
+<a name="492"></a>    Response.Subst(<font class="source_string">"IndexURI"</font>,  CurrentMenuPage$<font class="source_string">"?Page="</font>$Page);
+<a name="493"></a>    Response.Subst(<font class="source_string">"MainURI"</font>,   Page);
+<a name="494"></a>    
+<a name="495"></a>    Response.IncludeUHTM(CurrentPage$<font class="source_string">".uhtm"</font>);
+<a name="496"></a>    Response.ClearSubst();
+<a name="497"></a>}
+<a name="498"></a>
+<a name="499"></a><font class="source_keyword">function</font> QueryCurrentMenu(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="500"></a>{
+<a name="501"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> Page;
+<a name="502"></a>    
+<a name="503"></a>    Page = Request.GetVariable(<font class="source_string">"Page"</font>, CurrentGamePage);
+<a name="504"></a>        
+<a name="505"></a>    <font class="source_comment">// set background colors
+</font><a name="506"></a>    Response.Subst(<font class="source_string">"DefaultBG"</font>, DefaultBG); <font class="source_comment">// for unused tabs
+</font><a name="507"></a>
+<a name="508"></a>    Response.Subst(<font class="source_string">"PlayersBG"</font>, DefaultBG);
+<a name="509"></a>    Response.Subst(<font class="source_string">"GameBG"</font>,    DefaultBG);
+<a name="510"></a>    Response.Subst(<font class="source_string">"ConsoleBG"</font>, DefaultBG);
+<a name="511"></a>    Response.Subst(<font class="source_string">"MutatorsBG"</font>,DefaultBG);
+<a name="512"></a>    Response.Subst(<font class="source_string">"RestartBG"</font>, DefaultBG);
+<a name="513"></a>    
+<a name="514"></a>    <font class="source_keyword">switch</font>(Page) {
+<a name="515"></a>    <font class="source_keyword">case</font> CurrentPlayersPage:
+<a name="516"></a>        Response.Subst(<font class="source_string">"PlayersBG"</font>, HighlightedBG); <font class="source_keyword">break</font>;
+<a name="517"></a>    <font class="source_keyword">case</font> CurrentGamePage:
+<a name="518"></a>        Response.Subst(<font class="source_string">"GameBG"</font>,    HighlightedBG); <font class="source_keyword">break</font>;
+<a name="519"></a>    <font class="source_keyword">case</font> CurrentConsolePage:
+<a name="520"></a>        Response.Subst(<font class="source_string">"ConsoleBG"</font>, HighlightedBG); <font class="source_keyword">break</font>;
+<a name="521"></a>    <font class="source_keyword">case</font> CurrentMutatorsPage:
+<a name="522"></a>        Response.Subst(<font class="source_string">"MutatorsBG"</font>,HighlightedBG); <font class="source_keyword">break</font>;
+<a name="523"></a>    <font class="source_keyword">case</font> CurrentRestartPage:
+<a name="524"></a>        Response.Subst(<font class="source_string">"RestartBG"</font>, HighlightedBG); <font class="source_keyword">break</font>;
+<a name="525"></a>    }
+<a name="526"></a>
+<a name="527"></a>    <font class="source_comment">// Set URIs
+</font><a name="528"></a>    Response.Subst(<font class="source_string">"PlayersURI"</font>,    CurrentPage$<font class="source_string">"?Page="</font>$CurrentPlayersPage);
+<a name="529"></a>    Response.Subst(<font class="source_string">"GameURI"</font>,       CurrentPage$<font class="source_string">"?Page="</font>$CurrentGamePage);
+<a name="530"></a>    Response.Subst(<font class="source_string">"ConsoleURI"</font>,    CurrentPage$<font class="source_string">"?Page="</font>$CurrentConsolePage);
+<a name="531"></a>    Response.Subst(<font class="source_string">"MutatorsURI"</font>,   CurrentPage$<font class="source_string">"?Page="</font>$CurrentMutatorsPage);
+<a name="532"></a>    Response.Subst(<font class="source_string">"RestartURI"</font>,    CurrentPage$<font class="source_string">"?Page="</font>$CurrentRestartPage);
+<a name="533"></a>    
+<a name="534"></a>    Response.IncludeUHTM(CurrentMenuPage$<font class="source_string">".uhtm"</font>);
+<a name="535"></a>    Response.ClearSubst();
+<a name="536"></a>}
+<a name="537"></a>
+<a name="538"></a><font class="source_keyword">function</font> QueryCurrentPlayers(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="539"></a>{
+<a name="540"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Sort, PlayerListSubst, TempStr;
+<a name="541"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> PlayerList, TempItem;
+<a name="542"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="543"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, PawnCount, j;
+<a name="544"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> IP;
+<a name="545"></a>    
+<a name="546"></a>    Sort = Request.GetVariable(<font class="source_string">"Sort"</font>, <font class="source_string">"Name"</font>);
+<a name="547"></a>    
+<a name="548"></a>    <font class="source_keyword">for</font> (P=<font class="source_type">Level</font>.PawnList; P!=<font class="source_keyword">None</font>; P=P.NextPawn)
+<a name="549"></a>    {
+<a name="550"></a>        <font class="source_keyword">if</font>(     <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(P) != <font class="source_keyword">None</font> 
+<a name="551"></a>            &&  P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> != <font class="source_keyword">None</font>
+<a name="552"></a>            &&  NetConnection(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(P).<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font>) != <font class="source_keyword">None</font>)
+<a name="553"></a>        {
+<a name="554"></a>            <font class="source_keyword">if</font>(Request.GetVariable(<font class="source_string">"BanPlayer"</font>$<font class="source_keyword">string</font>(P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerID)) != <font class="source_string">""</font>)
+<a name="555"></a>            {
+<a name="556"></a>                IP = <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(P).GetPlayerNetworkAddress();
+<a name="557"></a>                <font class="source_keyword">if</font>(<font class="source_type">Level</font>.Game.CheckIPPolicy(IP))
+<a name="558"></a>                {
+<a name="559"></a>                    IP = Left(IP, InStr(IP, <font class="source_string">":"</font>));
+<a name="560"></a>                    Log(<font class="source_string">"Adding IP Ban for: "</font>$IP);
+<a name="561"></a>                    <font class="source_keyword">for</font>(j=<font class="source_int">0</font>;j&lt;<font class="source_int">50</font>;j++)
+<a name="562"></a>                        <font class="source_keyword">if</font>(<font class="source_type">Level</font>.Game.IPPolicies[j] == <font class="source_string">""</font>)
+<a name="563"></a>                            <font class="source_keyword">break</font>;
+<a name="564"></a>                    <font class="source_keyword">if</font>(j &lt; <font class="source_int">50</font>)
+<a name="565"></a>                        <font class="source_type">Level</font>.Game.IPPolicies[j] = <font class="source_string">"DENY,"</font>$IP;
+<a name="566"></a>                    <font class="source_type">Level</font>.Game.SaveConfig();
+<a name="567"></a>                }
+<a name="568"></a>                P.Destroy();
+<a name="569"></a>            }
+<a name="570"></a>            <font class="source_keyword">else</font>
+<a name="571"></a>            {
+<a name="572"></a>                <font class="source_keyword">if</font>(Request.GetVariable(<font class="source_string">"KickPlayer"</font>$<font class="source_keyword">string</font>(P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerID)) != <font class="source_string">""</font>)
+<a name="573"></a>                    P.Destroy();
+<a name="574"></a>            }
+<a name="575"></a>        }
+<a name="576"></a>    }
+<a name="577"></a>
+<a name="578"></a>    <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"SetMinPlayers"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>)
+<a name="579"></a>    {
+<a name="580"></a>        <font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>(<font class="source_type">Level</font>.Game).MinPlayers = Min(Max(<font class="source_keyword">int</font>(Request.GetVariable(<font class="source_string">"MinPlayers"</font>, <font class="source_keyword">String</font>(<font class="source_int">0</font>))), <font class="source_int">0</font>), <font class="source_int">16</font>);
+<a name="581"></a>        <font class="source_type">Level</font>.Game.SaveConfig();
+<a name="582"></a>    }
+<a name="583"></a>    
+<a name="584"></a>    <font class="source_keyword">for</font> (P=<font class="source_type">Level</font>.PawnList; P!=<font class="source_keyword">None</font>; P=P.NextPawn) {
+<a name="585"></a>        <font class="source_keyword">if</font> (P.bIsPlayer && !P.bDeleteMe && <font class="source_type"><a href="..\utserveradmin\utserveradminspectator.html" class="source">UTServerAdminSpectator</a></font>(P) == <font class="source_keyword">None</font>) {
+<a name="586"></a>            PawnCount++;
+<a name="587"></a>            TempItem = new(<font class="source_keyword">None</font>) <font class="source_keyword">class</font><font class="source_name">'ListItem'</font>;
+<a name="588"></a>
+<a name="589"></a>            <font class="source_keyword">if</font> (P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.bIsABot) {
+<a name="590"></a>                TempItem.Data = <font class="source_string">"&lt;tr&gt;&lt;td width=\"1%\" colspan=2&gt;&nbsp;&lt;/td&gt;"</font>;
+<a name="591"></a>                TempStr = <font class="source_string">"&nbsp;(Bot)"</font>;
+<a name="592"></a>            }
+<a name="593"></a>            <font class="source_keyword">else</font> {
+<a name="594"></a>                TempItem.Data = <font class="source_string">"&lt;tr&gt;&lt;td width=\"1%\"&gt;&lt;div align=\"center\"&gt;&lt;input type=\"checkbox\" name=\"KickPlayer"</font>$P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerID$<font class="source_string">"\" value=\"kick\"&gt;&lt;/div&gt;&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;div align=\"center\"&gt;&lt;input type=\"checkbox\" name=\"BanPlayer"</font>$P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerID$<font class="source_string">"\" value=\"ban\"&gt;&lt;/div&gt;&lt;/td&gt;"</font>;
+<a name="595"></a>                <font class="source_keyword">if</font> (P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.bIsSpectator)
+<a name="596"></a>                    TempStr = <font class="source_string">"&nbsp;(Spectator)"</font>;
+<a name="597"></a>                <font class="source_keyword">else</font>
+<a name="598"></a>                    TempStr = <font class="source_string">""</font>;
+<a name="599"></a>            }
+<a name="600"></a>            <font class="source_keyword">if</font>(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(P) != <font class="source_keyword">None</font>)
+<a name="601"></a>            {
+<a name="602"></a>                IP = <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(P).GetPlayerNetworkAddress();
+<a name="603"></a>                IP = Left(IP, InStr(IP, <font class="source_string">":"</font>));
+<a name="604"></a>            }
+<a name="605"></a>            <font class="source_keyword">else</font>
+<a name="606"></a>                IP = <font class="source_string">""</font>;
+<a name="607"></a>            TempItem.Data = TempItem.Data$<font class="source_string">"&lt;td&gt;&lt;div align=\"left\"&gt;"</font>$P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName$TempStr$<font class="source_string">"&lt;/div&gt;&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;div align=\"center\"&gt;"</font>$P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.TeamName$<font class="source_string">"&nbsp;&lt;/div&gt;&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;div align=\"center\"&gt;"</font>$P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Ping$<font class="source_string">"&lt;/div&gt;&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;div align=\"center\"&gt;"</font>$<font class="source_keyword">int</font>(P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score)$<font class="source_string">"&lt;/div&gt;&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;div align=\"center\"&gt;"</font>$IP$<font class="source_string">"&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;"</font>;
+<a name="608"></a>            
+<a name="609"></a>            <font class="source_keyword">switch</font> (Sort) {
+<a name="610"></a>                <font class="source_keyword">case</font> <font class="source_string">"Name"</font>:
+<a name="611"></a>                    TempItem.Tag = P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName; <font class="source_keyword">break</font>;
+<a name="612"></a>                <font class="source_keyword">case</font> <font class="source_string">"Team"</font>:
+<a name="613"></a>                    TempItem.Tag = PadLeft(P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.TeamName, <font class="source_int">2</font>, <font class="source_string">"0"</font>); <font class="source_keyword">break</font>;
+<a name="614"></a>                <font class="source_keyword">case</font> <font class="source_string">"Ping"</font>:
+<a name="615"></a>                    TempItem.Tag = PadLeft(<font class="source_keyword">String</font>(P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Ping), <font class="source_int">4</font>, <font class="source_string">"0"</font>); <font class="source_keyword">break</font>;
+<a name="616"></a>                default:
+<a name="617"></a>                    TempItem.Tag = PadLeft(<font class="source_keyword">String</font>(<font class="source_keyword">int</font>(P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score)), <font class="source_int">3</font>, <font class="source_string">"0"</font>); <font class="source_keyword">break</font>;
+<a name="618"></a>                }
+<a name="619"></a>            <font class="source_keyword">if</font> (PlayerList == <font class="source_keyword">None</font>)
+<a name="620"></a>                PlayerList = TempItem;
+<a name="621"></a>            <font class="source_keyword">else</font>
+<a name="622"></a>                PlayerList.AddSortedElement(PlayerList, TempItem);
+<a name="623"></a>        }
+<a name="624"></a>    }
+<a name="625"></a>    <font class="source_keyword">if</font> (PawnCount &gt; <font class="source_int">0</font>) {
+<a name="626"></a>        <font class="source_keyword">if</font> (Sort ~= <font class="source_string">"Score"</font>)
+<a name="627"></a>            <font class="source_keyword">for</font> (TempItem=PlayerList; TempItem!=<font class="source_keyword">None</font>; TempItem=TempItem.Next)
+<a name="628"></a>                PlayerListSubst = TempItem.Data$PlayerListSubst;
+<a name="629"></a>            
+<a name="630"></a>        <font class="source_keyword">else</font>
+<a name="631"></a>            <font class="source_keyword">for</font> (TempItem=PlayerList; TempItem!=<font class="source_keyword">None</font>; TempItem=TempItem.Next)
+<a name="632"></a>                PlayerListSubst = PlayerListSubst$TempItem.Data;
+<a name="633"></a>    }
+<a name="634"></a>    <font class="source_keyword">else</font>
+<a name="635"></a>        PlayerListSubst = <font class="source_string">"&lt;tr align=\"center\"&gt;&lt;td colspan=\"5\"&gt;** No Players Connected **&lt;/td&gt;&lt;/tr&gt;"</font>;
+<a name="636"></a>
+<a name="637"></a>    Response.Subst(<font class="source_string">"PlayerList"</font>, PlayerListSubst);
+<a name="638"></a>    Response.Subst(<font class="source_string">"CurrentGame"</font>, <font class="source_type">Level</font>.Game.<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.GameName$<font class="source_string">" in "</font>$<font class="source_type">Level</font>.Title);
+<a name="639"></a>    Response.Subst(<font class="source_string">"PostAction"</font>, CurrentPlayersPage);
+<a name="640"></a>    Response.Subst(<font class="source_string">"Sort"</font>, Sort);
+<a name="641"></a>    Response.Subst(<font class="source_string">"MinPlayers"</font>, <font class="source_keyword">String</font>(<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>(<font class="source_type">Level</font>.Game).MinPlayers));
+<a name="642"></a>    Response.IncludeUHTM(CurrentPlayersPage$<font class="source_string">".uhtm"</font>);
+<a name="643"></a>}
+<a name="644"></a>
+<a name="645"></a><font class="source_keyword">function</font> QueryCurrentGame(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="646"></a>{
+<a name="647"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> ExcludeMaps, IncludeMaps;
+<a name="648"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt; NewClass;
+<a name="649"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NewGameType;
+<a name="650"></a>    
+<a name="651"></a>    <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"SwitchGameTypeAndMap"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="652"></a>        <font class="source_type">Level</font>.ServerTravel(Request.GetVariable(<font class="source_string">"MapSelect"</font>)$<font class="source_string">"?game="</font>$Request.GetVariable(<font class="source_string">"GameTypeSelect"</font>)$<font class="source_string">"?mutator="</font>$UsedMutators(), <font class="source_keyword">false</font>);
+<a name="653"></a>        Response.Subst(<font class="source_string">"Title"</font>, <font class="source_string">"Please Wait"</font>);
+<a name="654"></a>        Response.Subst(<font class="source_string">"Message"</font>, <font class="source_string">"The server is now switching to map '"</font>$Request.GetVariable(<font class="source_string">"MapSelect"</font>)$<font class="source_string">"' and game type '"</font>$Request.GetVariable(<font class="source_string">"GameTypeSelect"</font>)$<font class="source_string">"'.  Please allow 10-15 seconds while the server changes levels."</font>);
+<a name="655"></a>        Response.IncludeUHTM(MessageUHTM);
+<a name="656"></a>    }
+<a name="657"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"SwitchGameType"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="658"></a>        NewGameType = Request.GetVariable(<font class="source_string">"GameTypeSelect"</font>);
+<a name="659"></a>        NewClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(DynamicLoadObject(NewGameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="660"></a>
+<a name="661"></a>        ReloadExcludeMaps(ExcludeMaps, NewGameType);
+<a name="662"></a>        ReloadIncludeMaps(ExcludeMaps, IncludeMaps, NewGameType);
+<a name="663"></a>
+<a name="664"></a>        Response.Subst(<font class="source_string">"GameTypeButton"</font>, <font class="source_string">""</font>);
+<a name="665"></a>        Response.Subst(<font class="source_string">"MapButton"</font>, <font class="source_string">"&lt;input type=\"submit\" name=\"SwitchGameTypeAndMap\" value=\"Switch\"&gt;"</font>);
+<a name="666"></a>        Response.Subst(<font class="source_string">"GameTypeSelect"</font>, NewClass.default.GameName$<font class="source_string">"&lt;input type=\"hidden\" name=\"GameTypeSelect\" value=\""</font>$NewGameType$<font class="source_string">"\"&gt;"</font>);
+<a name="667"></a>        Response.Subst(<font class="source_string">"MapSelect"</font>, GenerateMapListSelect(IncludeMaps));
+<a name="668"></a>        Response.Subst(<font class="source_string">"PostAction"</font>, CurrentGamePage);
+<a name="669"></a>        Response.IncludeUHTM(CurrentGamePage$<font class="source_string">".uhtm"</font>);
+<a name="670"></a>    }
+<a name="671"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"SwitchMap"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="672"></a>        <font class="source_type">Level</font>.ServerTravel(Request.GetVariable(<font class="source_string">"MapSelect"</font>)$<font class="source_string">"?game="</font>$<font class="source_type">Level</font>.Game.<font class="source_keyword">Class</font>$<font class="source_string">"?mutator="</font>$UsedMutators(), <font class="source_keyword">false</font>);
+<a name="673"></a>        Response.Subst(<font class="source_string">"Title"</font>, <font class="source_string">"Please Wait"</font>);
+<a name="674"></a>        Response.Subst(<font class="source_string">"Message"</font>, <font class="source_string">"The server is now switching to map '"</font>$Request.GetVariable(<font class="source_string">"MapSelect"</font>)$<font class="source_string">"'.    Please allow 10-15 seconds while the server changes levels."</font>);
+<a name="675"></a>        Response.IncludeUHTM(MessageUHTM);
+<a name="676"></a>
+<a name="677"></a>    }
+<a name="678"></a>    <font class="source_keyword">else</font> {
+<a name="679"></a>        ReloadExcludeMaps(ExcludeMaps, <font class="source_keyword">String</font>(<font class="source_type">Level</font>.Game.<font class="source_keyword">Class</font>));
+<a name="680"></a>        ReloadIncludeMaps(ExcludeMaps, IncludeMaps, <font class="source_keyword">String</font>(<font class="source_type">Level</font>.Game.<font class="source_keyword">Class</font>));
+<a name="681"></a>
+<a name="682"></a>        Response.Subst(<font class="source_string">"GameTypeButton"</font>, <font class="source_string">"&lt;input type=\"submit\" name=\"SwitchGameType\" value=\"Switch\"&gt;"</font>);
+<a name="683"></a>        Response.Subst(<font class="source_string">"MapButton"</font>, <font class="source_string">"&lt;input type=\"submit\" name=\"SwitchMap\" value=\"Switch\"&gt;"</font>);
+<a name="684"></a>        Response.Subst(<font class="source_string">"GameTypeSelect"</font>, <font class="source_string">"&lt;select name=\"GameTypeSelect\"&gt;"</font>$GenerateGameTypeOptions(<font class="source_keyword">String</font>(<font class="source_type">Level</font>.Game.<font class="source_keyword">Class</font>))$<font class="source_string">"&lt;/select&gt;"</font>);
+<a name="685"></a>        Response.Subst(<font class="source_string">"MapSelect"</font>, GenerateMapListSelect(IncludeMaps, Left(<font class="source_keyword">string</font>(<font class="source_type">Level</font>), InStr(<font class="source_keyword">string</font>(<font class="source_type">Level</font>), <font class="source_string">"."</font>))$<font class="source_string">".unr"</font>) );
+<a name="686"></a>        Response.Subst(<font class="source_string">"PostAction"</font>, CurrentGamePage);
+<a name="687"></a>        Response.IncludeUHTM(CurrentGamePage$<font class="source_string">".uhtm"</font>);
+<a name="688"></a>    }
+<a name="689"></a>}
+<a name="690"></a>
+<a name="691"></a><font class="source_keyword">function</font> QueryCurrentConsole(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="692"></a>{
+<a name="693"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> SendStr, OutStr;
+<a name="694"></a>
+<a name="695"></a>    SendStr = Request.GetVariable(<font class="source_string">"SendText"</font>, <font class="source_string">""</font>);
+<a name="696"></a>    <font class="source_keyword">if</font> (SendStr != <font class="source_string">""</font>) {
+<a name="697"></a>        <font class="source_keyword">if</font> (Left(SendStr, <font class="source_int">4</font>) ~= <font class="source_string">"say "</font>)
+<a name="698"></a>            <font class="source_type"><a href="..\engine\spectator.html" class="source">Spectator</a></font>.BroadcastMessage(<font class="source_string">"Admin: "</font>$Mid(SendStr, <font class="source_int">4</font>));
+<a name="699"></a>        <font class="source_keyword">else</font> {
+<a name="700"></a>            OutStr = <font class="source_type">Level</font>.ConsoleCommand(SendStr);
+<a name="701"></a>            <font class="source_keyword">if</font> (OutStr != <font class="source_string">""</font>)
+<a name="702"></a>                <font class="source_type"><a href="..\engine\spectator.html" class="source">Spectator</a></font>.AddMessage(<font class="source_keyword">None</font>, OutStr, <font class="source_name">'Console'</font>);
+<a name="703"></a>        }
+<a name="704"></a>    }
+<a name="705"></a>    
+<a name="706"></a>    Response.Subst(<font class="source_string">"LogURI"</font>, CurrentConsoleLogPage);
+<a name="707"></a>    Response.Subst(<font class="source_string">"SayURI"</font>, CurrentConsoleSendPage);
+<a name="708"></a>    Response.IncludeUHTM(CurrentConsolePage$<font class="source_string">".uhtm"</font>);
+<a name="709"></a>}
+<a name="710"></a>
+<a name="711"></a><font class="source_keyword">function</font> QueryCurrentConsoleLog(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="712"></a>{
+<a name="713"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> TempItem;
+<a name="714"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> LogSubst, LogStr;
+<a name="715"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="716"></a>
+<a name="717"></a>    <font class="source_keyword">for</font> (TempItem = <font class="source_type"><a href="..\engine\spectator.html" class="source">Spectator</a></font>.MessageList; TempItem != <font class="source_keyword">None</font>; TempItem = TempItem.Next)
+<a name="718"></a>        LogSubst = LogSubst$<font class="source_string">"&gt; "</font>$TempItem.Data$<font class="source_string">"&lt;br&gt;"</font>;
+<a name="719"></a>        
+<a name="720"></a>    Response.Subst(<font class="source_string">"LogRefresh"</font>, <font class="source_type"><a href="..\uweb\webserver.html" class="source">WebServer</a></font>.ServerURL$Path$<font class="source_string">"/"</font>$CurrentConsoleLogPage$<font class="source_string">"#END"</font>);
+<a name="721"></a>    Response.Subst(<font class="source_string">"LogText"</font>, LogSubst);
+<a name="722"></a>    Response.IncludeUHTM(CurrentConsoleLogPage$<font class="source_string">".uhtm"</font>);
+<a name="723"></a>}
+<a name="724"></a>
+<a name="725"></a><font class="source_keyword">function</font> QueryCurrentConsoleSend(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="726"></a>{
+<a name="727"></a>    Response.Subst(<font class="source_string">"DefaultSendText"</font>, DefaultSendText);
+<a name="728"></a>    Response.Subst(<font class="source_string">"PostAction"</font>, CurrentConsolePage);
+<a name="729"></a>    Response.IncludeUHTM(CurrentConsoleSendPage$<font class="source_string">".uhtm"</font>);
+<a name="730"></a>}
+<a name="731"></a>
+<a name="732"></a><font class="source_keyword">function</font> QueryRestartPage(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="733"></a>{
+<a name="734"></a>    <font class="source_type">Level</font>.ServerTravel(Left(<font class="source_keyword">string</font>(<font class="source_type">Level</font>), InStr(<font class="source_keyword">string</font>(<font class="source_type">Level</font>), <font class="source_string">"."</font>))$<font class="source_string">".unr"</font>$<font class="source_string">"?game="</font>$<font class="source_type">Level</font>.Game.<font class="source_keyword">Class</font>$<font class="source_string">"?mutator="</font>$UsedMutators(), <font class="source_keyword">false</font>);
+<a name="735"></a>    Response.Subst(<font class="source_string">"Title"</font>, <font class="source_string">"Please Wait"</font>);
+<a name="736"></a>    Response.Subst(<font class="source_string">"Message"</font>, <font class="source_string">"The server is now restarting the current map.  Please allow 10-15 seconds while the server changes levels."</font>);
+<a name="737"></a>    Response.IncludeUHTM(MessageUHTM);
+<a name="738"></a>}
+<a name="739"></a>
+<a name="740"></a><font class="source_keyword">function</font> QueryCurrentMutators(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="741"></a>{
+<a name="742"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> TempItem;
+<a name="743"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> Count, i;
+<a name="744"></a>    
+<a name="745"></a>    <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"AddMutator"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="746"></a>        Count = Request.GetVariableCount(<font class="source_string">"ExcludeMutatorsSelect"</font>);
+<a name="747"></a>        <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;Count; i++)
+<a name="748"></a>        {
+<a name="749"></a>            <font class="source_keyword">if</font> (ExcludeMutators != <font class="source_keyword">None</font>)
+<a name="750"></a>            {
+<a name="751"></a>                TempItem = ExcludeMutators.DeleteElement(ExcludeMutators, Request.GetVariableNumber(<font class="source_string">"ExcludeMutatorsSelect"</font>, i));
+<a name="752"></a>                <font class="source_keyword">if</font> (TempItem != <font class="source_keyword">None</font>)
+<a name="753"></a>                {
+<a name="754"></a>                    TempItem.bJustMoved = <font class="source_keyword">true</font>;
+<a name="755"></a>                    <font class="source_keyword">if</font> (IncludeMutators == <font class="source_keyword">None</font>)
+<a name="756"></a>                        IncludeMutators = TempItem;
+<a name="757"></a>                    <font class="source_keyword">else</font>
+<a name="758"></a>                        IncludeMutators.AddElement(TempItem);
+<a name="759"></a>                }
+<a name="760"></a>                <font class="source_keyword">else</font>
+<a name="761"></a>                    Log(<font class="source_string">"Exclude mutator not found: "</font>$Request.GetVariableNumber(<font class="source_string">"ExcludeMutatorsSelect"</font>, i));
+<a name="762"></a>            }
+<a name="763"></a>        }
+<a name="764"></a>    }
+<a name="765"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"DelMutator"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="766"></a>        Count = Request.GetVariableCount(<font class="source_string">"IncludeMutatorsSelect"</font>);
+<a name="767"></a>        <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;Count; i++)
+<a name="768"></a>        {
+<a name="769"></a>            <font class="source_keyword">if</font> (IncludeMutators != <font class="source_keyword">None</font>)
+<a name="770"></a>            {
+<a name="771"></a>                TempItem = IncludeMutators.DeleteElement(IncludeMutators, Request.GetVariableNumber(<font class="source_string">"IncludeMutatorsSelect"</font>, i));
+<a name="772"></a>                <font class="source_keyword">if</font> (TempItem != <font class="source_keyword">None</font>)
+<a name="773"></a>                {
+<a name="774"></a>                    TempItem.bJustMoved = <font class="source_keyword">true</font>;
+<a name="775"></a>                    <font class="source_keyword">if</font> (ExcludeMutators == <font class="source_keyword">None</font>)
+<a name="776"></a>                        ExcludeMutators = TempItem;
+<a name="777"></a>                    <font class="source_keyword">else</font>
+<a name="778"></a>                        ExcludeMutators.AddSortedElement(ExcludeMutators, TempItem);
+<a name="779"></a>                }
+<a name="780"></a>                <font class="source_keyword">else</font>
+<a name="781"></a>                    Log(<font class="source_string">"Include mutator not found: "</font>$Request.GetVariableNumber(<font class="source_string">"IncludeMutatorsSelect"</font>, i));
+<a name="782"></a>            }
+<a name="783"></a>        }
+<a name="784"></a>    }
+<a name="785"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"AddAllMutators"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>)
+<a name="786"></a>    {
+<a name="787"></a>        <font class="source_keyword">while</font> (ExcludeMutators != <font class="source_keyword">None</font>)
+<a name="788"></a>        {
+<a name="789"></a>            TempItem = ExcludeMutators.DeleteElement(ExcludeMutators);
+<a name="790"></a>            <font class="source_keyword">if</font> (TempItem != <font class="source_keyword">None</font>)
+<a name="791"></a>            {
+<a name="792"></a>                TempItem.bJustMoved = <font class="source_keyword">true</font>;
+<a name="793"></a>                <font class="source_keyword">if</font> (IncludeMutators == <font class="source_keyword">None</font>)
+<a name="794"></a>                    IncludeMutators = TempItem;
+<a name="795"></a>                <font class="source_keyword">else</font>
+<a name="796"></a>                    IncludeMutators.AddElement(TempItem);
+<a name="797"></a>            }
+<a name="798"></a>        }
+<a name="799"></a>    }
+<a name="800"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"DelAllMutators"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>)
+<a name="801"></a>    {
+<a name="802"></a>        <font class="source_keyword">while</font> (IncludeMutators != <font class="source_keyword">None</font>)
+<a name="803"></a>        {
+<a name="804"></a>            TempItem = IncludeMutators.DeleteElement(IncludeMutators);
+<a name="805"></a>            <font class="source_keyword">if</font> (TempItem != <font class="source_keyword">None</font>)
+<a name="806"></a>            {
+<a name="807"></a>                TempItem.bJustMoved = <font class="source_keyword">true</font>;
+<a name="808"></a>                <font class="source_keyword">if</font> (ExcludeMutators == <font class="source_keyword">None</font>)
+<a name="809"></a>                    ExcludeMutators = TempItem;
+<a name="810"></a>                <font class="source_keyword">else</font>
+<a name="811"></a>                    ExcludeMutators.AddSortedElement(ExcludeMutators, TempItem);
+<a name="812"></a>            }
+<a name="813"></a>        }
+<a name="814"></a>    }
+<a name="815"></a>
+<a name="816"></a>    Response.Subst(<font class="source_string">"ExcludeMutatorsOptions"</font>, GenerateMutatorListSelect(ExcludeMutators));
+<a name="817"></a>    Response.Subst(<font class="source_string">"IncludeMutatorsOptions"</font>, GenerateMutatorListSelect(IncludeMutators));
+<a name="818"></a>    
+<a name="819"></a>    Response.Subst(<font class="source_string">"PostAction"</font>, CurrentMutatorsPage);
+<a name="820"></a>    Response.IncludeUHTM(CurrentMutatorsPage$<font class="source_string">".uhtm"</font>);
+<a name="821"></a>}
+<a name="822"></a>
+<a name="823"></a><font class="source_comment">//*****************************************************************************
+</font><a name="824"></a><font class="source_keyword">function</font> QueryDefaults(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="825"></a>{
+<a name="826"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> GameType, PageStr;
+<a name="827"></a>    
+<a name="828"></a>    <font class="source_comment">// if no gametype specified use the first one in the list
+</font><a name="829"></a>    GameType = Request.GetVariable(<font class="source_string">"GameType"</font>, <font class="source_keyword">String</font>(<font class="source_type">Level</font>.Game.<font class="source_keyword">Class</font>));
+<a name="830"></a>    
+<a name="831"></a>    <font class="source_comment">// if no page specified, use the first one
+</font><a name="832"></a>    PageStr = Request.GetVariable(<font class="source_string">"Page"</font>, DefaultsMapsPage);
+<a name="833"></a>
+<a name="834"></a>    Response.Subst(<font class="source_string">"IndexURI"</font>,  DefaultsMenuPage$<font class="source_string">"?GameType="</font>$GameType$<font class="source_string">"&Page="</font>$PageStr);
+<a name="835"></a>    Response.Subst(<font class="source_string">"MainURI"</font>,   PageStr$<font class="source_string">"?GameType="</font>$GameType);
+<a name="836"></a>    
+<a name="837"></a>    Response.IncludeUHTM(DefaultsPage$<font class="source_string">".uhtm"</font>);
+<a name="838"></a>    Response.ClearSubst();
+<a name="839"></a>}
+<a name="840"></a>
+<a name="841"></a><font class="source_keyword">function</font> QueryDefaultsMenu(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="842"></a>{
+<a name="843"></a>    <font class="source_keyword">local</font>   <font class="source_keyword">String</font>  GameType, Page, TempStr;
+<a name="844"></a>    
+<a name="845"></a>    GameType = Request.GetVariable(<font class="source_string">"GameType"</font>);
+<a name="846"></a>    Page = Request.GetVariable(<font class="source_string">"Page"</font>);
+<a name="847"></a>        
+<a name="848"></a>    <font class="source_keyword">if</font> (GameType == <font class="source_string">""</font>)
+<a name="849"></a>        GameType = <font class="source_keyword">String</font>(<font class="source_type">Level</font>.Game.<font class="source_keyword">Class</font>);
+<a name="850"></a>    
+<a name="851"></a>    <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"GameTypeSet"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>)
+<a name="852"></a>    {   
+<a name="853"></a>        TempStr = Request.GetVariable(<font class="source_string">"GameTypeSelect"</font>, GameType);
+<a name="854"></a>        <font class="source_keyword">if</font> (!(TempStr ~= GameType))
+<a name="855"></a>            GameType = TempStr;
+<a name="856"></a>    }
+<a name="857"></a>
+<a name="858"></a>
+<a name="859"></a>    <font class="source_comment">// set post action
+</font><a name="860"></a>    Response.Subst(<font class="source_string">"PostAction"</font>, DefaultsPage);
+<a name="861"></a>
+<a name="862"></a>
+<a name="863"></a>    <font class="source_comment">// set currently used gametype
+</font><a name="864"></a>    Response.Subst(<font class="source_string">"GameType"</font>, GameType);
+<a name="865"></a>
+<a name="866"></a>    <font class="source_comment">// set currently active page
+</font><a name="867"></a>    Response.Subst(<font class="source_string">"Page"</font>, Page);
+<a name="868"></a>    
+<a name="869"></a>    <font class="source_comment">// Generate gametype options
+</font><a name="870"></a>    Response.Subst(<font class="source_string">"GameTypeOptions"</font>, GenerateGameTypeOptions(GameType));
+<a name="871"></a>
+<a name="872"></a>    <font class="source_comment">// set background colors
+</font><a name="873"></a>    Response.Subst(<font class="source_string">"DefaultBG"</font>, DefaultBG); <font class="source_comment">// for unused tabs
+</font><a name="874"></a>
+<a name="875"></a>    Response.Subst(<font class="source_string">"MapsBG"</font>,    DefaultBG);
+<a name="876"></a>    Response.Subst(<font class="source_string">"RulesBG"</font>,   DefaultBG);
+<a name="877"></a>    Response.Subst(<font class="source_string">"SettingsBG"</font>,DefaultBG);
+<a name="878"></a>    Response.Subst(<font class="source_string">"BotsBG"</font>,    DefaultBG);
+<a name="879"></a>    Response.Subst(<font class="source_string">"ServerBG"</font>,  DefaultBG);
+<a name="880"></a>    Response.Subst(<font class="source_string">"IPPolicyBG"</font>,DefaultBG);
+<a name="881"></a>    Response.Subst(<font class="source_string">"RestartBG"</font>, DefaultBG);
+<a name="882"></a>    
+<a name="883"></a>    <font class="source_keyword">switch</font>(Page) {
+<a name="884"></a>    <font class="source_keyword">case</font> DefaultsMapsPage:
+<a name="885"></a>        Response.Subst(<font class="source_string">"MapsBG"</font>,    HighlightedBG); <font class="source_keyword">break</font>;
+<a name="886"></a>    <font class="source_keyword">case</font> DefaultsRulesPage:
+<a name="887"></a>        Response.Subst(<font class="source_string">"RulesBG"</font>,   HighlightedBG); <font class="source_keyword">break</font>;
+<a name="888"></a>    <font class="source_keyword">case</font> DefaultsSettingsPage:
+<a name="889"></a>        Response.Subst(<font class="source_string">"SettingsBG"</font>,HighlightedBG); <font class="source_keyword">break</font>;
+<a name="890"></a>    <font class="source_keyword">case</font> DefaultsBotsPage:
+<a name="891"></a>        Response.Subst(<font class="source_string">"BotsBG"</font>,    HighlightedBG); <font class="source_keyword">break</font>;
+<a name="892"></a>    <font class="source_keyword">case</font> DefaultsServerPage:
+<a name="893"></a>        Response.Subst(<font class="source_string">"ServerBG"</font>,  HighlightedBG); <font class="source_keyword">break</font>;
+<a name="894"></a>    <font class="source_keyword">case</font> DefaultsIPPolicyPage:
+<a name="895"></a>        Response.Subst(<font class="source_string">"IPPolicyBG"</font>,HighlightedBG); <font class="source_keyword">break</font>;
+<a name="896"></a>    <font class="source_keyword">case</font> DefaultsRestartPage:
+<a name="897"></a>        Response.Subst(<font class="source_string">"RestartBG"</font>, HighlightedBG); <font class="source_keyword">break</font>;
+<a name="898"></a>    }
+<a name="899"></a>
+<a name="900"></a>    <font class="source_comment">// Set URIs
+</font><a name="901"></a>    Response.Subst(<font class="source_string">"MapsURI"</font>,       DefaultsPage$<font class="source_string">"?GameType="</font>$GameType$<font class="source_string">"&Page="</font>$DefaultsMapsPage);
+<a name="902"></a>    Response.Subst(<font class="source_string">"RulesURI"</font>,      DefaultsPage$<font class="source_string">"?GameType="</font>$GameType$<font class="source_string">"&Page="</font>$DefaultsRulesPage);
+<a name="903"></a>    Response.Subst(<font class="source_string">"SettingsURI"</font>,   DefaultsPage$<font class="source_string">"?GameType="</font>$GameType$<font class="source_string">"&Page="</font>$DefaultsSettingsPage);
+<a name="904"></a>    Response.Subst(<font class="source_string">"BotsURI"</font>,       DefaultsPage$<font class="source_string">"?GameType="</font>$GameType$<font class="source_string">"&Page="</font>$DefaultsBotsPage);  
+<a name="905"></a>    Response.Subst(<font class="source_string">"ServerURI"</font>,     DefaultsPage$<font class="source_string">"?GameType="</font>$GameType$<font class="source_string">"&Page="</font>$DefaultsServerPage);    
+<a name="906"></a>    Response.Subst(<font class="source_string">"IPPolicyURI"</font>,   DefaultsPage$<font class="source_string">"?GameType="</font>$GameType$<font class="source_string">"&Page="</font>$DefaultsIPPolicyPage);  
+<a name="907"></a>    Response.Subst(<font class="source_string">"RestartURI"</font>,    DefaultsPage$<font class="source_string">"?GameType="</font>$GameType$<font class="source_string">"&Page="</font>$DefaultsRestartPage);   
+<a name="908"></a>
+<a name="909"></a>    Response.IncludeUHTM(DefaultsMenuPage$<font class="source_string">".uhtm"</font>);
+<a name="910"></a>    Response.ClearSubst();
+<a name="911"></a>}
+<a name="912"></a>
+<a name="913"></a><font class="source_keyword">function</font> QueryDefaultsMaps(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="914"></a>{
+<a name="915"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> GameType, MapListType;
+<a name="916"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utserveradmin\listitem.html" class="source">ListItem</a></font> ExcludeMaps, IncludeMaps, TempItem;
+<a name="917"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, Count, MoveCount;
+<a name="918"></a>    
+<a name="919"></a>    <font class="source_comment">// load saved entries from the page	
+</font><a name="920"></a>    GameType = Request.GetVariable(<font class="source_string">"GameType"</font>); <font class="source_comment">// provided by index page
+</font><a name="921"></a>    MapListType = Request.GetVariable(<font class="source_string">"MapListType"</font>, <font class="source_string">"Custom"</font>);
+<a name="922"></a>    
+<a name="923"></a>    ReloadExcludeMaps(ExcludeMaps, GameType);
+<a name="924"></a>    ReloadIncludeMaps(ExcludeMaps, IncludeMaps, GameType);
+<a name="925"></a>
+<a name="926"></a>
+<a name="927"></a>    <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"MapListSet"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="928"></a>        MapListType = Request.GetVariable(<font class="source_string">"MapListSelect"</font>, <font class="source_string">"Custom"</font>);
+<a name="929"></a>        <font class="source_keyword">if</font> (MapListType != <font class="source_string">"Custom"</font>)
+<a name="930"></a>        {
+<a name="931"></a>            ApplyMapList(ExcludeMaps, IncludeMaps, GameType, MapListType);
+<a name="932"></a>            
+<a name="933"></a>            UpdateDefaultMaps(GameType, IncludeMaps);
+<a name="934"></a>        }
+<a name="935"></a>    }
+<a name="936"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"AddMap"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="937"></a>        Count = Request.GetVariableCount(<font class="source_string">"ExcludeMapsSelect"</font>);
+<a name="938"></a>        <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;Count; i++)
+<a name="939"></a>        {
+<a name="940"></a>            <font class="source_keyword">if</font> (ExcludeMaps != <font class="source_keyword">None</font>)
+<a name="941"></a>            {
+<a name="942"></a>                TempItem = ExcludeMaps.DeleteElement(ExcludeMaps, Request.GetVariableNumber(<font class="source_string">"ExcludeMapsSelect"</font>, i));
+<a name="943"></a>                <font class="source_keyword">if</font> (TempItem != <font class="source_keyword">None</font>)
+<a name="944"></a>                {
+<a name="945"></a>                    TempItem.bJustMoved = <font class="source_keyword">true</font>;
+<a name="946"></a>                    <font class="source_keyword">if</font> (IncludeMaps == <font class="source_keyword">None</font>)
+<a name="947"></a>                        IncludeMaps = TempItem;
+<a name="948"></a>                    <font class="source_keyword">else</font>
+<a name="949"></a>                        IncludeMaps.AddElement(TempItem);
+<a name="950"></a>                }
+<a name="951"></a>                <font class="source_keyword">else</font>
+<a name="952"></a>                    Log(<font class="source_string">"Exclude map not found: "</font>$Request.GetVariableNumber(<font class="source_string">"ExcludeMapsSelect"</font>, i));
+<a name="953"></a>            }
+<a name="954"></a>        }
+<a name="955"></a>        MapListType = <font class="source_string">"Custom"</font>;
+<a name="956"></a>        UpdateDefaultMaps(GameType, IncludeMaps);
+<a name="957"></a>    }
+<a name="958"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"DelMap"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font> && Request.GetVariableCount(<font class="source_string">"IncludeMapsSelect"</font>) &gt; <font class="source_int">0</font>) {
+<a name="959"></a>        Count = Request.GetVariableCount(<font class="source_string">"IncludeMapsSelect"</font>);
+<a name="960"></a>        <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;Count; i++)
+<a name="961"></a>        {
+<a name="962"></a>            <font class="source_keyword">if</font> (IncludeMaps != <font class="source_keyword">None</font>)
+<a name="963"></a>            {
+<a name="964"></a>                TempItem = IncludeMaps.DeleteElement(IncludeMaps, Request.GetVariableNumber(<font class="source_string">"IncludeMapsSelect"</font>, i));
+<a name="965"></a>                <font class="source_keyword">if</font> (TempItem != <font class="source_keyword">None</font>)
+<a name="966"></a>                {
+<a name="967"></a>                    TempItem.bJustMoved = <font class="source_keyword">true</font>;
+<a name="968"></a>                    <font class="source_keyword">if</font> (ExcludeMaps == <font class="source_keyword">None</font>)
+<a name="969"></a>                        ExcludeMaps = TempItem;
+<a name="970"></a>                    <font class="source_keyword">else</font>
+<a name="971"></a>                        ExcludeMaps.AddSortedElement(ExcludeMaps, TempItem);
+<a name="972"></a>                }
+<a name="973"></a>                <font class="source_keyword">else</font>
+<a name="974"></a>                    Log(<font class="source_string">"Include map not found: "</font>$Request.GetVariableNumber(<font class="source_string">"IncludeMapsSelect"</font>, i));
+<a name="975"></a>            }
+<a name="976"></a>        }
+<a name="977"></a>        MapListType = <font class="source_string">"Custom"</font>;
+<a name="978"></a>        UpdateDefaultMaps(GameType, IncludeMaps);
+<a name="979"></a>    }
+<a name="980"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"AddAllMap"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="981"></a>        <font class="source_keyword">while</font> (ExcludeMaps != <font class="source_keyword">None</font>)
+<a name="982"></a>        {
+<a name="983"></a>            TempItem = ExcludeMaps.DeleteElement(ExcludeMaps);
+<a name="984"></a>            <font class="source_keyword">if</font> (TempItem != <font class="source_keyword">None</font>)
+<a name="985"></a>            {
+<a name="986"></a>                TempItem.bJustMoved = <font class="source_keyword">true</font>;
+<a name="987"></a>                <font class="source_keyword">if</font> (IncludeMaps == <font class="source_keyword">None</font>)
+<a name="988"></a>                    IncludeMaps = TempItem;
+<a name="989"></a>                <font class="source_keyword">else</font>
+<a name="990"></a>                    IncludeMaps.AddElement(TempItem);
+<a name="991"></a>            }
+<a name="992"></a>        }
+<a name="993"></a>        MapListType = <font class="source_string">"Custom"</font>;
+<a name="994"></a>        UpdateDefaultMaps(GameType, IncludeMaps);
+<a name="995"></a>    }
+<a name="996"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"DelAllMap"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="997"></a>        <font class="source_keyword">while</font> (IncludeMaps != <font class="source_keyword">None</font>)
+<a name="998"></a>        {
+<a name="999"></a>            TempItem = IncludeMaps.DeleteElement(IncludeMaps);
+<a name="1000"></a>            <font class="source_keyword">if</font> (TempItem != <font class="source_keyword">None</font>)
+<a name="1001"></a>            {
+<a name="1002"></a>                TempItem.bJustMoved = <font class="source_keyword">true</font>;
+<a name="1003"></a>                <font class="source_keyword">if</font> (ExcludeMaps == <font class="source_keyword">None</font>)
+<a name="1004"></a>                    ExcludeMaps = TempItem;
+<a name="1005"></a>                <font class="source_keyword">else</font>
+<a name="1006"></a>                    ExcludeMaps.AddSortedElement(ExcludeMaps, TempItem);
+<a name="1007"></a>            }
+<a name="1008"></a>        }
+<a name="1009"></a>        MapListType = <font class="source_string">"Custom"</font>;
+<a name="1010"></a>        UpdateDefaultMaps(GameType, IncludeMaps);   <font class="source_comment">// IncludeMaps should be None now.
+</font><a name="1011"></a>    }
+<a name="1012"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"MoveMap"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="1013"></a>        MoveCount = <font class="source_keyword">int</font>(Abs(<font class="source_keyword">float</font>(Request.GetVariable(<font class="source_string">"MoveMapCount"</font>))));
+<a name="1014"></a>        <font class="source_keyword">if</font> (MoveCount != <font class="source_int">0</font>) {
+<a name="1015"></a>            Count = Request.GetVariableCount(<font class="source_string">"IncludeMapsSelect"</font>);
+<a name="1016"></a>            <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"MoveMap"</font>) ~= <font class="source_string">"Down"</font>) {
+<a name="1017"></a>                <font class="source_keyword">for</font> (TempItem = IncludeMaps; TempItem.Next != <font class="source_keyword">None</font>; TempItem = TempItem.Next);
+<a name="1018"></a>                <font class="source_keyword">for</font> (TempItem = TempItem; TempItem != <font class="source_keyword">None</font>; TempItem = TempItem.Prev) {
+<a name="1019"></a>                    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;Count; i++) {
+<a name="1020"></a>                        <font class="source_keyword">if</font> (TempItem.Data ~= Request.GetVariableNumber(<font class="source_string">"IncludeMapsSelect"</font>, i)) {
+<a name="1021"></a>                            TempItem.bJustMoved = <font class="source_keyword">true</font>;
+<a name="1022"></a>                            IncludeMaps.MoveElementDown(IncludeMaps, TempItem, MoveCount);
+<a name="1023"></a>                            <font class="source_keyword">break</font>;
+<a name="1024"></a>                        }
+<a name="1025"></a>                    }
+<a name="1026"></a>                }
+<a name="1027"></a>            }
+<a name="1028"></a>            <font class="source_keyword">else</font> {
+<a name="1029"></a>                <font class="source_keyword">for</font> (TempItem = IncludeMaps; TempItem != <font class="source_keyword">None</font>; TempItem = TempItem.Next) {
+<a name="1030"></a>                    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;Count; i++) {
+<a name="1031"></a>                        <font class="source_keyword">if</font> (TempItem.Data ~= Request.GetVariableNumber(<font class="source_string">"IncludeMapsSelect"</font>, i)) {
+<a name="1032"></a>                            TempItem.bJustMoved = <font class="source_keyword">true</font>;
+<a name="1033"></a>                            IncludeMaps.MoveElementUp(IncludeMaps, TempItem, MoveCount);
+<a name="1034"></a>                            <font class="source_keyword">break</font>;
+<a name="1035"></a>                        }
+<a name="1036"></a>                    }
+<a name="1037"></a>                }
+<a name="1038"></a>            }
+<a name="1039"></a>            
+<a name="1040"></a>            UpdateDefaultMaps(GameType, IncludeMaps);
+<a name="1041"></a>        }
+<a name="1042"></a>    }
+<a name="1043"></a>    
+<a name="1044"></a>    <font class="source_comment">// Start output here
+</font><a name="1045"></a>    
+<a name="1046"></a>    Response.Subst(<font class="source_string">"MapListType"</font>, MapListType);
+<a name="1047"></a>    
+<a name="1048"></a>    <font class="source_comment">// Generate maplist options
+</font><a name="1049"></a>    Response.Subst(<font class="source_string">"MapListOptions"</font>, GenerateMapListOptions(GameType, MapListType));
+<a name="1050"></a>
+<a name="1051"></a>    <font class="source_comment">// Generate map selects
+</font><a name="1052"></a>    Response.Subst(<font class="source_string">"ExcludeMapsOptions"</font>, GenerateMapListSelect(ExcludeMaps));
+<a name="1053"></a>    Response.Subst(<font class="source_string">"IncludeMapsOptions"</font>, GenerateMapListSelect(IncludeMaps));
+<a name="1054"></a>
+<a name="1055"></a>    Response.Subst(<font class="source_string">"PostAction"</font>, DefaultsMapsPage);
+<a name="1056"></a>    Response.Subst(<font class="source_string">"GameType"</font>, GameType);
+<a name="1057"></a>    Response.IncludeUHTM(DefaultsMapsPage$<font class="source_string">".uhtm"</font>);
+<a name="1058"></a>    Response.ClearSubst();
+<a name="1059"></a>}
+<a name="1060"></a>
+<a name="1061"></a><font class="source_keyword">function</font> QueryDefaultsRules(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="1062"></a>{
+<a name="1063"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> GameType, FragName, FragLimit, TimeLimit, MaxTeams, FriendlyFire, PlayersBalanceTeams, ForceRespawn;
+<a name="1064"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> MaxPlayers, MaxSpectators, WeaponsStay, Tournament;
+<a name="1065"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt; GameClass;
+<a name="1066"></a>    
+<a name="1067"></a>    GameType = Request.GetVariable(<font class="source_string">"GameType"</font>, GameTypeList.Data);
+<a name="1068"></a>    GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="1069"></a>
+<a name="1070"></a>    MaxPlayers = Request.GetVariable(<font class="source_string">"MaxPlayers"</font>, <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.MaxPlayers));
+<a name="1071"></a>    MaxPlayers = <font class="source_keyword">String</font>(max(<font class="source_keyword">int</font>(MaxPlayers), <font class="source_int">0</font>));
+<a name="1072"></a>    <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.MaxPlayers = <font class="source_keyword">int</font>(MaxPlayers);
+<a name="1073"></a>    Response.Subst(<font class="source_string">"MaxPlayers"</font>, MaxPlayers);
+<a name="1074"></a>    
+<a name="1075"></a>    MaxSpectators = Request.GetVariable(<font class="source_string">"MaxSpectators"</font>, <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.MaxSpectators));
+<a name="1076"></a>    MaxSpectators = <font class="source_keyword">String</font>(max(<font class="source_keyword">int</font>(MaxSpectators), <font class="source_int">0</font>));
+<a name="1077"></a>    <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.MaxSpectators = <font class="source_keyword">int</font>(MaxSpectators);
+<a name="1078"></a>    Response.Subst(<font class="source_string">"MaxSpectators"</font>, MaxSpectators);
+<a name="1079"></a>    
+<a name="1080"></a>    WeaponsStay = <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bMultiWeaponStay);
+<a name="1081"></a>    Tournament = <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bTournament);
+<a name="1082"></a>    <font class="source_keyword">if</font>( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass) != <font class="source_keyword">None</font> )
+<a name="1083"></a>        PlayersBalanceTeams = <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass).Default.bPlayersBalanceTeams);
+<a name="1084"></a>    
+<a name="1085"></a>    <font class="source_keyword">if</font>( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\lastmanstanding.html" class="source">LastManStanding</a></font>&gt;(GameClass) == <font class="source_keyword">None</font> )
+<a name="1086"></a>        ForceRespawn = <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bForceRespawn);
+<a name="1087"></a>            
+<a name="1088"></a>    <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"Apply"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {       
+<a name="1089"></a>        <font class="source_keyword">if</font>( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass) != <font class="source_keyword">None</font> )
+<a name="1090"></a>        {
+<a name="1091"></a>            PlayersBalanceTeams = Request.GetVariable(<font class="source_string">"PlayersBalanceTeams"</font>, <font class="source_string">"false"</font>);
+<a name="1092"></a>            <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass).Default.bPlayersBalanceTeams = PlayersBalanceTeams ~= <font class="source_string">"true"</font>;
+<a name="1093"></a>        }
+<a name="1094"></a>
+<a name="1095"></a>        <font class="source_keyword">if</font>( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\lastmanstanding.html" class="source">LastManStanding</a></font>&gt;(GameClass) == <font class="source_keyword">None</font> )
+<a name="1096"></a>        {
+<a name="1097"></a>            ForceRespawn = Request.GetVariable(<font class="source_string">"ForceRespawn"</font>, <font class="source_string">"false"</font>);
+<a name="1098"></a>            <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bForceRespawn = <font class="source_keyword">bool</font>(ForceRespawn);
+<a name="1099"></a>        }
+<a name="1100"></a>
+<a name="1101"></a>        WeaponsStay = Request.GetVariable(<font class="source_string">"WeaponsStay"</font>, <font class="source_string">"false"</font>);
+<a name="1102"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bMultiWeaponStay = <font class="source_keyword">bool</font>(WeaponsStay);
+<a name="1103"></a>
+<a name="1104"></a>        Tournament = Request.GetVariable(<font class="source_string">"Tournament"</font>, <font class="source_string">"false"</font>);
+<a name="1105"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bTournament = <font class="source_keyword">bool</font>(Tournament);
+<a name="1106"></a>    }
+<a name="1107"></a>
+<a name="1108"></a>    <font class="source_keyword">if</font> (WeaponsStay ~= <font class="source_string">"true"</font>) {
+<a name="1109"></a>        Response.Subst(<font class="source_string">"WeaponsStay"</font>, <font class="source_string">" checked"</font>);
+<a name="1110"></a>    }
+<a name="1111"></a>    <font class="source_keyword">if</font> (Tournament ~= <font class="source_string">"true"</font>) {
+<a name="1112"></a>        Response.Subst(<font class="source_string">"Tournament"</font>, <font class="source_string">" checked"</font>);
+<a name="1113"></a>    }
+<a name="1114"></a>    <font class="source_keyword">if</font>( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\lastmanstanding.html" class="source">LastManStanding</a></font>&gt;(GameClass) == <font class="source_keyword">None</font> )
+<a name="1115"></a>    {
+<a name="1116"></a>        <font class="source_keyword">if</font> (ForceRespawn ~= <font class="source_string">"true"</font>)
+<a name="1117"></a>            ForceRespawn = <font class="source_string">" checked"</font>;
+<a name="1118"></a>        <font class="source_keyword">else</font>
+<a name="1119"></a>            ForceRespawn = <font class="source_string">""</font>;
+<a name="1120"></a>        Response.Subst(<font class="source_string">"ForceRespawnSubst"</font>, <font class="source_string">"&lt;tr&gt;&lt;td&gt;Force Respawn&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;input type=\"checkbox\" name=\"ForceRespawn\" value=\"true\""</font>$ForceRespawn$<font class="source_string">"&gt;&lt;/td&gt;&lt;/tr&gt;"</font>);
+<a name="1121"></a>    }
+<a name="1122"></a>
+<a name="1123"></a>    <font class="source_keyword">if</font>( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass) != <font class="source_keyword">None</font> )
+<a name="1124"></a>    {
+<a name="1125"></a>        <font class="source_keyword">if</font> (PlayersBalanceTeams ~= <font class="source_string">"true"</font>)
+<a name="1126"></a>            PlayersBalanceTeams = <font class="source_string">" checked"</font>;
+<a name="1127"></a>        <font class="source_keyword">else</font>
+<a name="1128"></a>            PlayersBalanceTeams = <font class="source_string">""</font>;
+<a name="1129"></a>        Response.Subst(<font class="source_string">"BalanceSubst"</font>, <font class="source_string">"&lt;tr&gt;&lt;td&gt;Force Balanced Teams&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;input type=\"checkbox\" name=\"PlayersBalanceTeams\" value=\"true\""</font>$PlayersBalanceTeams$<font class="source_string">"&gt;&lt;/td&gt;&lt;/tr&gt;"</font>);
+<a name="1130"></a>    }
+<a name="1131"></a>
+<a name="1132"></a>    <font class="source_keyword">if</font> (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass) != <font class="source_keyword">None</font> && <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\assault.html" class="source">Assault</a></font>&gt;(GameClass) == <font class="source_keyword">None</font>) {
+<a name="1133"></a>        <font class="source_keyword">if</font> (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass) != <font class="source_keyword">None</font>) {
+<a name="1134"></a>            FragLimit = Request.GetVariable(<font class="source_string">"FragLimit"</font>, <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass).Default.GoalTeamScore));
+<a name="1135"></a>            FragLimit = <font class="source_keyword">String</font>(max(<font class="source_keyword">int</font>(FragLimit), <font class="source_int">0</font>));
+<a name="1136"></a>            <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass).Default.GoalTeamScore = <font class="source_keyword">float</font>(FragLimit);
+<a name="1137"></a>            FragName = <font class="source_string">"Max Team Score"</font>;
+<a name="1138"></a>        }
+<a name="1139"></a>        <font class="source_keyword">else</font> {
+<a name="1140"></a>            FragLimit = Request.GetVariable(<font class="source_string">"FragLimit"</font>, <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.FragLimit));
+<a name="1141"></a>            FragLimit = <font class="source_keyword">String</font>(max(<font class="source_keyword">int</font>(FragLimit), <font class="source_int">0</font>));
+<a name="1142"></a>            <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.FragLimit = <font class="source_keyword">float</font>(FragLimit);
+<a name="1143"></a>            FragName = <font class="source_string">"Frag Limit"</font>;
+<a name="1144"></a>        }
+<a name="1145"></a>        
+<a name="1146"></a>        Response.Subst(<font class="source_string">"FragSubst"</font>, <font class="source_string">"&lt;tr&gt;&lt;td&gt;"</font>$FragName$<font class="source_string">"&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;input type=\"text\" name=\"FragLimit\" maxlength=\"3\" size=\"3\" value=\""</font>$FragLimit$<font class="source_string">"\"&gt;&lt;/td&gt;&lt;/tr&gt;"</font>);
+<a name="1147"></a>
+<a name="1148"></a>        <font class="source_keyword">if</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\lastmanstanding.html" class="source">LastManStanding</a></font>&gt;(GameClass) == <font class="source_keyword">None</font>)
+<a name="1149"></a>        {
+<a name="1150"></a>            TimeLimit = Request.GetVariable(<font class="source_string">"TimeLimit"</font>, <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.TimeLimit));
+<a name="1151"></a>            TimeLimit = <font class="source_keyword">String</font>(max(<font class="source_keyword">int</font>(TimeLimit), <font class="source_int">0</font>));
+<a name="1152"></a>            Response.Subst(<font class="source_string">"TimeLimitSubst"</font>, <font class="source_string">"&lt;tr&gt;&lt;td&gt;Time Limit&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;input type=\"text\" name=\"TimeLimit\" maxlength=\"3\" size=\"3\" value=\""</font>$TimeLimit$<font class="source_string">"\"&gt;&lt;/td&gt;&lt;/tr&gt;"</font>);
+<a name="1153"></a>            <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.TimeLimit = <font class="source_keyword">float</font>(TimeLimit);
+<a name="1154"></a>        }
+<a name="1155"></a>    }
+<a name="1156"></a>    
+<a name="1157"></a>    <font class="source_keyword">if</font>( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass) != <font class="source_keyword">None</font> &&
+<a name="1158"></a>        !ClassIsChildOf( GameClass, <font class="source_keyword">class</font><font class="source_name">'CTFGame'</font> ) &&
+<a name="1159"></a>        !ClassIsChildOf( GameClass, <font class="source_keyword">class</font><font class="source_name">'Assault'</font> ) ) {
+<a name="1160"></a>        MaxTeams = Request.GetVariable(<font class="source_string">"MaxTeams"</font>, <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass).Default.MaxTeams));
+<a name="1161"></a>        MaxTeams = <font class="source_keyword">String</font>(max(<font class="source_keyword">int</font>(MaxTeams), <font class="source_int">0</font>));
+<a name="1162"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass).Default.MaxTeams = Min(Max(<font class="source_keyword">int</font>(MaxTeams), <font class="source_int">2</font>), <font class="source_int">4</font>);
+<a name="1163"></a>        Response.Subst(<font class="source_string">"TeamSubst"</font>, <font class="source_string">"&lt;tr&gt;&lt;td&gt;Max Teams&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;input type=\"text\" name=\"MaxTeams\" maxlength=\"2\" size=\"2\" value="</font>$MaxTeams$<font class="source_string">"&gt;&lt;/td&gt;&lt;td&gt;&lt;/tr&gt;"</font>);
+<a name="1164"></a>    }
+<a name="1165"></a>    
+<a name="1166"></a>    <font class="source_keyword">if</font> (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass) != <font class="source_keyword">None</font>) {
+<a name="1167"></a>        FriendlyFire = Request.GetVariable(<font class="source_string">"FriendlyFire"</font>, <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass).Default.FriendlyFireScale * <font class="source_int">100</font>));
+<a name="1168"></a>        FriendlyFire = <font class="source_keyword">String</font>(min(max(<font class="source_keyword">int</font>(FriendlyFire), <font class="source_int">0</font>), <font class="source_int">100</font>));
+<a name="1169"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass).Default.FriendlyFireScale = <font class="source_keyword">float</font>(FriendlyFire)/1<font class="source_int">00.0</font>;
+<a name="1170"></a>        Response.Subst(<font class="source_string">"FriendlyFireSubst"</font>, <font class="source_string">"&lt;tr&gt;&lt;td&gt;Friendly Fire: [0-100]%&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;input type=\"text\" name=\"FriendlyFire\" maxlength=\"3\" size=\"3\" value=\""</font>$FriendlyFire$<font class="source_string">"\"&gt;&lt;/td&gt;&lt;/tr&gt;"</font>);
+<a name="1171"></a>    }
+<a name="1172"></a>    
+<a name="1173"></a>    Response.Subst(<font class="source_string">"PostAction"</font>, DefaultsRulesPage);
+<a name="1174"></a>    Response.Subst(<font class="source_string">"GameType"</font>, GameType);
+<a name="1175"></a>    Response.IncludeUHTM(DefaultsRulesPage$<font class="source_string">".uhtm"</font>);
+<a name="1176"></a>    Response.ClearSubst();
+<a name="1177"></a>    
+<a name="1178"></a>    GameClass.<font class="source_keyword2">Static</font>.StaticSaveConfig();
+<a name="1179"></a>}
+<a name="1180"></a>
+<a name="1181"></a><font class="source_keyword">function</font> QueryDefaultsSettings(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="1182"></a>{
+<a name="1183"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> GameType, UseTranslocator;
+<a name="1184"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt; GameClass;
+<a name="1185"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> GameStyle, GameSpeed, AirControl;
+<a name="1186"></a>
+<a name="1187"></a>    GameType = Request.GetVariable(<font class="source_string">"GameType"</font>, GameTypeList.Data);
+<a name="1188"></a>    GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="1189"></a>
+<a name="1190"></a>    <font class="source_keyword">if</font> (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bMegaSpeed == <font class="source_keyword">true</font>)
+<a name="1191"></a>        GameStyle=<font class="source_int">1</font>;
+<a name="1192"></a>    <font class="source_keyword">if</font> (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bHardCoreMode == <font class="source_keyword">true</font>)
+<a name="1193"></a>        GameStyle+=<font class="source_int">1</font>;
+<a name="1194"></a>    
+<a name="1195"></a>    <font class="source_keyword">switch</font> (Request.GetVariable(<font class="source_string">"GameStyle"</font>, <font class="source_keyword">String</font>(GameStyle))) {
+<a name="1196"></a>    <font class="source_keyword">case</font> <font class="source_string">"0"</font>:
+<a name="1197"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bMegaSpeed = <font class="source_keyword">false</font>;
+<a name="1198"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bHardCoreMode = <font class="source_keyword">false</font>;
+<a name="1199"></a>        Response.Subst(<font class="source_string">"Normal"</font>, <font class="source_string">" selected"</font>); <font class="source_keyword">break</font>;
+<a name="1200"></a>        <font class="source_keyword">break</font>;
+<a name="1201"></a>    <font class="source_keyword">case</font> <font class="source_string">"1"</font>:
+<a name="1202"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bMegaSpeed = <font class="source_keyword">false</font>;
+<a name="1203"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bHardCoreMode = <font class="source_keyword">true</font>;
+<a name="1204"></a>        Response.Subst(<font class="source_string">"HardCore"</font>, <font class="source_string">" selected"</font>); <font class="source_keyword">break</font>;
+<a name="1205"></a>    <font class="source_keyword">case</font> <font class="source_string">"2"</font>:
+<a name="1206"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bMegaSpeed = <font class="source_keyword">true</font>;
+<a name="1207"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bHardCoreMode = <font class="source_keyword">true</font>;
+<a name="1208"></a>        Response.Subst(<font class="source_string">"Turbo"</font>, <font class="source_string">" selected"</font>); <font class="source_keyword">break</font>;
+<a name="1209"></a>    }
+<a name="1210"></a>
+<a name="1211"></a>    GameSpeed = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.GameSpeed * <font class="source_int">100.0</font>;
+<a name="1212"></a>    AirControl = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.AirControl * <font class="source_int">100.0</font>;
+<a name="1213"></a>    UseTranslocator = <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bUseTranslocator);
+<a name="1214"></a>    
+<a name="1215"></a>    <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"Apply"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="1216"></a>        GameSpeed = min(max(<font class="source_keyword">int</font>(Request.GetVariable(<font class="source_string">"GameSpeed"</font>, <font class="source_keyword">String</font>(GameSpeed))), <font class="source_int">10</font>), <font class="source_int">200</font>);
+<a name="1217"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.GameSpeed = GameSpeed / <font class="source_int">100.0</font>;
+<a name="1218"></a>
+<a name="1219"></a>        AirControl = min(max(<font class="source_keyword">int</font>(Request.GetVariable(<font class="source_string">"AirControl"</font>, <font class="source_keyword">String</font>(AirControl))), <font class="source_int">0</font>), <font class="source_int">100</font>);
+<a name="1220"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.AirControl = AirControl / <font class="source_int">100.0</font>;
+<a name="1221"></a>
+<a name="1222"></a>        UseTranslocator = Request.GetVariable(<font class="source_string">"UseTranslocator"</font>, <font class="source_string">"false"</font>);
+<a name="1223"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.bUseTranslocator = <font class="source_keyword">bool</font>(UseTranslocator);
+<a name="1224"></a>    }
+<a name="1225"></a>    
+<a name="1226"></a>    Response.Subst(<font class="source_string">"GameSpeed"</font>, <font class="source_keyword">String</font>(GameSpeed));
+<a name="1227"></a>    Response.Subst(<font class="source_string">"AirControl"</font>, <font class="source_keyword">String</font>(AirControl));
+<a name="1228"></a>    <font class="source_keyword">if</font> (UseTranslocator ~= <font class="source_string">"true"</font>)
+<a name="1229"></a>        Response.Subst(<font class="source_string">"UseTranslocator"</font>, <font class="source_string">" checked"</font>);
+<a name="1230"></a>    
+<a name="1231"></a>    Response.Subst(<font class="source_string">"PostAction"</font>, DefaultsSettingsPage);
+<a name="1232"></a>    Response.Subst(<font class="source_string">"GameType"</font>, GameType);
+<a name="1233"></a>    Response.IncludeUHTM(DefaultsSettingsPage$<font class="source_string">".uhtm"</font>);
+<a name="1234"></a>    Response.ClearSubst();
+<a name="1235"></a>    
+<a name="1236"></a>    GameClass.<font class="source_keyword2">Static</font>.StaticSaveConfig();
+<a name="1237"></a>}
+<a name="1238"></a>
+<a name="1239"></a>
+<a name="1240"></a><font class="source_keyword">function</font> QueryDefaultsBots(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="1241"></a>{
+<a name="1242"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> GameType, AutoAdjustSkill, RandomOrder, BalanceTeams, DumbDown;
+<a name="1243"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt; GameClass;
+<a name="1244"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\challengebotinfo.html" class="source">ChallengeBotInfo</a></font>&gt; BotConfig;
+<a name="1245"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> BotDifficulty, MinPlayers;
+<a name="1246"></a>    
+<a name="1247"></a>    GameType = Request.GetVariable(<font class="source_string">"GameType"</font>, GameTypeList.Data);
+<a name="1248"></a>    GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="1249"></a>    BotConfig = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.BotConfigType;
+<a name="1250"></a>        
+<a name="1251"></a>    <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"Apply"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>) {
+<a name="1252"></a>        BotDifficulty = <font class="source_keyword">int</font>(Request.GetVariable(<font class="source_string">"BotDifficulty"</font>, <font class="source_keyword">String</font>(BotDifficulty)));
+<a name="1253"></a>        BotConfig.Default.Difficulty = BotDifficulty;
+<a name="1254"></a>        
+<a name="1255"></a>        MinPlayers = min(max(<font class="source_keyword">int</font>(Request.GetVariable(<font class="source_string">"MinPlayers"</font>, <font class="source_keyword">String</font>(MinPlayers))), <font class="source_int">0</font>), <font class="source_int">16</font>);
+<a name="1256"></a>        <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.MinPlayers = MinPlayers;
+<a name="1257"></a>        
+<a name="1258"></a>        AutoAdjustSkill = Request.GetVariable(<font class="source_string">"AutoAdjustSkill"</font>, <font class="source_string">"false"</font>);
+<a name="1259"></a>        BotConfig.Default.bAdjustSkill = <font class="source_keyword">bool</font>(AutoAdjustSkill);
+<a name="1260"></a>
+<a name="1261"></a>        RandomOrder = Request.GetVariable(<font class="source_string">"RandomOrder"</font>, <font class="source_string">"false"</font>);
+<a name="1262"></a>        BotConfig.Default.bRandomOrder = <font class="source_keyword">bool</font>(RandomOrder);
+<a name="1263"></a>
+<a name="1264"></a>        <font class="source_keyword">if</font> (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass) != <font class="source_keyword">None</font>) {
+<a name="1265"></a>            BalanceTeams = Request.GetVariable(<font class="source_string">"BalanceTeams"</font>, <font class="source_string">"false"</font>);
+<a name="1266"></a>            <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass).Default.bBalanceTeams = <font class="source_keyword">bool</font>(BalanceTeams);
+<a name="1267"></a>
+<a name="1268"></a>            <font class="source_keyword">if</font> (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\domination.html" class="source">Domination</a></font>&gt;(GameClass) != <font class="source_keyword">None</font>) {
+<a name="1269"></a>                DumbDown = Request.GetVariable(<font class="source_string">"DumbDown"</font>, <font class="source_string">"true"</font>);
+<a name="1270"></a>                <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\domination.html" class="source">Domination</a></font>&gt;(GameClass).Default.bDumbDown = <font class="source_keyword">bool</font>(Dumbdown);
+<a name="1271"></a>            }
+<a name="1272"></a>        }
+<a name="1273"></a>        BotConfig.<font class="source_keyword2">Static</font>.StaticSaveConfig();
+<a name="1274"></a>        GameClass.<font class="source_keyword2">Static</font>.StaticSaveConfig();
+<a name="1275"></a>    }
+<a name="1276"></a>
+<a name="1277"></a>    BotDifficulty = BotConfig.Default.Difficulty;
+<a name="1278"></a>    MinPlayers = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(GameClass).Default.MinPlayers;
+<a name="1279"></a>    AutoAdjustSkill = <font class="source_keyword">String</font>(BotConfig.Default.bAdjustSkill);
+<a name="1280"></a>    RandomOrder = <font class="source_keyword">String</font>(BotConfig.Default.bRandomOrder);
+<a name="1281"></a>    
+<a name="1282"></a>    <font class="source_keyword">if</font> (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass) != <font class="source_keyword">None</font>)
+<a name="1283"></a>        BalanceTeams = <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass).Default.bBalanceTeams);
+<a name="1284"></a>
+<a name="1285"></a>    <font class="source_keyword">if</font> (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\domination.html" class="source">Domination</a></font>&gt;(GameClass) != <font class="source_keyword">None</font>)
+<a name="1286"></a>        DumbDown = <font class="source_keyword">String</font>(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\domination.html" class="source">Domination</a></font>&gt;(GameClass).Default.bDumbDown);
+<a name="1287"></a>
+<a name="1288"></a>    
+<a name="1289"></a>    Response.Subst(<font class="source_string">"BotDifficulty"</font>$BotDifficulty, <font class="source_string">" selected"</font>);
+<a name="1290"></a>    Response.Subst(<font class="source_string">"MinPlayers"</font>, <font class="source_keyword">String</font>(MinPlayers));
+<a name="1291"></a>    
+<a name="1292"></a>    <font class="source_keyword">if</font> (AutoAdjustSkill ~= <font class="source_string">"true"</font>)
+<a name="1293"></a>        Response.Subst(<font class="source_string">"AutoAdjustSkill"</font>, <font class="source_string">" checked"</font>);
+<a name="1294"></a>    <font class="source_keyword">if</font> (RandomOrder ~= <font class="source_string">"true"</font>)
+<a name="1295"></a>        Response.Subst(<font class="source_string">"RandomOrder"</font>, <font class="source_string">" checked"</font>);
+<a name="1296"></a>
+<a name="1297"></a>    <font class="source_keyword">if</font> (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\teamgameplus.html" class="source">TeamGamePlus</a></font>&gt;(GameClass) != <font class="source_keyword">None</font>) {
+<a name="1298"></a>        <font class="source_keyword">if</font> (BalanceTeams ~= <font class="source_string">"true"</font>)
+<a name="1299"></a>            BalanceTeams = <font class="source_string">" checked"</font>;
+<a name="1300"></a>        <font class="source_keyword">else</font>
+<a name="1301"></a>            BalanceTeams = <font class="source_string">""</font>;
+<a name="1302"></a>        Response.Subst(<font class="source_string">"BalanceSubst"</font>, <font class="source_string">"&lt;tr&gt;&lt;td&gt;Bots Balance Teams&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;input type=\"checkbox\" name=\"BalanceTeams\" value=\"true\""</font>$BalanceTeams$<font class="source_string">"&gt;&lt;/td&gt;&lt;/tr&gt;"</font>);
+<a name="1303"></a>
+<a name="1304"></a>        <font class="source_keyword">if</font> (<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\domination.html" class="source">Domination</a></font>&gt;(GameClass) != <font class="source_keyword">None</font>) {
+<a name="1305"></a>            <font class="source_keyword">if</font> (DumbDown ~= <font class="source_string">"false"</font>)
+<a name="1306"></a>                DumbDown = <font class="source_string">" checked"</font>;
+<a name="1307"></a>            <font class="source_keyword">else</font>
+<a name="1308"></a>                DumbDown = <font class="source_string">""</font>;
+<a name="1309"></a>            Response.Subst(<font class="source_string">"DumbDownSubst"</font>, <font class="source_string">"&lt;tr&gt;&lt;td&gt;Enhanced AI&lt;/td&gt;&lt;td width=\"1%\"&gt;&lt;input type=\"checkbox\" name=\"DumbDown\" value=\"false\""</font>$DumbDown$<font class="source_string">"&gt;&lt;/td&gt;&lt;/tr&gt;"</font>);
+<a name="1310"></a>        }
+<a name="1311"></a>    }
+<a name="1312"></a>    Response.Subst(<font class="source_string">"PostAction"</font>, DefaultsBotsPage);
+<a name="1313"></a>    Response.Subst(<font class="source_string">"GameType"</font>, GameType);
+<a name="1314"></a>    Response.IncludeUHTM(DefaultsBotsPage$<font class="source_string">".uhtm"</font>);
+<a name="1315"></a>    Response.ClearSubst();
+<a name="1316"></a>}
+<a name="1317"></a>
+<a name="1318"></a><font class="source_keyword">function</font> QueryDefaultsServer(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="1319"></a>{
+<a name="1320"></a>    <font class="source_keyword">local</font> <font class="source_keyword">String</font> ServerName, AdminName, AdminEmail, MOTDLine1, MOTDLine2, MOTDLine3, MOTDLine4, GamePassword, AdminPassword;
+<a name="1321"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bDoUplink, bWorldLog;
+<a name="1322"></a>    
+<a name="1323"></a>    ServerName = <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.default.ServerName;
+<a name="1324"></a>    AdminName = <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.default.AdminName;
+<a name="1325"></a>    AdminEmail = <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.default.AdminEmail;
+<a name="1326"></a>    MOTDLine1 = <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.default.MOTDLine1;
+<a name="1327"></a>    MOTDLine2 = <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.default.MOTDLine2;
+<a name="1328"></a>    MOTDLine3 = <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.default.MOTDLine3;
+<a name="1329"></a>    MOTDLine4 = <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.default.MOTDLine4;
+<a name="1330"></a>    GamePassword = <font class="source_type">Level</font>.ConsoleCommand(<font class="source_string">"get engine.gameinfo GamePassword"</font>);
+<a name="1331"></a>    AdminPassword = <font class="source_type">Level</font>.ConsoleCommand(<font class="source_string">"get engine.gameinfo AdminPassword"</font>);
+<a name="1332"></a>
+<a name="1333"></a>    bDoUplink = <font class="source_keyword">class</font><font class="source_name">'UdpServerUplink'</font>.default.DoUplink;
+<a name="1334"></a>    bWorldLog = <font class="source_type">Level</font>.Game.Default.bWorldLog;
+<a name="1335"></a>    
+<a name="1336"></a>    <font class="source_keyword">if</font> (Request.GetVariable(<font class="source_string">"Apply"</font>, <font class="source_string">""</font>) != <font class="source_string">""</font>)
+<a name="1337"></a>    {
+<a name="1338"></a>        ServerName = Request.GetVariable(<font class="source_string">"ServerName"</font>, <font class="source_string">""</font>);
+<a name="1339"></a>        AdminName = Request.GetVariable(<font class="source_string">"AdminName"</font>, <font class="source_string">""</font>);
+<a name="1340"></a>        AdminEmail = Request.GetVariable(<font class="source_string">"AdminEmail"</font>, <font class="source_string">""</font>);
+<a name="1341"></a>        MOTDLine1 = Request.GetVariable(<font class="source_string">"MOTDLine1"</font>, <font class="source_string">""</font>);
+<a name="1342"></a>        MOTDLine2 = Request.GetVariable(<font class="source_string">"MOTDLine2"</font>, <font class="source_string">""</font>);
+<a name="1343"></a>        MOTDLine3 = Request.GetVariable(<font class="source_string">"MOTDLine3"</font>, <font class="source_string">""</font>);
+<a name="1344"></a>        MOTDLine4 = Request.GetVariable(<font class="source_string">"MOTDLine4"</font>, <font class="source_string">""</font>);
+<a name="1345"></a>        bDoUplink = <font class="source_keyword">bool</font>(Request.GetVariable(<font class="source_string">"DoUplink"</font>, <font class="source_string">"false"</font>));
+<a name="1346"></a>        bWorldLog = <font class="source_keyword">bool</font>(Request.GetVariable(<font class="source_string">"WorldLog"</font>, <font class="source_string">"false"</font>));
+<a name="1347"></a>        GamePassword = Request.GetVariable(<font class="source_string">"GamePassword"</font>, <font class="source_string">""</font>);
+<a name="1348"></a>        AdminPassword = Request.GetVariable(<font class="source_string">"AdminPassword"</font>, <font class="source_string">""</font>);
+<a name="1349"></a>        
+<a name="1350"></a>        <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.Default.ServerName = ServerName;
+<a name="1351"></a>        <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.Default.AdminName = AdminName;
+<a name="1352"></a>        <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.Default.AdminEmail = AdminEmail;
+<a name="1353"></a>        <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.Default.MOTDline1 = MOTDLine1;
+<a name="1354"></a>        <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.Default.MOTDline2 = MOTDLine2;
+<a name="1355"></a>        <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.Default.MOTDline3 = MOTDLine3;
+<a name="1356"></a>        <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.Default.MOTDline4 = MOTDLine4;
+<a name="1357"></a>        <font class="source_keyword">class</font><font class="source_name">'Engine.GameReplicationInfo'</font>.<font class="source_keyword2">Static</font>.StaticSaveConfig();
+<a name="1358"></a>
+<a name="1359"></a>        <font class="source_keyword">class</font><font class="source_name">'UdpServerUplink'</font>.default.DoUplink = bDoUplink;
+<a name="1360"></a>        <font class="source_keyword">class</font><font class="source_name">'UdpServerUplink'</font>.<font class="source_keyword2">Static</font>.StaticSaveConfig();
+<a name="1361"></a>        
+<a name="1362"></a>        <font class="source_type">Level</font>.Game.Default.bWorldLog = bWorldLog;
+<a name="1363"></a>        <font class="source_type">Level</font>.Game.<font class="source_keyword2">Static</font>.StaticSaveConfig();
+<a name="1364"></a>
+<a name="1365"></a>        <font class="source_type">Level</font>.ConsoleCommand(<font class="source_string">"set engine.gameinfo GamePassword "</font>$GamePassword);
+<a name="1366"></a>        <font class="source_type">Level</font>.ConsoleCommand(<font class="source_string">"set engine.gameinfo AdminPassword "</font>$AdminPassword);
+<a name="1367"></a>    }
+<a name="1368"></a>    
+<a name="1369"></a>    Response.Subst(<font class="source_string">"ServerName"</font>, ServerName);
+<a name="1370"></a>    Response.Subst(<font class="source_string">"AdminName"</font>, AdminName);
+<a name="1371"></a>    Response.Subst(<font class="source_string">"AdminEmail"</font>, AdminEmail);
+<a name="1372"></a>    Response.Subst(<font class="source_string">"MOTDLine1"</font>, MOTDLine1);
+<a name="1373"></a>    Response.Subst(<font class="source_string">"MOTDLine2"</font>, MOTDLine2);
+<a name="1374"></a>    Response.Subst(<font class="source_string">"MOTDLine3"</font>, MOTDLine3);
+<a name="1375"></a>    Response.Subst(<font class="source_string">"MOTDLine4"</font>, MOTDLine4);
+<a name="1376"></a>    Response.Subst(<font class="source_string">"GamePassword"</font>, GamePassword);
+<a name="1377"></a>    Response.Subst(<font class="source_string">"AdminPassword"</font>, AdminPassword);
+<a name="1378"></a>    
+<a name="1379"></a>    <font class="source_keyword">if</font> (bDoUplink)
+<a name="1380"></a>        Response.Subst(<font class="source_string">"DoUplink"</font>, <font class="source_string">" checked"</font>);
+<a name="1381"></a>    <font class="source_keyword">if</font> (bWorldLog)
+<a name="1382"></a>        Response.Subst(<font class="source_string">"WorldLog"</font>, <font class="source_string">" checked"</font>);
+<a name="1383"></a>
+<a name="1384"></a>    Response.Subst(<font class="source_string">"PostAction"</font>, DefaultsServerPage);       
+<a name="1385"></a>    Response.IncludeUHTM(DefaultsServerPage$<font class="source_string">".uhtm"</font>);
+<a name="1386"></a>}
+<a name="1387"></a>
+<a name="1388"></a><font class="source_keyword">function</font> QueryDefaultsIPPolicy(<font class="source_type"><a href="..\uweb\webrequest.html" class="source">WebRequest</a></font> Request, <font class="source_type"><a href="..\uweb\webresponse.html" class="source">WebResponse</a></font> Response)
+<a name="1389"></a>{
+<a name="1390"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, j;
+<a name="1391"></a>
+<a name="1392"></a>    <font class="source_keyword">if</font>(Request.GetVariable(<font class="source_string">"Update"</font>) != <font class="source_string">""</font>)
+<a name="1393"></a>    {
+<a name="1394"></a>        i = <font class="source_keyword">int</font>(Request.GetVariable(<font class="source_string">"PolicyNo"</font>, <font class="source_string">"-1"</font>));
+<a name="1395"></a>        <font class="source_keyword">if</font>(i == -<font class="source_int">1</font>)
+<a name="1396"></a>            <font class="source_keyword">for</font>(i = <font class="source_int">0</font>; i&lt;<font class="source_int">50</font> && <font class="source_type">Level</font>.Game.IPPolicies[i] != <font class="source_string">""</font>; i++);
+<a name="1397"></a>        <font class="source_keyword">if</font>(i &lt; <font class="source_int">50</font>)
+<a name="1398"></a>            <font class="source_type">Level</font>.Game.IPPolicies[i] = Request.GetVariable(<font class="source_string">"AcceptDeny"</font>)$<font class="source_string">","</font>$Request.GetVariable(<font class="source_string">"IPMask"</font>);
+<a name="1399"></a>        <font class="source_type">Level</font>.Game.SaveConfig();
+<a name="1400"></a>    }
+<a name="1401"></a>
+<a name="1402"></a>    <font class="source_keyword">if</font>(Request.GetVariable(<font class="source_string">"Delete"</font>) != <font class="source_string">""</font>)
+<a name="1403"></a>    {
+<a name="1404"></a>        i = <font class="source_keyword">int</font>(Request.GetVariable(<font class="source_string">"PolicyNo"</font>, <font class="source_string">"-1"</font>));
+<a name="1405"></a>        
+<a name="1406"></a>        <font class="source_keyword">if</font>(i &gt; <font class="source_int">0</font>)
+<a name="1407"></a>        {
+<a name="1408"></a>            <font class="source_keyword">for</font>(i = i; i&lt;<font class="source_int">49</font> && <font class="source_type">Level</font>.Game.IPPolicies[i] != <font class="source_string">""</font>; i++)
+<a name="1409"></a>                <font class="source_type">Level</font>.Game.IPPolicies[i] = <font class="source_type">Level</font>.Game.IPPolicies[i + <font class="source_int">1</font>];
+<a name="1410"></a>
+<a name="1411"></a>            <font class="source_keyword">if</font>(i == <font class="source_int">49</font>)
+<a name="1412"></a>                <font class="source_type">Level</font>.Game.IPPolicies[<font class="source_int">49</font>] = <font class="source_string">""</font>;
+<a name="1413"></a>            <font class="source_type">Level</font>.Game.SaveConfig();
+<a name="1414"></a>        }
+<a name="1415"></a>    }
+<a name="1416"></a>
+<a name="1417"></a>    Response.IncludeUHTM(DefaultsIPPolicyPage$<font class="source_string">"-h.uhtm"</font>);
+<a name="1418"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>; i&lt;<font class="source_int">50</font> && <font class="source_type">Level</font>.Game.IPPolicies[i] != <font class="source_string">""</font>; i++)
+<a name="1419"></a>    {
+<a name="1420"></a>        j = InStr(<font class="source_type">Level</font>.Game.IPPolicies[i], <font class="source_string">","</font>);
+<a name="1421"></a>        <font class="source_keyword">if</font>(Left(<font class="source_type">Level</font>.Game.IPPolicies[i], j) ~= <font class="source_string">"DENY"</font>)
+<a name="1422"></a>        {
+<a name="1423"></a>            Response.Subst(<font class="source_string">"AcceptCheck"</font>, <font class="source_string">""</font>);
+<a name="1424"></a>            Response.Subst(<font class="source_string">"DenyCheck"</font>, <font class="source_string">"checked"</font>);
+<a name="1425"></a>        }
+<a name="1426"></a>        <font class="source_keyword">else</font>
+<a name="1427"></a>        {
+<a name="1428"></a>            Response.Subst(<font class="source_string">"AcceptCheck"</font>, <font class="source_string">"checked"</font>);
+<a name="1429"></a>            Response.Subst(<font class="source_string">"DenyCheck"</font>, <font class="source_string">""</font>);
+<a name="1430"></a>        }
+<a name="1431"></a>        Response.Subst(<font class="source_string">"IPMask"</font>, Mid(<font class="source_type">Level</font>.Game.IPPolicies[i], j+<font class="source_int">1</font>));
+<a name="1432"></a>        Response.Subst(<font class="source_string">"PostAction"</font>, DefaultsIPPolicyPage$<font class="source_string">"?PolicyNo="</font>$<font class="source_keyword">string</font>(i));
+<a name="1433"></a>        Response.IncludeUHTM(DefaultsIPPolicyPage$<font class="source_string">"-d.uhtm"</font>);
+<a name="1434"></a>    }
+<a name="1435"></a>    Response.Subst(<font class="source_string">"PostAction"</font>, DefaultsIPPolicyPage);
+<a name="1436"></a>    Response.IncludeUHTM(DefaultsIPPolicyPage$<font class="source_string">"-f.uhtm"</font>);
+<a name="1437"></a>}
+<a name="1438"></a>
+<a name="1439"></a>    
+<a name="1440"></a><font class="source_keyword">defaultproperties</font>
+<a name="1441"></a>{   
+<a name="1442"></a>    SpectatorType=<font class="source_keyword">class</font><font class="source_name">'UTServerAdminSpectator'</font>
+<a name="1443"></a>
+<a name="1444"></a>    MenuPage=<font class="source_string">"menu"</font>
+<a name="1445"></a>    RootPage=<font class="source_string">"root"</font>
+<a name="1446"></a>
+<a name="1447"></a>    CurrentPage=<font class="source_string">"current"</font>
+<a name="1448"></a>    CurrentMenuPage=<font class="source_string">"current_menu"</font>
+<a name="1449"></a>    CurrentIndexPage=<font class="source_string">"current_index"</font>
+<a name="1450"></a>    CurrentPlayersPage=<font class="source_string">"current_players"</font>
+<a name="1451"></a>    CurrentGamePage=<font class="source_string">"current_game"</font>
+<a name="1452"></a>    CurrentConsolePage=<font class="source_string">"current_console"</font>
+<a name="1453"></a>    CurrentConsoleLogPage=<font class="source_string">"current_console_log"</font>
+<a name="1454"></a>    CurrentConsoleSendPage=<font class="source_string">"current_console_send"</font>
+<a name="1455"></a>    DefaultSendText=<font class="source_string">"say "</font>
+<a name="1456"></a>    CurrentMutatorsPage=<font class="source_string">"current_mutators"</font>
+<a name="1457"></a>    CurrentRestartPage=<font class="source_string">"current_restart"</font>
+<a name="1458"></a>
+<a name="1459"></a>    DefaultsPage=<font class="source_string">"defaults"</font>
+<a name="1460"></a>    DefaultsMenuPage=<font class="source_string">"defaults_menu"</font>
+<a name="1461"></a>    DefaultsMapsPage=<font class="source_string">"defaults_maps"</font>
+<a name="1462"></a>    DefaultsRulesPage=<font class="source_string">"defaults_rules"</font>
+<a name="1463"></a>    DefaultsSettingsPage=<font class="source_string">"defaults_settings"</font>
+<a name="1464"></a>    DefaultsBotsPage=<font class="source_string">"defaults_bots"</font>
+<a name="1465"></a>    DefaultsServerPage=<font class="source_string">"defaults_server"</font>
+<a name="1466"></a>    DefaultsIPPolicyPage=<font class="source_string">"defaults_ippolicy"</font>
+<a name="1467"></a>    DefaultsRestartPage=<font class="source_string">"defaults_restart"</font>
+<a name="1468"></a>    MessageUHTM=<font class="source_string">"message.uhtm"</font>
+<a name="1469"></a>    DefaultBG=<font class="source_string">"#aaaaaa"</font>
+<a name="1470"></a>    HighlightedBG=<font class="source_string">"#ffffff"</font>
+<a name="1471"></a>    
+<a name="1472"></a>    AdminRealm=<font class="source_string">"UT Remote Admin Server"</font>
+<a name="1473"></a>    AdminUsername=<font class="source_string">""</font>
+<a name="1474"></a>    AdminPassword=<font class="source_string">""</font>
+<a name="1475"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utserveradmin\utserveradmin-overview.html">Package</a></td>
+	<td class="header"><a href="..\utserveradmin\utserveradmin.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTServerAdmin">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utimageserver.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utserveradminspectator.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:46.000 - Creation time: Wed 26/5/2004 10:49:00.203 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

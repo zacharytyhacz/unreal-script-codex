@@ -1,0 +1,509 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealShare.BotInfo</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\botinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#BotInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="book.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="bots.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\botinfo.html">BotInfo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// BotInfo.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unrealshare\botinfo.html" class="source">BotInfo</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\info.html" class="source">Info</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">bool</font>   bAdjustSkill;
+<a name="7"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">bool</font>   bRandomOrder;
+<a name="8"></a><font class="source_keyword">var</font>   <font class="source_keyword2">config</font> <font class="source_keyword">byte</font>   Difficulty;
+<a name="9"></a>
+<a name="10"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">string</font> BotNames[<font class="source_int">32</font>];
+<a name="11"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">int</font> BotTeams[<font class="source_int">32</font>];
+<a name="12"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">float</font> BotSkills[<font class="source_int">32</font>];
+<a name="13"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">float</font> BotAccuracy[<font class="source_int">32</font>];
+<a name="14"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">float</font> CombatStyle[<font class="source_int">32</font>]; 
+<a name="15"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">float</font> Alertness[<font class="source_int">32</font>];
+<a name="16"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">float</font> Camping[<font class="source_int">32</font>];
+<a name="17"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>&gt; FavoriteWeapon[<font class="source_int">32</font>];
+<a name="18"></a><font class="source_keyword">var</font>   <font class="source_keyword">byte</font> ConfigUsed[<font class="source_int">32</font>];
+<a name="19"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">string</font> BotClasses[<font class="source_int">32</font>];
+<a name="20"></a><font class="source_keyword">var</font>() <font class="source_keyword2">config</font> <font class="source_keyword">string</font> BotSkins[<font class="source_int">32</font>];
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> AvailableClasses[<font class="source_int">32</font>], AvailableDescriptions[<font class="source_int">32</font>], NextBotClass;
+<a name="22"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> NumClasses;
+<a name="23"></a>
+<a name="24"></a><font class="source_keyword">function</font> PreBeginPlay()
+<a name="25"></a>{
+<a name="26"></a>    <font class="source_comment">//DON'T Call parent prebeginplay
+</font><a name="27"></a>}
+<a name="28"></a>
+<a name="29"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="30"></a>{
+<a name="31"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NextBotClass, NextBotDesc;
+<a name="32"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="33"></a>
+<a name="34"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="35"></a>
+<a name="36"></a>    GetNextIntDesc(<font class="source_string">"Bots"</font>, <font class="source_int">0</font>, NextBotClass, NextBotDesc); 
+<a name="37"></a>    <font class="source_keyword">while</font> ( (NextBotClass != <font class="source_string">""</font>) && (NumClasses &lt; <font class="source_int">32</font>) )
+<a name="38"></a>    {
+<a name="39"></a>        AvailableClasses[NumClasses] = NextBotClass;
+<a name="40"></a>        AvailableDescriptions[NumClasses] = NextBotDesc;
+<a name="41"></a>        NumClasses++;
+<a name="42"></a>        GetNextIntDesc(<font class="source_string">"Bots"</font>, NumClasses, NextBotClass, NextBotDesc); 
+<a name="43"></a>    }
+<a name="44"></a>}
+<a name="45"></a>
+<a name="46"></a><font class="source_keyword">function</font> <font class="source_keyword">String</font> GetAvailableClasses(<font class="source_keyword">int</font> n)
+<a name="47"></a>{
+<a name="48"></a>    <font class="source_keyword">return</font> AvailableClasses[n];
+<a name="49"></a>}
+<a name="50"></a>
+<a name="51"></a><font class="source_keyword">function</font> <font class="source_keyword">int</font> ChooseBotInfo()
+<a name="52"></a>{
+<a name="53"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> n, start;
+<a name="54"></a>
+<a name="55"></a>    <font class="source_keyword">if</font> ( bRandomOrder )
+<a name="56"></a>        n = Rand(<font class="source_int">16</font>);
+<a name="57"></a>    <font class="source_keyword">else</font> 
+<a name="58"></a>        n = <font class="source_int">0</font>;
+<a name="59"></a>
+<a name="60"></a>    start = n;
+<a name="61"></a>    <font class="source_keyword">while</font> ( (n &lt; <font class="source_int">32</font>) && (ConfigUsed[n] == <font class="source_int">1</font>) )
+<a name="62"></a>        n++;
+<a name="63"></a>
+<a name="64"></a>    <font class="source_keyword">if</font> ( (n == <font class="source_int">32</font>) && bRandomOrder )
+<a name="65"></a>    {
+<a name="66"></a>        n = <font class="source_int">0</font>;
+<a name="67"></a>        <font class="source_keyword">while</font> ( (n &lt; start) && (ConfigUsed[n] == <font class="source_int">1</font>) )
+<a name="68"></a>            n++;
+<a name="69"></a>    }
+<a name="70"></a>
+<a name="71"></a>    <font class="source_keyword">if</font> ( n &gt; <font class="source_int">31</font> )
+<a name="72"></a>        n = <font class="source_int">31</font>;
+<a name="73"></a>
+<a name="74"></a>    <font class="source_keyword">return</font> n;
+<a name="75"></a>}
+<a name="76"></a>
+<a name="77"></a><font class="source_keyword">function</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\unrealshare\bots.html" class="source">bots</a></font>&gt; GetBotClass(<font class="source_keyword">int</font> n)
+<a name="78"></a>{
+<a name="79"></a>    <font class="source_keyword">return</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\unrealshare\bots.html" class="source">bots</a></font>&gt;( DynamicLoadObject(GetBotClassName(n), <font class="source_keyword">class</font><font class="source_name">'Class'</font>) );
+<a name="80"></a>}
+<a name="81"></a>
+<a name="82"></a><font class="source_keyword">function</font> Individualize(<font class="source_type"><a href="..\unrealshare\bots.html" class="source">bots</a></font> NewBot, <font class="source_keyword">int</font> n, <font class="source_keyword">int</font> NumBots)
+<a name="83"></a>{
+<a name="84"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> NewSkin;
+<a name="85"></a>
+<a name="86"></a>    <font class="source_comment">// Set bot's skin
+</font><a name="87"></a>    <font class="source_keyword">if</font> ( (n &gt;= <font class="source_int">0</font>) && (n &lt; <font class="source_int">32</font>) && (BotSkins[n] != <font class="source_string">""</font>) && (BotSkins[n] != <font class="source_string">"None"</font>) )
+<a name="88"></a>    {
+<a name="89"></a>        NewSkin = <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font>(DynamicLoadObject(BotSkins[n], <font class="source_keyword">class</font><font class="source_name">'Texture'</font>));
+<a name="90"></a>        <font class="source_keyword">if</font> ( NewSkin != <font class="source_keyword">None</font> )
+<a name="91"></a>            NewBot.Skin = NewSkin;
+<a name="92"></a>    }
+<a name="93"></a>
+<a name="94"></a>    <font class="source_comment">// Set bot's name.
+</font><a name="95"></a>    <font class="source_keyword">if</font> ( (BotNames[n] == <font class="source_string">""</font>) || (ConfigUsed[n] == <font class="source_int">1</font>) )
+<a name="96"></a>        BotNames[n] = <font class="source_string">"Bot"</font>;
+<a name="97"></a>
+<a name="98"></a>    <font class="source_type">Level</font>.Game.ChangeName( NewBot, BotNames[n], <font class="source_keyword">false</font> );
+<a name="99"></a>    <font class="source_keyword">if</font> ( BotNames[n] != NewBot.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName )
+<a name="100"></a>        <font class="source_type">Level</font>.Game.ChangeName( NewBot, (<font class="source_string">"Bot"</font>$NumBots), <font class="source_keyword">false</font>);
+<a name="101"></a>
+<a name="102"></a>    ConfigUsed[n] = <font class="source_int">1</font>;
+<a name="103"></a>
+<a name="104"></a>    <font class="source_comment">// adjust bot skill
+</font><a name="105"></a>    NewBot.Skill = FClamp(NewBot.Skill + BotSkills[n], <font class="source_int">0</font>, <font class="source_int">3</font>);
+<a name="106"></a>    NewBot.ReSetSkill();
+<a name="107"></a>}
+<a name="108"></a>
+<a name="109"></a><font class="source_keyword">function</font> SetBotClass(<font class="source_keyword">String</font> ClassName, <font class="source_keyword">int</font> n)
+<a name="110"></a>{
+<a name="111"></a>    BotClasses[n] = ClassName;
+<a name="112"></a>}
+<a name="113"></a>
+<a name="114"></a><font class="source_keyword">function</font> SetBotName( <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> NewName, <font class="source_keyword">int</font> n )
+<a name="115"></a>{
+<a name="116"></a>    BotNames[n] = NewName;
+<a name="117"></a>}
+<a name="118"></a>
+<a name="119"></a><font class="source_keyword">function</font> <font class="source_keyword">String</font> GetBotName(<font class="source_keyword">int</font> n)
+<a name="120"></a>{
+<a name="121"></a>    <font class="source_keyword">return</font> BotNames[n];
+<a name="122"></a>}
+<a name="123"></a>
+<a name="124"></a><font class="source_keyword">function</font> <font class="source_keyword">int</font> GetBotTeam(<font class="source_keyword">int</font> num)
+<a name="125"></a>{
+<a name="126"></a>    <font class="source_keyword">return</font> BotTeams[Num];
+<a name="127"></a>}
+<a name="128"></a>
+<a name="129"></a><font class="source_keyword">function</font> SetBotTeam(<font class="source_keyword">int</font> NewTeam, <font class="source_keyword">int</font> n)
+<a name="130"></a>{
+<a name="131"></a>    BotTeams[n] = NewTeam;
+<a name="132"></a>}
+<a name="133"></a>
+<a name="134"></a><font class="source_keyword">function</font> <font class="source_keyword">int</font> GetBotIndex( <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> BotName )
+<a name="135"></a>{
+<a name="136"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="137"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> found;
+<a name="138"></a>
+<a name="139"></a>    found = <font class="source_keyword">false</font>;
+<a name="140"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;ArrayCount(BotNames)-<font class="source_int">1</font>; i++)
+<a name="141"></a>        <font class="source_keyword">if</font> (BotNames[i] == BotName)
+<a name="142"></a>        {
+<a name="143"></a>            found = <font class="source_keyword">true</font>;
+<a name="144"></a>            <font class="source_keyword">break</font>;
+<a name="145"></a>        }
+<a name="146"></a>
+<a name="147"></a>    <font class="source_keyword">if</font> (!found)
+<a name="148"></a>        i = -<font class="source_int">1</font>;
+<a name="149"></a>
+<a name="150"></a>    <font class="source_keyword">return</font> i;
+<a name="151"></a>}
+<a name="152"></a>
+<a name="153"></a><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetBotSkin( <font class="source_keyword">int</font> num )
+<a name="154"></a>{
+<a name="155"></a>    <font class="source_keyword">return</font> BotSkins[Num];
+<a name="156"></a>}
+<a name="157"></a>
+<a name="158"></a><font class="source_keyword">function</font> SetBotSkin( <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> NewSkin, <font class="source_keyword">int</font> n )
+<a name="159"></a>{
+<a name="160"></a>    BotSkins[n] = NewSkin;
+<a name="161"></a>}
+<a name="162"></a>
+<a name="163"></a><font class="source_keyword">function</font> <font class="source_keyword">String</font> GetBotClassName(<font class="source_keyword">int</font> n)
+<a name="164"></a>{
+<a name="165"></a>    <font class="source_keyword">if</font> ( (n &lt; <font class="source_int">0</font>) || (n &gt; <font class="source_int">31</font>) )
+<a name="166"></a>        <font class="source_keyword">return</font> AvailableClasses[Rand(NumClasses)];
+<a name="167"></a>
+<a name="168"></a>    <font class="source_keyword">if</font> ( BotClasses[n] == <font class="source_string">""</font> )
+<a name="169"></a>        BotClasses[n] = AvailableClasses[Rand(NumClasses)];
+<a name="170"></a>
+<a name="171"></a>    <font class="source_keyword">return</font> BotClasses[n];
+<a name="172"></a>}
+<a name="173"></a>
+<a name="174"></a><font class="source_keyword">defaultproperties</font>
+<a name="175"></a>{
+<a name="176"></a>    Difficulty=<font class="source_int">1</font>
+<a name="177"></a>    BotNames(<font class="source_int">0</font>)=<font class="source_string">"Dante"</font>
+<a name="178"></a>    BotNames(<font class="source_int">1</font>)=<font class="source_string">"Ash"</font>
+<a name="179"></a>    BotNames(<font class="source_int">2</font>)=<font class="source_string">"Rhiannon"</font>
+<a name="180"></a>    BotNames(<font class="source_int">3</font>)=<font class="source_string">"Kurgan"</font>
+<a name="181"></a>    BotNames(<font class="source_int">4</font>)=<font class="source_string">"Sonja"</font>
+<a name="182"></a>    BotNames(<font class="source_int">5</font>)=<font class="source_string">"Avatar"</font>
+<a name="183"></a>    BotNames(<font class="source_int">6</font>)=<font class="source_string">"Dominator"</font>
+<a name="184"></a>    BotNames(<font class="source_int">7</font>)=<font class="source_string">"Cholerae"</font>
+<a name="185"></a>    BotNames(<font class="source_int">8</font>)=<font class="source_string">"Apocalypse"</font>
+<a name="186"></a>    BotNames(<font class="source_int">9</font>)=<font class="source_string">"Bane"</font>
+<a name="187"></a>    BotNames(<font class="source_int">10</font>)=<font class="source_string">"Hippolyta"</font>
+<a name="188"></a>    BotNames(<font class="source_int">11</font>)=<font class="source_string">"Eradicator"</font>
+<a name="189"></a>    BotNames(<font class="source_int">12</font>)=<font class="source_string">"Nikita"</font>
+<a name="190"></a>    BotNames(<font class="source_int">13</font>)=<font class="source_string">"Arcturus"</font>
+<a name="191"></a>    BotNames(<font class="source_int">14</font>)=<font class="source_string">"Shiva"</font>
+<a name="192"></a>    BotNames(<font class="source_int">15</font>)=<font class="source_string">"Vindicator"</font>
+<a name="193"></a>
+<a name="194"></a>    BotClasses(<font class="source_int">0</font>)=<font class="source_string">"UnrealShare.MaleThreeBot"</font>
+<a name="195"></a>    BotClasses(<font class="source_int">1</font>)=<font class="source_string">"Unreali.MaleTwoBot"</font>
+<a name="196"></a>    BotClasses(<font class="source_int">2</font>)=<font class="source_string">"UnrealShare.FemaleOneBot"</font>
+<a name="197"></a>    BotClasses(<font class="source_int">3</font>)=<font class="source_string">"Unreali.MaleOneBot"</font>
+<a name="198"></a>    BotClasses(<font class="source_int">4</font>)=<font class="source_string">"Unreali.FemaleTwoBot"</font>
+<a name="199"></a>    BotClasses(<font class="source_int">5</font>)=<font class="source_string">"UnrealShare.MaleThreeBot"</font>
+<a name="200"></a>    BotClasses(<font class="source_int">6</font>)=<font class="source_string">"Unreali.SkaarjPlayerBot"</font>
+<a name="201"></a>    BotClasses(<font class="source_int">7</font>)=<font class="source_string">"UnrealShare.FemaleOneBot"</font>
+<a name="202"></a>    BotClasses(<font class="source_int">8</font>)=<font class="source_string">"UnrealShare.MaleThreeBot"</font>
+<a name="203"></a>    BotClasses(<font class="source_int">9</font>)=<font class="source_string">"Unreali.MaleTwoBot"</font>
+<a name="204"></a>    BotClasses(<font class="source_int">10</font>)=<font class="source_string">"Unreali.FemaleTwoBot"</font>
+<a name="205"></a>    BotClasses(<font class="source_int">11</font>)=<font class="source_string">"Unreali.SkaarjPlayerBot"</font>
+<a name="206"></a>    BotClasses(<font class="source_int">12</font>)=<font class="source_string">"UnrealShare.FemaleOneBot"</font>
+<a name="207"></a>    BotClasses(<font class="source_int">13</font>)=<font class="source_string">"Unreali.MaleOneBot"</font>
+<a name="208"></a>    BotClasses(<font class="source_int">14</font>)=<font class="source_string">"Unreali.MaleTwoBot"</font>
+<a name="209"></a>    BotClasses(<font class="source_int">15</font>)=<font class="source_string">"Unreali.SkaarjPlayerBot"</font>
+<a name="210"></a>
+<a name="211"></a>    BotTeams(<font class="source_int">0</font>)=<font class="source_int">1</font>
+<a name="212"></a>    BotTeams(<font class="source_int">1</font>)=<font class="source_int">0</font>
+<a name="213"></a>    BotTeams(<font class="source_int">2</font>)=<font class="source_int">1</font>
+<a name="214"></a>    BotTeams(<font class="source_int">3</font>)=<font class="source_int">0</font>
+<a name="215"></a>    BotTeams(<font class="source_int">4</font>)=<font class="source_int">1</font>
+<a name="216"></a>    BotTeams(<font class="source_int">5</font>)=<font class="source_int">0</font>
+<a name="217"></a>    BotTeams(<font class="source_int">6</font>)=<font class="source_int">1</font>
+<a name="218"></a>    BotTeams(<font class="source_int">7</font>)=<font class="source_int">0</font>
+<a name="219"></a>    BotTeams(<font class="source_int">8</font>)=<font class="source_int">1</font>
+<a name="220"></a>    BotTeams(<font class="source_int">9</font>)=<font class="source_int">0</font>
+<a name="221"></a>    BotTeams(<font class="source_int">10</font>)=<font class="source_int">1</font>
+<a name="222"></a>    BotTeams(<font class="source_int">11</font>)=<font class="source_int">0</font>
+<a name="223"></a>    BotTeams(<font class="source_int">12</font>)=<font class="source_int">1</font>
+<a name="224"></a>    BotTeams(<font class="source_int">13</font>)=<font class="source_int">0</font>
+<a name="225"></a>    BotTeams(<font class="source_int">14</font>)=<font class="source_int">1</font>
+<a name="226"></a>    BotTeams(<font class="source_int">15</font>)=<font class="source_int">0</font>
+<a name="227"></a>}
+<a name="228"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\botinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#BotInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="book.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="bots.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:58.000 - Creation time: Wed 26/5/2004 10:48:08.828 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

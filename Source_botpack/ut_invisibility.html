@@ -1,0 +1,289 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.UT_Invisibility</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ut_invisibility.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UT_Invisibility">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ut_heavywallhiteffect.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ut_jumpboots.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\ut_invisibility.html">UT_Invisibility</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// UT_Invisibility.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\ut_invisibility.html" class="source">UT_Invisibility</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\botpack\tournamentpickup.html" class="source">TournamentPickUp</a></font>;
+<a name="5"></a>
+<a name="6"></a>
+<a name="7"></a><font class="source_macro">#exec MESH IMPORT MESH=invis2M ANIVFILE=MODELS\invis_a.3D DATAFILE=MODELS\invis_d.3D X=0 Y=0 Z=0
+</font><a name="8"></a><font class="source_macro">#exec MESH LODPARAMS MESH=invis2M STRENGTH=0.5
+</font><a name="9"></a><font class="source_macro">#exec MESH ORIGIN MESH=invis2M X=0 Y=0 Z=0  YAW=0
+</font><a name="10"></a><font class="source_macro">#exec MESH SEQUENCE MESH=invis2M SEQ=All    STARTFRAME=0  NUMFRAMES=1
+</font><a name="11"></a><font class="source_comment">//#exec OBJ LOAD FILE=..\Textures\belt_fx.utx  PACKAGE=botpack.belt_fx
+</font><a name="12"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=jinvis FILE=MODELS\invis2.pcx GROUP=Skins  LODSET=2
+</font><a name="13"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=invis2M X=0.05 Y=0.05 Z=0.1
+</font><a name="14"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=invis2M NUM=1 TEXTURE=jinvis
+</font><a name="15"></a>
+<a name="16"></a>
+<a name="17"></a>
+<a name="18"></a>
+<a name="19"></a><font class="source_keyword">state</font> Activated
+<a name="20"></a>{
+<a name="21"></a>    <font class="source_keyword">function</font> endstate()
+<a name="22"></a>    {
+<a name="23"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> S;
+<a name="24"></a>
+<a name="25"></a>        bActive = <font class="source_keyword">false</font>;        
+<a name="26"></a>        PlaySound(DeActivateSound);
+<a name="27"></a>
+<a name="28"></a>        Owner.SetDefaultDisplayProperties();
+<a name="29"></a>        S = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).FindInventoryType(<font class="source_keyword">class</font><font class="source_name">'UT_ShieldBelt'</font>);
+<a name="30"></a>        <font class="source_keyword">if</font> ( (S != <font class="source_keyword">None</font>) && (<font class="source_type"><a href="..\botpack\ut_shieldbelt.html" class="source">UT_Shieldbelt</a></font>(S).MyEffect != <font class="source_keyword">None</font>) )
+<a name="31"></a>            <font class="source_type"><a href="..\botpack\ut_shieldbelt.html" class="source">UT_Shieldbelt</a></font>(S).MyEffect.bHidden = <font class="source_keyword">false</font>;
+<a name="32"></a>    }
+<a name="33"></a>
+<a name="34"></a>    <font class="source_keyword">function</font> Activate()
+<a name="35"></a>    {
+<a name="36"></a>        bActive = <font class="source_keyword">true</font>;
+<a name="37"></a>        SetOwnerDisplay();
+<a name="38"></a>    }
+<a name="39"></a>
+<a name="40"></a>    <font class="source_keyword">function</font> SetOwnerDisplay()
+<a name="41"></a>    {
+<a name="42"></a>        <font class="source_keyword">if</font> ( !bActive )
+<a name="43"></a>            <font class="source_keyword">return</font>;
+<a name="44"></a>        Owner.SetDisplayProperties(<font class="source_type"><a href="..\engine\actor.html#ERenderStyle" class="source">ERenderStyle</a></font>.STY_Translucent, 
+<a name="45"></a>                             <font class="source_type"><a href="..\fire\firetexture.html" class="source">FireTexture</a></font><font class="source_name">'unrealshare.Belt_fx.Invis'</font>,
+<a name="46"></a>                             <font class="source_keyword">true</font>,
+<a name="47"></a>                             <font class="source_keyword">true</font>);
+<a name="48"></a>        <font class="source_keyword">if</font>( <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> != <font class="source_keyword">None</font> )
+<a name="49"></a>            <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>.SetOwnerDisplay();
+<a name="50"></a>    }
+<a name="51"></a>
+<a name="52"></a>    <font class="source_keyword">function</font> ChangedWeapon()
+<a name="53"></a>    {
+<a name="54"></a>        <font class="source_keyword">if</font> ( !bActive )
+<a name="55"></a>            <font class="source_keyword">return</font>;
+<a name="56"></a>        <font class="source_keyword">if</font>( <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> != <font class="source_keyword">None</font> )
+<a name="57"></a>            <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>.ChangedWeapon();
+<a name="58"></a>
+<a name="59"></a>        <font class="source_comment">// Make new weapon invisible.
+</font><a name="60"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> != <font class="source_keyword">None</font> )
+<a name="61"></a>            <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>.SetDisplayProperties(<font class="source_type"><a href="..\engine\actor.html#ERenderStyle" class="source">ERenderStyle</a></font>.STY_Translucent, 
+<a name="62"></a>                                     <font class="source_type"><a href="..\fire\firetexture.html" class="source">FireTexture</a></font><font class="source_name">'Unrealshare.Belt_fx.Invis'</font>,
+<a name="63"></a>                                     <font class="source_keyword">true</font>,
+<a name="64"></a>                                     <font class="source_keyword">true</font>);
+<a name="65"></a>    }
+<a name="66"></a>
+<a name="67"></a>    <font class="source_keyword">function</font> Timer()
+<a name="68"></a>    {
+<a name="69"></a>        Charge -= <font class="source_int">1</font>;
+<a name="70"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).Visibility = <font class="source_int">10</font>;
+<a name="71"></a>        <font class="source_keyword">if</font> (Charge&lt;-<font class="source_int">0</font>)
+<a name="72"></a>            UsedUp();
+<a name="73"></a>    }
+<a name="74"></a>
+<a name="75"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="76"></a>    {
+<a name="77"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> S;
+<a name="78"></a>
+<a name="79"></a>        bActive = <font class="source_keyword">true</font>;
+<a name="80"></a>        PlaySound(ActivateSound,,<font class="source_int">4.0</font>);
+<a name="81"></a>
+<a name="82"></a>        Owner.SetDisplayProperties(<font class="source_type"><a href="..\engine\actor.html#ERenderStyle" class="source">ERenderStyle</a></font>.STY_Translucent, 
+<a name="83"></a>                                   <font class="source_type"><a href="..\fire\firetexture.html" class="source">FireTexture</a></font><font class="source_name">'unrealshare.Belt_fx.Invis'</font>,
+<a name="84"></a>                                   <font class="source_keyword">false</font>,
+<a name="85"></a>                                   <font class="source_keyword">true</font>);
+<a name="86"></a>        SetTimer(<font class="source_int">0.5</font>,<font class="source_keyword">True</font>);
+<a name="87"></a>        S = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).FindInventoryType(<font class="source_keyword">class</font><font class="source_name">'UT_ShieldBelt'</font>);
+<a name="88"></a>        <font class="source_keyword">if</font> ( (S != <font class="source_keyword">None</font>) && (<font class="source_type"><a href="..\botpack\ut_shieldbelt.html" class="source">UT_Shieldbelt</a></font>(S).MyEffect != <font class="source_keyword">None</font>) )
+<a name="89"></a>            <font class="source_type"><a href="..\botpack\ut_shieldbelt.html" class="source">UT_Shieldbelt</a></font>(S).MyEffect.bHidden = <font class="source_keyword">true</font>;
+<a name="90"></a>    }
+<a name="91"></a>}
+<a name="92"></a>
+<a name="93"></a><font class="source_keyword">state</font> DeActivated
+<a name="94"></a>{
+<a name="95"></a>Begin:
+<a name="96"></a>}
+<a name="97"></a>
+<a name="98"></a><font class="source_keyword">defaultproperties</font>
+<a name="99"></a>{
+<a name="100"></a>     ExpireMessage=<font class="source_string">"Invisibility has worn off."</font>
+<a name="101"></a>     bAutoActivate=<font class="source_keyword">True</font>
+<a name="102"></a>     bActivatable=<font class="source_keyword">True</font>
+<a name="103"></a>     bDisplayableInv=<font class="source_keyword">True</font>
+<a name="104"></a>     PickupMessage=<font class="source_string">"You have Invisibility."</font>
+<a name="105"></a>     ItemName=<font class="source_string">"Invisibility"</font>
+<a name="106"></a>     RespawnTime=<font class="source_int">120.000000</font>
+<a name="107"></a>     PickupViewMesh=LodMesh<font class="source_name">'Botpack.invis2M'</font>
+<a name="108"></a>     Charge=<font class="source_int">100</font>
+<a name="109"></a>     MaxDesireability=<font class="source_int">1.200000</font>
+<a name="110"></a>     PickupSound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Pickups.GenPickSnd'</font>
+<a name="111"></a>     ActivateSound=<font class="source_type">Sound</font><font class="source_name">'UnrealI.Pickups.Invisible'</font>
+<a name="112"></a>     RemoteRole=ROLE_DumbProxy
+<a name="113"></a>     <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>=<font class="source_type"><a href="..\fire\firetexture.html" class="source">FireTexture</a></font><font class="source_name">'UnrealShare.Belt_fx.Invis.Invis'</font>
+<a name="114"></a>     <font class="source_type">Mesh</font>=LodMesh<font class="source_name">'Botpack.invis2M'</font>
+<a name="115"></a>     CollisionRadius=<font class="source_int">15.000000</font>
+<a name="116"></a>     CollisionHeight=<font class="source_int">20.000000</font>
+<a name="117"></a>}
+<a name="118"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ut_invisibility.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UT_Invisibility">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ut_heavywallhiteffect.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ut_jumpboots.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:22:46.000 - Creation time: Wed 26/5/2004 10:49:02.562 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

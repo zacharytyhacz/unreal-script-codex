@@ -1,0 +1,1305 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTMenu.SlotWindow</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\slotwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#SlotWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="physicalchildwindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="speechbindercw.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utmenu\utmenu-overview.html">UTMenu</a>.<a href="..\utmenu\slotwindow.html">SlotWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+00562<br>
+00563<br>
+00564<br>
+00565<br>
+00566<br>
+00567<br>
+00568<br>
+00569<br>
+00570<br>
+00571<br>
+00572<br>
+00573<br>
+00574<br>
+00575<br>
+00576<br>
+00577<br>
+00578<br>
+00579<br>
+00580<br>
+00581<br>
+00582<br>
+00583<br>
+00584<br>
+00585<br>
+00586<br>
+00587<br>
+00588<br>
+00589<br>
+00590<br>
+00591<br>
+00592<br>
+00593<br>
+00594<br>
+00595<br>
+00596<br>
+00597<br>
+00598<br>
+00599<br>
+00600<br>
+00601<br>
+00602<br>
+00603<br>
+00604<br>
+00605<br>
+00606<br>
+00607<br>
+00608<br>
+00609<br>
+00610<br>
+00611<br>
+00612<br>
+00613<br>
+00614<br>
+00615<br>
+00616<br>
+00617<br>
+00618<br>
+00619<br>
+00620<br>
+00621<br>
+00622<br>
+00623<br>
+00624<br>
+00625<br>
+00626<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utmenu\slotwindow.html" class="source">SlotWindow</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font>
+<a name="2"></a>    <font class="source_keyword2">config</font>(user);
+<a name="3"></a>
+<a name="4"></a><font class="source_comment">// Slots
+</font><a name="5"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save11 FILE=TEXTURES\Save\Save11.PCX GROUP=Skins MIPS=OFF
+</font><a name="6"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save12 FILE=TEXTURES\Save\Save12.PCX GROUP=Skins MIPS=OFF
+</font><a name="7"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save13 FILE=TEXTURES\Save\Save13.PCX GROUP=Skins MIPS=OFF
+</font><a name="8"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save14 FILE=TEXTURES\Save\Save14.PCX GROUP=Skins MIPS=OFF
+</font><a name="9"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save21 FILE=TEXTURES\Save\Save21.PCX GROUP=Skins MIPS=OFF
+</font><a name="10"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save22 FILE=TEXTURES\Save\Save22.PCX GROUP=Skins MIPS=OFF
+</font><a name="11"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save23 FILE=TEXTURES\Save\Save23.PCX GROUP=Skins MIPS=OFF
+</font><a name="12"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save24 FILE=TEXTURES\Save\Save24.PCX GROUP=Skins MIPS=OFF
+</font><a name="13"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save31 FILE=TEXTURES\Save\Save31.PCX GROUP=Skins MIPS=OFF
+</font><a name="14"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save32 FILE=TEXTURES\Save\Save32.PCX GROUP=Skins MIPS=OFF
+</font><a name="15"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save33 FILE=TEXTURES\Save\Save33.PCX GROUP=Skins MIPS=OFF
+</font><a name="16"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Save34 FILE=TEXTURES\Save\Save34.PCX GROUP=Skins MIPS=OFF
+</font><a name="17"></a>
+<a name="18"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=SaveButtonsUp FILE=TEXTURES\Save\SaveButtonsUp.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="19"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=SBtnLDwn FILE=TEXTURES\Save\SBtnLDwn.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="20"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=SBtnLGlow FILE=TEXTURES\Save\SBtnLGlow.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="21"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=SBtnRDwn FILE=TEXTURES\Save\SBtnRDwn.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="22"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=SBtnRGlow FILE=TEXTURES\Save\SBtnRGlow.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="23"></a>
+<a name="24"></a><font class="source_comment">// Background
+</font><a name="25"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> BG1[<font class="source_int">4</font>];
+<a name="26"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> BG2[<font class="source_int">4</font>];
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> BG3[<font class="source_int">4</font>];
+<a name="28"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> BGName1[<font class="source_int">4</font>];
+<a name="29"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> BGName2[<font class="source_int">4</font>];
+<a name="30"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> BGName3[<font class="source_int">4</font>];
+<a name="31"></a>
+<a name="32"></a><font class="source_comment">// Slot Buttons
+</font><a name="33"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> SlotButton[<font class="source_int">5</font>];
+<a name="34"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> EmptyText;
+<a name="35"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> KillButton[<font class="source_int">5</font>];
+<a name="36"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> GoButton[<font class="source_int">5</font>];
+<a name="37"></a>
+<a name="38"></a><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">string</font> Saves[<font class="source_int">5</font>];
+<a name="39"></a>
+<a name="40"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AvgRankStr;
+<a name="41"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CompletedStr;
+<a name="42"></a>
+<a name="43"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> Faces[<font class="source_int">16</font>];
+<a name="44"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> FaceDescs[<font class="source_int">16</font>];
+<a name="45"></a>
+<a name="46"></a><font class="source_keyword">function</font> Created()
+<a name="47"></a>{
+<a name="48"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="49"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> W, H;
+<a name="50"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XWidth, YHeight, XMod, YMod, XPos, YPos, YOffset;
+<a name="51"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> TextColor;
+<a name="52"></a>
+<a name="53"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="54"></a>
+<a name="55"></a>    <font class="source_comment">/*
+<a name="56"></a>     * Setup window parameters.
+<a name="57"></a>     */</font>
+<a name="58"></a>
+<a name="59"></a>    bLeaveOnScreen = <font class="source_keyword">True</font>;
+<a name="60"></a>    bAlwaysOnTop = <font class="source_keyword">True</font>;
+<a name="61"></a>
+<a name="62"></a>    <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.SetupWinParams(Self, Root, W, H);
+<a name="63"></a>
+<a name="64"></a>    XMod = <font class="source_int">4</font>*W;
+<a name="65"></a>    YMod = <font class="source_int">3</font>*H;
+<a name="66"></a>
+<a name="67"></a>    <font class="source_comment">/*
+<a name="68"></a>     * Load the background.
+<a name="69"></a>     */</font>
+<a name="70"></a>
+<a name="71"></a>    BG1[<font class="source_int">0</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName1[<font class="source_int">0</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="72"></a>    BG1[<font class="source_int">1</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName1[<font class="source_int">1</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="73"></a>    BG1[<font class="source_int">2</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName1[<font class="source_int">2</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="74"></a>    BG1[<font class="source_int">3</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName1[<font class="source_int">3</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="75"></a>    BG2[<font class="source_int">0</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName2[<font class="source_int">0</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="76"></a>    BG2[<font class="source_int">1</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName2[<font class="source_int">1</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="77"></a>    BG2[<font class="source_int">2</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName2[<font class="source_int">2</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="78"></a>    BG2[<font class="source_int">3</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName2[<font class="source_int">3</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="79"></a>    BG3[<font class="source_int">0</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName3[<font class="source_int">0</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="80"></a>    BG3[<font class="source_int">1</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName3[<font class="source_int">1</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="81"></a>    BG3[<font class="source_int">2</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName3[<font class="source_int">2</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="82"></a>    BG3[<font class="source_int">3</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName3[<font class="source_int">3</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="83"></a>
+<a name="84"></a>    <font class="source_comment">/*
+<a name="85"></a>     * Create components.
+<a name="86"></a>     */</font>
+<a name="87"></a>
+<a name="88"></a>    <font class="source_comment">// Slots
+</font><a name="89"></a>    XWidth = <font class="source_int">480.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="90"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="91"></a>    XPos = <font class="source_int">310.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="92"></a>    YPos = <font class="source_int">89.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="93"></a>    YOffset = <font class="source_int">132.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="94"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">5</font>; i++)
+<a name="95"></a>    {
+<a name="96"></a>        SlotButton[i] = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos + YOffset*i, XWidth, YHeight));
+<a name="97"></a>        SlotButton[i].<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="98"></a>        TextColor.R = <font class="source_int">255</font>;
+<a name="99"></a>        TextColor.G = <font class="source_int">255</font>;
+<a name="100"></a>        TextColor.B = <font class="source_int">0</font>;
+<a name="101"></a>        SlotButton[i].SetTextColor(TextColor);
+<a name="102"></a>        SlotButton[i].MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetHugeFont(Root);
+<a name="103"></a>        SlotButton[i].bStretched = <font class="source_keyword">True</font>;
+<a name="104"></a>    }
+<a name="105"></a>
+<a name="106"></a>    <font class="source_comment">// Kill Buttons
+</font><a name="107"></a>    XWidth = <font class="source_int">80.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="108"></a>    YHeight = <font class="source_int">72.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="109"></a>    XPos = <font class="source_int">138.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="110"></a>    YPos = <font class="source_int">89.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="111"></a>    YOffset = <font class="source_int">132.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="112"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">5</font>; i++)
+<a name="113"></a>    {
+<a name="114"></a>        KillButton[i] = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos + YOffset*i, XWidth, YHeight));
+<a name="115"></a>        KillButton[i].<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="116"></a>        KillButton[i].Text = <font class="source_string">""</font>;
+<a name="117"></a>        KillButton[i].MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="118"></a>    }
+<a name="119"></a>
+<a name="120"></a>    <font class="source_comment">// Go Buttons
+</font><a name="121"></a>    XWidth = <font class="source_int">83.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="122"></a>    YHeight = <font class="source_int">72.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="123"></a>    XPos = <font class="source_int">218.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="124"></a>    YPos = <font class="source_int">89.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="125"></a>    YOffset = <font class="source_int">132.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="126"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">5</font>; i++)
+<a name="127"></a>    {
+<a name="128"></a>        GoButton[i] = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos + YOffset*i, XWidth, YHeight));
+<a name="129"></a>        GoButton[i].<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="130"></a>        GoButton[i].Text = <font class="source_string">""</font>;
+<a name="131"></a>        GoButton[i].MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="132"></a>    }
+<a name="133"></a>
+<a name="134"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bBlackout = <font class="source_keyword">True</font>;
+<a name="135"></a>}
+<a name="136"></a>
+<a name="137"></a><font class="source_keyword">function</font> SetSaveText(<font class="source_keyword">int</font> i, <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C)
+<a name="138"></a>{
+<a name="139"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Temp, Sex, <font class="source_keyword">Name</font>;
+<a name="140"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> Pos, DMRank, DOMRank, CTFRank, ASRank, ChalRank, AvgRank;
+<a name="141"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> DMPosition, DOMPosition, CTFPosition, ASPosition, ChalPosition, TotPosition;
+<a name="142"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL;
+<a name="143"></a>    <font class="source_keyword">local</font> <font class="source_type">font</font> CFont;
+<a name="144"></a>
+<a name="145"></a>    <font class="source_comment">// Team
+</font><a name="146"></a>    Temp = Right(Saves[i], Len(Saves[i]) - <font class="source_int">2</font>);
+<a name="147"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="148"></a>
+<a name="149"></a>    <font class="source_comment">// DMRank
+</font><a name="150"></a>    Temp = Right(Saves[i], Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="151"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="152"></a>    DMRank = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="153"></a>
+<a name="154"></a>    <font class="source_comment">// DMPosition
+</font><a name="155"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="156"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="157"></a>    DMPosition = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="158"></a>
+<a name="159"></a>    <font class="source_comment">// DOMRank
+</font><a name="160"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="161"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="162"></a>    DOMRank = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="163"></a>
+<a name="164"></a>    <font class="source_comment">// DOMPosition
+</font><a name="165"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="166"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="167"></a>    DOMPosition = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="168"></a>
+<a name="169"></a>    <font class="source_comment">// CTFRank
+</font><a name="170"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="171"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="172"></a>    CTFRank = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="173"></a>
+<a name="174"></a>    <font class="source_comment">// CTFPosition
+</font><a name="175"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="176"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="177"></a>    CTFPosition = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="178"></a>
+<a name="179"></a>    <font class="source_comment">// ASRank
+</font><a name="180"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="181"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="182"></a>    ASRank = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="183"></a>
+<a name="184"></a>    <font class="source_comment">// ASPosition
+</font><a name="185"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="186"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="187"></a>    ASPosition = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="188"></a>
+<a name="189"></a>    <font class="source_comment">// ChalRank
+</font><a name="190"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="191"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="192"></a>    ChalRank = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="193"></a>
+<a name="194"></a>    <font class="source_comment">// ChalPosition
+</font><a name="195"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="196"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="197"></a>    ChalPosition = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="198"></a>
+<a name="199"></a>    <font class="source_comment">// Sex
+</font><a name="200"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="201"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="202"></a>
+<a name="203"></a>    <font class="source_comment">// Face
+</font><a name="204"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="205"></a>
+<a name="206"></a>    <font class="source_comment">// Name
+</font><a name="207"></a>    Temp = Right(Temp, Len(Temp) - <font class="source_int">2</font>);
+<a name="208"></a>    <font class="source_keyword">Name</font> = Temp;
+<a name="209"></a>
+<a name="210"></a>    AvgRank = (DMRank + DOMRank + CTFRank + ASRank)/4;
+<a name="211"></a>    <font class="source_keyword">if</font> (<font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.IsDemo())
+<a name="212"></a>    {
+<a name="213"></a>        <font class="source_keyword">if</font> (DMPosition &gt; <font class="source_int">0</font>)
+<a name="214"></a>        {
+<a name="215"></a>            <font class="source_keyword">if</font> (DMRank == <font class="source_int">4</font>)
+<a name="216"></a>                TotPosition += DMPosition;
+<a name="217"></a>            <font class="source_keyword">else</font>
+<a name="218"></a>                TotPosition += DMPosition-<font class="source_int">1</font>;
+<a name="219"></a>        }
+<a name="220"></a>        <font class="source_keyword">if</font> (DOMPosition &gt; <font class="source_int">0</font>)
+<a name="221"></a>        {
+<a name="222"></a>            <font class="source_keyword">if</font> (DOMRank == <font class="source_int">4</font>)
+<a name="223"></a>                TotPosition += DOMPosition;
+<a name="224"></a>            <font class="source_keyword">else</font>
+<a name="225"></a>                TotPosition += DOMPosition-<font class="source_int">1</font>;
+<a name="226"></a>        }
+<a name="227"></a>        <font class="source_keyword">if</font> (CTFPosition &gt; <font class="source_int">0</font>)
+<a name="228"></a>        {
+<a name="229"></a>            <font class="source_keyword">if</font> (CTFRank == <font class="source_int">4</font>)
+<a name="230"></a>                TotPosition += CTFPosition;
+<a name="231"></a>            <font class="source_keyword">else</font>
+<a name="232"></a>                TotPosition += CTFPosition-<font class="source_int">1</font>;
+<a name="233"></a>        }
+<a name="234"></a>    } <font class="source_keyword">else</font> {
+<a name="235"></a>        <font class="source_keyword">if</font> (DMPosition &gt; <font class="source_int">0</font>)
+<a name="236"></a>        {
+<a name="237"></a>            <font class="source_keyword">if</font> (DMRank == <font class="source_int">6</font>)
+<a name="238"></a>                TotPosition += DMPosition;
+<a name="239"></a>            <font class="source_keyword">else</font>
+<a name="240"></a>                TotPosition += DMPosition-<font class="source_int">1</font>;
+<a name="241"></a>        }
+<a name="242"></a>        <font class="source_keyword">if</font> (DOMPosition &gt; <font class="source_int">0</font>)
+<a name="243"></a>        {
+<a name="244"></a>            <font class="source_keyword">if</font> (DOMRank == <font class="source_int">6</font>)
+<a name="245"></a>                TotPosition += DOMPosition;
+<a name="246"></a>            <font class="source_keyword">else</font>
+<a name="247"></a>                TotPosition += DOMPosition-<font class="source_int">1</font>;
+<a name="248"></a>        }
+<a name="249"></a>        <font class="source_keyword">if</font> (CTFPosition &gt; <font class="source_int">0</font>)
+<a name="250"></a>        {
+<a name="251"></a>            <font class="source_keyword">if</font> (CTFRank == <font class="source_int">6</font>)
+<a name="252"></a>                TotPosition += CTFPosition;
+<a name="253"></a>            <font class="source_keyword">else</font>
+<a name="254"></a>                TotPosition += CTFPosition-<font class="source_int">1</font>;
+<a name="255"></a>        }
+<a name="256"></a>        <font class="source_keyword">if</font> (ASPosition &gt; <font class="source_int">0</font>)
+<a name="257"></a>        {
+<a name="258"></a>            <font class="source_keyword">if</font> (ASRank == <font class="source_int">6</font>)
+<a name="259"></a>                TotPosition += ASPosition;
+<a name="260"></a>            <font class="source_keyword">else</font>
+<a name="261"></a>                TotPosition += ASPosition-<font class="source_int">1</font>;
+<a name="262"></a>        }
+<a name="263"></a>    }
+<a name="264"></a>    <font class="source_keyword">if</font> (ChalPosition &gt; <font class="source_int">0</font>)
+<a name="265"></a>        TotPosition += ChalPosition;
+<a name="266"></a>    <font class="source_keyword">if</font> (ChalRank == <font class="source_int">6</font>)
+<a name="267"></a>        TotPosition++;
+<a name="268"></a>    <font class="source_keyword">if</font> (C.ClipX &gt; <font class="source_int">320</font>)
+<a name="269"></a>        SlotButton[i].Text = <font class="source_keyword">Name</font>$<font class="source_string">" - "</font>$CompletedStr@TotPosition;
+<a name="270"></a>    <font class="source_keyword">else</font>
+<a name="271"></a>        SlotButton[i].Text = <font class="source_keyword">Name</font>;
+<a name="272"></a>    CFont = C.<font class="source_type">Font</font>;
+<a name="273"></a>    C.<font class="source_type">Font</font> = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetHugeFont(Root);
+<a name="274"></a>    C.StrLen(SlotButton[i].Text, XL, YL);
+<a name="275"></a>    <font class="source_keyword">if</font> (XL &gt; SlotButton[i].WinWidth)
+<a name="276"></a>        SlotButton[i].Text = <font class="source_keyword">Name</font>;
+<a name="277"></a>    C.<font class="source_type">Font</font> = CFont;
+<a name="278"></a>}
+<a name="279"></a>
+<a name="280"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="281"></a>{
+<a name="282"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="283"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> W, H;
+<a name="284"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XWidth, YHeight, XMod, YMod, XPos, YPos, YOffset;
+<a name="285"></a>
+<a name="286"></a>    <font class="source_keyword">Super</font>.BeforePaint(C, X, Y);
+<a name="287"></a>
+<a name="288"></a>    <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.SetupWinParams(Self, Root, W, H);
+<a name="289"></a>
+<a name="290"></a>    XMod = <font class="source_int">4</font>*W;
+<a name="291"></a>    YMod = <font class="source_int">3</font>*H;
+<a name="292"></a>
+<a name="293"></a>    XWidth = <font class="source_int">480.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="294"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="295"></a>    XPos = <font class="source_int">310.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="296"></a>    YPos = <font class="source_int">89.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="297"></a>    YOffset = <font class="source_int">132.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="298"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">5</font>; i++)
+<a name="299"></a>    {
+<a name="300"></a>        SlotButton[i].SetSize(XWidth, YHeight);
+<a name="301"></a>        SlotButton[i].WinLeft = XPos;
+<a name="302"></a>        SlotButton[i].WinTop = YPos + YOffset*i;
+<a name="303"></a>        SlotButton[i].MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetHugeFont(Root);
+<a name="304"></a>        <font class="source_keyword">if</font> (Saves[i] != <font class="source_string">""</font>)
+<a name="305"></a>            SetSaveText(i, C);
+<a name="306"></a>        <font class="source_keyword">else</font>
+<a name="307"></a>            SlotButton[i].Text = EmptyText;
+<a name="308"></a>    }
+<a name="309"></a>
+<a name="310"></a>    <font class="source_comment">// Kill Buttons
+</font><a name="311"></a>    XWidth = <font class="source_int">80.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="312"></a>    YHeight = <font class="source_int">72.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="313"></a>    XPos = <font class="source_int">138.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="314"></a>    YPos = <font class="source_int">89.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="315"></a>    YOffset = <font class="source_int">132.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="316"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">5</font>; i++)
+<a name="317"></a>    {
+<a name="318"></a>        KillButton[i].SetSize(XWidth, YHeight);
+<a name="319"></a>        KillButton[i].WinLeft = XPos;
+<a name="320"></a>        KillButton[i].WinTop = YPos + YOffset*i;
+<a name="321"></a>    }
+<a name="322"></a>
+<a name="323"></a>    <font class="source_comment">// Go Buttons
+</font><a name="324"></a>    XWidth = <font class="source_int">83.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="325"></a>    YHeight = <font class="source_int">72.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="326"></a>    XPos = <font class="source_int">218.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="327"></a>    YPos = <font class="source_int">89.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="328"></a>    YOffset = <font class="source_int">132.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="329"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">5</font>; i++)
+<a name="330"></a>    {
+<a name="331"></a>        GoButton[i].SetSize(XWidth, YHeight);
+<a name="332"></a>        GoButton[i].WinLeft = XPos;
+<a name="333"></a>        GoButton[i].WinTop = YPos + YOffset*i;
+<a name="334"></a>    }
+<a name="335"></a>}
+<a name="336"></a>
+<a name="337"></a><font class="source_keyword">function</font> Paint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="338"></a>{
+<a name="339"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="340"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> XOffset, YOffset;
+<a name="341"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> W, H;
+<a name="342"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XWidth, YHeight, XMod, YMod, XPos, YPos, YOffset2;
+<a name="343"></a>
+<a name="344"></a>    W = WinWidth / <font class="source_int">4</font>;
+<a name="345"></a>    H = W;
+<a name="346"></a>
+<a name="347"></a>    <font class="source_keyword">if</font>(W &gt; <font class="source_int">256</font> || H &gt; <font class="source_int">256</font>)
+<a name="348"></a>    {
+<a name="349"></a>        Tile(C, <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'MenuBlack'</font>);
+<a name="350"></a>        W = <font class="source_int">256</font>;
+<a name="351"></a>        H = <font class="source_int">256</font>;
+<a name="352"></a>    }
+<a name="353"></a>
+<a name="354"></a>    XMod = <font class="source_int">4</font>*W;
+<a name="355"></a>    YMod = <font class="source_int">3</font>*H;
+<a name="356"></a>
+<a name="357"></a>    XOffset = (WinWidth - (<font class="source_int">4</font> * W)) / <font class="source_int">2</font>;
+<a name="358"></a>    YOffset = (WinHeight - (<font class="source_int">3</font> * H)) / <font class="source_int">2</font>;
+<a name="359"></a>
+<a name="360"></a>    <font class="source_comment">// Background
+</font><a name="361"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">0</font> * W), YOffset + (<font class="source_int">0</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG1[<font class="source_int">0</font>]);
+<a name="362"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">1</font> * W), YOffset + (<font class="source_int">0</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG1[<font class="source_int">1</font>]);
+<a name="363"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">2</font> * W), YOffset + (<font class="source_int">0</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG1[<font class="source_int">2</font>]);
+<a name="364"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">3</font> * W), YOffset + (<font class="source_int">0</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG1[<font class="source_int">3</font>]);
+<a name="365"></a>
+<a name="366"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">0</font> * W), YOffset + (<font class="source_int">1</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG2[<font class="source_int">0</font>]);
+<a name="367"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">1</font> * W), YOffset + (<font class="source_int">1</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG2[<font class="source_int">1</font>]);
+<a name="368"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">2</font> * W), YOffset + (<font class="source_int">1</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG2[<font class="source_int">2</font>]);
+<a name="369"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">3</font> * W), YOffset + (<font class="source_int">1</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG2[<font class="source_int">3</font>]);
+<a name="370"></a>        
+<a name="371"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">0</font> * W), YOffset + (<font class="source_int">2</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG3[<font class="source_int">0</font>]);
+<a name="372"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">1</font> * W), YOffset + (<font class="source_int">2</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG3[<font class="source_int">1</font>]);
+<a name="373"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">2</font> * W), YOffset + (<font class="source_int">2</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG3[<font class="source_int">2</font>]);
+<a name="374"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">3</font> * W), YOffset + (<font class="source_int">2</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG3[<font class="source_int">3</font>]);
+<a name="375"></a>
+<a name="376"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="377"></a>    YHeight = <font class="source_int">128.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="378"></a>    XPos = <font class="source_int">138.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="379"></a>    YPos = <font class="source_int">87.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="380"></a>    YOffset2 = <font class="source_int">132.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="381"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">5</font>; i++)
+<a name="382"></a>    {
+<a name="383"></a>        <font class="source_keyword">if</font> (KillButton[i].bMouseDown)
+<a name="384"></a>            DrawStretchedTexture(C, XPos, YPos + YOffset2*i, XWidth, YHeight, <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'SBtnLDwn'</font>);
+<a name="385"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> (GoButton[i].bMouseDown)
+<a name="386"></a>            DrawStretchedTexture(C, XPos, YPos + YOffset2*i, XWidth, YHeight, <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'SBtnRDwn'</font>);
+<a name="387"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> (KillButton[i].MouseIsOver())
+<a name="388"></a>            DrawStretchedTexture(C, XPos, YPos + YOffset2*i, XWidth, YHeight, <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'SBtnLGlow'</font>);
+<a name="389"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> (GoButton[i].MouseIsOver())
+<a name="390"></a>            DrawStretchedTexture(C, XPos, YPos + YOffset2*i, XWidth, YHeight, <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'SBtnRGlow'</font>);
+<a name="391"></a>        <font class="source_keyword">else</font>
+<a name="392"></a>            DrawStretchedTexture(C, XPos, YPos + YOffset2*i, XWidth, YHeight, <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'SaveButtonsUp'</font>);
+<a name="393"></a>    }
+<a name="394"></a>}
+<a name="395"></a>
+<a name="396"></a><font class="source_keyword">function</font> Notify(<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font> B, <font class="source_keyword">byte</font> E)
+<a name="397"></a>{
+<a name="398"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\ladderinventory.html" class="source">LadderInventory</a></font> LadderObj;
+<a name="399"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="400"></a>
+<a name="401"></a>    <font class="source_keyword">switch</font> (E)
+<a name="402"></a>    {
+<a name="403"></a>        <font class="source_keyword">case</font> DE_Click:
+<a name="404"></a>            <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">5</font>; i++)
+<a name="405"></a>            {
+<a name="406"></a>                <font class="source_keyword">if</font> (B == KillButton[i]) {
+<a name="407"></a>                    KillGame(i);
+<a name="408"></a>                } <font class="source_keyword">else</font> <font class="source_keyword">if</font> (B == GoButton[i]) {
+<a name="409"></a>                    RestoreGame(i);
+<a name="410"></a>                }
+<a name="411"></a>            }
+<a name="412"></a>            <font class="source_keyword">break</font>;
+<a name="413"></a>    }
+<a name="414"></a>}
+<a name="415"></a>
+<a name="416"></a><font class="source_keyword">function</font> Close(<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bByParent)
+<a name="417"></a>{
+<a name="418"></a>    HideWindow();
+<a name="419"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bNoDrawWorld = Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.ShowDesktop;
+<a name="420"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bLocked = <font class="source_keyword">False</font>;
+<a name="421"></a>    <font class="source_type"><a href="..\umenu\umenurootwindow.html" class="source">UMenuRootWindow</a></font>(Root).MenuBar.ShowWindow();
+<a name="422"></a>
+<a name="423"></a>    <font class="source_keyword">Super</font>.Close(bByParent);
+<a name="424"></a>}
+<a name="425"></a>
+<a name="426"></a><font class="source_keyword">function</font> HideWindow()
+<a name="427"></a>{
+<a name="428"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bBlackOut = <font class="source_keyword">False</font>;
+<a name="429"></a>
+<a name="430"></a>    <font class="source_keyword">Super</font>.HideWindow();
+<a name="431"></a>}
+<a name="432"></a>
+<a name="433"></a><font class="source_keyword">function</font> KillGame(<font class="source_keyword">int</font> i)
+<a name="434"></a>{
+<a name="435"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utmenu\killgamequerywindow.html" class="source">KillGameQueryWindow</a></font> KGQWindow;
+<a name="436"></a>
+<a name="437"></a>    <font class="source_keyword">if</font> (SlotButton[i].Text != EmptyText)
+<a name="438"></a>    {
+<a name="439"></a>        <font class="source_comment">// Are you sure?
+</font><a name="440"></a>        KGQWindow = <font class="source_type"><a href="..\utmenu\killgamequerywindow.html" class="source">KillGameQueryWindow</a></font>(Root.CreateWindow(<font class="source_keyword">class</font><font class="source_name">'KillGameQueryWindow'</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">100</font>));
+<a name="441"></a>        <font class="source_type"><a href="..\utmenu\killgamequeryclient.html" class="source">KillGameQueryClient</a></font>(KGQWindow.ClientArea).<font class="source_type"><a href="..\utmenu\slotwindow.html" class="source">SlotWindow</a></font> = Self;
+<a name="442"></a>        <font class="source_type"><a href="..\utmenu\killgamequeryclient.html" class="source">KillGameQueryClient</a></font>(KGQWindow.ClientArea).SlotIndex = i;
+<a name="443"></a>        ShowModal(KGQWindow);
+<a name="444"></a>    }
+<a name="445"></a>}
+<a name="446"></a>
+<a name="447"></a><font class="source_keyword">function</font> RestoreGame(<font class="source_keyword">int</font> i)
+<a name="448"></a>{
+<a name="449"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\ladderinventory.html" class="source">LadderInventory</a></font> LadderObj;
+<a name="450"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Temp, <font class="source_keyword">Name</font>, PlayerSkin;
+<a name="451"></a>    <font class="source_keyword">local</font> <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\botpack\tournamentplayer.html" class="source">TournamentPlayer</a></font>&gt; PlayerClass;
+<a name="452"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> Pos, Team, j, Face;
+<a name="453"></a>
+<a name="454"></a>    <font class="source_keyword">if</font> (Saves[i] == <font class="source_string">""</font>)
+<a name="455"></a>        <font class="source_keyword">return</font>;
+<a name="456"></a>
+<a name="457"></a>    <font class="source_comment">// Check ladder object.
+</font><a name="458"></a>    LadderObj = <font class="source_type"><a href="..\botpack\ladderinventory.html" class="source">LadderInventory</a></font>(GetPlayerOwner().FindInventoryType(<font class="source_keyword">class</font><font class="source_name">'LadderInventory'</font>));
+<a name="459"></a>    <font class="source_keyword">if</font> (LadderObj == <font class="source_keyword">None</font>)
+<a name="460"></a>    {
+<a name="461"></a>        <font class="source_comment">// Make them a ladder object.
+</font><a name="462"></a>        LadderObj = GetPlayerOwner().Spawn(<font class="source_keyword">class</font><font class="source_name">'LadderInventory'</font>);
+<a name="463"></a>        LadderObj.GiveTo(GetPlayerOwner());
+<a name="464"></a>    }
+<a name="465"></a>
+<a name="466"></a>    <font class="source_comment">// Fill the ladder object.
+</font><a name="467"></a>
+<a name="468"></a>    <font class="source_comment">// Slot...
+</font><a name="469"></a>    LadderObj.Slot = i;
+<a name="470"></a>
+<a name="471"></a>    <font class="source_comment">// Difficulty...
+</font><a name="472"></a>    LadderObj.TournamentDifficulty = <font class="source_keyword">int</font>(Left(Saves[i], <font class="source_int">1</font>));
+<a name="473"></a>    LadderObj.SkillText = <font class="source_keyword">class</font><font class="source_name">'NewCharacterWindow'</font>.Default.SkillText[LadderObj.TournamentDifficulty];
+<a name="474"></a>
+<a name="475"></a>    <font class="source_comment">// Team
+</font><a name="476"></a>    Temp = Right(Saves[i], Len(Saves[i]) - <font class="source_int">2</font>);
+<a name="477"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="478"></a>    Team = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="479"></a>    LadderObj.Team = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[Team];
+<a name="480"></a>
+<a name="481"></a>    <font class="source_comment">// DMRank
+</font><a name="482"></a>    Temp = Right(Saves[i], Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="483"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="484"></a>    LadderObj.DMRank = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="485"></a>
+<a name="486"></a>    <font class="source_comment">// DMPosition
+</font><a name="487"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="488"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="489"></a>    LadderObj.DMPosition = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="490"></a>
+<a name="491"></a>    <font class="source_comment">// DOMRank
+</font><a name="492"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="493"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="494"></a>    LadderObj.DOMRank = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="495"></a>
+<a name="496"></a>    <font class="source_comment">// DOMPosition
+</font><a name="497"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="498"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="499"></a>    LadderObj.DOMPosition = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="500"></a>
+<a name="501"></a>    <font class="source_comment">// CTFRank
+</font><a name="502"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="503"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="504"></a>    LadderObj.CTFRank = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="505"></a>
+<a name="506"></a>    <font class="source_comment">// CTFPosition
+</font><a name="507"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="508"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="509"></a>    LadderObj.CTFPosition = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="510"></a>
+<a name="511"></a>    <font class="source_comment">// ASRank
+</font><a name="512"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="513"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="514"></a>    LadderObj.ASRank = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="515"></a>
+<a name="516"></a>    <font class="source_comment">// ASPosition
+</font><a name="517"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="518"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="519"></a>    LadderObj.ASPosition = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="520"></a>
+<a name="521"></a>    <font class="source_comment">// ChalRank
+</font><a name="522"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="523"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="524"></a>    LadderObj.ChalRank = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="525"></a>
+<a name="526"></a>    <font class="source_comment">// ChalPosition
+</font><a name="527"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="528"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="529"></a>    LadderObj.ChalPosition = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="530"></a>
+<a name="531"></a>    <font class="source_comment">// Sex
+</font><a name="532"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="533"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="534"></a>    LadderObj.Sex = Left(Temp, Pos);
+<a name="535"></a>
+<a name="536"></a>    <font class="source_comment">// Face
+</font><a name="537"></a>    Temp = Right(Temp, Len(Temp) - Pos - <font class="source_int">1</font>);
+<a name="538"></a>    Pos = InStr(Temp, <font class="source_string">"\\"</font>);
+<a name="539"></a>    Face = <font class="source_keyword">int</font>(Left(Temp, Pos));
+<a name="540"></a>    LadderObj.Face = Face;
+<a name="541"></a>
+<a name="542"></a>    <font class="source_comment">// Name
+</font><a name="543"></a>    Temp = Right(Temp, Len(Temp) - <font class="source_int">2</font>);
+<a name="544"></a>    <font class="source_keyword">Name</font> = Temp;
+<a name="545"></a>    GetPlayerOwner().ChangeName(<font class="source_keyword">Name</font>);
+<a name="546"></a>    GetPlayerOwner().UpdateURL(<font class="source_string">"Name"</font>, <font class="source_keyword">Name</font>, <font class="source_keyword">True</font>);
+<a name="547"></a>
+<a name="548"></a>    <font class="source_keyword">if</font> (LadderObj.Sex ~= <font class="source_string">"M"</font>)
+<a name="549"></a>    {
+<a name="550"></a>        PlayerClass = LadderObj.Team.Default.MaleClass;
+<a name="551"></a>        PlayerSkin = LadderObj.Team.Default.MaleSkin;
+<a name="552"></a>    } <font class="source_keyword">else</font> {
+<a name="553"></a>        PlayerClass = LadderObj.Team.Default.FemaleClass;
+<a name="554"></a>        PlayerSkin = LadderObj.Team.Default.FemaleSkin;
+<a name="555"></a>    }
+<a name="556"></a>
+<a name="557"></a>    IterateFaces(PlayerSkin, GetPlayerOwner().GetItemName(<font class="source_keyword">string</font>(PlayerClass.Default.<font class="source_type">Mesh</font>)));
+<a name="558"></a>    GetPlayerOwner().UpdateURL(<font class="source_string">"Class"</font>, <font class="source_keyword">string</font>(PlayerClass), <font class="source_keyword">True</font>);
+<a name="559"></a>    GetPlayerOwner().UpdateURL(<font class="source_string">"Skin"</font>, PlayerSkin, <font class="source_keyword">True</font>);
+<a name="560"></a>    GetPlayerOwner().UpdateURL(<font class="source_string">"Face"</font>, Faces[Face], <font class="source_keyword">True</font>);
+<a name="561"></a>    GetPlayerOwner().UpdateURL(<font class="source_string">"Voice"</font>, PlayerClass.Default.VoiceType, <font class="source_keyword">True</font>);
+<a name="562"></a>    GetPlayerOwner().UpdateURL(<font class="source_string">"Team"</font>, <font class="source_string">"255"</font>, <font class="source_keyword">True</font>);
+<a name="563"></a>
+<a name="564"></a>    <font class="source_comment">// Goto Manager
+</font><a name="565"></a>    HideWindow();
+<a name="566"></a>    Root.CreateWindow(<font class="source_keyword">class</font><font class="source_name">'ManagerWindow'</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>);
+<a name="567"></a>}
+<a name="568"></a>
+<a name="569"></a><font class="source_keyword">function</font> IterateFaces(<font class="source_keyword">string</font> InSkinName, <font class="source_keyword">string</font> MeshName)
+<a name="570"></a>{
+<a name="571"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> SkinName, SkinDesc, TestName, Temp, FaceName;
+<a name="572"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bNewFormat;
+<a name="573"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, Pos;
+<a name="574"></a>
+<a name="575"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">16</font>; i++)
+<a name="576"></a>    {
+<a name="577"></a>        FaceDescs[i] = <font class="source_string">""</font>;
+<a name="578"></a>        Faces[i] = <font class="source_string">""</font>;
+<a name="579"></a>    }
+<a name="580"></a>
+<a name="581"></a>    i = <font class="source_int">0</font>;
+<a name="582"></a>
+<a name="583"></a>    SkinName = <font class="source_string">"None"</font>;
+<a name="584"></a>    TestName = <font class="source_string">""</font>;
+<a name="585"></a>    <font class="source_keyword">while</font> ( <font class="source_keyword">True</font> )
+<a name="586"></a>    {
+<a name="587"></a>        GetPlayerOwner().GetNextSkin(MeshName, SkinName, <font class="source_int">1</font>, SkinName, SkinDesc);
+<a name="588"></a>
+<a name="589"></a>        <font class="source_keyword">if</font>( SkinName == TestName )
+<a name="590"></a>            <font class="source_keyword">break</font>;
+<a name="591"></a>
+<a name="592"></a>        <font class="source_keyword">if</font>( TestName == <font class="source_string">""</font> )
+<a name="593"></a>            TestName = SkinName;
+<a name="594"></a>
+<a name="595"></a>        <font class="source_comment">// Multiskin format
+</font><a name="596"></a>        <font class="source_keyword">if</font>( SkinDesc != <font class="source_string">""</font>)
+<a name="597"></a>        {           
+<a name="598"></a>            Temp = GetPlayerOwner().GetItemName(SkinName);
+<a name="599"></a>            <font class="source_keyword">if</font>(Mid(Temp, <font class="source_int">5</font>) != <font class="source_string">""</font> && Left(Temp, <font class="source_int">4</font>) == GetPlayerOwner().GetItemName(InSkinName))
+<a name="600"></a>            {
+<a name="601"></a>                Pos = InStr(SkinName, <font class="source_string">"."</font>);
+<a name="602"></a>                FaceDescs[i] = SkinDesc;
+<a name="603"></a>                Faces[i++] = Left(SkinName, Pos+<font class="source_int">1</font>)$Mid(Temp, <font class="source_int">5</font>);
+<a name="604"></a>            }
+<a name="605"></a>        }
+<a name="606"></a>    }
+<a name="607"></a>}
+<a name="608"></a>
+<a name="609"></a><font class="source_keyword">defaultproperties</font>
+<a name="610"></a>{
+<a name="611"></a>    EmptyText=<font class="source_string">"UNUSED"</font>
+<a name="612"></a>    AvgRankStr=<font class="source_string">"Average Rank:"</font>
+<a name="613"></a>    CompletedStr=<font class="source_string">"Matches Won:"</font>
+<a name="614"></a>    BGName1(<font class="source_int">0</font>)=<font class="source_string">"UTMenu.Save11"</font>
+<a name="615"></a>    BGName1(<font class="source_int">1</font>)=<font class="source_string">"UTMenu.Save12"</font>
+<a name="616"></a>    BGName1(<font class="source_int">2</font>)=<font class="source_string">"UTMenu.Save13"</font>
+<a name="617"></a>    BGName1(<font class="source_int">3</font>)=<font class="source_string">"UTMenu.Save14"</font>
+<a name="618"></a>    BGName2(<font class="source_int">0</font>)=<font class="source_string">"UTMenu.Save21"</font>
+<a name="619"></a>    BGName2(<font class="source_int">1</font>)=<font class="source_string">"UTMenu.Save22"</font>
+<a name="620"></a>    BGName2(<font class="source_int">2</font>)=<font class="source_string">"UTMenu.Save23"</font>
+<a name="621"></a>    BGName2(<font class="source_int">3</font>)=<font class="source_string">"UTMenu.Save24"</font>
+<a name="622"></a>    BGName3(<font class="source_int">0</font>)=<font class="source_string">"UTMenu.Save31"</font>
+<a name="623"></a>    BGName3(<font class="source_int">1</font>)=<font class="source_string">"UTMenu.Save32"</font>
+<a name="624"></a>    BGName3(<font class="source_int">2</font>)=<font class="source_string">"UTMenu.Save33"</font>
+<a name="625"></a>    BGName3(<font class="source_int">3</font>)=<font class="source_string">"UTMenu.Save34"</font>
+<a name="626"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\slotwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#SlotWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="physicalchildwindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="speechbindercw.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:28.000 - Creation time: Wed 26/5/2004 10:48:38.468 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,557 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealI.GESBioRifle</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\gesbiorifle.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#GESBioRifle">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="gassiuscarcass.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="giantgasbag.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unreali\unreali-overview.html">UnrealI</a>.<a href="..\unreali\gesbiorifle.html">GESBioRifle</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// GESBioRifle.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unreali\gesbiorifle.html" class="source">GESBioRifle</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec MESH IMPORT MESH=BRifle ANIVFILE=MODELS\BRifle_a.3D DATAFILE=MODELS\BRifle_d.3D X=0 Y=0 Z=0
+</font><a name="7"></a><font class="source_macro">#exec MESH ORIGIN MESH=BRifle X=0 Y=0 Z=0 YAW=-64 ROLL=0 PITCH=0
+</font><a name="8"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle SEQ=All       STARTFRAME=0   NUMFRAMES=101
+</font><a name="9"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle SEQ=Select    STARTFRAME=0   NUMFRAMES=20 RATE=45 GROUP=Select
+</font><a name="10"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle SEQ=Still     STARTFRAME=20  NUMFRAMES=1
+</font><a name="11"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle SEQ=Walking   STARTFRAME=21  NUMFRAMES=20
+</font><a name="12"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle SEQ=Charging  STARTFRAME=41  NUMFRAMES=30
+</font><a name="13"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle SEQ=UnLoading STARTFRAME=71  NUMFRAMES=1
+</font><a name="14"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle SEQ=Fire      STARTFRAME=72  NUMFRAMES=9
+</font><a name="15"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle SEQ=Drip      STARTFRAME=81  NUMFRAMES=7
+</font><a name="16"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle SEQ=Down      STARTFRAME=88  NUMFRAMES=13
+</font><a name="17"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=JBRifle1 FILE=MODELS\BRifle.PCX GROUP=Skins
+</font><a name="18"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=BRifle  X=0.005 Y=0.005 Z=0.01
+</font><a name="19"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=BRifle NUM=1 TEXTURE=JBRifle1
+</font><a name="20"></a>
+<a name="21"></a><font class="source_macro">#exec MESH IMPORT MESH=BRiflePick ANIVFILE=MODELS\napick_a.3D DATAFILE=MODELS\napick_d.3D X=0 Y=0 Z=0
+</font><a name="22"></a><font class="source_macro">#exec MESH ORIGIN MESH=BRiflePick X=0 Y=0 Z=63 YAW=64
+</font><a name="23"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRiflepick SEQ=All    STARTFRAME=0   NUMFRAMES=1
+</font><a name="24"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRiflepick SEQ=Still  STARTFRAME=0   NUMFRAMES=1
+</font><a name="25"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=JBRifle1 FILE=MODELS\BRifle.PCX GROUP=Skins
+</font><a name="26"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=BRiflepick X=0.1 Y=0.1 Z=0.2
+</font><a name="27"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=BRiflepick NUM=1 TEXTURE=JBRifle1
+</font><a name="28"></a>
+<a name="29"></a><font class="source_macro">#exec MESH IMPORT MESH=BRifle3 ANIVFILE=MODELS\Napal3_a.3D DATAFILE=MODELS\Napal3_d.3D X=0 Y=0 Z=0
+</font><a name="30"></a><font class="source_macro">#exec MESH ORIGIN MESH=BRifle3 X=0 Y=-480 Z=-80 YAW=-64 ROLL=9
+</font><a name="31"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle3 SEQ=All  STARTFRAME=0  NUMFRAMES=15
+</font><a name="32"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle3 SEQ=Still  STARTFRAME=0  NUMFRAMES=1
+</font><a name="33"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle3 SEQ=Charging  STARTFRAME=1  NUMFRAMES=9 RATE=40.0
+</font><a name="34"></a><font class="source_macro">#exec MESH SEQUENCE MESH=BRifle3 SEQ=Fire  STARTFRAME=9  NUMFRAMES=5 RATE=40.0
+</font><a name="35"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=JBRifle1 FILE=MODELS\BRifle.PCX GROUP="Skins"
+</font><a name="36"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=BRifle3 X=0.035 Y=0.035 Z=0.07
+</font><a name="37"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=BRifle3 NUM=1 TEXTURE=JBRifle1
+</font><a name="38"></a>
+<a name="39"></a><font class="source_macro">#exec MESH NOTIFY MESH=BRifle SEQ=Drip TIME=0.4 FUNCTION=DripSound
+</font><a name="40"></a>
+<a name="41"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\BRifle\NPickup2.WAV" NAME="GelSelect" GROUP="BioRifle"
+</font><a name="42"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\BRifle\Load4.WAV" NAME="GelLoad" GROUP="BioRifle"
+</font><a name="43"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\BRifle\NShot1.WAV" NAME="GelShot" GROUP="BioRifle"
+</font><a name="44"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\BRifle\Drip1.WAV" NAME="GelDrip" GROUP="BioRifle"
+</font><a name="45"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\BRifle\GelHit1.WAV" NAME="GelHit" GROUP="BioRifle"
+</font><a name="46"></a>
+<a name="47"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> ChargeSize,Count;
+<a name="48"></a>
+<a name="49"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> RateSelf( <font class="source_keyword2">out</font> <font class="source_keyword">int</font> bUseAltMode )
+<a name="50"></a>{
+<a name="51"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> EnemyDist;
+<a name="52"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bRetreating;
+<a name="53"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> EnemyDir;
+<a name="54"></a>
+<a name="55"></a>    <font class="source_keyword">if</font> ( AmmoType.AmmoAmount &lt;=<font class="source_int">0</font> )
+<a name="56"></a>        <font class="source_keyword">return</font> -<font class="source_int">2</font>;
+<a name="57"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).Enemy == <font class="source_keyword">None</font> )
+<a name="58"></a>    {
+<a name="59"></a>        bUseAltMode = <font class="source_int">0</font>;
+<a name="60"></a>        <font class="source_keyword">return</font> AIRating;
+<a name="61"></a>    }
+<a name="62"></a>
+<a name="63"></a>    EnemyDir = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).Enemy.Location - Owner.Location;
+<a name="64"></a>    EnemyDist = VSize(EnemyDir);
+<a name="65"></a>    <font class="source_keyword">if</font> ( EnemyDist &gt; <font class="source_int">1400</font> )
+<a name="66"></a>    {
+<a name="67"></a>        bUseAltMode = <font class="source_int">0</font>;
+<a name="68"></a>        <font class="source_keyword">return</font> <font class="source_int">0</font>;
+<a name="69"></a>    }
+<a name="70"></a>    bRetreating = ( ((EnemyDir/EnemyDist) Dot Owner.Velocity) &lt; -<font class="source_int">0.7</font> );
+<a name="71"></a>    <font class="source_keyword">if</font> ( (EnemyDist &gt; <font class="source_int">500</font>) && (EnemyDir.Z &gt; -<font class="source_int">0.4</font> * EnemyDist) )
+<a name="72"></a>    {
+<a name="73"></a>        <font class="source_comment">// only use if enemy not too far and retreating
+</font><a name="74"></a>        <font class="source_keyword">if</font> ( (EnemyDist &gt; <font class="source_int">800</font>) || !bRetreating )
+<a name="75"></a>        {
+<a name="76"></a>            bUseAltMode = <font class="source_int">0</font>;
+<a name="77"></a>            <font class="source_keyword">return</font> <font class="source_int">0</font>;
+<a name="78"></a>        }
+<a name="79"></a>        <font class="source_keyword">return</font> AIRating;
+<a name="80"></a>    }
+<a name="81"></a>
+<a name="82"></a>    bUseAltMode = <font class="source_keyword">int</font>( bRetreating && (FRand() &lt; <font class="source_int">0.3</font>) );
+<a name="83"></a>
+<a name="84"></a>    <font class="source_keyword">if</font> ( bRetreating || (EnemyDir.Z &lt; -<font class="source_int">0.7</font> * EnemyDist) )
+<a name="85"></a>        <font class="source_keyword">return</font> (AIRating + <font class="source_int">0.15</font>);
+<a name="86"></a>    <font class="source_keyword">return</font> AIRating;
+<a name="87"></a>}
+<a name="88"></a>
+<a name="89"></a><font class="source_comment">// return delta to combat style
+</font><a name="90"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> SuggestAttackStyle()
+<a name="91"></a>{
+<a name="92"></a>    <font class="source_keyword">return</font> -<font class="source_int">0.3</font>;
+<a name="93"></a>}
+<a name="94"></a>
+<a name="95"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> SuggestDefenseStyle()
+<a name="96"></a>{
+<a name="97"></a>    <font class="source_keyword">return</font> -<font class="source_int">0.2</font>;
+<a name="98"></a>}
+<a name="99"></a>
+<a name="100"></a><font class="source_keyword">function</font> AltFire( <font class="source_keyword">float</font> Value )
+<a name="101"></a>{
+<a name="102"></a>    bPointing=<font class="source_keyword">True</font>;
+<a name="103"></a>    <font class="source_keyword">if</font> ( AmmoType.UseAmmo(<font class="source_int">1</font>) ) 
+<a name="104"></a>    {
+<a name="105"></a>        CheckVisibility();
+<a name="106"></a>        GoToState(<font class="source_name">'AltFiring'</font>);
+<a name="107"></a>    }
+<a name="108"></a>}
+<a name="109"></a>
+<a name="110"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\projectile.html" class="source">Projectile</a></font> ProjectileFire(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\projectile.html" class="source">projectile</a></font>&gt; ProjClass, <font class="source_keyword">float</font> ProjSpeed, <font class="source_keyword">bool</font> bWarn)
+<a name="111"></a>{
+<a name="112"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> Start, X,Y,Z;
+<a name="113"></a>
+<a name="114"></a>    Owner.MakeNoise(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).SoundDampening);
+<a name="115"></a>    GetAxes(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(owner).ViewRotation,X,Y,Z);
+<a name="116"></a>    Start = Owner.Location + CalcDrawOffset() + FireOffset.X * X + FireOffset.Y * Y + FireOffset.Z * Z; 
+<a name="117"></a>    AdjustedAim = <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font>(owner).AdjustToss(ProjSpeed, Start, <font class="source_int">0</font>, <font class="source_keyword">True</font>, (bWarn || (FRand() &lt; <font class="source_int">0.4</font>)));    
+<a name="118"></a>    <font class="source_keyword">if</font> ( Owner.IsA(<font class="source_name">'PlayerPawn'</font>) )
+<a name="119"></a>        <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner).ClientInstantFlash( -<font class="source_int">0.3</font>, vect( <font class="source_int">278</font>, <font class="source_int">435</font>, <font class="source_int">143</font>));
+<a name="120"></a>    <font class="source_keyword">return</font> Spawn(ProjClass,,, Start,AdjustedAim);
+<a name="121"></a>}
+<a name="122"></a>
+<a name="123"></a><font class="source_comment">///////////////////////////////////////////////////////
+</font><a name="124"></a><font class="source_keyword">state</font> AltFiring
+<a name="125"></a>{
+<a name="126"></a>    <font class="source_keyword">function</font> Tick( <font class="source_keyword">float</font> DeltaTime )
+<a name="127"></a>    {
+<a name="128"></a>        ChargeSize += DeltaTime;
+<a name="129"></a>        <font class="source_keyword">if</font>( (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font>(Owner).bAltFire==<font class="source_int">0</font>)) 
+<a name="130"></a>            GoToState(<font class="source_name">'ShootLoad'</font>);
+<a name="131"></a>        Count += DeltaTime;
+<a name="132"></a>        <font class="source_keyword">if</font> (Count &gt; <font class="source_int">1.0</font>) 
+<a name="133"></a>        {
+<a name="134"></a>            Count = <font class="source_int">0.0</font>;
+<a name="135"></a>            <font class="source_keyword">if</font> ( (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner) == <font class="source_keyword">None</font>) && (FRand() &lt; <font class="source_int">0.3</font>) )
+<a name="136"></a>                GoToState(<font class="source_name">'ShootLoad'</font>);
+<a name="137"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> (!AmmoType.UseAmmo(<font class="source_int">1</font>)) 
+<a name="138"></a>                GoToState(<font class="source_name">'ShootLoad'</font>);
+<a name="139"></a>        }
+<a name="140"></a>    }
+<a name="141"></a>
+<a name="142"></a>Begin:
+<a name="143"></a>    ChargeSize = <font class="source_int">0.0</font>;
+<a name="144"></a>    Count = <font class="source_int">0.0</font>;
+<a name="145"></a>    Owner.PlaySound(Misc1Sound, SLOT_Misc, <font class="source_int">1.3</font>*<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).SoundDampening);  <font class="source_comment">//loading goop	
+</font><a name="146"></a>    PlayAnim(<font class="source_name">'Charging'</font>,<font class="source_int">0.2</font>,<font class="source_int">0.05</font>);
+<a name="147"></a>    FinishAnim();
+<a name="148"></a>    GotoState(<font class="source_name">'ShootLoad'</font>);
+<a name="149"></a>}
+<a name="150"></a>
+<a name="151"></a><font class="source_keyword">state</font> ShootLoad
+<a name="152"></a>{
+<a name="153"></a>    <font class="source_keyword">function</font> Fire(<font class="source_keyword">float</font> F) 
+<a name="154"></a>    {
+<a name="155"></a>        <font class="source_comment">//bFireMem = true;
+</font><a name="156"></a>    }
+<a name="157"></a>    <font class="source_keyword">function</font> AltFire(<font class="source_keyword">float</font> F) 
+<a name="158"></a>    {
+<a name="159"></a>        <font class="source_comment">//bAltFireMem = true;
+</font><a name="160"></a>    }
+<a name="161"></a>
+<a name="162"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="163"></a>    {
+<a name="164"></a>        <font class="source_keyword">Local</font> <font class="source_type"><a href="..\engine\projectile.html" class="source">Projectile</a></font> Gel;
+<a name="165"></a>
+<a name="166"></a>        Gel = ProjectileFire(AltProjectileClass, AltProjectileSpeed, bAltWarnTarget);
+<a name="167"></a>        Gel.DrawScale = <font class="source_int">0.5</font> + ChargeSize/3.<font class="source_int">5</font>;
+<a name="168"></a>        Owner.PlaySound(FireSound, SLOT_Misc, <font class="source_int">1.7</font>*<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).SoundDampening,,,fMax(<font class="source_int">0.5</font>,<font class="source_int">1.35</font>-ChargeSize/8.<font class="source_int">0</font>) ); <font class="source_comment">//shoot goop
+</font><a name="169"></a>        PlayAnim(<font class="source_name">'Fire'</font>,<font class="source_int">0.4</font>, <font class="source_int">0.05</font>);
+<a name="170"></a>    }
+<a name="171"></a>
+<a name="172"></a>Begin:
+<a name="173"></a>    FinishAnim();
+<a name="174"></a>    Finish();
+<a name="175"></a>}
+<a name="176"></a>
+<a name="177"></a>
+<a name="178"></a><font class="source_comment">// Finish a firing sequence
+</font><a name="179"></a><font class="source_keyword">function</font> Finish()
+<a name="180"></a>{
+<a name="181"></a>    <font class="source_keyword">if</font> ( bChangeWeapon )
+<a name="182"></a>        GotoState(<font class="source_name">'DownWeapon'</font>);
+<a name="183"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner) == <font class="source_keyword">None</font> )
+<a name="184"></a>    {
+<a name="185"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).bAltFire = <font class="source_int">0</font>;
+<a name="186"></a>        <font class="source_keyword">Super</font>.Finish();
+<a name="187"></a>    }
+<a name="188"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (AmmoType.AmmoAmount&lt;=<font class="source_int">0</font>) || (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> != self) )
+<a name="189"></a>        GotoState(<font class="source_name">'Idle'</font>);
+<a name="190"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( <font class="source_comment">/*bFireMem ||*/</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).bFire!=<font class="source_int">0</font> )
+<a name="191"></a>        Global.Fire(<font class="source_int">0</font>);
+<a name="192"></a>    <font class="source_keyword">else</font> 
+<a name="193"></a>        GotoState(<font class="source_name">'Idle'</font>);
+<a name="194"></a>}
+<a name="195"></a>
+<a name="196"></a>
+<a name="197"></a><font class="source_keyword">function</font> PlayFiring()
+<a name="198"></a>{
+<a name="199"></a>    Owner.PlaySound(AltFireSound, SLOT_None, <font class="source_int">1.7</font>*<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).SoundDampening);   <font class="source_comment">//fast fire goop
+</font><a name="200"></a>    PlayAnim(<font class="source_name">'Fire'</font>,<font class="source_int">1.1</font>, <font class="source_int">0.05</font>);
+<a name="201"></a>}
+<a name="202"></a><font class="source_comment">///////////////////////////////////////////////////////////
+</font><a name="203"></a><font class="source_keyword">function</font> PlayIdleAnim()
+<a name="204"></a>{
+<a name="205"></a>    <font class="source_keyword">if</font> (VSize(Owner.Velocity) &gt; <font class="source_int">10</font>)
+<a name="206"></a>        PlayAnim(<font class="source_name">'Walking'</font>,<font class="source_int">0.3</font>,<font class="source_int">0.3</font>);
+<a name="207"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (FRand() &lt; <font class="source_int">0.3</font> )
+<a name="208"></a>        PlayAnim(<font class="source_name">'Drip'</font>, <font class="source_int">0.1</font>,<font class="source_int">0.3</font>);
+<a name="209"></a>    <font class="source_keyword">else</font> 
+<a name="210"></a>        TweenAnim(<font class="source_name">'Still'</font>, <font class="source_int">1.0</font>);
+<a name="211"></a>    Enable(<font class="source_name">'AnimEnd'</font>);
+<a name="212"></a>}
+<a name="213"></a>
+<a name="214"></a><font class="source_keyword">function</font> DripSound()
+<a name="215"></a>{
+<a name="216"></a>    Owner.PlaySound(Misc2Sound, SLOT_None, <font class="source_int">0.5</font>*<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).SoundDampening); <font class="source_comment">// Drip
+</font><a name="217"></a>}
+<a name="218"></a>
+<a name="219"></a><font class="source_keyword">defaultproperties</font>
+<a name="220"></a>{
+<a name="221"></a>     DeathMessage=<font class="source_string">"%o drank a glass of %k's dripping green load."</font>
+<a name="222"></a>     itemname=<font class="source_string">"GES Bio Rifle"</font>
+<a name="223"></a>     ProjectileClass=<font class="source_keyword">class</font><font class="source_name">'Unreali.BioGel'</font>
+<a name="224"></a>     AltProjectileClass=<font class="source_keyword">class</font><font class="source_name">'Unreali.BigBioGel'</font>
+<a name="225"></a>     AmmoName=<font class="source_keyword">Class</font><font class="source_name">'UnrealI.Sludge'</font>
+<a name="226"></a>     PickupAmmoCount=<font class="source_int">25</font>
+<a name="227"></a>     bAltWarnTarget=<font class="source_keyword">True</font>
+<a name="228"></a>     FireOffset=(X=<font class="source_int">12.000000</font>,Y=-<font class="source_int">9.000000</font>,Z=-<font class="source_int">16.000000</font>)
+<a name="229"></a>     AIRating=<font class="source_int">0.600000</font>
+<a name="230"></a>     RefireRate=<font class="source_int">0.900000</font>
+<a name="231"></a>     AltRefireRate=<font class="source_int">0.700000</font>
+<a name="232"></a>     FireSound=<font class="source_type">Sound</font><font class="source_name">'UnrealI.GelShot'</font>
+<a name="233"></a>     AltFireSound=<font class="source_type">Sound</font><font class="source_name">'UnrealI.GelShot'</font>
+<a name="234"></a>     CockingSound=<font class="source_type">Sound</font><font class="source_name">'UnrealI.GelLoad'</font>
+<a name="235"></a>     SelectSound=<font class="source_type">Sound</font><font class="source_name">'UnrealI.GelSelect'</font>
+<a name="236"></a>     Misc1Sound=<font class="source_type">Sound</font><font class="source_name">'UnrealI.GelLoad'</font>
+<a name="237"></a>     Misc2Sound=<font class="source_type">Sound</font><font class="source_name">'UnrealI.GelDrip'</font>
+<a name="238"></a>     AutoSwitchPriority=<font class="source_int">8</font>
+<a name="239"></a>     InventoryGroup=<font class="source_int">8</font>
+<a name="240"></a>     PickupMessage=<font class="source_string">"You got the GES BioRifle"</font>
+<a name="241"></a>     PlayerViewOffset=(X=<font class="source_int">2.000000</font>,Y=-<font class="source_int">0.700000</font>,Z=-<font class="source_int">1.150000</font>)
+<a name="242"></a>     PlayerViewMesh=<font class="source_type">Mesh</font><font class="source_name">'UnrealI.BRifle'</font>
+<a name="243"></a>     PickupViewMesh=<font class="source_type">Mesh</font><font class="source_name">'UnrealI.BRiflePick'</font>
+<a name="244"></a>     ThirdPersonMesh=<font class="source_type">Mesh</font><font class="source_name">'UnrealI.BRifle3'</font>
+<a name="245"></a>     PickupSound=<font class="source_type">Sound</font><font class="source_name">'UnrealI.WeaponPickup'</font>
+<a name="246"></a>     <font class="source_type">Mesh</font>=<font class="source_type">Mesh</font><font class="source_name">'UnrealI.BRiflePick'</font>
+<a name="247"></a>     bNoSmooth=<font class="source_keyword">False</font>
+<a name="248"></a>     bMeshCurvy=<font class="source_keyword">False</font>
+<a name="249"></a>     CollisionRadius=<font class="source_int">28.000000</font>
+<a name="250"></a>     CollisionHeight=<font class="source_int">15.000000</font>
+<a name="251"></a>}
+<a name="252"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\gesbiorifle.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#GESBioRifle">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="gassiuscarcass.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="giantgasbag.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:24.000 - Creation time: Wed 26/5/2004 10:48:20.046 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

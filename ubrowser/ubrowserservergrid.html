@@ -1,0 +1,532 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - UBrowser.UBrowserServerGrid</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ubrowser-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ubrowser\ubrowserservergrid.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserServerGrid">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserscreenshotcw.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowserserverlist.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="ubrowser-overview.html">UBrowser</a>.UBrowserServerGrid</h1>
+<b>Extends:</b> <a href="..\uwindow\uwindowgrid.html">UWindowGrid</a><br>
+<b>Modifiers:</b> <br>
+<a href="..\Source_ubrowser\ubrowserservergrid.html"><b>Source code</b></a>
+
+<p>
+UBrowserServerGrid - base class for server listings
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowbase.html">UWindowBase</a>
+    |   
+    +-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowwindow.html">UWindowWindow</a>
+        |   
+        +-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowgrid.html">UWindowGrid</a>
+            |   
+            +-- <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserservergrid.html">UBrowserServerGrid</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\utbrowser\utbrowserservergrid.html">UTBrowserServerGrid</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowwindow.html#DE_Change">DE_Change</a>, <a href="..\uwindow\uwindowwindow.html#DE_Click">DE_Click</a>, <a href="..\uwindow\uwindowwindow.html#DE_Created">DE_Created</a>, <a href="..\uwindow\uwindowwindow.html#DE_DoubleClick">DE_DoubleClick</a>, <a href="..\uwindow\uwindowwindow.html#DE_Enter">DE_Enter</a>, <a href="..\uwindow\uwindowwindow.html#DE_EnterPressed">DE_EnterPressed</a>, <a href="..\uwindow\uwindowwindow.html#DE_Exit">DE_Exit</a>, <a href="..\uwindow\uwindowwindow.html#DE_HelpChanged">DE_HelpChanged</a>, <a href="..\uwindow\uwindowwindow.html#DE_LMouseDown">DE_LMouseDown</a>, <a href="..\uwindow\uwindowwindow.html#DE_MClick">DE_MClick</a>, <a href="..\uwindow\uwindowwindow.html#DE_MouseEnter">DE_MouseEnter</a>, <a href="..\uwindow\uwindowwindow.html#DE_MouseLeave">DE_MouseLeave</a>, <a href="..\uwindow\uwindowwindow.html#DE_MouseMove">DE_MouseMove</a>, <a href="..\uwindow\uwindowwindow.html#DE_RClick">DE_RClick</a>, <a href="..\uwindow\uwindowwindow.html#DE_WheelDownPressed">DE_WheelDownPressed</a>, <a href="..\uwindow\uwindowwindow.html#DE_WheelUpPressed">DE_WheelUpPressed</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_AutoPingInterval" name="AutoPingInterval">AutoPingInterval</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSortDescending" name="bSortDescending">bSortDescending</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Count" name="Count">Count</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\uwindow\uwindowgridcolumn.html">UWindowGridColumn</a></td><td width="66%"><a href="#_MapName" name="MapName">MapName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MapNameName" name="MapNameName">MapNameName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserrightclickmenu.html">UBrowserRightClickMenu</a></td><td width="66%"><a href="#_Menu" name="Menu">Menu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserserverlist.html">UBrowserServerList</a></td><td width="66%"><a href="#_OldPingServer" name="OldPingServer">OldPingServer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\uwindow\uwindowgridcolumn.html">UWindowGridColumn</a></td><td width="66%"><a href="#_Ping" name="Ping">Ping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PingName" name="PingName">PingName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\uwindow\uwindowgridcolumn.html">UWindowGridColumn</a></td><td width="66%"><a href="#_Players" name="Players">Players</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PlayersName" name="PlayersName">PlayersName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserserverlist.html">UBrowserServerList</a></td><td width="66%"><a href="#_SelectedServer" name="SelectedServer">SelectedServer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\uwindow\uwindowgridcolumn.html">UWindowGridColumn</a></td><td width="66%"><a href="#_Server" name="Server">Server</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ServerName" name="ServerName">ServerName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\uwindow\uwindowgridcolumn.html">UWindowGridColumn</a></td><td width="66%"><a href="#_SortByColumn" name="SortByColumn">SortByColumn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TimePassed" name="TimePassed">TimePassed</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowgrid.html">UWindowGrid</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowgrid.html#bNoKeyboard">bNoKeyboard</a>, <a href="..\uwindow\uwindowgrid.html#bShowHorizSB">bShowHorizSB</a>, <a href="..\uwindow\uwindowgrid.html#bSizingColumn">bSizingColumn</a>, <a href="..\uwindow\uwindowgrid.html#ClientArea">ClientArea</a>, <a href="..\uwindow\uwindowgrid.html#FirstColumn">FirstColumn</a>, <a href="..\uwindow\uwindowgrid.html#HorizSB">HorizSB</a>, <a href="..\uwindow\uwindowgrid.html#LastColumn">LastColumn</a>, <a href="..\uwindow\uwindowgrid.html#RowHeight">RowHeight</a>, <a href="..\uwindow\uwindowgrid.html#TopRow">TopRow</a>, <a href="..\uwindow\uwindowgrid.html#VertSB">VertSB</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowwindow.html#ActiveWindow">ActiveWindow</a>, <a href="..\uwindow\uwindowwindow.html#bAcceptsFocus">bAcceptsFocus</a>, <a href="..\uwindow\uwindowwindow.html#bAcceptsHotKeys">bAcceptsHotKeys</a>, <a href="..\uwindow\uwindowwindow.html#bAlwaysBehind">bAlwaysBehind</a>, <a href="..\uwindow\uwindowwindow.html#bAlwaysOnTop">bAlwaysOnTop</a>, <a href="..\uwindow\uwindowwindow.html#bIgnoreLDoubleClick">bIgnoreLDoubleClick</a>, <a href="..\uwindow\uwindowwindow.html#bIgnoreMDoubleClick">bIgnoreMDoubleClick</a>, <a href="..\uwindow\uwindowwindow.html#bIgnoreRDoubleClick">bIgnoreRDoubleClick</a>, <a href="..\uwindow\uwindowwindow.html#bLeaveOnscreen">bLeaveOnscreen</a>, <a href="..\uwindow\uwindowwindow.html#bMMouseDown">bMMouseDown</a>, <a href="..\uwindow\uwindowwindow.html#bMouseDown">bMouseDown</a>, <a href="..\uwindow\uwindowwindow.html#bNoClip">bNoClip</a>, <a href="..\uwindow\uwindowwindow.html#bRMouseDown">bRMouseDown</a>, <a href="..\uwindow\uwindowwindow.html#bTransient">bTransient</a>, <a href="..\uwindow\uwindowwindow.html#bUWindowActive">bUWindowActive</a>, <a href="..\uwindow\uwindowwindow.html#bWindowVisible">bWindowVisible</a>, <a href="..\uwindow\uwindowwindow.html#ClickTime">ClickTime</a>, <a href="..\uwindow\uwindowwindow.html#ClickX">ClickX</a>, <a href="..\uwindow\uwindowwindow.html#ClickY">ClickY</a>, <a href="..\uwindow\uwindowwindow.html#ClippingRegion">ClippingRegion</a>, <a href="..\uwindow\uwindowwindow.html#Cursor">Cursor</a>, <a href="..\uwindow\uwindowwindow.html#FirstChildWindow">FirstChildWindow</a>, <a href="..\uwindow\uwindowwindow.html#LastChildWindow">LastChildWindow</a>, <a href="..\uwindow\uwindowwindow.html#LookAndFeel">LookAndFeel</a>, <a href="..\uwindow\uwindowwindow.html#MClickTime">MClickTime</a>, <a href="..\uwindow\uwindowwindow.html#MClickX">MClickX</a>, <a href="..\uwindow\uwindowwindow.html#MClickY">MClickY</a>, <a href="..\uwindow\uwindowwindow.html#ModalWindow">ModalWindow</a>, <a href="..\uwindow\uwindowwindow.html#NextSiblingWindow">NextSiblingWindow</a>, <a href="..\uwindow\uwindowwindow.html#OwnerWindow">OwnerWindow</a>, <a href="..\uwindow\uwindowwindow.html#ParentWindow">ParentWindow</a>, <a href="..\uwindow\uwindowwindow.html#PrevSiblingWindow">PrevSiblingWindow</a>, <a href="..\uwindow\uwindowwindow.html#RClickTime">RClickTime</a>, <a href="..\uwindow\uwindowwindow.html#RClickX">RClickX</a>, <a href="..\uwindow\uwindowwindow.html#RClickY">RClickY</a>, <a href="..\uwindow\uwindowwindow.html#Root">Root</a>, <a href="..\uwindow\uwindowwindow.html#WinHeight">WinHeight</a>, <a href="..\uwindow\uwindowwindow.html#WinLeft">WinLeft</a>, <a href="..\uwindow\uwindowwindow.html#WinTop">WinTop</a>, <a href="..\uwindow\uwindowwindow.html#WinWidth">WinWidth</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowwindow.html#WinMessage">WinMessage</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowwindow.html#MouseCursor">MouseCursor</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_ByMap+" name="ByMap">ByMap</a> (<a href="ubrowserserverlist.html">UBrowserServerList</a> T, <a href="ubrowserserverlist.html">UBrowserServerList</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_ByName+" name="ByName">ByName</a> (<a href="ubrowserserverlist.html">UBrowserServerList</a> T, <a href="ubrowserserverlist.html">UBrowserServerList</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_ByPing+" name="ByPing">ByPing</a> (<a href="ubrowserserverlist.html">UBrowserServerList</a> T, <a href="ubrowserserverlist.html">UBrowserServerList</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_ByPlayers+" name="ByPlayers">ByPlayers</a> (<a href="ubrowserserverlist.html">UBrowserServerList</a> T, <a href="ubrowserserverlist.html">UBrowserServerList</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Close+" name="Close">Close</a> (optional bool bByParent)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_Compare+" name="Compare">Compare</a> (<a href="ubrowserserverlist.html">UBrowserServerList</a> T, <a href="ubrowserserverlist.html">UBrowserServerList</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CreateColumns+" name="CreateColumns">CreateColumns</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Created+" name="Created">Created</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DoubleClickRow+" name="DoubleClickRow">DoubleClickRow</a> (int Row)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawCell+" name="DrawCell">DrawCell</a> (<a href="..\engine\canvas.html">Canvas</a> C, float X, float Y, <a href="..\uwindow\uwindowgridcolumn.html">UWindowGridColumn</a> Column, <a href="ubrowserserverlist.html">UBrowserServerList</a> List)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_GetSelectedRow+" name="GetSelectedRow">GetSelectedRow</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="ubrowserserverlist.html">UBrowserServerList</a>&nbsp;</td><td><a href="#_GetServerUnderRow+" name="GetServerUnderRow">GetServerUnderRow</a> (int Row)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_JoinServer+" name="JoinServer">JoinServer</a> (<a href="ubrowserserverlist.html">UBrowserServerList</a> Server)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_KeyDown+" name="KeyDown">KeyDown</a> (int Key, float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_MouseLeaveColumn+" name="MouseLeaveColumn">MouseLeaveColumn</a> (<a href="..\uwindow\uwindowgridcolumn.html">UWindowGridColumn</a> Column)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PaintColumn+" name="PaintColumn">PaintColumn</a> (<a href="..\engine\canvas.html">Canvas</a> C, <a href="..\uwindow\uwindowgridcolumn.html">UWindowGridColumn</a> Column, float MouseX, float MouseY)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Refresh+" name="Refresh">Refresh</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RefreshServer+" name="RefreshServer">RefreshServer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RePing+" name="RePing">RePing</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RightClickRow+" name="RightClickRow">RightClickRow</a> (int Row, float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SelectRow+" name="SelectRow">SelectRow</a> (int Row)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ShowInfo+" name="ShowInfo">ShowInfo</a> (<a href="ubrowserserverlist.html">UBrowserServerList</a> List)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SortColumn+" name="SortColumn">SortColumn</a> (<a href="..\uwindow\uwindowgridcolumn.html">UWindowGridColumn</a> Column)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowgrid.html">UWindowGrid</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowgrid.html#AddColumn">AddColumn</a>, <a href="..\uwindow\uwindowgrid.html#BeforePaint">BeforePaint</a>, <a href="..\uwindow\uwindowgrid.html#Created">Created</a>, <a href="..\uwindow\uwindowgrid.html#DoubleClickRow">DoubleClickRow</a>, <a href="..\uwindow\uwindowgrid.html#KeyDown">KeyDown</a>, <a href="..\uwindow\uwindowgrid.html#MouseLeaveColumn">MouseLeaveColumn</a>, <a href="..\uwindow\uwindowgrid.html#Paint">Paint</a>, <a href="..\uwindow\uwindowgrid.html#PaintColumn">PaintColumn</a>, <a href="..\uwindow\uwindowgrid.html#Resized">Resized</a>, <a href="..\uwindow\uwindowgrid.html#RightClickRow">RightClickRow</a>, <a href="..\uwindow\uwindowgrid.html#RightClickRowDown">RightClickRowDown</a>, <a href="..\uwindow\uwindowgrid.html#SelectRow">SelectRow</a>, <a href="..\uwindow\uwindowgrid.html#SortColumn">SortColumn</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowwindow.html#Activated">Activated</a>, <a href="..\uwindow\uwindowwindow.html#ActivateWindow">ActivateWindow</a>, <a href="..\uwindow\uwindowwindow.html#AfterCreate">AfterCreate</a>, <a href="..\uwindow\uwindowwindow.html#AfterPaint">AfterPaint</a>, <a href="..\uwindow\uwindowwindow.html#BeforeCreate">BeforeCreate</a>, <a href="..\uwindow\uwindowwindow.html#BeforePaint">BeforePaint</a>, <a href="..\uwindow\uwindowwindow.html#BeginPlay">BeginPlay</a>, <a href="..\uwindow\uwindowwindow.html#BringToFront">BringToFront</a>, <a href="..\uwindow\uwindowwindow.html#CancelAcceptsFocus">CancelAcceptsFocus</a>, <a href="..\uwindow\uwindowwindow.html#CheckKeyFocusWindow">CheckKeyFocusWindow</a>, <a href="..\uwindow\uwindowwindow.html#CheckMousePassThrough">CheckMousePassThrough</a>, <a href="..\uwindow\uwindowwindow.html#Click">Click</a>, <a href="..\uwindow\uwindowwindow.html#ClipText">ClipText</a>, <a href="..\uwindow\uwindowwindow.html#ClipTextWidth">ClipTextWidth</a>, <a href="..\uwindow\uwindowwindow.html#Close">Close</a>, <a href="..\uwindow\uwindowwindow.html#Created">Created</a>, <a href="..\uwindow\uwindowwindow.html#CreateWindow">CreateWindow</a>, <a href="..\uwindow\uwindowwindow.html#Deactivated">Deactivated</a>, <a href="..\uwindow\uwindowwindow.html#DoTick">DoTick</a>, <a href="..\uwindow\uwindowwindow.html#DoubleClick">DoubleClick</a>, <a href="..\uwindow\uwindowwindow.html#DrawClippedActor">DrawClippedActor</a>, <a href="..\uwindow\uwindowwindow.html#DrawClippedTexture">DrawClippedTexture</a>, <a href="..\uwindow\uwindowwindow.html#DrawHorizTiledPieces">DrawHorizTiledPieces</a>, <a href="..\uwindow\uwindowwindow.html#DrawMiscBevel">DrawMiscBevel</a>, <a href="..\uwindow\uwindowwindow.html#DrawStretchedTexture">DrawStretchedTexture</a>, <a href="..\uwindow\uwindowwindow.html#DrawStretchedTextureSegment">DrawStretchedTextureSegment</a>, <a href="..\uwindow\uwindowwindow.html#DrawUpBevel">DrawUpBevel</a>, <a href="..\uwindow\uwindowwindow.html#DrawVertTiledPieces">DrawVertTiledPieces</a>, <a href="..\uwindow\uwindowwindow.html#EscClose">EscClose</a>, <a href="..\uwindow\uwindowwindow.html#FindChildWindow">FindChildWindow</a>, <a href="..\uwindow\uwindowwindow.html#FindWindowUnder">FindWindowUnder</a>, <a href="..\uwindow\uwindowwindow.html#FocusOtherWindow">FocusOtherWindow</a>, <a href="..\uwindow\uwindowwindow.html#FocusWindow">FocusWindow</a>, <a href="..\uwindow\uwindowwindow.html#GetDesiredDimensions">GetDesiredDimensions</a>, <a href="..\uwindow\uwindowwindow.html#GetEntryLevel">GetEntryLevel</a>, <a href="..\uwindow\uwindowwindow.html#GetLevel">GetLevel</a>, <a href="..\uwindow\uwindowwindow.html#GetLookAndFeelTexture">GetLookAndFeelTexture</a>, <a href="..\uwindow\uwindowwindow.html#GetMouseXY">GetMouseXY</a>, <a href="..\uwindow\uwindowwindow.html#GetParent">GetParent</a>, <a href="..\uwindow\uwindowwindow.html#GetPlayerOwner">GetPlayerOwner</a>, <a href="..\uwindow\uwindowwindow.html#GlobalToWindow">GlobalToWindow</a>, <a href="..\uwindow\uwindowwindow.html#HideChildWindow">HideChildWindow</a>, <a href="..\uwindow\uwindowwindow.html#HideWindow">HideWindow</a>, <a href="..\uwindow\uwindowwindow.html#HotKeyDown">HotKeyDown</a>, <a href="..\uwindow\uwindowwindow.html#HotKeyUp">HotKeyUp</a>, <a href="..\uwindow\uwindowwindow.html#IsActive">IsActive</a>, <a href="..\uwindow\uwindowwindow.html#KeyDown">KeyDown</a>, <a href="..\uwindow\uwindowwindow.html#KeyFocusEnter">KeyFocusEnter</a>, <a href="..\uwindow\uwindowwindow.html#KeyFocusExit">KeyFocusExit</a>, <a href="..\uwindow\uwindowwindow.html#KeyType">KeyType</a>, <a href="..\uwindow\uwindowwindow.html#KeyUp">KeyUp</a>, <a href="..\uwindow\uwindowwindow.html#LMouseDown">LMouseDown</a>, <a href="..\uwindow\uwindowwindow.html#LMouseUp">LMouseUp</a>, <a href="..\uwindow\uwindowwindow.html#MClick">MClick</a>, <a href="..\uwindow\uwindowwindow.html#MDoubleClick">MDoubleClick</a>, <a href="..\uwindow\uwindowwindow.html#MessageBox">MessageBox</a>, <a href="..\uwindow\uwindowwindow.html#MessageBoxDone">MessageBoxDone</a>, <a href="..\uwindow\uwindowwindow.html#MessageClients">MessageClients</a>, <a href="..\uwindow\uwindowwindow.html#MMouseDown">MMouseDown</a>, <a href="..\uwindow\uwindowwindow.html#MMouseUp">MMouseUp</a>, <a href="..\uwindow\uwindowwindow.html#MouseEnter">MouseEnter</a>, <a href="..\uwindow\uwindowwindow.html#MouseIsOver">MouseIsOver</a>, <a href="..\uwindow\uwindowwindow.html#MouseLeave">MouseLeave</a>, <a href="..\uwindow\uwindowwindow.html#MouseMove">MouseMove</a>, <a href="..\uwindow\uwindowwindow.html#NotifyAfterLevelChange">NotifyAfterLevelChange</a>, <a href="..\uwindow\uwindowwindow.html#NotifyBeforeLevelChange">NotifyBeforeLevelChange</a>, <a href="..\uwindow\uwindowwindow.html#NotifyQuitUnreal">NotifyQuitUnreal</a>, <a href="..\uwindow\uwindowwindow.html#Paint">Paint</a>, <a href="..\uwindow\uwindowwindow.html#PaintClients">PaintClients</a>, <a href="..\uwindow\uwindowwindow.html#ParseAmpersand">ParseAmpersand</a>, <a href="..\uwindow\uwindowwindow.html#ProcessMenuKey">ProcessMenuKey</a>, <a href="..\uwindow\uwindowwindow.html#PropagateKey">PropagateKey</a>, <a href="..\uwindow\uwindowwindow.html#RClick">RClick</a>, <a href="..\uwindow\uwindowwindow.html#RDoubleClick">RDoubleClick</a>, <a href="..\uwindow\uwindowwindow.html#RemoveAmpersand">RemoveAmpersand</a>, <a href="..\uwindow\uwindowwindow.html#ReplaceText">ReplaceText</a>, <a href="..\uwindow\uwindowwindow.html#Resized">Resized</a>, <a href="..\uwindow\uwindowwindow.html#ResolutionChanged">ResolutionChanged</a>, <a href="..\uwindow\uwindowwindow.html#RMouseDown">RMouseDown</a>, <a href="..\uwindow\uwindowwindow.html#RMouseUp">RMouseUp</a>, <a href="..\uwindow\uwindowwindow.html#SaveConfigs">SaveConfigs</a>, <a href="..\uwindow\uwindowwindow.html#SendToBack">SendToBack</a>, <a href="..\uwindow\uwindowwindow.html#SetAcceptsFocus">SetAcceptsFocus</a>, <a href="..\uwindow\uwindowwindow.html#SetAcceptsHotKeys">SetAcceptsHotKeys</a>, <a href="..\uwindow\uwindowwindow.html#SetCursor">SetCursor</a>, <a href="..\uwindow\uwindowwindow.html#SetMouseWindow">SetMouseWindow</a>, <a href="..\uwindow\uwindowwindow.html#SetParent">SetParent</a>, <a href="..\uwindow\uwindowwindow.html#SetSize">SetSize</a>, <a href="..\uwindow\uwindowwindow.html#ShowChildWindow">ShowChildWindow</a>, <a href="..\uwindow\uwindowwindow.html#ShowModal">ShowModal</a>, <a href="..\uwindow\uwindowwindow.html#ShowWindow">ShowWindow</a>, <a href="..\uwindow\uwindowwindow.html#StripCRLF">StripCRLF</a>, <a href="..\uwindow\uwindowwindow.html#TextSize">TextSize</a>, <a href="..\uwindow\uwindowwindow.html#Tick">Tick</a>, <a href="..\uwindow\uwindowwindow.html#Tile">Tile</a>, <a href="..\uwindow\uwindowwindow.html#ToolTip">ToolTip</a>, <a href="..\uwindow\uwindowwindow.html#WaitModal">WaitModal</a>, <a href="..\uwindow\uwindowwindow.html#WindowEvent">WindowEvent</a>, <a href="..\uwindow\uwindowwindow.html#WindowHidden">WindowHidden</a>, <a href="..\uwindow\uwindowwindow.html#WindowIsVisible">WindowIsVisible</a>, <a href="..\uwindow\uwindowwindow.html#WindowShown">WindowShown</a>, <a href="..\uwindow\uwindowwindow.html#WindowToGlobal">WindowToGlobal</a>, <a href="..\uwindow\uwindowwindow.html#WrapClipText">WrapClipText</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AutoPingInterval" class="hidden"></a>AutoPingInterval <a href="..\Source_ubrowser\ubrowserservergrid.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> AutoPingInterval;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bSortDescending" class="hidden"></a>bSortDescending <a href="..\Source_ubrowser\ubrowserservergrid.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSortDescending;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Count" class="hidden"></a>Count <a href="..\Source_ubrowser\ubrowserservergrid.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> Count;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MapName" class="hidden"></a>MapName <a href="..\Source_ubrowser\ubrowserservergrid.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowgridcolumn.html" class="source">UWindowGridColumn</a></font> MapName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MapNameName" class="hidden"></a>MapNameName <a href="..\Source_ubrowser\ubrowserservergrid.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MapNameName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Menu" class="hidden"></a>Menu <a href="..\Source_ubrowser\ubrowserservergrid.html#8" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserrightclickmenu.html" class="source">UBrowserRightClickMenu</a></font> <font class="source_type"><a href="..\engine\menu.html" class="source">Menu</a></font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldPingServer" class="hidden"></a>OldPingServer <a href="..\Source_ubrowser\ubrowserservergrid.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> OldPingServer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Ping" class="hidden"></a>Ping <a href="..\Source_ubrowser\ubrowserservergrid.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowgridcolumn.html" class="source">UWindowGridColumn</a></font> Ping;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PingName" class="hidden"></a>PingName <a href="..\Source_ubrowser\ubrowserservergrid.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PingName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Players" class="hidden"></a>Players <a href="..\Source_ubrowser\ubrowserservergrid.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowgridcolumn.html" class="source">UWindowGridColumn</a></font> Players;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayersName" class="hidden"></a>PlayersName <a href="..\Source_ubrowser\ubrowserservergrid.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PlayersName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SelectedServer" class="hidden"></a>SelectedServer <a href="..\Source_ubrowser\ubrowserservergrid.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> SelectedServer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Server" class="hidden"></a>Server <a href="..\Source_ubrowser\ubrowserservergrid.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowgridcolumn.html" class="source">UWindowGridColumn</a></font> Server;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerName" class="hidden"></a>ServerName <a href="..\Source_ubrowser\ubrowserservergrid.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ServerName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SortByColumn" class="hidden"></a>SortByColumn <a href="..\Source_ubrowser\ubrowserservergrid.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowgridcolumn.html" class="source">UWindowGridColumn</a></font> SortByColumn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimePassed" class="hidden"></a>TimePassed <a href="..\Source_ubrowser\ubrowserservergrid.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> TimePassed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ByMap+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ByMap <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#372" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> ByMap (<font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> T, <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ByName+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ByName <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#344" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> ByName (<font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> T, <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ByPing+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ByPing <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#311" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> ByPing (<font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> T, <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ByPlayers+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ByPlayers <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#401" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> ByPlayers (<font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> T, <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Close+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Close <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#32" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Close (<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bByParent)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Compare+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Compare <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#294" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> Compare (<font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> T, <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CreateColumns+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CreateColumns <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CreateColumns ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Created+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Created <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Created ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DoubleClickRow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DoubleClickRow <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#256" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DoubleClickRow (<font class="source_keyword">int</font> Row)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawCell+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawCell <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#49" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawCell (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y, <font class="source_type"><a href="..\uwindow\uwindowgridcolumn.html" class="source">UWindowGridColumn</a></font> Column, <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> List)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetSelectedRow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetSelectedRow <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#224" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> GetSelectedRow ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetServerUnderRow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetServerUnderRow <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#202" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> GetServerUnderRow (<font class="source_keyword">int</font> Row)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_JoinServer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> JoinServer <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#246" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> JoinServer (<font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> Server)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyDown+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyDown <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#270" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> KeyDown (<font class="source_keyword">int</font> Key, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MouseLeaveColumn+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MouseLeaveColumn <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#265" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> MouseLeaveColumn (<font class="source_type"><a href="..\uwindow\uwindowgridcolumn.html" class="source">UWindowGridColumn</a></font> Column)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PaintColumn+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PaintColumn <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#68" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PaintColumn (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_type"><a href="..\uwindow\uwindowgridcolumn.html" class="source">UWindowGridColumn</a></font> Column, <font class="source_keyword">float</font> MouseX, <font class="source_keyword">float</font> MouseY)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Refresh+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Refresh <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#447" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Refresh ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RefreshServer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RefreshServer <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#452" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RefreshServer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RePing+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RePing <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#457" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RePing ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RightClickRow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RightClickRow <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#190" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RightClickRow (<font class="source_keyword">int</font> Row, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SelectRow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SelectRow <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#173" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SelectRow (<font class="source_keyword">int</font> Row)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShowInfo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ShowInfo <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#442" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ShowInfo (<font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> List)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SortColumn+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SortColumn <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#126" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SortColumn (<font class="source_type"><a href="..\uwindow\uwindowgridcolumn.html" class="source">UWindowGridColumn</a></font> Column)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserservergrid.html#138" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    ServerName=<font class="source_string">"Server"</font>
+    PingName=<font class="source_string">"Ping"</font>
+    MapNameName=<font class="source_string">"Map Name"</font>
+    PlayersName=<font class="source_string">"Players"</font>
+    AutoPingInterval=<font class="source_int">5</font>
+}</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ubrowser-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ubrowser\ubrowserservergrid.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserServerGrid">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserscreenshotcw.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowserserverlist.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:41.578 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

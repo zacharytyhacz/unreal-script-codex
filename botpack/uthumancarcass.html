@@ -1,0 +1,520 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Botpack.UTHumanCarcass</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\uthumancarcass.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UTHumanCarcass">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utheart.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utintro.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="botpack-overview.html">Botpack</a>.UTHumanCarcass</h1>
+<b>Extends:</b> <a href="..\engine\carcass.html">Carcass</a><br>
+<b>Modifiers:</b> abstract <br>
+<a href="..\Source_botpack\uthumancarcass.html"><b>Source code</b></a>
+
+<p>
+UTHumanCarcass.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\decoration.html">Decoration</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\carcass.html">Carcass</a>
+            |   
+            +-- <a href="botpack-overview.html">Botpack</a>.<a href="uthumancarcass.html">UTHumanCarcass</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="tfemalebody.html">TFemaleBody</a>, <a href="tmalebody.html">TMaleBody</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCorroding" name="bCorroding">bCorroding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bGreenBlood" name="bGreenBlood">bGreenBlood</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPermanent" name="bPermanent">bPermanent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bThumped" name="bThumped">bThumped</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\zoneinfo.html">ZoneInfo</a></td><td width="66%"><a href="#_DeathZone" name="DeathZone">DeathZone</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ExistTime" name="ExistTime">ExistTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_GibSounds[4]" name="GibSounds[4]">GibSounds[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_LandedSound" name="LandedSound">LandedSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="utmastercreaturechunk.html">UTMasterCreatureChunk</a>&gt;</td><td width="66%"><a href="#_MasterReplacement" name="MasterReplacement">MasterReplacement</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\decal.html">Decal</a></td><td width="66%"><a href="#_Pool" name="Pool">Pool</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ReducedHeightFactor" name="ReducedHeightFactor">ReducedHeightFactor</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\carcass.html">Carcass</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\carcass.html#bDecorative">bDecorative</a>, <a href="..\engine\carcass.html#bPlayerCarcass">bPlayerCarcass</a>, <a href="..\engine\carcass.html#bReducedHeight">bReducedHeight</a>, <a href="..\engine\carcass.html#bSlidingCarcass">bSlidingCarcass</a>, <a href="..\engine\carcass.html#Bugs">Bugs</a>, <a href="..\engine\carcass.html#CumulativeDamage">CumulativeDamage</a>, <a href="..\engine\carcass.html#flies">flies</a>, <a href="..\engine\carcass.html#PlayerOwner">PlayerOwner</a>, <a href="..\engine\carcass.html#rats">rats</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\decoration.html">Decoration</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\decoration.html#bBobbing">bBobbing</a>, <a href="..\engine\decoration.html#bOnlyTriggerable">bOnlyTriggerable</a>, <a href="..\engine\decoration.html#bPushable">bPushable</a>, <a href="..\engine\decoration.html#bPushSoundPlaying">bPushSoundPlaying</a>, <a href="..\engine\decoration.html#bSplash">bSplash</a>, <a href="..\engine\decoration.html#bWasCarried">bWasCarried</a>, <a href="..\engine\decoration.html#content2">content2</a>, <a href="..\engine\decoration.html#content3">content3</a>, <a href="..\engine\decoration.html#contents">contents</a>, <a href="..\engine\decoration.html#EffectWhenDestroyed">EffectWhenDestroyed</a>, <a href="..\engine\decoration.html#EndPushSound">EndPushSound</a>, <a href="..\engine\decoration.html#numLandings">numLandings</a>, <a href="..\engine\decoration.html#PushSound">PushSound</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AddFliesAndRats+Dead" name="AddFliesAndRats">AddFliesAndRats</a> ()<br /><span class="function_state">Dead</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AnimEnd+" name="AnimEnd">AnimEnd</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_BaseChange+Dead" name="BaseChange">BaseChange</a> ()<br /><span class="function_state">Dead</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+Corroding" name="BeginState">BeginState</a> ()<br /><span class="function_state">Corroding</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+Dead" name="BeginState">BeginState</a> ()<br /><span class="function_state">Dead</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+Dying" name="BeginState">BeginState</a> ()<br /><span class="function_state">Dying</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CheckZoneCarcasses+Dead" name="CheckZoneCarcasses">CheckZoneCarcasses</a> ()<br /><span class="function_state">Dead</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ChunkUp+" name="ChunkUp">ChunkUp</a> (int Damage)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CreateReplacement+" name="CreateReplacement">CreateReplacement</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Destroyed+" name="Destroyed">Destroyed</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_GibSound+" name="GibSound">GibSound</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_HitWall+" name="HitWall">HitWall</a> (<a href="..\core\object.html#Vector">vector</a> HitNormal, <a href="..\engine\actor.html">actor</a> Wall)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Initfor+" name="Initfor">Initfor</a> (<a href="..\engine\actor.html">actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Landed+" name="Landed">Landed</a> (<a href="..\core\object.html#Vector">vector</a> HitNormal)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_LandThump+" name="LandThump">LandThump</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_LieStill+" name="LieStill">LieStill</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PostBeginPlay+" name="PostBeginPlay">PostBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ReduceCylinder+" name="ReduceCylinder">ReduceCylinder</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SpawnHead+" name="SpawnHead">SpawnHead</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TakeDamage+" name="TakeDamage">TakeDamage</a> (int Damage, <a href="..\engine\pawn.html">Pawn</a> InstigatedBy, <a href="..\core\object.html#Vector">Vector</a> Hitlocation, <a href="..\core\object.html#Vector">Vector</a> Momentum, name DamageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+Corroding" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">Corroding</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+Dead" name="Timer">Timer</a> ()<br /><span class="function_state">Dead</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\carcass.html">Carcass</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\carcass.html#AddFliesAndRats">AddFliesAndRats</a>, <a href="..\engine\carcass.html#AllowChunk">AllowChunk</a>, <a href="..\engine\carcass.html#BeginState">BeginState</a>, <a href="..\engine\carcass.html#CheckZoneCarcasses">CheckZoneCarcasses</a>, <a href="..\engine\carcass.html#ChunkUp">ChunkUp</a>, <a href="..\engine\carcass.html#CreateReplacement">CreateReplacement</a>, <a href="..\engine\carcass.html#Destroyed">Destroyed</a>, <a href="..\engine\carcass.html#Initfor">Initfor</a>, <a href="..\engine\carcass.html#TakeDamage">TakeDamage</a>, <a href="..\engine\carcass.html#Timer">Timer</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\decoration.html">Decoration</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\decoration.html#BaseChange">BaseChange</a>, <a href="..\engine\decoration.html#Bump">Bump</a>, <a href="..\engine\decoration.html#Destroyed">Destroyed</a>, <a href="..\engine\decoration.html#Drop">Drop</a>, <a href="..\engine\decoration.html#FollowHolder">FollowHolder</a>, <a href="..\engine\decoration.html#Frag">Frag</a>, <a href="..\engine\decoration.html#Landed">Landed</a>, <a href="..\engine\decoration.html#skinnedFrag">skinnedFrag</a>, <a href="..\engine\decoration.html#Timer">Timer</a>, <a href="..\engine\decoration.html#Trigger">Trigger</a>, <a href="..\engine\decoration.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Corroding <a href="..\Source_botpack\uthumancarcass.html#416" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Corroding <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Corroding">BeginState</a>, <a href="#_Tick+Corroding">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Dead <a href="..\Source_botpack\uthumancarcass.html#330" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Dead <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AddFliesAndRats+Dead">AddFliesAndRats</a>, <a href="#_BaseChange+Dead">BaseChange</a>, <a href="#_BeginState+Dead">BeginState</a>, <a href="#_CheckZoneCarcasses+Dead">CheckZoneCarcasses</a>, <a href="#_Timer+Dead">Timer</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Dying <a href="..\Source_botpack\uthumancarcass.html#304" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">auto state</span> Dying <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Dying">BeginState</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Gibbing <a href="..\Source_botpack\uthumancarcass.html#405" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Gibbing <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bCorroding" class="hidden"></a>bCorroding <a href="..\Source_botpack\uthumancarcass.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bCorroding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bGreenBlood" class="hidden"></a>bGreenBlood <a href="..\Source_botpack\uthumancarcass.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bGreenBlood;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bPermanent" class="hidden"></a>bPermanent <a href="..\Source_botpack\uthumancarcass.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPermanent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bThumped" class="hidden"></a>bThumped <a href="..\Source_botpack\uthumancarcass.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bThumped;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DeathZone" class="hidden"></a>DeathZone <a href="..\Source_botpack\uthumancarcass.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> DeathZone;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ExistTime" class="hidden"></a>ExistTime <a href="..\Source_botpack\uthumancarcass.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> ExistTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GibSounds[4]" class="hidden"></a>GibSounds[4] <a href="..\Source_botpack\uthumancarcass.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">sound</font> GibSounds[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LandedSound" class="hidden"></a>LandedSound <a href="..\Source_botpack\uthumancarcass.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">sound</font> LandedSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MasterReplacement" class="hidden"></a>MasterReplacement <a href="..\Source_botpack\uthumancarcass.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="utmastercreaturechunk.html" class="source">UTMasterCreatureChunk</a></font>&gt; MasterReplacement;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Pool" class="hidden"></a>Pool <a href="..\Source_botpack\uthumancarcass.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\decal.html" class="source">Decal</a></font> Pool;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReducedHeightFactor" class="hidden"></a>ReducedHeightFactor <a href="..\Source_botpack\uthumancarcass.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> ReducedHeightFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddFliesAndRats+Dead" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AddFliesAndRats <span class="function_state">Dead</span> <a href="..\Source_botpack\uthumancarcass.html#332" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AddFliesAndRats ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AnimEnd+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AnimEnd <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#250" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AnimEnd ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BaseChange+Dead" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> BaseChange <span class="function_state">Dead</span> <a href="..\Source_botpack\uthumancarcass.html#369" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> BaseChange ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+Corroding" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">Corroding</span> <a href="..\Source_botpack\uthumancarcass.html#446" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+Dead" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">Dead</span> <a href="..\Source_botpack\uthumancarcass.html#386" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+Dying" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">Dying</span> <a href="..\Source_botpack\uthumancarcass.html#308" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CheckZoneCarcasses+Dead" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CheckZoneCarcasses <span class="function_state">Dead</span> <a href="..\Source_botpack\uthumancarcass.html#336" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CheckZoneCarcasses ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ChunkUp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ChunkUp <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#200" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ChunkUp (<font class="source_keyword">int</font> Damage)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CreateReplacement+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CreateReplacement <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#51" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CreateReplacement ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Destroyed+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Destroyed <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#42" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Destroyed ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GibSound+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GibSound <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> GibSound ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HitWall+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HitWall <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#287" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> HitWall (<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal, <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Wall)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Initfor+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Initfor <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#81" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Initfor (<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Landed+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Landed <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#218" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Landed (<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LandThump+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> LandThump <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#271" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> LandThump ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LieStill+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> LieStill <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#261" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> LieStill ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PostBeginPlay <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PostBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReduceCylinder+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ReduceCylinder <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#131" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ReduceCylinder ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpawnHead+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SpawnHead <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#77" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SpawnHead ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TakeDamage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TakeDamage <span class="function_state"></span> <a href="..\Source_botpack\uthumancarcass.html#163" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TakeDamage (<font class="source_keyword">int</font> Damage, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> InstigatedBy, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> Hitlocation, 
+                        <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> Momentum, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+Corroding" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">Corroding</span> <a href="..\Source_botpack\uthumancarcass.html#420" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+Dead" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state">Dead</span> <a href="..\Source_botpack\uthumancarcass.html#358" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+      bReducedHeight=<font class="source_keyword">true</font>   
+      PrePivot=(X=<font class="source_int">0.000000</font>,Y=<font class="source_int">0.000000</font>,Z=<font class="source_int">28.000000</font>)
+      CollisionHeight=+<font class="source_int">00013.000000</font>
+      CollisionRadius=+<font class="source_int">00027.000000</font>
+      bBlockActors=<font class="source_keyword">false</font>
+      bBlockPlayers=<font class="source_keyword">false</font>
+      flies=<font class="source_int">0</font>
+      bSlidingCarcass=<font class="source_keyword">True</font>
+      TransientSoundVolume=<font class="source_int">3.000000</font>
+      NetPriority=+<font class="source_int">2.50000</font>
+      RemoteRole=ROLE_SimulatedProxy
+      LandedSound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Gibs.Thump'</font>
+      ReducedHeightFactor=<font class="source_int">0.300000</font>
+      GibSounds(<font class="source_int">0</font>)=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Gibs.Gib1'</font>
+      GibSounds(<font class="source_int">1</font>)=NewGib
+      GibSounds(<font class="source_int">2</font>)=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Gibs.Gib4'</font>
+      GibSounds(<font class="source_int">3</font>)=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Gibs.Gib5'</font>
+}
+
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\uthumancarcass.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UTHumanCarcass">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utheart.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utintro.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:49.640 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

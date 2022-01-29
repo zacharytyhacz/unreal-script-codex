@@ -1,0 +1,785 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - UBrowser.UBrowserServerPing</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ubrowser-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ubrowser\ubrowserserverping.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserServerPing">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserserverlistwindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowsersubsetfact.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="ubrowser-overview.html">UBrowser</a>.UBrowserServerPing</h1>
+<b>Extends:</b> <a href="..\ipdrv\udplink.html">UdpLink</a><br>
+<b>Modifiers:</b> <br>
+<a href="..\Source_ubrowser\ubrowserserverping.html"><b>Source code</b></a>
+
+<p>
+UBrowserServerPing: Query an Unreal server for its details
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\info.html">Info</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\internetinfo.html">InternetInfo</a>
+            |   
+            +-- <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\internetlink.html">InternetLink</a>
+                |   
+                +-- <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\udplink.html">UdpLink</a>
+                    |   
+                    +-- <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserserverping.html">UBrowserServerPing</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AdminEmailText" name="AdminEmailText">AdminEmailText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AdminNameText" name="AdminNameText">AdminNameText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_AttemptNumber" name="AttemptNumber">AttemptNumber</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BalanceTeamsText" name="BalanceTeamsText">BalanceTeamsText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_BindAttempts" name="BindAttempts">BindAttempts</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_BindRetryTime" name="BindRetryTime">BindRetryTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInitial" name="bInitial">bInitial</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bJustThisServer" name="bJustThisServer">bJustThisServer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoSort" name="bNoSort">bNoSort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BotSkillText" name="BotSkillText">BotSkillText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseMapName" name="bUseMapName">bUseMapName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ChangeLevelsText" name="ChangeLevelsText">ChangeLevelsText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_DedicatedText" name="DedicatedText">DedicatedText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_FalseString" name="FalseString">FalseString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_FragLimitText" name="FragLimitText">FragLimitText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_FriendlyFireText" name="FriendlyFireText">FriendlyFireText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameModeText" name="GameModeText">GameModeText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameTypeText" name="GameTypeText">GameTypeText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameVersionText" name="GameVersionText">GameVersionText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GoalTeamScoreText" name="GoalTeamScoreText">GoalTeamScoreText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LastDelta" name="LastDelta">LastDelta</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MaxBindAttempts" name="MaxBindAttempts">MaxBindAttempts</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MaxTeamsText" name="MaxTeamsText">MaxTeamsText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MinNetVersionText" name="MinNetVersionText">MinNetVersionText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MinPlayersText" name="MinPlayersText">MinPlayersText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MultiplayerBotsText" name="MultiplayerBotsText">MultiplayerBotsText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MutatorsText" name="MutatorsText">MutatorsText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_NonDedicatedText" name="NonDedicatedText">NonDedicatedText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PasswordText" name="PasswordText">PasswordText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_PingAttempts" name="PingAttempts">PingAttempts</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_PingTimeout" name="PingTimeout">PingTimeout</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PlayersBalanceTeamsText" name="PlayersBalanceTeamsText">PlayersBalanceTeamsText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PlayersText" name="PlayersText">PlayersText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_QueryState" name="QueryState">QueryState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_RequestSentTime" name="RequestSentTime">RequestSentTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserserverlist.html">UBrowserServerList</a></td><td width="66%"><a href="#_Server" name="Server">Server</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ServerAddressText" name="ServerAddressText">ServerAddressText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\ipdrv\internetlink.html#IpAddr">IpAddr</a></td><td width="66%"><a href="#_ServerIPAddr" name="ServerIPAddr">ServerIPAddr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ServerModeText" name="ServerModeText">ServerModeText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TimeLimitText" name="TimeLimitText">TimeLimitText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TournamentText" name="TournamentText">TournamentText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TrueString" name="TrueString">TrueString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_WorldLogText" name="WorldLogText">WorldLogText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_WorldLogWorkingFalse" name="WorldLogWorkingFalse">WorldLogWorkingFalse</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_WorldLogWorkingText" name="WorldLogWorkingText">WorldLogWorkingText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_WorldLogWorkingTrue" name="WorldLogWorkingTrue">WorldLogWorkingTrue</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\udplink.html">UdpLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\udplink.html#BroadcastAddr">BroadcastAddr</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\internetlink.html#DataPending">DataPending</a>, <a href="..\ipdrv\internetlink.html#LinkMode">LinkMode</a>, <a href="..\ipdrv\internetlink.html#Port">Port</a>, <a href="..\ipdrv\internetlink.html#PrivateResolveInfo">PrivateResolveInfo</a>, <a href="..\ipdrv\internetlink.html#ReceiveMode">ReceiveMode</a>, <a href="..\ipdrv\internetlink.html#RemoteSocket">RemoteSocket</a>, <a href="..\ipdrv\internetlink.html#Socket">Socket</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\internetlink.html#ELinkMode">ELinkMode</a>, <a href="..\ipdrv\internetlink.html#EReceiveMode">EReceiveMode</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\internetlink.html#IpAddr">IpAddr</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AddRule+" name="AddRule">AddRule</a> (string Rule, string Value)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_GetNextValue+" name="GetNextValue">GetNextValue</a> (string In, out string Out, out string Result)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_LocalizeBoolValue+" name="LocalizeBoolValue">LocalizeBoolValue</a> (string Value)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_LocalizeSkin+" name="LocalizeSkin">LocalizeSkin</a> (string SkinName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_LocalizeTeam+" name="LocalizeTeam">LocalizeTeam</a> (string TeamNum)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_ParseReply+" name="ParseReply">ParseReply</a> (string Text, string Key)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_ReceivedText+GetInfo" name="ReceivedText">ReceivedText</a> (<a href="..\ipdrv\internetlink.html#IpAddr">IpAddr</a> Addr, string Text)<br /><span class="function_state">GetInfo</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_ReceivedText+GetStatus" name="ReceivedText">ReceivedText</a> (<a href="..\ipdrv\internetlink.html#IpAddr">IpAddr</a> Addr, string Text)<br /><span class="function_state">GetStatus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Resolved+" name="Resolved">Resolved</a> (<a href="..\ipdrv\internetlink.html#IpAddr">IpAddr</a> Addr)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_StartQuery+" name="StartQuery">StartQuery</a> (name S, int InPingAttempts)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_Tick+GetInfo" name="Tick">Tick</a> (Float DeltaTime)<br /><span class="function_state">GetInfo</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_Timer+BindFailed" name="Timer">Timer</a> ()<br /><span class="function_state">BindFailed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_Timer+GetInfo" name="Timer">Timer</a> ()<br /><span class="function_state">GetInfo</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_Timer+GetStatus" name="Timer">Timer</a> ()<br /><span class="function_state">GetStatus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ValidateServer+" name="ValidateServer">ValidateServer</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\udplink.html">UdpLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\udplink.html#BindPort">BindPort</a>, <a href="..\ipdrv\udplink.html#ReadBinary">ReadBinary</a>, <a href="..\ipdrv\udplink.html#ReadText">ReadText</a>, <a href="..\ipdrv\udplink.html#ReceivedBinary">ReceivedBinary</a>, <a href="..\ipdrv\udplink.html#ReceivedLine">ReceivedLine</a>, <a href="..\ipdrv\udplink.html#ReceivedText">ReceivedText</a>, <a href="..\ipdrv\udplink.html#SendBinary">SendBinary</a>, <a href="..\ipdrv\udplink.html#SendText">SendText</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\internetlink.html#GetLastError">GetLastError</a>, <a href="..\ipdrv\internetlink.html#GetLocalIP">GetLocalIP</a>, <a href="..\ipdrv\internetlink.html#IpAddrToString">IpAddrToString</a>, <a href="..\ipdrv\internetlink.html#IsDataPending">IsDataPending</a>, <a href="..\ipdrv\internetlink.html#ParseURL">ParseURL</a>, <a href="..\ipdrv\internetlink.html#Resolve">Resolve</a>, <a href="..\ipdrv\internetlink.html#Resolved">Resolved</a>, <a href="..\ipdrv\internetlink.html#ResolveFailed">ResolveFailed</a>, <a href="..\ipdrv\internetlink.html#StringToIpAddr">StringToIpAddr</a>, <a href="..\ipdrv\internetlink.html#Validate">Validate</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>BindFailed <a href="..\Source_ubrowser\ubrowserserverping.html#187" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> BindFailed <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Timer+BindFailed">Timer</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Binding <a href="..\Source_ubrowser\ubrowserserverping.html#167" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Binding <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>GetInfo <a href="..\Source_ubrowser\ubrowserserverping.html#481" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> GetInfo <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_ReceivedText+GetInfo">ReceivedText</a>, <a href="#_Tick+GetInfo">Tick</a>, <a href="#_Timer+GetInfo">Timer</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>GetStatus <a href="..\Source_ubrowser\ubrowserserverping.html#198" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> GetStatus <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_ReceivedText+GetStatus">ReceivedText</a>, <a href="#_Timer+GetStatus">Timer</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Resolving <a href="..\Source_ubrowser\ubrowserserverping.html#602" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Resolving <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AdminEmailText" class="hidden"></a>AdminEmailText <a href="..\Source_ubrowser\ubrowserserverping.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AdminEmailText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AdminNameText" class="hidden"></a>AdminNameText <a href="..\Source_ubrowser\ubrowserserverping.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AdminNameText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AttemptNumber" class="hidden"></a>AttemptNumber <a href="..\Source_ubrowser\ubrowserserverping.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> AttemptNumber;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BalanceTeamsText" class="hidden"></a>BalanceTeamsText <a href="..\Source_ubrowser\ubrowserserverping.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BalanceTeamsText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BindAttempts" class="hidden"></a>BindAttempts <a href="..\Source_ubrowser\ubrowserserverping.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> BindAttempts;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BindRetryTime" class="hidden"></a>BindRetryTime <a href="..\Source_ubrowser\ubrowserserverping.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> BindRetryTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bInitial" class="hidden"></a>bInitial <a href="..\Source_ubrowser\ubrowserserverping.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bInitial;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bJustThisServer" class="hidden"></a>bJustThisServer <a href="..\Source_ubrowser\ubrowserserverping.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bJustThisServer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNoSort" class="hidden"></a>bNoSort <a href="..\Source_ubrowser\ubrowserserverping.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNoSort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BotSkillText" class="hidden"></a>BotSkillText <a href="..\Source_ubrowser\ubrowserserverping.html#41" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BotSkillText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bUseMapName" class="hidden"></a>bUseMapName <a href="..\Source_ubrowser\ubrowserserverping.html#55" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> bUseMapName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ChangeLevelsText" class="hidden"></a>ChangeLevelsText <a href="..\Source_ubrowser\ubrowserserverping.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ChangeLevelsText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DedicatedText" class="hidden"></a>DedicatedText <a href="..\Source_ubrowser\ubrowserserverping.html#44" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DedicatedText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FalseString" class="hidden"></a>FalseString <a href="..\Source_ubrowser\ubrowserserverping.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FalseString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FragLimitText" class="hidden"></a>FragLimitText <a href="..\Source_ubrowser\ubrowserserverping.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FragLimitText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FriendlyFireText" class="hidden"></a>FriendlyFireText <a href="..\Source_ubrowser\ubrowserserverping.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FriendlyFireText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GameModeText" class="hidden"></a>GameModeText <a href="..\Source_ubrowser\ubrowserserverping.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GameModeText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GameTypeText" class="hidden"></a>GameTypeText <a href="..\Source_ubrowser\ubrowserserverping.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GameTypeText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GameVersionText" class="hidden"></a>GameVersionText <a href="..\Source_ubrowser\ubrowserserverping.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GameVersionText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GoalTeamScoreText" class="hidden"></a>GoalTeamScoreText <a href="..\Source_ubrowser\ubrowserserverping.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GoalTeamScoreText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastDelta" class="hidden"></a>LastDelta <a href="..\Source_ubrowser\ubrowserserverping.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastDelta;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxBindAttempts" class="hidden"></a>MaxBindAttempts <a href="..\Source_ubrowser\ubrowserserverping.html#52" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> MaxBindAttempts;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxTeamsText" class="hidden"></a>MaxTeamsText <a href="..\Source_ubrowser\ubrowserserverping.html#36" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MaxTeamsText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinNetVersionText" class="hidden"></a>MinNetVersionText <a href="..\Source_ubrowser\ubrowserserverping.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MinNetVersionText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinPlayersText" class="hidden"></a>MinPlayersText <a href="..\Source_ubrowser\ubrowserserverping.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MinPlayersText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MultiplayerBotsText" class="hidden"></a>MultiplayerBotsText <a href="..\Source_ubrowser\ubrowserserverping.html#22" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MultiplayerBotsText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MutatorsText" class="hidden"></a>MutatorsText <a href="..\Source_ubrowser\ubrowserserverping.html#29" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MutatorsText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NonDedicatedText" class="hidden"></a>NonDedicatedText <a href="..\Source_ubrowser\ubrowserserverping.html#45" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> NonDedicatedText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PasswordText" class="hidden"></a>PasswordText <a href="..\Source_ubrowser\ubrowserserverping.html#49" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PasswordText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PingAttempts" class="hidden"></a>PingAttempts <a href="..\Source_ubrowser\ubrowserserverping.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> PingAttempts;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PingTimeout" class="hidden"></a>PingTimeout <a href="..\Source_ubrowser\ubrowserserverping.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> PingTimeout;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayersBalanceTeamsText" class="hidden"></a>PlayersBalanceTeamsText <a href="..\Source_ubrowser\ubrowserserverping.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PlayersBalanceTeamsText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayersText" class="hidden"></a>PlayersText <a href="..\Source_ubrowser\ubrowserserverping.html#35" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PlayersText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_QueryState" class="hidden"></a>QueryState <a href="..\Source_ubrowser\ubrowserserverping.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">name</font> QueryState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RequestSentTime" class="hidden"></a>RequestSentTime <a href="..\Source_ubrowser\ubrowserserverping.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> RequestSentTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Server" class="hidden"></a>Server <a href="..\Source_ubrowser\ubrowserserverping.html#6" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> Server;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerAddressText" class="hidden"></a>ServerAddressText <a href="..\Source_ubrowser\ubrowserserverping.html#32" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ServerAddressText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerIPAddr" class="hidden"></a>ServerIPAddr <a href="..\Source_ubrowser\ubrowserserverping.html#8" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\ipdrv\internetlink.html#IpAddr" class="source">IpAddr</a></font> ServerIPAddr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerModeText" class="hidden"></a>ServerModeText <a href="..\Source_ubrowser\ubrowserserverping.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ServerModeText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimeLimitText" class="hidden"></a>TimeLimitText <a href="..\Source_ubrowser\ubrowserserverping.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TimeLimitText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TournamentText" class="hidden"></a>TournamentText <a href="..\Source_ubrowser\ubrowserserverping.html#42" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TournamentText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TrueString" class="hidden"></a>TrueString <a href="..\Source_ubrowser\ubrowserserverping.html#30" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TrueString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WorldLogText" class="hidden"></a>WorldLogText <a href="..\Source_ubrowser\ubrowserserverping.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WorldLogText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WorldLogWorkingFalse" class="hidden"></a>WorldLogWorkingFalse <a href="..\Source_ubrowser\ubrowserserverping.html#48" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WorldLogWorkingFalse;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WorldLogWorkingText" class="hidden"></a>WorldLogWorkingText <a href="..\Source_ubrowser\ubrowserserverping.html#46" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WorldLogWorkingText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WorldLogWorkingTrue" class="hidden"></a>WorldLogWorkingTrue <a href="..\Source_ubrowser\ubrowserserverping.html#47" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WorldLogWorkingTrue;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddRule+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AddRule <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverping.html#151" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AddRule (<font class="source_keyword">string</font> Rule, <font class="source_keyword">string</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetNextValue+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetNextValue <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverping.html#83" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> GetNextValue (<font class="source_keyword">string</font> In, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> <font class="source_keyword2">Out</font>, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Result)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LocalizeBoolValue+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> LocalizeBoolValue <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverping.html#117" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> LocalizeBoolValue (<font class="source_keyword">string</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LocalizeSkin+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> LocalizeSkin <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverping.html#128" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> LocalizeSkin (<font class="source_keyword">string</font> SkinName)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LocalizeTeam+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> LocalizeTeam <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverping.html#143" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> LocalizeTeam (<font class="source_keyword">string</font> TeamNum)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ParseReply+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ParseReply <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverping.html#471" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> ParseReply (<font class="source_keyword">string</font> Text, <font class="source_keyword">string</font> Key)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReceivedText+GetInfo" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> ReceivedText <span class="function_state">GetInfo</span> <a href="..\Source_ubrowser\ubrowserserverping.html#483" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> ReceivedText (<font class="source_type"><a href="..\ipdrv\internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword">string</font> Text)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReceivedText+GetStatus" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> ReceivedText <span class="function_state">GetStatus</span> <a href="..\Source_ubrowser\ubrowserserverping.html#200" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> ReceivedText (<font class="source_type"><a href="..\ipdrv\internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword">string</font> Text)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Resolved+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Resolved <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverping.html#76" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Resolved (<font class="source_type"><a href="..\ipdrv\internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StartQuery+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> StartQuery <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverping.html#66" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> StartQuery (<font class="source_keyword">name</font> S, <font class="source_keyword">int</font> InPingAttempts)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+GetInfo" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Tick <span class="function_state">GetInfo</span> <a href="..\Source_ubrowser\ubrowserserverping.html#561" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> Tick (<font class="source_keyword">Float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+BindFailed" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Timer <span class="function_state">BindFailed</span> <a href="..\Source_ubrowser\ubrowserserverping.html#189" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+GetInfo" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Timer <span class="function_state">GetInfo</span> <a href="..\Source_ubrowser\ubrowserserverping.html#566" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+GetStatus" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Timer <span class="function_state">GetStatus</span> <a href="..\Source_ubrowser\ubrowserserverping.html#434" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ValidateServer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ValidateServer <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverping.html#57" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ValidateServer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    AdminEmailText=<font class="source_string">"Admin Email"</font>
+    AdminNameText=<font class="source_string">"Admin Name"</font>
+    MultiplayerBotsText=<font class="source_string">"Bots in Multiplayer"</font>
+    FragLimitText=<font class="source_string">"Frag Limit"</font>
+    TimeLimitText=<font class="source_string">"Time Limit"</font>
+    GameModeText=<font class="source_string">"Game Mode"</font>
+    GameTypeText=<font class="source_string">"Game Type"</font>
+    GameVersionText=<font class="source_string">"Game Version"</font>
+    MinNetVersionText=<font class="source_string">"Min. Compatible Version"</font>
+    MutatorsText=<font class="source_string">"Mutators"</font>
+    GoalTeamScoreText=<font class="source_string">"Required Team Score"</font>
+    MinPlayersText=<font class="source_string">"Bots Enter Game for Min. of"</font>
+    PlayersText=<font class="source_string">"Players"</font>
+    ChangeLevelsText=<font class="source_string">"Change Levels"</font>
+    MaxTeamsText=<font class="source_string">"Max Teams"</font>
+    BalanceTeamsText=<font class="source_string">"Bots Balance Teams"</font>
+    PlayersBalanceTeamsText=<font class="source_string">"Force Team Balance"</font>
+    FriendlyFireText=<font class="source_string">"Friendly Fire Damage"</font>
+    BotSkillText=<font class="source_string">"Bot Skill"</font>
+    TournamentText=<font class="source_string">"Tournament Mode"</font>
+    TrueString=<font class="source_string">"Enabled"</font>
+    FalseString=<font class="source_string">"Disabled"</font>
+    MaxBindAttempts=<font class="source_int">5</font>
+    BindRetryTime=<font class="source_int">10</font>
+    PingTimeout=<font class="source_int">1</font>
+    ServerAddressText=<font class="source_string">"Server Address"</font>
+    ServerModeText=<font class="source_string">"Server Mode"</font>
+    DedicatedText=<font class="source_string">"Dedicated"</font>
+    NonDedicatedText=<font class="source_string">"Non-Dedicated"</font>
+    WorldLogText=<font class="source_string">"ngWorldStats"</font>
+    WorldLogWorkingText=<font class="source_string">"ngWorldStats Status"</font>
+    WorldLogWorkingTrue=<font class="source_string">"Processing Stats Correctly"</font>
+    WorldLogWorkingFalse=<font class="source_string">"Not Processing Stats Correctly"</font>
+    PasswordText=<font class="source_string">"Requires Password"</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ubrowser-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ubrowser\ubrowserserverping.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserServerPing">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserserverlistwindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowsersubsetfact.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:41.765 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

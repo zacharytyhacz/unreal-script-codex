@@ -1,0 +1,451 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Botpack.TrainingAS</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\trainingas.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#TrainingAS">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="tournamentweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="trainingctf.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="botpack-overview.html">Botpack</a>.TrainingAS</h1>
+<b>Extends:</b> <a href="assault.html">Assault</a><br>
+<b>Modifiers:</b> <br>
+<a href="..\Source_botpack\trainingas.html"><b>Source code</b></a>
+
+<p>
+TrainingAS.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\info.html">Info</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\gameinfo.html">GameInfo</a>
+            |   
+            +-- <a href="botpack-overview.html">Botpack</a>.<a href="tournamentgameinfo.html">TournamentGameInfo</a>
+                |   
+                +-- <a href="botpack-overview.html">Botpack</a>.<a href="deathmatchplus.html">DeathMatchPlus</a>
+                    |   
+                    +-- <a href="botpack-overview.html">Botpack</a>.<a href="teamgameplus.html">TeamGamePlus</a>
+                        |   
+                        +-- <a href="botpack-overview.html">Botpack</a>.<a href="assault.html">Assault</a>
+                            |   
+                            +-- <a href="botpack-overview.html">Botpack</a>.<a href="trainingas.html">TrainingAS</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AS[13]" name="AS[13]">AS[13]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_EventIndex" name="EventIndex">EventIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_EventTimer" name="EventTimer">EventTimer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastEvent" name="LastEvent">LastEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\playerpawn.html">PlayerPawn</a></td><td width="66%"><a href="#_Trainee" name="Trainee">Trainee</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TutMessage[25]" name="TutMessage[25]">TutMessage[25]</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="botpack-overview.html">Botpack</a>.<a href="assault.html">Assault</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="assault.html#Attacker">Attacker</a>, <a href="assault.html#AttackMessage">AttackMessage</a>, <a href="assault.html#bAssaultWon">bAssaultWon</a>, <a href="assault.html#bDefenseSet">bDefenseSet</a>, <a href="assault.html#BestFort">BestFort</a>, <a href="assault.html#bFortDown">bFortDown</a>, <a href="assault.html#bTiePartOne">bTiePartOne</a>, <a href="assault.html#CurrentDefender">CurrentDefender</a>, <a href="assault.html#Defender">Defender</a>, <a href="assault.html#DefenderSuccess">DefenderSuccess</a>, <a href="assault.html#DefendMessage">DefendMessage</a>, <a href="assault.html#Defenses">Defenses</a>, <a href="assault.html#Destroyer">Destroyer</a>, <a href="assault.html#EndCam">EndCam</a>, <a href="assault.html#Fort[16]">Fort[16]</a>, <a href="assault.html#GameCode">GameCode</a>, <a href="assault.html#LastIncoming">LastIncoming</a>, <a href="assault.html#Leader[4]">Leader[4]</a>, <a href="assault.html#NumDefenses">NumDefenses</a>, <a href="assault.html#numForts">numForts</a>, <a href="assault.html#ObjectivesMessage">ObjectivesMessage</a>, <a href="assault.html#Part">Part</a>, <a href="assault.html#SavedTime">SavedTime</a>, <a href="assault.html#TieMessage">TieMessage</a>, <a href="assault.html#WinMessage">WinMessage</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="botpack-overview.html">Botpack</a>.<a href="teamgameplus.html">TeamGamePlus</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="teamgameplus.html#bBalanceTeams">bBalanceTeams</a>, <a href="teamgameplus.html#bBalancing">bBalancing</a>, <a href="teamgameplus.html#bNoTeamChanges">bNoTeamChanges</a>, <a href="teamgameplus.html#bPlayersBalanceTeams">bPlayersBalanceTeams</a>, <a href="teamgameplus.html#bScoreTeamKills">bScoreTeamKills</a>, <a href="teamgameplus.html#bSpawnInTeamArea">bSpawnInTeamArea</a>, <a href="teamgameplus.html#CurrentOrders[4]">CurrentOrders[4]</a>, <a href="teamgameplus.html#FriendlyFireScale">FriendlyFireScale</a>, <a href="teamgameplus.html#GoalTeamScore">GoalTeamScore</a>, <a href="teamgameplus.html#MaxAllowedTeams">MaxAllowedTeams</a>, <a href="teamgameplus.html#MaxTeams">MaxTeams</a>, <a href="teamgameplus.html#MaxTeamSize">MaxTeamSize</a>, <a href="teamgameplus.html#NextBotTeam">NextBotTeam</a>, <a href="teamgameplus.html#NumSupportingPlayer">NumSupportingPlayer</a>, <a href="teamgameplus.html#PlayerTeamNum">PlayerTeamNum</a>, <a href="teamgameplus.html#StartUpTeamMessage">StartUpTeamMessage</a>, <a href="teamgameplus.html#StartupTeamTralier">StartupTeamTralier</a>, <a href="teamgameplus.html#TeamChangeMessage">TeamChangeMessage</a>, <a href="teamgameplus.html#TeamColor[4]">TeamColor[4]</a>, <a href="teamgameplus.html#TeamPrefix">TeamPrefix</a>, <a href="teamgameplus.html#Teams[4]">Teams[4]</a>, <a href="teamgameplus.html#TEAM_Blue">TEAM_Blue</a>, <a href="teamgameplus.html#TEAM_Gold">TEAM_Gold</a>, <a href="teamgameplus.html#TEAM_Green">TEAM_Green</a>, <a href="teamgameplus.html#TEAM_Red">TEAM_Red</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent0+" name="ASTutEvent0">ASTutEvent0</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent1+" name="ASTutEvent1">ASTutEvent1</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent10+" name="ASTutEvent10">ASTutEvent10</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent11+" name="ASTutEvent11">ASTutEvent11</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent12+" name="ASTutEvent12">ASTutEvent12</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent2+" name="ASTutEvent2">ASTutEvent2</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent3+" name="ASTutEvent3">ASTutEvent3</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent4+" name="ASTutEvent4">ASTutEvent4</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent5+" name="ASTutEvent5">ASTutEvent5</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent6+" name="ASTutEvent6">ASTutEvent6</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent7+" name="ASTutEvent7">ASTutEvent7</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent8+" name="ASTutEvent8">ASTutEvent8</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ASTutEvent9+" name="ASTutEvent9">ASTutEvent9</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+ServerTravel" name="BeginState">BeginState</a> ()<br /><span class="function_state">ServerTravel</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndGame+" name="EndGame">EndGame</a> (string Reason)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_InitGame+" name="InitGame">InitGame</a> (string Options, out string Error)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_InitRatedGame+" name="InitRatedGame">InitRatedGame</a> (<a href="ladderinventory.html">LadderInventory</a> LadderObj, <a href="..\engine\playerpawn.html">PlayerPawn</a> LadderPlayer)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td><a href="..\engine\playerpawn.html">playerpawn</a>&nbsp;</td><td><a href="#_Login+" name="Login">Login</a> (string Portal, string Options, out string Error, class&lt;<a href="..\engine\playerpawn.html">playerpawn</a>&gt; SpawnClass)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+" name="Timer">Timer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+ServerTravel" name="Timer">Timer</a> ()<br /><span class="function_state">ServerTravel</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TutorialSound+" name="TutorialSound">TutorialSound</a> (string NewSound)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="botpack-overview.html">Botpack</a>.<a href="assault.html">Assault</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="assault.html#AddDefaultInventory">AddDefaultInventory</a>, <a href="assault.html#AssessBotAttitude">AssessBotAttitude</a>, <a href="assault.html#AttackFort">AttackFort</a>, <a href="assault.html#AttackOnlyLocalFort">AttackOnlyLocalFort</a>, <a href="assault.html#BestFortFor">BestFortFor</a>, <a href="assault.html#CalcEndStats">CalcEndStats</a>, <a href="assault.html#ChangeTeam">ChangeTeam</a>, <a href="assault.html#ElectNewLeaderFor">ElectNewLeaderFor</a>, <a href="assault.html#FallBackTo">FallBackTo</a>, <a href="assault.html#FindPathToFortFor">FindPathToFortFor</a>, <a href="assault.html#FindPlayerStart">FindPlayerStart</a>, <a href="assault.html#FindSpecialAttractionFor">FindSpecialAttractionFor</a>, <a href="assault.html#GameThreatAdd">GameThreatAdd</a>, <a href="assault.html#HandleTieUp">HandleTieUp</a>, <a href="assault.html#InitGame">InitGame</a>, <a href="assault.html#InitRatedGame">InitRatedGame</a>, <a href="assault.html#IsOnTeam">IsOnTeam</a>, <a href="assault.html#Killed">Killed</a>, <a href="assault.html#NeverStakeOut">NeverStakeOut</a>, <a href="assault.html#PickAmbushSpotFor">PickAmbushSpotFor</a>, <a href="assault.html#PlayStartUpMessage">PlayStartUpMessage</a>, <a href="assault.html#PostBeginPlay">PostBeginPlay</a>, <a href="assault.html#RemoveFort">RemoveFort</a>, <a href="assault.html#ResetGame">ResetGame</a>, <a href="assault.html#RestartGame">RestartGame</a>, <a href="assault.html#RestartPlayer">RestartPlayer</a>, <a href="assault.html#SendBotToGoal">SendBotToGoal</a>, <a href="assault.html#SendStartMessage">SendStartMessage</a>, <a href="assault.html#SetBotOrders">SetBotOrders</a>, <a href="assault.html#SetDefenseFor">SetDefenseFor</a>, <a href="assault.html#SetEndCams">SetEndCams</a>, <a href="assault.html#SuccessfulGame">SuccessfulGame</a>, <a href="assault.html#WaitForPoint">WaitForPoint</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="botpack-overview.html">Botpack</a>.<a href="teamgameplus.html">TeamGamePlus</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="teamgameplus.html#AddBot">AddBot</a>, <a href="teamgameplus.html#AddToTeam">AddToTeam</a>, <a href="teamgameplus.html#AssessBotAttitude">AssessBotAttitude</a>, <a href="teamgameplus.html#CanSpectate">CanSpectate</a>, <a href="teamgameplus.html#ChangeTeam">ChangeTeam</a>, <a href="teamgameplus.html#CheckReady">CheckReady</a>, <a href="teamgameplus.html#ClearOrders">ClearOrders</a>, <a href="teamgameplus.html#FindPlayerStart">FindPlayerStart</a>, <a href="teamgameplus.html#FindSpecialAttractionFor">FindSpecialAttractionFor</a>, <a href="teamgameplus.html#FindTeamByName">FindTeamByName</a>, <a href="teamgameplus.html#GetRules">GetRules</a>, <a href="teamgameplus.html#GetTeam">GetTeam</a>, <a href="teamgameplus.html#HandleTieUp">HandleTieUp</a>, <a href="teamgameplus.html#InitGame">InitGame</a>, <a href="teamgameplus.html#InitGameReplicationInfo">InitGameReplicationInfo</a>, <a href="teamgameplus.html#InitRatedGame">InitRatedGame</a>, <a href="teamgameplus.html#IsOnTeam">IsOnTeam</a>, <a href="teamgameplus.html#LogGameParameters">LogGameParameters</a>, <a href="teamgameplus.html#Login">Login</a>, <a href="teamgameplus.html#Logout">Logout</a>, <a href="teamgameplus.html#PickAmbushSpotFor">PickAmbushSpotFor</a>, <a href="teamgameplus.html#PlayStartUpMessage">PlayStartUpMessage</a>, <a href="teamgameplus.html#PostBeginPlay">PostBeginPlay</a>, <a href="teamgameplus.html#PostLogin">PostLogin</a>, <a href="teamgameplus.html#PriorityObjective">PriorityObjective</a>, <a href="teamgameplus.html#ReBalance">ReBalance</a>, <a href="teamgameplus.html#ReduceDamage">ReduceDamage</a>, <a href="teamgameplus.html#ScoreKill">ScoreKill</a>, <a href="teamgameplus.html#SendBotToGoal">SendBotToGoal</a>, <a href="teamgameplus.html#SetAttractionStateFor">SetAttractionStateFor</a>, <a href="teamgameplus.html#SetBotOrders">SetBotOrders</a>, <a href="teamgameplus.html#SetDefenseFor">SetDefenseFor</a>, <a href="teamgameplus.html#SetEndCams">SetEndCams</a>, <a href="teamgameplus.html#SuccessfulGame">SuccessfulGame</a>, <a href="teamgameplus.html#WaitForPoint">WaitForPoint</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>ServerTravel <a href="..\Source_botpack\trainingas.html#255" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ServerTravel <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+ServerTravel">BeginState</a>, <a href="#_Timer+ServerTravel">Timer</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AS[13]" class="hidden"></a>AS[13] <a href="..\Source_botpack\trainingas.html#8" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> AS[<font class="source_int">13</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EventIndex" class="hidden"></a>EventIndex <a href="..\Source_botpack\trainingas.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> EventIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EventTimer" class="hidden"></a>EventTimer <a href="..\Source_botpack\trainingas.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> EventTimer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastEvent" class="hidden"></a>LastEvent <a href="..\Source_botpack\trainingas.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> LastEvent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Trainee" class="hidden"></a>Trainee <a href="..\Source_botpack\trainingas.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> Trainee;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutMessage[25]" class="hidden"></a>TutMessage[25] <a href="..\Source_botpack\trainingas.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TutMessage[<font class="source_int">25</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ASTutEvent0+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent0 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#126" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent0 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent1+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent1 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#147" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent1 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent10+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent10 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#201" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent10 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent11+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent11 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#207" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent11 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent12+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent12 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#213" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent12 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent2+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent2 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#153" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent2 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent3+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent3 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#159" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent3 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent4+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent4 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#165" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent4 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent5+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent5 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#171" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent5 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent6+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent6 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#177" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent6 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent7+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent7 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#183" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent7 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent8+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent8 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#189" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent8 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ASTutEvent9+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ASTutEvent9 <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#195" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ASTutEvent9 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+ServerTravel" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">ServerTravel</span> <a href="..\Source_botpack\trainingas.html#267" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndGame+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndGame <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#232" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="..\unreali\endgame.html" class="source">EndGame</a></font> (<font class="source_keyword">string</font> Reason)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InitGame+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> InitGame <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> InitGame (<font class="source_keyword">string</font> Options, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InitRatedGame+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> InitRatedGame <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> InitRatedGame (<font class="source_type"><a href="ladderinventory.html" class="source">LadderInventory</a></font> LadderObj, <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> LadderPlayer)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Login+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Login <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font> Login (<font class="source_keyword">string</font> Portal,
+    <font class="source_keyword">string</font> Options,
+    <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error,
+    <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font>&gt; SpawnClass)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#64" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+ServerTravel" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state">ServerTravel</span> <a href="..\Source_botpack\trainingas.html#257" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TutorialSound+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TutorialSound <span class="function_state"></span> <a href="..\Source_botpack\trainingas.html#55" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TutorialSound (<font class="source_keyword">string</font> NewSound)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    bTutorialGame=<font class="source_keyword">True</font>
+    SingleWaitingMessage=<font class="source_string">""</font>
+    Difficulty=<font class="source_int">0</font>
+    BeaconName=<font class="source_string">"AS-Tutorial"</font>
+    GameName=<font class="source_string">"Combat Training: AS"</font>
+    MapPrefix=<font class="source_string">"AS-Tutorial"</font>
+    StartUpMessage=<font class="source_string">""</font>
+    bLoggingGame=<font class="source_keyword">False</font>
+    AS(<font class="source_int">0</font>)=<font class="source_string">"TutVoiceAS.as00"</font>
+    AS(<font class="source_int">1</font>)=<font class="source_string">"TutVoiceAS.as01"</font>
+    AS(<font class="source_int">2</font>)=<font class="source_string">"TutVoiceAS.as02"</font>
+    AS(<font class="source_int">3</font>)=<font class="source_string">"TutVoiceAS.as03"</font>
+    AS(<font class="source_int">4</font>)=<font class="source_string">"TutVoiceAS.as04"</font>
+    AS(<font class="source_int">5</font>)=<font class="source_string">"TutVoiceAS.as05"</font>
+    AS(<font class="source_int">6</font>)=<font class="source_string">"TutVoiceAS.as06"</font>
+    AS(<font class="source_int">7</font>)=<font class="source_string">"TutVoiceAS.as07"</font>
+    AS(<font class="source_int">8</font>)=<font class="source_string">"TutVoiceAS.as08"</font>
+    AS(<font class="source_int">9</font>)=<font class="source_string">"TutVoiceAS.as09"</font>
+    AS(<font class="source_int">10</font>)=<font class="source_string">"TutVoiceAS.as10"</font>
+    AS(<font class="source_int">11</font>)=<font class="source_string">"TutVoiceAS.as11"</font>
+    AS(<font class="source_int">12</font>)=<font class="source_string">"TutVoiceAS.as12"</font>
+    TutMessage(<font class="source_int">0</font>)=<font class="source_string">"Welcome to Assault combat training. This tutorial will instruct you on the basic rules of AS. Tutorials on DeathMatch, Domination, and Capture the Flag are also available."</font>
+    TutMessage(<font class="source_int">1</font>)=<font class="source_string">"The first thing you'll notice upon entering an Assault game is the large digital time display to the left of your HUD. This timer counts away the seconds until the game ends. Time is critical in an Assault game."</font>
+    TutMessage(<font class="source_int">2</font>)=<font class="source_string">"The game consists of two teams, each with a unique goal. You are on the attacking team. Your job is to penetrate the enemy base and destroy several key locations. If you fail to succeed in the allotted time, you lose."</font>
+    TutMessage(<font class="source_int">3</font>)=<font class="source_string">"The opposing team are the defenders. The defender's job is to protect their base and key locations from the assaulting team."</font>
+    TutMessage(<font class="source_int">4</font>)=<font class="source_string">"If you succeed in taking the enemy base as an attacker, then you must play the role of the defender for the same length of time."</font>
+    TutMessage(<font class="source_int">5</font>)=<font class="source_string">"To clarify, if you have 20 minutes to take the enemy base and you succeed in 10, then the map will restart and you must defend the base for 10 minutes. The longer it takes you to succeed in attacking, the longer you must defend the base."</font>
+    TutMessage(<font class="source_int">6</font>)=<font class="source_string">"Each assault map is unique in design. It may take time to learn the layout and develop strategies to attack or defend successfully."</font>
+    TutMessage(<font class="source_int">7</font>)=<font class="source_string">"At the start of every match, you are in spectator mode. Feel free to fly around and explore the map before play begins, to familiarize yourself with the environment."</font>
+    TutMessage(<font class="source_int">8</font>)=<font class="source_string">"When playing Assault with bots, you can use the 'orders menu' to command bot behavior. By hitting the v key, you can access the orders menu and deploy bots as you see fit."</font>
+    TutMessage(<font class="source_int">9</font>)=<font class="source_string">"The goal of this tutorial map is to break into the enemy base and destroy a prototype plasma tank. I'm going to summon two enemy bots to try and stop you, but you'll have a buddy to assist."</font>
+    TutMessage(<font class="source_int">10</font>)=<font class="source_string">"Some explosive has been set on the cave wall near the enemy base. Use your weapon to light the fuse then get back! Use the breach the explosive creates to enter the enemy base and take out the tank!"</font>
+    TutMessage(<font class="source_int">11</font>)=<font class="source_string">"Watch out for the enemy bot guarding the base and plasma turrets. Good luck!"</font>
+    TutMessage(<font class="source_int">12</font>)=<font class="source_string">"Congratulations! You've succeeded in destroying the plasma tank. Now its time to enter the Assault Tournament Ladder."</font>
+    LastEvent=<font class="source_int">13</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\trainingas.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#TrainingAS">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="tournamentweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="trainingctf.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:37.390 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

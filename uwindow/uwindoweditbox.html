@@ -1,0 +1,615 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - UWindow.UWindowEditBox</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="uwindow-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_uwindow\uwindoweditbox.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UWindowEditBox">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowdynamictextrow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindoweditboxhistory.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="uwindow-overview.html">UWindow</a>.UWindowEditBox</h1>
+<b>Extends:</b> <a href="uwindowdialogcontrol.html">UWindowDialogControl</a><br>
+<b>Modifiers:</b> <br>
+<a href="..\Source_uwindow\uwindoweditbox.html"><b>Source code</b></a>
+
+<p>
+UWindowEditBox - simple edit box, for use in other controls such as<br />
+UWindowComboxBoxControl, UWindowEditBoxControl etc.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="uwindow-overview.html">UWindow</a>.<a href="uwindowbase.html">UWindowBase</a>
+    |   
+    +-- <a href="uwindow-overview.html">UWindow</a>.<a href="uwindowwindow.html">UWindowWindow</a>
+        |   
+        +-- <a href="uwindow-overview.html">UWindow</a>.<a href="uwindowdialogcontrol.html">UWindowDialogControl</a>
+            |   
+            +-- <a href="uwindow-overview.html">UWindow</a>.<a href="uwindoweditbox.html">UWindowEditBox</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\utmenu\nameeditbox.html">NameEditBox</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="uwindow-overview.html">UWindow</a>.<a href="uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="uwindowwindow.html#DE_Change">DE_Change</a>, <a href="uwindowwindow.html#DE_Click">DE_Click</a>, <a href="uwindowwindow.html#DE_Created">DE_Created</a>, <a href="uwindowwindow.html#DE_DoubleClick">DE_DoubleClick</a>, <a href="uwindowwindow.html#DE_Enter">DE_Enter</a>, <a href="uwindowwindow.html#DE_EnterPressed">DE_EnterPressed</a>, <a href="uwindowwindow.html#DE_Exit">DE_Exit</a>, <a href="uwindowwindow.html#DE_HelpChanged">DE_HelpChanged</a>, <a href="uwindowwindow.html#DE_LMouseDown">DE_LMouseDown</a>, <a href="uwindowwindow.html#DE_MClick">DE_MClick</a>, <a href="uwindowwindow.html#DE_MouseEnter">DE_MouseEnter</a>, <a href="uwindowwindow.html#DE_MouseLeave">DE_MouseLeave</a>, <a href="uwindowwindow.html#DE_MouseMove">DE_MouseMove</a>, <a href="uwindowwindow.html#DE_RClick">DE_RClick</a>, <a href="uwindowwindow.html#DE_WheelDownPressed">DE_WheelDownPressed</a>, <a href="uwindowwindow.html#DE_WheelUpPressed">DE_WheelUpPressed</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAllSelected" name="bAllSelected">bAllSelected</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCanEdit" name="bCanEdit">bCanEdit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bChangePending" name="bChangePending">bChangePending</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bControlDown" name="bControlDown">bControlDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDelayedNotify" name="bDelayedNotify">bDelayedNotify</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHistory" name="bHistory">bHistory</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bKeyDown" name="bKeyDown">bKeyDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNumericFloat" name="bNumericFloat">bNumericFloat</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNumericOnly" name="bNumericOnly">bNumericOnly</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSelectOnFocus" name="bSelectOnFocus">bSelectOnFocus</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShiftDown" name="bShiftDown">bShiftDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowCaret" name="bShowCaret">bShowCaret</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CaretOffset" name="CaretOffset">CaretOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="uwindoweditboxhistory.html">UWindowEditBoxHistory</a></td><td width="66%"><a href="#_CurrentHistory" name="CurrentHistory">CurrentHistory</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="uwindoweditboxhistory.html">UWindowEditBoxHistory</a></td><td width="66%"><a href="#_HistoryList" name="HistoryList">HistoryList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LastDrawTime" name="LastDrawTime">LastDrawTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MaxLength" name="MaxLength">MaxLength</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="uwindowdialogcontrol.html">UWindowDialogControl</a></td><td width="66%"><a href="#_NotifyOwner" name="NotifyOwner">NotifyOwner</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Offset" name="Offset">Offset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_Value" name="Value">Value</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_Value2" name="Value2">Value2</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="uwindow-overview.html">UWindow</a>.<a href="uwindowdialogcontrol.html">UWindowDialogControl</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="uwindowdialogcontrol.html#Align">Align</a>, <a href="uwindowdialogcontrol.html#bAcceptExternalDragDrop">bAcceptExternalDragDrop</a>, <a href="uwindowdialogcontrol.html#bHasKeyboardFocus">bHasKeyboardFocus</a>, <a href="uwindowdialogcontrol.html#bNoKeyboard">bNoKeyboard</a>, <a href="uwindowdialogcontrol.html#Font">Font</a>, <a href="uwindowdialogcontrol.html#HelpText">HelpText</a>, <a href="uwindowdialogcontrol.html#MinHeight">MinHeight</a>, <a href="uwindowdialogcontrol.html#MinWidth">MinWidth</a>, <a href="uwindowdialogcontrol.html#NotifyWindow">NotifyWindow</a>, <a href="uwindowdialogcontrol.html#TabNext">TabNext</a>, <a href="uwindowdialogcontrol.html#TabPrev">TabPrev</a>, <a href="uwindowdialogcontrol.html#Text">Text</a>, <a href="uwindowdialogcontrol.html#TextColor">TextColor</a>, <a href="uwindowdialogcontrol.html#TextX">TextX</a>, <a href="uwindowdialogcontrol.html#TextY">TextY</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="uwindow-overview.html">UWindow</a>.<a href="uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="uwindowwindow.html#ActiveWindow">ActiveWindow</a>, <a href="uwindowwindow.html#bAcceptsFocus">bAcceptsFocus</a>, <a href="uwindowwindow.html#bAcceptsHotKeys">bAcceptsHotKeys</a>, <a href="uwindowwindow.html#bAlwaysBehind">bAlwaysBehind</a>, <a href="uwindowwindow.html#bAlwaysOnTop">bAlwaysOnTop</a>, <a href="uwindowwindow.html#bIgnoreLDoubleClick">bIgnoreLDoubleClick</a>, <a href="uwindowwindow.html#bIgnoreMDoubleClick">bIgnoreMDoubleClick</a>, <a href="uwindowwindow.html#bIgnoreRDoubleClick">bIgnoreRDoubleClick</a>, <a href="uwindowwindow.html#bLeaveOnscreen">bLeaveOnscreen</a>, <a href="uwindowwindow.html#bMMouseDown">bMMouseDown</a>, <a href="uwindowwindow.html#bMouseDown">bMouseDown</a>, <a href="uwindowwindow.html#bNoClip">bNoClip</a>, <a href="uwindowwindow.html#bRMouseDown">bRMouseDown</a>, <a href="uwindowwindow.html#bTransient">bTransient</a>, <a href="uwindowwindow.html#bUWindowActive">bUWindowActive</a>, <a href="uwindowwindow.html#bWindowVisible">bWindowVisible</a>, <a href="uwindowwindow.html#ClickTime">ClickTime</a>, <a href="uwindowwindow.html#ClickX">ClickX</a>, <a href="uwindowwindow.html#ClickY">ClickY</a>, <a href="uwindowwindow.html#ClippingRegion">ClippingRegion</a>, <a href="uwindowwindow.html#Cursor">Cursor</a>, <a href="uwindowwindow.html#FirstChildWindow">FirstChildWindow</a>, <a href="uwindowwindow.html#LastChildWindow">LastChildWindow</a>, <a href="uwindowwindow.html#LookAndFeel">LookAndFeel</a>, <a href="uwindowwindow.html#MClickTime">MClickTime</a>, <a href="uwindowwindow.html#MClickX">MClickX</a>, <a href="uwindowwindow.html#MClickY">MClickY</a>, <a href="uwindowwindow.html#ModalWindow">ModalWindow</a>, <a href="uwindowwindow.html#NextSiblingWindow">NextSiblingWindow</a>, <a href="uwindowwindow.html#OwnerWindow">OwnerWindow</a>, <a href="uwindowwindow.html#ParentWindow">ParentWindow</a>, <a href="uwindowwindow.html#PrevSiblingWindow">PrevSiblingWindow</a>, <a href="uwindowwindow.html#RClickTime">RClickTime</a>, <a href="uwindowwindow.html#RClickX">RClickX</a>, <a href="uwindowwindow.html#RClickY">RClickY</a>, <a href="uwindowwindow.html#Root">Root</a>, <a href="uwindowwindow.html#WinHeight">WinHeight</a>, <a href="uwindowwindow.html#WinLeft">WinLeft</a>, <a href="uwindowwindow.html#WinTop">WinTop</a>, <a href="uwindowwindow.html#WinWidth">WinWidth</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="uwindow-overview.html">UWindow</a>.<a href="uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="uwindowwindow.html#WinMessage">WinMessage</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="uwindow-overview.html">UWindow</a>.<a href="uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="uwindowwindow.html#MouseCursor">MouseCursor</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_Backspace+" name="Backspace">Backspace</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Clear+" name="Clear">Clear</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Click+" name="Click">Click</a> (float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Close+" name="Close">Close</a> (optional bool bByParent)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Created+" name="Created">Created</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_Delete+" name="Delete">Delete</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DoubleClick+" name="DoubleClick">DoubleClick</a> (float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EditCopy+" name="EditCopy">EditCopy</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EditCut+" name="EditCut">EditCut</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EditPaste+" name="EditPaste">EditPaste</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_FocusOtherWindow+" name="FocusOtherWindow">FocusOtherWindow</a> (<a href="uwindowwindow.html">UWindowWindow</a> W)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetValue+" name="GetValue">GetValue</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetValue2+" name="GetValue2">GetValue2</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_Insert+" name="Insert">Insert</a> (byte C)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_InsertText+" name="InsertText">InsertText</a> (string Text)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_KeyDown+" name="KeyDown">KeyDown</a> (int Key, float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_KeyFocusEnter+" name="KeyFocusEnter">KeyFocusEnter</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_KeyFocusExit+" name="KeyFocusExit">KeyFocusExit</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_KeyType+" name="KeyType">KeyType</a> (int Key, float MouseX, float MouseY)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_KeyUp+" name="KeyUp">KeyUp</a> (int Key, float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_LMouseDown+" name="LMouseDown">LMouseDown</a> (float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_MoveEnd+" name="MoveEnd">MoveEnd</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_MoveHome+" name="MoveHome">MoveHome</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_MoveLeft+" name="MoveLeft">MoveLeft</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_MoveRight+" name="MoveRight">MoveRight</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Notify+" name="Notify">Notify</a> (byte E)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Paint+" name="Paint">Paint</a> (<a href="..\engine\canvas.html">Canvas</a> C, float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SelectAll+" name="SelectAll">SelectAll</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetEditable+" name="SetEditable">SetEditable</a> (bool bEditable)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetHistory+" name="SetHistory">SetHistory</a> (bool bInHistory)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetValue+" name="SetValue">SetValue</a> (string NewValue, optional string NewValue2)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_WordLeft+" name="WordLeft">WordLeft</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_WordRight+" name="WordRight">WordRight</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="uwindow-overview.html">UWindow</a>.<a href="uwindowdialogcontrol.html">UWindowDialogControl</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="uwindowdialogcontrol.html#BeforePaint">BeforePaint</a>, <a href="uwindowdialogcontrol.html#CheckExternalDrag">CheckExternalDrag</a>, <a href="uwindowdialogcontrol.html#Created">Created</a>, <a href="uwindowdialogcontrol.html#ExternalDragOver">ExternalDragOver</a>, <a href="uwindowdialogcontrol.html#KeyDown">KeyDown</a>, <a href="uwindowdialogcontrol.html#KeyFocusEnter">KeyFocusEnter</a>, <a href="uwindowdialogcontrol.html#KeyFocusExit">KeyFocusExit</a>, <a href="uwindowdialogcontrol.html#MouseEnter">MouseEnter</a>, <a href="uwindowdialogcontrol.html#MouseLeave">MouseLeave</a>, <a href="uwindowdialogcontrol.html#MouseMove">MouseMove</a>, <a href="uwindowdialogcontrol.html#Notify">Notify</a>, <a href="uwindowdialogcontrol.html#Register">Register</a>, <a href="uwindowdialogcontrol.html#SetFont">SetFont</a>, <a href="uwindowdialogcontrol.html#SetHelpText">SetHelpText</a>, <a href="uwindowdialogcontrol.html#SetText">SetText</a>, <a href="uwindowdialogcontrol.html#SetTextColor">SetTextColor</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="uwindow-overview.html">UWindow</a>.<a href="uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="uwindowwindow.html#Activated">Activated</a>, <a href="uwindowwindow.html#ActivateWindow">ActivateWindow</a>, <a href="uwindowwindow.html#AfterCreate">AfterCreate</a>, <a href="uwindowwindow.html#AfterPaint">AfterPaint</a>, <a href="uwindowwindow.html#BeforeCreate">BeforeCreate</a>, <a href="uwindowwindow.html#BeforePaint">BeforePaint</a>, <a href="uwindowwindow.html#BeginPlay">BeginPlay</a>, <a href="uwindowwindow.html#BringToFront">BringToFront</a>, <a href="uwindowwindow.html#CancelAcceptsFocus">CancelAcceptsFocus</a>, <a href="uwindowwindow.html#CheckKeyFocusWindow">CheckKeyFocusWindow</a>, <a href="uwindowwindow.html#CheckMousePassThrough">CheckMousePassThrough</a>, <a href="uwindowwindow.html#Click">Click</a>, <a href="uwindowwindow.html#ClipText">ClipText</a>, <a href="uwindowwindow.html#ClipTextWidth">ClipTextWidth</a>, <a href="uwindowwindow.html#Close">Close</a>, <a href="uwindowwindow.html#Created">Created</a>, <a href="uwindowwindow.html#CreateWindow">CreateWindow</a>, <a href="uwindowwindow.html#Deactivated">Deactivated</a>, <a href="uwindowwindow.html#DoTick">DoTick</a>, <a href="uwindowwindow.html#DoubleClick">DoubleClick</a>, <a href="uwindowwindow.html#DrawClippedActor">DrawClippedActor</a>, <a href="uwindowwindow.html#DrawClippedTexture">DrawClippedTexture</a>, <a href="uwindowwindow.html#DrawHorizTiledPieces">DrawHorizTiledPieces</a>, <a href="uwindowwindow.html#DrawMiscBevel">DrawMiscBevel</a>, <a href="uwindowwindow.html#DrawStretchedTexture">DrawStretchedTexture</a>, <a href="uwindowwindow.html#DrawStretchedTextureSegment">DrawStretchedTextureSegment</a>, <a href="uwindowwindow.html#DrawUpBevel">DrawUpBevel</a>, <a href="uwindowwindow.html#DrawVertTiledPieces">DrawVertTiledPieces</a>, <a href="uwindowwindow.html#EscClose">EscClose</a>, <a href="uwindowwindow.html#FindChildWindow">FindChildWindow</a>, <a href="uwindowwindow.html#FindWindowUnder">FindWindowUnder</a>, <a href="uwindowwindow.html#FocusOtherWindow">FocusOtherWindow</a>, <a href="uwindowwindow.html#FocusWindow">FocusWindow</a>, <a href="uwindowwindow.html#GetDesiredDimensions">GetDesiredDimensions</a>, <a href="uwindowwindow.html#GetEntryLevel">GetEntryLevel</a>, <a href="uwindowwindow.html#GetLevel">GetLevel</a>, <a href="uwindowwindow.html#GetLookAndFeelTexture">GetLookAndFeelTexture</a>, <a href="uwindowwindow.html#GetMouseXY">GetMouseXY</a>, <a href="uwindowwindow.html#GetParent">GetParent</a>, <a href="uwindowwindow.html#GetPlayerOwner">GetPlayerOwner</a>, <a href="uwindowwindow.html#GlobalToWindow">GlobalToWindow</a>, <a href="uwindowwindow.html#HideChildWindow">HideChildWindow</a>, <a href="uwindowwindow.html#HideWindow">HideWindow</a>, <a href="uwindowwindow.html#HotKeyDown">HotKeyDown</a>, <a href="uwindowwindow.html#HotKeyUp">HotKeyUp</a>, <a href="uwindowwindow.html#IsActive">IsActive</a>, <a href="uwindowwindow.html#KeyDown">KeyDown</a>, <a href="uwindowwindow.html#KeyFocusEnter">KeyFocusEnter</a>, <a href="uwindowwindow.html#KeyFocusExit">KeyFocusExit</a>, <a href="uwindowwindow.html#KeyType">KeyType</a>, <a href="uwindowwindow.html#KeyUp">KeyUp</a>, <a href="uwindowwindow.html#LMouseDown">LMouseDown</a>, <a href="uwindowwindow.html#LMouseUp">LMouseUp</a>, <a href="uwindowwindow.html#MClick">MClick</a>, <a href="uwindowwindow.html#MDoubleClick">MDoubleClick</a>, <a href="uwindowwindow.html#MessageBox">MessageBox</a>, <a href="uwindowwindow.html#MessageBoxDone">MessageBoxDone</a>, <a href="uwindowwindow.html#MessageClients">MessageClients</a>, <a href="uwindowwindow.html#MMouseDown">MMouseDown</a>, <a href="uwindowwindow.html#MMouseUp">MMouseUp</a>, <a href="uwindowwindow.html#MouseEnter">MouseEnter</a>, <a href="uwindowwindow.html#MouseIsOver">MouseIsOver</a>, <a href="uwindowwindow.html#MouseLeave">MouseLeave</a>, <a href="uwindowwindow.html#MouseMove">MouseMove</a>, <a href="uwindowwindow.html#NotifyAfterLevelChange">NotifyAfterLevelChange</a>, <a href="uwindowwindow.html#NotifyBeforeLevelChange">NotifyBeforeLevelChange</a>, <a href="uwindowwindow.html#NotifyQuitUnreal">NotifyQuitUnreal</a>, <a href="uwindowwindow.html#Paint">Paint</a>, <a href="uwindowwindow.html#PaintClients">PaintClients</a>, <a href="uwindowwindow.html#ParseAmpersand">ParseAmpersand</a>, <a href="uwindowwindow.html#ProcessMenuKey">ProcessMenuKey</a>, <a href="uwindowwindow.html#PropagateKey">PropagateKey</a>, <a href="uwindowwindow.html#RClick">RClick</a>, <a href="uwindowwindow.html#RDoubleClick">RDoubleClick</a>, <a href="uwindowwindow.html#RemoveAmpersand">RemoveAmpersand</a>, <a href="uwindowwindow.html#ReplaceText">ReplaceText</a>, <a href="uwindowwindow.html#Resized">Resized</a>, <a href="uwindowwindow.html#ResolutionChanged">ResolutionChanged</a>, <a href="uwindowwindow.html#RMouseDown">RMouseDown</a>, <a href="uwindowwindow.html#RMouseUp">RMouseUp</a>, <a href="uwindowwindow.html#SaveConfigs">SaveConfigs</a>, <a href="uwindowwindow.html#SendToBack">SendToBack</a>, <a href="uwindowwindow.html#SetAcceptsFocus">SetAcceptsFocus</a>, <a href="uwindowwindow.html#SetAcceptsHotKeys">SetAcceptsHotKeys</a>, <a href="uwindowwindow.html#SetCursor">SetCursor</a>, <a href="uwindowwindow.html#SetMouseWindow">SetMouseWindow</a>, <a href="uwindowwindow.html#SetParent">SetParent</a>, <a href="uwindowwindow.html#SetSize">SetSize</a>, <a href="uwindowwindow.html#ShowChildWindow">ShowChildWindow</a>, <a href="uwindowwindow.html#ShowModal">ShowModal</a>, <a href="uwindowwindow.html#ShowWindow">ShowWindow</a>, <a href="uwindowwindow.html#StripCRLF">StripCRLF</a>, <a href="uwindowwindow.html#TextSize">TextSize</a>, <a href="uwindowwindow.html#Tick">Tick</a>, <a href="uwindowwindow.html#Tile">Tile</a>, <a href="uwindowwindow.html#ToolTip">ToolTip</a>, <a href="uwindowwindow.html#WaitModal">WaitModal</a>, <a href="uwindowwindow.html#WindowEvent">WindowEvent</a>, <a href="uwindowwindow.html#WindowHidden">WindowHidden</a>, <a href="uwindowwindow.html#WindowIsVisible">WindowIsVisible</a>, <a href="uwindowwindow.html#WindowShown">WindowShown</a>, <a href="uwindowwindow.html#WindowToGlobal">WindowToGlobal</a>, <a href="uwindowwindow.html#WrapClipText">WrapClipText</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bAllSelected" class="hidden"></a>bAllSelected <a href="..\Source_uwindow\uwindoweditbox.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bAllSelected;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bCanEdit" class="hidden"></a>bCanEdit <a href="..\Source_uwindow\uwindoweditbox.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bCanEdit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bChangePending" class="hidden"></a>bChangePending <a href="..\Source_uwindow\uwindoweditbox.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bChangePending;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bControlDown" class="hidden"></a>bControlDown <a href="..\Source_uwindow\uwindoweditbox.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bControlDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bDelayedNotify" class="hidden"></a>bDelayedNotify <a href="..\Source_uwindow\uwindoweditbox.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDelayedNotify;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHistory" class="hidden"></a>bHistory <a href="..\Source_uwindow\uwindoweditbox.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHistory;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bKeyDown" class="hidden"></a>bKeyDown <a href="..\Source_uwindow\uwindoweditbox.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bKeyDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNumericFloat" class="hidden"></a>bNumericFloat <a href="..\Source_uwindow\uwindoweditbox.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNumericFloat;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNumericOnly" class="hidden"></a>bNumericOnly <a href="..\Source_uwindow\uwindoweditbox.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNumericOnly;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bSelectOnFocus" class="hidden"></a>bSelectOnFocus <a href="..\Source_uwindow\uwindoweditbox.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSelectOnFocus;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bShiftDown" class="hidden"></a>bShiftDown <a href="..\Source_uwindow\uwindoweditbox.html#22" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bShiftDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bShowCaret" class="hidden"></a>bShowCaret <a href="..\Source_uwindow\uwindoweditbox.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bShowCaret;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CaretOffset" class="hidden"></a>CaretOffset <a href="..\Source_uwindow\uwindoweditbox.html#8" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> CaretOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CurrentHistory" class="hidden"></a>CurrentHistory <a href="..\Source_uwindow\uwindoweditbox.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="uwindoweditboxhistory.html" class="source">UWindowEditBoxHistory</a></font> CurrentHistory;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HistoryList" class="hidden"></a>HistoryList <a href="..\Source_uwindow\uwindoweditbox.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="uwindoweditboxhistory.html" class="source">UWindowEditBoxHistory</a></font> HistoryList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastDrawTime" class="hidden"></a>LastDrawTime <a href="..\Source_uwindow\uwindoweditbox.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastDrawTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxLength" class="hidden"></a>MaxLength <a href="..\Source_uwindow\uwindoweditbox.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> MaxLength;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NotifyOwner" class="hidden"></a>NotifyOwner <a href="..\Source_uwindow\uwindoweditbox.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></font> NotifyOwner;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Offset" class="hidden"></a>Offset <a href="..\Source_uwindow\uwindoweditbox.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> Offset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Value" class="hidden"></a>Value <a href="..\Source_uwindow\uwindoweditbox.html#6" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> Value;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Value2" class="hidden"></a>Value2 <a href="..\Source_uwindow\uwindoweditbox.html#7" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> Value2;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Backspace+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Backspace <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#143" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> Backspace ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Clear+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Clear <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#74" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Clear ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Click+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Click <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#460" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Click (<font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Close+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Close <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#525" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Close (<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bByParent)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Created+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Created <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Created ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Delete+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Delete <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#160" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> Delete ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DoubleClick+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DoubleClick <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#558" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DoubleClick (<font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EditCopy+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EditCopy <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#241" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EditCopy ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EditCut+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EditCut <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#257" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EditCut ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EditPaste+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EditPaste <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#247" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EditPaste ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FocusOtherWindow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FocusOtherWindow <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#536" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> FocusOtherWindow (<font class="source_type"><a href="uwindowwindow.html" class="source">UWindowWindow</a></font> W)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetValue+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetValue <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#95" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetValue ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetValue2+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetValue2 <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetValue2 ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Insert+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Insert <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#124" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> Insert (<font class="source_keyword">byte</font> C)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InsertText+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> InsertText <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#115" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> InsertText (<font class="source_keyword">string</font> Text)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyDown+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyDown <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#317" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> KeyDown (<font class="source_keyword">int</font> Key, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyFocusEnter+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyFocusEnter <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#550" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> KeyFocusEnter ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyFocusExit+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyFocusExit <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#564" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> KeyFocusExit ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyType+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyType <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#272" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> KeyType (<font class="source_keyword">int</font> Key, <font class="source_keyword">float</font> MouseX, <font class="source_keyword">float</font> MouseY)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyUp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyUp <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#301" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> KeyUp (<font class="source_keyword">int</font> Key, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LMouseDown+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> LMouseDown <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#465" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> LMouseDown (<font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MoveEnd+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MoveEnd <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#231" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> MoveEnd ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MoveHome+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MoveHome <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#221" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> MoveHome ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MoveLeft+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MoveLeft <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#186" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> MoveLeft ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MoveRight+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MoveRight <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#197" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> MoveRight ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Notify+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Notify <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#105" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Notify (<font class="source_keyword">byte</font> E)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Paint+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Paint <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#471" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Paint (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SelectAll+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SelectAll <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#86" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SelectAll ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetEditable+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetEditable <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#59" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetEditable (<font class="source_keyword">bool</font> bEditable)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetHistory+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetHistory <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#41" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetHistory (<font class="source_keyword">bool</font> bInHistory)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetValue+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetValue <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#64" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetValue (<font class="source_keyword">string</font> NewValue, <font class="source_keyword2">optional</font> <font class="source_keyword">string</font> NewValue2)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WordLeft+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> WordLeft <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#173" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> WordLeft ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WordRight+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> WordRight <span class="function_state"></span> <a href="..\Source_uwindow\uwindoweditbox.html#208" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> WordRight ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="uwindow-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_uwindow\uwindoweditbox.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UWindowEditBox">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowdynamictextrow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindoweditboxhistory.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:55.187 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

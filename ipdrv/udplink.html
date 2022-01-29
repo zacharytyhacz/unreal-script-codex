@@ -1,0 +1,288 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - IpDrv.UdpLink</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ipdrv-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ipdrv\udplink.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UdpLink">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="udpbeacon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="clientbeaconreceiver.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="ipdrv-overview.html">IpDrv</a>.UdpLink</h1>
+<b>Extends:</b> <a href="internetlink.html">InternetLink</a><br>
+<b>Modifiers:</b> native transient <br>
+<a href="..\Source_ipdrv\udplink.html"><b>Source code</b></a>
+
+<p>
+UdpLink: An Internet UDP connectionless socket.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\info.html">Info</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\internetinfo.html">InternetInfo</a>
+            |   
+            +-- <a href="ipdrv-overview.html">IpDrv</a>.<a href="internetlink.html">InternetLink</a>
+                |   
+                +-- <a href="ipdrv-overview.html">IpDrv</a>.<a href="udplink.html">UdpLink</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\ubrowser\ubrowserlocallink.html">UBrowserLocalLink</a>, <a href="..\ubrowser\ubrowserserverping.html">UBrowserServerPing</a>, <a href="udpbeacon.html">UdpBeacon</a>, <a href="..\ipserver\udpserverquery.html">UdpServerQuery</a>, <a href="..\ipserver\udpserveruplink.html">UdpServerUplink</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_BroadcastAddr" name="BroadcastAddr">BroadcastAddr</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="ipdrv-overview.html">IpDrv</a>.<a href="internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="internetlink.html#DataPending">DataPending</a>, <a href="internetlink.html#LinkMode">LinkMode</a>, <a href="internetlink.html#Port">Port</a>, <a href="internetlink.html#PrivateResolveInfo">PrivateResolveInfo</a>, <a href="internetlink.html#ReceiveMode">ReceiveMode</a>, <a href="internetlink.html#RemoteSocket">RemoteSocket</a>, <a href="internetlink.html#Socket">Socket</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="ipdrv-overview.html">IpDrv</a>.<a href="internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="internetlink.html#ELinkMode">ELinkMode</a>, <a href="internetlink.html#EReceiveMode">EReceiveMode</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="ipdrv-overview.html">IpDrv</a>.<a href="internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="internetlink.html#IpAddr">IpAddr</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_BindPort+" name="BindPort">BindPort</a> (optional int Port, optional bool bUseNextAvailable)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_ReadBinary+" name="ReadBinary">ReadBinary</a> (out <a href="internetlink.html#IpAddr">IpAddr</a> Addr, int Count, out byte B[255])<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_ReadText+" name="ReadText">ReadText</a> (out <a href="internetlink.html#IpAddr">IpAddr</a> Addr, out string Str)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_ReceivedBinary+" name="ReceivedBinary">ReceivedBinary</a> (<a href="internetlink.html#IpAddr">IpAddr</a> Addr, int Count, byte B[255])<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_ReceivedLine+" name="ReceivedLine">ReceivedLine</a> (<a href="internetlink.html#IpAddr">IpAddr</a> Addr, string Line)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_ReceivedText+" name="ReceivedText">ReceivedText</a> (<a href="internetlink.html#IpAddr">IpAddr</a> Addr, string Text)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_SendBinary+" name="SendBinary">SendBinary</a> (<a href="internetlink.html#IpAddr">IpAddr</a> Addr, int Count, byte B[255])<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_SendText+" name="SendText">SendText</a> (<a href="internetlink.html#IpAddr">IpAddr</a> Addr, coerce string Str)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="ipdrv-overview.html">IpDrv</a>.<a href="internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="internetlink.html#GetLastError">GetLastError</a>, <a href="internetlink.html#GetLocalIP">GetLocalIP</a>, <a href="internetlink.html#IpAddrToString">IpAddrToString</a>, <a href="internetlink.html#IsDataPending">IsDataPending</a>, <a href="internetlink.html#ParseURL">ParseURL</a>, <a href="internetlink.html#Resolve">Resolve</a>, <a href="internetlink.html#Resolved">Resolved</a>, <a href="internetlink.html#ResolveFailed">ResolveFailed</a>, <a href="internetlink.html#StringToIpAddr">StringToIpAddr</a>, <a href="internetlink.html#Validate">Validate</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\internetinfo.html">InternetInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\internetinfo.html#GetBeaconAddress">GetBeaconAddress</a>, <a href="..\engine\internetinfo.html#GetBeaconText">GetBeaconText</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BroadcastAddr" class="hidden"></a>BroadcastAddr <a href="..\Source_ipdrv\udplink.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> BroadcastAddr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BindPort+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BindPort <span class="function_state"></span> <a href="..\Source_ipdrv\udplink.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> BindPort (<font class="source_keyword2">optional</font> <font class="source_keyword">int</font> Port, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bUseNextAvailable)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReadBinary+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ReadBinary <span class="function_state"></span> <a href="..\Source_ipdrv\udplink.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> ReadBinary (<font class="source_keyword2">out</font> <font class="source_type"><a href="internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword">int</font> Count, <font class="source_keyword2">out</font> <font class="source_keyword">byte</font> B[<font class="source_int">255</font>])</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReadText+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ReadText <span class="function_state"></span> <a href="..\Source_ipdrv\udplink.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> ReadText (<font class="source_keyword2">out</font> <font class="source_type"><a href="internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Str)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReceivedBinary+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> ReceivedBinary <span class="function_state"></span> <a href="..\Source_ipdrv\udplink.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> ReceivedBinary (<font class="source_type"><a href="internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword">int</font> Count, <font class="source_keyword">byte</font> B[<font class="source_int">255</font>])</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReceivedLine+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> ReceivedLine <span class="function_state"></span> <a href="..\Source_ipdrv\udplink.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> ReceivedLine (<font class="source_type"><a href="internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword">string</font> <font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReceivedText+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> ReceivedText <span class="function_state"></span> <a href="..\Source_ipdrv\udplink.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> ReceivedText (<font class="source_type"><a href="internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword">string</font> Text)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SendBinary+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SendBinary <span class="function_state"></span> <a href="..\Source_ipdrv\udplink.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SendBinary (<font class="source_type"><a href="internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword">int</font> Count, <font class="source_keyword">byte</font> B[<font class="source_int">255</font>])</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SendText+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SendText <span class="function_state"></span> <a href="..\Source_ipdrv\udplink.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SendText (<font class="source_type"><a href="internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Str)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     bAlwaysTick=<font class="source_keyword">True</font>
+     BroadcastAddr=-<font class="source_int">1</font>;
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ipdrv-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ipdrv\udplink.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UdpLink">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="udpbeacon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="clientbeaconreceiver.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:42.046 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

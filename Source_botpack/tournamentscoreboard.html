@@ -1,0 +1,771 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.TournamentScoreBoard</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\tournamentscoreboard.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#TournamentScoreBoard">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="tournamentplayer.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="tournamentweapon.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\tournamentscoreboard.html">TournamentScoreBoard</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// TournamentScoreBoard
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\tournamentscoreboard.html" class="source">TournamentScoreBoard</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\scoreboard.html" class="source">ScoreBoard</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MapTitle, Author, Restart, Continue, Ended, ElapsedTime, RemainingTime, FragGoal, TimeLimit;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PlayerString, FragsString, DeathsString, PingString;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TimeString, LossString, FPHString;
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> GreenColor, WhiteColor, GoldColor, BlueColor, LightCyanColor, SilverColor, BronzeColor, CyanColor, RedColor;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> Ordered[<font class="source_int">32</font>];
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> ScoreStart;   <font class="source_comment">// top allowed score start
+</font><a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTimeDown;
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\botpack\fontinfo.html" class="source">FontInfo</a></font> MyFonts;
+<a name="14"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MapTitleQuote;
+<a name="15"></a>
+<a name="16"></a><font class="source_keyword">function</font> Destroyed()
+<a name="17"></a>{
+<a name="18"></a>    <font class="source_keyword">Super</font>.Destroyed();
+<a name="19"></a>    <font class="source_keyword">if</font> ( MyFonts != <font class="source_keyword">None</font> )
+<a name="20"></a>        MyFonts.Destroy();
+<a name="21"></a>}
+<a name="22"></a>
+<a name="23"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="24"></a>{
+<a name="25"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="26"></a>    MyFonts = <font class="source_type"><a href="..\botpack\fontinfo.html" class="source">FontInfo</a></font>(spawn(<font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>&gt;(DynamicLoadObject(<font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.FontInfoClass, <font class="source_keyword">class</font><font class="source_name">'Class'</font>))));
+<a name="27"></a>}
+<a name="28"></a>
+<a name="29"></a><font class="source_keyword">function</font> DrawHeader( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> )
+<a name="30"></a>{
+<a name="31"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font> GRI;
+<a name="32"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL;
+<a name="33"></a>    <font class="source_keyword">local</font> <font class="source_type">font</font> CanvasFont;
+<a name="34"></a>
+<a name="35"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = WhiteColor;
+<a name="36"></a>    GRI = <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner).<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>;
+<a name="37"></a>
+<a name="38"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = MyFonts.GetHugeFont(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX);
+<a name="39"></a>
+<a name="40"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.bCenter = <font class="source_keyword">True</font>;
+<a name="41"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen(<font class="source_string">"Test"</font>, XL, YL);
+<a name="42"></a>    ScoreStart = <font class="source_int">58.0</font>/7<font class="source_int">68.0</font> * <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY;
+<a name="43"></a>    CanvasFont = <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font>;
+<a name="44"></a>    <font class="source_keyword">if</font> ( GRI.GameEndedComments != <font class="source_string">""</font> )
+<a name="45"></a>    {
+<a name="46"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = GoldColor;
+<a name="47"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_int">0</font>, ScoreStart);
+<a name="48"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(GRI.GameEndedComments, <font class="source_keyword">True</font>);
+<a name="49"></a>    }
+<a name="50"></a>    <font class="source_keyword">else</font>
+<a name="51"></a>    {
+<a name="52"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_int">0</font>, ScoreStart);
+<a name="53"></a>        DrawVictoryConditions(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>);
+<a name="54"></a>    }
+<a name="55"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.bCenter = <font class="source_keyword">False</font>;
+<a name="56"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = CanvasFont;
+<a name="57"></a>}
+<a name="58"></a>
+<a name="59"></a><font class="source_keyword">function</font> DrawVictoryConditions(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)
+<a name="60"></a>{
+<a name="61"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\tournamentgamereplicationinfo.html" class="source">TournamentGameReplicationInfo</a></font> TGRI;
+<a name="62"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL;
+<a name="63"></a>
+<a name="64"></a>    TGRI = <font class="source_type"><a href="..\botpack\tournamentgamereplicationinfo.html" class="source">TournamentGameReplicationInfo</a></font>(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner).<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>);
+<a name="65"></a>    <font class="source_keyword">if</font> ( TGRI == <font class="source_keyword">None</font> )
+<a name="66"></a>        <font class="source_keyword">return</font>;
+<a name="67"></a>
+<a name="68"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(TGRI.GameName);
+<a name="69"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen(<font class="source_string">"Test"</font>, XL, YL);
+<a name="70"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_int">0</font>, <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.CurY - YL);
+<a name="71"></a>
+<a name="72"></a>    <font class="source_keyword">if</font> ( TGRI.FragLimit &gt; <font class="source_int">0</font> )
+<a name="73"></a>    {
+<a name="74"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(FragGoal@TGRI.FragLimit);
+<a name="75"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen(<font class="source_string">"Test"</font>, XL, YL);
+<a name="76"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_int">0</font>, <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.CurY - YL);
+<a name="77"></a>    }
+<a name="78"></a>
+<a name="79"></a>    <font class="source_keyword">if</font> ( TGRI.TimeLimit &gt; <font class="source_int">0</font> )
+<a name="80"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(TimeLimit@TGRI.TimeLimit$<font class="source_string">":00"</font>);
+<a name="81"></a>}
+<a name="82"></a>
+<a name="83"></a><font class="source_keyword">function</font> <font class="source_keyword">string</font> TwoDigitString(<font class="source_keyword">int</font> Num)
+<a name="84"></a>{
+<a name="85"></a>    <font class="source_keyword">if</font> ( Num &lt; <font class="source_int">10</font> )
+<a name="86"></a>        <font class="source_keyword">return</font> <font class="source_string">"0"</font>$Num;
+<a name="87"></a>    <font class="source_keyword">else</font>
+<a name="88"></a>        <font class="source_keyword">return</font> <font class="source_keyword">string</font>(Num);
+<a name="89"></a>}
+<a name="90"></a>
+<a name="91"></a><font class="source_keyword">function</font> DrawTrailer( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> )
+<a name="92"></a>{
+<a name="93"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> Hours, Minutes, Seconds;
+<a name="94"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL;
+<a name="95"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> PlayerOwner;
+<a name="96"></a>
+<a name="97"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.bCenter = <font class="source_keyword">true</font>;
+<a name="98"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen(<font class="source_string">"Test"</font>, XL, YL);
+<a name="99"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = WhiteColor;
+<a name="100"></a>    PlayerOwner = <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner);
+<a name="101"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_int">0</font>, <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY - <font class="source_int">2</font> * YL);
+<a name="102"></a>    <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.NetMode == NM_Standalone) && <font class="source_type">Level</font>.Game.IsA(<font class="source_name">'DeathMatchPlus'</font>) )
+<a name="103"></a>    {
+<a name="104"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>(<font class="source_type">Level</font>.Game).bRatedGame )
+<a name="105"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>(<font class="source_type">Level</font>.Game).RatedGameLadderObj.SkillText@PlayerOwner.<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.GameName@MapTitle@MapTitleQuote$<font class="source_type">Level</font>.Title$MapTitleQuote, <font class="source_keyword">true</font>);
+<a name="106"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>(<font class="source_type">Level</font>.Game).bNoviceMode ) 
+<a name="107"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(<font class="source_keyword">class</font><font class="source_name">'ChallengeBotInfo'</font>.default.Skills[<font class="source_type">Level</font>.Game.Difficulty]@PlayerOwner.<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.GameName@MapTitle@MapTitleQuote$<font class="source_type">Level</font>.Title$MapTitleQuote, <font class="source_keyword">true</font>);
+<a name="108"></a>        <font class="source_keyword">else</font>  
+<a name="109"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(<font class="source_keyword">class</font><font class="source_name">'ChallengeBotInfo'</font>.default.Skills[<font class="source_type">Level</font>.Game.Difficulty + <font class="source_int">4</font>]@PlayerOwner.<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.GameName@MapTitle@MapTitleQuote$<font class="source_type">Level</font>.Title$MapTitleQuote, <font class="source_keyword">true</font>);
+<a name="110"></a>    }
+<a name="111"></a>    <font class="source_keyword">else</font>
+<a name="112"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(PlayerOwner.<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.GameName@MapTitle@<font class="source_type">Level</font>.Title, <font class="source_keyword">true</font>);
+<a name="113"></a>
+<a name="114"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_int">0</font>, <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY - YL);
+<a name="115"></a>    <font class="source_keyword">if</font> ( bTimeDown || (PlayerOwner.<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.RemainingTime &gt; <font class="source_int">0</font>) )
+<a name="116"></a>    {
+<a name="117"></a>        bTimeDown = <font class="source_keyword">true</font>;
+<a name="118"></a>        <font class="source_keyword">if</font> ( PlayerOwner.<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.RemainingTime &lt;= <font class="source_int">0</font> )
+<a name="119"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(RemainingTime@<font class="source_string">"00:00"</font>, <font class="source_keyword">true</font>);
+<a name="120"></a>        <font class="source_keyword">else</font>
+<a name="121"></a>        {
+<a name="122"></a>            Minutes = PlayerOwner.<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.RemainingTime/6<font class="source_int">0</font>;
+<a name="123"></a>            Seconds = PlayerOwner.<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.RemainingTime % <font class="source_int">60</font>;
+<a name="124"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(RemainingTime@TwoDigitString(Minutes)$<font class="source_string">":"</font>$TwoDigitString(Seconds), <font class="source_keyword">true</font>);
+<a name="125"></a>        }
+<a name="126"></a>    }
+<a name="127"></a>    <font class="source_keyword">else</font>
+<a name="128"></a>    {
+<a name="129"></a>        Seconds = PlayerOwner.<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.ElapsedTime;
+<a name="130"></a>        Minutes = Seconds / <font class="source_int">60</font>;
+<a name="131"></a>        Hours   = Minutes / <font class="source_int">60</font>;
+<a name="132"></a>        Seconds = Seconds - (Minutes * <font class="source_int">60</font>);
+<a name="133"></a>        Minutes = Minutes - (Hours * <font class="source_int">60</font>);
+<a name="134"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(ElapsedTime@TwoDigitString(Hours)$<font class="source_string">":"</font>$TwoDigitString(Minutes)$<font class="source_string">":"</font>$TwoDigitString(Seconds), <font class="source_keyword">true</font>);
+<a name="135"></a>    }
+<a name="136"></a>
+<a name="137"></a>    <font class="source_keyword">if</font> ( PlayerOwner.<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.GameEndedComments != <font class="source_string">""</font> )
+<a name="138"></a>    {
+<a name="139"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.bCenter = <font class="source_keyword">true</font>;
+<a name="140"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen(<font class="source_string">"Test"</font>, XL, YL);
+<a name="141"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_int">0</font>, <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY - Min(YL*<font class="source_int">6</font>, <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY * <font class="source_int">0.1</font>));
+<a name="142"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = GreenColor;
+<a name="143"></a>        <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.NetMode == NM_Standalone )
+<a name="144"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(Ended@Continue, <font class="source_keyword">true</font>);
+<a name="145"></a>        <font class="source_keyword">else</font>
+<a name="146"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(Ended, <font class="source_keyword">true</font>);
+<a name="147"></a>    }
+<a name="148"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (PlayerOwner != <font class="source_keyword">None</font>) && (PlayerOwner.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &lt;= <font class="source_int">0</font>) )
+<a name="149"></a>    {
+<a name="150"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.bCenter = <font class="source_keyword">true</font>;
+<a name="151"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen(<font class="source_string">"Test"</font>, XL, YL);
+<a name="152"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_int">0</font>, <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY - Min(YL*<font class="source_int">6</font>, <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY * <font class="source_int">0.1</font>));
+<a name="153"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = GreenColor;
+<a name="154"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(Restart, <font class="source_keyword">true</font>);
+<a name="155"></a>    }
+<a name="156"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.bCenter = <font class="source_keyword">false</font>;
+<a name="157"></a>}
+<a name="158"></a>
+<a name="159"></a><font class="source_keyword">function</font> DrawCategoryHeaders(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)
+<a name="160"></a>{
+<a name="161"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> Offset, XL, YL;
+<a name="162"></a>
+<a name="163"></a>    Offset = <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.CurY;
+<a name="164"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = WhiteColor;
+<a name="165"></a>
+<a name="166"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen(PlayerString, XL, YL);
+<a name="167"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos((<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX / <font class="source_int">8</font>)*<font class="source_int">2</font> - XL/2, Offset);
+<a name="168"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(PlayerString);
+<a name="169"></a>
+<a name="170"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen(FragsString, XL, YL);
+<a name="171"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos((<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font> - XL/2, Offset);
+<a name="172"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(FragsString);
+<a name="173"></a>
+<a name="174"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen(DeathsString, XL, YL);
+<a name="175"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos((<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX / <font class="source_int">8</font>)*<font class="source_int">6</font> - XL/2, Offset);
+<a name="176"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(DeathsString);
+<a name="177"></a>}
+<a name="178"></a>
+<a name="179"></a><font class="source_keyword">function</font> DrawNameAndPing(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> PRI, <font class="source_keyword">float</font> XOffset, <font class="source_keyword">float</font> YOffset, <font class="source_keyword">bool</font> bCompressed)
+<a name="180"></a>{
+<a name="181"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL, XL2, YL2, XL3, YL3;
+<a name="182"></a>    <font class="source_keyword">local</font> <font class="source_type">Font</font> CanvasFont;
+<a name="183"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bLocalPlayer;
+<a name="184"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> PlayerOwner;
+<a name="185"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> <font class="source_type"><a href="..\core\time.html" class="source">Time</a></font>;
+<a name="186"></a>
+<a name="187"></a>    PlayerOwner = <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner);
+<a name="188"></a>
+<a name="189"></a>    bLocalPlayer = (PRI.PlayerName == PlayerOwner.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName);
+<a name="190"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = MyFonts.GetBigFont(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX);
+<a name="191"></a>
+<a name="192"></a>    <font class="source_comment">// Draw Name
+</font><a name="193"></a>    <font class="source_keyword">if</font> ( PRI.bAdmin )
+<a name="194"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = WhiteColor;
+<a name="195"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( bLocalPlayer ) 
+<a name="196"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = GoldColor;
+<a name="197"></a>    <font class="source_keyword">else</font> 
+<a name="198"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = CyanColor;
+<a name="199"></a>
+<a name="200"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX * <font class="source_int">0.1875</font>, YOffset);
+<a name="201"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(PRI.PlayerName, <font class="source_keyword">False</font>);
+<a name="202"></a>
+<a name="203"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen( <font class="source_string">"0000"</font>, XL, YL );
+<a name="204"></a>
+<a name="205"></a>    <font class="source_comment">// Draw Score
+</font><a name="206"></a>    <font class="source_keyword">if</font> ( !bLocalPlayer )
+<a name="207"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = LightCyanColor;
+<a name="208"></a>
+<a name="209"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen( <font class="source_keyword">int</font>(PRI.Score), XL2, YL );
+<a name="210"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX * <font class="source_int">0.625</font> + XL * <font class="source_int">0.5</font> - XL2, YOffset );
+<a name="211"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText( <font class="source_keyword">int</font>(PRI.Score), <font class="source_keyword">false</font> );
+<a name="212"></a>
+<a name="213"></a>    <font class="source_comment">// Draw Deaths
+</font><a name="214"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen( <font class="source_keyword">int</font>(PRI.Deaths), XL2, YL );
+<a name="215"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX * <font class="source_int">0.75</font> + XL * <font class="source_int">0.5</font> - XL2, YOffset );
+<a name="216"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText( <font class="source_keyword">int</font>(PRI.Deaths), <font class="source_keyword">false</font> );
+<a name="217"></a>
+<a name="218"></a>    <font class="source_keyword">if</font> ( (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX &gt; <font class="source_int">512</font>) && (<font class="source_type">Level</font>.NetMode != NM_Standalone) )
+<a name="219"></a>    {
+<a name="220"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = WhiteColor;
+<a name="221"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = MyFonts.GetSmallestFont(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX);
+<a name="222"></a>
+<a name="223"></a>        <font class="source_comment">// Draw Time
+</font><a name="224"></a>        <font class="source_type"><a href="..\core\time.html" class="source">Time</a></font> = Max(<font class="source_int">1</font>, (<font class="source_type">Level</font>.TimeSeconds + PlayerOwner.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.StartTime - PRI.StartTime)/6<font class="source_int">0</font>);
+<a name="225"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.TextSize( TimeString$<font class="source_string">": 999"</font>, XL3, YL3 );
+<a name="226"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX * <font class="source_int">0.75</font> + XL, YOffset );
+<a name="227"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText( TimeString$<font class="source_string">":"</font>@<font class="source_type"><a href="..\core\time.html" class="source">Time</a></font>, <font class="source_keyword">false</font> );
+<a name="228"></a>
+<a name="229"></a>        <font class="source_comment">// Draw FPH
+</font><a name="230"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.TextSize( FPHString$<font class="source_string">": 999"</font>, XL2, YL2 );
+<a name="231"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX * <font class="source_int">0.75</font> + XL, YOffset + <font class="source_int">0.5</font> * YL );
+<a name="232"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText( FPHString$<font class="source_string">": "</font>@<font class="source_keyword">int</font>(<font class="source_int">60</font> * PRI.Score/Time), <font class="source_keyword">false</font> );
+<a name="233"></a>
+<a name="234"></a>        XL3 = FMax(XL3, XL2);
+<a name="235"></a>        <font class="source_comment">// Draw Ping
+</font><a name="236"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX * <font class="source_int">0.75</font> + XL + XL3 + <font class="source_int">16</font>, YOffset );
+<a name="237"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText( PingString$<font class="source_string">":"</font>@PRI.Ping, <font class="source_keyword">false</font> );
+<a name="238"></a>    }
+<a name="239"></a>}
+<a name="240"></a>
+<a name="241"></a><font class="source_keyword">function</font> SortScores(<font class="source_keyword">int</font> N)
+<a name="242"></a>{
+<a name="243"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> I, J, Max;
+<a name="244"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> TempPRI;
+<a name="245"></a>    
+<a name="246"></a>    <font class="source_keyword">for</font> ( I=<font class="source_int">0</font>; I&lt;N-<font class="source_int">1</font>; I++ )
+<a name="247"></a>    {
+<a name="248"></a>        Max = I;
+<a name="249"></a>        <font class="source_keyword">for</font> ( J=I+<font class="source_int">1</font>; J&lt;N; J++ )
+<a name="250"></a>        {
+<a name="251"></a>            <font class="source_keyword">if</font> ( Ordered[J].Score &gt; Ordered[Max].Score )
+<a name="252"></a>                Max = J;
+<a name="253"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ((Ordered[J].Score == Ordered[Max].Score) && (Ordered[J].Deaths &lt; Ordered[Max].Deaths))
+<a name="254"></a>                Max = J;
+<a name="255"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ((Ordered[J].Score == Ordered[Max].Score) && (Ordered[J].Deaths == Ordered[Max].Deaths) &&
+<a name="256"></a>                     (Ordered[J].PlayerID &lt; Ordered[Max].Score))
+<a name="257"></a>                Max = J;
+<a name="258"></a>        }
+<a name="259"></a>
+<a name="260"></a>        TempPRI = Ordered[Max];
+<a name="261"></a>        Ordered[Max] = Ordered[I];
+<a name="262"></a>        Ordered[I] = TempPRI;
+<a name="263"></a>    }
+<a name="264"></a>}
+<a name="265"></a>
+<a name="266"></a><font class="source_keyword">function</font> ShowScores( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> )
+<a name="267"></a>{
+<a name="268"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> PRI;
+<a name="269"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> PlayerCount, i;
+<a name="270"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL, <font class="source_type"><a href="..\core\object.html#Scale" class="source">Scale</a></font>;
+<a name="271"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> YOffset, YStart;
+<a name="272"></a>    <font class="source_keyword">local</font> <font class="source_type">font</font> CanvasFont;
+<a name="273"></a>
+<a name="274"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.Style = <font class="source_type"><a href="..\engine\actor.html#ERenderStyle" class="source">ERenderStyle</a></font>.STY_Normal;
+<a name="275"></a>
+<a name="276"></a>    <font class="source_comment">// Header
+</font><a name="277"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_int">0</font>, <font class="source_int">0</font>);
+<a name="278"></a>    DrawHeader(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>);
+<a name="279"></a>
+<a name="280"></a>    <font class="source_comment">// Wipe everything.
+</font><a name="281"></a>    <font class="source_keyword">for</font> ( i=<font class="source_int">0</font>; i&lt;ArrayCount(Ordered); i++ )
+<a name="282"></a>        Ordered[i] = <font class="source_keyword">None</font>;
+<a name="283"></a>    <font class="source_keyword">for</font> ( i=<font class="source_int">0</font>; i&lt;<font class="source_int">32</font>; i++ )
+<a name="284"></a>    {
+<a name="285"></a>        <font class="source_keyword">if</font> (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner).<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.PRIArray[i] != <font class="source_keyword">None</font>)
+<a name="286"></a>        {
+<a name="287"></a>            PRI = <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner).<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.PRIArray[i];
+<a name="288"></a>            <font class="source_keyword">if</font> ( !PRI.bIsSpectator || PRI.bWaitingPlayer )
+<a name="289"></a>            {
+<a name="290"></a>                Ordered[PlayerCount] = PRI;
+<a name="291"></a>                PlayerCount++;
+<a name="292"></a>                <font class="source_keyword">if</font> ( PlayerCount == ArrayCount(Ordered) )
+<a name="293"></a>                    <font class="source_keyword">break</font>;
+<a name="294"></a>            }
+<a name="295"></a>        }
+<a name="296"></a>    }
+<a name="297"></a>    SortScores(PlayerCount);
+<a name="298"></a>    
+<a name="299"></a>    CanvasFont = <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font>;
+<a name="300"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = MyFonts.GetBigFont(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX);
+<a name="301"></a>
+<a name="302"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_int">0</font>, <font class="source_int">160.0</font>/7<font class="source_int">68.0</font> * <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY);
+<a name="303"></a>    DrawCategoryHeaders(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>);
+<a name="304"></a>
+<a name="305"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.StrLen( <font class="source_string">"TEST"</font>, XL, YL );
+<a name="306"></a>    YStart = <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.CurY;
+<a name="307"></a>    YOffset = YStart;
+<a name="308"></a>    <font class="source_keyword">if</font> ( PlayerCount &gt; <font class="source_int">15</font> )
+<a name="309"></a>        PlayerCount = FMin(PlayerCount, (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY - YStart)/YL - <font class="source_int">1</font>);
+<a name="310"></a>
+<a name="311"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_int">0</font>, <font class="source_int">0</font>);
+<a name="312"></a>    <font class="source_keyword">for</font> ( I=<font class="source_int">0</font>; I&lt;PlayerCount; I++ )
+<a name="313"></a>    {
+<a name="314"></a>        YOffset = YStart + I * YL;
+<a name="315"></a>        DrawNameAndPing( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, Ordered[I], <font class="source_int">0</font>, YOffset, <font class="source_keyword">false</font> );
+<a name="316"></a>    }
+<a name="317"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = WhiteColor;
+<a name="318"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = CanvasFont;
+<a name="319"></a>
+<a name="320"></a>    <font class="source_comment">// Trailer
+</font><a name="321"></a>    <font class="source_keyword">if</font> ( !<font class="source_type">Level</font>.bLowRes )
+<a name="322"></a>    {
+<a name="323"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = MyFonts.GetSmallFont( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX );
+<a name="324"></a>        DrawTrailer(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>);
+<a name="325"></a>    }
+<a name="326"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = WhiteColor;
+<a name="327"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = CanvasFont;
+<a name="328"></a>}
+<a name="329"></a>
+<a name="330"></a><font class="source_keyword">defaultproperties</font>
+<a name="331"></a>{
+<a name="332"></a>    PlayerString=<font class="source_string">"Player"</font>
+<a name="333"></a>    FragsString=<font class="source_string">"Frags"</font>
+<a name="334"></a>    DeathsString=<font class="source_string">"Deaths"</font>
+<a name="335"></a>    PingString=<font class="source_string">"Ping"</font>
+<a name="336"></a>    LossString=<font class="source_string">"Loss"</font>
+<a name="337"></a>    TimeString=<font class="source_string">"Time"</font>
+<a name="338"></a>    FPHString=<font class="source_string">"FPH"</font>
+<a name="339"></a>    MapTitle=<font class="source_string">"in"</font>
+<a name="340"></a>    Author=<font class="source_string">"by"</font>
+<a name="341"></a>    Restart=<font class="source_string">"You are dead.  Hit [Fire] to respawn!"</font>
+<a name="342"></a>    Ended=<font class="source_string">"The match has ended."</font>
+<a name="343"></a>    Continue=<font class="source_string">" Hit [Fire] to continue!"</font>
+<a name="344"></a>    ElapsedTime=<font class="source_string">"Elapsed Time: "</font>
+<a name="345"></a>    RemainingTime=<font class="source_string">"Remaining Time: "</font>
+<a name="346"></a>    WhiteColor=(R=<font class="source_int">255</font>,G=<font class="source_int">255</font>,B=<font class="source_int">255</font>)
+<a name="347"></a>    BlueColor=(R=<font class="source_int">0</font>,G=<font class="source_int">0</font>,B=<font class="source_int">255</font>)
+<a name="348"></a>    GreenColor=(R=<font class="source_int">0</font>,G=<font class="source_int">255</font>,B=<font class="source_int">0</font>)
+<a name="349"></a>    GoldColor=(R=<font class="source_int">255</font>,G=<font class="source_int">255</font>,B=<font class="source_int">0</font>)
+<a name="350"></a>    SilverColor=(R=<font class="source_int">138</font>,G=<font class="source_int">164</font>,B=<font class="source_int">166</font>)
+<a name="351"></a>    BronzeColor=(R=<font class="source_int">203</font>,G=<font class="source_int">147</font>,B=<font class="source_int">52</font>)
+<a name="352"></a>    CyanColor=(R=<font class="source_int">0</font>,G=<font class="source_int">128</font>,B=<font class="source_int">255</font>)
+<a name="353"></a>    LightCyanColor=(R=<font class="source_int">128</font>,G=<font class="source_int">255</font>,B=<font class="source_int">255</font>)
+<a name="354"></a>    RedColor=(R=<font class="source_int">255</font>,G=<font class="source_int">0</font>,B=<font class="source_int">0</font>)
+<a name="355"></a>    FragGoal=<font class="source_string">"Frag Limit:"</font>
+<a name="356"></a>    TimeLimit=<font class="source_string">"Time Limit:"</font>
+<a name="357"></a>    MapTitleQuote=<font class="source_string">""</font>
+<a name="358"></a>}
+<a name="359"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\tournamentscoreboard.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#TournamentScoreBoard">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="tournamentplayer.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="tournamentweapon.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:22:34.000 - Creation time: Wed 26/5/2004 10:48:45.484 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

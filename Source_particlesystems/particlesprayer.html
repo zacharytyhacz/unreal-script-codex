@@ -1,0 +1,927 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: ParticleSystems.ParticleSprayer</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\particlesystems\particlesystems-overview.html">Package</a></td>
+	<td class="header"><a href="..\particlesystems\particlesprayer.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#ParticleSprayer">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="myrdsprayerexp.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="particlesprayerri.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\particlesystems\particlesystems-overview.html">ParticleSystems</a>.<a href="..\particlesystems\particlesprayer.html">ParticleSprayer</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="2"></a><font class="source_comment">// ParticleSprayer.uc
+</font><a name="3"></a><font class="source_comment">//
+</font><a name="4"></a><font class="source_comment">// Description:	
+</font><a name="5"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="6"></a><font class="source_comment">// How to use this class:
+</font><a name="7"></a><font class="source_comment">//
+</font><a name="8"></a><font class="source_comment">// + Place in a level.
+</font><a name="9"></a><font class="source_comment">// + Aim in the desired direction.
+</font><a name="10"></a><font class="source_comment">// + Set properties as desired.
+</font><a name="11"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="12"></a><font class="source_comment">// Todo:
+</font><a name="13"></a><font class="source_comment">//
+</font><a name="14"></a><font class="source_comment">// + Decide whether ParticleSprayers should have no replication, or if they 
+</font><a name="15"></a><font class="source_comment">//   should be triggered, etc on the server-side, and have the variables
+</font><a name="16"></a><font class="source_comment">//   replicated to the clients.  Currently there is no replication.  
+</font><a name="17"></a><font class="source_comment">//   If we ever want to do puzzles with it, it should probably run server-side
+</font><a name="18"></a><font class="source_comment">//   and replicate changes to the clients.
+</font><a name="19"></a><font class="source_comment">//
+</font><a name="20"></a><font class="source_comment">// + Add rotation interpolation.
+</font><a name="21"></a><font class="source_comment">//
+</font><a name="22"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="23"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\particlesystems\particlesprayer.html" class="source">ParticleSprayer</a></font> <font class="source_keyword">expands</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>
+<a name="24"></a>    <font class="source_keyword2">native</font>;
+<a name="25"></a>
+<a name="26"></a><font class="source_macro">#exec OBJ LOAD FILE=Textures\UTParticles.utx PACKAGE=ParticleSystems
+</font><a name="27"></a><font class="source_macro">#exec TEXTURE IMPORT FILE=Textures\S_ParticleSprayer.PCX GROUP=Icons MIPS=Off FLAGS=2
+</font><a name="28"></a>
+<a name="29"></a><font class="source_comment">// Defines a cone that the particles will be sprayed from.
+</font><a name="30"></a><font class="source_comment">// An angle in degress centered on our rotation vector.
+</font><a name="31"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font> Spread;
+<a name="32"></a>
+<a name="33"></a><font class="source_comment">// Number of particles emitted per second.
+</font><a name="34"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font> Volume;
+<a name="35"></a>
+<a name="36"></a><font class="source_comment">// Direction and magnitude of acceleration to apply to particles.
+</font><a name="37"></a><font class="source_keyword">var</font>() <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Gravity;
+<a name="38"></a>
+<a name="39"></a><font class="source_comment">// Sprites to be used as particles.
+</font><a name="40"></a><font class="source_keyword">struct</font> <font class="source_type"><a href="..\particlesystems\particlesprayer.html#Particle" class="source">Particle</a></font>
+<a name="41"></a>{
+<a name="42"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> LifeSpan;           <font class="source_comment">// Number of seconds before destruction.
+</font><a name="43"></a>
+<a name="44"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> Weight;             <font class="source_comment">// Relative probability of being chosen with DIST_Random.
+</font><a name="45"></a>
+<a name="46"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> MaxInitialVelocity; <font class="source_comment">// Velocity to start out with.
+</font><a name="47"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> MinInitialVelocity;
+<a name="48"></a>
+<a name="49"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> MaxDrawScale;       <font class="source_comment">// DrawScale to start out with.
+</font><a name="50"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> MinDrawScale;
+<a name="51"></a>
+<a name="52"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> MaxScaleGlow;       <font class="source_comment">// ScaleGlow to start out with.
+</font><a name="53"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> MinScaleGlow;
+<a name="54"></a>
+<a name="55"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">byte</font>  GrowPhase;          <font class="source_comment">// Number of toggles per lifespan.	(Toggles meaning inverting the GrowRate)
+</font><a name="56"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> MaxGrowRate;        <font class="source_comment">// DrawScale per second.	(positive values mean grow)
+</font><a name="57"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> MinGrowRate;        <font class="source_comment">//							(negative values mean shrink) 
+</font><a name="58"></a>
+<a name="59"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">byte</font>  FadePhase;          <font class="source_comment">// Number of toggles per lifespan.	(Toggles meaning inverting the FadeRate)
+</font><a name="60"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> MaxFadeRate;        <font class="source_comment">// ScaleGlow per second.	(positive values mean fade in)
+</font><a name="61"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> MinFadeRate;        <font class="source_comment">//							(negative values mean fade out)
+</font><a name="62"></a>
+<a name="63"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> Frequency;
+<a name="64"></a>    <font class="source_keyword">var</font>() <font class="source_keyword">float</font> CumulativeFreq;
+<a name="65"></a>
+<a name="66"></a>    <font class="source_keyword">var</font>() <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> MaxInitialRotation;
+<a name="67"></a>    <font class="source_keyword">var</font>() <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> MinInitialRotation;
+<a name="68"></a>    <font class="source_keyword">var</font>() <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> MaxRotationRate;
+<a name="69"></a>    <font class="source_keyword">var</font>() <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> MinRotationRate;
+<a name="70"></a>};
+<a name="71"></a>
+<a name="72"></a><font class="source_comment">// Mesh animation rates.
+</font><a name="73"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">float</font> MaxAnimRate;
+<a name="74"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">float</font> MinAnimRate;
+<a name="75"></a>
+<a name="76"></a><font class="source_comment">// Number of templates in the template array.
+</font><a name="77"></a><font class="source_comment">// When adding to the template/particles array, you will have to fill the slots in order
+</font><a name="78"></a><font class="source_comment">// so as not to cause the C++ code to reference Null data.  In addition, you will have
+</font><a name="79"></a><font class="source_comment">// to explicitly define how many templates have been filled in using this variable.
+</font><a name="80"></a><font class="source_keyword">var</font>() <font class="source_keyword">byte</font> NumTemplates;
+<a name="81"></a>
+<a name="82"></a><font class="source_comment">// Templates used to create the actual particles from.
+</font><a name="83"></a><font class="source_keyword">var</font>() <font class="source_type"><a href="..\particlesystems\particlesprayer.html#Particle" class="source">Particle</a></font> Templates[<font class="source_int">16</font>];
+<a name="84"></a>
+<a name="85"></a><font class="source_comment">// If you are using Linear Distribution, you need to set this variable to True if you change
+</font><a name="86"></a><font class="source_comment">// any of the templates' weights.  This tells the RenderIterator to update itself accordingly.
+</font><a name="87"></a><font class="source_comment">// Once the RI is up to date (i.e. the next time the frame is drawn), this variable will
+</font><a name="88"></a><font class="source_comment">// automatically be reset to false.
+</font><a name="89"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bLinearFrequenciesChanged;
+<a name="90"></a>
+<a name="91"></a><font class="source_comment">// Associated sprites to use with the above templates.
+</font><a name="92"></a><font class="source_comment">// This is kept seperate from the struct since it tends to crash UnrealEd when it's part of the Templates stuct.
+</font><a name="93"></a><font class="source_keyword">var</font>() <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font> Particles[<font class="source_int">16</font>];
+<a name="94"></a>
+<a name="95"></a><font class="source_keyword">var</font>() <font class="source_keyword">enum</font> <font class="source_type"><a href="..\unrealshare\thingfactory.html#EDistribution" class="source">EDistribution</a></font>
+<a name="96"></a>{
+<a name="97"></a>    DIST_Random,    <font class="source_comment">// Randomly pick a particle from the particle list.
+</font><a name="98"></a>    DIST_Linear     <font class="source_comment">// Cyclically iterate though the particle list.
+</font><a name="99"></a>} ParticleDistribution;
+<a name="100"></a>
+<a name="101"></a><font class="source_comment">// Number of iterations to prime the particle system with.
+</font><a name="102"></a><font class="source_comment">// (Assumes a 30 fps frame rate).
+</font><a name="103"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font> PrimeCount;
+<a name="104"></a>
+<a name="105"></a><font class="source_comment">// How long we stay on when TriggerTimed.
+</font><a name="106"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font> TimerDuration;
+<a name="107"></a>
+<a name="108"></a><font class="source_comment">// Used interally for TriggerTimed (see UParticleSprayerRI.cpp).
+</font><a name="109"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> InternalTimer;
+<a name="110"></a>
+<a name="111"></a><font class="source_comment">// Are we initially on?
+</font><a name="112"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bInitiallyOn;
+<a name="113"></a>
+<a name="114"></a><font class="source_comment">// Are we on? - Used internally.  Can be used to turn particle systems on and off in UnrealEd.
+</font><a name="115"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bOn;
+<a name="116"></a>
+<a name="117"></a><font class="source_comment">// If set, particles generate from this actor's location.
+</font><a name="118"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> FollowActor;
+<a name="119"></a>
+<a name="120"></a><font class="source_comment">// Absolute offset from our FollowActor (if we have one).
+</font><a name="121"></a><font class="source_comment">// Note: This is _not_ relative to the FollowActor's rotation.
+</font><a name="122"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> FollowOffset;
+<a name="123"></a>
+<a name="124"></a><font class="source_comment">// Offset relative to our FollowActor.
+</font><a name="125"></a><font class="source_comment">// Note: This is maintainted internally.  
+</font><a name="126"></a><font class="source_comment">// Use SetFolowActor to attach this particle sprayer to an actor.
+</font><a name="127"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> RelativeOffset;
+<a name="128"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> RelativeRotation;
+<a name="129"></a>
+<a name="130"></a><font class="source_comment">// Percentage of the visibility radius used to scale the volume of the particle sprayer.
+</font><a name="131"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font> VolumeScalePct; <font class="source_comment">// A number from 0.0 to 1.0.
+</font><a name="132"></a>
+<a name="133"></a><font class="source_comment">// Clip using line of sight check?
+</font><a name="134"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bLOSClip;
+<a name="135"></a>
+<a name="136"></a><font class="source_comment">// Minimum volume that Level-&gt;Engine-Client-&gt;ParticleDensity is allowed to scale us to.
+</font><a name="137"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font> MinVolume;
+<a name="138"></a>
+<a name="139"></a><font class="source_comment">// Decal support.
+</font><a name="140"></a><font class="source_keyword">var</font>(Decals) <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\decal.html" class="source">Decal</a></font>&gt; DecalType; <font class="source_comment">// Type of Decals to spray.
+</font><a name="141"></a><font class="source_keyword">var</font>(Decals) <font class="source_keyword">float</font> DecalPercent;     <font class="source_comment">// Percent of decals per particles.
+</font><a name="142"></a><font class="source_keyword">var</font>(Decals) <font class="source_keyword">float</font> DecalMinLifeSpan, DecalMaxLifeSpan;   <font class="source_comment">// Set to zero to use decal's default values.
+</font><a name="143"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> DecalTimer;
+<a name="144"></a>
+<a name="145"></a><font class="source_comment">// Interpolation.
+</font><a name="146"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bInterpolate;
+<a name="147"></a>
+<a name="148"></a><font class="source_comment">// Grouping support.
+</font><a name="149"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bGrouped;
+<a name="150"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bRotationGrouped;
+<a name="151"></a><font class="source_keyword">var</font>() <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> RotationPoint;
+<a name="152"></a>
+<a name="153"></a><font class="source_comment">// Wind support.
+</font><a name="154"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bIsWindResistant;
+<a name="155"></a>
+<a name="156"></a><font class="source_comment">// Do we need the overhead of the tick function below (for decals, etc).
+</font><a name="157"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bDisableTick;
+<a name="158"></a>
+<a name="159"></a><font class="source_comment">/*
+<a name="160"></a>replication
+<a name="161"></a>{
+<a name="162"></a>    reliable if( Role==ROLE_Authority && bNetInitial )
+<a name="163"></a>        Volume, MinVolume, 
+<a name="164"></a>        FollowActor, RelativeOffset, RelativeRotation;
+<a name="165"></a>
+<a name="166"></a>    reliable if( Role==ROLE_Authority )
+<a name="167"></a>        bOn, Gravity;
+<a name="168"></a>
+<a name="169"></a>    unreliable if( Role==ROLE_Authority )
+<a name="170"></a>        Templates, Particles;
+<a name="171"></a>}
+<a name="172"></a>*/</font>
+<a name="173"></a><font class="source_keyword">replication</font>
+<a name="174"></a>{
+<a name="175"></a>    <font class="source_keyword">reliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="176"></a>        Spread,
+<a name="177"></a>        Volume,
+<a name="178"></a>        Gravity,
+<a name="179"></a>        MaxAnimRate,
+<a name="180"></a>        MinAnimRate,
+<a name="181"></a>        NumTemplates,
+<a name="182"></a>        Templates,
+<a name="183"></a>        Particles,
+<a name="184"></a>        ParticleDistribution,
+<a name="185"></a>        PrimeCount,
+<a name="186"></a>        TimerDuration,
+<a name="187"></a>        InternalTimer,
+<a name="188"></a>        bInitiallyOn,
+<a name="189"></a>        bOn,
+<a name="190"></a>        FollowActor,
+<a name="191"></a>        FollowOffset,
+<a name="192"></a>        RelativeOffset,
+<a name="193"></a>        RelativeRotation,
+<a name="194"></a>        VolumeScalePct,
+<a name="195"></a>        bLOSClip,
+<a name="196"></a>        MinVolume,
+<a name="197"></a>        DecalType,
+<a name="198"></a>        DecalPercent,
+<a name="199"></a>        DecalMinLifeSpan,
+<a name="200"></a>        DecalMaxLifeSpan,
+<a name="201"></a>        DecalTimer,
+<a name="202"></a>        bInterpolate,
+<a name="203"></a>        bGrouped,
+<a name="204"></a>        bRotationGrouped,
+<a name="205"></a>        RotationPoint,
+<a name="206"></a>        bIsWindResistant,
+<a name="207"></a>        bDisableTick;
+<a name="208"></a>}
+<a name="209"></a>
+<a name="210"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="211"></a><font class="source_comment">// Use to shift all particles in the current system by the given vector.
+</font><a name="212"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="213"></a><font class="source_keyword2">native</font>(<font class="source_int">1003</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> ShiftParticles( <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Delta );
+<a name="214"></a>
+<a name="215"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="216"></a><font class="source_comment">// Used to rotation all particles in the current system by the given rotation
+</font><a name="217"></a><font class="source_comment">// about the given point.  (Defaults to rotation about its own Location.)
+</font><a name="218"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="219"></a><font class="source_keyword2">native</font>(<font class="source_int">1004</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> RotateParticles( <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> Delta, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Origin );
+<a name="220"></a>
+<a name="221"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="222"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PreBeginPlay()
+<a name="223"></a>{
+<a name="224"></a>    <font class="source_comment">// Force Linear frequencies to be recalculated if used.
+</font><a name="225"></a>    bLinearFrequenciesChanged = <font class="source_keyword">true</font>;
+<a name="226"></a>
+<a name="227"></a>    <font class="source_comment">// Ensure we start with a fresh render iterator.
+</font><a name="228"></a>    <font class="source_keyword">if</font>( RenderInterface != <font class="source_keyword">None</font> )
+<a name="229"></a>    {
+<a name="230"></a>        <font class="source_comment">//delete RenderInterface;
+</font><a name="231"></a>        RenderInterface = <font class="source_keyword">None</font>;
+<a name="232"></a>    }
+<a name="233"></a>
+<a name="234"></a>    <font class="source_keyword">Super</font>.PreBeginPlay();
+<a name="235"></a>    
+<a name="236"></a>    bOn = bInitiallyOn;
+<a name="237"></a>
+<a name="238"></a>    <font class="source_keyword">if</font>( bDisableTick )
+<a name="239"></a>    {
+<a name="240"></a>        Disable(<font class="source_name">'Tick'</font>);
+<a name="241"></a>    }
+<a name="242"></a>}
+<a name="243"></a>
+<a name="244"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="245"></a><font class="source_comment">// Toggles us on and off when triggered.
+</font><a name="246"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="247"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">state</font>() TriggerToggle
+<a name="248"></a>{
+<a name="249"></a>    <font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font>( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> EventInstigator )
+<a name="250"></a>    {
+<a name="251"></a>        bOn = !bOn;
+<a name="252"></a>    }
+<a name="253"></a>}
+<a name="254"></a>
+<a name="255"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="256"></a><font class="source_comment">// Toggled when Triggered.
+</font><a name="257"></a><font class="source_comment">// Toggled back to initial state when UnTriggered.
+</font><a name="258"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="259"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">state</font>() TriggerControl
+<a name="260"></a>{
+<a name="261"></a>    <font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font>( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> EventInstigator )
+<a name="262"></a>    {
+<a name="263"></a>        bOn = !bInitiallyOn;
+<a name="264"></a>    }
+<a name="265"></a>
+<a name="266"></a>    <font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> UnTrigger( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> EventInstigator )
+<a name="267"></a>    {
+<a name="268"></a>        bOn = bInitiallyOn;
+<a name="269"></a>    }
+<a name="270"></a>}
+<a name="271"></a>
+<a name="272"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="273"></a><font class="source_comment">// Toggled when triggered.
+</font><a name="274"></a><font class="source_comment">// Toggled back to initial state after TimerDuration seconds.
+</font><a name="275"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="276"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">state</font>() TriggerTimed
+<a name="277"></a>{
+<a name="278"></a>    <font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font>( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> EventInstigator )
+<a name="279"></a>    {
+<a name="280"></a>        bOn = !bInitiallyOn;
+<a name="281"></a>        <font class="source_comment">//SetTimer( TimerDuration, false );
+</font><a name="282"></a>        InternalTimer = TimerDuration;  <font class="source_comment">// Maintained in UParticleSprayerRI.cpp
+</font><a name="283"></a>    }
+<a name="284"></a>
+<a name="285"></a><font class="source_comment">/* -- Moved to UParticleSprayerRI.cpp
+<a name="286"></a>    simulated function Timer()
+<a name="287"></a>    {
+<a name="288"></a>        bOn = bInitiallyOn;
+<a name="289"></a>    }
+<a name="290"></a>*/</font>
+<a name="291"></a>}
+<a name="292"></a>
+<a name="293"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="294"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> Tick( <font class="source_keyword">float</font> DeltaTime )
+<a name="295"></a>{
+<a name="296"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\decal.html" class="source">Decal</a></font> D;
+<a name="297"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> Index;
+<a name="298"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> IScaledVolume;  <font class="source_comment">// inverse scaled volume.
+</font><a name="299"></a>
+<a name="300"></a>    <font class="source_keyword">Super</font>.Tick( DeltaTime );
+<a name="301"></a>
+<a name="302"></a>    <font class="source_comment">// Create new decals as needed.
+</font><a name="303"></a>    <font class="source_comment">/*
+<a name="304"></a>    if( DecalType != None && bOn && NumTemplates &gt; 0 && Volume &gt; 0.0 )
+<a name="305"></a>    {
+<a name="306"></a>        DecalTimer += DeltaTime;
+<a name="307"></a>        IScaledVolume = 1.0 / (Volume * DecalPercent);
+<a name="308"></a>        while( DecalTimer &gt;= IScaledVolume )
+<a name="309"></a>        {
+<a name="310"></a>            // Update the timer according to the set Volume.
+<a name="311"></a>            DecalTimer -= IScaledVolume;
+<a name="312"></a>
+<a name="313"></a>            // Throw a decal using a random Template.
+<a name="314"></a>            Index = Rand( NumTemplates );
+<a name="315"></a>            D = Spawn( DecalType,,, Location );
+<a name="316"></a>            if( D != None )
+<a name="317"></a>            {
+<a name="318"></a>                D.Velocity = class'Util'.static.CalcSprayDirection( Rotation, Spread ) * RandRange( Templates[Index].MinInitialVelocity, Templates[Index].MaxInitialVelocity );
+<a name="319"></a>                D.LifeSpan = RandRange( DecalMinLifeSpan, DecalMaxLifeSpan );
+<a name="320"></a>            }
+<a name="321"></a>        }
+<a name="322"></a>    }
+<a name="323"></a>    */</font>
+<a name="324"></a>
+<a name="325"></a>    <font class="source_comment">// Update location.
+</font><a name="326"></a>    <font class="source_keyword">if</font>( FollowActor != <font class="source_keyword">None</font> )
+<a name="327"></a>    {
+<a name="328"></a>        FollowOffset = RelativeOffset &gt;&gt; FollowActor.Rotation;
+<a name="329"></a>        SetLocation( FollowActor.Location + FollowOffset );
+<a name="330"></a>        SetRotation( FollowActor.Rotation + RelativeRotation );
+<a name="331"></a>    }
+<a name="332"></a>}
+<a name="333"></a>
+<a name="334"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="335"></a><font class="source_comment">// Use this instead of SetBase to attach a particle sprayer to an Actor.
+</font><a name="336"></a><font class="source_comment">// Set the location and rotation of the particle sprayer relative to the
+</font><a name="337"></a><font class="source_comment">// actor you are attaching it to, before calling this function.
+</font><a name="338"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="339"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetFollowActor( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other )
+<a name="340"></a>{
+<a name="341"></a>    FollowActor = Other;
+<a name="342"></a>    RelativeOffset = (Location - Other.Location) &lt;&lt; FollowActor.Rotation;
+<a name="343"></a>    FollowOffset = RelativeOffset &gt;&gt; FollowActor.Rotation;
+<a name="344"></a>
+<a name="345"></a>    RelativeRotation = Rotation - Other.Rotation;
+<a name="346"></a>}
+<a name="347"></a>
+<a name="348"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="349"></a><font class="source_comment">// Struct Accessor functions.
+</font><a name="350"></a><font class="source_comment">//
+</font><a name="351"></a><font class="source_comment">// (Due to "Context expression: Variable is too large (896 bytes, 255 max)" limitation of UnrealScript.)
+</font><a name="352"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="353"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleLifeSpan              ( <font class="source_keyword">float</font> LifeSpan,           <font class="source_keyword">int</font> Index ){    Templates[ Index ].LifeSpan             = LifeSpan;             }
+<a name="354"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleWeight                ( <font class="source_keyword">float</font> Weight,             <font class="source_keyword">int</font> Index ){    Templates[ Index ].Weight               = Weight;               }
+<a name="355"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleMaxInitialVelocity    ( <font class="source_keyword">float</font> MaxInitialVelocity, <font class="source_keyword">int</font> Index ){    Templates[ Index ].MaxInitialVelocity   = MaxInitialVelocity;   }
+<a name="356"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleMinInitialVelocity    ( <font class="source_keyword">float</font> MinInitialVelocity, <font class="source_keyword">int</font> Index ){    Templates[ Index ].MinInitialVelocity   = MinInitialVelocity;   }
+<a name="357"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleMaxDrawScale          ( <font class="source_keyword">float</font> MaxDrawScale,       <font class="source_keyword">int</font> Index ){    Templates[ Index ].MaxDrawScale         = MaxDrawScale;         }
+<a name="358"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleMinDrawScale          ( <font class="source_keyword">float</font> MinDrawScale,       <font class="source_keyword">int</font> Index ){    Templates[ Index ].MinDrawScale         = MinDrawScale;         }
+<a name="359"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleMaxScaleGlow          ( <font class="source_keyword">float</font> MaxScaleGlow,       <font class="source_keyword">int</font> Index ){    Templates[ Index ].MaxScaleGlow         = MaxScaleGlow;         }
+<a name="360"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleMinScaleGlow          ( <font class="source_keyword">float</font> MinScaleGlow,       <font class="source_keyword">int</font> Index ){    Templates[ Index ].MinScaleGlow         = MinScaleGlow;         }
+<a name="361"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleGrowPhase             ( <font class="source_keyword">byte</font>  GrowPhase,          <font class="source_keyword">int</font> Index ){    Templates[ Index ].GrowPhase            = GrowPhase;            }
+<a name="362"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleMaxGrowRate           ( <font class="source_keyword">float</font> MaxGrowRate,        <font class="source_keyword">int</font> Index ){    Templates[ Index ].MaxGrowRate          = MaxGrowRate;          }
+<a name="363"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleMinGrowRate           ( <font class="source_keyword">float</font> MinGrowRate,        <font class="source_keyword">int</font> Index ){    Templates[ Index ].MinGrowRate          = MinGrowRate;          }
+<a name="364"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleFadePhase             ( <font class="source_keyword">byte</font>  FadePhase,          <font class="source_keyword">int</font> Index ){    Templates[ Index ].FadePhase            = FadePhase;            }
+<a name="365"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleMaxFadeRate           ( <font class="source_keyword">float</font> MaxFadeRate,        <font class="source_keyword">int</font> Index ){    Templates[ Index ].MaxFadeRate          = MaxFadeRate;          }
+<a name="366"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> SetParticleMinFadeRate           ( <font class="source_keyword">float</font> MinFadeRate,        <font class="source_keyword">int</font> Index ){    Templates[ Index ].MinFadeRate          = MinFadeRate;          }
+<a name="367"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="368"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleLifeSpan            ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].LifeSpan;             }
+<a name="369"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleWeight              ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].Weight;               }
+<a name="370"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMaxInitialVelocity  ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].MaxInitialVelocity;   }
+<a name="371"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMinInitialVelocity  ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].MinInitialVelocity;   }
+<a name="372"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMaxDrawScale        ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].MaxDrawScale;         }
+<a name="373"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMinDrawScale        ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].MinDrawScale;         }
+<a name="374"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMaxScaleGlow        ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].MaxScaleGlow;         }
+<a name="375"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMinScaleGlow        ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].MinScaleGlow;         }
+<a name="376"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">byte</font>  GetParticleGrowPhase           ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].GrowPhase;            }
+<a name="377"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMaxGrowRate         ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].MaxGrowRate;          }
+<a name="378"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMinGrowRate         ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].MinGrowRate;          }
+<a name="379"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">byte</font>  GetParticleFadePhase           ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].FadePhase;            }
+<a name="380"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMaxFadeRate         ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].MaxFadeRate;          }
+<a name="381"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMinFadeRate         ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> Templates[ Index ].MinFadeRate;          }
+<a name="382"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="383"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleLifeSpan             ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].LifeSpan;             }
+<a name="384"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleWeight               ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].Weight;               }
+<a name="385"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMaxInitialVelocity   ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].MaxInitialVelocity;   }
+<a name="386"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMinInitialVelocity   ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].MinInitialVelocity;   }
+<a name="387"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMaxDrawScale         ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].MaxDrawScale;         }
+<a name="388"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMinDrawScale         ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].MinDrawScale;         }
+<a name="389"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMaxScaleGlow         ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].MaxScaleGlow;         }
+<a name="390"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMinScaleGlow         ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].MinScaleGlow;         }
+<a name="391"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">byte</font>  GetDefaultParticleGrowPhase            ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].GrowPhase;            }
+<a name="392"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMaxGrowRate          ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].MaxGrowRate;          }
+<a name="393"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMinGrowRate          ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].MinGrowRate;          }
+<a name="394"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">byte</font>  GetDefaultParticleFadePhase            ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].FadePhase;            }
+<a name="395"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMaxFadeRate          ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].MaxFadeRate;          }
+<a name="396"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMinFadeRate          ( <font class="source_keyword">int</font> Index ){  <font class="source_keyword">return</font> default.Templates[ Index ].MinFadeRate;          }
+<a name="397"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="398"></a>
+<a name="399"></a><font class="source_keyword">defaultproperties</font>
+<a name="400"></a>{
+<a name="401"></a>     Spread=<font class="source_int">45.000000</font>
+<a name="402"></a>     Volume=<font class="source_int">10.000000</font>
+<a name="403"></a>     Templates(<font class="source_int">0</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="404"></a>     Templates(<font class="source_int">1</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="405"></a>     Templates(<font class="source_int">2</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="406"></a>     Templates(<font class="source_int">3</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="407"></a>     Templates(<font class="source_int">4</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="408"></a>     Templates(<font class="source_int">5</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="409"></a>     Templates(<font class="source_int">6</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="410"></a>     Templates(<font class="source_int">7</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="411"></a>     Templates(<font class="source_int">8</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="412"></a>     Templates(<font class="source_int">9</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="413"></a>     Templates(<font class="source_int">10</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="414"></a>     Templates(<font class="source_int">11</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="415"></a>     Templates(<font class="source_int">12</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="416"></a>     Templates(<font class="source_int">13</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="417"></a>     Templates(<font class="source_int">14</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="418"></a>     Templates(<font class="source_int">15</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+<a name="419"></a>     bInitiallyOn=<font class="source_keyword">True</font>
+<a name="420"></a>     VisibilityRadius=<font class="source_int">1600.000000</font>
+<a name="421"></a>     VisibilityHeight=<font class="source_int">1600.000000</font>
+<a name="422"></a>     VolumeScalePct=<font class="source_int">0.500000</font>
+<a name="423"></a>     DecalPercent=<font class="source_int">0.100000</font>
+<a name="424"></a>     bLinearFrequenciesChanged=<font class="source_keyword">True</font>
+<a name="425"></a>     bStatic=<font class="source_keyword">True</font>
+<a name="426"></a>     bDirectional=<font class="source_keyword">True</font>
+<a name="427"></a>     RemoteRole=ROLE_None
+<a name="428"></a>     Rotation=(Pitch=<font class="source_int">16384</font>)
+<a name="429"></a>     Style=STY_Translucent
+<a name="430"></a>     SpriteProjForward=<font class="source_int">0.000000</font>
+<a name="431"></a>     <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'ParticleSystems.Icons.S_ParticleSprayer'</font>
+<a name="432"></a>     bGameRelevant=<font class="source_keyword">True</font>
+<a name="433"></a>     RenderIteratorClass=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.ParticleSprayerRI'</font>
+<a name="434"></a>     bDisableTick=<font class="source_keyword">True</font>
+<a name="435"></a>     bFilterByVolume=<font class="source_keyword">False</font>
+<a name="436"></a>}
+<a name="437"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\particlesystems\particlesystems-overview.html">Package</a></td>
+	<td class="header"><a href="..\particlesystems\particlesprayer.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#ParticleSprayer">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="myrdsprayerexp.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="particlesprayerri.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:23:56.000 - Creation time: Wed 26/5/2004 10:48:28.687 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

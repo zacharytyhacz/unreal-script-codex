@@ -1,0 +1,281 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UBrowser.UBrowserEditFavoriteCW</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\ubrowser\ubrowser-overview.html">Package</a></td>
+	<td class="header"><a href="..\ubrowser\ubrowsereditfavoritecw.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserEditFavoriteCW">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserconsole.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowsereditfavoritewindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\ubrowser\ubrowser-overview.html">UBrowser</a>.<a href="..\ubrowser\ubrowsereditfavoritecw.html">UBrowserEditFavoriteCW</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\ubrowser\ubrowsereditfavoritecw.html" class="source">UBrowserEditFavoriteCW</a></font> <font class="source_keyword">expands</font> <font class="source_type"><a href="..\uwindow\uwindowdialogclientwindow.html" class="source">UWindowDialogClientWindow</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>  DescriptionEdit;
+<a name="4"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>    DescriptionText;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>     UpdateDescriptionCheck;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>    UpdateDescriptionText;
+<a name="8"></a>
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>  IPEdit;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>    IPText;
+<a name="11"></a>
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>  GamePortEdit;
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>    GamePortText;
+<a name="14"></a>
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>  QueryPortEdit;
+<a name="16"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>    QueryPortText;
+<a name="17"></a>
+<a name="18"></a><font class="source_keyword">function</font> Created()
+<a name="19"></a>{
+<a name="20"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> ControlOffset, CenterPos, CenterWidth;
+<a name="21"></a>
+<a name="22"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="23"></a>    
+<a name="24"></a>    DescriptionEdit = <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowEditControl'</font>, <font class="source_int">10</font>, <font class="source_int">10</font>, <font class="source_int">220</font>, <font class="source_int">1</font>));
+<a name="25"></a>    DescriptionEdit.SetText(DescriptionText);
+<a name="26"></a>    DescriptionEdit.SetFont(F_Normal);
+<a name="27"></a>    DescriptionEdit.SetNumericOnly(<font class="source_keyword">False</font>);
+<a name="28"></a>    DescriptionEdit.SetMaxLength(<font class="source_int">300</font>);
+<a name="29"></a>    DescriptionEdit.EditBoxWidth = <font class="source_int">100</font>;
+<a name="30"></a>
+<a name="31"></a>    UpdateDescriptionCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, <font class="source_int">10</font>, <font class="source_int">30</font>, <font class="source_int">136</font>, <font class="source_int">1</font>));
+<a name="32"></a>    UpdateDescriptionCheck.SetText(UpdateDescriptionText);
+<a name="33"></a>    UpdateDescriptionCheck.SetFont(F_Normal);
+<a name="34"></a>
+<a name="35"></a>    IPEdit = <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowEditControl'</font>, <font class="source_int">10</font>, <font class="source_int">50</font>, <font class="source_int">220</font>, <font class="source_int">1</font>));
+<a name="36"></a>    IPEdit.SetText(IPText);
+<a name="37"></a>    IPEdit.SetFont(F_Normal);
+<a name="38"></a>    IPEdit.SetNumericOnly(<font class="source_keyword">False</font>);
+<a name="39"></a>    IPEdit.SetMaxLength(<font class="source_int">40</font>);
+<a name="40"></a>    IPEdit.EditBoxWidth = <font class="source_int">100</font>;
+<a name="41"></a>    
+<a name="42"></a>    GamePortEdit = <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowEditControl'</font>, <font class="source_int">10</font>, <font class="source_int">70</font>, <font class="source_int">160</font>, <font class="source_int">1</font>));
+<a name="43"></a>    GamePortEdit.SetText(GamePortText);
+<a name="44"></a>    GamePortEdit.SetFont(F_Normal);
+<a name="45"></a>    GamePortEdit.SetNumericOnly(<font class="source_keyword">True</font>);
+<a name="46"></a>    GamePortEdit.SetMaxLength(<font class="source_int">5</font>);
+<a name="47"></a>    GamePortEdit.EditBoxWidth = <font class="source_int">40</font>;
+<a name="48"></a>
+<a name="49"></a>    QueryPortEdit = <font class="source_type"><a href="..\uwindow\uwindoweditcontrol.html" class="source">UWindowEditControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowEditControl'</font>, <font class="source_int">10</font>, <font class="source_int">90</font>, <font class="source_int">160</font>, <font class="source_int">1</font>));
+<a name="50"></a>    QueryPortEdit.SetText(QueryPortText);
+<a name="51"></a>    QueryPortEdit.SetFont(F_Normal);
+<a name="52"></a>    QueryPortEdit.SetNumericOnly(<font class="source_keyword">True</font>);
+<a name="53"></a>    QueryPortEdit.SetMaxLength(<font class="source_int">5</font>);
+<a name="54"></a>    QueryPortEdit.EditBoxWidth = <font class="source_int">40</font>;
+<a name="55"></a>
+<a name="56"></a>    DescriptionEdit.BringToFront();
+<a name="57"></a>    LoadCurrentValues();
+<a name="58"></a>}
+<a name="59"></a>
+<a name="60"></a><font class="source_keyword">function</font> LoadCurrentValues()
+<a name="61"></a>{
+<a name="62"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\ubrowser\ubrowserserverlist.html" class="source">UBrowserServerList</a></font> L;
+<a name="63"></a>
+<a name="64"></a>    L = <font class="source_type"><a href="..\ubrowser\ubrowserrightclickmenu.html" class="source">UBrowserRightClickMenu</a></font>(ParentWindow.OwnerWindow).List;
+<a name="65"></a>
+<a name="66"></a>    DescriptionEdit.SetValue(L.HostName);
+<a name="67"></a>    UpdateDescriptionCheck.bChecked = !L.bKeepDescription;
+<a name="68"></a>    IPEdit.SetValue(L.IP);
+<a name="69"></a>    GamePortEdit.SetValue(<font class="source_keyword">string</font>(L.GamePort));
+<a name="70"></a>    QueryPortEdit.SetValue(<font class="source_keyword">string</font>(L.QueryPort));
+<a name="71"></a>}
+<a name="72"></a>
+<a name="73"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="74"></a>{
+<a name="75"></a>    <font class="source_keyword">Super</font>.BeforePaint(C, X, Y);
+<a name="76"></a>
+<a name="77"></a>    DescriptionEdit.WinWidth = WinWidth - <font class="source_int">20</font>;
+<a name="78"></a>    DescriptionEdit.EditBoxWidth = WinWidth - <font class="source_int">140</font>;
+<a name="79"></a>}
+<a name="80"></a>
+<a name="81"></a><font class="source_keyword">function</font> Notify(<font class="source_type"><a href="..\uwindow\uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></font> C, <font class="source_keyword">byte</font> E)
+<a name="82"></a>{
+<a name="83"></a>    <font class="source_keyword">Super</font>.Notify(C, E);
+<a name="84"></a>
+<a name="85"></a>    <font class="source_keyword">if</font>((C == <font class="source_type"><a href="..\ubrowser\ubrowsereditfavoritewindow.html" class="source">UBrowserEditFavoriteWindow</a></font>(ParentWindow).OKButton && E == DE_Click))
+<a name="86"></a>        OKPressed();
+<a name="87"></a>}
+<a name="88"></a>
+<a name="89"></a><font class="source_keyword">function</font> OKPressed()
+<a name="90"></a>{
+<a name="91"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\ubrowser\ubrowserserverlist.html" class="source">UBrowserServerList</a></font> L;
+<a name="92"></a>
+<a name="93"></a>    L = <font class="source_type"><a href="..\ubrowser\ubrowserrightclickmenu.html" class="source">UBrowserRightClickMenu</a></font>(ParentWindow.OwnerWindow).List;
+<a name="94"></a>
+<a name="95"></a>    L.HostName = DescriptionEdit.GetValue();
+<a name="96"></a>    L.bKeepDescription = !UpdateDescriptionCheck.bChecked;
+<a name="97"></a>    L.IP = IPEdit.GetValue();
+<a name="98"></a>    L.GamePort = <font class="source_keyword">Int</font>(GamePortEdit.GetValue());
+<a name="99"></a>    L.QueryPort = <font class="source_keyword">Int</font>(QueryPortEdit.GetValue());
+<a name="100"></a>    
+<a name="101"></a>    <font class="source_type"><a href="..\ubrowser\ubrowserfavoritesfact.html" class="source">UBrowserFavoritesFact</a></font>(<font class="source_type"><a href="..\ubrowser\ubrowserfavoriteservers.html" class="source">UBrowserFavoriteServers</a></font>(<font class="source_type"><a href="..\ubrowser\ubrowserrightclickmenu.html" class="source">UBrowserRightClickMenu</a></font>(ParentWindow.OwnerWindow).Grid.GetParent(<font class="source_keyword">class</font><font class="source_name">'UBrowserFavoriteServers'</font>)).Factories[<font class="source_int">0</font>]).SaveFavorites();
+<a name="102"></a>    L.PingServer(<font class="source_keyword">False</font>, <font class="source_keyword">True</font>, <font class="source_keyword">True</font>);
+<a name="103"></a>
+<a name="104"></a>    ParentWindow.Close();
+<a name="105"></a>}
+<a name="106"></a>
+<a name="107"></a><font class="source_keyword">defaultproperties</font>
+<a name="108"></a>{
+<a name="109"></a>    DescriptionText=<font class="source_string">"Description"</font>
+<a name="110"></a>    UpdateDescriptionText=<font class="source_string">"Auto-Update Description"</font>
+<a name="111"></a>    IPText=<font class="source_string">"Server IP Address"</font>
+<a name="112"></a>    GamePortText=<font class="source_string">"Server Port Number"</font>
+<a name="113"></a>    QueryPortText=<font class="source_string">"Query Port Number"</font>
+<a name="114"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\ubrowser\ubrowser-overview.html">Package</a></td>
+	<td class="header"><a href="..\ubrowser\ubrowsereditfavoritecw.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserEditFavoriteCW">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserconsole.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowsereditfavoritewindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:24:22.000 - Creation time: Wed 26/5/2004 10:48:48.250 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

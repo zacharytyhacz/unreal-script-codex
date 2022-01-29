@@ -1,0 +1,239 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.Ladder</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ladder.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Ladder">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="killingspreemessage.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ladderas.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\ladder.html">Ladder</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// Ladder
+</font><a name="3"></a><font class="source_comment">// A ladder game ladder.
+</font><a name="4"></a><font class="source_comment">//=============================================================================
+</font><a name="5"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\info.html" class="source">Info</a></font>
+<a name="6"></a>    <font class="source_keyword2">abstract</font>
+<a name="7"></a>    <font class="source_keyword2">config</font>(user);
+<a name="8"></a>
+<a name="9"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font>           Matches;                        <font class="source_comment">// # of matches in ladder.
+</font><a name="10"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>          bTeamGame;                      <font class="source_comment">// TeamGame ladder?
+</font><a name="11"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>      Titles[<font class="source_int">9</font>];                      <font class="source_comment">// Ranking titles.
+</font><a name="12"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>        MapPrefix;                      <font class="source_comment">// Match map prefix.
+</font><a name="13"></a>
+<a name="14"></a><font class="source_comment">// 32 Matches
+</font><a name="15"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>        Maps[<font class="source_int">32</font>];                       <font class="source_comment">// Match map.
+</font><a name="16"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>        MapAuthors[<font class="source_int">32</font>];                 <font class="source_comment">// Map authors.
+</font><a name="17"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>      MapTitle[<font class="source_int">32</font>];                   <font class="source_comment">// Map title.
+</font><a name="18"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font>      MapDescription[<font class="source_int">32</font>];             <font class="source_comment">// Map description.
+</font><a name="19"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font>           RankedGame[<font class="source_int">32</font>];                 <font class="source_comment">// Rank to award upon completion.
+</font><a name="20"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font>           GoalTeamScore[<font class="source_int">32</font>];              <font class="source_comment">// Match goalteamscore.
+</font><a name="21"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font>           FragLimits[<font class="source_int">32</font>];                 <font class="source_comment">// Match fraglimit.
+</font><a name="22"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font>           TimeLimits[<font class="source_int">32</font>];                 <font class="source_comment">// Match timelimit.
+</font><a name="23"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>        MatchInfo[<font class="source_int">32</font>];                  <font class="source_comment">// BotConfig to use for each game
+</font><a name="24"></a>                                                    <font class="source_comment">// The botconfig has all the info about
+</font><a name="25"></a>                                                    <font class="source_comment">// individual bots in this match
+</font><a name="26"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font>           DemoDisplay[<font class="source_int">32</font>];                <font class="source_comment">// This match is for demo display only.
+</font><a name="27"></a>
+<a name="28"></a><font class="source_keyword">var</font>() <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\ratedteaminfo.html" class="source">RatedTeamInfo</a></font>&gt; LadderTeams[<font class="source_int">32</font>];         <font class="source_comment">// Teams that can be fought in this ladder
+</font><a name="29"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font>           NumTeams;                       <font class="source_comment">// Number of LadderTeams
+</font><a name="30"></a>
+<a name="31"></a><font class="source_keyword">var</font>   <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> HasBeatenGame;
+<a name="32"></a>
+<a name="33"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\botpack\ratedmatchinfo.html" class="source">RatedMatchInfo</a></font>&gt; GetMatchConfigType(<font class="source_keyword">int</font> Index)
+<a name="34"></a>{
+<a name="35"></a>    <font class="source_keyword">return</font> <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\botpack\ratedmatchinfo.html" class="source">RatedMatchInfo</a></font>&gt;(DynamicLoadObject(Default.MatchInfo[Index], <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="36"></a>}
+<a name="37"></a>
+<a name="38"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetMap( <font class="source_keyword">int</font> Index )
+<a name="39"></a>{
+<a name="40"></a>    <font class="source_keyword">return</font> Default.Maps[Index];
+<a name="41"></a>}
+<a name="42"></a>
+<a name="43"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetAuthor( <font class="source_keyword">int</font> Index )
+<a name="44"></a>{
+<a name="45"></a>    <font class="source_keyword">return</font> Default.MapAuthors[Index];
+<a name="46"></a>}
+<a name="47"></a>
+<a name="48"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetMapTitle( <font class="source_keyword">int</font> Index )
+<a name="49"></a>{
+<a name="50"></a>    <font class="source_keyword">return</font> Default.MapTitle[Index];
+<a name="51"></a>}
+<a name="52"></a>
+<a name="53"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetDesc( <font class="source_keyword">int</font> Index )
+<a name="54"></a>{
+<a name="55"></a>    <font class="source_keyword">return</font> Default.MapDescription[Index];
+<a name="56"></a>}
+<a name="57"></a>
+<a name="58"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetRank( <font class="source_keyword">int</font> Index )
+<a name="59"></a>{
+<a name="60"></a>    <font class="source_keyword">return</font> Default.Titles[Index];
+<a name="61"></a>}
+<a name="62"></a>
+<a name="63"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">int</font> GetFragLimit( <font class="source_keyword">int</font> Index )
+<a name="64"></a>{
+<a name="65"></a>    <font class="source_keyword">return</font> Default.FragLimits[Index];
+<a name="66"></a>}
+<a name="67"></a>
+<a name="68"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">int</font> GetGoalTeamScore( <font class="source_keyword">int</font> Index )
+<a name="69"></a>{
+<a name="70"></a>    <font class="source_keyword">return</font> Default.GoalTeamScore[Index];
+<a name="71"></a>}
+<a name="72"></a>
+<a name="73"></a><font class="source_keyword">defaultproperties</font>
+<a name="74"></a>{
+<a name="75"></a>    Titles(<font class="source_int">0</font>)=<font class="source_string">"Untrained"</font>
+<a name="76"></a>    Titles(<font class="source_int">1</font>)=<font class="source_string">"Contender"</font>
+<a name="77"></a>    Titles(<font class="source_int">2</font>)=<font class="source_string">"Light Weight"</font>
+<a name="78"></a>    Titles(<font class="source_int">3</font>)=<font class="source_string">"Heavy Weight"</font>
+<a name="79"></a>    Titles(<font class="source_int">4</font>)=<font class="source_string">"Warlord"</font>
+<a name="80"></a>    Titles(<font class="source_int">5</font>)=<font class="source_string">"Battle Master"</font>
+<a name="81"></a>    Titles(<font class="source_int">6</font>)=<font class="source_string">"Champion"</font>
+<a name="82"></a>    LadderTeams(<font class="source_int">0</font>)=<font class="source_keyword">class</font><font class="source_name">'Botpack.RatedTeamInfo1'</font>
+<a name="83"></a>    LadderTeams(<font class="source_int">1</font>)=<font class="source_keyword">class</font><font class="source_name">'Botpack.RatedTeamInfo2'</font>
+<a name="84"></a>    LadderTeams(<font class="source_int">2</font>)=<font class="source_keyword">class</font><font class="source_name">'Botpack.RatedTeamInfo3'</font>
+<a name="85"></a>    LadderTeams(<font class="source_int">3</font>)=<font class="source_keyword">class</font><font class="source_name">'Botpack.RatedTeamInfo4'</font>
+<a name="86"></a>    LadderTeams(<font class="source_int">4</font>)=<font class="source_keyword">class</font><font class="source_name">'Botpack.RatedTeamInfo5'</font>
+<a name="87"></a>    LadderTeams(<font class="source_int">5</font>)=<font class="source_keyword">class</font><font class="source_name">'Botpack.RatedTeamInfo6'</font>
+<a name="88"></a>    LadderTeams(<font class="source_int">6</font>)=<font class="source_keyword">class</font><font class="source_name">'Botpack.RatedTeamInfoS'</font>
+<a name="89"></a>    LadderTeams(<font class="source_int">7</font>)=<font class="source_keyword">class</font><font class="source_name">'Botpack.RatedTeamInfoDemo1'</font>
+<a name="90"></a>    LadderTeams(<font class="source_int">8</font>)=<font class="source_keyword">class</font><font class="source_name">'Botpack.RatedTeamInfoDemo2'</font>
+<a name="91"></a>    NumTeams=<font class="source_int">7</font>
+<a name="92"></a>}
+<a name="93"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ladder.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Ladder">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="killingspreemessage.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ladderas.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:21:38.000 - Creation time: Wed 26/5/2004 10:48:22.906 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

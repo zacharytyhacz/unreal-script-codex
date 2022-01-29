@@ -1,0 +1,467 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Engine.WarpZoneInfo</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\warpzoneinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#WarpZoneInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="voicepack.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="warpzonemarker.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\warpzoneinfo.html">WarpZoneInfo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// WarpZoneInfo. For making disjoint spaces appear as if they were connected;
+</font><a name="3"></a><font class="source_comment">// supports both in-level warp zones and cross-level warp zones.
+</font><a name="4"></a><font class="source_comment">//=============================================================================
+</font><a name="5"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\engine\warpzoneinfo.html" class="source">WarpZoneInfo</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font>
+<a name="6"></a>    <font class="source_keyword2">native</font>;
+<a name="7"></a>
+<a name="8"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="9"></a><font class="source_comment">// Information set by the level designer.
+</font><a name="10"></a>
+<a name="11"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>     OtherSideURL;
+<a name="12"></a><font class="source_keyword">var</font>() <font class="source_keyword">name</font>       ThisTag;
+<a name="13"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>       bNoTeleFrag;
+<a name="14"></a>
+<a name="15"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="16"></a><font class="source_comment">// Internal.
+</font><a name="17"></a>
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font>              iWarpZone;
+<a name="19"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\core\object.html#Coords" class="source">coords</a></font>           WarpCoords;
+<a name="20"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="..\engine\warpzoneinfo.html" class="source">WarpZoneInfo</a></font> OtherSideActor;
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="..\core\object.html" class="source">object</a></font>       OtherSideLevel;
+<a name="22"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font>               Destinations[<font class="source_int">8</font>];
+<a name="23"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font>                    numDestinations;
+<a name="24"></a>
+<a name="25"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="26"></a><font class="source_comment">// Network replication.
+</font><a name="27"></a>
+<a name="28"></a><font class="source_keyword">replication</font>
+<a name="29"></a>{
+<a name="30"></a>    <font class="source_keyword">reliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="31"></a>        OtherSideURL, ThisTag, OtherSideActor;
+<a name="32"></a>}
+<a name="33"></a>
+<a name="34"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="35"></a><font class="source_comment">// Functions.
+</font><a name="36"></a>
+<a name="37"></a><font class="source_comment">// Warp coordinate system transformations.
+</font><a name="38"></a><font class="source_keyword2">native</font>(<font class="source_int">314</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> Warp  ( <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Loc, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Vel, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> R );
+<a name="39"></a><font class="source_keyword2">native</font>(<font class="source_int">315</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> UnWarp( <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Loc, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Vel, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> R );
+<a name="40"></a>
+<a name="41"></a><font class="source_keyword">function</font> PreBeginPlay()
+<a name="42"></a>{
+<a name="43"></a>    <font class="source_keyword">Super</font>.PreBeginPlay();
+<a name="44"></a>
+<a name="45"></a>    <font class="source_comment">// Generate the local connection.
+</font><a name="46"></a>    Generate();
+<a name="47"></a>
+<a name="48"></a>    <font class="source_comment">// Setup destination list.
+</font><a name="49"></a>    numDestinations = <font class="source_int">0</font>;
+<a name="50"></a>    <font class="source_keyword">While</font>( numDestinations &lt; <font class="source_int">8</font> )
+<a name="51"></a>        <font class="source_keyword">if</font> (Destinations[numDestinations] != <font class="source_string">""</font>)
+<a name="52"></a>            numDestinations++;
+<a name="53"></a>        <font class="source_keyword">else</font>
+<a name="54"></a>            numDestinations = <font class="source_int">8</font>;
+<a name="55"></a>
+<a name="56"></a>    <font class="source_comment">// Generate URL if necessary.
+</font><a name="57"></a>    <font class="source_keyword">if</font>( numDestinations&gt;<font class="source_int">0</font> && (OtherSideURL == <font class="source_string">""</font>) )
+<a name="58"></a>        OtherSideURL = Destinations[<font class="source_int">0</font>];
+<a name="59"></a>}
+<a name="60"></a>
+<a name="61"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font>( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> EventInstigator )
+<a name="62"></a>{
+<a name="63"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> nextPick;
+<a name="64"></a>    <font class="source_keyword">if</font> (numDestinations == <font class="source_int">0</font>)
+<a name="65"></a>        <font class="source_keyword">return</font>;
+<a name="66"></a>    
+<a name="67"></a>    nextPick = <font class="source_int">0</font>;
+<a name="68"></a>    <font class="source_keyword">While</font>( (nextPick &lt; <font class="source_int">8</font>) && (Destinations[nextPick] != OtherSideURL )  )
+<a name="69"></a>        nextPick++;
+<a name="70"></a>
+<a name="71"></a>    nextPick++;
+<a name="72"></a>    <font class="source_keyword">if</font> ( (nextPick &gt; <font class="source_int">7</font>) || (Destinations[nextPick] == <font class="source_string">""</font>) )
+<a name="73"></a>        nextPick = <font class="source_int">0</font>;
+<a name="74"></a>    
+<a name="75"></a>    OtherSideURL = Destinations[nextPick];
+<a name="76"></a>    ForceGenerate();
+<a name="77"></a>}
+<a name="78"></a>
+<a name="79"></a><font class="source_comment">// Set up this warp zone's destination.
+</font><a name="80"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">event</font> Generate()
+<a name="81"></a>{
+<a name="82"></a>    <font class="source_keyword">if</font>( OtherSideLevel != <font class="source_keyword">None</font> )
+<a name="83"></a>        <font class="source_keyword">return</font>;
+<a name="84"></a>    ForceGenerate();
+<a name="85"></a>}
+<a name="86"></a>
+<a name="87"></a><font class="source_comment">// Set up this warp zone's destination.
+</font><a name="88"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">event</font> ForceGenerate()
+<a name="89"></a>{
+<a name="90"></a>    <font class="source_keyword">if</font>( InStr(OtherSideURL,<font class="source_string">"/"</font>) &gt;= <font class="source_int">0</font> )
+<a name="91"></a>    {
+<a name="92"></a>        <font class="source_comment">// Remote level.
+</font><a name="93"></a>        <font class="source_comment">//log( "Warpzone " $ Self $ " remote" );
+</font><a name="94"></a>        OtherSideLevel = <font class="source_keyword">None</font>;
+<a name="95"></a>        OtherSideActor = <font class="source_keyword">None</font>;
+<a name="96"></a>    }
+<a name="97"></a>    <font class="source_keyword">else</font>
+<a name="98"></a>    {
+<a name="99"></a>        <font class="source_comment">// Local level.
+</font><a name="100"></a>        OtherSideLevel = XLevel;
+<a name="101"></a>        <font class="source_keyword">foreach</font> AllActors( <font class="source_keyword">class</font> <font class="source_name">'WarpZoneInfo'</font>, OtherSideActor )
+<a name="102"></a>            <font class="source_keyword">if</font>( <font class="source_keyword">string</font>(OtherSideActor.ThisTag)~=OtherSideURL && OtherSideActor!=Self )
+<a name="103"></a>                <font class="source_keyword">break</font>;
+<a name="104"></a>        <font class="source_comment">//log( "Warpzone " $ Self $ " local, connected to " $ OtherSideActor );
+</font><a name="105"></a>    }
+<a name="106"></a>}
+<a name="107"></a>
+<a name="108"></a><font class="source_comment">// When an actor enters this warp zone.
+</font><a name="109"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> ActorEntered( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other )
+<a name="110"></a>{
+<a name="111"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> L;
+<a name="112"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> R;
+<a name="113"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="114"></a>
+<a name="115"></a>    <font class="source_comment">//if ( Other.Role == ROLE_AutonomousProxy )
+</font><a name="116"></a>    <font class="source_comment">//	return; // don't simulate for client players
+</font><a name="117"></a>    <font class="source_keyword">Super</font>.ActorEntered( Other );
+<a name="118"></a>    <font class="source_keyword">if</font>( !Other.bJustTeleported )
+<a name="119"></a>    {
+<a name="120"></a>        Generate();
+<a name="121"></a>        <font class="source_keyword">if</font>( OtherSideActor != <font class="source_keyword">None</font> )
+<a name="122"></a>        {
+<a name="123"></a>            <font class="source_comment">// This needs to also perform a coordinate system transformation,
+</font><a name="124"></a>            <font class="source_comment">// in case the portals aren't directionally aligned. This is easy to
+</font><a name="125"></a>            <font class="source_comment">// do but UnrealScript doesn't provide coordinate system operators yet.
+</font><a name="126"></a>            Other.Disable(<font class="source_name">'Touch'</font>);
+<a name="127"></a>            Other.Disable(<font class="source_name">'UnTouch'</font>);
+<a name="128"></a>
+<a name="129"></a>            L = Other.Location;
+<a name="130"></a>            <font class="source_keyword">if</font>( Other.IsA(<font class="source_name">'PlayerPawn'</font>) )
+<a name="131"></a>                R = <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other).ViewRotation;
+<a name="132"></a>            <font class="source_keyword">else</font>
+<a name="133"></a>                R = Other.Rotation;
+<a name="134"></a>
+<a name="135"></a>            UnWarp( L, Other.Velocity, R );
+<a name="136"></a>            OtherSideActor.Warp( L, Other.Velocity, R );
+<a name="137"></a>
+<a name="138"></a>            <font class="source_keyword">if</font>( Other.IsA(<font class="source_name">'Pawn'</font>) )
+<a name="139"></a>            {
+<a name="140"></a>                <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).bWarping = bNoTelefrag;
+<a name="141"></a>                <font class="source_keyword">if</font> ( Other.SetLocation(L) )
+<a name="142"></a>                {
+<a name="143"></a>                    <font class="source_comment">//tell enemies about teleport
+</font><a name="144"></a>                    <font class="source_keyword">if</font> ( Role == ROLE_Authority )
+<a name="145"></a>                    {
+<a name="146"></a>                        P = <font class="source_type">Level</font>.PawnList;
+<a name="147"></a>                        <font class="source_keyword">While</font> ( P != <font class="source_keyword">None</font> )
+<a name="148"></a>                        {
+<a name="149"></a>                            <font class="source_keyword">if</font> (P.Enemy == Other)
+<a name="150"></a>                                P.LastSeenPos = Other.Location; 
+<a name="151"></a>                            P = P.nextPawn;
+<a name="152"></a>                        }
+<a name="153"></a>                    }
+<a name="154"></a>                    R.Roll = <font class="source_int">0</font>;
+<a name="155"></a>                    <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).ViewRotation = R;
+<a name="156"></a>                    <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).ClientSetLocation(L, R );
+<a name="157"></a>                    <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).MoveTimer = -<font class="source_int">1.0</font>;
+<a name="158"></a>                }
+<a name="159"></a>                <font class="source_keyword">else</font>
+<a name="160"></a>                {
+<a name="161"></a>                    <font class="source_comment">// set up to keep trying to teleport
+</font><a name="162"></a>                    GotoState(<font class="source_name">'DelayedWarp'</font>);
+<a name="163"></a>                }
+<a name="164"></a>            }
+<a name="165"></a>            <font class="source_keyword">else</font>
+<a name="166"></a>            {
+<a name="167"></a>                Other.SetLocation(L);
+<a name="168"></a>                Other.SetRotation( R );
+<a name="169"></a>            }
+<a name="170"></a>            Other.Enable(<font class="source_name">'Touch'</font>);
+<a name="171"></a>            Other.Enable(<font class="source_name">'UnTouch'</font>);
+<a name="172"></a>            <font class="source_comment">// Change rotation according to portal's rotational change.
+</font><a name="173"></a>        }
+<a name="174"></a>    }
+<a name="175"></a>}
+<a name="176"></a>
+<a name="177"></a><font class="source_keyword">event</font> ActorLeaving( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other )
+<a name="178"></a>{
+<a name="179"></a>    <font class="source_keyword">Super</font>.ActorLeaving(Other);
+<a name="180"></a>    <font class="source_keyword">If</font> ( Other.IsA(<font class="source_name">'Pawn'</font>) )
+<a name="181"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).bWarping = <font class="source_keyword">false</font>;
+<a name="182"></a>}
+<a name="183"></a>
+<a name="184"></a><font class="source_keyword">State</font> DelayedWarp
+<a name="185"></a>{
+<a name="186"></a>    <font class="source_keyword">function</font> Tick(<font class="source_keyword">float</font> DeltaTime)
+<a name="187"></a>    {
+<a name="188"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="189"></a>        <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bFound;
+<a name="190"></a>
+<a name="191"></a>        <font class="source_keyword">For</font> ( P=<font class="source_type">Level</font>.PawnList; P!=<font class="source_keyword">None</font>; P=P.NextPawn )
+<a name="192"></a>            <font class="source_keyword">if</font> ( P.bWarping && (P.<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone == Self) )
+<a name="193"></a>            {
+<a name="194"></a>                bFound = <font class="source_keyword">true</font>;
+<a name="195"></a>                ActorEntered(P);
+<a name="196"></a>            }
+<a name="197"></a>
+<a name="198"></a>        <font class="source_keyword">If</font> ( !bFound )
+<a name="199"></a>            GotoState(<font class="source_name">''</font>);
+<a name="200"></a>    }
+<a name="201"></a>}
+<a name="202"></a>
+<a name="203"></a><font class="source_keyword">defaultproperties</font>
+<a name="204"></a>{
+<a name="205"></a>     MaxCarcasses=<font class="source_int">0</font>
+<a name="206"></a>}
+<a name="207"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\warpzoneinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#WarpZoneInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="voicepack.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="warpzonemarker.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:23:30.000 - Creation time: Wed 26/5/2004 10:49:07.109 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

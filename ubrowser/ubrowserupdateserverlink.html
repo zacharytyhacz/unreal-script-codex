@@ -1,0 +1,363 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - UBrowser.UBrowserUpdateServerLink</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ubrowser-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ubrowser\ubrowserupdateserverlink.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserUpdateServerLink">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowsersupersetlist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowserupdateservertextarea.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="ubrowser-overview.html">UBrowser</a>.UBrowserUpdateServerLink</h1>
+<b>Extends:</b> <a href="ubrowserhttpclient.html">UBrowserHTTPClient</a><br>
+<b>Modifiers:</b> <br>
+<a href="..\Source_ubrowser\ubrowserupdateserverlink.html"><b>Source code</b></a>
+
+<p>
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\info.html">Info</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\internetinfo.html">InternetInfo</a>
+            |   
+            +-- <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\internetlink.html">InternetLink</a>
+                |   
+                +-- <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\tcplink.html">TcpLink</a>
+                    |   
+                    +-- <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserbufferedtcplink.html">UBrowserBufferedTcpLink</a>
+                        |   
+                        +-- <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserhttpclient.html">UBrowserHTTPClient</a>
+                            |   
+                            +-- <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserupdateserverlink.html">UBrowserUpdateServerLink</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\utbrowser\utbrowserupdateserverlink.html">UTBrowserUpdateServerLink</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_GetFallback" name="GetFallback">GetFallback</a></td><td width="10%">=</td><td width="50%">2</td></tr>
+<tr><td width="40%"><a href="#_GetIRC" name="GetIRC">GetIRC</a></td><td width="10%">=</td><td width="50%">0</td></tr>
+<tr><td width="40%"><a href="#_GetMaster" name="GetMaster">GetMaster</a></td><td width="10%">=</td><td width="50%">1</td></tr>
+<tr><td width="40%"><a href="#_GetMOTD" name="GetMOTD">GetMOTD</a></td><td width="10%">=</td><td width="50%">3</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserhttpclient.html">UBrowserHTTPClient</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="ubrowserhttpclient.html#Connecting">Connecting</a>, <a href="ubrowserhttpclient.html#HadError">HadError</a>, <a href="ubrowserhttpclient.html#ReceivingData">ReceivingData</a>, <a href="ubrowserhttpclient.html#ReceivingHeader">ReceivingHeader</a>, <a href="ubrowserhttpclient.html#WaitingForHeader">WaitingForHeader</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CurrentURI" name="CurrentURI">CurrentURI</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MaxURI" name="MaxURI">MaxURI</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_UpdateServerAddress" name="UpdateServerAddress">UpdateServerAddress</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_UpdateServerPort" name="UpdateServerPort">UpdateServerPort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_UpdateServerTimeout" name="UpdateServerTimeout">UpdateServerTimeout</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserupdateserverwindow.html">UBrowserUpdateServerWindow</a></td><td width="66%"><a href="#_UpdateWindow" name="UpdateWindow">UpdateWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_URIs[10]" name="URIs[10]">URIs[10]</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserhttpclient.html">UBrowserHTTPClient</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="ubrowserhttpclient.html#bClosed">bClosed</a>, <a href="ubrowserhttpclient.html#CurrentState">CurrentState</a>, <a href="ubrowserhttpclient.html#ErrorCode">ErrorCode</a>, <a href="ubrowserhttpclient.html#ProxyServerAddress">ProxyServerAddress</a>, <a href="ubrowserhttpclient.html#ProxyServerPort">ProxyServerPort</a>, <a href="ubrowserhttpclient.html#ServerAddress">ServerAddress</a>, <a href="ubrowserhttpclient.html#ServerIpAddr">ServerIpAddr</a>, <a href="ubrowserhttpclient.html#ServerPort">ServerPort</a>, <a href="ubrowserhttpclient.html#ServerURI">ServerURI</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserbufferedtcplink.html">UBrowserBufferedTcpLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="ubrowserbufferedtcplink.html#bWaiting">bWaiting</a>, <a href="ubrowserbufferedtcplink.html#CR">CR</a>, <a href="ubrowserbufferedtcplink.html#CRLF">CRLF</a>, <a href="ubrowserbufferedtcplink.html#InputBuffer">InputBuffer</a>, <a href="ubrowserbufferedtcplink.html#LF">LF</a>, <a href="ubrowserbufferedtcplink.html#OutputBuffer">OutputBuffer</a>, <a href="ubrowserbufferedtcplink.html#WaitForCountChars">WaitForCountChars</a>, <a href="ubrowserbufferedtcplink.html#WaitingFor">WaitingFor</a>, <a href="ubrowserbufferedtcplink.html#WaitMatchData">WaitMatchData</a>, <a href="ubrowserbufferedtcplink.html#WaitResult">WaitResult</a>, <a href="ubrowserbufferedtcplink.html#WaitTimeoutTime">WaitTimeoutTime</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BrowseCurrentURI+" name="BrowseCurrentURI">BrowseCurrentURI</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Failure+" name="Failure">Failure</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_HTTPError+" name="HTTPError">HTTPError</a> (int ErrorCode)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_HTTPReceivedData+" name="HTTPReceivedData">HTTPReceivedData</a> (string Data)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ProcessData+" name="ProcessData">ProcessData</a> (string Data)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_QueryUpdateServer+" name="QueryUpdateServer">QueryUpdateServer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetupURIs+" name="SetupURIs">SetupURIs</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Success+" name="Success">Success</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserhttpclient.html">UBrowserHTTPClient</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="ubrowserhttpclient.html#Browse">Browse</a>, <a href="ubrowserhttpclient.html#Closed">Closed</a>, <a href="ubrowserhttpclient.html#DoBind">DoBind</a>, <a href="ubrowserhttpclient.html#HTTPError">HTTPError</a>, <a href="ubrowserhttpclient.html#HTTPReceivedData">HTTPReceivedData</a>, <a href="ubrowserhttpclient.html#Opened">Opened</a>, <a href="ubrowserhttpclient.html#PostBeginPlay">PostBeginPlay</a>, <a href="ubrowserhttpclient.html#Resolved">Resolved</a>, <a href="ubrowserhttpclient.html#SetError">SetError</a>, <a href="ubrowserhttpclient.html#Tick">Tick</a>, <a href="ubrowserhttpclient.html#Timer">Timer</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserbufferedtcplink.html">UBrowserBufferedTcpLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="ubrowserbufferedtcplink.html#DoBufferQueueIO">DoBufferQueueIO</a>, <a href="ubrowserbufferedtcplink.html#GotMatch">GotMatch</a>, <a href="ubrowserbufferedtcplink.html#GotMatchTimeout">GotMatchTimeout</a>, <a href="ubrowserbufferedtcplink.html#ParseDelimited">ParseDelimited</a>, <a href="ubrowserbufferedtcplink.html#PeekChar">PeekChar</a>, <a href="ubrowserbufferedtcplink.html#ReadBufferedLine">ReadBufferedLine</a>, <a href="ubrowserbufferedtcplink.html#ReadChar">ReadChar</a>, <a href="ubrowserbufferedtcplink.html#ReceivedText">ReceivedText</a>, <a href="ubrowserbufferedtcplink.html#ResetBuffer">ResetBuffer</a>, <a href="ubrowserbufferedtcplink.html#SendBufferedData">SendBufferedData</a>, <a href="ubrowserbufferedtcplink.html#WaitFor">WaitFor</a>, <a href="ubrowserbufferedtcplink.html#WaitForCount">WaitForCount</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_GetFallback" class="hidden"></a>GetFallback <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> GetFallback = <font class="source_int">2</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetIRC" class="hidden"></a>GetIRC <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> GetIRC = <font class="source_int">0</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetMaster" class="hidden"></a>GetMaster <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> GetMaster = <font class="source_int">1</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetMOTD" class="hidden"></a>GetMOTD <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> GetMOTD = <font class="source_int">3</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CurrentURI" class="hidden"></a>CurrentURI <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#7" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> CurrentURI;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxURI" class="hidden"></a>MaxURI <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#8" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> MaxURI;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UpdateServerAddress" class="hidden"></a>UpdateServerAddress <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#3" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> UpdateServerAddress;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UpdateServerPort" class="hidden"></a>UpdateServerPort <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#4" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> UpdateServerPort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UpdateServerTimeout" class="hidden"></a>UpdateServerTimeout <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#5" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> UpdateServerTimeout;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UpdateWindow" class="hidden"></a>UpdateWindow <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserupdateserverwindow.html" class="source">UBrowserUpdateServerWindow</a></font> UpdateWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_URIs[10]" class="hidden"></a>URIs[10] <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#6" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> URIs[<font class="source_int">10</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BrowseCurrentURI+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BrowseCurrentURI <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#32" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BrowseCurrentURI ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Failure+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Failure <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Failure ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HTTPError+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HTTPError <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#68" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> HTTPError (<font class="source_keyword">int</font> ErrorCode)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HTTPReceivedData+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HTTPReceivedData <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#79" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> HTTPReceivedData (<font class="source_keyword">string</font> Data)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ProcessData+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ProcessData <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#47" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ProcessData (<font class="source_keyword">string</font> Data)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_QueryUpdateServer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> QueryUpdateServer <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> QueryUpdateServer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetupURIs+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetupURIs <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetupURIs ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Success+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Success <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserupdateserverlink.html#42" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Success ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    UpdateServerAddress=<font class="source_string">"unreal.epicgames.com"</font>
+    UpdateServerPort=<font class="source_int">80</font>
+    UpdateServerTimeout=<font class="source_int">5</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ubrowser-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ubrowser\ubrowserupdateserverlink.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserUpdateServerLink">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowsersupersetlist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowserupdateservertextarea.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:41.890 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

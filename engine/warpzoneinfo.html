@@ -1,0 +1,326 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Engine.WarpZoneInfo</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\warpzoneinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#WarpZoneInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="voicepack.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="warpzonemarker.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="engine-overview.html">Engine</a>.WarpZoneInfo</h1>
+<b>Extends:</b> <a href="zoneinfo.html">ZoneInfo</a><br>
+<b>Modifiers:</b> native <br>
+<a href="..\Source_engine\warpzoneinfo.html"><b>Source code</b></a>
+
+<p>
+WarpZoneInfo. For making disjoint spaces appear as if they were connected;<br />
+supports both in-level warp zones and cross-level warp zones.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a>
+    |   
+    +-- <a href="engine-overview.html">Engine</a>.<a href="info.html">Info</a>
+        |   
+        +-- <a href="engine-overview.html">Engine</a>.<a href="zoneinfo.html">ZoneInfo</a>
+            |   
+            +-- <a href="engine-overview.html">Engine</a>.<a href="warpzoneinfo.html">WarpZoneInfo</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoTeleFrag" name="bNoTeleFrag">bNoTeleFrag</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_Destinations[8]" name="Destinations[8]">Destinations[8]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_iWarpZone" name="iWarpZone">iWarpZone</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numDestinations" name="numDestinations">numDestinations</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="warpzoneinfo.html">WarpZoneInfo</a></td><td width="66%"><a href="#_OtherSideActor" name="OtherSideActor">OtherSideActor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html">object</a></td><td width="66%"><a href="#_OtherSideLevel" name="OtherSideLevel">OtherSideLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_OtherSideURL" name="OtherSideURL">OtherSideURL</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_ThisTag" name="ThisTag">ThisTag</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Coords">coords</a></td><td width="66%"><a href="#_WarpCoords" name="WarpCoords">WarpCoords</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="engine-overview.html">Engine</a>.<a href="zoneinfo.html">ZoneInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="zoneinfo.html#AmbientBrightness">AmbientBrightness</a>, <a href="zoneinfo.html#AmbientHue">AmbientHue</a>, <a href="zoneinfo.html#AmbientSaturation">AmbientSaturation</a>, <a href="zoneinfo.html#bBounceVelocity">bBounceVelocity</a>, <a href="zoneinfo.html#bDestructive">bDestructive</a>, <a href="zoneinfo.html#bFogZone">bFogZone</a>, <a href="zoneinfo.html#bGravityZone">bGravityZone</a>, <a href="zoneinfo.html#bKillZone">bKillZone</a>, <a href="zoneinfo.html#bMoveProjectiles">bMoveProjectiles</a>, <a href="zoneinfo.html#bNeutralZone">bNeutralZone</a>, <a href="zoneinfo.html#bNoInventory">bNoInventory</a>, <a href="zoneinfo.html#bPainZone">bPainZone</a>, <a href="zoneinfo.html#bRaytraceReverb">bRaytraceReverb</a>, <a href="zoneinfo.html#bReverbZone">bReverbZone</a>, <a href="zoneinfo.html#bWaterZone">bWaterZone</a>, <a href="zoneinfo.html#CutoffHz">CutoffHz</a>, <a href="zoneinfo.html#DamagePerSec">DamagePerSec</a>, <a href="zoneinfo.html#DamageString">DamageString</a>, <a href="zoneinfo.html#DamageType">DamageType</a>, <a href="zoneinfo.html#Delay[6]">Delay[6]</a>, <a href="zoneinfo.html#EntryActor">EntryActor</a>, <a href="zoneinfo.html#EntrySound">EntrySound</a>, <a href="zoneinfo.html#EnvironmentMap">EnvironmentMap</a>, <a href="zoneinfo.html#ExitActor">ExitActor</a>, <a href="zoneinfo.html#ExitSound">ExitSound</a>, <a href="zoneinfo.html#FogColor">FogColor</a>, <a href="zoneinfo.html#FogDistance">FogDistance</a>, <a href="zoneinfo.html#Gain[6]">Gain[6]</a>, <a href="zoneinfo.html#LensFlareOffset[12]">LensFlareOffset[12]</a>, <a href="zoneinfo.html#LensFlareScale[12]">LensFlareScale[12]</a>, <a href="zoneinfo.html#LensFlare[12]">LensFlare[12]</a>, <a href="zoneinfo.html#LocationID">LocationID</a>, <a href="zoneinfo.html#MasterGain">MasterGain</a>, <a href="zoneinfo.html#MaxCarcasses">MaxCarcasses</a>, <a href="zoneinfo.html#MaxLightCount">MaxLightCount</a>, <a href="zoneinfo.html#MaxLightingPolyCount">MaxLightingPolyCount</a>, <a href="zoneinfo.html#MinLightCount">MinLightCount</a>, <a href="zoneinfo.html#MinLightingPolyCount">MinLightingPolyCount</a>, <a href="zoneinfo.html#NumCarcasses">NumCarcasses</a>, <a href="zoneinfo.html#SkyZone">SkyZone</a>, <a href="zoneinfo.html#SpeedOfSound">SpeedOfSound</a>, <a href="zoneinfo.html#TexUPanSpeed">TexUPanSpeed</a>, <a href="zoneinfo.html#TexVPanSpeed">TexVPanSpeed</a>, <a href="zoneinfo.html#ViewFlash">ViewFlash</a>, <a href="zoneinfo.html#ViewFog">ViewFog</a>, <a href="zoneinfo.html#ZoneFluidFriction">ZoneFluidFriction</a>, <a href="zoneinfo.html#ZoneGravity">ZoneGravity</a>, <a href="zoneinfo.html#ZoneGroundFriction">ZoneGroundFriction</a>, <a href="zoneinfo.html#ZoneName">ZoneName</a>, <a href="zoneinfo.html#ZonePlayerCount">ZonePlayerCount</a>, <a href="zoneinfo.html#ZonePlayerEvent">ZonePlayerEvent</a>, <a href="zoneinfo.html#ZoneTag">ZoneTag</a>, <a href="zoneinfo.html#ZoneTerminalVelocity">ZoneTerminalVelocity</a>, <a href="zoneinfo.html#ZoneVelocity">ZoneVelocity</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ActorEntered+" name="ActorEntered">ActorEntered</a> (<a href="actor.html">actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_ActorLeaving+" name="ActorLeaving">ActorLeaving</a> (<a href="actor.html">actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_ForceGenerate+" name="ForceGenerate">ForceGenerate</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_Generate+" name="Generate">Generate</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PreBeginPlay+" name="PreBeginPlay">PreBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+DelayedWarp" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">DelayedWarp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Trigger+" name="Trigger">Trigger</a> (<a href="actor.html">actor</a> Other, <a href="pawn.html">pawn</a> EventInstigator)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_UnWarp+" name="UnWarp">UnWarp</a> (out <a href="..\core\object.html#Vector">vector</a> Loc, out <a href="..\core\object.html#Vector">vector</a> Vel, out <a href="..\core\object.html#Rotator">rotator</a> R)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Warp+" name="Warp">Warp</a> (out <a href="..\core\object.html#Vector">vector</a> Loc, out <a href="..\core\object.html#Vector">vector</a> Vel, out <a href="..\core\object.html#Rotator">rotator</a> R)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="engine-overview.html">Engine</a>.<a href="zoneinfo.html">ZoneInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="zoneinfo.html#ActorEntered">ActorEntered</a>, <a href="zoneinfo.html#ActorLeaving">ActorLeaving</a>, <a href="zoneinfo.html#LinkToSkybox">LinkToSkybox</a>, <a href="zoneinfo.html#PreBeginPlay">PreBeginPlay</a>, <a href="zoneinfo.html#Trigger">Trigger</a>, <a href="zoneinfo.html#ZoneActors">ZoneActors</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>DelayedWarp <a href="..\Source_engine\warpzoneinfo.html#184" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> DelayedWarp <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Tick+DelayedWarp">Tick</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bNoTeleFrag" class="hidden"></a>bNoTeleFrag <a href="..\Source_engine\warpzoneinfo.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNoTeleFrag;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Destinations[8]" class="hidden"></a>Destinations[8] <a href="..\Source_engine\warpzoneinfo.html#22" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> Destinations[<font class="source_int">8</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_iWarpZone" class="hidden"></a>iWarpZone <a href="..\Source_engine\warpzoneinfo.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> iWarpZone;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_numDestinations" class="hidden"></a>numDestinations <a href="..\Source_engine\warpzoneinfo.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> numDestinations;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OtherSideActor" class="hidden"></a>OtherSideActor <a href="..\Source_engine\warpzoneinfo.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="warpzoneinfo.html" class="source">WarpZoneInfo</a></font> OtherSideActor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OtherSideLevel" class="hidden"></a>OtherSideLevel <a href="..\Source_engine\warpzoneinfo.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="..\core\object.html" class="source">object</a></font> OtherSideLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OtherSideURL" class="hidden"></a>OtherSideURL <a href="..\Source_engine\warpzoneinfo.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> OtherSideURL;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ThisTag" class="hidden"></a>ThisTag <a href="..\Source_engine\warpzoneinfo.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">name</font> ThisTag;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WarpCoords" class="hidden"></a>WarpCoords <a href="..\Source_engine\warpzoneinfo.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\core\object.html#Coords" class="source">coords</a></font> WarpCoords;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ActorEntered+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ActorEntered <span class="function_state"></span> <a href="..\Source_engine\warpzoneinfo.html#109" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ActorEntered (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ActorLeaving+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> ActorLeaving <span class="function_state"></span> <a href="..\Source_engine\warpzoneinfo.html#177" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> ActorLeaving (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceGenerate+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> ForceGenerate <span class="function_state"></span> <a href="..\Source_engine\warpzoneinfo.html#88" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> ForceGenerate ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Generate+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Generate <span class="function_state"></span> <a href="..\Source_engine\warpzoneinfo.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> Generate ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PreBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PreBeginPlay <span class="function_state"></span> <a href="..\Source_engine\warpzoneinfo.html#41" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PreBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+DelayedWarp" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">DelayedWarp</span> <a href="..\Source_engine\warpzoneinfo.html#186" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Trigger+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Trigger <span class="function_state"></span> <a href="..\Source_engine\warpzoneinfo.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="trigger.html" class="source">Trigger</a></font> (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="pawn.html" class="source">pawn</a></font> EventInstigator)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UnWarp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> UnWarp <span class="function_state"></span> <a href="..\Source_engine\warpzoneinfo.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> UnWarp (<font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Loc, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Vel, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> R)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Warp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Warp <span class="function_state"></span> <a href="..\Source_engine\warpzoneinfo.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Warp (<font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Loc, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Vel, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> R)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     MaxCarcasses=<font class="source_int">0</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\warpzoneinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#WarpZoneInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="voicepack.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="warpzonemarker.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:59.359 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

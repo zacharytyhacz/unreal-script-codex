@@ -1,0 +1,221 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.ShockProj</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\shockproj.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#ShockProj">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="shockexplo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="shockrifle.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\shockproj.html">ShockProj</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// ShockProj.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\shockproj.html" class="source">ShockProj</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\projectile.html" class="source">Projectile</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec OBJ LOAD FILE=textures\ASMDAlt.utx PACKAGE=Botpack.ASMDAlt
+</font><a name="7"></a>
+<a name="8"></a><font class="source_keyword">var</font>() <font class="source_type">Sound</font> ExploSound;
+<a name="9"></a>
+<a name="10"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PostBeginPlay()
+<a name="11"></a>{
+<a name="12"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="13"></a>    <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.bDropDetail )
+<a name="14"></a>        LightType = LT_None;
+<a name="15"></a>}
+<a name="16"></a>
+<a name="17"></a><font class="source_keyword">function</font> SuperExplosion()
+<a name="18"></a>{
+<a name="19"></a>    HurtRadius(Damage*<font class="source_int">3</font>, <font class="source_int">250</font>, MyDamageType, MomentumTransfer*<font class="source_int">2</font>, Location );
+<a name="20"></a>    
+<a name="21"></a>    Spawn(<font class="source_keyword">Class</font><font class="source_name">'ut_ComboRing'</font>,,<font class="source_name">''</font>,Location, Instigator.ViewRotation);
+<a name="22"></a>    PlaySound(ExploSound,,<font class="source_int">20.0</font>,,<font class="source_int">2000</font>,<font class="source_int">0.6</font>);  
+<a name="23"></a>    
+<a name="24"></a>    Destroy(); 
+<a name="25"></a>}
+<a name="26"></a>
+<a name="27"></a><font class="source_keyword2">auto</font> <font class="source_keyword">state</font> Flying
+<a name="28"></a>{
+<a name="29"></a>    <font class="source_keyword">function</font> ProcessTouch (<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation)
+<a name="30"></a>    {
+<a name="31"></a>        <font class="source_keyword">If</font> ( (Other!=Instigator) && (!Other.IsA(<font class="source_name">'Projectile'</font>) || (Other.CollisionRadius &gt; <font class="source_int">0</font>)) )
+<a name="32"></a>            Explode(HitLocation,Normal(HitLocation-Other.Location));
+<a name="33"></a>    }
+<a name="34"></a>
+<a name="35"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="36"></a>    {
+<a name="37"></a>        Velocity = <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>(Rotation) * speed;    
+<a name="38"></a>    }
+<a name="39"></a>}
+<a name="40"></a>
+<a name="41"></a>
+<a name="42"></a><font class="source_keyword">function</font> Explode(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation,<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal)
+<a name="43"></a>{
+<a name="44"></a>    PlaySound(ImpactSound, SLOT_Misc, <font class="source_int">0.5</font>,,, <font class="source_int">0.5</font>+FRand());
+<a name="45"></a>    HurtRadius(Damage, <font class="source_int">70</font>, MyDamageType, MomentumTransfer, Location );
+<a name="46"></a>    <font class="source_keyword">if</font> (Damage &gt; <font class="source_int">60</font>)
+<a name="47"></a>        Spawn(<font class="source_keyword">class</font><font class="source_name">'ut_RingExplosion3'</font>,,, HitLocation+HitNormal*<font class="source_int">8</font>,<font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font>(HitNormal));
+<a name="48"></a>    <font class="source_keyword">else</font>
+<a name="49"></a>        Spawn(<font class="source_keyword">class</font><font class="source_name">'ut_RingExplosion'</font>,,, HitLocation+HitNormal*<font class="source_int">8</font>,<font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font>(Velocity));        
+<a name="50"></a>
+<a name="51"></a>    Destroy();
+<a name="52"></a>}
+<a name="53"></a>
+<a name="54"></a><font class="source_keyword">defaultproperties</font>
+<a name="55"></a>{
+<a name="56"></a>     ExplosionDecal=<font class="source_keyword">class</font><font class="source_name">'Botpack.EnergyImpact'</font>
+<a name="57"></a>     speed=<font class="source_int">1000.000000</font>
+<a name="58"></a>     Damage=<font class="source_int">55.000000</font>
+<a name="59"></a>     MomentumTransfer=<font class="source_int">70000</font>
+<a name="60"></a>     MyDamageType=Jolted
+<a name="61"></a>     ExploSound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.General.SpecialExpl'</font>
+<a name="62"></a>     ImpactSound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.General.Expla02'</font>
+<a name="63"></a>     bNetTemporary=<font class="source_keyword">False</font>
+<a name="64"></a>     RemoteRole=ROLE_SimulatedProxy
+<a name="65"></a>     LifeSpan=<font class="source_int">10.000000</font>
+<a name="66"></a>     DrawType=DT_Sprite
+<a name="67"></a>     Style=STY_Translucent
+<a name="68"></a>     <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Botpack.ASMDAlt.ASMDAlt_a00'</font>
+<a name="69"></a>     DrawScale=<font class="source_int">0.400000</font>
+<a name="70"></a>     bUnlit=<font class="source_keyword">True</font>
+<a name="71"></a>     CollisionRadius=<font class="source_int">12.000000</font>
+<a name="72"></a>     CollisionHeight=<font class="source_int">12.000000</font>
+<a name="73"></a>     bProjTarget=<font class="source_keyword">True</font>
+<a name="74"></a>     LightType=LT_Steady
+<a name="75"></a>     LightEffect=LE_NonIncidence
+<a name="76"></a>     LightBrightness=<font class="source_int">255</font>
+<a name="77"></a>     LightHue=<font class="source_int">165</font>
+<a name="78"></a>     LightSaturation=<font class="source_int">72</font>
+<a name="79"></a>     LightRadius=<font class="source_int">6</font>
+<a name="80"></a>     bFixedRotationDir=<font class="source_keyword">True</font>
+<a name="81"></a>     RotationRate=(Pitch=<font class="source_int">45345</font>,Yaw=<font class="source_int">33453</font>,Roll=<font class="source_int">63466</font>)
+<a name="82"></a>     DesiredRotation=(Pitch=<font class="source_int">23442</font>,Yaw=<font class="source_int">34234</font>,Roll=<font class="source_int">34234</font>)
+<a name="83"></a>}
+<a name="84"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\shockproj.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#ShockProj">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="shockexplo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="shockrifle.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:22:18.000 - Creation time: Wed 26/5/2004 10:48:37.421 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

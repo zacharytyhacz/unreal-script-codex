@@ -1,0 +1,301 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealShare.TriggeredDeath</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\triggereddeath.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#TriggeredDeath">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="triggeredambientsound.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="triggerlight.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\triggereddeath.html">TriggeredDeath</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// TriggeredDeath.
+</font><a name="3"></a><font class="source_comment">// When triggered, kills the player, causing screen flashes and sounds.
+</font><a name="4"></a><font class="source_comment">//=============================================================================
+</font><a name="5"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unrealshare\triggereddeath.html" class="source">TriggeredDeath</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\triggers.html" class="source">Triggers</a></font>;
+<a name="6"></a>
+<a name="7"></a><font class="source_keyword">var</font>() <font class="source_type">Sound</font>  MaleDeathSound;
+<a name="8"></a><font class="source_keyword">var</font>() <font class="source_type">Sound</font>  FemaleDeathSound;
+<a name="9"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font>  StartFlashScale;
+<a name="10"></a><font class="source_keyword">var</font>() <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> StartFlashFog;
+<a name="11"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font>  EndFlashScale;
+<a name="12"></a><font class="source_keyword">var</font>() <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> EndFlashFog;
+<a name="13"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font>  ChangeTime;
+<a name="14"></a><font class="source_keyword">var</font>() <font class="source_keyword">Name</font>   DeathName;
+<a name="15"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>   bDestroyItems; <font class="source_comment">// destroy any items which may touch it as well
+</font><a name="16"></a>
+<a name="17"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> TimePassed[<font class="source_int">8</font>];
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> Victim[<font class="source_int">8</font>];
+<a name="19"></a>
+<a name="20"></a><font class="source_keyword2">auto</font> <font class="source_keyword">state</font> Enabled
+<a name="21"></a>{
+<a name="22"></a>    <font class="source_keyword">function</font> Touch( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other )
+<a name="23"></a>    {
+<a name="24"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> Inv;
+<a name="25"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="26"></a>        <font class="source_keyword">local</font> <font class="source_keyword">int</font> VNum;
+<a name="27"></a>
+<a name="28"></a>        <font class="source_comment">// Something has contacted the death trigger.
+</font><a name="29"></a>        <font class="source_comment">// If it is a PlayerPawn, have it screen flash and
+</font><a name="30"></a>        <font class="source_comment">// die.
+</font><a name="31"></a>        <font class="source_keyword">if</font>( Other.bIsPawn )
+<a name="32"></a>        {
+<a name="33"></a>            P = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other);
+<a name="34"></a>            P.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> = <font class="source_keyword">None</font>;
+<a name="35"></a>            P.SelectedItem = <font class="source_keyword">None</font>;
+<a name="36"></a>            P.DropWhenKilled = <font class="source_keyword">None</font>;
+<a name="37"></a>            <font class="source_type">Level</font>.Game.DiscardInventory(P); 
+<a name="38"></a>            
+<a name="39"></a>            <font class="source_keyword">if</font> ( P.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &lt;= <font class="source_int">0</font> )
+<a name="40"></a>                <font class="source_keyword">return</font>;
+<a name="41"></a>            <font class="source_keyword">if</font> ( Other.IsA(<font class="source_name">'PlayerPawn'</font>) )
+<a name="42"></a>            {
+<a name="43"></a>                Enable(<font class="source_name">'Tick'</font>);
+<a name="44"></a>                <font class="source_keyword">While</font> ( (VNum &lt; <font class="source_int">7</font>) && (Victim[VNum] != <font class="source_keyword">None</font>) )
+<a name="45"></a>                    VNum++;
+<a name="46"></a>                Victim[Vnum] = <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other);
+<a name="47"></a>                TimePassed[VNum] = <font class="source_int">0</font>;
+<a name="48"></a>            }
+<a name="49"></a>            <font class="source_keyword">else</font>
+<a name="50"></a>                KillVictim(P);
+<a name="51"></a>
+<a name="52"></a>            P.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> = <font class="source_int">1</font>;
+<a name="53"></a>            <font class="source_keyword">if</font> ( P.bIsPlayer )
+<a name="54"></a>            {
+<a name="55"></a>                <font class="source_keyword">if</font>( P.bIsFemale )
+<a name="56"></a>                    Other.PlaySound( FemaleDeathSound, SLOT_Talk );
+<a name="57"></a>                <font class="source_keyword">else</font>
+<a name="58"></a>                    Other.PlaySound( MaleDeathSound, SLOT_Talk );
+<a name="59"></a>            }
+<a name="60"></a>            <font class="source_keyword">else</font>
+<a name="61"></a>                P.Playsound(P.Die, SLOT_Talk);
+<a name="62"></a>        }
+<a name="63"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font>( bDestroyItems )
+<a name="64"></a>            Other.Destroy();
+<a name="65"></a>    }
+<a name="66"></a>
+<a name="67"></a>    <font class="source_keyword">function</font> KillVictim(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Victim)
+<a name="68"></a>    {
+<a name="69"></a>        Victim.NextState = <font class="source_name">''</font>;
+<a name="70"></a>        Victim.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> = -<font class="source_int">1</font>;
+<a name="71"></a>        <font class="source_keyword">if</font> (DeathName == <font class="source_name">''</font>)
+<a name="72"></a>            Victim.Died(<font class="source_keyword">None</font>, <font class="source_name">'Fell'</font>, Victim.Location);
+<a name="73"></a>        <font class="source_keyword">else</font>
+<a name="74"></a>            Victim.Died(<font class="source_keyword">None</font>, DeathName, Victim.Location);
+<a name="75"></a>        Victim.HidePlayer();
+<a name="76"></a>    }
+<a name="77"></a>
+<a name="78"></a>    <font class="source_keyword">function</font> Tick( <font class="source_keyword">float</font> DeltaTime )
+<a name="79"></a>    {
+<a name="80"></a>        <font class="source_keyword">local</font> <font class="source_keyword">Float</font> CurScale;
+<a name="81"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> CurFog;
+<a name="82"></a>        <font class="source_keyword">local</font> <font class="source_keyword">float</font>  TimeRatio;
+<a name="83"></a>        <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, VNum;
+<a name="84"></a>        <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bFoundVictim;
+<a name="85"></a>
+<a name="86"></a>        <font class="source_keyword">for</font> ( i=<font class="source_int">0</font>; i&lt;<font class="source_int">8</font>; i++ )
+<a name="87"></a>            <font class="source_keyword">if</font>( Victim[i] != <font class="source_keyword">None</font> )
+<a name="88"></a>            {
+<a name="89"></a>                <font class="source_keyword">if</font> ( Victim[i].<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &gt; <font class="source_int">1</font> )
+<a name="90"></a>                    Victim[i] = <font class="source_keyword">None</font>;
+<a name="91"></a>                <font class="source_keyword">else</font>
+<a name="92"></a>                {
+<a name="93"></a>                    <font class="source_comment">// Check the timing
+</font><a name="94"></a>                    TimePassed[i] += DeltaTime;
+<a name="95"></a>                    <font class="source_keyword">if</font>( TimePassed[i] &gt;= ChangeTime )
+<a name="96"></a>                    {
+<a name="97"></a>                        TimeRatio = <font class="source_int">1</font>;
+<a name="98"></a>                        Victim[i].ClientFlash( EndFlashScale, <font class="source_int">1000</font> * EndFlashFog );
+<a name="99"></a>                        <font class="source_keyword">if</font> ( Victim[i].<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &gt; <font class="source_int">0</font> )
+<a name="100"></a>                            KillVictim(Victim[i]);
+<a name="101"></a>                        Victim[i] = <font class="source_keyword">None</font>;
+<a name="102"></a>                    }
+<a name="103"></a>                    <font class="source_keyword">else</font> 
+<a name="104"></a>                    {
+<a name="105"></a>                        bFoundVictim = <font class="source_keyword">true</font>;
+<a name="106"></a>                        <font class="source_comment">// Continue the screen flashing
+</font><a name="107"></a>                        TimeRatio = TimePassed[i]/ChangeTime;
+<a name="108"></a>                        CurScale = (EndFlashScale-StartFlashScale)*TimeRatio + StartFlashScale;
+<a name="109"></a>                        CurFog   = (EndFlashFog  -StartFlashFog  )*TimeRatio + StartFlashFog;
+<a name="110"></a>                        Victim[i].ClientFlash( CurScale, <font class="source_int">1000</font> * CurFog );
+<a name="111"></a>                    }
+<a name="112"></a>                }
+<a name="113"></a>            }
+<a name="114"></a>        <font class="source_keyword">if</font> ( !bFoundVictim )
+<a name="115"></a>            Disable(<font class="source_name">'Tick'</font>);
+<a name="116"></a>    }
+<a name="117"></a>}
+<a name="118"></a>
+<a name="119"></a><font class="source_keyword">defaultproperties</font>
+<a name="120"></a>{
+<a name="121"></a>}
+<a name="122"></a>
+<a name="123"></a>
+<a name="124"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\triggereddeath.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#TriggeredDeath">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="triggeredambientsound.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="triggerlight.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:02.000 - Creation time: Wed 26/5/2004 10:48:47.375 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

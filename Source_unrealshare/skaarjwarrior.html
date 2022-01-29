@@ -1,0 +1,895 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealShare.SkaarjWarrior</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\skaarjwarrior.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#SkaarjWarrior">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="skaarjscout.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="slimezone.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\skaarjwarrior.html">SkaarjWarrior</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// Skaarj.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unrealshare\skaarjwarrior.html" class="source">SkaarjWarrior</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\unrealshare\skaarj.html" class="source">Skaarj</a></font>;
+<a name="5"></a>    
+<a name="6"></a><font class="source_macro">#exec MESH IMPORT MESH=Skaarjw ANIVFILE=MODELS\Skaarj_a.3D DATAFILE=MODELS\Skaarj_d.3D X=0 Y=0 Z=0 ZEROTEX=1 LODSTYLE=2
+</font><a name="7"></a><font class="source_macro">#exec MESH LODPARAMS MESH=Skaarjw  MINVERTS=130
+</font><a name="8"></a><font class="source_macro">#exec MESH ORIGIN MESH=Skaarjw X=0 Y=-20 Z=-20 YAW=64 ROLL=-64
+</font><a name="9"></a>
+<a name="10"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=All		  STARTFRAME=0   NUMFRAMES=542
+</font><a name="11"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Claw         STARTFRAME=0   NUMFRAMES=11  RATE=15  Group=Attack
+</font><a name="12"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=GutHit       STARTFRAME=11  NUMFRAMES=1
+</font><a name="13"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=guncheck     STARTFRAME=12  NUMFRAMES=7   RATE=6
+</font><a name="14"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Breath       STARTFRAME=19  NUMFRAMES=12  RATE=6
+</font><a name="15"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Breath2      STARTFRAME=31  NUMFRAMES=8   RATE=6
+</font><a name="16"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=MButton1     STARTFRAME=39  NUMFRAMES=33  RATE=15
+</font><a name="17"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=MButton2     STARTFRAME=49  NUMFRAMES=33  RATE=15
+</font><a name="18"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=MButton3     STARTFRAME=59  NUMFRAMES=36  RATE=15
+</font><a name="19"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=MButton4     STARTFRAME=72  NUMFRAMES=23  RATE=15
+</font><a name="20"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Button1      STARTFRAME=39  NUMFRAMES=10  RATE=15
+</font><a name="21"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Button2      STARTFRAME=49  NUMFRAMES=10  RATE=15
+</font><a name="22"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Button3      STARTFRAME=59  NUMFRAMES=13  RATE=15
+</font><a name="23"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Button4      STARTFRAME=72  NUMFRAMES=10  RATE=15
+</font><a name="24"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Button5      STARTFRAME=82  NUMFRAMES=13  RATE=15
+</font><a name="25"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Death        STARTFRAME=95  NUMFRAMES=23  RATE=15
+</font><a name="26"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Death2       STARTFRAME=118 NUMFRAMES=13  RATE=15
+</font><a name="27"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Death3       STARTFRAME=131 NUMFRAMES=21  RATE=15
+</font><a name="28"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Death4       STARTFRAME=152 NUMFRAMES=11  RATE=15
+</font><a name="29"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Duck         STARTFRAME=163 NUMFRAMES=1            Group=Ducking
+</font><a name="30"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Fighter      STARTFRAME=164 NUMFRAMES=15  RATE=15
+</font><a name="31"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Firing       STARTFRAME=179 NUMFRAMES=11  RATE=15  Group=Attack
+</font><a name="32"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Getup        STARTFRAME=190 NUMFRAMES=11  RATE=15
+</font><a name="33"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=HairFlip     STARTFRAME=201 NUMFRAMES=20  RATE=15
+</font><a name="34"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=HeadHit      STARTFRAME=221 NUMFRAMES=1
+</font><a name="35"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Headup       STARTFRAME=222 NUMFRAMES=11  RATE=15
+</font><a name="36"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Jog2Fight    STARTFRAME=233 NUMFRAMES=11  RATE=15
+</font><a name="37"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Jog          STARTFRAME=244 NUMFRAMES=10  RATE=15
+</font><a name="38"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=FullJump     STARTFRAME=254 NUMFRAMES=15  RATE=15
+</font><a name="39"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Jump         STARTFRAME=254 NUMFRAMES=5   RATE=15
+</font><a name="40"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=InAir        STARTFRAME=259 NUMFRAMES=1   
+</font><a name="41"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Landed       STARTFRAME=266 NUMFRAMES=1  
+</font><a name="42"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Jump2        STARTFRAME=269 NUMFRAMES=1
+</font><a name="43"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Land         STARTFRAME=270 NUMFRAMES=1
+</font><a name="44"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=LeftDodge    STARTFRAME=271 NUMFRAMES=13  RATE=15
+</font><a name="45"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=LeftHit      STARTFRAME=284 NUMFRAMES=1
+</font><a name="46"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=StrafeLeftFr STARTFRAME=285 NUMFRAMES=14  RATE=15  Group=MovingAttack
+</font><a name="47"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Looking      STARTFRAME=299 NUMFRAMES=23  RATE=15
+</font><a name="48"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=StrafeLeft   STARTFRAME=322 NUMFRAMES=14  RATE=15
+</font><a name="49"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Lunge        STARTFRAME=336 NUMFRAMES=13  RATE=15  Group=Attack
+</font><a name="50"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=StrafeRightFr STARTFRAME=349 NUMFRAMES=14 RATE=15  Group=MovingAttack
+</font><a name="51"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=RightHit     STARTFRAME=363 NUMFRAMES=1
+</font><a name="52"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=StrafeRight  STARTFRAME=364 NUMFRAMES=14  RATE=15
+</font><a name="53"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Spin         STARTFRAME=378 NUMFRAMES=20           Group=Attack
+</font><a name="54"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=gunfix       STARTFRAME=398 NUMFRAMES=8   RATE=6
+</font><a name="55"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Swim         STARTFRAME=406 NUMFRAMES=15  RATE=15
+</font><a name="56"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Walk         STARTFRAME=421 NUMFRAMES=15  RATE=15
+</font><a name="57"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=WalkFire     STARTFRAME=436 NUMFRAMES=15  RATE=15  Group=MovingAttack 
+</font><a name="58"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=RightDodge   STARTFRAME=451 NUMFRAMES=13  RATE=15
+</font><a name="59"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=JogFire      STARTFRAME=464 NUMFRAMES=10  RATE=15  Group=MovingAttack
+</font><a name="60"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Death5       STARTFRAME=474 NUMFRAMES=28  RATE=15  Group=MovingAttack
+</font><a name="61"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=Stretch      STARTFRAME=502 NUMFRAMES=25  RATE=15  Group=MovingAttack
+</font><a name="62"></a><font class="source_macro">#exec MESH SEQUENCE MESH=Skaarjw SEQ=SwimFire     STARTFRAME=527 NUMFRAMES=15  RATE=15  Group=MovingAttack
+</font><a name="63"></a>
+<a name="64"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Skaarjw1 FILE=MODELS\Skaarj.PCX GROUP=Skins 
+</font><a name="65"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=Skaarjw X=0.1 Y=0.1 Z=0.2
+</font><a name="66"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=Skaarjw NUM=0 TEXTURE=Skaarjw1
+</font><a name="67"></a>
+<a name="68"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=WalkFire TIME=0.5 FUNCTION=SpawnTwoShots
+</font><a name="69"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=JogFire TIME=0.5 FUNCTION=SpawnTwoShots
+</font><a name="70"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=SwimFire TIME=0.5 FUNCTION=SpawnTwoShots
+</font><a name="71"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=StrafeLeftFr TIME=0.5 FUNCTION=SpawnTwoShots
+</font><a name="72"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=StrafeRightFr TIME=0.5 FUNCTION=SpawnTwoShots
+</font><a name="73"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Firing TIME=0.25 FUNCTION=SpawnTwoShots
+</font><a name="74"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Spin TIME=0.48 FUNCTION=SpinDamageTarget
+</font><a name="75"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Spin TIME=0.67 FUNCTION=SpinDamageTarget
+</font><a name="76"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Claw TIME=0.24 FUNCTION=ClawDamageTarget
+</font><a name="77"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Claw TIME=0.76 FUNCTION=ClawDamageTarget
+</font><a name="78"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Death TIME=0.41 FUNCTION=LandThump
+</font><a name="79"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Death2 TIME=0.61 FUNCTION=LandThump
+</font><a name="80"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Death3 TIME=0.73 FUNCTION=LandThump
+</font><a name="81"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Death4 TIME=0.62 FUNCTION=LandThump
+</font><a name="82"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Death5 TIME=0.82 FUNCTION=LandThump
+</font><a name="83"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Walk TIME=0.3 FUNCTION=WalkStep
+</font><a name="84"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Walk TIME=0.8 FUNCTION=WalkStep
+</font><a name="85"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=WalkFire TIME=0.3 FUNCTION=WalkStep
+</font><a name="86"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=WalkFire TIME=0.8 FUNCTION=WalkStep
+</font><a name="87"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Jog TIME=0.25 FUNCTION=RunStep
+</font><a name="88"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=Jog TIME=0.75 FUNCTION=RunStep
+</font><a name="89"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=JogFire TIME=0.25 FUNCTION=RunStep
+</font><a name="90"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=JogFire TIME=0.75 FUNCTION=RunStep
+</font><a name="91"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=StrafeLeft TIME=0.25 FUNCTION=RunStep
+</font><a name="92"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=StrafeLeft TIME=0.75 FUNCTION=RunStep
+</font><a name="93"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=StrafeLeftFr TIME=0.25 FUNCTION=RunStep
+</font><a name="94"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=StrafeLeftFr TIME=0.75 FUNCTION=RunStep
+</font><a name="95"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=StrafeRight TIME=0.25 FUNCTION=RunStep
+</font><a name="96"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=StrafeRight TIME=0.75 FUNCTION=RunStep
+</font><a name="97"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=StrafeRightFr TIME=0.25 FUNCTION=RunStep
+</font><a name="98"></a><font class="source_macro">#exec MESH NOTIFY MESH=Skaarjw SEQ=StrafeRightFr TIME=0.75 FUNCTION=RunStep
+</font><a name="99"></a>
+<a name="100"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Skaarj\blade1a.WAV" NAME="blade1s" GROUP="Skaarj"
+</font><a name="101"></a>
+<a name="102"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="103"></a><font class="source_comment">// SkaarjWarrior variables.
+</font><a name="104"></a>
+<a name="105"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> Blade;
+<a name="106"></a>
+<a name="107"></a><font class="source_comment">//=========================================================================================
+</font><a name="108"></a>
+<a name="109"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="110"></a>{
+<a name="111"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="112"></a>    <font class="source_keyword">if</font> ( skill == <font class="source_int">3</font> )
+<a name="113"></a>    {
+<a name="114"></a>        SpinDamage = <font class="source_int">20</font>;
+<a name="115"></a>        ClawDamage = <font class="source_int">17</font>;
+<a name="116"></a>    }
+<a name="117"></a>}
+<a name="118"></a>
+<a name="119"></a><font class="source_keyword">function</font> TryToDuck(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> duckDir, <font class="source_keyword">bool</font> bReversed)
+<a name="120"></a>{
+<a name="121"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation, HitNormal, Extent;
+<a name="122"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> duckLeft, bSuccess;
+<a name="123"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> HitActor;
+<a name="124"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> decision;
+<a name="125"></a>
+<a name="126"></a>    <font class="source_comment">//log("duck");
+</font><a name="127"></a>                
+<a name="128"></a>    duckDir.Z = <font class="source_int">0</font>;
+<a name="129"></a>    duckLeft = !bReversed;
+<a name="130"></a>
+<a name="131"></a>    Extent.X = CollisionRadius;
+<a name="132"></a>    Extent.Y = CollisionRadius;
+<a name="133"></a>    Extent.Z = CollisionHeight;
+<a name="134"></a>    HitActor = Trace(HitLocation, HitNormal, Location + <font class="source_int">200</font> * duckDir, Location, <font class="source_keyword">false</font>, Extent);
+<a name="135"></a>    bSuccess = ( (HitActor == <font class="source_keyword">None</font>) || (VSize(HitLocation - Location) &gt; <font class="source_int">150</font>) );
+<a name="136"></a>    <font class="source_keyword">if</font> ( !bSuccess )
+<a name="137"></a>    {
+<a name="138"></a>        duckLeft = !duckLeft;
+<a name="139"></a>        duckDir *= -<font class="source_int">1</font>;
+<a name="140"></a>        HitActor = Trace(HitLocation, HitNormal, Location + <font class="source_int">200</font> * duckDir, Location, <font class="source_keyword">false</font>, Extent);
+<a name="141"></a>        bSuccess = ( (HitActor == <font class="source_keyword">None</font>) || (VSize(HitLocation - Location) &gt; <font class="source_int">150</font>) );
+<a name="142"></a>    }
+<a name="143"></a>    <font class="source_keyword">if</font> ( !bSuccess )
+<a name="144"></a>        <font class="source_keyword">return</font>;
+<a name="145"></a>    
+<a name="146"></a>    <font class="source_keyword">if</font> ( HitActor == <font class="source_keyword">None</font> )
+<a name="147"></a>        HitLocation = Location + <font class="source_int">200</font> * duckDir;
+<a name="148"></a>    HitActor = Trace(HitLocation, HitNormal, HitLocation - MaxStepHeight * vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">1</font>), HitLocation, <font class="source_keyword">false</font>, Extent);
+<a name="149"></a>    <font class="source_keyword">if</font> (HitActor == <font class="source_keyword">None</font>)
+<a name="150"></a>        <font class="source_keyword">return</font>;
+<a name="151"></a>        
+<a name="152"></a>    <font class="source_comment">//log("good duck");
+</font><a name="153"></a>
+<a name="154"></a>    SetFall();
+<a name="155"></a>    <font class="source_keyword">if</font> ( duckLeft )
+<a name="156"></a>        PlayAnim(<font class="source_name">'LeftDodge'</font>, <font class="source_int">1.35</font>);
+<a name="157"></a>    <font class="source_keyword">else</font>
+<a name="158"></a>        PlayAnim(<font class="source_name">'RightDodge'</font>, <font class="source_int">1.35</font>);
+<a name="159"></a>    Velocity = duckDir * GroundSpeed;
+<a name="160"></a>    Velocity.Z = <font class="source_int">200</font>;
+<a name="161"></a>    SetPhysics(PHYS_Falling);
+<a name="162"></a>    GotoState(<font class="source_name">'FallingState'</font>,<font class="source_name">'Ducking'</font>);
+<a name="163"></a>}   
+<a name="164"></a>
+<a name="165"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CanFireAtEnemy()
+<a name="166"></a>{
+<a name="167"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation, HitNormal,X,Y,Z, projStart, EnemyDir, EnemyUp;
+<a name="168"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> HitActor1, HitActor2;
+<a name="169"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> EnemyDist;
+<a name="170"></a>        
+<a name="171"></a>    EnemyDir = Enemy.Location - Location;
+<a name="172"></a>    EnemyDist = VSize(EnemyDir);
+<a name="173"></a>    EnemyUp = Enemy.CollisionHeight * vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0.9</font>);
+<a name="174"></a>    <font class="source_keyword">if</font> ( EnemyDist &gt; <font class="source_int">300</font> )
+<a name="175"></a>    {
+<a name="176"></a>        EnemyDir = <font class="source_int">300</font> * EnemyDir/EnemyDist;
+<a name="177"></a>        EnemyUp = <font class="source_int">300</font> * EnemyUp/EnemyDist;
+<a name="178"></a>    }
+<a name="179"></a>    
+<a name="180"></a>    GetAxes(Rotation,X,Y,Z);
+<a name="181"></a>    projStart = Location + <font class="source_int">0.9</font> * CollisionRadius * X + CollisionRadius * Y + <font class="source_int">0.4</font> * CollisionHeight * Z;
+<a name="182"></a>    HitActor1 = Trace(HitLocation, HitNormal, projStart + EnemyDir + EnemyUp, projStart, <font class="source_keyword">true</font>);
+<a name="183"></a>    <font class="source_keyword">if</font> ( (HitActor1 != Enemy) && (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor1) != <font class="source_keyword">None</font>) 
+<a name="184"></a>        && (AttitudeTo(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor1)) &gt; ATTITUDE_Ignore) )
+<a name="185"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="186"></a>         
+<a name="187"></a>    projStart = Location + <font class="source_int">0.9</font> * CollisionRadius * X - CollisionRadius * Y + <font class="source_int">0.4</font> * CollisionHeight * Z;
+<a name="188"></a>    HitActor2 = Trace(HitLocation, HitNormal, projStart + EnemyDir + EnemyUp, projStart, <font class="source_keyword">true</font>);
+<a name="189"></a>
+<a name="190"></a>    <font class="source_keyword">if</font> ( (HitActor2 != Enemy) && (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor2) != <font class="source_keyword">None</font>) 
+<a name="191"></a>        && (AttitudeTo(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor2)) &gt; ATTITUDE_Ignore) )
+<a name="192"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="193"></a>
+<a name="194"></a>    <font class="source_keyword">if</font> ( (HitActor2 == <font class="source_keyword">None</font>) || (HitActor2 == Enemy) || (HitActor1 == <font class="source_keyword">None</font>) || (HitActor1 == Enemy) 
+<a name="195"></a>        || (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor2) != <font class="source_keyword">None</font>) || (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor1) != <font class="source_keyword">None</font>) )
+<a name="196"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="197"></a>
+<a name="198"></a>    HitActor2 = Trace(HitLocation, HitNormal, projStart + EnemyDir, projStart , <font class="source_keyword">true</font>);
+<a name="199"></a>
+<a name="200"></a>    <font class="source_keyword">return</font> ( (HitActor2 == <font class="source_keyword">None</font>) || (HitActor2 == Enemy) 
+<a name="201"></a>            || ((<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor2) != <font class="source_keyword">None</font>) && (AttitudeTo(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor2)) &lt;= ATTITUDE_Ignore)) );
+<a name="202"></a>}
+<a name="203"></a>
+<a name="204"></a><font class="source_keyword">function</font> PlayCock()
+<a name="205"></a>{
+<a name="206"></a>    PlaySound(Blade, SLOT_Interact,,,<font class="source_int">800</font>);
+<a name="207"></a>}
+<a name="208"></a>
+<a name="209"></a><font class="source_keyword">function</font> PlayPatrolStop()
+<a name="210"></a>    {
+<a name="211"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> decision;
+<a name="212"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="213"></a>    {
+<a name="214"></a>        PlaySwimming();
+<a name="215"></a>        <font class="source_keyword">return</font>;
+<a name="216"></a>    }
+<a name="217"></a>    <font class="source_keyword">if</font> ( bButtonPusher )
+<a name="218"></a>    {
+<a name="219"></a>        PushButtons();
+<a name="220"></a>        <font class="source_keyword">return</font>;
+<a name="221"></a>    }
+<a name="222"></a>
+<a name="223"></a>    decision = FRand();
+<a name="224"></a>    <font class="source_keyword">if</font> (decision &lt; <font class="source_int">0.05</font>)
+<a name="225"></a>        {
+<a name="226"></a>        SetAlertness(-<font class="source_int">0.5</font>);
+<a name="227"></a>        PlaySound(HairFlip, SLOT_Talk);
+<a name="228"></a>        PlayAnim(<font class="source_name">'HairFlip'</font>, <font class="source_int">0.4</font> + <font class="source_int">0.3</font> * FRand());
+<a name="229"></a>        }
+<a name="230"></a>    <font class="source_keyword">else</font> 
+<a name="231"></a>        {
+<a name="232"></a>        SetAlertness(<font class="source_int">0.2</font>);  
+<a name="233"></a>        LoopAnim(<font class="source_name">'Breath'</font>, <font class="source_int">0.3</font> + <font class="source_int">0.6</font> * FRand());
+<a name="234"></a>        }
+<a name="235"></a>    }
+<a name="236"></a>
+<a name="237"></a><font class="source_keyword">function</font> PlayChallenge()
+<a name="238"></a>{
+<a name="239"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="240"></a>    {
+<a name="241"></a>        PlaySwimming();
+<a name="242"></a>        <font class="source_keyword">return</font>;
+<a name="243"></a>    }
+<a name="244"></a>    PlayThreateningSound();
+<a name="245"></a>    PlayAnim(<font class="source_name">'Fighter'</font>, <font class="source_int">0.8</font> + <font class="source_int">0.5</font> * FRand(), <font class="source_int">0.1</font>);
+<a name="246"></a>}
+<a name="247"></a>
+<a name="248"></a><font class="source_keyword">function</font> PlayRunning()
+<a name="249"></a>{
+<a name="250"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> strafeMag;
+<a name="251"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Focus2D, Loc2D, Dest2D;
+<a name="252"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> lookDir, moveDir, Y;
+<a name="253"></a>
+<a name="254"></a>    DesiredSpeed = MaxDesiredSpeed;
+<a name="255"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="256"></a>    {
+<a name="257"></a>        PlaySwimming();
+<a name="258"></a>        <font class="source_keyword">return</font>;
+<a name="259"></a>    }
+<a name="260"></a>
+<a name="261"></a>    <font class="source_keyword">if</font> (Focus == Destination)
+<a name="262"></a>    {
+<a name="263"></a>        LoopAnim(<font class="source_name">'Jog'</font>, -<font class="source_int">1.0</font>/GroundSpeed,, <font class="source_int">0.5</font>);
+<a name="264"></a>        <font class="source_keyword">return</font>;
+<a name="265"></a>    }   
+<a name="266"></a>    Focus2D = Focus;
+<a name="267"></a>    Focus2D.Z = <font class="source_int">0</font>;
+<a name="268"></a>    Loc2D = Location;
+<a name="269"></a>    Loc2D.Z = <font class="source_int">0</font>;
+<a name="270"></a>    Dest2D = Destination;
+<a name="271"></a>    Dest2D.Z = <font class="source_int">0</font>;
+<a name="272"></a>    lookDir = Normal(Focus2D - Loc2D);
+<a name="273"></a>    moveDir = Normal(Dest2D - Loc2D);
+<a name="274"></a>    strafeMag = lookDir dot moveDir;
+<a name="275"></a>    <font class="source_keyword">if</font> (strafeMag &gt; <font class="source_int">0.8</font>)
+<a name="276"></a>        LoopAnim(<font class="source_name">'Jog'</font>, -<font class="source_int">1.0</font>/GroundSpeed,, <font class="source_int">0.5</font>);
+<a name="277"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (strafeMag &lt; -<font class="source_int">0.8</font>)
+<a name="278"></a>        LoopAnim(<font class="source_name">'Jog'</font>, -<font class="source_int">1.0</font>/GroundSpeed,, <font class="source_int">0.5</font>);
+<a name="279"></a>    <font class="source_keyword">else</font>
+<a name="280"></a>    {
+<a name="281"></a>        Y = (lookDir Cross vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">1</font>));
+<a name="282"></a>        <font class="source_keyword">if</font> ((Y Dot (Dest2D - Loc2D)) &gt; <font class="source_int">0</font>)
+<a name="283"></a>        {
+<a name="284"></a>            <font class="source_keyword">if</font> ( (AnimSequence == <font class="source_name">'StrafeRight'</font>) || (AnimSequence == <font class="source_name">'StrafeRightFr'</font>) ) 
+<a name="285"></a>                LoopAnim(<font class="source_name">'StrafeRight'</font>, -<font class="source_int">2.5</font>/GroundSpeed,, <font class="source_int">1.0</font>);
+<a name="286"></a>            <font class="source_keyword">else</font> 
+<a name="287"></a>                LoopAnim(<font class="source_name">'StrafeRight'</font>, -<font class="source_int">2.5</font>/GroundSpeed,<font class="source_int">0.1</font>, <font class="source_int">1.0</font>);
+<a name="288"></a>        }
+<a name="289"></a>        <font class="source_keyword">else</font>
+<a name="290"></a>        {
+<a name="291"></a>            <font class="source_keyword">if</font> ( (AnimSequence == <font class="source_name">'StrafeLeft'</font>) || (AnimSequence == <font class="source_name">'StrafeLeftFr'</font>) ) 
+<a name="292"></a>                LoopAnim(<font class="source_name">'StrafeLeft'</font>, -<font class="source_int">2.5</font>/GroundSpeed,, <font class="source_int">1.0</font>);
+<a name="293"></a>            <font class="source_keyword">else</font>
+<a name="294"></a>                LoopAnim(<font class="source_name">'StrafeLeft'</font>, -<font class="source_int">2.5</font>/GroundSpeed,<font class="source_int">0.1</font>, <font class="source_int">1.0</font>);
+<a name="295"></a>        }
+<a name="296"></a>    }
+<a name="297"></a>}
+<a name="298"></a>
+<a name="299"></a><font class="source_keyword">function</font> PlayMovingAttack()
+<a name="300"></a>{
+<a name="301"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> strafeMag;
+<a name="302"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Focus2D, Loc2D, Dest2D;
+<a name="303"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> lookDir, moveDir, Y;
+<a name="304"></a>
+<a name="305"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="306"></a>    {
+<a name="307"></a>        LoopAnim(<font class="source_name">'SwimFire'</font>, -<font class="source_int">1.0</font>/WaterSpeed,, <font class="source_int">0.4</font>); 
+<a name="308"></a>        <font class="source_keyword">return</font>;
+<a name="309"></a>    }
+<a name="310"></a>    DesiredSpeed = MaxDesiredSpeed;
+<a name="311"></a>
+<a name="312"></a>    <font class="source_keyword">if</font> (Focus == Destination)
+<a name="313"></a>    {
+<a name="314"></a>        LoopAnim(<font class="source_name">'JogFire'</font>, -<font class="source_int">1.0</font>/GroundSpeed,, <font class="source_int">0.4</font>);
+<a name="315"></a>        <font class="source_keyword">return</font>;
+<a name="316"></a>    }   
+<a name="317"></a>    Focus2D = Focus;
+<a name="318"></a>    Focus2D.Z = <font class="source_int">0</font>;
+<a name="319"></a>    Loc2D = Location;
+<a name="320"></a>    Loc2D.Z = <font class="source_int">0</font>;
+<a name="321"></a>    Dest2D = Destination;
+<a name="322"></a>    Dest2D.Z = <font class="source_int">0</font>;
+<a name="323"></a>    lookDir = Normal(Focus2D - Loc2D);
+<a name="324"></a>    moveDir = Normal(Dest2D - Loc2D);
+<a name="325"></a>    strafeMag = lookDir dot moveDir;
+<a name="326"></a>    <font class="source_keyword">if</font> (strafeMag &gt; <font class="source_int">0.8</font>)
+<a name="327"></a>        LoopAnim(<font class="source_name">'JogFire'</font>, -<font class="source_int">1.0</font>/GroundSpeed,, <font class="source_int">0.4</font>);
+<a name="328"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (strafeMag &lt; -<font class="source_int">0.8</font>)
+<a name="329"></a>        LoopAnim(<font class="source_name">'JogFire'</font>, -<font class="source_int">1.0</font>/GroundSpeed,, <font class="source_int">0.4</font>);
+<a name="330"></a>    <font class="source_keyword">else</font>
+<a name="331"></a>    {
+<a name="332"></a>        MoveTimer += <font class="source_int">0.2</font>;
+<a name="333"></a>        DesiredSpeed = <font class="source_int">0.6</font>;
+<a name="334"></a>        Y = (lookDir Cross vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">1</font>));
+<a name="335"></a>        <font class="source_keyword">if</font> ((Y Dot (Dest2D - Loc2D)) &gt; <font class="source_int">0</font>) 
+<a name="336"></a>        {
+<a name="337"></a>            <font class="source_keyword">if</font> ( (AnimSequence == <font class="source_name">'StrafeRight'</font>) || (AnimSequence == <font class="source_name">'StrafeRightFr'</font>) ) 
+<a name="338"></a>                LoopAnim(<font class="source_name">'StrafeRightFr'</font>, -<font class="source_int">2.5</font>/GroundSpeed,, <font class="source_int">1.0</font>); 
+<a name="339"></a>            <font class="source_keyword">else</font>
+<a name="340"></a>                LoopAnim(<font class="source_name">'StrafeRightFr'</font>, -<font class="source_int">2.5</font>/GroundSpeed,<font class="source_int">0.1</font>, <font class="source_int">1.0</font>); 
+<a name="341"></a>        }
+<a name="342"></a>        <font class="source_keyword">else</font>
+<a name="343"></a>        {
+<a name="344"></a>            <font class="source_keyword">if</font> ( (AnimSequence == <font class="source_name">'StrafeLeft'</font>) || (AnimSequence == <font class="source_name">'StrafeLeftFr'</font>) ) 
+<a name="345"></a>                LoopAnim(<font class="source_name">'StrafeLeftFr'</font>, -<font class="source_int">2.5</font>/GroundSpeed,, <font class="source_int">1.0</font>);
+<a name="346"></a>            <font class="source_keyword">else</font>
+<a name="347"></a>                LoopAnim(<font class="source_name">'StrafeLeftFr'</font>, -<font class="source_int">2.5</font>/GroundSpeed,<font class="source_int">0.1</font>, <font class="source_int">1.0</font>);
+<a name="348"></a>        }
+<a name="349"></a>    }
+<a name="350"></a>}
+<a name="351"></a>
+<a name="352"></a><font class="source_keyword">function</font> PlayThreatening()
+<a name="353"></a>{
+<a name="354"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> decision, animspeed;
+<a name="355"></a>
+<a name="356"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="357"></a>    {
+<a name="358"></a>        PlaySwimming();
+<a name="359"></a>        <font class="source_keyword">return</font>;
+<a name="360"></a>    }
+<a name="361"></a>
+<a name="362"></a>    decision = FRand();
+<a name="363"></a>    animspeed = <font class="source_int">0.4</font> + <font class="source_int">0.6</font> * FRand(); 
+<a name="364"></a>    
+<a name="365"></a>    <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.7</font> )
+<a name="366"></a>        PlayAnim(<font class="source_name">'Breath2'</font>, animspeed, <font class="source_int">0.3</font>);
+<a name="367"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.9</font> )
+<a name="368"></a>    {
+<a name="369"></a>        PlayThreateningSound();
+<a name="370"></a>        PlayAnim(<font class="source_name">'Fighter'</font>, animspeed, <font class="source_int">0.3</font>);
+<a name="371"></a>    }
+<a name="372"></a>    <font class="source_keyword">else</font>
+<a name="373"></a>    {
+<a name="374"></a>        PlaySound(HairFlip, SLOT_Talk);
+<a name="375"></a>        PlayAnim(<font class="source_name">'HairFlip'</font>, animspeed, <font class="source_int">0.3</font>);
+<a name="376"></a>    }    
+<a name="377"></a>}
+<a name="378"></a>
+<a name="379"></a><font class="source_keyword">function</font> SpawnTwoShots()
+<a name="380"></a>{
+<a name="381"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> FireRotation;
+<a name="382"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> X,Y,Z, projStart;
+<a name="383"></a>
+<a name="384"></a>    GetAxes(Rotation,X,Y,Z);
+<a name="385"></a>    MakeNoise(<font class="source_int">1.0</font>);
+<a name="386"></a>    projStart = Location + <font class="source_int">0.9</font> * CollisionRadius * X + <font class="source_int">0.9</font> * CollisionRadius * Y + <font class="source_int">0.4</font> * CollisionHeight * Z;
+<a name="387"></a>    FireRotation = AdjustAim(ProjectileSpeed, projStart, <font class="source_int">400</font>, bLeadTarget, bWarnTarget);  
+<a name="388"></a>    spawn(RangedProjectile,self,<font class="source_name">''</font>,projStart, FireRotation);
+<a name="389"></a>        
+<a name="390"></a>    projStart = projStart - <font class="source_int">1.8</font> * CollisionRadius * Y;
+<a name="391"></a>    FireRotation.Yaw += <font class="source_int">400</font>;
+<a name="392"></a>    spawn(RangedProjectile,self,<font class="source_name">''</font>,projStart, FireRotation);
+<a name="393"></a>}
+<a name="394"></a>
+<a name="395"></a><font class="source_keyword">function</font> PlayRangedAttack()
+<a name="396"></a>{
+<a name="397"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="398"></a>    {
+<a name="399"></a>        LoopAnim(<font class="source_name">'SwimFire'</font>, -<font class="source_int">1.0</font>/WaterSpeed,, <font class="source_int">0.4</font>); 
+<a name="400"></a>        <font class="source_keyword">return</font>;
+<a name="401"></a>    }
+<a name="402"></a>    PlayAnim(<font class="source_name">'Firing'</font>, <font class="source_int">1.5</font>); 
+<a name="403"></a>}
+<a name="404"></a>
+<a name="405"></a><font class="source_keyword">function</font> PlayVictoryDance()
+<a name="406"></a>{
+<a name="407"></a>    PlaySound(HairFlip, SLOT_Talk);
+<a name="408"></a>    PlayAnim(<font class="source_name">'HairFlip'</font>, <font class="source_int">0.6</font>, <font class="source_int">0.1</font>);
+<a name="409"></a>}
+<a name="410"></a>
+<a name="411"></a><font class="source_keyword">defaultproperties</font>
+<a name="412"></a>{
+<a name="413"></a>     LungeDamage=<font class="source_int">30</font>
+<a name="414"></a>     SpinDamage=<font class="source_int">16</font>
+<a name="415"></a>     ClawDamage=<font class="source_int">14</font>
+<a name="416"></a>     RangedProjectile=<font class="source_type"><a href="..\unrealshare\skaarjprojectile.html" class="source">SkaarjProjectile</a></font>
+<a name="417"></a>     Blade=blade1s
+<a name="418"></a>     CombatStyle=+<font class="source_int">00000.600000</font>
+<a name="419"></a>     <font class="source_type">Mesh</font>=Skaarjw
+<a name="420"></a>}
+<a name="421"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\skaarjwarrior.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#SkaarjWarrior">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="skaarjscout.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="slimezone.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:26:44.000 - Creation time: Wed 26/5/2004 10:48:38.265 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

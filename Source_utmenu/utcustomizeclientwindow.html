@@ -1,0 +1,505 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTMenu.UTCustomizeClientWindow</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utcustomizeclientwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTCustomizeClientWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utconsole.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utextrakeybindings.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utmenu\utmenu-overview.html">UTMenu</a>.<a href="..\utmenu\utcustomizeclientwindow.html">UTCustomizeClientWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utmenu\utcustomizeclientwindow.html" class="source">UTCustomizeClientWindow</a></font> <font class="source_keyword">expands</font> <font class="source_type"><a href="..\umenu\umenucustomizeclientwindow.html" class="source">UMenuCustomizeClientWindow</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> VoiceKeyNumber;
+<a name="4"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> ConsoleKeyNumber;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">function</font> Created()
+<a name="7"></a>{
+<a name="8"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, j;
+<a name="9"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> NumBindingClasses;
+<a name="10"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NextBindingClass;
+<a name="11"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\utmenu\utextrakeybindings.html" class="source">UTExtraKeyBindings</a></font>&gt; BindingClass;
+<a name="12"></a>
+<a name="13"></a>    <font class="source_keyword">for</font>( i=<font class="source_int">0</font>;i&lt;ArrayCount(AliasNames);i++ )
+<a name="14"></a>    {
+<a name="15"></a>        <font class="source_keyword">if</font>(AliasNames[i] == <font class="source_string">""</font>)
+<a name="16"></a>            <font class="source_keyword">break</font>;
+<a name="17"></a>    }
+<a name="18"></a>
+<a name="19"></a>    NextBindingClass = GetPlayerOwner().GetNextInt(<font class="source_string">"UTMenu.UTExtraKeyBindings"</font>, <font class="source_int">0</font>);
+<a name="20"></a>    <font class="source_keyword">if</font>(NextBindingClass != <font class="source_string">""</font>)
+<a name="21"></a>    {
+<a name="22"></a>        <font class="source_keyword">while</font>( (NextBindingClass != <font class="source_string">""</font>) && (NumBindingClasses &lt; <font class="source_int">50</font>) && (i &lt; ArrayCount(AliasNames)) )
+<a name="23"></a>        {
+<a name="24"></a>            BindingClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\utmenu\utextrakeybindings.html" class="source">UTExtraKeyBindings</a></font>&gt;(DynamicLoadObject(NextBindingClass, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="25"></a>            <font class="source_keyword">for</font>( j=<font class="source_int">0</font>;j&lt;ArrayCount(BindingClass.default.AliasNames);j++ )
+<a name="26"></a>            {
+<a name="27"></a>                <font class="source_keyword">if</font>( BindingClass.default.AliasNames[j] == <font class="source_string">""</font> )
+<a name="28"></a>                    <font class="source_keyword">break</font>;
+<a name="29"></a>
+<a name="30"></a>                <font class="source_keyword">if</font>( j == <font class="source_int">0</font> )
+<a name="31"></a>                    LabelList[i] = BindingClass.default.SectionName$<font class="source_string">","</font>$BindingClass.default.LabelList[j];
+<a name="32"></a>                <font class="source_keyword">else</font>
+<a name="33"></a>                    LabelList[i] = BindingClass.default.LabelList[j];
+<a name="34"></a>                AliasNames[i] = BindingClass.default.AliasNames[j];     
+<a name="35"></a>                i++;
+<a name="36"></a>                <font class="source_keyword">if</font>( i &gt;= ArrayCount(AliasNames) )
+<a name="37"></a>                    <font class="source_keyword">break</font>;                              
+<a name="38"></a>            }
+<a name="39"></a>            NumBindingClasses++;
+<a name="40"></a>            NextBindingClass = GetPlayerOwner().GetNextInt(<font class="source_string">"UTMenu.UTExtraKeyBindings"</font>, NumBindingClasses);
+<a name="41"></a>        }
+<a name="42"></a>    }
+<a name="43"></a>    
+<a name="44"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="45"></a>}
+<a name="46"></a>
+<a name="47"></a><font class="source_keyword">function</font> WindowShown()
+<a name="48"></a>{
+<a name="49"></a>    <font class="source_keyword">Super</font>.WindowShown();
+<a name="50"></a>    Root.bAllowConsole = <font class="source_keyword">False</font>;
+<a name="51"></a>}
+<a name="52"></a>
+<a name="53"></a><font class="source_keyword">function</font> WindowHidden()
+<a name="54"></a>{
+<a name="55"></a>    <font class="source_keyword">Super</font>.WindowHidden();
+<a name="56"></a>    Root.bAllowConsole = <font class="source_keyword">True</font>;
+<a name="57"></a>}
+<a name="58"></a>
+<a name="59"></a><font class="source_keyword">function</font> LoadExistingKeys()
+<a name="60"></a>{
+<a name="61"></a>    <font class="source_keyword">Super</font>.LoadExistingKeys();
+<a name="62"></a>
+<a name="63"></a>    <font class="source_keyword">if</font>(Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.IsA(<font class="source_name">'UTConsole'</font>))
+<a name="64"></a>        BoundKey1[VoiceKeyNumber] = <font class="source_type"><a href="..\utmenu\utconsole.html" class="source">UTConsole</a></font>(Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>).SpeechKey;
+<a name="65"></a>
+<a name="66"></a>    BoundKey1[ConsoleKeyNumber] = Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.ConsoleKey;
+<a name="67"></a>}
+<a name="68"></a>
+<a name="69"></a><font class="source_keyword">function</font> SetKey(<font class="source_keyword">int</font> KeyNo, <font class="source_keyword">string</font> KeyName)
+<a name="70"></a>{
+<a name="71"></a>    <font class="source_keyword">if</font>(Selection == VoiceKeyNumber)
+<a name="72"></a>    {
+<a name="73"></a>        <font class="source_keyword">if</font>(KeyNo != <font class="source_int">1</font> && KeyNo != <font class="source_int">27</font> && Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.IsA(<font class="source_name">'UTConsole'</font>))
+<a name="74"></a>        {
+<a name="75"></a>            <font class="source_type"><a href="..\utmenu\utconsole.html" class="source">UTConsole</a></font>(Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>).SpeechKey = KeyNo;
+<a name="76"></a>            Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.SaveConfig();
+<a name="77"></a>
+<a name="78"></a>            BoundKey1[Selection] = KeyNo;
+<a name="79"></a>            BoundKey2[Selection] = <font class="source_int">0</font>;
+<a name="80"></a>        }
+<a name="81"></a>    }
+<a name="82"></a>    <font class="source_keyword">else</font>
+<a name="83"></a>    <font class="source_keyword">if</font>(Selection == ConsoleKeyNumber)
+<a name="84"></a>    {
+<a name="85"></a>        <font class="source_keyword">if</font>(KeyNo != <font class="source_int">1</font> && KeyNo != <font class="source_int">27</font>) <font class="source_comment">// LeftMouse, Escape
+</font><a name="86"></a>        {
+<a name="87"></a>            Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.ConsoleKey = KeyNo;
+<a name="88"></a>            Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.SaveConfig();
+<a name="89"></a>
+<a name="90"></a>            BoundKey1[Selection] = KeyNo;
+<a name="91"></a>            BoundKey2[Selection] = <font class="source_int">0</font>;
+<a name="92"></a>        }
+<a name="93"></a>    }
+<a name="94"></a>    <font class="source_keyword">else</font>
+<a name="95"></a>    {
+<a name="96"></a>        <font class="source_keyword">if</font>(KeyNo == Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.ConsoleKey)
+<a name="97"></a>        {
+<a name="98"></a>            Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.ConsoleKey = <font class="source_int">0</font>;
+<a name="99"></a>            Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.SaveConfig();
+<a name="100"></a>            BoundKey1[ConsoleKeyNumber] = <font class="source_int">0</font>;    
+<a name="101"></a>        }
+<a name="102"></a>        <font class="source_keyword">if</font>(Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.IsA(<font class="source_name">'UTConsole'</font>) && KeyNo == <font class="source_type"><a href="..\utmenu\utconsole.html" class="source">UTConsole</a></font>(Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>).SpeechKey)
+<a name="103"></a>        {
+<a name="104"></a>            <font class="source_type"><a href="..\utmenu\utconsole.html" class="source">UTConsole</a></font>(Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>).SpeechKey = <font class="source_int">0</font>;
+<a name="105"></a>            Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.SaveConfig();
+<a name="106"></a>            BoundKey1[VoiceKeyNumber] = <font class="source_int">0</font>;  
+<a name="107"></a>        }
+<a name="108"></a>        <font class="source_keyword">Super</font>.SetKey(KeyNo, KeyName);
+<a name="109"></a>    }
+<a name="110"></a>}
+<a name="111"></a>
+<a name="112"></a><font class="source_keyword">defaultproperties</font>
+<a name="113"></a>{
+<a name="114"></a>    AliasNames(<font class="source_int">0</font>)=<font class="source_string">"Fire"</font>
+<a name="115"></a>    AliasNames(<font class="source_int">1</font>)=<font class="source_string">"AltFire"</font>
+<a name="116"></a>    AliasNames(<font class="source_int">2</font>)=<font class="source_string">"MoveForward"</font>
+<a name="117"></a>    AliasNames(<font class="source_int">3</font>)=<font class="source_string">"MoveBackward"</font>
+<a name="118"></a>    AliasNames(<font class="source_int">4</font>)=<font class="source_string">"StrafeLeft"</font>
+<a name="119"></a>    AliasNames(<font class="source_int">5</font>)=<font class="source_string">"StrafeRight"</font>
+<a name="120"></a>    AliasNames(<font class="source_int">6</font>)=<font class="source_string">"TurnLeft"</font>
+<a name="121"></a>    AliasNames(<font class="source_int">7</font>)=<font class="source_string">"TurnRight"</font>
+<a name="122"></a>    AliasNames(<font class="source_int">8</font>)=<font class="source_string">"Jump"</font>
+<a name="123"></a>    AliasNames(<font class="source_int">9</font>)=<font class="source_string">"Duck"</font>
+<a name="124"></a>    AliasNames(<font class="source_int">10</font>)=<font class="source_string">"Look"</font>
+<a name="125"></a>    AliasNames(<font class="source_int">11</font>)=<font class="source_string">"LookUp"</font>
+<a name="126"></a>    AliasNames(<font class="source_int">12</font>)=<font class="source_string">"LookDown"</font>
+<a name="127"></a>    AliasNames(<font class="source_int">13</font>)=<font class="source_string">"CenterView"</font>
+<a name="128"></a>    AliasNames(<font class="source_int">14</font>)=<font class="source_string">"Walking"</font>
+<a name="129"></a>    AliasNames(<font class="source_int">15</font>)=<font class="source_string">"Strafe"</font>
+<a name="130"></a>    AliasNames(<font class="source_int">16</font>)=<font class="source_string">"FeignDeath"</font>
+<a name="131"></a>    AliasNames(<font class="source_int">17</font>)=<font class="source_string">"Talk"</font>
+<a name="132"></a>    AliasNames(<font class="source_int">18</font>)=<font class="source_string">"TeamTalk"</font>
+<a name="133"></a>    AliasNames(<font class="source_int">19</font>)=<font class="source_string">"None"</font>
+<a name="134"></a>    AliasNames(<font class="source_int">20</font>)=<font class="source_string">"taunt thrust"</font>
+<a name="135"></a>    AliasNames(<font class="source_int">21</font>)=<font class="source_string">"taunt wave"</font>
+<a name="136"></a>    AliasNames(<font class="source_int">22</font>)=<font class="source_string">"taunt taunt1"</font>
+<a name="137"></a>    AliasNames(<font class="source_int">23</font>)=<font class="source_string">"taunt victory1"</font>
+<a name="138"></a>    AliasNames(<font class="source_int">24</font>)=<font class="source_string">"NextWeapon"</font>
+<a name="139"></a>    AliasNames(<font class="source_int">25</font>)=<font class="source_string">"PrevWeapon"</font>
+<a name="140"></a>    AliasNames(<font class="source_int">26</font>)=<font class="source_string">"ThrowWeapon"</font>
+<a name="141"></a>    AliasNames(<font class="source_int">27</font>)=<font class="source_string">"switchtobestweapon"</font>
+<a name="142"></a>    AliasNames(<font class="source_int">28</font>)=<font class="source_string">"getweapon Translocator"</font>
+<a name="143"></a>    AliasNames(<font class="source_int">29</font>)=<font class="source_string">"getweapon ChainSaw"</font>
+<a name="144"></a>    AliasNames(<font class="source_int">30</font>)=<font class="source_string">"getweapon ImpactHammer"</font>
+<a name="145"></a>    AliasNames(<font class="source_int">31</font>)=<font class="source_string">"getweapon enforcer"</font>
+<a name="146"></a>    AliasNames(<font class="source_int">32</font>)=<font class="source_string">"getweapon ShockRifle"</font>
+<a name="147"></a>    AliasNames(<font class="source_int">33</font>)=<font class="source_string">"getweapon ut_biorifle"</font>
+<a name="148"></a>    AliasNames(<font class="source_int">34</font>)=<font class="source_string">"getweapon PulseGun"</font>
+<a name="149"></a>    AliasNames(<font class="source_int">35</font>)=<font class="source_string">"getweapon SniperRifle"</font>
+<a name="150"></a>    AliasNames(<font class="source_int">36</font>)=<font class="source_string">"getweapon ripper"</font>
+<a name="151"></a>    AliasNames(<font class="source_int">37</font>)=<font class="source_string">"getweapon minigun2"</font>
+<a name="152"></a>    AliasNames(<font class="source_int">38</font>)=<font class="source_string">"getweapon UT_FlakCannon"</font>
+<a name="153"></a>    AliasNames(<font class="source_int">39</font>)=<font class="source_string">"getweapon UT_Eightball"</font>
+<a name="154"></a>    AliasNames(<font class="source_int">40</font>)=<font class="source_string">"getweapon WarheadLauncher"</font>
+<a name="155"></a>    AliasNames(<font class="source_int">41</font>)=<font class="source_string">"ViewPlayerNum 0"</font>
+<a name="156"></a>    AliasNames(<font class="source_int">42</font>)=<font class="source_string">"ViewPlayerNum 1"</font>
+<a name="157"></a>    AliasNames(<font class="source_int">43</font>)=<font class="source_string">"ViewPlayerNum 2"</font>
+<a name="158"></a>    AliasNames(<font class="source_int">44</font>)=<font class="source_string">"ViewPlayerNum 3"</font>
+<a name="159"></a>    AliasNames(<font class="source_int">45</font>)=<font class="source_string">"ViewPlayerNum 4"</font>
+<a name="160"></a>    AliasNames(<font class="source_int">46</font>)=<font class="source_string">"ViewPlayerNum 5"</font>
+<a name="161"></a>    AliasNames(<font class="source_int">47</font>)=<font class="source_string">"ViewPlayerNum 6"</font>
+<a name="162"></a>    AliasNames(<font class="source_int">48</font>)=<font class="source_string">"ViewPlayerNum 7"</font>
+<a name="163"></a>    AliasNames(<font class="source_int">49</font>)=<font class="source_string">"ViewPlayerNum 8"</font>
+<a name="164"></a>    AliasNames(<font class="source_int">50</font>)=<font class="source_string">"ViewPlayerNum 9"</font>
+<a name="165"></a>    AliasNames(<font class="source_int">51</font>)=<font class="source_string">"GrowHUD"</font>
+<a name="166"></a>    AliasNames(<font class="source_int">52</font>)=<font class="source_string">"ShrinkHUD"</font>
+<a name="167"></a>    AliasNames(<font class="source_int">53</font>)=<font class="source_string">"None"</font>
+<a name="168"></a>    AliasNames(<font class="source_int">54</font>)=<font class="source_string">"Type"</font>
+<a name="169"></a>    LabelList(<font class="source_int">0</font>)=<font class="source_string">"Controls,Fire"</font>
+<a name="170"></a>    LabelList(<font class="source_int">1</font>)=<font class="source_string">"Alternate Fire"</font>
+<a name="171"></a>    LabelList(<font class="source_int">2</font>)=<font class="source_string">"Move Forward"</font>
+<a name="172"></a>    LabelList(<font class="source_int">3</font>)=<font class="source_string">"Move Backward"</font>
+<a name="173"></a>    LabelList(<font class="source_int">4</font>)=<font class="source_string">"Strafe Left"</font>
+<a name="174"></a>    LabelList(<font class="source_int">5</font>)=<font class="source_string">"Strafe Right"</font>
+<a name="175"></a>    LabelList(<font class="source_int">6</font>)=<font class="source_string">"Turn Left"</font>
+<a name="176"></a>    LabelList(<font class="source_int">7</font>)=<font class="source_string">"Turn Right"</font>
+<a name="177"></a>    LabelList(<font class="source_int">8</font>)=<font class="source_string">"Jump/Up"</font>
+<a name="178"></a>    LabelList(<font class="source_int">9</font>)=<font class="source_string">"Crouch/Down"</font>
+<a name="179"></a>    LabelList(<font class="source_int">10</font>)=<font class="source_string">"Mouse Look"</font>
+<a name="180"></a>    LabelList(<font class="source_int">11</font>)=<font class="source_string">"Look Up"</font>
+<a name="181"></a>    LabelList(<font class="source_int">12</font>)=<font class="source_string">"Look Down"</font>
+<a name="182"></a>    LabelList(<font class="source_int">13</font>)=<font class="source_string">"Center View"</font>
+<a name="183"></a>    LabelList(<font class="source_int">14</font>)=<font class="source_string">"Walk"</font>
+<a name="184"></a>    LabelList(<font class="source_int">15</font>)=<font class="source_string">"Strafe"</font>
+<a name="185"></a>    LabelList(<font class="source_int">16</font>)=<font class="source_string">"Feign Death"</font>
+<a name="186"></a>    LabelList(<font class="source_int">17</font>)=<font class="source_string">"Taunts / Chat,Say"</font>
+<a name="187"></a>    LabelList(<font class="source_int">18</font>)=<font class="source_string">"Team Say"</font>
+<a name="188"></a>    LabelList(<font class="source_int">19</font>)=<font class="source_string">"Show Voice Menu"</font>
+<a name="189"></a>    LabelList(<font class="source_int">20</font>)=<font class="source_string">"Thrust"</font>
+<a name="190"></a>    LabelList(<font class="source_int">21</font>)=<font class="source_string">"Wave"</font>
+<a name="191"></a>    LabelList(<font class="source_int">22</font>)=<font class="source_string">"Victory1"</font>
+<a name="192"></a>    LabelList(<font class="source_int">23</font>)=<font class="source_string">"Victory2"</font>
+<a name="193"></a>    LabelList(<font class="source_int">24</font>)=<font class="source_string">"Weapons,Next Weapon"</font>
+<a name="194"></a>    LabelList(<font class="source_int">25</font>)=<font class="source_string">"Previous Weapon"</font>
+<a name="195"></a>    LabelList(<font class="source_int">26</font>)=<font class="source_string">"Throw Weapon"</font>
+<a name="196"></a>    LabelList(<font class="source_int">27</font>)=<font class="source_string">"Select Best Weapon"</font>
+<a name="197"></a>    LabelList(<font class="source_int">28</font>)=<font class="source_string">"Translocator"</font>
+<a name="198"></a>    LabelList(<font class="source_int">29</font>)=<font class="source_string">"Chainsaw"</font>
+<a name="199"></a>    LabelList(<font class="source_int">30</font>)=<font class="source_string">"Impact Hammer"</font>
+<a name="200"></a>    LabelList(<font class="source_int">31</font>)=<font class="source_string">"Enforcer"</font>
+<a name="201"></a>    LabelList(<font class="source_int">32</font>)=<font class="source_string">"Shock Rifle"</font>
+<a name="202"></a>    LabelList(<font class="source_int">33</font>)=<font class="source_string">"Biorifle"</font>
+<a name="203"></a>    LabelList(<font class="source_int">34</font>)=<font class="source_string">"PulseGun"</font>
+<a name="204"></a>    LabelList(<font class="source_int">35</font>)=<font class="source_string">"Sniper Rifle"</font>
+<a name="205"></a>    LabelList(<font class="source_int">36</font>)=<font class="source_string">"Ripper"</font>
+<a name="206"></a>    LabelList(<font class="source_int">37</font>)=<font class="source_string">"Minigun"</font>
+<a name="207"></a>    LabelList(<font class="source_int">38</font>)=<font class="source_string">"Flak Cannon"</font>
+<a name="208"></a>    LabelList(<font class="source_int">39</font>)=<font class="source_string">"Rocket Launcher"</font>
+<a name="209"></a>    LabelList(<font class="source_int">40</font>)=<font class="source_string">"Redeemer"</font>
+<a name="210"></a>    LabelList(<font class="source_int">41</font>)=<font class="source_string">"View from Teammate,Teammate 1"</font>
+<a name="211"></a>    LabelList(<font class="source_int">42</font>)=<font class="source_string">"Teammate 2"</font>
+<a name="212"></a>    LabelList(<font class="source_int">43</font>)=<font class="source_string">"Teammate 3"</font>
+<a name="213"></a>    LabelList(<font class="source_int">44</font>)=<font class="source_string">"Teammate 4"</font>
+<a name="214"></a>    LabelList(<font class="source_int">45</font>)=<font class="source_string">"Teammate 5"</font>
+<a name="215"></a>    LabelList(<font class="source_int">46</font>)=<font class="source_string">"Teammate 6"</font>
+<a name="216"></a>    LabelList(<font class="source_int">47</font>)=<font class="source_string">"Teammate 7"</font>
+<a name="217"></a>    LabelList(<font class="source_int">48</font>)=<font class="source_string">"Teammate 8"</font>
+<a name="218"></a>    LabelList(<font class="source_int">49</font>)=<font class="source_string">"Teammate 9"</font>
+<a name="219"></a>    LabelList(<font class="source_int">50</font>)=<font class="source_string">"Teammate 10"</font>
+<a name="220"></a>    LabelList(<font class="source_int">51</font>)=<font class="source_string">"HUD,Increase HUD"</font>
+<a name="221"></a>    LabelList(<font class="source_int">52</font>)=<font class="source_string">"Decrease HUD"</font>
+<a name="222"></a>    LabelList(<font class="source_int">53</font>)=<font class="source_string">"Console,Console Key"</font>
+<a name="223"></a>    LabelList(<font class="source_int">54</font>)=<font class="source_string">"Quick Console Key"</font>
+<a name="224"></a>    VoiceKeyNumber=<font class="source_int">19</font>
+<a name="225"></a>    ConsoleKeyNumber=<font class="source_int">53</font>
+<a name="226"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utcustomizeclientwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTCustomizeClientWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utconsole.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utextrakeybindings.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:34.000 - Creation time: Wed 26/5/2004 10:48:58.734 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

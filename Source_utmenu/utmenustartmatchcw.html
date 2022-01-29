@@ -1,0 +1,687 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTMenu.UTMenuStartMatchCW</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utmenustartmatchcw.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTMenuStartMatchCW">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utmenubotmatchcw.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utmenustartmatchsc.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utmenu\utmenu-overview.html">UTMenu</a>.<a href="..\utmenu\utmenustartmatchcw.html">UTMenuStartMatchCW</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utmenu\utmenustartmatchcw.html" class="source">UTMenuStartMatchCW</a></font> <font class="source_keyword">expands</font> <font class="source_type"><a href="..\umenu\umenustartmatchclientwindow.html" class="source">UMenuStartMatchClientWindow</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> ChangeLevelsCheck;
+<a name="4"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ChangeLevelsText;
+<a name="5"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ChangeLevelsHelp;
+<a name="6"></a>
+<a name="7"></a><font class="source_comment">// Category
+</font><a name="8"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> CategoryCombo;
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CategoryText;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CategoryHelp;
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GeneralText;
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> LastCategory;
+<a name="13"></a>
+<a name="14"></a><font class="source_keyword">function</font> Created()
+<a name="15"></a>{
+<a name="16"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, j, Selection, BestCategory, CategoryCount;
+<a name="17"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt; TempClass;
+<a name="18"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> TempGame, NextGame;
+<a name="19"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> TempGames[<font class="source_int">256</font>];
+<a name="20"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NextEntry, NextCategory;
+<a name="21"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Categories[<font class="source_int">256</font>];
+<a name="22"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bFoundSavedGameClass, bAlreadyHave;
+<a name="23"></a>
+<a name="24"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="25"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos;
+<a name="26"></a>
+<a name="27"></a>    <font class="source_keyword">Super</font>(<font class="source_type"><a href="..\umenu\umenudialogclientwindow.html" class="source">UMenuDialogClientWindow</a></font>).Created();
+<a name="28"></a>
+<a name="29"></a>    DesiredWidth = <font class="source_int">270</font>;
+<a name="30"></a>    DesiredHeight = <font class="source_int">100</font>;
+<a name="31"></a>
+<a name="32"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="33"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="34"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="35"></a>
+<a name="36"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="37"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="38"></a>
+<a name="39"></a>    BotmatchParent = <font class="source_type"><a href="..\umenu\umenubotmatchclientwindow.html" class="source">UMenuBotmatchClientWindow</a></font>(GetParent(<font class="source_keyword">class</font><font class="source_name">'UMenuBotmatchClientWindow'</font>));
+<a name="40"></a>    <font class="source_keyword">if</font> (BotmatchParent == <font class="source_keyword">None</font>)
+<a name="41"></a>        Log(<font class="source_string">"Error: UMenuStartMatchClientWindow without UMenuBotmatchClientWindow parent."</font>);
+<a name="42"></a>
+<a name="43"></a>    <font class="source_comment">// Category
+</font><a name="44"></a>    CategoryCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, <font class="source_int">20</font>, CenterWidth, <font class="source_int">1</font>));
+<a name="45"></a>    CategoryCombo.SetButtons(<font class="source_keyword">True</font>);
+<a name="46"></a>    CategoryCombo.SetText(CategoryText);
+<a name="47"></a>    CategoryCombo.SetHelpText(CategoryHelp);
+<a name="48"></a>    CategoryCombo.SetFont(F_Normal);
+<a name="49"></a>    CategoryCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="50"></a>    CategoryCombo.AddItem(GeneralText);
+<a name="51"></a>
+<a name="52"></a>    <font class="source_comment">// Add all categories.
+</font><a name="53"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>; i&lt;<font class="source_int">256</font>; i++)
+<a name="54"></a>    {
+<a name="55"></a>        bAlreadyHave = <font class="source_keyword">false</font>;
+<a name="56"></a>        GetPlayerOwner().GetNextIntDesc(<font class="source_string">"TournamentGameInfo"</font>, i, NextEntry, NextCategory);
+<a name="57"></a>        <font class="source_keyword">for</font>(j =<font class="source_int">0</font>; j&lt;<font class="source_int">256</font>; j++)
+<a name="58"></a>        {
+<a name="59"></a>            <font class="source_keyword">if</font> (Categories[j] ~= NextCategory)
+<a name="60"></a>                bAlreadyHave = <font class="source_keyword">true</font>;
+<a name="61"></a>        }
+<a name="62"></a>        <font class="source_keyword">if</font> (!bAlreadyHave)
+<a name="63"></a>            Categories[i] = NextCategory;
+<a name="64"></a>    }
+<a name="65"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>; i&lt;<font class="source_int">256</font>; i++)
+<a name="66"></a>    {
+<a name="67"></a>        <font class="source_keyword">if</font> (Len(Categories[i]) &gt; <font class="source_int">0</font>)
+<a name="68"></a>        {
+<a name="69"></a>            CategoryCombo.AddItem(Categories[i]);
+<a name="70"></a>            CategoryCount++;
+<a name="71"></a>            <font class="source_keyword">if</font> (Categories[i] ~= LastCategory)
+<a name="72"></a>                BestCategory = CategoryCount;
+<a name="73"></a>        }
+<a name="74"></a>    }
+<a name="75"></a>    CategoryCombo.SetSelectedIndex(BestCategory);
+<a name="76"></a>
+<a name="77"></a>    <font class="source_comment">// Game Type
+</font><a name="78"></a>    GameCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, <font class="source_int">45</font>, CenterWidth, <font class="source_int">1</font>));
+<a name="79"></a>    GameCombo.SetButtons(<font class="source_keyword">True</font>);
+<a name="80"></a>    GameCombo.SetText(GameText);
+<a name="81"></a>    GameCombo.SetHelpText(GameHelp);
+<a name="82"></a>    GameCombo.SetFont(F_Normal);
+<a name="83"></a>    GameCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="84"></a>
+<a name="85"></a>    <font class="source_comment">// Compile a list of all gametypes.
+</font><a name="86"></a>    i=<font class="source_int">0</font>;
+<a name="87"></a>    TempClass = <font class="source_keyword">class</font><font class="source_name">'TournamentGameInfo'</font>;
+<a name="88"></a>    GetPlayerOwner().GetNextIntDesc(<font class="source_string">"TournamentGameInfo"</font>, <font class="source_int">0</font>, NextGame, NextCategory);
+<a name="89"></a>    <font class="source_keyword">while</font> (NextGame != <font class="source_string">""</font>)
+<a name="90"></a>    {
+<a name="91"></a>        <font class="source_keyword">if</font> ((CategoryCombo.GetValue() ~= GeneralText) && (NextCategory == <font class="source_string">""</font>))
+<a name="92"></a>            TempGames[i] = NextGame;
+<a name="93"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> (NextCategory ~= CategoryCombo.GetValue())
+<a name="94"></a>            TempGames[i] = NextGame;
+<a name="95"></a>        i++;
+<a name="96"></a>        <font class="source_keyword">if</font>(i == <font class="source_int">256</font>)
+<a name="97"></a>        {
+<a name="98"></a>            Log(<font class="source_string">"More than 256 gameinfos listed in int files"</font>);
+<a name="99"></a>            <font class="source_keyword">break</font>;
+<a name="100"></a>        }
+<a name="101"></a>        GetPlayerOwner().GetNextIntDesc(<font class="source_string">"TournamentGameInfo"</font>, i, NextGame, NextCategory);
+<a name="102"></a>    }
+<a name="103"></a>
+<a name="104"></a>    <font class="source_comment">// Fill the control.
+</font><a name="105"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">256</font>; i++)
+<a name="106"></a>    {
+<a name="107"></a>        <font class="source_keyword">if</font> (TempGames[i] != <font class="source_string">""</font>)
+<a name="108"></a>        {
+<a name="109"></a>            Games[MaxGames] = TempGames[i];
+<a name="110"></a>            <font class="source_keyword">if</font> ( !bFoundSavedGameClass && (Games[MaxGames] ~= BotmatchParent.GameType) )
+<a name="111"></a>            {
+<a name="112"></a>                bFoundSavedGameClass = <font class="source_keyword">true</font>;
+<a name="113"></a>                Selection = MaxGames;
+<a name="114"></a>            }
+<a name="115"></a>            TempClass = <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(Games[MaxGames], <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="116"></a>            GameCombo.AddItem(TempClass.Default.GameName);
+<a name="117"></a>            MaxGames++;
+<a name="118"></a>        }
+<a name="119"></a>    }
+<a name="120"></a>
+<a name="121"></a>    GameCombo.SetSelectedIndex(Selection);  
+<a name="122"></a>    BotmatchParent.GameType = Games[Selection];
+<a name="123"></a>    BotmatchParent.GameClass = <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(BotmatchParent.GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="124"></a>
+<a name="125"></a>    <font class="source_comment">// Map
+</font><a name="126"></a>    MapCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, <font class="source_int">70</font>, CenterWidth, <font class="source_int">1</font>));
+<a name="127"></a>    MapCombo.SetButtons(<font class="source_keyword">True</font>);
+<a name="128"></a>    MapCombo.SetText(MapText);
+<a name="129"></a>    MapCombo.SetHelpText(MapHelp);
+<a name="130"></a>    MapCombo.SetFont(F_Normal);
+<a name="131"></a>    MapCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="132"></a>
+<a name="133"></a>    IterateMaps(BotmatchParent.Map);
+<a name="134"></a>
+<a name="135"></a>    <font class="source_comment">// Map List Button
+</font><a name="136"></a>    MapListButton = <font class="source_type"><a href="..\uwindow\uwindowsmallbutton.html" class="source">UWindowSmallButton</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowSmallButton'</font>, CenterPos, <font class="source_int">95</font>, <font class="source_int">48</font>, <font class="source_int">16</font>));
+<a name="137"></a>    MapListButton.SetText(MapListText);
+<a name="138"></a>    MapListButton.SetFont(F_Normal);
+<a name="139"></a>    MapListButton.SetHelpText(MapListHelp);
+<a name="140"></a>
+<a name="141"></a>    <font class="source_comment">// Mutator Button
+</font><a name="142"></a>    MutatorButton = <font class="source_type"><a href="..\uwindow\uwindowsmallbutton.html" class="source">UWindowSmallButton</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowSmallButton'</font>, CenterPos, <font class="source_int">120</font>, <font class="source_int">48</font>, <font class="source_int">16</font>));
+<a name="143"></a>    MutatorButton.SetText(MutatorText);
+<a name="144"></a>    MutatorButton.SetFont(F_Normal);
+<a name="145"></a>    MutatorButton.SetHelpText(MutatorHelp);
+<a name="146"></a>
+<a name="147"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="148"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="149"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="150"></a>
+<a name="151"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="152"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="153"></a>
+<a name="154"></a>    ChangeLevelsCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, <font class="source_int">145</font>, ControlWidth, <font class="source_int">1</font>));
+<a name="155"></a>    ChangeLevelsCheck.SetText(ChangeLevelsText);
+<a name="156"></a>    ChangeLevelsCheck.SetHelpText(ChangeLevelsHelp);
+<a name="157"></a>    ChangeLevelsCheck.SetFont(F_Normal);
+<a name="158"></a>    ChangeLevelsCheck.Align = TA_Right;
+<a name="159"></a>
+<a name="160"></a>    SetChangeLevels();
+<a name="161"></a>
+<a name="162"></a>    Initialized = <font class="source_keyword">true</font>;
+<a name="163"></a>}
+<a name="164"></a>
+<a name="165"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="166"></a>{
+<a name="167"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="168"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos;
+<a name="169"></a>
+<a name="170"></a>    <font class="source_keyword">Super</font>.BeforePaint(C, X, Y);
+<a name="171"></a>
+<a name="172"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="173"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="174"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="175"></a>
+<a name="176"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="177"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="178"></a>
+<a name="179"></a>    CategoryCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="180"></a>    CategoryCombo.WinLeft = CenterPos;
+<a name="181"></a>    CategoryCombo.EditBoxWidth = <font class="source_int">150</font>;
+<a name="182"></a>
+<a name="183"></a>    ChangeLevelsCheck.SetSize(ControlWidth, <font class="source_int">1</font>);     
+<a name="184"></a>    ChangeLevelsCheck.WinLeft = (WinWidth - ChangeLevelsCheck.WinWidth) / <font class="source_int">2</font>;
+<a name="185"></a>}
+<a name="186"></a>
+<a name="187"></a><font class="source_keyword">function</font> CategoryChanged()
+<a name="188"></a>{
+<a name="189"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> CurCategory;
+<a name="190"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, Selection;
+<a name="191"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NextGame, NextCategory;
+<a name="192"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> TempGames[<font class="source_int">256</font>];
+<a name="193"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt; TempClass;
+<a name="194"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bFoundSavedGameClass;
+<a name="195"></a>
+<a name="196"></a>    <font class="source_keyword">if</font> (!Initialized)
+<a name="197"></a>        <font class="source_keyword">return</font>;
+<a name="198"></a>
+<a name="199"></a>    Initialized = <font class="source_keyword">false</font>;
+<a name="200"></a>
+<a name="201"></a>    CurCategory = CategoryCombo.GetValue();
+<a name="202"></a>    LastCategory = CurCategory;
+<a name="203"></a>    GameCombo.Clear();
+<a name="204"></a>
+<a name="205"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">256</font>; i++)
+<a name="206"></a>        Games[i] = <font class="source_string">""</font>;
+<a name="207"></a>    i=<font class="source_int">0</font>;
+<a name="208"></a>
+<a name="209"></a>    <font class="source_comment">// Compile a list of all gametypes.
+</font><a name="210"></a>    TempClass = <font class="source_keyword">class</font><font class="source_name">'TournamentGameInfo'</font>;
+<a name="211"></a>    GetPlayerOwner().GetNextIntDesc(<font class="source_string">"TournamentGameInfo"</font>, <font class="source_int">0</font>, NextGame, NextCategory);
+<a name="212"></a>    <font class="source_keyword">while</font> (NextGame != <font class="source_string">""</font>)
+<a name="213"></a>    {
+<a name="214"></a>        <font class="source_keyword">if</font> ((CurCategory ~= GeneralText) && (NextCategory == <font class="source_string">""</font>))
+<a name="215"></a>            TempGames[i] = NextGame;
+<a name="216"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> (NextCategory ~= CurCategory)
+<a name="217"></a>            TempGames[i] = NextGame;
+<a name="218"></a>        i++;
+<a name="219"></a>        <font class="source_keyword">if</font>(i == <font class="source_int">256</font>)
+<a name="220"></a>        {
+<a name="221"></a>            Log(<font class="source_string">"More than 256 gameinfos listed in int files"</font>);
+<a name="222"></a>            <font class="source_keyword">break</font>;
+<a name="223"></a>        }
+<a name="224"></a>        GetPlayerOwner().GetNextIntDesc(<font class="source_string">"TournamentGameInfo"</font>, i, NextGame, NextCategory);
+<a name="225"></a>    }
+<a name="226"></a>
+<a name="227"></a>    <font class="source_comment">// Fill the control.
+</font><a name="228"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">256</font>; i++)
+<a name="229"></a>    {
+<a name="230"></a>        <font class="source_keyword">if</font> (TempGames[i] != <font class="source_string">""</font>)
+<a name="231"></a>        {
+<a name="232"></a>            Games[MaxGames] = TempGames[i];
+<a name="233"></a>            <font class="source_keyword">if</font> ( !bFoundSavedGameClass && (Games[MaxGames] ~= BotmatchParent.GameType) )
+<a name="234"></a>            {
+<a name="235"></a>                bFoundSavedGameClass = <font class="source_keyword">true</font>;
+<a name="236"></a>                Selection = MaxGames;
+<a name="237"></a>            }
+<a name="238"></a>            TempClass = <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt;(DynamicLoadObject(Games[MaxGames], <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="239"></a>            GameCombo.AddItem(TempClass.Default.GameName);
+<a name="240"></a>            MaxGames++;
+<a name="241"></a>        }
+<a name="242"></a>    }
+<a name="243"></a>
+<a name="244"></a>    GameCombo.SetSelectedIndex(<font class="source_int">0</font>);
+<a name="245"></a>
+<a name="246"></a>    Initialized = <font class="source_keyword">true</font>;
+<a name="247"></a>
+<a name="248"></a>    GameChanged();
+<a name="249"></a>
+<a name="250"></a>    SaveConfig();
+<a name="251"></a>}
+<a name="252"></a>
+<a name="253"></a><font class="source_keyword">function</font> GameChanged()
+<a name="254"></a>{
+<a name="255"></a>    <font class="source_keyword">if</font> (!Initialized)
+<a name="256"></a>        <font class="source_keyword">return</font>;
+<a name="257"></a>
+<a name="258"></a>    <font class="source_keyword">Super</font>.GameChanged();
+<a name="259"></a>    SetChangeLevels();
+<a name="260"></a>}
+<a name="261"></a>
+<a name="262"></a><font class="source_keyword">function</font> SetChangeLevels()
+<a name="263"></a>{
+<a name="264"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt; DMP;
+<a name="265"></a>
+<a name="266"></a>    DMP = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(BotmatchParent.GameClass);
+<a name="267"></a>    <font class="source_keyword">if</font>(DMP == <font class="source_keyword">None</font>)
+<a name="268"></a>    {
+<a name="269"></a>        ChangeLevelsCheck.HideWindow();
+<a name="270"></a>    }
+<a name="271"></a>    <font class="source_keyword">else</font>
+<a name="272"></a>    {
+<a name="273"></a>        ChangeLevelsCheck.ShowWindow();
+<a name="274"></a>        ChangeLevelsCheck.bChecked = DMP.default.bChangeLevels;
+<a name="275"></a>    }
+<a name="276"></a>}
+<a name="277"></a>
+<a name="278"></a><font class="source_keyword">function</font> Notify(<font class="source_type"><a href="..\uwindow\uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></font> C, <font class="source_keyword">byte</font> E)
+<a name="279"></a>{
+<a name="280"></a>    <font class="source_keyword">Super</font>.Notify(C, E);
+<a name="281"></a>
+<a name="282"></a>    <font class="source_keyword">switch</font>(E)
+<a name="283"></a>    {
+<a name="284"></a>    <font class="source_keyword">case</font> DE_Change:
+<a name="285"></a>        <font class="source_keyword">switch</font>(C)
+<a name="286"></a>        {
+<a name="287"></a>        <font class="source_keyword">case</font> CategoryCombo:
+<a name="288"></a>            CategoryChanged();
+<a name="289"></a>            <font class="source_keyword">break</font>;
+<a name="290"></a>        <font class="source_keyword">case</font> ChangeLevelsCheck:
+<a name="291"></a>            ChangeLevelsChanged();
+<a name="292"></a>            <font class="source_keyword">break</font>;
+<a name="293"></a>        }
+<a name="294"></a>        <font class="source_keyword">break</font>;
+<a name="295"></a>    }
+<a name="296"></a>}
+<a name="297"></a>
+<a name="298"></a><font class="source_keyword">function</font> ChangeLevelsChanged()
+<a name="299"></a>{
+<a name="300"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt; DMP;
+<a name="301"></a>
+<a name="302"></a>    DMP = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>&gt;(BotmatchParent.GameClass);
+<a name="303"></a>    <font class="source_keyword">if</font>(DMP != <font class="source_keyword">None</font>)
+<a name="304"></a>    {
+<a name="305"></a>        DMP.default.bChangeLevels = ChangeLevelsCheck.bChecked;
+<a name="306"></a>        DMP.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="307"></a>    }
+<a name="308"></a>}
+<a name="309"></a>
+<a name="310"></a><font class="source_keyword">defaultproperties</font>
+<a name="311"></a>{
+<a name="312"></a>    CategoryText=<font class="source_string">"Category:"</font>
+<a name="313"></a>    CategoryHelp=<font class="source_string">"Select a category of gametype!"</font>
+<a name="314"></a>    GeneralText=<font class="source_string">"Unreal Tournament"</font>
+<a name="315"></a>    ChangeLevelsText=<font class="source_string">"Auto Change Levels"</font>
+<a name="316"></a>    ChangeLevelsHelp=<font class="source_string">"If this setting is checked, the server will change levels according to the map list for this game type."</font>
+<a name="317"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utmenustartmatchcw.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTMenuStartMatchCW">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utmenubotmatchcw.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utmenustartmatchsc.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:38.000 - Creation time: Wed 26/5/2004 10:48:59.656 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

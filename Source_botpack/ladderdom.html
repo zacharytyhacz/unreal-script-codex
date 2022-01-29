@@ -1,0 +1,239 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.LadderDOM</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ladderdom.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#LadderDOM">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ladderdmgoty.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ladderdomdemo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\ladderdom.html">LadderDOM</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// LadderDOM
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\ladderdom.html" class="source">LadderDOM</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">defaultproperties</font>
+<a name="7"></a>{
+<a name="8"></a>    Matches=<font class="source_int">10</font>
+<a name="9"></a>    bTeamGame=<font class="source_keyword">True</font>
+<a name="10"></a>    MapPrefix=<font class="source_string">"DOM-"</font>
+<a name="11"></a>
+<a name="12"></a>    Maps(<font class="source_int">0</font>)=<font class="source_string">"Tutorial.unr"</font>
+<a name="13"></a>    MapTitle(<font class="source_int">0</font>)=<font class="source_string">"DOM Tutorial"</font>
+<a name="14"></a>    MapAuthors(<font class="source_int">0</font>)=<font class="source_string">"Cliff Bleszinski"</font>
+<a name="15"></a>    MapDescription(<font class="source_int">0</font>)=<font class="source_string">"Learn the basic rules and systems of Domination in this special training environment. Test your skills against an untrained enemy team before entering the tournament proper."</font>
+<a name="16"></a>    GoalTeamScore(<font class="source_int">0</font>)=<font class="source_int">20</font>
+<a name="17"></a>    RankedGame(<font class="source_int">0</font>)=<font class="source_int">1</font>
+<a name="18"></a>    MatchInfo(<font class="source_int">0</font>)=<font class="source_string">"Botpack.RatedMatchDOMTUT"</font>
+<a name="19"></a>
+<a name="20"></a>    Maps(<font class="source_int">1</font>)=<font class="source_string">"Condemned.unr"</font>
+<a name="21"></a>    MapTitle(<font class="source_int">1</font>)=<font class="source_string">"Condemned"</font>
+<a name="22"></a>    MapAuthors(<font class="source_int">1</font>)=<font class="source_string">"Dave Ewing"</font>
+<a name="23"></a>    MapDescription(<font class="source_int">1</font>)=<font class="source_string">"The many gang-related fights that ravaged this particular area have already proven this section of the city slums to be a bloody battle ground. The Liandri organizers are expecting this to be the case once again, only this time, as a tournament domination arena."</font>
+<a name="24"></a>    GoalTeamScore(<font class="source_int">1</font>)=<font class="source_int">100</font>
+<a name="25"></a>    RankedGame(<font class="source_int">1</font>)=<font class="source_int">1</font>
+<a name="26"></a>    MatchInfo(<font class="source_int">1</font>)=<font class="source_string">"Botpack.RatedMatchDOM1"</font>
+<a name="27"></a>
+<a name="28"></a>    <font class="source_comment">// Botpack.RatedMatchDOM2 unused, because an old map was here and might come back later.
+</font><a name="29"></a>
+<a name="30"></a>    Maps(<font class="source_int">2</font>)=<font class="source_string">"Ghardhen.unr"</font>
+<a name="31"></a>    MapTitle(<font class="source_int">2</font>)=<font class="source_string">"Ghardhen"</font>
+<a name="32"></a>    MapAuthors(<font class="source_int">2</font>)=<font class="source_string">"Alan Willard 'Talisman'"</font>
+<a name="33"></a>    MapDescription(<font class="source_int">2</font>)=<font class="source_string">"A newly constructed explosion testing facility, Ghardhen Labs houses two blast chambers. Unfortunately, one of the silent investors was a Liandri location scout, and Ghardhen fell to Liandri."</font>
+<a name="34"></a>    GoalTeamScore(<font class="source_int">2</font>)=<font class="source_int">100</font>
+<a name="35"></a>    RankedGame(<font class="source_int">2</font>)=<font class="source_int">2</font>
+<a name="36"></a>    MatchInfo(<font class="source_int">2</font>)=<font class="source_string">"Botpack.RatedMatchDOM3"</font>
+<a name="37"></a>
+<a name="38"></a>    Maps(<font class="source_int">3</font>)=<font class="source_string">"Cryptic.unr"</font>
+<a name="39"></a>    MapTitle(<font class="source_int">3</font>)=<font class="source_string">"Cryptic"</font>
+<a name="40"></a>    MapAuthors(<font class="source_int">3</font>)=<font class="source_string">"Alan Willard 'Talisman'"</font>
+<a name="41"></a>    MapDescription(<font class="source_int">3</font>)=<font class="source_string">"One of the few 'manufactured' Tournament arenas, this ancient-seeming ruin was built by the legendary Tournament Master Kilbragh as a personal training facility. After his death, the property reverted to Liandri, who now makes full use of it."</font>
+<a name="42"></a>    GoalTeamScore(<font class="source_int">3</font>)=<font class="source_int">100</font>
+<a name="43"></a>    RankedGame(<font class="source_int">3</font>)=<font class="source_int">3</font>
+<a name="44"></a>    MatchInfo(<font class="source_int">3</font>)=<font class="source_string">"Botpack.RatedMatchDOM4"</font>
+<a name="45"></a>
+<a name="46"></a>    Maps(<font class="source_int">4</font>)=<font class="source_string">"Cinder.unr"</font>
+<a name="47"></a>    MapTitle(<font class="source_int">4</font>)=<font class="source_string">"Cinder"</font>
+<a name="48"></a>    MapAuthors(<font class="source_int">4</font>)=<font class="source_string">"Cliff Bleszinski"</font>
+<a name="49"></a>    MapDescription(<font class="source_int">4</font>)=<font class="source_string">"After dozens of broken legs and incinerated employees, the Cinder Foundry was finally shut down and placed upon the auction block, where it was promptly snatched up by a savvy Liandri location scout."</font>
+<a name="50"></a>    GoalTeamScore(<font class="source_int">4</font>)=<font class="source_int">125</font>
+<a name="51"></a>    RankedGame(<font class="source_int">4</font>)=<font class="source_int">3</font>
+<a name="52"></a>    MatchInfo(<font class="source_int">4</font>)=<font class="source_string">"Botpack.RatedMatchDOM5"</font>
+<a name="53"></a>
+<a name="54"></a>    Maps(<font class="source_int">5</font>)=<font class="source_string">"Gearbolt.unr"</font>
+<a name="55"></a>    MapTitle(<font class="source_int">5</font>)=<font class="source_string">"Gearbolt"</font>
+<a name="56"></a>    MapAuthors(<font class="source_int">5</font>)=<font class="source_string">"Cliff Bleszinski"</font>
+<a name="57"></a>    MapDescription(<font class="source_int">5</font>)=<font class="source_string">"New peace treaties by the NEG have resulted in many abandoned military facilities. Gearbolt was once an underground storage base for military weapons and inventory."</font>
+<a name="58"></a>    GoalTeamScore(<font class="source_int">5</font>)=<font class="source_int">125</font>
+<a name="59"></a>    RankedGame(<font class="source_int">5</font>)=<font class="source_int">3</font>
+<a name="60"></a>    MatchInfo(<font class="source_int">5</font>)=<font class="source_string">"Botpack.RatedMatchDOM6"</font>
+<a name="61"></a>
+<a name="62"></a>    Maps(<font class="source_int">6</font>)=<font class="source_string">"Leadworks.unr"</font>
+<a name="63"></a>    MapTitle(<font class="source_int">6</font>)=<font class="source_string">"Leadworks"</font>
+<a name="64"></a>    MapAuthors(<font class="source_int">6</font>)=<font class="source_string">"Myscha the sled dog"</font>
+<a name="65"></a>    MapDescription(<font class="source_int">6</font>)=<font class="source_string">"An old leadworks on the wrong side of the tracks is excellent place for a war. You can expect molten lead still pooled in some areas of this facility. Step lightly if you plan on being effective."</font>
+<a name="66"></a>    GoalTeamScore(<font class="source_int">6</font>)=<font class="source_int">150</font>
+<a name="67"></a>    RankedGame(<font class="source_int">6</font>)=<font class="source_int">4</font>
+<a name="68"></a>    MatchInfo(<font class="source_int">6</font>)=<font class="source_string">"Botpack.RatedMatchDOM7"</font>
+<a name="69"></a>
+<a name="70"></a>    Maps(<font class="source_int">7</font>)=<font class="source_string">"Olden.unr"</font>
+<a name="71"></a>    MapTitle(<font class="source_int">7</font>)=<font class="source_string">"Olden"</font>
+<a name="72"></a>    MapAuthors(<font class="source_int">7</font>)=<font class="source_string">"Alan Willard 'Talisman'"</font>
+<a name="73"></a>    MapDescription(<font class="source_int">7</font>)=<font class="source_string">"This ancient temple was sacred to the race that built it, but not to Liandri.  Upon discovering it nestled in the mountains above the Eternal Cave, desecrated it for battle."</font>
+<a name="74"></a>    GoalTeamScore(<font class="source_int">7</font>)=<font class="source_int">150</font>
+<a name="75"></a>    RankedGame(<font class="source_int">7</font>)=<font class="source_int">4</font>
+<a name="76"></a>    MatchInfo(<font class="source_int">7</font>)=<font class="source_string">"Botpack.RatedMatchDOM8"</font>
+<a name="77"></a>
+<a name="78"></a>    Maps(<font class="source_int">8</font>)=<font class="source_string">"Sesmar.unr"</font>
+<a name="79"></a>    MapTitle(<font class="source_int">8</font>)=<font class="source_string">"Sesmar"</font>
+<a name="80"></a>    MapAuthors(<font class="source_int">8</font>)=<font class="source_string">"Juan Pancho Eekels"</font>
+<a name="81"></a>    MapDescription(<font class="source_int">8</font>)=<font class="source_string">"Despite worldwide protests, this historical landmark is now owned by Liandri. Jerl Liandri, President Liandri Mining Corporation: 'We owe it to the people to ensure quality cultural events. We won't settle for less.'"</font>
+<a name="82"></a>    GoalTeamScore(<font class="source_int">8</font>)=<font class="source_int">175</font>
+<a name="83"></a>    RankedGame(<font class="source_int">8</font>)=<font class="source_int">5</font>
+<a name="84"></a>    MatchInfo(<font class="source_int">8</font>)=<font class="source_string">"Botpack.RatedMatchDOM9"</font>
+<a name="85"></a>
+<a name="86"></a>    Maps(<font class="source_int">9</font>)=<font class="source_string">"MetalDream.unr"</font>
+<a name="87"></a>    MapTitle(<font class="source_int">9</font>)=<font class="source_string">"MetalDream"</font>
+<a name="88"></a>    MapAuthors(<font class="source_int">9</font>)=<font class="source_string">"Cedric 'Inoxx' Fiorentino"</font>
+<a name="89"></a>    MapDescription(<font class="source_int">9</font>)=<font class="source_string">"This oil rig has been converted into a Domination Arena. It is located near strange meteorological phenomenon in the northern reaches of Kryllia. Use the architecture to dominate your opponents."</font>
+<a name="90"></a>    GoalTeamScore(<font class="source_int">9</font>)=<font class="source_int">200</font>
+<a name="91"></a>    RankedGame(<font class="source_int">9</font>)=<font class="source_int">6</font>
+<a name="92"></a>    MatchInfo(<font class="source_int">9</font>)=<font class="source_string">"Botpack.RatedMatchDOM10"</font>
+<a name="93"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ladderdom.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#LadderDOM">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ladderdmgoty.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ladderdomdemo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:21:40.000 - Creation time: Wed 26/5/2004 10:48:23.234 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

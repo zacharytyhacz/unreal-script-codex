@@ -1,0 +1,905 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UWindow.UWindowDynamicTextArea</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\uwindow\uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="..\uwindow\uwindowdynamictextarea.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UWindowDynamicTextArea">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowdialogcontrol.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindowdynamictextrow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowdynamictextarea.html">UWindowDynamicTextArea</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextarea.html" class="source">UWindowDynamicTextArea</a></font> <font class="source_keyword">expands</font> <font class="source_type"><a href="..\uwindow\uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> MaxLines;
+<a name="4"></a>
+<a name="5"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTopCentric;
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> DefaultTextHeight;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bScrollOnResize;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bVCenter;
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHCenter;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bAutoScrollbar;
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bVariableRowHeight;    <font class="source_comment">// Assumes !bTopCentric, !bScrollOnResize
+</font><a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> WrapWidth;
+<a name="13"></a>
+<a name="14"></a><font class="source_comment">// private
+</font><a name="15"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> List;
+<a name="16"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowvscrollbar.html" class="source">UWindowVScrollBar</a></font> VertSB;
+<a name="17"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> OldW, OldH;
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDirty;
+<a name="19"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> Count;
+<a name="20"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> VisibleRows;
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> <font class="source_type">Font</font>;
+<a name="22"></a><font class="source_keyword">var</font> <font class="source_type">Font</font> AbsoluteFont;
+<a name="23"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> TextColor;
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>&gt; RowClass;
+<a name="25"></a>
+<a name="26"></a><font class="source_keyword">function</font> Created()
+<a name="27"></a>{
+<a name="28"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="29"></a>
+<a name="30"></a>    VertSB = <font class="source_type"><a href="..\uwindow\uwindowvscrollbar.html" class="source">UWindowVScrollbar</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UWindowVScrollbar'</font>, WinWidth-<font class="source_int">12</font>, <font class="source_int">0</font>, <font class="source_int">12</font>, WinHeight));
+<a name="31"></a>    VertSB.bAlwaysOnTop = <font class="source_keyword">True</font>;
+<a name="32"></a>
+<a name="33"></a>    Clear();
+<a name="34"></a>}
+<a name="35"></a>
+<a name="36"></a><font class="source_keyword">function</font> Clear()
+<a name="37"></a>{
+<a name="38"></a>    bDirty = <font class="source_keyword">True</font>;
+<a name="39"></a>
+<a name="40"></a>    <font class="source_keyword">if</font>(List != <font class="source_keyword">None</font>)
+<a name="41"></a>    {
+<a name="42"></a>        <font class="source_keyword">if</font>(List.Next == <font class="source_keyword">None</font>)
+<a name="43"></a>            <font class="source_keyword">return</font>;
+<a name="44"></a>        List.DestroyList();
+<a name="45"></a>    }
+<a name="46"></a>
+<a name="47"></a>    List = new RowClass;
+<a name="48"></a>    List.SetupSentinel();
+<a name="49"></a>}
+<a name="50"></a>
+<a name="51"></a><font class="source_keyword">function</font> SetAbsoluteFont(<font class="source_type">Font</font> F)
+<a name="52"></a>{
+<a name="53"></a>    AbsoluteFont = F;
+<a name="54"></a>}
+<a name="55"></a>
+<a name="56"></a><font class="source_keyword">function</font> SetFont(<font class="source_keyword">int</font> F)
+<a name="57"></a>{
+<a name="58"></a>    <font class="source_type">Font</font> = F;
+<a name="59"></a>}
+<a name="60"></a>
+<a name="61"></a><font class="source_keyword">function</font> SetTextColor(<font class="source_type"><a href="..\core\object.html#Color" class="source">Color</a></font> C)
+<a name="62"></a>{
+<a name="63"></a>    TextColor = C;
+<a name="64"></a>}
+<a name="65"></a>
+<a name="66"></a><font class="source_keyword">function</font> TextAreaClipText(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> DrawX, <font class="source_keyword">float</font> DrawY, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bCheckHotkey)
+<a name="67"></a>{
+<a name="68"></a>    ClipText(C, DrawX, DrawY, S, bCheckHotkey); 
+<a name="69"></a>}
+<a name="70"></a>
+<a name="71"></a><font class="source_keyword">function</font> TextAreaTextSize(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">string</font> Text, <font class="source_keyword2">out</font> <font class="source_keyword">float</font> W, <font class="source_keyword2">out</font> <font class="source_keyword">float</font> H)
+<a name="72"></a>{
+<a name="73"></a>    TextSize(C, Text, W, H);
+<a name="74"></a>}
+<a name="75"></a>
+<a name="76"></a><font class="source_keyword">function</font> BeforePaint( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y )
+<a name="77"></a>{
+<a name="78"></a>    <font class="source_keyword">Super</font>.BeforePaint(C, X, Y);
+<a name="79"></a>
+<a name="80"></a>    VertSB.WinTop = <font class="source_int">0</font>;
+<a name="81"></a>    VertSB.WinHeight = WinHeight;
+<a name="82"></a>    VertSB.WinWidth = LookAndFeel.Size_ScrollbarWidth;
+<a name="83"></a>    VertSB.WinLeft = WinWidth - LookAndFeel.Size_ScrollbarWidth;
+<a name="84"></a>}
+<a name="85"></a>
+<a name="86"></a><font class="source_keyword">function</font> Paint( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> MouseX, <font class="source_keyword">float</font> MouseY )
+<a name="87"></a>{
+<a name="88"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L;
+<a name="89"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> SkipCount, DrawCount;
+<a name="90"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="91"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> Y, Junk;
+<a name="92"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bWrapped;
+<a name="93"></a>
+<a name="94"></a>    C.DrawColor = TextColor;
+<a name="95"></a>
+<a name="96"></a>    <font class="source_keyword">if</font>(AbsoluteFont != <font class="source_keyword">None</font>)
+<a name="97"></a>        C.<font class="source_type">Font</font> = AbsoluteFont;
+<a name="98"></a>    <font class="source_keyword">else</font>
+<a name="99"></a>        C.<font class="source_type">Font</font> = Root.Fonts[<font class="source_type">Font</font>];
+<a name="100"></a>
+<a name="101"></a>    <font class="source_keyword">if</font>(OldW != WinWidth || OldH != WinHeight)
+<a name="102"></a>    {
+<a name="103"></a>        WordWrap(C, <font class="source_keyword">True</font>);
+<a name="104"></a>        OldW = WinWidth;
+<a name="105"></a>        OldH = WinHeight;
+<a name="106"></a>        bWrapped = <font class="source_keyword">True</font>;
+<a name="107"></a>    }
+<a name="108"></a>    <font class="source_keyword">else</font>
+<a name="109"></a>    <font class="source_keyword">if</font>(bDirty)
+<a name="110"></a>    {
+<a name="111"></a>        WordWrap(C, <font class="source_keyword">False</font>);
+<a name="112"></a>        bWrapped = <font class="source_keyword">True</font>;
+<a name="113"></a>    }
+<a name="114"></a>
+<a name="115"></a>    <font class="source_keyword">if</font>(bWrapped)
+<a name="116"></a>    {
+<a name="117"></a>        TextAreaTextSize(C, <font class="source_string">"A"</font>, Junk, DefaultTextHeight);
+<a name="118"></a>        VisibleRows = WinHeight / DefaultTextHeight;
+<a name="119"></a>        Count = List.Count();
+<a name="120"></a>        VertSB.SetRange(<font class="source_int">0</font>, Count, VisibleRows);
+<a name="121"></a>
+<a name="122"></a>        <font class="source_keyword">if</font>(bScrollOnResize)
+<a name="123"></a>        {
+<a name="124"></a>            <font class="source_keyword">if</font>(bTopCentric)
+<a name="125"></a>                VertSB.Pos = <font class="source_int">0</font>;
+<a name="126"></a>            <font class="source_keyword">else</font>
+<a name="127"></a>                VertSB.Pos = VertSB.MaxPos;
+<a name="128"></a>        }
+<a name="129"></a>
+<a name="130"></a>        <font class="source_keyword">if</font>(bAutoScrollbar && !bVariableRowHeight)
+<a name="131"></a>        {
+<a name="132"></a>            <font class="source_keyword">if</font>(Count &lt;= VisibleRows)
+<a name="133"></a>                VertSB.HideWindow();
+<a name="134"></a>            <font class="source_keyword">else</font>
+<a name="135"></a>                VertSB.ShowWindow();
+<a name="136"></a>        }
+<a name="137"></a>    }
+<a name="138"></a>
+<a name="139"></a>    <font class="source_keyword">if</font>(bTopCentric)
+<a name="140"></a>    {
+<a name="141"></a>        SkipCount = VertSB.Pos;
+<a name="142"></a>        L = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(List.Next);
+<a name="143"></a>        <font class="source_keyword">for</font>(i=<font class="source_int">0</font>; i &lt; SkipCount && (L != <font class="source_keyword">None</font>) ; i++)
+<a name="144"></a>            L = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(L.Next);
+<a name="145"></a>
+<a name="146"></a>        <font class="source_keyword">if</font>(bVCenter && Count &lt;= VisibleRows)
+<a name="147"></a>            Y = <font class="source_keyword">int</font>((WinHeight - (Count * DefaultTextHeight)) / <font class="source_int">2</font>);
+<a name="148"></a>        <font class="source_keyword">else</font>
+<a name="149"></a>            Y = <font class="source_int">1</font>;
+<a name="150"></a>
+<a name="151"></a>        DrawCount = <font class="source_int">0</font>;
+<a name="152"></a>        <font class="source_keyword">while</font>(Y &lt; WinHeight)
+<a name="153"></a>        {
+<a name="154"></a>            DrawCount++;
+<a name="155"></a>            <font class="source_keyword">if</font>(L != <font class="source_keyword">None</font>)
+<a name="156"></a>            {
+<a name="157"></a>                Y += DrawTextLine(C, L, Y);
+<a name="158"></a>                L = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(L.Next);
+<a name="159"></a>            }
+<a name="160"></a>            <font class="source_keyword">else</font>
+<a name="161"></a>                Y += DefaultTextHeight;
+<a name="162"></a>        }
+<a name="163"></a>
+<a name="164"></a>        <font class="source_keyword">if</font>(bVariableRowHeight)
+<a name="165"></a>        {
+<a name="166"></a>            VisibleRows = DrawCount - <font class="source_int">1</font>;
+<a name="167"></a>
+<a name="168"></a>            <font class="source_keyword">while</font>(VertSB.Pos + VisibleRows &gt; Count)
+<a name="169"></a>                VisibleRows--;
+<a name="170"></a>
+<a name="171"></a>            VertSB.SetRange(<font class="source_int">0</font>, Count, VisibleRows);
+<a name="172"></a>
+<a name="173"></a>            <font class="source_keyword">if</font>(bAutoScrollbar)
+<a name="174"></a>            {
+<a name="175"></a>                <font class="source_keyword">if</font>(Count &lt;= VisibleRows)
+<a name="176"></a>                    VertSB.HideWindow();
+<a name="177"></a>                <font class="source_keyword">else</font>
+<a name="178"></a>                    VertSB.ShowWindow();
+<a name="179"></a>            }
+<a name="180"></a>        }
+<a name="181"></a>    }
+<a name="182"></a>    <font class="source_keyword">else</font>
+<a name="183"></a>    {
+<a name="184"></a>        SkipCount = Max(<font class="source_int">0</font>, Count - (VisibleRows + VertSB.Pos));
+<a name="185"></a>        L = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(List.Last);
+<a name="186"></a>        <font class="source_keyword">for</font>(i=<font class="source_int">0</font>; i &lt; SkipCount && (L != List) ; i++)
+<a name="187"></a>            L = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(L.Prev);
+<a name="188"></a>
+<a name="189"></a>        Y = WinHeight - DefaultTextHeight;
+<a name="190"></a>        <font class="source_keyword">while</font>(L != List && L != <font class="source_keyword">None</font> && Y &gt; -DefaultTextHeight)
+<a name="191"></a>        {
+<a name="192"></a>            DrawTextLine(C, L, Y);
+<a name="193"></a>            Y = Y - DefaultTextHeight;
+<a name="194"></a>            L = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(L.Prev);
+<a name="195"></a>        }
+<a name="196"></a>    }
+<a name="197"></a>}
+<a name="198"></a>
+<a name="199"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> AddText(<font class="source_keyword">string</font> NewLine)
+<a name="200"></a>{
+<a name="201"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L;
+<a name="202"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Temp;
+<a name="203"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="204"></a>
+<a name="205"></a>    bDirty = <font class="source_keyword">True</font>;
+<a name="206"></a>    
+<a name="207"></a>    i = InStr(NewLine, <font class="source_string">"\\n"</font>);
+<a name="208"></a>    <font class="source_keyword">if</font>(i != -<font class="source_int">1</font>)
+<a name="209"></a>    {
+<a name="210"></a>        Temp = Mid(NewLine, i+<font class="source_int">2</font>);
+<a name="211"></a>        NewLine = Left(NewLine, i);     
+<a name="212"></a>    }
+<a name="213"></a>    <font class="source_keyword">else</font>
+<a name="214"></a>        Temp = <font class="source_string">""</font>;
+<a name="215"></a>    
+<a name="216"></a>
+<a name="217"></a>    <font class="source_comment">// reuse a row if possible
+</font><a name="218"></a>    L = CheckMaxRows();
+<a name="219"></a>
+<a name="220"></a>    <font class="source_keyword">if</font>(L != <font class="source_keyword">None</font>)
+<a name="221"></a>        List.AppendItem(L);
+<a name="222"></a>    <font class="source_keyword">else</font>
+<a name="223"></a>        L = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(List.Append(RowClass));
+<a name="224"></a>
+<a name="225"></a>    L.Text = NewLine;
+<a name="226"></a>    L.WrapParent = <font class="source_keyword">None</font>;
+<a name="227"></a>    L.bRowDirty = <font class="source_keyword">True</font>;
+<a name="228"></a>
+<a name="229"></a>    <font class="source_keyword">if</font>(Temp != <font class="source_string">""</font>)
+<a name="230"></a>        AddText(Temp);
+<a name="231"></a>
+<a name="232"></a>    <font class="source_keyword">return</font> L;
+<a name="233"></a>}
+<a name="234"></a>
+<a name="235"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> CheckMaxRows()
+<a name="236"></a>{
+<a name="237"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L;
+<a name="238"></a>    L = <font class="source_keyword">None</font>;
+<a name="239"></a>    <font class="source_keyword">while</font>(MaxLines &gt; <font class="source_int">0</font> && List.Count() &gt; MaxLines - <font class="source_int">1</font> && List.Next != <font class="source_keyword">None</font>)
+<a name="240"></a>    {
+<a name="241"></a>        L = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(List.Next);
+<a name="242"></a>        RemoveWrap(L);
+<a name="243"></a>        L.Remove();
+<a name="244"></a>    }
+<a name="245"></a>    <font class="source_keyword">return</font> L;
+<a name="246"></a>}
+<a name="247"></a>
+<a name="248"></a><font class="source_keyword">function</font> WordWrap(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">bool</font> bForce)
+<a name="249"></a>{
+<a name="250"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L;
+<a name="251"></a>
+<a name="252"></a>    <font class="source_keyword">for</font>(L = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(List.Next); L != <font class="source_keyword">None</font>; L = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(L.Next))
+<a name="253"></a>        <font class="source_keyword">if</font>(L.WrapParent == <font class="source_keyword">None</font> && (L.bRowDirty || bForce))
+<a name="254"></a>            WrapRow(C, L);
+<a name="255"></a>
+<a name="256"></a>    bDirty = <font class="source_keyword">False</font>;
+<a name="257"></a>}
+<a name="258"></a>
+<a name="259"></a><font class="source_keyword">function</font> WrapRow(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L)
+<a name="260"></a>{
+<a name="261"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> CurrentRow, N;
+<a name="262"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> MaxWidth;
+<a name="263"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> WrapPos;
+<a name="264"></a>
+<a name="265"></a>    <font class="source_keyword">if</font>(WrapWidth == <font class="source_int">0</font>)
+<a name="266"></a>    {
+<a name="267"></a>        <font class="source_keyword">if</font>(VertSB.bWindowVisible || bAutoScrollbar)
+<a name="268"></a>            MaxWidth = WinWidth - VertSB.WinWidth;
+<a name="269"></a>        <font class="source_keyword">else</font>
+<a name="270"></a>            MaxWidth = WinWidth;
+<a name="271"></a>    }
+<a name="272"></a>    <font class="source_keyword">else</font>
+<a name="273"></a>        MaxWidth = WrapWidth;
+<a name="274"></a>
+<a name="275"></a>    L.bRowDirty = <font class="source_keyword">False</font>;
+<a name="276"></a>
+<a name="277"></a>    <font class="source_comment">// fast check - single line?
+</font><a name="278"></a>    N = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(L.Next);
+<a name="279"></a>    <font class="source_keyword">if</font>(N == <font class="source_keyword">None</font> || N.WrapParent != L)
+<a name="280"></a>    {
+<a name="281"></a>        <font class="source_keyword">if</font>(GetWrapPos(C, L, MaxWidth) == -<font class="source_int">1</font>)
+<a name="282"></a>            <font class="source_keyword">return</font>;
+<a name="283"></a>    }
+<a name="284"></a>
+<a name="285"></a>    RemoveWrap(L);
+<a name="286"></a>    CurrentRow = L;
+<a name="287"></a>
+<a name="288"></a>    <font class="source_keyword">while</font>(<font class="source_keyword">True</font>)
+<a name="289"></a>    {
+<a name="290"></a>        WrapPos = GetWrapPos(C, CurrentRow, MaxWidth);
+<a name="291"></a>        <font class="source_keyword">if</font>(WrapPos == -<font class="source_int">1</font>)
+<a name="292"></a>            <font class="source_keyword">break</font>;
+<a name="293"></a>
+<a name="294"></a>        CurrentRow = SplitRowAt(CurrentRow, WrapPos);
+<a name="295"></a>    }
+<a name="296"></a>}
+<a name="297"></a>
+<a name="298"></a><font class="source_comment">///////////////////////////////////////////////////////
+</font><a name="299"></a><font class="source_comment">// Functions to override to change format/layout
+</font><a name="300"></a><font class="source_comment">///////////////////////////////////////////////////////
+</font><a name="301"></a>
+<a name="302"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> DrawTextLine(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L, <font class="source_keyword">float</font> Y)
+<a name="303"></a>{
+<a name="304"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> X, W, H;
+<a name="305"></a>
+<a name="306"></a>    <font class="source_keyword">if</font>(bHCenter)
+<a name="307"></a>    {
+<a name="308"></a>        TextAreaTextSize(C, L.Text, W, H);
+<a name="309"></a>        <font class="source_keyword">if</font>(VertSB.bWindowVisible)
+<a name="310"></a>            X = <font class="source_keyword">int</font>(((WinWidth - VertSB.WinWidth) - W) / <font class="source_int">2</font>);
+<a name="311"></a>        <font class="source_keyword">else</font>
+<a name="312"></a>            X = <font class="source_keyword">int</font>((WinWidth - W) / <font class="source_int">2</font>);
+<a name="313"></a>    }
+<a name="314"></a>    <font class="source_keyword">else</font>
+<a name="315"></a>        X = <font class="source_int">2</font>;
+<a name="316"></a>    TextAreaClipText(C, X, Y, L.Text);
+<a name="317"></a>
+<a name="318"></a>    <font class="source_keyword">return</font> DefaultTextHeight;
+<a name="319"></a>}
+<a name="320"></a>
+<a name="321"></a>
+<a name="322"></a><font class="source_comment">// find where to break the line
+</font><a name="323"></a><font class="source_keyword">function</font> <font class="source_keyword">int</font> GetWrapPos(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L, <font class="source_keyword">float</font> MaxWidth)
+<a name="324"></a>{
+<a name="325"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> W, H, LineWidth, NextWordWidth;
+<a name="326"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Input, NextWord;
+<a name="327"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> WordsThisRow, WrapPos;
+<a name="328"></a>
+<a name="329"></a>    <font class="source_comment">// quick check
+</font><a name="330"></a>    TextAreaTextSize(C, L.Text, W, H);
+<a name="331"></a>    <font class="source_keyword">if</font>(W &lt;= MaxWidth)
+<a name="332"></a>        <font class="source_keyword">return</font> -<font class="source_int">1</font>;
+<a name="333"></a>
+<a name="334"></a>    Input = L.Text;
+<a name="335"></a>    WordsThisRow = <font class="source_int">0</font>;
+<a name="336"></a>    LineWidth = <font class="source_int">0</font>;
+<a name="337"></a>    WrapPos = <font class="source_int">0</font>;
+<a name="338"></a>    NextWord = <font class="source_string">""</font>;
+<a name="339"></a>
+<a name="340"></a>    <font class="source_keyword">while</font>(Input != <font class="source_string">""</font> || NextWord != <font class="source_string">""</font>)
+<a name="341"></a>    {
+<a name="342"></a>        <font class="source_keyword">if</font>(NextWord == <font class="source_string">""</font>)
+<a name="343"></a>        {
+<a name="344"></a>            RemoveNextWord(Input, NextWord);
+<a name="345"></a>            TextAreaTextSize(C, NextWord, NextWordWidth, H);
+<a name="346"></a>        }
+<a name="347"></a>        <font class="source_keyword">if</font>(WordsThisRow &gt; <font class="source_int">0</font> && LineWidth + NextWordWidth &gt; MaxWidth)
+<a name="348"></a>        {
+<a name="349"></a>            <font class="source_keyword">return</font> WrapPos;
+<a name="350"></a>        }
+<a name="351"></a>        <font class="source_keyword">else</font>
+<a name="352"></a>        {
+<a name="353"></a>            WrapPos += Len(NextWord);
+<a name="354"></a>            LineWidth += NextWordWidth;
+<a name="355"></a>            NextWord = <font class="source_string">""</font>;
+<a name="356"></a>            WordsThisRow++;
+<a name="357"></a>        }
+<a name="358"></a>    }
+<a name="359"></a>    <font class="source_keyword">return</font> -<font class="source_int">1</font>;
+<a name="360"></a>}
+<a name="361"></a>
+<a name="362"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> SplitRowAt(<font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L, <font class="source_keyword">int</font> SplitPos)
+<a name="363"></a>{
+<a name="364"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> N;
+<a name="365"></a>
+<a name="366"></a>    N = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(L.InsertAfter(RowClass));
+<a name="367"></a>
+<a name="368"></a>    <font class="source_keyword">if</font>(L.WrapParent == <font class="source_keyword">None</font>)
+<a name="369"></a>        N.WrapParent = L;
+<a name="370"></a>    <font class="source_keyword">else</font>
+<a name="371"></a>        N.WrapParent = L.WrapParent;
+<a name="372"></a>
+<a name="373"></a>    N.Text = Mid(L.Text, SplitPos);
+<a name="374"></a>    L.Text = Left(L.Text, SplitPos);
+<a name="375"></a>
+<a name="376"></a>    <font class="source_keyword">return</font> N;
+<a name="377"></a>}
+<a name="378"></a>
+<a name="379"></a><font class="source_keyword">function</font> RemoveNextWord(<font class="source_keyword2">out</font> <font class="source_keyword">string</font> Text, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> NextWord)
+<a name="380"></a>{
+<a name="381"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="382"></a>
+<a name="383"></a>    i = InStr(Text, <font class="source_string">" "</font>);
+<a name="384"></a>    <font class="source_keyword">if</font>(i == -<font class="source_int">1</font>)
+<a name="385"></a>    {
+<a name="386"></a>        NextWord = Text;
+<a name="387"></a>        Text = <font class="source_string">""</font>;
+<a name="388"></a>    }
+<a name="389"></a>    <font class="source_keyword">else</font>
+<a name="390"></a>    {
+<a name="391"></a>        <font class="source_keyword">while</font>(Mid(Text, i, <font class="source_int">1</font>) == <font class="source_string">" "</font>)
+<a name="392"></a>            i++;
+<a name="393"></a>
+<a name="394"></a>        NextWord = Left(Text, i);
+<a name="395"></a>        Text = Mid(Text, i);
+<a name="396"></a>    }
+<a name="397"></a>}
+<a name="398"></a>
+<a name="399"></a><font class="source_keyword">function</font> RemoveWrap(<font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> L)
+<a name="400"></a>{
+<a name="401"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font> N;
+<a name="402"></a>
+<a name="403"></a>    <font class="source_comment">// Remove previous word-wrapping
+</font><a name="404"></a>    N = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(L.Next);
+<a name="405"></a>    <font class="source_keyword">while</font>(N != <font class="source_keyword">None</font> && N.WrapParent == L)
+<a name="406"></a>    {
+<a name="407"></a>        L.Text = L.Text $ N.Text;
+<a name="408"></a>        N.Remove();
+<a name="409"></a>        N = <font class="source_type"><a href="..\uwindow\uwindowdynamictextrow.html" class="source">UWindowDynamicTextRow</a></font>(L.Next);
+<a name="410"></a>    }
+<a name="411"></a>}
+<a name="412"></a>
+<a name="413"></a><font class="source_keyword">defaultproperties</font>
+<a name="414"></a>{
+<a name="415"></a>    <font class="source_type">Font</font>=<font class="source_int">0</font>
+<a name="416"></a>    WrapWidth=<font class="source_int">0</font>
+<a name="417"></a>    bNoKeyboard=<font class="source_keyword">True</font>
+<a name="418"></a>    bScrollOnResize=<font class="source_keyword">True</font>
+<a name="419"></a>    MaxLines=<font class="source_int">0</font>
+<a name="420"></a>    TextColor=(R=<font class="source_int">255</font>,G=<font class="source_int">255</font>,B=<font class="source_int">255</font>);
+<a name="421"></a>    bVCenter=<font class="source_keyword">False</font>
+<a name="422"></a>    bHCenter=<font class="source_keyword">False</font>
+<a name="423"></a>    bAutoScrollbar=<font class="source_keyword">False</font>
+<a name="424"></a>    bVariableRowHeight=<font class="source_keyword">False</font>
+<a name="425"></a>    RowClass=<font class="source_keyword">class</font><font class="source_name">'UWindowDynamicTextRow'</font>
+<a name="426"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\uwindow\uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="..\uwindow\uwindowdynamictextarea.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UWindowDynamicTextArea">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowdialogcontrol.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindowdynamictextrow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:56.000 - Creation time: Wed 26/5/2004 10:49:03.921 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

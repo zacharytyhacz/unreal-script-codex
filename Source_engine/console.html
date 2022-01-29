@@ -1,0 +1,2057 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Engine.Console</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\console.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Console">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="clipmarker.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="counter.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\console.html">Console</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+00562<br>
+00563<br>
+00564<br>
+00565<br>
+00566<br>
+00567<br>
+00568<br>
+00569<br>
+00570<br>
+00571<br>
+00572<br>
+00573<br>
+00574<br>
+00575<br>
+00576<br>
+00577<br>
+00578<br>
+00579<br>
+00580<br>
+00581<br>
+00582<br>
+00583<br>
+00584<br>
+00585<br>
+00586<br>
+00587<br>
+00588<br>
+00589<br>
+00590<br>
+00591<br>
+00592<br>
+00593<br>
+00594<br>
+00595<br>
+00596<br>
+00597<br>
+00598<br>
+00599<br>
+00600<br>
+00601<br>
+00602<br>
+00603<br>
+00604<br>
+00605<br>
+00606<br>
+00607<br>
+00608<br>
+00609<br>
+00610<br>
+00611<br>
+00612<br>
+00613<br>
+00614<br>
+00615<br>
+00616<br>
+00617<br>
+00618<br>
+00619<br>
+00620<br>
+00621<br>
+00622<br>
+00623<br>
+00624<br>
+00625<br>
+00626<br>
+00627<br>
+00628<br>
+00629<br>
+00630<br>
+00631<br>
+00632<br>
+00633<br>
+00634<br>
+00635<br>
+00636<br>
+00637<br>
+00638<br>
+00639<br>
+00640<br>
+00641<br>
+00642<br>
+00643<br>
+00644<br>
+00645<br>
+00646<br>
+00647<br>
+00648<br>
+00649<br>
+00650<br>
+00651<br>
+00652<br>
+00653<br>
+00654<br>
+00655<br>
+00656<br>
+00657<br>
+00658<br>
+00659<br>
+00660<br>
+00661<br>
+00662<br>
+00663<br>
+00664<br>
+00665<br>
+00666<br>
+00667<br>
+00668<br>
+00669<br>
+00670<br>
+00671<br>
+00672<br>
+00673<br>
+00674<br>
+00675<br>
+00676<br>
+00677<br>
+00678<br>
+00679<br>
+00680<br>
+00681<br>
+00682<br>
+00683<br>
+00684<br>
+00685<br>
+00686<br>
+00687<br>
+00688<br>
+00689<br>
+00690<br>
+00691<br>
+00692<br>
+00693<br>
+00694<br>
+00695<br>
+00696<br>
+00697<br>
+00698<br>
+00699<br>
+00700<br>
+00701<br>
+00702<br>
+00703<br>
+00704<br>
+00705<br>
+00706<br>
+00707<br>
+00708<br>
+00709<br>
+00710<br>
+00711<br>
+00712<br>
+00713<br>
+00714<br>
+00715<br>
+00716<br>
+00717<br>
+00718<br>
+00719<br>
+00720<br>
+00721<br>
+00722<br>
+00723<br>
+00724<br>
+00725<br>
+00726<br>
+00727<br>
+00728<br>
+00729<br>
+00730<br>
+00731<br>
+00732<br>
+00733<br>
+00734<br>
+00735<br>
+00736<br>
+00737<br>
+00738<br>
+00739<br>
+00740<br>
+00741<br>
+00742<br>
+00743<br>
+00744<br>
+00745<br>
+00746<br>
+00747<br>
+00748<br>
+00749<br>
+00750<br>
+00751<br>
+00752<br>
+00753<br>
+00754<br>
+00755<br>
+00756<br>
+00757<br>
+00758<br>
+00759<br>
+00760<br>
+00761<br>
+00762<br>
+00763<br>
+00764<br>
+00765<br>
+00766<br>
+00767<br>
+00768<br>
+00769<br>
+00770<br>
+00771<br>
+00772<br>
+00773<br>
+00774<br>
+00775<br>
+00776<br>
+00777<br>
+00778<br>
+00779<br>
+00780<br>
+00781<br>
+00782<br>
+00783<br>
+00784<br>
+00785<br>
+00786<br>
+00787<br>
+00788<br>
+00789<br>
+00790<br>
+00791<br>
+00792<br>
+00793<br>
+00794<br>
+00795<br>
+00796<br>
+00797<br>
+00798<br>
+00799<br>
+00800<br>
+00801<br>
+00802<br>
+00803<br>
+00804<br>
+00805<br>
+00806<br>
+00807<br>
+00808<br>
+00809<br>
+00810<br>
+00811<br>
+00812<br>
+00813<br>
+00814<br>
+00815<br>
+00816<br>
+00817<br>
+00818<br>
+00819<br>
+00820<br>
+00821<br>
+00822<br>
+00823<br>
+00824<br>
+00825<br>
+00826<br>
+00827<br>
+00828<br>
+00829<br>
+00830<br>
+00831<br>
+00832<br>
+00833<br>
+00834<br>
+00835<br>
+00836<br>
+00837<br>
+00838<br>
+00839<br>
+00840<br>
+00841<br>
+00842<br>
+00843<br>
+00844<br>
+00845<br>
+00846<br>
+00847<br>
+00848<br>
+00849<br>
+00850<br>
+00851<br>
+00852<br>
+00853<br>
+00854<br>
+00855<br>
+00856<br>
+00857<br>
+00858<br>
+00859<br>
+00860<br>
+00861<br>
+00862<br>
+00863<br>
+00864<br>
+00865<br>
+00866<br>
+00867<br>
+00868<br>
+00869<br>
+00870<br>
+00871<br>
+00872<br>
+00873<br>
+00874<br>
+00875<br>
+00876<br>
+00877<br>
+00878<br>
+00879<br>
+00880<br>
+00881<br>
+00882<br>
+00883<br>
+00884<br>
+00885<br>
+00886<br>
+00887<br>
+00888<br>
+00889<br>
+00890<br>
+00891<br>
+00892<br>
+00893<br>
+00894<br>
+00895<br>
+00896<br>
+00897<br>
+00898<br>
+00899<br>
+00900<br>
+00901<br>
+00902<br>
+00903<br>
+00904<br>
+00905<br>
+00906<br>
+00907<br>
+00908<br>
+00909<br>
+00910<br>
+00911<br>
+00912<br>
+00913<br>
+00914<br>
+00915<br>
+00916<br>
+00917<br>
+00918<br>
+00919<br>
+00920<br>
+00921<br>
+00922<br>
+00923<br>
+00924<br>
+00925<br>
+00926<br>
+00927<br>
+00928<br>
+00929<br>
+00930<br>
+00931<br>
+00932<br>
+00933<br>
+00934<br>
+00935<br>
+00936<br>
+00937<br>
+00938<br>
+00939<br>
+00940<br>
+00941<br>
+00942<br>
+00943<br>
+00944<br>
+00945<br>
+00946<br>
+00947<br>
+00948<br>
+00949<br>
+00950<br>
+00951<br>
+00952<br>
+00953<br>
+00954<br>
+00955<br>
+00956<br>
+00957<br>
+00958<br>
+00959<br>
+00960<br>
+00961<br>
+00962<br>
+00963<br>
+00964<br>
+00965<br>
+00966<br>
+00967<br>
+00968<br>
+00969<br>
+00970<br>
+00971<br>
+00972<br>
+00973<br>
+00974<br>
+00975<br>
+00976<br>
+00977<br>
+00978<br>
+00979<br>
+00980<br>
+00981<br>
+00982<br>
+00983<br>
+00984<br>
+00985<br>
+00986<br>
+00987<br>
+00988<br>
+00989<br>
+00990<br>
+00991<br>
+00992<br>
+00993<br>
+00994<br>
+00995<br>
+00996<br>
+00997<br>
+00998<br>
+00999<br>
+01000<br>
+01001<br>
+01002<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// Console: A player console, associated with a viewport.
+</font><a name="3"></a><font class="source_comment">// This is a built-in Unreal class and it shouldn't be modified.
+</font><a name="4"></a><font class="source_comment">//=============================================================================
+</font><a name="5"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\core\object.html" class="source">Object</a></font>
+<a name="6"></a>    <font class="source_keyword2">native</font>
+<a name="7"></a>    <font class="source_keyword2">noexport</font>
+<a name="8"></a>    <font class="source_keyword2">transient</font>;
+<a name="9"></a>
+<a name="10"></a><font class="source_comment">// Imports.
+</font><a name="11"></a><font class="source_macro">#exec Texture Import NAME=ConsoleBack File=Textures\Console.pcx
+</font><a name="12"></a><font class="source_macro">#exec Texture Import File=Textures\Border.pcx
+</font><a name="13"></a>
+<a name="14"></a><font class="source_comment">// Internal.
+</font><a name="15"></a><font class="source_keyword">var</font> <font class="source_keyword2">private</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> vtblOut;
+<a name="16"></a>
+<a name="17"></a><font class="source_comment">// Constants.
+</font><a name="18"></a><font class="source_keyword">const</font> MaxBorder=<font class="source_int">6</font>;
+<a name="19"></a><font class="source_keyword">const</font> MaxLines=<font class="source_int">64</font>;
+<a name="20"></a><font class="source_keyword">const</font> MaxHistory=<font class="source_int">16</font>;
+<a name="21"></a><font class="source_keyword">const</font> TextMsgSize=<font class="source_int">128</font>;
+<a name="22"></a>
+<a name="23"></a><font class="source_comment">// Variables.
+</font><a name="24"></a><font class="source_keyword">var</font> <font class="source_type">viewport</font> <font class="source_type">Viewport</font>;
+<a name="25"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> HistoryTop, HistoryBot, HistoryCur;
+<a name="26"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> TypedStr, History[<font class="source_int">16</font>];
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> Scrollback, NumLines, TopLine, TextLines;
+<a name="28"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> MsgTime, MsgTickTime;
+<a name="29"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> MsgText[<font class="source_int">64</font>];
+<a name="30"></a><font class="source_keyword">var</font> <font class="source_keyword">name</font> MsgType[<font class="source_int">64</font>];
+<a name="31"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> MsgPlayer[<font class="source_int">64</font>];
+<a name="32"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> MsgTick[<font class="source_int">64</font>];
+<a name="33"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> BorderSize;
+<a name="34"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> ConsoleLines, BorderLines, BorderPixels;
+<a name="35"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> ConsolePos, ConsoleDest;
+<a name="36"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> FrameX, FrameY;
+<a name="37"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> ConBackground, Border;
+<a name="38"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNoStuff, bTyping;
+<a name="39"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNoDrawWorld;
+<a name="40"></a>
+<a name="41"></a><font class="source_comment">// Timedemo
+</font><a name="42"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTimeDemo;
+<a name="43"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bStartTimeDemo;
+<a name="44"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bRestartTimeDemo;
+<a name="45"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSaveTimeDemoToFile;
+<a name="46"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> StartTime;
+<a name="47"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> ExtraTime;
+<a name="48"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastFrameTime;
+<a name="49"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastSecondStartTime;
+<a name="50"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> FrameCount;
+<a name="51"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> LastSecondFrameCount;
+<a name="52"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> MinFPS;
+<a name="53"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> MaxFPS;       
+<a name="54"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastSecFPS;
+<a name="55"></a><font class="source_keyword">var</font> <font class="source_type">Font</font> TimeDemoFont;
+<a name="56"></a>
+<a name="57"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> LoadingMessage;
+<a name="58"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SavingMessage;
+<a name="59"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ConnectingMessage;
+<a name="60"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PausedMessage;
+<a name="61"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PrecachingMessage;
+<a name="62"></a>
+<a name="63"></a>
+<a name="64"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FrameRateText;
+<a name="65"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AvgText;
+<a name="66"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> LastSecText;
+<a name="67"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MinText;
+<a name="68"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MaxText;
+<a name="69"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> fpsText;
+<a name="70"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SecondsText;
+<a name="71"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FramesText;
+<a name="72"></a>
+<a name="73"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="74"></a><font class="source_comment">// Input.
+</font><a name="75"></a>
+<a name="76"></a><font class="source_comment">// Input system states.
+</font><a name="77"></a><font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font>
+<a name="78"></a>{
+<a name="79"></a>    IST_None,    <font class="source_comment">// Not performing special input processing.
+</font><a name="80"></a>    IST_Press,   <font class="source_comment">// Handling a keypress or button press.
+</font><a name="81"></a>    IST_Hold,    <font class="source_comment">// Handling holding a key or button.
+</font><a name="82"></a>    IST_Release, <font class="source_comment">// Handling a key or button release.
+</font><a name="83"></a>    IST_Axis,    <font class="source_comment">// Handling analog axis movement.
+</font><a name="84"></a>};
+<a name="85"></a>
+<a name="86"></a><font class="source_comment">// Input keys.
+</font><a name="87"></a><font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font>
+<a name="88"></a>{
+<a name="89"></a><font class="source_comment">/*00*/</font>  IK_None         ,IK_LeftMouse   ,IK_RightMouse  ,IK_Cancel      ,
+<a name="90"></a><font class="source_comment">/*04*/</font>  IK_MiddleMouse  ,IK_Unknown05   ,IK_Unknown06   ,IK_Unknown07   ,
+<a name="91"></a><font class="source_comment">/*08*/</font>  IK_Backspace    ,IK_Tab         ,IK_Unknown0A   ,IK_Unknown0B   ,
+<a name="92"></a><font class="source_comment">/*0C*/</font>  IK_Unknown0C    ,IK_Enter       ,IK_Unknown0E   ,IK_Unknown0F   ,
+<a name="93"></a><font class="source_comment">/*10*/</font>  IK_Shift        ,IK_Ctrl        ,IK_Alt         ,IK_Pause       ,
+<a name="94"></a><font class="source_comment">/*14*/</font>  IK_CapsLock     ,IK_Unknown15   ,IK_Unknown16   ,IK_Unknown17   ,
+<a name="95"></a><font class="source_comment">/*18*/</font>  IK_Unknown18    ,IK_Unknown19   ,IK_Unknown1A   ,IK_Escape      ,
+<a name="96"></a><font class="source_comment">/*1C*/</font>  IK_Unknown1C    ,IK_Unknown1D   ,IK_Unknown1E   ,IK_Unknown1F   ,
+<a name="97"></a><font class="source_comment">/*20*/</font>  IK_Space        ,IK_PageUp      ,IK_PageDown    ,IK_End         ,
+<a name="98"></a><font class="source_comment">/*24*/</font>  IK_Home         ,IK_Left        ,IK_Up          ,IK_Right       ,
+<a name="99"></a><font class="source_comment">/*28*/</font>  IK_Down         ,IK_Select      ,IK_Print       ,IK_Execute     ,
+<a name="100"></a><font class="source_comment">/*2C*/</font>  IK_PrintScrn    ,IK_Insert      ,IK_Delete      ,IK_Help        ,
+<a name="101"></a><font class="source_comment">/*30*/</font>  IK_0            ,IK_1           ,IK_2           ,IK_3           ,
+<a name="102"></a><font class="source_comment">/*34*/</font>  IK_4            ,IK_5           ,IK_6           ,IK_7           ,
+<a name="103"></a><font class="source_comment">/*38*/</font>  IK_8            ,IK_9           ,IK_Unknown3A   ,IK_Unknown3B   ,
+<a name="104"></a><font class="source_comment">/*3C*/</font>  IK_Unknown3C    ,IK_Unknown3D   ,IK_Unknown3E   ,IK_Unknown3F   ,
+<a name="105"></a><font class="source_comment">/*40*/</font>  IK_Unknown40    ,IK_A           ,IK_B           ,IK_C           ,
+<a name="106"></a><font class="source_comment">/*44*/</font>  IK_D            ,IK_E           ,IK_F           ,IK_G           ,
+<a name="107"></a><font class="source_comment">/*48*/</font>  IK_H            ,IK_I           ,IK_J           ,IK_K           ,
+<a name="108"></a><font class="source_comment">/*4C*/</font>  IK_L            ,IK_M           ,IK_N           ,IK_O           ,
+<a name="109"></a><font class="source_comment">/*50*/</font>  IK_P            ,IK_Q           ,IK_R           ,IK_S           ,
+<a name="110"></a><font class="source_comment">/*54*/</font>  IK_T            ,IK_U           ,IK_V           ,IK_W           ,
+<a name="111"></a><font class="source_comment">/*58*/</font>  IK_X            ,IK_Y           ,IK_Z           ,IK_Unknown5B   ,
+<a name="112"></a><font class="source_comment">/*5C*/</font>  IK_Unknown5C    ,IK_Unknown5D   ,IK_Unknown5E   ,IK_Unknown5F   ,
+<a name="113"></a><font class="source_comment">/*60*/</font>  IK_NumPad0      ,IK_NumPad1     ,IK_NumPad2     ,IK_NumPad3     ,
+<a name="114"></a><font class="source_comment">/*64*/</font>  IK_NumPad4      ,IK_NumPad5     ,IK_NumPad6     ,IK_NumPad7     ,
+<a name="115"></a><font class="source_comment">/*68*/</font>  IK_NumPad8      ,IK_NumPad9     ,IK_GreyStar    ,IK_GreyPlus    ,
+<a name="116"></a><font class="source_comment">/*6C*/</font>  IK_Separator    ,IK_GreyMinus   ,IK_NumPadPeriod,IK_GreySlash   ,
+<a name="117"></a><font class="source_comment">/*70*/</font>  IK_F1           ,IK_F2          ,IK_F3          ,IK_F4          ,
+<a name="118"></a><font class="source_comment">/*74*/</font>  IK_F5           ,IK_F6          ,IK_F7          ,IK_F8          ,
+<a name="119"></a><font class="source_comment">/*78*/</font>  IK_F9           ,IK_F10         ,IK_F11         ,IK_F12         ,
+<a name="120"></a><font class="source_comment">/*7C*/</font>  IK_F13          ,IK_F14         ,IK_F15         ,IK_F16         ,
+<a name="121"></a><font class="source_comment">/*80*/</font>  IK_F17          ,IK_F18         ,IK_F19         ,IK_F20         ,
+<a name="122"></a><font class="source_comment">/*84*/</font>  IK_F21          ,IK_F22         ,IK_F23         ,IK_F24         ,
+<a name="123"></a><font class="source_comment">/*88*/</font>  IK_Unknown88    ,IK_Unknown89   ,IK_Unknown8A   ,IK_Unknown8B   ,
+<a name="124"></a><font class="source_comment">/*8C*/</font>  IK_Unknown8C    ,IK_Unknown8D   ,IK_Unknown8E   ,IK_Unknown8F   ,
+<a name="125"></a><font class="source_comment">/*90*/</font>  IK_NumLock      ,IK_ScrollLock  ,IK_Unknown92   ,IK_Unknown93   ,
+<a name="126"></a><font class="source_comment">/*94*/</font>  IK_Unknown94    ,IK_Unknown95   ,IK_Unknown96   ,IK_Unknown97   ,
+<a name="127"></a><font class="source_comment">/*98*/</font>  IK_Unknown98    ,IK_Unknown99   ,IK_Unknown9A   ,IK_Unknown9B   ,
+<a name="128"></a><font class="source_comment">/*9C*/</font>  IK_Unknown9C    ,IK_Unknown9D   ,IK_Unknown9E   ,IK_Unknown9F   ,
+<a name="129"></a><font class="source_comment">/*A0*/</font>  IK_LShift       ,IK_RShift      ,IK_LControl    ,IK_RControl    ,
+<a name="130"></a><font class="source_comment">/*A4*/</font>  IK_UnknownA4    ,IK_UnknownA5   ,IK_UnknownA6   ,IK_UnknownA7   ,
+<a name="131"></a><font class="source_comment">/*A8*/</font>  IK_UnknownA8    ,IK_UnknownA9   ,IK_UnknownAA   ,IK_UnknownAB   ,
+<a name="132"></a><font class="source_comment">/*AC*/</font>  IK_UnknownAC    ,IK_UnknownAD   ,IK_UnknownAE   ,IK_UnknownAF   ,
+<a name="133"></a><font class="source_comment">/*B0*/</font>  IK_UnknownB0    ,IK_UnknownB1   ,IK_UnknownB2   ,IK_UnknownB3   ,
+<a name="134"></a><font class="source_comment">/*B4*/</font>  IK_UnknownB4    ,IK_UnknownB5   ,IK_UnknownB6   ,IK_UnknownB7   ,
+<a name="135"></a><font class="source_comment">/*B8*/</font>  IK_UnknownB8    ,IK_UnknownB9   ,IK_Semicolon   ,IK_Equals      ,
+<a name="136"></a><font class="source_comment">/*BC*/</font>  IK_Comma        ,IK_Minus       ,IK_Period      ,IK_Slash       ,
+<a name="137"></a><font class="source_comment">/*C0*/</font>  IK_Tilde        ,IK_UnknownC1   ,IK_UnknownC2   ,IK_UnknownC3   ,
+<a name="138"></a><font class="source_comment">/*C4*/</font>  IK_UnknownC4    ,IK_UnknownC5   ,IK_UnknownC6   ,IK_UnknownC7   ,
+<a name="139"></a><font class="source_comment">/*C8*/</font>  IK_Joy1         ,IK_Joy2        ,IK_Joy3        ,IK_Joy4        ,
+<a name="140"></a><font class="source_comment">/*CC*/</font>  IK_Joy5         ,IK_Joy6        ,IK_Joy7        ,IK_Joy8        ,
+<a name="141"></a><font class="source_comment">/*D0*/</font>  IK_Joy9         ,IK_Joy10       ,IK_Joy11       ,IK_Joy12       ,
+<a name="142"></a><font class="source_comment">/*D4*/</font>  IK_Joy13        ,IK_Joy14       ,IK_Joy15       ,IK_Joy16       ,
+<a name="143"></a><font class="source_comment">/*D8*/</font>  IK_UnknownD8    ,IK_UnknownD9   ,IK_UnknownDA   ,IK_LeftBracket ,
+<a name="144"></a><font class="source_comment">/*DC*/</font>  IK_Backslash    ,IK_RightBracket,IK_SingleQuote ,IK_UnknownDF   ,
+<a name="145"></a><font class="source_comment">/*E0*/</font>  IK_JoyX         ,IK_JoyY        ,IK_JoyZ        ,IK_JoyR        ,
+<a name="146"></a><font class="source_comment">/*E4*/</font>  IK_MouseX       ,IK_MouseY      ,IK_MouseZ      ,IK_MouseW      ,
+<a name="147"></a><font class="source_comment">/*E8*/</font>  IK_JoyU         ,IK_JoyV        ,IK_UnknownEA   ,IK_UnknownEB   ,
+<a name="148"></a><font class="source_comment">/*EC*/</font>  IK_MouseWheelUp ,IK_MouseWheelDown,IK_Unknown10E,UK_Unknown10F  ,
+<a name="149"></a><font class="source_comment">/*F0*/</font>  IK_UnknownF0    ,IK_UnknownF1   ,IK_UnknownF2   ,IK_UnknownF3   ,
+<a name="150"></a><font class="source_comment">/*F4*/</font>  IK_UnknownF4    ,IK_UnknownF5   ,IK_Attn        ,IK_CrSel       ,
+<a name="151"></a><font class="source_comment">/*F8*/</font>  IK_ExSel        ,IK_ErEof       ,IK_Play        ,IK_Zoom        ,
+<a name="152"></a><font class="source_comment">/*FC*/</font>  IK_NoName       ,IK_PA1         ,IK_OEMClear
+<a name="153"></a>};
+<a name="154"></a>
+<a name="155"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="156"></a><font class="source_comment">// natives.
+</font><a name="157"></a>
+<a name="158"></a><font class="source_comment">// Execute a command on this console.
+</font><a name="159"></a><font class="source_keyword2">native</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> ConsoleCommand( <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S );
+<a name="160"></a><font class="source_keyword2">native</font> <font class="source_keyword">function</font> SaveTimeDemo( <font class="source_keyword">string</font> S );
+<a name="161"></a>
+<a name="162"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="163"></a><font class="source_comment">// Exec functions accessible from the console and key bindings.
+</font><a name="164"></a>
+<a name="165"></a><font class="source_comment">// Begin typing a command on the console.
+</font><a name="166"></a><font class="source_keyword2">exec</font> <font class="source_keyword">function</font> Type()
+<a name="167"></a>{
+<a name="168"></a>    TypedStr=<font class="source_string">""</font>;
+<a name="169"></a>    GotoState( <font class="source_name">'Typing'</font> );
+<a name="170"></a>}
+<a name="171"></a> 
+<a name="172"></a><font class="source_keyword2">exec</font> <font class="source_keyword">function</font> Talk()
+<a name="173"></a>{
+<a name="174"></a>    TypedStr=<font class="source_string">"Say "</font>;
+<a name="175"></a>    bNoStuff = <font class="source_keyword">true</font>;
+<a name="176"></a>    GotoState( <font class="source_name">'Typing'</font> );
+<a name="177"></a>}
+<a name="178"></a>
+<a name="179"></a><font class="source_keyword2">exec</font> <font class="source_keyword">function</font> TeamTalk()
+<a name="180"></a>{
+<a name="181"></a>    TypedStr=<font class="source_string">"TeamSay "</font>;
+<a name="182"></a>    bNoStuff = <font class="source_keyword">true</font>;
+<a name="183"></a>    GotoState( <font class="source_name">'Typing'</font> );
+<a name="184"></a>}
+<a name="185"></a>
+<a name="186"></a><font class="source_comment">// Size the view up.
+</font><a name="187"></a><font class="source_keyword2">exec</font> <font class="source_keyword">function</font> ViewUp()
+<a name="188"></a>{
+<a name="189"></a>    BorderSize = Clamp( BorderSize-<font class="source_int">1</font>, <font class="source_int">0</font>, MaxBorder );
+<a name="190"></a>}
+<a name="191"></a>
+<a name="192"></a><font class="source_comment">// Size the view down.
+</font><a name="193"></a><font class="source_keyword2">exec</font> <font class="source_keyword">function</font> ViewDown()
+<a name="194"></a>{
+<a name="195"></a>    BorderSize = Clamp( BorderSize+<font class="source_int">1</font>, <font class="source_int">0</font>, MaxBorder );
+<a name="196"></a>}
+<a name="197"></a>
+<a name="198"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="199"></a><font class="source_comment">// Member Access Functions.
+</font><a name="200"></a>
+<a name="201"></a><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetMsgText( <font class="source_keyword">int</font> Index )
+<a name="202"></a>{
+<a name="203"></a>    <font class="source_keyword">return</font> MsgText[Index];
+<a name="204"></a>}
+<a name="205"></a><font class="source_keyword">function</font> SetMsgText( <font class="source_keyword">int</font> Index, <font class="source_keyword">string</font> NewMsgText )
+<a name="206"></a>{
+<a name="207"></a>    MsgText[Index] = NewMsgText;
+<a name="208"></a>}
+<a name="209"></a>
+<a name="210"></a><font class="source_keyword">function</font> <font class="source_keyword">name</font> GetMsgType(<font class="source_keyword">int</font> Index)
+<a name="211"></a>{
+<a name="212"></a>    <font class="source_keyword">return</font> MsgType[Index];
+<a name="213"></a>}
+<a name="214"></a><font class="source_keyword">function</font> SetMsgType(<font class="source_keyword">int</font> Index, <font class="source_keyword">name</font> NewMsgType)
+<a name="215"></a>{
+<a name="216"></a>    MsgType[Index] = NewMsgType;
+<a name="217"></a>}
+<a name="218"></a>
+<a name="219"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> GetMsgPlayer(<font class="source_keyword">int</font> Index)
+<a name="220"></a>{
+<a name="221"></a>    <font class="source_keyword">return</font> MsgPlayer[Index];
+<a name="222"></a>}
+<a name="223"></a><font class="source_keyword">function</font> SetMsgPlayer(<font class="source_keyword">int</font> Index, <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> NewMsgPlayer)
+<a name="224"></a>{
+<a name="225"></a>    MsgPlayer[Index] = NewMsgPlayer;
+<a name="226"></a>}
+<a name="227"></a>
+<a name="228"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetMsgTick(<font class="source_keyword">int</font> Index)
+<a name="229"></a>{
+<a name="230"></a>    <font class="source_keyword">return</font> MsgTick[Index];
+<a name="231"></a>}
+<a name="232"></a><font class="source_keyword">function</font> SetMsgTick(<font class="source_keyword">int</font> Index, <font class="source_keyword">int</font> NewMsgTick)
+<a name="233"></a>{
+<a name="234"></a>    MsgTick[Index] = NewMsgTick;
+<a name="235"></a>}
+<a name="236"></a>
+<a name="237"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="238"></a><font class="source_comment">// Functions.
+</font><a name="239"></a>
+<a name="240"></a><font class="source_comment">// Clear messages.
+</font><a name="241"></a><font class="source_keyword">function</font> ClearMessages()
+<a name="242"></a>{
+<a name="243"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="244"></a>
+<a name="245"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;MaxLines; i++)
+<a name="246"></a>    {
+<a name="247"></a>        MsgText[i] = <font class="source_string">""</font>;
+<a name="248"></a>        MsgType[i] = <font class="source_name">''</font>;
+<a name="249"></a>        MsgPlayer[i] = <font class="source_keyword">None</font>;
+<a name="250"></a>        MsgTick[i] = <font class="source_int">0.0</font>;
+<a name="251"></a>    }
+<a name="252"></a>    MsgTime = <font class="source_int">0.0</font>;
+<a name="253"></a>}
+<a name="254"></a>
+<a name="255"></a><font class="source_comment">// Write to console.
+</font><a name="256"></a><font class="source_keyword">event</font> Message( <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> PRI, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Msg, <font class="source_keyword">name</font> N )
+<a name="257"></a>{
+<a name="258"></a>    <font class="source_keyword">if</font>( Msg!=<font class="source_string">""</font> )
+<a name="259"></a>    {
+<a name="260"></a>        TopLine          = (TopLine+<font class="source_int">1</font>) % MaxLines;
+<a name="261"></a>        NumLines         = Min(NumLines+<font class="source_int">1</font>,MaxLines-<font class="source_int">1</font>);
+<a name="262"></a>        MsgType[TopLine] = N;
+<a name="263"></a>        MsgTime          = <font class="source_int">6.0</font>;
+<a name="264"></a>        TextLines++;
+<a name="265"></a>        MsgText[TopLine] = Msg;
+<a name="266"></a>        MsgPlayer[TopLine] = PRI;
+<a name="267"></a>        MsgTick[TopLine] = MsgTickTime + MsgTime;
+<a name="268"></a>    }
+<a name="269"></a>}
+<a name="270"></a>
+<a name="271"></a><font class="source_keyword">event</font> AddString( <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Msg )
+<a name="272"></a>{
+<a name="273"></a>    <font class="source_keyword">if</font>( Msg!=<font class="source_string">""</font> )
+<a name="274"></a>    {
+<a name="275"></a>        TopLine          = (TopLine+<font class="source_int">1</font>) % MaxLines;
+<a name="276"></a>        NumLines         = Min(NumLines+<font class="source_int">1</font>,MaxLines-<font class="source_int">1</font>);
+<a name="277"></a>        MsgType[TopLine] = <font class="source_name">'Event'</font>;
+<a name="278"></a>        MsgTime          = <font class="source_int">6.0</font>;
+<a name="279"></a>        TextLines++;
+<a name="280"></a>        MsgText[TopLine] = Msg;
+<a name="281"></a>        MsgPlayer[TopLine] = <font class="source_keyword">None</font>;
+<a name="282"></a>        MsgTick[TopLine] = MsgTickTime + MsgTime;
+<a name="283"></a>    }
+<a name="284"></a>}
+<a name="285"></a>
+<a name="286"></a><font class="source_comment">// Called by the engine when a single key is typed.
+</font><a name="287"></a><font class="source_keyword">event</font> <font class="source_keyword">bool</font> KeyType( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key );
+<a name="288"></a>
+<a name="289"></a><font class="source_comment">// Called by the engine when a key, mouse, or joystick button is pressed
+</font><a name="290"></a><font class="source_comment">// or released, or any analog axis movement is processed.
+</font><a name="291"></a><font class="source_keyword">event</font> <font class="source_keyword">bool</font> KeyEvent( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta )
+<a name="292"></a>{
+<a name="293"></a>    <font class="source_comment">// Ask the HUD to deal with the key event (hook for mod authors).
+</font><a name="294"></a>    <font class="source_keyword">if</font> (<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD != <font class="source_keyword">None</font>)
+<a name="295"></a>    {
+<a name="296"></a>        <font class="source_keyword">if</font> (<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.ProcessKeyEvent( Key, Action, Delta ))
+<a name="297"></a>            <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="298"></a>    }
+<a name="299"></a>
+<a name="300"></a>    <font class="source_keyword">if</font>( Action!=IST_Press )
+<a name="301"></a>    {
+<a name="302"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="303"></a>    }
+<a name="304"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font>( Key==IK_Tilde )
+<a name="305"></a>    {
+<a name="306"></a>        <font class="source_keyword">if</font>( ConsoleDest==<font class="source_int">0.0</font> )
+<a name="307"></a>        {
+<a name="308"></a>            ConsoleDest=<font class="source_int">0.6</font>;
+<a name="309"></a>            GotoState(<font class="source_name">'Typing'</font>);
+<a name="310"></a>        }
+<a name="311"></a>        <font class="source_keyword">else</font> GotoState(<font class="source_name">''</font>);
+<a name="312"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="313"></a>    }
+<a name="314"></a>    <font class="source_keyword">else</font> <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="315"></a>}
+<a name="316"></a>
+<a name="317"></a><font class="source_comment">// Called each rendering iteration to update any time-based display.
+</font><a name="318"></a><font class="source_keyword">event</font> Tick( <font class="source_keyword">float</font> Delta )
+<a name="319"></a>{
+<a name="320"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> I;
+<a name="321"></a>    MsgTickTime += Delta;
+<a name="322"></a>
+<a name="323"></a>    <font class="source_comment">// Slide console up or down.
+</font><a name="324"></a>    <font class="source_keyword">if</font>( ConsolePos &lt; ConsoleDest )
+<a name="325"></a>        ConsolePos = FMin(ConsolePos+Delta,ConsoleDest);
+<a name="326"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font>( ConsolePos &gt; ConsoleDest )
+<a name="327"></a>        ConsolePos = FMax(ConsolePos-Delta,ConsoleDest);
+<a name="328"></a>
+<a name="329"></a>    <font class="source_comment">// Update status message.
+</font><a name="330"></a>    <font class="source_keyword">if</font>( ((MsgTime-=Delta) &lt;= <font class="source_int">0.0</font>) && (TextLines &gt; <font class="source_int">0</font>) )
+<a name="331"></a>        TextLines--;
+<a name="332"></a>}
+<a name="333"></a>
+<a name="334"></a><font class="source_comment">// Called before rendering the world view.
+</font><a name="335"></a><font class="source_keyword">event</font> PreRender( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C );
+<a name="336"></a>
+<a name="337"></a><font class="source_comment">// Called when video settings change (resolution, driver, color depth).
+</font><a name="338"></a><font class="source_keyword">event</font> VideoChange();
+<a name="339"></a>
+<a name="340"></a><font class="source_keyword">event</font> NotifyLevelChange()
+<a name="341"></a>{
+<a name="342"></a>    bRestartTimeDemo = <font class="source_keyword">True</font>;
+<a name="343"></a>    ClearMessages();
+<a name="344"></a>}
+<a name="345"></a>
+<a name="346"></a><font class="source_keyword">event</font> ConnectFailure( <font class="source_keyword">string</font> FailCode, <font class="source_keyword">string</font> URL );
+<a name="347"></a>
+<a name="348"></a><font class="source_keyword">function</font> DrawLevelAction( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C )
+<a name="349"></a>{
+<a name="350"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> BigMessage;
+<a name="351"></a>
+<a name="352"></a>    <font class="source_keyword">if</font> ( (<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.Pauser != <font class="source_string">""</font>) && (<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.LevelAction == LEVACT_None) )
+<a name="353"></a>    {
+<a name="354"></a>        C.<font class="source_type">Font</font> = C.MedFont;
+<a name="355"></a>        BigMessage = PausedMessage; <font class="source_comment">// Add pauser name?
+</font><a name="356"></a>        PrintActionMessage(C, BigMessage);
+<a name="357"></a>        <font class="source_keyword">return</font>;
+<a name="358"></a>    }
+<a name="359"></a>    <font class="source_keyword">if</font> ( (<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.LevelAction == LEVACT_None)
+<a name="360"></a>         || <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.bShowMenu )
+<a name="361"></a>    {
+<a name="362"></a>        BigMessage = <font class="source_string">""</font>;
+<a name="363"></a>        <font class="source_keyword">return</font>;
+<a name="364"></a>    }
+<a name="365"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.LevelAction == LEVACT_Loading )
+<a name="366"></a>        BigMessage = LoadingMessage;
+<a name="367"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.LevelAction == LEVACT_Saving )
+<a name="368"></a>        BigMessage = SavingMessage;
+<a name="369"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.LevelAction == LEVACT_Connecting )
+<a name="370"></a>        BigMessage = ConnectingMessage;
+<a name="371"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.LevelAction == LEVACT_Precaching )
+<a name="372"></a>        BigMessage = PrecachingMessage;
+<a name="373"></a>    
+<a name="374"></a>    <font class="source_keyword">if</font> ( BigMessage != <font class="source_string">""</font> )
+<a name="375"></a>    {
+<a name="376"></a>        C.Style = <font class="source_int">1</font>;
+<a name="377"></a>        C.<font class="source_type">Font</font> = C.LargeFont;   
+<a name="378"></a>        PrintActionMessage(C, BigMessage);
+<a name="379"></a>    }
+<a name="380"></a>}
+<a name="381"></a>
+<a name="382"></a><font class="source_keyword">function</font> PrintActionMessage( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">string</font> BigMessage )
+<a name="383"></a>{
+<a name="384"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL;
+<a name="385"></a>
+<a name="386"></a>    C.bCenter = <font class="source_keyword">false</font>;
+<a name="387"></a>    C.StrLen( BigMessage, XL, YL );
+<a name="388"></a>    C.SetPos(FrameX/2 - XL/2, FrameY/2 - YL/2);
+<a name="389"></a>    C.DrawText( BigMessage, <font class="source_keyword">false</font> );
+<a name="390"></a>}       
+<a name="391"></a>
+<a name="392"></a><font class="source_comment">// Add localization to hardcoded strings!!
+</font><a name="393"></a><font class="source_comment">// Called after rendering the world view.
+</font><a name="394"></a><font class="source_keyword">event</font> PostRender( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C )
+<a name="395"></a>{
+<a name="396"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> YStart, YEnd, Y, I, J, <font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>, iLine;
+<a name="397"></a>
+<a name="398"></a>    <font class="source_keyword">if</font>(bNoDrawWorld)
+<a name="399"></a>    {
+<a name="400"></a>        C.SetPos(<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="401"></a>        C.DrawPattern( <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Border'</font>, C.ClipX, C.ClipY, <font class="source_int">1.0</font> );
+<a name="402"></a>    }
+<a name="403"></a>
+<a name="404"></a>    <font class="source_keyword">if</font>( bTimeDemo )
+<a name="405"></a>    {
+<a name="406"></a>        TimeDemoCalc();
+<a name="407"></a>        TimeDemoRender( C );
+<a name="408"></a>    }
+<a name="409"></a>
+<a name="410"></a>    <font class="source_comment">// call overridable "level action" rendering code to draw the "big message"
+</font><a name="411"></a>    DrawLevelAction( C );
+<a name="412"></a>
+<a name="413"></a>    <font class="source_comment">// If the console has changed since the previous frame, draw it.
+</font><a name="414"></a>    <font class="source_keyword">if</font> ( ConsoleLines &gt; <font class="source_int">0</font> )
+<a name="415"></a>    {
+<a name="416"></a>        C.SetOrigin(<font class="source_int">0.0</font>, ConsoleLines - FrameY*<font class="source_int">0.6</font>);
+<a name="417"></a>        C.SetPos(<font class="source_int">0.0</font>, <font class="source_int">0.0</font>);
+<a name="418"></a>        C.DrawTile( ConBackground, FrameX, FrameY*<font class="source_int">0.6</font>, C.CurX, C.CurY, FrameX, FrameY );
+<a name="419"></a>    }
+<a name="420"></a>
+<a name="421"></a>    <font class="source_comment">// Draw border.
+</font><a name="422"></a>    <font class="source_keyword">if</font> ( BorderLines &gt; <font class="source_int">0</font> || BorderPixels &gt; <font class="source_int">0</font> )
+<a name="423"></a>    {
+<a name="424"></a>        YStart  = BorderLines + ConsoleLines;
+<a name="425"></a>        YEnd    = FrameY - BorderLines;
+<a name="426"></a>        <font class="source_keyword">if</font> ( BorderLines &gt; <font class="source_int">0</font> )
+<a name="427"></a>        {
+<a name="428"></a>            C.SetOrigin(<font class="source_int">0.0</font>, <font class="source_int">0.0</font>);
+<a name="429"></a>            C.SetPos(<font class="source_int">0.0</font>, <font class="source_int">0.0</font>);
+<a name="430"></a>            C.DrawPattern( Border, FrameX, BorderLines, <font class="source_int">1.0</font> );
+<a name="431"></a>            C.SetPos(<font class="source_int">0.0</font>, YEnd);
+<a name="432"></a>            C.DrawPattern( Border, FrameX, BorderLines, <font class="source_int">1.0</font> );
+<a name="433"></a>        }
+<a name="434"></a>        <font class="source_keyword">if</font> ( BorderPixels &gt; <font class="source_int">0</font> )
+<a name="435"></a>        {
+<a name="436"></a>            C.SetOrigin(<font class="source_int">0.0</font>, <font class="source_int">0.0</font>);
+<a name="437"></a>            C.SetPos(<font class="source_int">0.0</font>, YStart);
+<a name="438"></a>            C.DrawPattern( Border, BorderPixels, YEnd - YStart, <font class="source_int">1.0</font> );
+<a name="439"></a>            C.SetPos( FrameX - BorderPixels, YStart );
+<a name="440"></a>            C.DrawPattern( Border, BorderPixels, YEnd - YStart, <font class="source_int">1.0</font> );
+<a name="441"></a>        }
+<a name="442"></a>    }
+<a name="443"></a>
+<a name="444"></a>    <font class="source_comment">// Draw console text.
+</font><a name="445"></a>    C.SetOrigin(<font class="source_int">0.0</font>, <font class="source_int">0.0</font>);
+<a name="446"></a>    <font class="source_keyword">if</font> ( ConsoleLines &gt; <font class="source_int">0</font> )
+<a name="447"></a>        DrawConsoleView( C );
+<a name="448"></a>    <font class="source_keyword">else</font>
+<a name="449"></a>        DrawSingleView( C );
+<a name="450"></a>}
+<a name="451"></a>
+<a name="452"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> DrawConsoleView( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C )
+<a name="453"></a>{
+<a name="454"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> Y, I, <font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>;
+<a name="455"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL;
+<a name="456"></a>
+<a name="457"></a>    <font class="source_comment">// Console is visible; display console view.
+</font><a name="458"></a>    Y = ConsoleLines - <font class="source_int">1</font>;
+<a name="459"></a>    MsgText[(TopLine + <font class="source_int">1</font> + MaxLines) % MaxLines] = <font class="source_string">"(&gt;"</font>@TypedStr;
+<a name="460"></a>    <font class="source_keyword">for</font> ( I = Scrollback; I &lt; (NumLines + <font class="source_int">1</font>); I++ )
+<a name="461"></a>    {
+<a name="462"></a>        <font class="source_comment">// Display all text in the buffer.
+</font><a name="463"></a>        <font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font> = (TopLine + MaxLines*<font class="source_int">2</font> - (I-<font class="source_int">1</font>)) % MaxLines;
+<a name="464"></a>        
+<a name="465"></a>        C.<font class="source_type">Font</font> = C.MedFont;
+<a name="466"></a>
+<a name="467"></a>        <font class="source_keyword">if</font> (( MsgType[<font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>] == <font class="source_name">'Say'</font> ) || ( MsgType[<font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>] == <font class="source_name">'TeamSay'</font> ))
+<a name="468"></a>            C.StrLen( MsgPlayer[<font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>].PlayerName$<font class="source_string">":"</font>@MsgText[<font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>], XL, YL );               
+<a name="469"></a>        <font class="source_keyword">else</font>
+<a name="470"></a>            C.StrLen( MsgText[<font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>], XL, YL );
+<a name="471"></a>        
+<a name="472"></a>        <font class="source_comment">// Half-space blank lines.
+</font><a name="473"></a>        <font class="source_keyword">if</font> ( YL == <font class="source_int">0</font> )
+<a name="474"></a>            YL = <font class="source_int">5</font>;
+<a name="475"></a>            
+<a name="476"></a>        Y -= YL;
+<a name="477"></a>        <font class="source_keyword">if</font> ( (Y + YL) &lt; <font class="source_int">0</font> )
+<a name="478"></a>            <font class="source_keyword">break</font>;
+<a name="479"></a>        C.SetPos(<font class="source_int">4</font>, Y);
+<a name="480"></a>        C.<font class="source_type">Font</font> = C.MedFont;
+<a name="481"></a>
+<a name="482"></a>        <font class="source_keyword">if</font> (( MsgType[<font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>] == <font class="source_name">'Say'</font> ) || ( MsgType[<font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>] == <font class="source_name">'TeamSay'</font> ))
+<a name="483"></a>            C.DrawText( MsgPlayer[<font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>].PlayerName$<font class="source_string">":"</font>@MsgText[<font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>], <font class="source_keyword">false</font> );
+<a name="484"></a>        <font class="source_keyword">else</font>
+<a name="485"></a>            C.DrawText( MsgText[<font class="source_type"><a href="..\specialeffects\line.html" class="source">Line</a></font>], <font class="source_keyword">false</font> );
+<a name="486"></a>    }               
+<a name="487"></a>}
+<a name="488"></a>
+<a name="489"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> DrawSingleView( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C )
+<a name="490"></a>{
+<a name="491"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> TypingPrompt;
+<a name="492"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> I, J;
+<a name="493"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL;
+<a name="494"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> ShortMessages[<font class="source_int">4</font>];
+<a name="495"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ExtraSpace;
+<a name="496"></a>
+<a name="497"></a>    <font class="source_comment">// Console is hidden; display single-line view.
+</font><a name="498"></a>
+<a name="499"></a>    C.SetOrigin(<font class="source_int">0.0</font>, <font class="source_int">0.0</font>);
+<a name="500"></a>
+<a name="501"></a>    <font class="source_comment">// Ask the HUD to deal with messages.
+</font><a name="502"></a>    <font class="source_keyword">if</font> ( <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD != <font class="source_keyword">None</font> 
+<a name="503"></a>        && <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.DisplayMessages(C) )
+<a name="504"></a>        <font class="source_keyword">return</font>;
+<a name="505"></a>
+<a name="506"></a>    <font class="source_comment">// If the HUD doesn't deal with messages, use the default behavior
+</font><a name="507"></a>    <font class="source_keyword">if</font> (!<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.bShowMenu)
+<a name="508"></a>    {
+<a name="509"></a>        <font class="source_keyword">if</font> ( bTyping )
+<a name="510"></a>        {
+<a name="511"></a>            TypingPrompt = <font class="source_string">"(&gt;"</font>@TypedStr$<font class="source_string">"_"</font>;
+<a name="512"></a>            C.<font class="source_type">Font</font> = C.MedFont;
+<a name="513"></a>            C.StrLen( TypingPrompt, XL, YL );
+<a name="514"></a>            C.SetPos( <font class="source_int">2</font>, FrameY - ConsoleLines - YL - <font class="source_int">1</font> );
+<a name="515"></a>            C.DrawText( TypingPrompt, <font class="source_keyword">false</font> );
+<a name="516"></a>        }
+<a name="517"></a>    }
+<a name="518"></a>        
+<a name="519"></a>    <font class="source_keyword">if</font> ( TextLines &gt; <font class="source_int">0</font> && (!<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.bShowMenu || <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.bShowScores) )
+<a name="520"></a>    {
+<a name="521"></a>        J = TopLine;
+<a name="522"></a>        I = <font class="source_int">0</font>;
+<a name="523"></a>        <font class="source_keyword">while</font> ((I &lt; <font class="source_int">4</font>) && (J &gt;= <font class="source_int">0</font>))
+<a name="524"></a>        {
+<a name="525"></a>            <font class="source_keyword">if</font> ((MsgText[J] != <font class="source_string">""</font>) && (MsgTick[J] &gt; <font class="source_int">0.0</font>) && (MsgTick[J] &gt; MsgTickTime) )
+<a name="526"></a>            {
+<a name="527"></a>                <font class="source_keyword">if</font> (MsgType[J] == <font class="source_name">'Say'</font>) 
+<a name="528"></a>                    ShortMessages[I] = MsgPlayer[J]$<font class="source_string">":"</font>@MsgText[J];
+<a name="529"></a>                <font class="source_keyword">else</font>
+<a name="530"></a>                    ShortMessages[I] = MsgText[J];
+<a name="531"></a>                I++;
+<a name="532"></a>            }
+<a name="533"></a>            J--;
+<a name="534"></a>        }
+<a name="535"></a>
+<a name="536"></a>        J = <font class="source_int">0</font>;
+<a name="537"></a>        C.<font class="source_type">Font</font> = C.MedFont;
+<a name="538"></a>        <font class="source_keyword">for</font> ( I = <font class="source_int">0</font>; I &lt; <font class="source_int">4</font>; I++ )
+<a name="539"></a>        {
+<a name="540"></a>            <font class="source_keyword">if</font> (ShortMessages[<font class="source_int">3</font> - I] != <font class="source_string">""</font>)
+<a name="541"></a>            {
+<a name="542"></a>                C.SetPos(<font class="source_int">4</font>, <font class="source_int">2</font> + (<font class="source_int">10</font> * J) + (<font class="source_int">10</font> * ExtraSpace));
+<a name="543"></a>                C.StrLen( ShortMessages[<font class="source_int">3</font> - I], XL, YL );
+<a name="544"></a>                C.DrawText( ShortMessages[<font class="source_int">3</font> - I], <font class="source_keyword">false</font> );
+<a name="545"></a>                <font class="source_keyword">if</font> ( YL == <font class="source_int">18.0</font> )
+<a name="546"></a>                    ExtraSpace++;
+<a name="547"></a>                J++;
+<a name="548"></a>            }
+<a name="549"></a>        }       
+<a name="550"></a>    }
+<a name="551"></a>}
+<a name="552"></a>
+<a name="553"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="554"></a><font class="source_comment">// State used while typing a command on the console.
+</font><a name="555"></a>
+<a name="556"></a><font class="source_keyword">state</font> Typing
+<a name="557"></a>{
+<a name="558"></a>    <font class="source_keyword2">exec</font> <font class="source_keyword">function</font> Type()
+<a name="559"></a>    {
+<a name="560"></a>        TypedStr=<font class="source_string">""</font>;
+<a name="561"></a>        gotoState( <font class="source_name">''</font> );
+<a name="562"></a>    }
+<a name="563"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyType( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key )
+<a name="564"></a>    {
+<a name="565"></a>        <font class="source_keyword">if</font> ( bNoStuff )
+<a name="566"></a>        {
+<a name="567"></a>            bNoStuff = <font class="source_keyword">false</font>;
+<a name="568"></a>            <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="569"></a>        }
+<a name="570"></a>        <font class="source_keyword">if</font>( Key&gt;=<font class="source_int">0x20</font> && Key&lt;<font class="source_int">0x100</font> && Key!=Asc(<font class="source_string">"~"</font>) && Key!=Asc(<font class="source_string">"`"</font>) )
+<a name="571"></a>        {
+<a name="572"></a>            TypedStr = TypedStr $ Chr(Key);
+<a name="573"></a>            Scrollback=<font class="source_int">0</font>;
+<a name="574"></a>            <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="575"></a>        }
+<a name="576"></a>    }
+<a name="577"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyEvent( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta )
+<a name="578"></a>    {
+<a name="579"></a>        <font class="source_keyword">local</font> <font class="source_keyword">string</font> Temp;
+<a name="580"></a>
+<a name="581"></a>        bNoStuff = <font class="source_keyword">false</font>;
+<a name="582"></a>        <font class="source_keyword">if</font>( Key==IK_Escape )
+<a name="583"></a>        {
+<a name="584"></a>            <font class="source_keyword">if</font>( Scrollback!=<font class="source_int">0</font> )
+<a name="585"></a>            {
+<a name="586"></a>                Scrollback=<font class="source_int">0</font>;
+<a name="587"></a>            }
+<a name="588"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font>( TypedStr!=<font class="source_string">""</font> )
+<a name="589"></a>            {
+<a name="590"></a>                TypedStr=<font class="source_string">""</font>;
+<a name="591"></a>            }
+<a name="592"></a>            <font class="source_keyword">else</font>
+<a name="593"></a>            {
+<a name="594"></a>                ConsoleDest=<font class="source_int">0.0</font>;
+<a name="595"></a>                GotoState( <font class="source_name">''</font> );
+<a name="596"></a>            }
+<a name="597"></a>            Scrollback=<font class="source_int">0</font>;
+<a name="598"></a>        }
+<a name="599"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font>( global.KeyEvent( Key, Action, Delta ) )
+<a name="600"></a>        {
+<a name="601"></a>            <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="602"></a>        }
+<a name="603"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font>( Action != IST_Press )
+<a name="604"></a>        {
+<a name="605"></a>            <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="606"></a>        }
+<a name="607"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font>( Key==IK_Enter )
+<a name="608"></a>        {
+<a name="609"></a>            <font class="source_keyword">if</font>( Scrollback!=<font class="source_int">0</font> )
+<a name="610"></a>            {
+<a name="611"></a>                Scrollback=<font class="source_int">0</font>;
+<a name="612"></a>            }
+<a name="613"></a>            <font class="source_keyword">else</font>
+<a name="614"></a>            {
+<a name="615"></a>                <font class="source_keyword">if</font>( TypedStr!=<font class="source_string">""</font> )
+<a name="616"></a>                {
+<a name="617"></a>                    <font class="source_comment">// Print to console.
+</font><a name="618"></a>                    <font class="source_keyword">if</font>( ConsoleLines!=<font class="source_int">0</font> )
+<a name="619"></a>                        Message( <font class="source_keyword">None</font>, <font class="source_string">"(&gt;"</font> @ TypedStr, <font class="source_name">'Console'</font> );
+<a name="620"></a>
+<a name="621"></a>                    <font class="source_comment">// Update history buffer.
+</font><a name="622"></a>                    History[HistoryCur++ % MaxHistory] = TypedStr;
+<a name="623"></a>                    <font class="source_keyword">if</font>( HistoryCur &gt; HistoryBot )
+<a name="624"></a>                        HistoryBot++;
+<a name="625"></a>                    <font class="source_keyword">if</font>( HistoryCur - HistoryTop &gt;= MaxHistory )
+<a name="626"></a>                        HistoryTop = HistoryCur - MaxHistory + <font class="source_int">1</font>;
+<a name="627"></a>
+<a name="628"></a>                    <font class="source_comment">// Make a local copy of the string.
+</font><a name="629"></a>                    Temp=TypedStr;
+<a name="630"></a>                    TypedStr=<font class="source_string">""</font>;
+<a name="631"></a>                    <font class="source_keyword">if</font>( !ConsoleCommand( Temp ) )
+<a name="632"></a>                        Message( <font class="source_keyword">None</font>, Localize(<font class="source_string">"Errors"</font>,<font class="source_string">"Exec"</font>,<font class="source_string">"Core"</font>), <font class="source_name">'Console'</font> );
+<a name="633"></a>                    Message( <font class="source_keyword">None</font>, <font class="source_string">""</font>, <font class="source_name">'Console'</font> );
+<a name="634"></a>                }
+<a name="635"></a>                <font class="source_keyword">if</font>( ConsoleDest==<font class="source_int">0.0</font> )
+<a name="636"></a>                    GotoState(<font class="source_name">''</font>);
+<a name="637"></a>                Scrollback=<font class="source_int">0</font>;
+<a name="638"></a>            }
+<a name="639"></a>        }
+<a name="640"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font>( Key==IK_Up )
+<a name="641"></a>        {
+<a name="642"></a>            <font class="source_keyword">if</font>( HistoryCur &gt; HistoryTop )
+<a name="643"></a>            {
+<a name="644"></a>                History[HistoryCur % MaxHistory] = TypedStr;
+<a name="645"></a>                TypedStr = History[--HistoryCur % MaxHistory];
+<a name="646"></a>            }
+<a name="647"></a>            Scrollback=<font class="source_int">0</font>;
+<a name="648"></a>        }
+<a name="649"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font>( Key==IK_Down )
+<a name="650"></a>        {
+<a name="651"></a>            History[HistoryCur % MaxHistory] = TypedStr;
+<a name="652"></a>            <font class="source_keyword">if</font>( HistoryCur &lt; HistoryBot )
+<a name="653"></a>                TypedStr = History[++HistoryCur % MaxHistory];
+<a name="654"></a>            <font class="source_keyword">else</font>
+<a name="655"></a>                TypedStr=<font class="source_string">""</font>;
+<a name="656"></a>            Scrollback=<font class="source_int">0</font>;
+<a name="657"></a>        }
+<a name="658"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font>( Key==IK_PageUp )
+<a name="659"></a>        {
+<a name="660"></a>            <font class="source_keyword">if</font>( ++Scrollback &gt;= MaxLines )
+<a name="661"></a>                Scrollback = MaxLines-<font class="source_int">1</font>;
+<a name="662"></a>        }
+<a name="663"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font>( Key==IK_PageDown )
+<a name="664"></a>        {
+<a name="665"></a>            <font class="source_keyword">if</font>( --Scrollback &lt; <font class="source_int">0</font> )
+<a name="666"></a>                Scrollback = <font class="source_int">0</font>;
+<a name="667"></a>        }
+<a name="668"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font>( Key==IK_Backspace || Key==IK_Left )
+<a name="669"></a>        {
+<a name="670"></a>            <font class="source_keyword">if</font>( Len(TypedStr)&gt;<font class="source_int">0</font> )
+<a name="671"></a>                TypedStr = Left(TypedStr,Len(TypedStr)-<font class="source_int">1</font>);
+<a name="672"></a>            Scrollback = <font class="source_int">0</font>;
+<a name="673"></a>        }
+<a name="674"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="675"></a>    }
+<a name="676"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="677"></a>    {
+<a name="678"></a>        bTyping = <font class="source_keyword">true</font>;
+<a name="679"></a>        <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.Typing(bTyping);
+<a name="680"></a>    }
+<a name="681"></a>    <font class="source_keyword">function</font> EndState()
+<a name="682"></a>    {
+<a name="683"></a>        bTyping = <font class="source_keyword">false</font>;
+<a name="684"></a>        <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.Typing(bTyping);
+<a name="685"></a>        <font class="source_comment">//log("Console leaving Typing");
+</font><a name="686"></a>        ConsoleDest=<font class="source_int">0.0</font>;
+<a name="687"></a>    }
+<a name="688"></a>}
+<a name="689"></a>
+<a name="690"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="691"></a><font class="source_comment">// State used while in a menu.
+</font><a name="692"></a>
+<a name="693"></a><font class="source_keyword">state</font> Menuing
+<a name="694"></a>{
+<a name="695"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyEvent( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta )
+<a name="696"></a>    {
+<a name="697"></a>        <font class="source_keyword">if</font> ( Action != IST_Press )
+<a name="698"></a>            <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="699"></a>        <font class="source_keyword">if</font> ( <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD == <font class="source_keyword">None</font> || <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu == <font class="source_keyword">None</font> )
+<a name="700"></a>            <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="701"></a>        
+<a name="702"></a>        <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu.MenuProcessInput(Key, Action);
+<a name="703"></a>        Scrollback=<font class="source_int">0</font>;
+<a name="704"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="705"></a>    }
+<a name="706"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="707"></a>    {
+<a name="708"></a>        <font class="source_comment">//log("Console entering Menuing");
+</font><a name="709"></a>    }
+<a name="710"></a>    <font class="source_keyword">function</font> EndState()
+<a name="711"></a>    {
+<a name="712"></a>        <font class="source_comment">//log("Console leaving Menuing");
+</font><a name="713"></a>    }
+<a name="714"></a>}
+<a name="715"></a>
+<a name="716"></a><font class="source_keyword">state</font> EndMenuing
+<a name="717"></a>{
+<a name="718"></a>    <font class="source_comment">// pass all key events, not just presses
+</font><a name="719"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyEvent( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta )
+<a name="720"></a>    {
+<a name="721"></a>        <font class="source_keyword">if</font> ( <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD == <font class="source_keyword">None</font> || <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu == <font class="source_keyword">None</font> )
+<a name="722"></a>            <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="723"></a>        
+<a name="724"></a>        <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu.MenuProcessInput(Key, Action);
+<a name="725"></a>        Scrollback=<font class="source_int">0</font>;
+<a name="726"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="727"></a>    }
+<a name="728"></a>}
+<a name="729"></a>
+<a name="730"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="731"></a><font class="source_comment">// State used while typing in a menu.
+</font><a name="732"></a>
+<a name="733"></a><font class="source_keyword">state</font> MenuTyping
+<a name="734"></a>{
+<a name="735"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyType( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key )
+<a name="736"></a>    {
+<a name="737"></a>        <font class="source_keyword">if</font>( Key&gt;=<font class="source_int">0x20</font> && Key&lt;<font class="source_int">0x100</font> && Key!=Asc(<font class="source_string">"~"</font>) && Key!=Asc(<font class="source_string">"`"</font>) && Key!=Asc(<font class="source_string">" "</font>) )
+<a name="738"></a>        {
+<a name="739"></a>            TypedStr = TypedStr $ Chr(Key);
+<a name="740"></a>            Scrollback=<font class="source_int">0</font>;
+<a name="741"></a>            <font class="source_keyword">if</font> ( (<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD != <font class="source_keyword">None</font>) && (<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu != <font class="source_keyword">None</font>) )
+<a name="742"></a>                <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu.ProcessMenuUpdate( TypedStr );
+<a name="743"></a>            <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="744"></a>        }
+<a name="745"></a>    }   
+<a name="746"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyEvent( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta )
+<a name="747"></a>    {
+<a name="748"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\menu.html" class="source">Menu</a></font> PlayerMenu;
+<a name="749"></a>
+<a name="750"></a>        <font class="source_keyword">if</font>( Action != IST_Press )
+<a name="751"></a>            <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="752"></a>
+<a name="753"></a>        <font class="source_keyword">if</font>( <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD==<font class="source_keyword">None</font> || <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu==<font class="source_keyword">None</font> )
+<a name="754"></a>            <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="755"></a>        
+<a name="756"></a>        PlayerMenu = <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu;
+<a name="757"></a>
+<a name="758"></a>        <font class="source_keyword">if</font>( Key==IK_Escape )
+<a name="759"></a>        {
+<a name="760"></a>            <font class="source_keyword">if</font>( Scrollback!=<font class="source_int">0</font> )
+<a name="761"></a>                Scrollback = <font class="source_int">0</font>;
+<a name="762"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font>( TypedStr!=<font class="source_string">""</font> )
+<a name="763"></a>                TypedStr=<font class="source_string">""</font>;
+<a name="764"></a>            <font class="source_keyword">else</font>
+<a name="765"></a>                GotoState( <font class="source_name">'Menuing'</font> );
+<a name="766"></a>            PlayerMenu.ProcessMenuEscape();
+<a name="767"></a>            Scrollback=<font class="source_int">0</font>;
+<a name="768"></a>        }
+<a name="769"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font>( Key==IK_Enter )
+<a name="770"></a>        {
+<a name="771"></a>            <font class="source_keyword">if</font>( Scrollback!=<font class="source_int">0</font> )
+<a name="772"></a>                Scrollback = <font class="source_int">0</font>;
+<a name="773"></a>            <font class="source_keyword">else</font>
+<a name="774"></a>            {
+<a name="775"></a>                <font class="source_keyword">if</font>( TypedStr!=<font class="source_string">""</font> )
+<a name="776"></a>                    PlayerMenu.ProcessMenuInput( TypedStr );    
+<a name="777"></a>                TypedStr=<font class="source_string">""</font>;
+<a name="778"></a>                GotoState( <font class="source_name">'Menuing'</font> );
+<a name="779"></a>                Scrollback = <font class="source_int">0</font>;
+<a name="780"></a>            }
+<a name="781"></a>        }
+<a name="782"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font>( Key==IK_Backspace || Key==IK_Left )
+<a name="783"></a>        {
+<a name="784"></a>            <font class="source_keyword">if</font>( Len(TypedStr)&gt;<font class="source_int">0</font> )
+<a name="785"></a>                TypedStr = Left(TypedStr,Len(TypedStr)-<font class="source_int">1</font>);
+<a name="786"></a>            Scrollback = <font class="source_int">0</font>;
+<a name="787"></a>            PlayerMenu.ProcessMenuUpdate( TypedStr );   
+<a name="788"></a>        }
+<a name="789"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="790"></a>    }
+<a name="791"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="792"></a>    {
+<a name="793"></a>        log(<font class="source_string">"Console entering MenuTyping"</font>);
+<a name="794"></a>    }
+<a name="795"></a>    <font class="source_keyword">function</font> EndState()
+<a name="796"></a>    {
+<a name="797"></a>        log(<font class="source_string">"Console leaving MenuTyping"</font>);
+<a name="798"></a>    }
+<a name="799"></a>}
+<a name="800"></a>
+<a name="801"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="802"></a><font class="source_comment">// State used while expecting single key input in a menu.
+</font><a name="803"></a>
+<a name="804"></a><font class="source_keyword">state</font> KeyMenuing
+<a name="805"></a>{
+<a name="806"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyType( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key )
+<a name="807"></a>    {
+<a name="808"></a>        ConsoleDest=<font class="source_int">0.0</font>;
+<a name="809"></a>        <font class="source_keyword">if</font>( <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD!=<font class="source_keyword">None</font> && <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu!=<font class="source_keyword">None</font> )
+<a name="810"></a>            <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu.ProcessMenuKey( Key, Chr(Key) );
+<a name="811"></a>        Scrollback=<font class="source_int">0</font>;
+<a name="812"></a>        GotoState( <font class="source_name">'Menuing'</font> );
+<a name="813"></a>    }
+<a name="814"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyEvent( <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta )
+<a name="815"></a>    {
+<a name="816"></a>        <font class="source_keyword">if</font>( Action==IST_Press )
+<a name="817"></a>        {
+<a name="818"></a>            ConsoleDest=<font class="source_int">0.0</font>;
+<a name="819"></a>            <font class="source_keyword">if</font>( <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD!=<font class="source_keyword">None</font> && <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu!=<font class="source_keyword">None</font> )
+<a name="820"></a>                <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.myHUD.MainMenu.ProcessMenuKey( Key, mid(<font class="source_keyword">string</font>(GetEnum(<font class="source_keyword">enum</font><font class="source_name">'EInputKey'</font>,Key)),<font class="source_int">3</font>) );
+<a name="821"></a>            Scrollback=<font class="source_int">0</font>;
+<a name="822"></a>            GotoState( <font class="source_name">'Menuing'</font> );
+<a name="823"></a>            <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="824"></a>        }
+<a name="825"></a>    }
+<a name="826"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="827"></a>    {
+<a name="828"></a>        <font class="source_comment">//log( "Console entering KeyMenuing" );
+</font><a name="829"></a>    }
+<a name="830"></a>    <font class="source_keyword">function</font> EndState()
+<a name="831"></a>    {
+<a name="832"></a>        <font class="source_comment">//log( "Console leaving KeyMenuing" );
+</font><a name="833"></a>    }
+<a name="834"></a>}
+<a name="835"></a>
+<a name="836"></a>
+<a name="837"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="838"></a><font class="source_comment">// Timedemo functions
+</font><a name="839"></a>
+<a name="840"></a><font class="source_keyword2">exec</font> <font class="source_keyword">function</font> TimeDemo(<font class="source_keyword">bool</font> bEnabled, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bSaveToFile)
+<a name="841"></a>{
+<a name="842"></a>    bSaveTimeDemoToFile = bSaveToFile;
+<a name="843"></a>    <font class="source_keyword">if</font>(bEnabled)
+<a name="844"></a>        StartTimeDemo();
+<a name="845"></a>    <font class="source_keyword">else</font>
+<a name="846"></a>        StopTimeDemo();
+<a name="847"></a>}
+<a name="848"></a>
+<a name="849"></a><font class="source_keyword">function</font> StartTimeDemo()
+<a name="850"></a>{
+<a name="851"></a>    <font class="source_keyword">if</font>(bTimeDemo)
+<a name="852"></a>        <font class="source_keyword">return</font>;
+<a name="853"></a>    bTimeDemo = <font class="source_keyword">True</font>;
+<a name="854"></a>    bStartTimeDemo = <font class="source_keyword">True</font>;
+<a name="855"></a>}
+<a name="856"></a>
+<a name="857"></a><font class="source_keyword">function</font> StopTimeDemo()
+<a name="858"></a>{
+<a name="859"></a>    <font class="source_keyword">if</font>(!bTimeDemo)
+<a name="860"></a>        <font class="source_keyword">return</font>;
+<a name="861"></a>    bTimeDemo = <font class="source_keyword">False</font>;
+<a name="862"></a>    PrintTimeDemoResult();
+<a name="863"></a>}
+<a name="864"></a>
+<a name="865"></a><font class="source_keyword">function</font> PrintTimeDemoResult()
+<a name="866"></a>{
+<a name="867"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\levelinfo.html" class="source">LevelInfo</a></font> Entry;
+<a name="868"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> Avg;
+<a name="869"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> Delta;
+<a name="870"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> AvgString;
+<a name="871"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Temp;
+<a name="872"></a>
+<a name="873"></a>    Entry = <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.GetEntryLevel();
+<a name="874"></a>
+<a name="875"></a>    Delta = Entry.TimeSeconds - StartTime - ExtraTime;
+<a name="876"></a>    <font class="source_keyword">if</font>(Delta &lt;= <font class="source_int">0</font>)
+<a name="877"></a>        Avg = <font class="source_int">0</font>;
+<a name="878"></a>    <font class="source_keyword">else</font>
+<a name="879"></a>        Avg = FrameCount / Delta;
+<a name="880"></a>    
+<a name="881"></a>    AvgString = <font class="source_keyword">string</font>(FrameCount)@FramesText@FormatFloat(delta)@SecondsText@MinText@FormatFloat(MinFPS)@MaxText@FormatFloat(MaxFPS)@AvgText@FormatFloat(Avg)@fpsText$<font class="source_string">"."</font>;
+<a name="882"></a>    <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.ClientMessage(AvgString);
+<a name="883"></a>    Log(AvgString);
+<a name="884"></a>    <font class="source_keyword">if</font>(bSaveTimeDemoToFile)
+<a name="885"></a>    {       
+<a name="886"></a>        Temp =
+<a name="887"></a>            FormatFloat(Avg) $ <font class="source_string">" Unreal "</font>$ <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.<font class="source_type">Level</font>.EngineVersion $ Chr(<font class="source_int">13</font>) $ Chr(<font class="source_int">10</font>) $
+<a name="888"></a>            FormatFloat(MinFPS) $ <font class="source_string">" Min"</font>$ Chr(<font class="source_int">13</font>) $ Chr(<font class="source_int">10</font>) $
+<a name="889"></a>            FormatFloat(MaxFPS) $ <font class="source_string">" Max"</font>$ Chr(<font class="source_int">13</font>) $ Chr(<font class="source_int">10</font>);
+<a name="890"></a>            
+<a name="891"></a>        SaveTimeDemo(Temp);
+<a name="892"></a>    }
+<a name="893"></a>}
+<a name="894"></a>
+<a name="895"></a><font class="source_keyword">function</font> TimeDemoCalc()
+<a name="896"></a>{
+<a name="897"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\levelinfo.html" class="source">LevelInfo</a></font> Entry;
+<a name="898"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> Delta;
+<a name="899"></a>    Entry = <font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.GetEntryLevel();
+<a name="900"></a>
+<a name="901"></a>    <font class="source_keyword">if</font>( bRestartTimeDemo )
+<a name="902"></a>    {
+<a name="903"></a>        StopTimeDemo();
+<a name="904"></a>        StartTimeDemo();
+<a name="905"></a>        bRestartTimeDemo = <font class="source_keyword">False</font>;
+<a name="906"></a>    }
+<a name="907"></a>
+<a name="908"></a>    <font class="source_keyword">if</font>( bStartTimeDemo )
+<a name="909"></a>    {
+<a name="910"></a>        bStartTimeDemo = <font class="source_keyword">False</font>;
+<a name="911"></a>        StartTime = Entry.TimeSeconds;
+<a name="912"></a>        ExtraTime =  <font class="source_int">0</font>;
+<a name="913"></a>        LastFrameTime = StartTime;
+<a name="914"></a>        LastSecondStartTime = StartTime;
+<a name="915"></a>        FrameCount = <font class="source_int">0</font>;
+<a name="916"></a>        LastSecondFrameCount = <font class="source_int">0</font>;
+<a name="917"></a>        MinFPS = <font class="source_int">0</font>;
+<a name="918"></a>        MaxFPS = <font class="source_int">0</font>;     
+<a name="919"></a>        LastSecFPS = <font class="source_int">0</font>;
+<a name="920"></a>        <font class="source_keyword">return</font>;
+<a name="921"></a>    }
+<a name="922"></a>
+<a name="923"></a>    Delta = Entry.TimeSeconds - LastFrameTime;
+<a name="924"></a>
+<a name="925"></a>    <font class="source_comment">// If delta time is more than a half of a second, ignore frame entirely (precaching, loading etc)
+</font><a name="926"></a>    <font class="source_keyword">if</font>( Delta &gt; <font class="source_int">0.5</font> )
+<a name="927"></a>    {
+<a name="928"></a>        ExtraTime += Delta;
+<a name="929"></a>        LastSecondStartTime = Entry.TimeSeconds;
+<a name="930"></a>        LastSecondFrameCount = <font class="source_int">0</font>;
+<a name="931"></a>        LastFrameTime = Entry.TimeSeconds;
+<a name="932"></a>        <font class="source_keyword">return</font>;
+<a name="933"></a>    }
+<a name="934"></a>
+<a name="935"></a>    FrameCount++;
+<a name="936"></a>    LastSecondFrameCount++;
+<a name="937"></a>
+<a name="938"></a>    <font class="source_keyword">if</font>( Entry.TimeSeconds - LastSecondStartTime &gt; <font class="source_int">1</font>)
+<a name="939"></a>    {
+<a name="940"></a>        LastSecFPS = LastSecondFrameCount / (Entry.TimeSeconds - LastSecondStartTime);
+<a name="941"></a>        <font class="source_keyword">if</font>( MinFPS == <font class="source_int">0</font> || LastSecFPS &lt; MinFPS )
+<a name="942"></a>            MinFPS = LastSecFPS;
+<a name="943"></a>        <font class="source_keyword">if</font>( LastSecFPS &gt; MaxFPS )
+<a name="944"></a>            MaxFPS = LastSecFPS;
+<a name="945"></a>        LastSecondFrameCount = <font class="source_int">0</font>;
+<a name="946"></a>        LastSecondStartTime = Entry.TimeSeconds;
+<a name="947"></a>    }
+<a name="948"></a>
+<a name="949"></a>    LastFrameTime = Entry.TimeSeconds;
+<a name="950"></a>}
+<a name="951"></a>
+<a name="952"></a><font class="source_keyword">function</font> TimeDemoRender( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C )
+<a name="953"></a>{
+<a name="954"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> AText, LText;
+<a name="955"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> W, H;
+<a name="956"></a>
+<a name="957"></a>    C.<font class="source_type">Font</font> = TimeDemoFont;
+<a name="958"></a>    C.DrawColor.R = <font class="source_int">255</font>;
+<a name="959"></a>    C.DrawColor.G = <font class="source_int">255</font>;
+<a name="960"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="961"></a>
+<a name="962"></a>    AText = AvgText @ FormatFloat(FrameCount / (<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.GetEntryLevel().TimeSeconds - StartTime - ExtraTime));
+<a name="963"></a>    LText = LastSecText @ FormatFloat(LastSecFPS);
+<a name="964"></a>
+<a name="965"></a>    C.TextSize(AText, W, H);
+<a name="966"></a>    C.SetPos(C.ClipX - W, <font class="source_int">0.3</font>*C.ClipY);
+<a name="967"></a>    C.DrawText(AText);
+<a name="968"></a>    C.TextSize(LText, W, H);
+<a name="969"></a>    C.SetPos(C.ClipX - W, <font class="source_int">0.3</font>*C.ClipY+H);
+<a name="970"></a>    C.DrawText(LText);
+<a name="971"></a>}
+<a name="972"></a>
+<a name="973"></a><font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> FormatFloat( <font class="source_keyword">float</font> f)
+<a name="974"></a>{
+<a name="975"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> s;
+<a name="976"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="977"></a>    s = <font class="source_keyword">string</font>(f);
+<a name="978"></a>    i = InStr(s, <font class="source_string">"."</font>);
+<a name="979"></a>    <font class="source_keyword">if</font>(i != -<font class="source_int">1</font>)
+<a name="980"></a>        s = Left(s, i+<font class="source_int">3</font>);
+<a name="981"></a>    <font class="source_keyword">return</font> s;
+<a name="982"></a>}
+<a name="983"></a>
+<a name="984"></a><font class="source_keyword">defaultproperties</font>
+<a name="985"></a>{
+<a name="986"></a>    ConBackground=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Engine.ConsoleBack'</font>
+<a name="987"></a>    Border=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Engine.Border'</font>
+<a name="988"></a>    LoadingMessage=<font class="source_string">"LOADING"</font>
+<a name="989"></a>    SavingMessage=<font class="source_string">"SAVING"</font>
+<a name="990"></a>    ConnectingMessage=<font class="source_string">"CONNECTING"</font>
+<a name="991"></a>    PausedMessage=<font class="source_string">"PAUSED"</font>
+<a name="992"></a>    PrecachingMessage=<font class="source_string">"PRECACHING"</font>
+<a name="993"></a>    TimeDemoFont=<font class="source_type">Font</font><font class="source_name">'SmallFont'</font>
+<a name="994"></a>    FrameRateText=<font class="source_string">"Frame Rate"</font>
+<a name="995"></a>    AvgText=<font class="source_string">"Avg"</font>
+<a name="996"></a>    LastSecText=<font class="source_string">"Last Sec"</font>
+<a name="997"></a>    MinText=<font class="source_string">"Min"</font>
+<a name="998"></a>    MaxText=<font class="source_string">"Max"</font>
+<a name="999"></a>    fpsText=<font class="source_string">"fps"</font>
+<a name="1000"></a>    SecondsText=<font class="source_string">"seconds."</font>
+<a name="1001"></a>    FramesText=<font class="source_string">"frames rendered in"</font>
+<a name="1002"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\console.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Console">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="clipmarker.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="counter.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:23:14.000 - Creation time: Wed 26/5/2004 10:48:12.093 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

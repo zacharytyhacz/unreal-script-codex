@@ -1,0 +1,155 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Engine.LiftExit</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\liftexit.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#LiftExit">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="liftcenter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="light.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\liftexit.html">LiftExit</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// LiftExit.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\engine\liftexit.html" class="source">LiftExit</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font>
+<a name="5"></a>    <font class="source_keyword2">native</font>;
+<a name="6"></a>
+<a name="7"></a><font class="source_keyword">var</font>() <font class="source_keyword">name</font> LiftTag;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\mover.html" class="source">Mover</a></font> MyLift;
+<a name="9"></a><font class="source_keyword">var</font>() <font class="source_keyword">name</font> LiftTrigger;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">trigger</a></font> RecommendedTrigger;
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastTriggerTime;
+<a name="12"></a>
+<a name="13"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="14"></a>{
+<a name="15"></a>    <font class="source_keyword">if</font> ( LiftTag != <font class="source_name">''</font> )
+<a name="16"></a>        <font class="source_keyword">ForEach</font> AllActors(<font class="source_keyword">class</font><font class="source_name">'Mover'</font>, MyLift, LiftTag )
+<a name="17"></a>            <font class="source_keyword">break</font>;
+<a name="18"></a>    <font class="source_comment">//log(self$" attached to "$MyLift);
+</font><a name="19"></a>    <font class="source_keyword">if</font> ( LiftTrigger != <font class="source_name">''</font> )
+<a name="20"></a>        <font class="source_keyword">ForEach</font> AllActors(<font class="source_keyword">class</font><font class="source_name">'Trigger'</font>, RecommendedTrigger, LiftTrigger )
+<a name="21"></a>            <font class="source_keyword">break</font>;
+<a name="22"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="23"></a>}
+<a name="24"></a>
+<a name="25"></a><font class="source_comment">/* SpecialHandling is called by the navigation code when the next path has been found.  
+<a name="26"></a>It gives that path an opportunity to modify the result based on any special considerations
+<a name="27"></a>*/</font>
+<a name="28"></a>
+<a name="29"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> SpecialHandling(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)
+<a name="30"></a>{
+<a name="31"></a>
+<a name="32"></a>    <font class="source_keyword">if</font> ( (Other.Base == MyLift) && (MyLift != <font class="source_keyword">None</font>) )
+<a name="33"></a>    {
+<a name="34"></a>        <font class="source_keyword">if</font> ( (self.Location.Z &lt; Other.Location.Z + Other.CollisionHeight)
+<a name="35"></a>             && Other.LineOfSightTo(self) )
+<a name="36"></a>            <font class="source_keyword">return</font> self;
+<a name="37"></a>        Other.SpecialGoal = <font class="source_keyword">None</font>;
+<a name="38"></a>        Other.DesiredRotation = <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font>(Location - Other.Location);
+<a name="39"></a>        MyLift.HandleDoor(Other);
+<a name="40"></a>
+<a name="41"></a>        <font class="source_keyword">if</font> ( (Other.SpecialGoal == MyLift) || (Other.SpecialGoal == <font class="source_keyword">None</font>) )
+<a name="42"></a>            Other.SpecialGoal = MyLift.myMarker;
+<a name="43"></a>        <font class="source_keyword">return</font> Other.SpecialGoal;
+<a name="44"></a>    }
+<a name="45"></a>    <font class="source_keyword">return</font> self;
+<a name="46"></a>}
+<a name="47"></a>
+<a name="48"></a><font class="source_keyword">defaultproperties</font>
+<a name="49"></a>{
+<a name="50"></a>}
+<a name="51"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\liftexit.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#LiftExit">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="liftcenter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="light.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:23:20.000 - Creation time: Wed 26/5/2004 10:48:23.906 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

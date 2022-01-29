@@ -1,0 +1,193 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UMenu.UMenuSlotClientWindow</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\umenu\umenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\umenu\umenuslotclientwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UMenuSlotClientWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="umenuserversetupsc.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="umenustartgameclientwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\umenu\umenu-overview.html">UMenu</a>.<a href="..\umenu\umenuslotclientwindow.html">UMenuSlotClientWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\umenu\umenuslotclientwindow.html" class="source">UMenuSlotClientWindow</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\umenu\umenudialogclientwindow.html" class="source">UMenuDialogClientWindow</a></font>
+<a name="2"></a>    <font class="source_keyword2">config</font>(user);
+<a name="3"></a>
+<a name="4"></a><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">string</font> SlotNames[<font class="source_int">9</font>];
+<a name="5"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MonthNames[<font class="source_int">12</font>];
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SlotHelp;
+<a name="7"></a>
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenuraisedbutton.html" class="source">UMenuRaisedButton</a></font> Slots[<font class="source_int">9</font>];
+<a name="9"></a>
+<a name="10"></a><font class="source_keyword">function</font> Created()
+<a name="11"></a>{
+<a name="12"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ButtonWidth, ButtonLeft, ButtonTop, I;
+<a name="13"></a>
+<a name="14"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="15"></a>
+<a name="16"></a>    ButtonWidth = WinWidth - <font class="source_int">60</font>;
+<a name="17"></a>    ButtonLeft = (WinWidth - ButtonWidth)/2;
+<a name="18"></a>
+<a name="19"></a>    DesiredWidth = <font class="source_int">200</font>;
+<a name="20"></a>    DesiredHeight = <font class="source_int">320</font>;
+<a name="21"></a>
+<a name="22"></a>    <font class="source_keyword">for</font> (I=<font class="source_int">0</font>; I&lt;<font class="source_int">9</font>; I++)
+<a name="23"></a>    {
+<a name="24"></a>        ButtonTop = <font class="source_int">25</font> + <font class="source_int">25</font>*I;
+<a name="25"></a>        Slots[I] = <font class="source_type"><a href="..\umenu\umenuraisedbutton.html" class="source">UMenuRaisedButton</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UMenuRaisedButton'</font>, ButtonLeft, ButtonTop, ButtonWidth, <font class="source_int">1</font>));
+<a name="26"></a>        Slots[I].SetText(SlotNames[I]);
+<a name="27"></a>        Slots[I].SetHelpText(SlotHelp);
+<a name="28"></a>    }
+<a name="29"></a>}
+<a name="30"></a>
+<a name="31"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="32"></a>{
+<a name="33"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ButtonWidth, ButtonLeft, I;
+<a name="34"></a>
+<a name="35"></a>    ButtonWidth = WinWidth - <font class="source_int">60</font>;
+<a name="36"></a>    ButtonLeft = (WinWidth - ButtonWidth)/2;
+<a name="37"></a>
+<a name="38"></a>    <font class="source_keyword">for</font> (I=<font class="source_int">0</font>; I&lt;<font class="source_int">9</font>; I++)
+<a name="39"></a>    {
+<a name="40"></a>        Slots[I].SetSize(ButtonWidth, <font class="source_int">1</font>);
+<a name="41"></a>        Slots[I].WinLeft = ButtonLeft;
+<a name="42"></a>    }
+<a name="43"></a>}
+<a name="44"></a>
+<a name="45"></a><font class="source_keyword">defaultproperties</font>
+<a name="46"></a>{
+<a name="47"></a>     SlotNames(<font class="source_int">0</font>)=<font class="source_string">"..Empty.."</font>
+<a name="48"></a>     SlotNames(<font class="source_int">1</font>)=<font class="source_string">"..Empty.."</font>
+<a name="49"></a>     SlotNames(<font class="source_int">2</font>)=<font class="source_string">"..Empty.."</font>
+<a name="50"></a>     SlotNames(<font class="source_int">3</font>)=<font class="source_string">"..Empty.."</font>
+<a name="51"></a>     SlotNames(<font class="source_int">4</font>)=<font class="source_string">"..Empty.."</font>
+<a name="52"></a>     SlotNames(<font class="source_int">5</font>)=<font class="source_string">"..Empty.."</font>
+<a name="53"></a>     SlotNames(<font class="source_int">6</font>)=<font class="source_string">"..Empty.."</font>
+<a name="54"></a>     SlotNames(<font class="source_int">7</font>)=<font class="source_string">"..Empty.."</font>
+<a name="55"></a>     SlotNames(<font class="source_int">8</font>)=<font class="source_string">"..Empty.."</font>
+<a name="56"></a>     MonthNames(<font class="source_int">0</font>)=<font class="source_string">"January"</font>
+<a name="57"></a>     MonthNames(<font class="source_int">1</font>)=<font class="source_string">"February"</font>
+<a name="58"></a>     MonthNames(<font class="source_int">2</font>)=<font class="source_string">"March"</font>
+<a name="59"></a>     MonthNames(<font class="source_int">3</font>)=<font class="source_string">"April"</font>
+<a name="60"></a>     MonthNames(<font class="source_int">4</font>)=<font class="source_string">"May"</font>
+<a name="61"></a>     MonthNames(<font class="source_int">5</font>)=<font class="source_string">"June"</font>
+<a name="62"></a>     MonthNames(<font class="source_int">6</font>)=<font class="source_string">"July"</font>
+<a name="63"></a>     MonthNames(<font class="source_int">7</font>)=<font class="source_string">"August"</font>
+<a name="64"></a>     MonthNames(<font class="source_int">8</font>)=<font class="source_string">"September"</font>
+<a name="65"></a>     MonthNames(<font class="source_int">9</font>)=<font class="source_string">"October"</font>
+<a name="66"></a>     MonthNames(<font class="source_int">10</font>)=<font class="source_string">"November"</font>
+<a name="67"></a>     MonthNames(<font class="source_int">11</font>)=<font class="source_string">"December"</font>
+<a name="68"></a>     SlotHelp=<font class="source_string">"Press to activate this slot. (Save/Load)"</font>
+<a name="69"></a>}
+<a name="70"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\umenu\umenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\umenu\umenuslotclientwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UMenuSlotClientWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="umenuserversetupsc.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="umenustartgameclientwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:06.000 - Creation time: Wed 26/5/2004 10:48:54.546 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

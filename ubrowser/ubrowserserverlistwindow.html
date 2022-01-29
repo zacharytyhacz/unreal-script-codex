@@ -1,0 +1,761 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - UBrowser.UBrowserServerListWindow</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ubrowser-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ubrowser\ubrowserserverlistwindow.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserServerListWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserserverlistfactory.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowserserverping.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="ubrowser-overview.html">UBrowser</a>.UBrowserServerListWindow</h1>
+<b>Extends:</b> <a href="..\uwindow\uwindowpagewindow.html">UWindowPageWindow</a><br>
+<b>Modifiers:</b> PerObjectConfig <br>
+<a href="..\Source_ubrowser\ubrowserserverlistwindow.html"><b>Source code</b></a>
+
+<p>
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowbase.html">UWindowBase</a>
+    |   
+    +-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowwindow.html">UWindowWindow</a>
+        |   
+        +-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowclientwindow.html">UWindowClientWindow</a>
+            |   
+            +-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowdialogclientwindow.html">UWindowDialogClientWindow</a>
+                |   
+                +-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowpagewindow.html">UWindowPageWindow</a>
+                    |   
+                    +-- <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserserverlistwindow.html">UBrowserServerListWindow</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="ubrowserfavoriteservers.html">UBrowserFavoriteServers</a>, <a href="..\utbrowser\utbrowserserverlistwindow.html">UTBrowserServerListWindow</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_MinHeightForSplitter" name="MinHeightForSplitter">MinHeightForSplitter</a></td><td width="10%">=</td><td width="50%">384</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_AutoRefreshTime" name="AutoRefreshTime">AutoRefreshTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFallbackFactories" name="bFallbackFactories">bFallbackFactories</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHadInitialRefresh" name="bHadInitialRefresh">bHadInitialRefresh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHidden" name="bHidden">bHidden</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoAutoSort" name="bNoAutoSort">bNoAutoSort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoSort" name="bNoSort">bNoSort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPingResume" name="bPingResume">bPingResume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPingResumeIntial" name="bPingResumeIntial">bPingResumeIntial</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPingSuspend" name="bPingSuspend">bPingSuspend</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowFailedServers" name="bShowFailedServers">bShowFailedServers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSuspendPingOnClose" name="bSuspendPingOnClose">bSuspendPingOnClose</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_CompleteText" name="CompleteText">CompleteText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ErrorString" name="ErrorString">ErrorString</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserserverlistfactory.html">UBrowserServerListFactory</a></td><td width="66%"><a href="#_Factories[10]" name="Factories[10]">Factories[10]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_FallbackFactory" name="FallbackFactory">FallbackFactory</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserservergrid.html">UBrowserServerGrid</a></td><td width="66%"><a href="#_Grid" name="Grid">Grid</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GridClass" name="GridClass">GridClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserinfoclientwindow.html">UBrowserInfoClientWindow</a></td><td width="66%"><a href="#_InfoClient" name="InfoClient">InfoClient</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserserverlist.html">UBrowserServerList</a></td><td width="66%"><a href="#_InfoItem" name="InfoItem">InfoItem</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_InfoName" name="InfoName">InfoName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserinfowindow.html">UBrowserInfoWindow</a></td><td width="66%"><a href="#_InfoWindow" name="InfoWindow">InfoWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ListFactories[10]" name="ListFactories[10]">ListFactories[10]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserserverlist.html">UBrowserServerList</a></td><td width="66%"><a href="#_PingedList" name="PingedList">PingedList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PingingText" name="PingingText">PingingText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserserverlistwindow.html#EPingState">EPingState</a></td><td width="66%"><a href="#_PingState" name="PingState">PingState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PlayerCountLeader" name="PlayerCountLeader">PlayerCountLeader</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PlayerCountName" name="PlayerCountName">PlayerCountName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_QueryDone[10]" name="QueryDone[10]">QueryDone[10]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_QueryFailedText" name="QueryFailedText">QueryFailedText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_QueryServerText" name="QueryServerText">QueryServerText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="ubrowserrightclickmenu.html">UBrowserRightClickMenu</a>&gt;</td><td width="66%"><a href="#_RightClickMenuClass" name="RightClickMenuClass">RightClickMenuClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ServerCountLeader" name="ServerCountLeader">ServerCountLeader</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ServerCountName" name="ServerCountName">ServerCountName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="ubrowserserverlist.html">UBrowserServerList</a>&gt;</td><td width="66%"><a href="#_ServerListClass" name="ServerListClass">ServerListClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ServerListClassName" name="ServerListClassName">ServerListClassName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ServerListTitle" name="ServerListTitle">ServerListTitle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowsersubsetlist.html">UBrowserSubsetList</a></td><td width="66%"><a href="#_SubsetList" name="SubsetList">SubsetList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowsersupersetlist.html">UBrowserSupersetList</a></td><td width="66%"><a href="#_SupersetList" name="SupersetList">SupersetList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TimeElapsed" name="TimeElapsed">TimeElapsed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserserverlist.html">UBrowserServerList</a></td><td width="66%"><a href="#_UnpingedList" name="UnpingedList">UnpingedList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_URLAppend" name="URLAppend">URLAppend</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\uwindow\uwindowvsplitter.html">UWindowVSplitter</a></td><td width="66%"><a href="#_VSplitter" name="VSplitter">VSplitter</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowpagewindow.html">UWindowPageWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowpagewindow.html#OwnerTab">OwnerTab</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowdialogclientwindow.html#DesiredHeight">DesiredHeight</a>, <a href="..\uwindow\uwindowdialogclientwindow.html#DesiredWidth">DesiredWidth</a>, <a href="..\uwindow\uwindowdialogclientwindow.html#TabLast">TabLast</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EPingState" name="EPingState">EPingState</a><br /><span class="small">PS_QueryServer,
+PS_QueryFailed,
+PS_Pinging,
+PS_RePinging,
+PS_Done</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="ubrowserserverlist.html">UBrowserServerList</a>&nbsp;</td><td><a href="#_AddFavorite+" name="AddFavorite">AddFavorite</a> (<a href="ubrowserserverlist.html">UBrowserServerList</a> Server)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AddSubset+" name="AddSubset">AddSubset</a> (<a href="ubrowsersubsetfact.html">UBrowserSubsetFact</a> Subset)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AddSuperSet+" name="AddSuperSet">AddSuperSet</a> (<a href="ubrowserserverlistwindow.html">UBrowserServerListWindow</a> Superset)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AutoInfo+" name="AutoInfo">AutoInfo</a> (<a href="ubrowserserverlist.html">UBrowserServerList</a> I)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeforePaint+" name="BeforePaint">BeforePaint</a> (<a href="..\engine\canvas.html">Canvas</a> C, float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Created+" name="Created">Created</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CreateFactories+" name="CreateFactories">CreateFactories</a> (bool bUsePingedList)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Paint+" name="Paint">Paint</a> (<a href="..\engine\canvas.html">Canvas</a> C, float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PingFinished+" name="PingFinished">PingFinished</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Query+" name="Query">Query</a> (optional bool bBySuperset, optional bool bInitial, optional bool bInNoSort)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_QueryFinished+" name="QueryFinished">QueryFinished</a> (<a href="ubrowserserverlistfactory.html">UBrowserServerListFactory</a> Fact, bool bSuccess, optional string ErrorMsg)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Refresh+" name="Refresh">Refresh</a> (optional bool bBySuperset, optional bool bInitial, optional bool bSaveExistingList, optional bool bInNoSort)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RefreshSubsets+" name="RefreshSubsets">RefreshSubsets</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RemoveOldServers+" name="RemoveOldServers">RemoveOldServers</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RemoveSubset+" name="RemoveSubset">RemoveSubset</a> (<a href="ubrowsersubsetfact.html">UBrowserSubsetFact</a> Subset)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RemoveSuperset+" name="RemoveSuperset">RemoveSuperset</a> (<a href="ubrowserserverlistwindow.html">UBrowserServerListWindow</a> Superset)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RePing+" name="RePing">RePing</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Resized+" name="Resized">Resized</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ResolutionChanged+" name="ResolutionChanged">ResolutionChanged</a> (float W, float H)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ResumePinging+" name="ResumePinging">ResumePinging</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ShowInfo+" name="ShowInfo">ShowInfo</a> (<a href="ubrowserserverlist.html">UBrowserServerList</a> I, optional bool bAutoInfo)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ShowInfoArea+" name="ShowInfoArea">ShowInfoArea</a> (bool bShow, optional bool bFloating, optional bool bNoActivate)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ShutdownFactories+" name="ShutdownFactories">ShutdownFactories</a> (optional bool bBySuperset)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SuspendPinging+" name="SuspendPinging">SuspendPinging</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TagServersAsOld+" name="TagServersAsOld">TagServersAsOld</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+" name="Tick">Tick</a> (float Delta)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_WindowHidden+" name="WindowHidden">WindowHidden</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_WindowShown+" name="WindowShown">WindowShown</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowpagewindow.html">UWindowPageWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowpagewindow.html#RightClickTab">RightClickTab</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowdialogclientwindow.html#CreateControl">CreateControl</a>, <a href="..\uwindow\uwindowdialogclientwindow.html#GetDesiredDimensions">GetDesiredDimensions</a>, <a href="..\uwindow\uwindowdialogclientwindow.html#Notify">Notify</a>, <a href="..\uwindow\uwindowdialogclientwindow.html#OKPressed">OKPressed</a>, <a href="..\uwindow\uwindowdialogclientwindow.html#Paint">Paint</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_MinHeightForSplitter" class="hidden"></a>MinHeightForSplitter <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#41" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> MinHeightForSplitter = <font class="source_int">384</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AutoRefreshTime" class="hidden"></a>AutoRefreshTime <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#7" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> AutoRefreshTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bFallbackFactories" class="hidden"></a>bFallbackFactories <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> bFallbackFactories;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHadInitialRefresh" class="hidden"></a>bHadInitialRefresh <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#32" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHadInitialRefresh;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHidden" class="hidden"></a>bHidden <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> bHidden;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNoAutoSort" class="hidden"></a>bNoAutoSort <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#8" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> bNoAutoSort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNoSort" class="hidden"></a>bNoSort <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNoSort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bPingResume" class="hidden"></a>bPingResume <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPingResume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bPingResumeIntial" class="hidden"></a>bPingResumeIntial <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPingResumeIntial;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bPingSuspend" class="hidden"></a>bPingSuspend <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPingSuspend;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bShowFailedServers" class="hidden"></a>bShowFailedServers <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bShowFailedServers;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bSuspendPingOnClose" class="hidden"></a>bSuspendPingOnClose <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSuspendPingOnClose;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CompleteText" class="hidden"></a>CompleteText <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#62" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CompleteText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ErrorString" class="hidden"></a>ErrorString <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#64" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> ErrorString;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Factories[10]" class="hidden"></a>Factories[10] <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserserverlistfactory.html" class="source">UBrowserServerListFactory</a></font> Factories[<font class="source_int">10</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FallbackFactory" class="hidden"></a>FallbackFactory <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> FallbackFactory;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Grid" class="hidden"></a>Grid <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserservergrid.html" class="source">UBrowserServerGrid</a></font> Grid;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GridClass" class="hidden"></a>GridClass <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> GridClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InfoClient" class="hidden"></a>InfoClient <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserinfoclientwindow.html" class="source">UBrowserInfoClientWindow</a></font> InfoClient;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InfoItem" class="hidden"></a>InfoItem <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> InfoItem;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InfoName" class="hidden"></a>InfoName <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> InfoName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InfoWindow" class="hidden"></a>InfoWindow <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#36" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserinfowindow.html" class="source">UBrowserInfoWindow</a></font> InfoWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ListFactories[10]" class="hidden"></a>ListFactories[10] <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#5" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> ListFactories[<font class="source_int">10</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PingedList" class="hidden"></a>PingedList <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> PingedList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PingingText" class="hidden"></a>PingingText <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PingingText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PingState" class="hidden"></a>PingState <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#65" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserserverlistwindow.html#EPingState" class="source">EPingState</a></font> PingState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayerCountLeader" class="hidden"></a>PlayerCountLeader <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PlayerCountLeader;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayerCountName" class="hidden"></a>PlayerCountName <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#57" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PlayerCountName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_QueryDone[10]" class="hidden"></a>QueryDone[10] <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> QueryDone[<font class="source_int">10</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_QueryFailedText" class="hidden"></a>QueryFailedText <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#60" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> QueryFailedText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_QueryServerText" class="hidden"></a>QueryServerText <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#59" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> QueryServerText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RightClickMenuClass" class="hidden"></a>RightClickMenuClass <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#30" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="ubrowserrightclickmenu.html" class="source">UBrowserRightClickMenu</a></font>&gt; RightClickMenuClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerCountLeader" class="hidden"></a>ServerCountLeader <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#44" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ServerCountLeader;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerCountName" class="hidden"></a>ServerCountName <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#58" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ServerCountName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerListClass" class="hidden"></a>ServerListClass <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font>&gt; ServerListClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerListClassName" class="hidden"></a>ServerListClassName <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> ServerListClassName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerListTitle" class="hidden"></a>ServerListTitle <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#4" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> ServerListTitle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SubsetList" class="hidden"></a>SubsetList <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowsersubsetlist.html" class="source">UBrowserSubsetList</a></font> SubsetList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SupersetList" class="hidden"></a>SupersetList <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#29" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowsersupersetlist.html" class="source">UBrowserSupersetList</a></font> SupersetList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimeElapsed" class="hidden"></a>TimeElapsed <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#22" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> TimeElapsed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UnpingedList" class="hidden"></a>UnpingedList <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> UnpingedList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_URLAppend" class="hidden"></a>URLAppend <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#6" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> URLAppend;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_VSplitter" class="hidden"></a>VSplitter <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#35" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowvsplitter.html" class="source">UWindowVSplitter</a></font> VSplitter;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EPingState" class="hidden"></a>EPingState <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#48" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="ubrowserserverlistwindow.html#EPingState" class="source">EPingState</a></font><br />
+{<blockquote>PS_QueryServer,
+PS_QueryFailed,
+PS_Pinging,
+PS_RePinging,
+PS_Done</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddFavorite+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AddFavorite <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#273" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> AddFavorite (<font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> Server)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AddSubset+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AddSubset <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#231" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AddSubset (<font class="source_type"><a href="ubrowsersubsetfact.html" class="source">UBrowserSubsetFact</a></font> Subset)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AddSuperSet+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AddSuperSet <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#243" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AddSuperSet (<font class="source_type"><a href="ubrowserserverlistwindow.html" class="source">UBrowserServerListWindow</a></font> Superset)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AutoInfo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AutoInfo <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#188" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AutoInfo (<font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> I)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeforePaint+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeforePaint <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#512" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeforePaint (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Created+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Created <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#122" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Created ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CreateFactories+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CreateFactories <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#432" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CreateFactories (<font class="source_keyword">bool</font> bUsePingedList)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Paint+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Paint <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#484" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Paint (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PingFinished+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PingFinished <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#427" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PingFinished ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Query+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Query <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#470" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Query (<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bBySuperset, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bInitial, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bInNoSort)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_QueryFinished+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> QueryFinished <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#377" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> QueryFinished (<font class="source_type"><a href="ubrowserserverlistfactory.html" class="source">UBrowserServerListFactory</a></font> Fact, <font class="source_keyword">bool</font> bSuccess, <font class="source_keyword2">optional</font> <font class="source_keyword">string</font> ErrorMsg)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Refresh+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Refresh <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#278" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Refresh (<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bBySuperset, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bInitial, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bSaveExistingList, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bInNoSort)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RefreshSubsets+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RefreshSubsets <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#354" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RefreshSubsets ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RemoveOldServers+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RemoveOldServers <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#334" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RemoveOldServers ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RemoveSubset+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RemoveSubset <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#255" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RemoveSubset (<font class="source_type"><a href="ubrowsersubsetfact.html" class="source">UBrowserSubsetFact</a></font> Subset)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RemoveSuperset+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RemoveSuperset <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#264" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RemoveSuperset (<font class="source_type"><a href="ubrowserserverlistwindow.html" class="source">UBrowserServerListWindow</a></font> Superset)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RePing+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RePing <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#370" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RePing ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Resized+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Resized <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#218" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Resized ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ResolutionChanged+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ResolutionChanged <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#205" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ResolutionChanged (<font class="source_keyword">float</font> W, <font class="source_keyword">float</font> H)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ResumePinging+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ResumePinging <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#109" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ResumePinging ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShowInfo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ShowInfo <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#194" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ShowInfo (<font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> I, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bAutoInfo)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShowInfoArea+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ShowInfoArea <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#148" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ShowInfoArea (<font class="source_keyword">bool</font> bShow, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bFloating, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bNoActivate)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShutdownFactories+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ShutdownFactories <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#456" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ShutdownFactories (<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bBySuperset)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SuspendPinging+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SuspendPinging <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#103" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SuspendPinging ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TagServersAsOld+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TagServersAsOld <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#326" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TagServersAsOld ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#489" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WindowHidden+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> WindowHidden <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#92" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> WindowHidden ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WindowShown+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> WindowShown <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistwindow.html#67" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> WindowShown ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    GridClass=<font class="source_string">"UBrowser.UBrowserServerGrid"</font>;
+    bSuspendPingOnClose=<font class="source_keyword">True</font>
+    PlayerCountName=<font class="source_string">"Players"</font>
+    PlayerCountLeader=<font class="source_string">""</font>
+    ServerCountName=<font class="source_string">"Servers"</font>
+    ServerCountLeader=<font class="source_string">""</font>
+    QueryServerText=<font class="source_string">"Querying master server (hit F5 if nothing happens)"</font>
+    QueryFailedText=<font class="source_string">"Master Server Failed: "</font>
+    PingingText=<font class="source_string">"Pinging Servers"</font>
+    CompleteText=<font class="source_string">"Complete"</font>
+    ServerListClassName=<font class="source_string">"UBrowser.UBrowserServerList"</font>
+    RightClickMenuClass=<font class="source_keyword">class</font><font class="source_name">'UBrowserRightClickMenu'</font>
+    bShowFailedServers=<font class="source_keyword">False</font>
+    InfoName=<font class="source_string">"Info"</font>
+    bFallbackFactories=<font class="source_keyword">False</font>
+    FallbackFactory=<font class="source_int">0</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ubrowser-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ubrowser\ubrowserserverlistwindow.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserServerListWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserserverlistfactory.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowserserverping.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:41.703 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

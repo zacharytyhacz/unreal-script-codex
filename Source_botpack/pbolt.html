@@ -1,0 +1,463 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.PBolt</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\pbolt.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#PBolt">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="pammo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="pickupmessagehealthplus.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\pbolt.html">PBolt</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// pbolt.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\pbolt.html" class="source">PBolt</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\projectile.html" class="source">projectile</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=PalGreen FILE=..\unrealshare\textures\expgreen.pcx GROUP=Effects
+</font><a name="7"></a><font class="source_macro">#exec OBJ LOAD FILE=textures\BoltCap.utx PACKAGE=Botpack.BoltCap
+</font><a name="8"></a><font class="source_macro">#exec OBJ LOAD FILE=textures\BoltHit.utx PACKAGE=Botpack.BoltHit
+</font><a name="9"></a>
+<a name="10"></a><font class="source_macro">#exec MESH IMPORT MESH=pbolt ANIVFILE=MODELS\pbolt_a.3d DATAFILE=MODELS\pbolt_d.3d
+</font><a name="11"></a><font class="source_macro">#exec MESH ORIGIN MESH=pbolt X=0 Y=-400 Z=0 YAW=192
+</font><a name="12"></a>
+<a name="13"></a><font class="source_macro">#exec MESH SEQUENCE MESH=pbolt SEQ=All                      STARTFRAME=0 NUMFRAMES=1
+</font><a name="14"></a><font class="source_macro">#exec MESH SEQUENCE MESH=pbolt SEQ=still                    STARTFRAME=0 NUMFRAMES=1
+</font><a name="15"></a>
+<a name="16"></a><font class="source_macro">#exec MESHMAP NEW   MESHMAP=pbolt MESH=pbolt
+</font><a name="17"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=pbolt X=0.10125 Y=0.10125 Z=0.2025
+</font><a name="18"></a>
+<a name="19"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=pbolt0 FILE=Textures\Bolta_00.bmp GROUP=Skins LODSET=2
+</font><a name="20"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=pbolt1 FILE=Textures\Bolta_01.bmp GROUP=Skins LODSET=2
+</font><a name="21"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=pbolt2 FILE=Textures\Bolta_02.bmp GROUP=Skins	LODSET=2
+</font><a name="22"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=pbolt3 FILE=Textures\Bolta_03.bmp GROUP=Skins LODSET=2
+</font><a name="23"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=pbolt4 FILE=Textures\Bolta_04.bmp GROUP=Skins LODSET=2
+</font><a name="24"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=pbolt NUM=0 TEXTURE=pbolt0
+</font><a name="25"></a>
+<a name="26"></a><font class="source_keyword">var</font>() <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> SpriteAnim[<font class="source_int">5</font>];
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> SpriteFrame;
+<a name="28"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\botpack\pbolt.html" class="source">PBolt</a></font> PlasmaBeam;
+<a name="29"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\botpack\plasmacap.html" class="source">PlasmaCap</a></font> WallEffect;
+<a name="30"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> Position;
+<a name="31"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> FireOffset;
+<a name="32"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> BeamSize;
+<a name="33"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bRight, bCenter;
+<a name="34"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> AccumulatedDamage, LastHitTime;
+<a name="35"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> DamagedActor;
+<a name="36"></a>
+<a name="37"></a><font class="source_keyword">replication</font>
+<a name="38"></a>{
+<a name="39"></a>    <font class="source_comment">// Things the server should send to the client.
+</font><a name="40"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="41"></a>        bRight, bCenter;
+<a name="42"></a>}
+<a name="43"></a>
+<a name="44"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> Destroyed()
+<a name="45"></a>{
+<a name="46"></a>    <font class="source_keyword">Super</font>.Destroyed();
+<a name="47"></a>    <font class="source_keyword">if</font> ( PlasmaBeam != <font class="source_keyword">None</font> )
+<a name="48"></a>        PlasmaBeam.Destroy();
+<a name="49"></a>    <font class="source_keyword">if</font> ( WallEffect != <font class="source_keyword">None</font> )
+<a name="50"></a>        WallEffect.Destroy();
+<a name="51"></a>}
+<a name="52"></a>
+<a name="53"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> CheckBeam(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> X, <font class="source_keyword">float</font> DeltaTime)
+<a name="54"></a>{
+<a name="55"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> HitActor;
+<a name="56"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation, HitNormal;
+<a name="57"></a>
+<a name="58"></a>    <font class="source_comment">// check to see if hits something, else spawn or orient child
+</font><a name="59"></a>
+<a name="60"></a>    HitActor = Trace(HitLocation, HitNormal, Location + BeamSize * X, Location, <font class="source_keyword">true</font>);
+<a name="61"></a>    <font class="source_keyword">if</font> ( (HitActor != <font class="source_keyword">None</font>) && (HitActor != Instigator)
+<a name="62"></a>        && (HitActor.bProjTarget || (HitActor == <font class="source_type">Level</font>) || (HitActor.bBlockActors && HitActor.bBlockPlayers)) 
+<a name="63"></a>        && ((<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor) == <font class="source_keyword">None</font>) || <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor).AdjustHitLocation(HitLocation, Velocity)) )
+<a name="64"></a>    {
+<a name="65"></a>        <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.Netmode != NM_Client )
+<a name="66"></a>        {
+<a name="67"></a>            <font class="source_keyword">if</font> ( DamagedActor == <font class="source_keyword">None</font> )
+<a name="68"></a>            {
+<a name="69"></a>                AccumulatedDamage = FMin(<font class="source_int">0.5</font> * (<font class="source_type">Level</font>.TimeSeconds - LastHitTime), <font class="source_int">0.1</font>);
+<a name="70"></a>                HitActor.TakeDamage(damage * AccumulatedDamage, instigator,HitLocation,
+<a name="71"></a>                    (MomentumTransfer * X * AccumulatedDamage), MyDamageType);
+<a name="72"></a>                AccumulatedDamage = <font class="source_int">0</font>;
+<a name="73"></a>            }               
+<a name="74"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( DamagedActor != HitActor )
+<a name="75"></a>            {
+<a name="76"></a>                DamagedActor.TakeDamage(damage * AccumulatedDamage, instigator,HitLocation,
+<a name="77"></a>                    (MomentumTransfer * X * AccumulatedDamage), MyDamageType);
+<a name="78"></a>                AccumulatedDamage = <font class="source_int">0</font>;
+<a name="79"></a>            }               
+<a name="80"></a>            LastHitTime = <font class="source_type">Level</font>.TimeSeconds;
+<a name="81"></a>            DamagedActor = HitActor;
+<a name="82"></a>            AccumulatedDamage += DeltaTime;
+<a name="83"></a>            <font class="source_keyword">if</font> ( AccumulatedDamage &gt; <font class="source_int">0.22</font> )
+<a name="84"></a>            {
+<a name="85"></a>                <font class="source_keyword">if</font> ( DamagedActor.IsA(<font class="source_name">'Carcass'</font>) && (FRand() &lt; <font class="source_int">0.09</font>) )
+<a name="86"></a>                    AccumulatedDamage = <font class="source_int">35</font>/damage;
+<a name="87"></a>                DamagedActor.TakeDamage(damage * AccumulatedDamage, instigator,HitLocation,
+<a name="88"></a>                    (MomentumTransfer * X * AccumulatedDamage), MyDamageType);
+<a name="89"></a>                AccumulatedDamage = <font class="source_int">0</font>;
+<a name="90"></a>            }
+<a name="91"></a>        }
+<a name="92"></a>        <font class="source_keyword">if</font> ( HitActor.bIsPawn && <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor).bIsPlayer )
+<a name="93"></a>        {
+<a name="94"></a>            <font class="source_keyword">if</font> ( WallEffect != <font class="source_keyword">None</font> )
+<a name="95"></a>                WallEffect.Destroy();
+<a name="96"></a>        }
+<a name="97"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (WallEffect == <font class="source_keyword">None</font>) || WallEffect.bDeleteMe )
+<a name="98"></a>            WallEffect = Spawn(<font class="source_keyword">class</font><font class="source_name">'PlasmaHit'</font>,,, HitLocation - <font class="source_int">5</font> * X);
+<a name="99"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( !WallEffect.IsA(<font class="source_name">'PlasmaHit'</font>) )
+<a name="100"></a>        {
+<a name="101"></a>            WallEffect.Destroy();   
+<a name="102"></a>            WallEffect = Spawn(<font class="source_keyword">class</font><font class="source_name">'PlasmaHit'</font>,,, HitLocation - <font class="source_int">5</font> * X);
+<a name="103"></a>        }
+<a name="104"></a>        <font class="source_keyword">else</font>
+<a name="105"></a>            WallEffect.SetLocation(HitLocation - <font class="source_int">5</font> * X);
+<a name="106"></a>
+<a name="107"></a>        <font class="source_keyword">if</font> ( (WallEffect != <font class="source_keyword">None</font>) && (<font class="source_type">Level</font>.NetMode != NM_DedicatedServer) )
+<a name="108"></a>            Spawn(ExplosionDecal,,,HitLocation,<font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font>(HitNormal));
+<a name="109"></a>
+<a name="110"></a>        <font class="source_keyword">if</font> ( PlasmaBeam != <font class="source_keyword">None</font> )
+<a name="111"></a>        {
+<a name="112"></a>            AccumulatedDamage += PlasmaBeam.AccumulatedDamage;
+<a name="113"></a>            PlasmaBeam.Destroy();
+<a name="114"></a>            PlasmaBeam = <font class="source_keyword">None</font>;
+<a name="115"></a>        }
+<a name="116"></a>
+<a name="117"></a>        <font class="source_keyword">return</font>;
+<a name="118"></a>    }
+<a name="119"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.Netmode != NM_Client) && (DamagedActor != <font class="source_keyword">None</font>) )
+<a name="120"></a>    {
+<a name="121"></a>        DamagedActor.TakeDamage(damage * AccumulatedDamage, instigator, DamagedActor.Location - X * <font class="source_int">1.2</font> * DamagedActor.CollisionRadius,
+<a name="122"></a>            (MomentumTransfer * X * AccumulatedDamage), MyDamageType);
+<a name="123"></a>        AccumulatedDamage = <font class="source_int">0</font>;
+<a name="124"></a>        DamagedActor = <font class="source_keyword">None</font>;
+<a name="125"></a>    }           
+<a name="126"></a>
+<a name="127"></a>
+<a name="128"></a>    <font class="source_keyword">if</font> ( Position &gt;= <font class="source_int">9</font> )
+<a name="129"></a>    {   
+<a name="130"></a>        <font class="source_keyword">if</font> ( (WallEffect == <font class="source_keyword">None</font>) || WallEffect.bDeleteMe )
+<a name="131"></a>            WallEffect = Spawn(<font class="source_keyword">class</font><font class="source_name">'PlasmaCap'</font>,,, Location + (BeamSize - <font class="source_int">4</font>) * X);
+<a name="132"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( WallEffect.IsA(<font class="source_name">'PlasmaHit'</font>) )
+<a name="133"></a>        {
+<a name="134"></a>            WallEffect.Destroy();   
+<a name="135"></a>            WallEffect = Spawn(<font class="source_keyword">class</font><font class="source_name">'PlasmaCap'</font>,,, Location + (BeamSize - <font class="source_int">4</font>) * X);
+<a name="136"></a>        }
+<a name="137"></a>        <font class="source_keyword">else</font>
+<a name="138"></a>            WallEffect.SetLocation(Location + (BeamSize - <font class="source_int">4</font>) * X);
+<a name="139"></a>    }
+<a name="140"></a>    <font class="source_keyword">else</font>
+<a name="141"></a>    {
+<a name="142"></a>        <font class="source_keyword">if</font> ( WallEffect != <font class="source_keyword">None</font> )
+<a name="143"></a>        {
+<a name="144"></a>            WallEffect.Destroy();
+<a name="145"></a>            WallEffect = <font class="source_keyword">None</font>;
+<a name="146"></a>        }
+<a name="147"></a>        <font class="source_keyword">if</font> ( PlasmaBeam == <font class="source_keyword">None</font> )
+<a name="148"></a>        {
+<a name="149"></a>            PlasmaBeam = Spawn(<font class="source_keyword">class</font><font class="source_name">'PBolt'</font>,,, Location + BeamSize * X); 
+<a name="150"></a>            PlasmaBeam.Position = Position + <font class="source_int">1</font>;
+<a name="151"></a>        }
+<a name="152"></a>        <font class="source_keyword">else</font>
+<a name="153"></a>            PlasmaBeam.UpdateBeam(self, X, DeltaTime);
+<a name="154"></a>    }
+<a name="155"></a>}
+<a name="156"></a>
+<a name="157"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> UpdateBeam(<font class="source_type"><a href="..\botpack\pbolt.html" class="source">PBolt</a></font> ParentBolt, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Dir, <font class="source_keyword">float</font> DeltaTime)
+<a name="158"></a>{
+<a name="159"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> HitActor;
+<a name="160"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation, HitNormal;
+<a name="161"></a>
+<a name="162"></a>    SpriteFrame = ParentBolt.SpriteFrame;
+<a name="163"></a>    Skin = SpriteAnim[SpriteFrame];
+<a name="164"></a>    SetLocation(ParentBolt.Location + BeamSize * Dir);
+<a name="165"></a>    SetRotation(ParentBolt.Rotation);
+<a name="166"></a>    CheckBeam(Dir, DeltaTime);
+<a name="167"></a>}
+<a name="168"></a>
+<a name="169"></a><font class="source_keyword">defaultproperties</font>
+<a name="170"></a>{
+<a name="171"></a>    ExplosionDecal=<font class="source_keyword">class</font><font class="source_name">'Botpack.BoltScorch'</font>
+<a name="172"></a>    MyDamageType=zapped
+<a name="173"></a>    SpriteAnim(<font class="source_int">0</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'pbolt0'</font>
+<a name="174"></a>    SpriteAnim(<font class="source_int">1</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'pbolt1'</font>
+<a name="175"></a>    SpriteAnim(<font class="source_int">2</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'pbolt2'</font>
+<a name="176"></a>    SpriteAnim(<font class="source_int">3</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'pbolt3'</font>
+<a name="177"></a>    SpriteAnim(<font class="source_int">4</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'pbolt4'</font>
+<a name="178"></a>    Skin=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'pbolt0'</font>
+<a name="179"></a>    <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'pbolt0'</font>
+<a name="180"></a>    BeamSize=<font class="source_int">81.00</font>
+<a name="181"></a>    bUnlit=<font class="source_keyword">true</font>
+<a name="182"></a>    FireOffset=(X=<font class="source_int">16.000000</font>,Y=-<font class="source_int">14.000000</font>,Z=-<font class="source_int">8.00000</font>)
+<a name="183"></a>    DrawType=DT_Mesh
+<a name="184"></a>    <font class="source_type">Mesh</font>=<font class="source_type"><a href="..\botpack\pbolt.html" class="source">pbolt</a></font>
+<a name="185"></a>    Style=STY_Translucent
+<a name="186"></a>     RemoteRole=ROLE_None
+<a name="187"></a>     MaxSpeed=+<font class="source_int">00000.000000</font>
+<a name="188"></a>     SoundVolume=<font class="source_int">0</font>
+<a name="189"></a>     CollisionRadius=+<font class="source_int">00000.000000</font>
+<a name="190"></a>     CollisionHeight=+<font class="source_int">00000.000000</font>
+<a name="191"></a>     bCollideActors=<font class="source_keyword">False</font>
+<a name="192"></a>     bCollideWorld=<font class="source_keyword">False</font>
+<a name="193"></a>     bNetTemporary=<font class="source_keyword">False</font>
+<a name="194"></a>     bGameRelevant=<font class="source_keyword">true</font>
+<a name="195"></a>     Physics=PHYS_None
+<a name="196"></a>     LifeSpan=+<font class="source_int">60.000000</font>
+<a name="197"></a>     Damage=+<font class="source_int">72.000</font>
+<a name="198"></a>     MomentumTransfer=<font class="source_int">8500</font>
+<a name="199"></a>     bRight=<font class="source_keyword">True</font>
+<a name="200"></a>     <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font>=<font class="source_type">Sound</font><font class="source_name">'PulseBolt'</font>
+<a name="201"></a>     SoundRadius=<font class="source_int">12</font>
+<a name="202"></a>     SoundVolume=<font class="source_int">255</font>
+<a name="203"></a>}
+<a name="204"></a>
+<a name="205"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\pbolt.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#PBolt">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="pammo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="pickupmessagehealthplus.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:21:48.000 - Creation time: Wed 26/5/2004 10:48:29.078 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

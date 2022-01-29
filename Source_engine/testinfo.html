@@ -1,0 +1,851 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Engine.TestInfo</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\testinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#TestInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="teleporter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="testobj.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\testinfo.html">TestInfo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// For internal testing.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\engine\testinfo.html" class="source">TestInfo</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\info.html" class="source">Info</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bTrue1;
+<a name="7"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bFalse1;
+<a name="8"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bTrue2;
+<a name="9"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bFalse2;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bBool1;
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bBool2;
+<a name="12"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font> xnum;
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> ppp;
+<a name="14"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> sxx;
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> MyArray[<font class="source_int">2</font>];
+<a name="16"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> v1,v2;
+<a name="17"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> TestRepStr;
+<a name="18"></a><font class="source_comment">//var string[32] teststring;
+</font><a name="19"></a>
+<a name="20"></a><font class="source_keyword">const</font> Pie=<font class="source_int">3.14</font>;
+<a name="21"></a><font class="source_keyword">const</font> Str=<font class="source_string">"Tim"</font>;
+<a name="22"></a><font class="source_keyword">const</font> Lotus=vect(<font class="source_int">1</font>,<font class="source_int">2</font>,<font class="source_int">3</font>);
+<a name="23"></a>
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_keyword">struct</font> <font class="source_type"><a href="..\engine\testinfo.html#STest" class="source">STest</a></font>
+<a name="25"></a>{
+<a name="26"></a>    <font class="source_keyword">var</font> <font class="source_keyword">bool</font> b1;
+<a name="27"></a>    <font class="source_keyword">var</font> <font class="source_keyword">int</font> i;
+<a name="28"></a>    <font class="source_keyword">var</font> <font class="source_keyword">bool</font> b2;
+<a name="29"></a>    <font class="source_keyword">var</font> <font class="source_keyword">bool</font> b3;
+<a name="30"></a>} ST;
+<a name="31"></a>
+<a name="32"></a><font class="source_keyword">function</font> TestQ()
+<a name="33"></a>{
+<a name="34"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> v;
+<a name="35"></a>    v.x = <font class="source_int">2</font>;
+<a name="36"></a>    v.y = <font class="source_int">3</font>;
+<a name="37"></a>    v.z = <font class="source_int">4</font>;
+<a name="38"></a>    assert(v==vect(<font class="source_int">2</font>,<font class="source_int">3</font>,<font class="source_int">4</font>));
+<a name="39"></a>    assert(v.z==<font class="source_int">4</font>);
+<a name="40"></a>    assert(v.y==<font class="source_int">3</font>);
+<a name="41"></a>    assert(v.x==<font class="source_int">2</font>);
+<a name="42"></a>}
+<a name="43"></a>
+<a name="44"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> test()
+<a name="45"></a>{
+<a name="46"></a>    <font class="source_keyword">class</font><font class="source_name">'testinfo'</font>.default.v1 = vect(<font class="source_int">1</font>,<font class="source_int">2</font>,<font class="source_int">3</font>);
+<a name="47"></a>}
+<a name="48"></a>
+<a name="49"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="50"></a>{
+<a name="51"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html" class="source">object</a></font> o;
+<a name="52"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> TempActor;
+<a name="53"></a>    log(<font class="source_string">"!!BEGIN"</font>);
+<a name="54"></a>
+<a name="55"></a>    default.v1=vect(<font class="source_int">5</font>,<font class="source_int">4</font>,<font class="source_int">3</font>);
+<a name="56"></a>    assert(default.v1==vect(<font class="source_int">5</font>,<font class="source_int">4</font>,<font class="source_int">3</font>));
+<a name="57"></a>    test();
+<a name="58"></a>    assert(default.v1==vect(<font class="source_int">1</font>,<font class="source_int">2</font>,<font class="source_int">3</font>));
+<a name="59"></a>
+<a name="60"></a>    BroadcastMessage(Tag);
+<a name="61"></a>    BroadcastMessage(<font class="source_keyword">string</font>(Tag));
+<a name="62"></a>    BroadcastMessage(<font class="source_string">"test "</font>$<font class="source_keyword">string</font>(Tag));
+<a name="63"></a>    assert(IsA(<font class="source_name">'Actor'</font>));
+<a name="64"></a>    assert(IsA(<font class="source_name">'TestInfo'</font>));
+<a name="65"></a>    assert(IsA(<font class="source_name">'Info'</font>));
+<a name="66"></a>    assert(!IsA(<font class="source_name">'LevelInfo'</font>));
+<a name="67"></a>    assert(!IsA(<font class="source_name">'Texture'</font>));
+<a name="68"></a>    <font class="source_comment">//o=dynamicloadobject( "UnrealShare.AutoMag.Reload", class'object' );
+</font><a name="69"></a>    <font class="source_comment">//assert(o!=None);
+</font><a name="70"></a>    <font class="source_comment">//assert(o==None);
+</font><a name="71"></a>    log(<font class="source_string">"!!END"</font>);
+<a name="72"></a>}
+<a name="73"></a>
+<a name="74"></a><font class="source_keyword">function</font> TestStructBools()
+<a name="75"></a>{
+<a name="76"></a>    assert(ST.b1==<font class="source_keyword">false</font>);
+<a name="77"></a>    assert(ST.b2==<font class="source_keyword">false</font>);
+<a name="78"></a>    assert(ST.b3==<font class="source_keyword">false</font>);
+<a name="79"></a>
+<a name="80"></a>    ST.b1=<font class="source_keyword">true</font>;
+<a name="81"></a>    assert(ST.b1==<font class="source_keyword">true</font>);
+<a name="82"></a>    assert(ST.b2==<font class="source_keyword">false</font>);
+<a name="83"></a>    assert(ST.b3==<font class="source_keyword">false</font>);
+<a name="84"></a>
+<a name="85"></a>    ST.b2=<font class="source_keyword">true</font>;
+<a name="86"></a>    assert(ST.b1==<font class="source_keyword">true</font>);
+<a name="87"></a>    assert(ST.b2==<font class="source_keyword">true</font>);
+<a name="88"></a>    assert(ST.b3==<font class="source_keyword">false</font>);
+<a name="89"></a>
+<a name="90"></a>    ST.b3=<font class="source_keyword">true</font>;
+<a name="91"></a>    assert(ST.b1==<font class="source_keyword">true</font>);
+<a name="92"></a>    assert(ST.b2==<font class="source_keyword">true</font>);
+<a name="93"></a>    assert(ST.b3==<font class="source_keyword">true</font>);
+<a name="94"></a>
+<a name="95"></a>    ST.b1=<font class="source_keyword">false</font>;
+<a name="96"></a>    ST.b2=<font class="source_keyword">false</font>;
+<a name="97"></a>    ST.b3=<font class="source_keyword">false</font>;
+<a name="98"></a>}
+<a name="99"></a>
+<a name="100"></a><font class="source_keyword">function</font> BeginPlay()
+<a name="101"></a>{
+<a name="102"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\testobj.html" class="source">testobj</a></font> to;
+<a name="103"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html" class="source">object</a></font> oo;
+<a name="104"></a>    to = new <font class="source_keyword">class</font><font class="source_name">'TestObj'</font>;
+<a name="105"></a>    to = new()<font class="source_keyword">class</font><font class="source_name">'TestObj'</font>;
+<a name="106"></a>    to = new(self)<font class="source_keyword">class</font><font class="source_name">'TestObj'</font>;
+<a name="107"></a>    to = new(self,<font class="source_name">''</font>)<font class="source_keyword">class</font><font class="source_name">'TestObj'</font>;
+<a name="108"></a>    to = new(self,<font class="source_name">''</font>,<font class="source_int">0</font>)<font class="source_keyword">class</font><font class="source_name">'TestObj'</font>;
+<a name="109"></a>    to.Test();
+<a name="110"></a>    TestStructBools();
+<a name="111"></a>}
+<a name="112"></a>
+<a name="113"></a><font class="source_keyword">function</font> TestX( <font class="source_keyword">bool</font> bResource )
+<a name="114"></a>{
+<a name="115"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> n;
+<a name="116"></a>    n = <font class="source_keyword">int</font>(bResource);
+<a name="117"></a>    MyArray[ <font class="source_keyword">int</font>(bResource) ] = <font class="source_int">0</font>;
+<a name="118"></a>    MyArray[ <font class="source_keyword">int</font>(bResource) ]++;
+<a name="119"></a>}
+<a name="120"></a>
+<a name="121"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> RecurseTest()
+<a name="122"></a>{
+<a name="123"></a>    bBool1=<font class="source_keyword">true</font>;
+<a name="124"></a>    <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="125"></a>}
+<a name="126"></a>
+<a name="127"></a><font class="source_keyword">function</font> TestLimitor( <font class="source_keyword">class</font> c )
+<a name="128"></a>{
+<a name="129"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>&gt; NewClass;
+<a name="130"></a>    NewClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>&gt;( c );
+<a name="131"></a>}
+<a name="132"></a>
+<a name="133"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">int</font> OtherStatic( <font class="source_keyword">int</font> i )
+<a name="134"></a>{
+<a name="135"></a>    assert(i==<font class="source_int">246</font>);
+<a name="136"></a>    assert(default.xnum==<font class="source_int">777</font>);
+<a name="137"></a>    <font class="source_keyword">return</font> <font class="source_int">555</font>;
+<a name="138"></a>}
+<a name="139"></a>
+<a name="140"></a><font class="source_keyword2">static</font> <font class="source_keyword">function</font> <font class="source_keyword">int</font> TestStatic( <font class="source_keyword">int</font> i )
+<a name="141"></a>{
+<a name="142"></a>    assert(i==<font class="source_int">123</font>);
+<a name="143"></a>    assert(default.xnum==<font class="source_int">777</font>);
+<a name="144"></a>    assert(OtherStatic(i*<font class="source_int">2</font>)==<font class="source_int">555</font>);
+<a name="145"></a>}
+<a name="146"></a>
+<a name="147"></a><font class="source_keyword">function</font> TestContinueFor()
+<a name="148"></a>{
+<a name="149"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="150"></a>    log(<font class="source_string">"TestContinue"</font>);
+<a name="151"></a>    <font class="source_keyword">for</font>( i=<font class="source_int">0</font>; i&lt;<font class="source_int">20</font>; i++ )
+<a name="152"></a>    {
+<a name="153"></a>        log(<font class="source_string">"iteration "</font>$i);
+<a name="154"></a>        <font class="source_keyword">if</font>(i==<font class="source_int">7</font>||i==<font class="source_int">9</font>||i==<font class="source_int">19</font>)
+<a name="155"></a>            continue;
+<a name="156"></a>        log(<font class="source_string">"..."</font>);
+<a name="157"></a>    }
+<a name="158"></a>    log(<font class="source_string">"DoneContinue"</font>);
+<a name="159"></a>}
+<a name="160"></a>
+<a name="161"></a><font class="source_keyword">function</font> TestContinueWhile()
+<a name="162"></a>{
+<a name="163"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="164"></a>    log(<font class="source_string">"TestContinue"</font>);
+<a name="165"></a>    <font class="source_keyword">while</font>( ++i &lt;= <font class="source_int">20</font> )
+<a name="166"></a>    {
+<a name="167"></a>        log(<font class="source_string">"iteration "</font>$i);
+<a name="168"></a>        <font class="source_keyword">if</font>(i==<font class="source_int">7</font>||i==<font class="source_int">9</font>)
+<a name="169"></a>            continue;
+<a name="170"></a>        log(<font class="source_string">"..."</font>);
+<a name="171"></a>    }
+<a name="172"></a>    log(<font class="source_string">"DoneContinue"</font>);
+<a name="173"></a>}
+<a name="174"></a>
+<a name="175"></a><font class="source_keyword">function</font> TestContinueDoUntil()
+<a name="176"></a>{
+<a name="177"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="178"></a>    log(<font class="source_string">"TestContinue"</font>);
+<a name="179"></a>    do
+<a name="180"></a>    {
+<a name="181"></a>        i++;
+<a name="182"></a>        log(<font class="source_string">"iteration "</font>$i);
+<a name="183"></a>        <font class="source_keyword">if</font>(i==<font class="source_int">7</font>||i==<font class="source_int">9</font>||i&gt;<font class="source_int">18</font>)
+<a name="184"></a>            continue;
+<a name="185"></a>        log(<font class="source_string">"..."</font>);
+<a name="186"></a>    } until( i&gt;<font class="source_int">20</font> );
+<a name="187"></a>    log(<font class="source_string">"DoneContinue"</font>);
+<a name="188"></a>}
+<a name="189"></a>
+<a name="190"></a><font class="source_keyword">function</font> TestContinueForEach()
+<a name="191"></a>{
+<a name="192"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> a;
+<a name="193"></a>    log(<font class="source_string">"TestContinue"</font>);
+<a name="194"></a>    <font class="source_keyword">foreach</font> AllActors( <font class="source_keyword">class</font><font class="source_name">'Actor'</font>, a )
+<a name="195"></a>    {
+<a name="196"></a>        log(<font class="source_string">"actor "</font>$a);
+<a name="197"></a>        <font class="source_keyword">if</font>(<font class="source_type"><a href="..\engine\light.html" class="source">light</a></font>(a)==<font class="source_keyword">none</font>)
+<a name="198"></a>            continue;
+<a name="199"></a>        log(<font class="source_string">"..."</font>);
+<a name="200"></a>    }
+<a name="201"></a>    log(<font class="source_string">"DoneContinue"</font>);
+<a name="202"></a>}
+<a name="203"></a>
+<a name="204"></a>
+<a name="205"></a><font class="source_keyword">function</font> SubTestOptionalOut( <font class="source_keyword2">optional</font> <font class="source_keyword2">out</font> <font class="source_keyword">int</font> a, <font class="source_keyword2">optional</font> <font class="source_keyword2">out</font> <font class="source_keyword">int</font> b, <font class="source_keyword2">optional</font> <font class="source_keyword2">out</font> <font class="source_keyword">int</font> c )
+<a name="206"></a>{
+<a name="207"></a>    a *= <font class="source_int">2</font>;
+<a name="208"></a>    b = b*<font class="source_int">2</font>;
+<a name="209"></a>    c += c;
+<a name="210"></a>}
+<a name="211"></a><font class="source_keyword">function</font> TestOptionalOut()
+<a name="212"></a>{
+<a name="213"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> a,b,c;
+<a name="214"></a>    a=<font class="source_int">1</font>; b=<font class="source_int">2</font>; c=<font class="source_int">3</font>;
+<a name="215"></a>
+<a name="216"></a>    SubTestOptionalOut(a,b,c);
+<a name="217"></a>    assert(a==<font class="source_int">2</font>); assert(b==<font class="source_int">4</font>); assert(c==<font class="source_int">6</font>);
+<a name="218"></a>
+<a name="219"></a>    SubTestOptionalOut(a,b);
+<a name="220"></a>    assert(a==<font class="source_int">4</font>); assert(b==<font class="source_int">8</font>); assert(c==<font class="source_int">6</font>);
+<a name="221"></a>
+<a name="222"></a>    SubTestOptionalOut(,b,c);
+<a name="223"></a>    assert(a==<font class="source_int">4</font>); assert(b==<font class="source_int">16</font>); assert(c==<font class="source_int">12</font>);
+<a name="224"></a>
+<a name="225"></a>    SubTestOptionalOut();
+<a name="226"></a>    assert(a==<font class="source_int">4</font>); assert(b==<font class="source_int">16</font>); assert(c==<font class="source_int">12</font>);
+<a name="227"></a>
+<a name="228"></a>    SubTestOptionalOut(a,b,c);
+<a name="229"></a>    assert(a==<font class="source_int">8</font>); assert(b==<font class="source_int">32</font>); assert(c==<font class="source_int">24</font>);
+<a name="230"></a>
+<a name="231"></a>    log(<font class="source_string">"TestOptionalOut ok!"</font>);
+<a name="232"></a>}
+<a name="233"></a>
+<a name="234"></a><font class="source_keyword">function</font> TestNullContext( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> a )
+<a name="235"></a>{
+<a name="236"></a>    bHidden = a.bHidden;
+<a name="237"></a>    a.bHidden = bHidden;
+<a name="238"></a>}
+<a name="239"></a>
+<a name="240"></a><font class="source_keyword">function</font> TestSwitch()
+<a name="241"></a>{
+<a name="242"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> s;
+<a name="243"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="244"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> b;
+<a name="245"></a>    s=<font class="source_string">"Tim"</font>;
+<a name="246"></a>    i=<font class="source_int">2</font>;
+<a name="247"></a>    <font class="source_keyword">switch</font>( i )
+<a name="248"></a>    {
+<a name="249"></a>        <font class="source_keyword">case</font> <font class="source_int">0</font>:
+<a name="250"></a>            assert(<font class="source_keyword">false</font>);
+<a name="251"></a>            <font class="source_keyword">break</font>;
+<a name="252"></a>        <font class="source_keyword">case</font> <font class="source_int">2</font>:
+<a name="253"></a>            b=<font class="source_keyword">true</font>;
+<a name="254"></a>            <font class="source_keyword">break</font>;
+<a name="255"></a>        default:
+<a name="256"></a>            assert(<font class="source_keyword">false</font>);
+<a name="257"></a>            <font class="source_keyword">break</font>;
+<a name="258"></a>    }
+<a name="259"></a>    assert(b);
+<a name="260"></a>    <font class="source_keyword">switch</font>( s )
+<a name="261"></a>    {
+<a name="262"></a>        <font class="source_keyword">case</font> <font class="source_string">""</font>:
+<a name="263"></a>            assert(<font class="source_keyword">false</font>);
+<a name="264"></a>            <font class="source_keyword">break</font>;
+<a name="265"></a>        <font class="source_keyword">case</font> <font class="source_string">"xyzzy"</font>:
+<a name="266"></a>            assert(<font class="source_keyword">false</font>);
+<a name="267"></a>            <font class="source_keyword">break</font>;
+<a name="268"></a>        default:
+<a name="269"></a>            b=<font class="source_keyword">false</font>;
+<a name="270"></a>            <font class="source_keyword">break</font>;
+<a name="271"></a>    }
+<a name="272"></a>    assert(!b);
+<a name="273"></a>    log(<font class="source_string">"testswitch succeeded"</font>);
+<a name="274"></a>}
+<a name="275"></a>
+<a name="276"></a><font class="source_keyword">function</font> Tick( <font class="source_keyword">float</font> DeltaTime )
+<a name="277"></a>{
+<a name="278"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font> C;
+<a name="279"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\testinfo.html" class="source">testinfo</a></font>&gt; TC;
+<a name="280"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> a;
+<a name="281"></a>
+<a name="282"></a>    log(<font class="source_string">"time="</font>$<font class="source_type">Level</font>.TimeSeconds);
+<a name="283"></a>
+<a name="284"></a>    TestOptionalOut();
+<a name="285"></a>    TestNullContext( self );
+<a name="286"></a>    TestNullContext( <font class="source_keyword">None</font> );
+<a name="287"></a>    TestSwitch();
+<a name="288"></a>
+<a name="289"></a>    v1=vect(<font class="source_int">1</font>,<font class="source_int">2</font>,<font class="source_int">3</font>);
+<a name="290"></a>    v2=vect(<font class="source_int">2</font>,<font class="source_int">4</font>,<font class="source_int">6</font>);
+<a name="291"></a>    assert(v1!=v2);
+<a name="292"></a>    assert(!(v1==v2));
+<a name="293"></a>    assert(v1==vect(<font class="source_int">1</font>,<font class="source_int">2</font>,<font class="source_int">3</font>));
+<a name="294"></a>    assert(v2==vect(<font class="source_int">2</font>,<font class="source_int">4</font>,<font class="source_int">6</font>));
+<a name="295"></a>    assert(vect(<font class="source_int">1</font>,<font class="source_int">2</font>,<font class="source_int">5</font>)!=v1);
+<a name="296"></a>    assert(v1*<font class="source_int">2</font>==v2);
+<a name="297"></a>    assert(v1==v2/2);
+<a name="298"></a>
+<a name="299"></a>    assert(Pie==<font class="source_int">3.14</font>);
+<a name="300"></a>    assert(Pie!=<font class="source_int">2</font>);
+<a name="301"></a>    assert(Str==<font class="source_string">"Tim"</font>);
+<a name="302"></a>    assert(Str!=<font class="source_string">"Bob"</font>);
+<a name="303"></a>    assert(Lotus==vect(<font class="source_int">1</font>,<font class="source_int">2</font>,<font class="source_int">3</font>));
+<a name="304"></a>
+<a name="305"></a>    assert(GetPropertyText(<font class="source_string">"sxx"</font>)==<font class="source_string">"Tim"</font>);
+<a name="306"></a>    assert(GetPropertyText(<font class="source_string">"ppp"</font>)!=<font class="source_string">"123"</font>);
+<a name="307"></a>    assert(GetPropertyText(<font class="source_string">"bogus"</font>)==<font class="source_string">""</font>);
+<a name="308"></a>    xnum=<font class="source_int">345</font>;
+<a name="309"></a>    assert(GetPropertyText(<font class="source_string">"xnum"</font>)==<font class="source_string">"345"</font>);
+<a name="310"></a>    SetPropertyText(<font class="source_string">"xnum"</font>,<font class="source_string">"999"</font>);
+<a name="311"></a>    assert(xnum==<font class="source_int">999</font>);
+<a name="312"></a>    assert(xnum!=<font class="source_int">666</font>);
+<a name="313"></a>
+<a name="314"></a>    assert(bTrue1==<font class="source_keyword">true</font>);
+<a name="315"></a>    assert(bFalse1==<font class="source_keyword">false</font>);
+<a name="316"></a>    assert(bTrue2==<font class="source_keyword">true</font>);
+<a name="317"></a>    assert(bFalse2==<font class="source_keyword">false</font>);
+<a name="318"></a>
+<a name="319"></a>    assert(default.bTrue1==<font class="source_keyword">true</font>);
+<a name="320"></a>    assert(default.bFalse1==<font class="source_keyword">false</font>);
+<a name="321"></a>    assert(default.bTrue2==<font class="source_keyword">true</font>);
+<a name="322"></a>    assert(default.bFalse2==<font class="source_keyword">false</font>);
+<a name="323"></a>
+<a name="324"></a>    assert(<font class="source_keyword">class</font><font class="source_name">'TestInfo'</font>.default.bTrue1==<font class="source_keyword">true</font>);
+<a name="325"></a>    assert(<font class="source_keyword">class</font><font class="source_name">'TestInfo'</font>.default.bFalse1==<font class="source_keyword">false</font>);
+<a name="326"></a>    assert(<font class="source_keyword">class</font><font class="source_name">'TestInfo'</font>.default.bTrue2==<font class="source_keyword">true</font>);
+<a name="327"></a>    assert(<font class="source_keyword">class</font><font class="source_name">'TestInfo'</font>.default.bFalse2==<font class="source_keyword">false</font>);
+<a name="328"></a>
+<a name="329"></a>    TC=<font class="source_keyword">Class</font>;
+<a name="330"></a>    assert(TC.default.bTrue1==<font class="source_keyword">true</font>);
+<a name="331"></a>    assert(TC.default.bFalse1==<font class="source_keyword">false</font>);
+<a name="332"></a>    assert(TC.default.bTrue2==<font class="source_keyword">true</font>);
+<a name="333"></a>    assert(TC.default.bFalse2==<font class="source_keyword">false</font>);
+<a name="334"></a>
+<a name="335"></a>    C=<font class="source_keyword">Class</font>;
+<a name="336"></a>    assert(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\testinfo.html" class="source">testinfo</a></font>&gt;(C).default.bTrue1==<font class="source_keyword">true</font>);
+<a name="337"></a>    assert(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\testinfo.html" class="source">testinfo</a></font>&gt;(C).default.bFalse1==<font class="source_keyword">false</font>);
+<a name="338"></a>    assert(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\testinfo.html" class="source">testinfo</a></font>&gt;(C).default.bTrue2==<font class="source_keyword">true</font>);
+<a name="339"></a>    assert(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\testinfo.html" class="source">testinfo</a></font>&gt;(C).default.bFalse2==<font class="source_keyword">false</font>);
+<a name="340"></a>
+<a name="341"></a>    assert(default.xnum==<font class="source_int">777</font>);
+<a name="342"></a>    TestStatic(<font class="source_int">123</font>);
+<a name="343"></a>    TC.<font class="source_keyword2">static</font>.TestStatic(<font class="source_int">123</font>);
+<a name="344"></a>    <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\testinfo.html" class="source">testinfo</a></font>&gt;(C).<font class="source_keyword2">static</font>.TestStatic(<font class="source_int">123</font>);
+<a name="345"></a>
+<a name="346"></a>    bBool2=RecurseTest();
+<a name="347"></a>    assert(bBool2==<font class="source_keyword">false</font>);
+<a name="348"></a>
+<a name="349"></a>    TestStructBools();
+<a name="350"></a>    TestQ();
+<a name="351"></a>
+<a name="352"></a>    log( <font class="source_string">"All tests passed"</font> );
+<a name="353"></a>}
+<a name="354"></a>
+<a name="355"></a><font class="source_keyword">function</font> f();
+<a name="356"></a>
+<a name="357"></a><font class="source_keyword">function</font> temp()
+<a name="358"></a>{
+<a name="359"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="360"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font> PlayerOwner;
+<a name="361"></a>    <font class="source_keyword">local</font> <font class="source_keyword">name</font> LeftList[<font class="source_int">20</font>];
+<a name="362"></a>    <font class="source_keyword">for</font>( i=<font class="source_int">0</font>; i&lt;<font class="source_int">20</font>; i++ )
+<a name="363"></a>        PlayerOwner.WeaponPriority[i] = LeftList[i+<font class="source_int">1</font>];
+<a name="364"></a>    temp();
+<a name="365"></a>}
+<a name="366"></a>
+<a name="367"></a><font class="source_keyword">state</font> AA
+<a name="368"></a>{
+<a name="369"></a>    <font class="source_keyword">function</font> f();
+<a name="370"></a>}
+<a name="371"></a><font class="source_keyword">state</font> BB
+<a name="372"></a>{
+<a name="373"></a>    <font class="source_keyword">function</font> f();
+<a name="374"></a>}
+<a name="375"></a><font class="source_keyword">state</font> CCAA <font class="source_keyword">extends</font> AA
+<a name="376"></a>{
+<a name="377"></a>    <font class="source_keyword">function</font> f();
+<a name="378"></a>}
+<a name="379"></a><font class="source_keyword">state</font> DDAA <font class="source_keyword">extends</font> AA
+<a name="380"></a>{
+<a name="381"></a>    <font class="source_keyword">function</font> f();
+<a name="382"></a>}
+<a name="383"></a><font class="source_keyword">state</font> EEDDAA <font class="source_keyword">extends</font> DDAA
+<a name="384"></a>{
+<a name="385"></a>    <font class="source_keyword">function</font> f();
+<a name="386"></a>}
+<a name="387"></a>
+<a name="388"></a><font class="source_keyword">defaultproperties</font>
+<a name="389"></a>{
+<a name="390"></a>    bTrue1=<font class="source_keyword">true</font>
+<a name="391"></a>    bTrue2=<font class="source_keyword">true</font>
+<a name="392"></a>    bHidden=<font class="source_keyword">false</font>
+<a name="393"></a>    sxx=<font class="source_string">"Tim"</font>
+<a name="394"></a>    ppp=<font class="source_int">3.14</font>
+<a name="395"></a>    xnum=<font class="source_int">777</font>
+<a name="396"></a>    bAlwaysRelevant=<font class="source_keyword">True</font>
+<a name="397"></a>    RemoteRole=ROLE_SimulatedProxy
+<a name="398"></a>}
+<a name="399"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\testinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#TestInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="teleporter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="testobj.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:23:28.000 - Creation time: Wed 26/5/2004 10:48:43.218 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,364 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Fire.IceTexture</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="fire-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_fire\icetexture.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#IceTexture">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="fractaltexture.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="watertexture.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="fire-overview.html">Fire</a>.IceTexture</h1>
+<b>Extends:</b> <a href="fractaltexture.html">FractalTexture</a><br>
+<b>Modifiers:</b> native noexport <br>
+<a href="..\Source_fire\icetexture.html"><b>Source code</b></a>
+
+<p>
+WaterTexture: Simple phongish water surface.<br />
+This is a built-in Unreal class and it shouldn't be modified.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\bitmap.html">Bitmap</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\texture.html">Texture</a>
+        |   
+        +-- <a href="fire-overview.html">Fire</a>.<a href="fractaltexture.html">FractalTexture</a>
+            |   
+            +-- <a href="fire-overview.html">Fire</a>.<a href="icetexture.html">IceTexture</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ForceRefresh" name="ForceRefresh">ForceRefresh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LocalSource" name="LocalSource">LocalSource</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MasterCount" name="MasterCount">MasterCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_OldGlassTex" name="OldGlassTex">OldGlassTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_OldSourceTex" name="OldSourceTex">OldSourceTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_OldUDisplace" name="OldUDisplace">OldUDisplace</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_OldVDisplace" name="OldVDisplace">OldVDisplace</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TickAccu" name="TickAccu">TickAccu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_UDisplace" name="UDisplace">UDisplace</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_UPosition" name="UPosition">UPosition</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_VDisplace" name="VDisplace">VDisplace</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_VPosition" name="VPosition">VPosition</a></td></tr>
+<tr><th colspan="2" class="small">IceLayer</th></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_Amplitude" name="Amplitude">Amplitude</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_Frequency" name="Frequency">Frequency</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_GlassTexture" name="GlassTexture">GlassTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_HorizPanSpeed" name="HorizPanSpeed">HorizPanSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_MoveIce" name="MoveIce">MoveIce</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="icetexture.html#PanningType">PanningType</a></td><td width="66%"><a href="#_PanningStyle" name="PanningStyle">PanningStyle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_SourceTexture" name="SourceTexture">SourceTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="icetexture.html#TimingType">TimingType</a></td><td width="66%"><a href="#_TimeMethod" name="TimeMethod">TimeMethod</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_VertPanSpeed" name="VertPanSpeed">VertPanSpeed</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="fire-overview.html">Fire</a>.<a href="fractaltexture.html">FractalTexture</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="fractaltexture.html#AuxPhase">AuxPhase</a>, <a href="fractaltexture.html#DrawPhase">DrawPhase</a>, <a href="fractaltexture.html#GlobalPhase">GlobalPhase</a>, <a href="fractaltexture.html#LightOutput">LightOutput</a>, <a href="fractaltexture.html#SoundOutput">SoundOutput</a>, <a href="fractaltexture.html#UMask">UMask</a>, <a href="fractaltexture.html#VMask">VMask</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\texture.html">Texture</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\texture.html#Accumulator">Accumulator</a>, <a href="..\engine\texture.html#Alpha">Alpha</a>, <a href="..\engine\texture.html#AnimCurrent">AnimCurrent</a>, <a href="..\engine\texture.html#AnimNext">AnimNext</a>, <a href="..\engine\texture.html#bAutoUPan">bAutoUPan</a>, <a href="..\engine\texture.html#bAutoVPan">bAutoVPan</a>, <a href="..\engine\texture.html#bBigWavy">bBigWavy</a>, <a href="..\engine\texture.html#bCloudWavy">bCloudWavy</a>, <a href="..\engine\texture.html#bDirtyShadows">bDirtyShadows</a>, <a href="..\engine\texture.html#bEnvironment">bEnvironment</a>, <a href="..\engine\texture.html#bFakeBackdrop">bFakeBackdrop</a>, <a href="..\engine\texture.html#bGouraud">bGouraud</a>, <a href="..\engine\texture.html#bHasComp">bHasComp</a>, <a href="..\engine\texture.html#bHighColorQuality">bHighColorQuality</a>, <a href="..\engine\texture.html#bHighLedge">bHighLedge</a>, <a href="..\engine\texture.html#bHighShadowDetail">bHighShadowDetail</a>, <a href="..\engine\texture.html#bHighTextureQuality">bHighTextureQuality</a>, <a href="..\engine\texture.html#bInvisible">bInvisible</a>, <a href="..\engine\texture.html#bLowShadowDetail">bLowShadowDetail</a>, <a href="..\engine\texture.html#bMasked">bMasked</a>, <a href="..\engine\texture.html#bMirrored">bMirrored</a>, <a href="..\engine\texture.html#bModulate">bModulate</a>, <a href="..\engine\texture.html#bNoMerge">bNoMerge</a>, <a href="..\engine\texture.html#bNoSmooth">bNoSmooth</a>, <a href="..\engine\texture.html#bNotSolid">bNotSolid</a>, <a href="..\engine\texture.html#bParametric">bParametric</a>, <a href="..\engine\texture.html#bPortal">bPortal</a>, <a href="..\engine\texture.html#bRealtime">bRealtime</a>, <a href="..\engine\texture.html#bRealtimeChanged">bRealtimeChanged</a>, <a href="..\engine\texture.html#bSemisolid">bSemisolid</a>, <a href="..\engine\texture.html#bSmallWavy">bSmallWavy</a>, <a href="..\engine\texture.html#bSpecialLit">bSpecialLit</a>, <a href="..\engine\texture.html#bTransparent">bTransparent</a>, <a href="..\engine\texture.html#bTwoSided">bTwoSided</a>, <a href="..\engine\texture.html#BumpMap">BumpMap</a>, <a href="..\engine\texture.html#bUnlit">bUnlit</a>, <a href="..\engine\texture.html#bWaterWavy">bWaterWavy</a>, <a href="..\engine\texture.html#bX2">bX2</a>, <a href="..\engine\texture.html#bX3">bX3</a>, <a href="..\engine\texture.html#bX4">bX4</a>, <a href="..\engine\texture.html#bX5">bX5</a>, <a href="..\engine\texture.html#bX6">bX6</a>, <a href="..\engine\texture.html#bX7">bX7</a>, <a href="..\engine\texture.html#CompFormat">CompFormat</a>, <a href="..\engine\texture.html#CompMips">CompMips</a>, <a href="..\engine\texture.html#DetailTexture">DetailTexture</a>, <a href="..\engine\texture.html#Diffuse">Diffuse</a>, <a href="..\engine\texture.html#DrawScale">DrawScale</a>, <a href="..\engine\texture.html#FootstepSound">FootstepSound</a>, <a href="..\engine\texture.html#Friction">Friction</a>, <a href="..\engine\texture.html#HitSound">HitSound</a>, <a href="..\engine\texture.html#LODSet">LODSet</a>, <a href="..\engine\texture.html#MacroTexture">MacroTexture</a>, <a href="..\engine\texture.html#MaxFrameRate">MaxFrameRate</a>, <a href="..\engine\texture.html#MinFrameRate">MinFrameRate</a>, <a href="..\engine\texture.html#MipMult">MipMult</a>, <a href="..\engine\texture.html#Mips">Mips</a>, <a href="..\engine\texture.html#PrimeCount">PrimeCount</a>, <a href="..\engine\texture.html#PrimeCurrent">PrimeCurrent</a>, <a href="..\engine\texture.html#Specular">Specular</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_PanningType" name="PanningType">PanningType</a><br /><span class="small">SLIDE_Linear,
+SLIDE_Circular,
+SLIDE_Gestation,
+SLIDE_WavyX,
+SLIDE_WavyY,
+</span></td></tr>
+<tr><td><a href="#_TimingType" name="TimingType">TimingType</a><br /><span class="small">TIME_FrameRateSync,
+TIME_RealTimeScroll,
+</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\texture.html">Texture</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\texture.html#ELODSet">ELODSet</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ForceRefresh" class="hidden"></a>ForceRefresh <a href="..\Source_fire\icetexture.html#57" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> ForceRefresh;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LocalSource" class="hidden"></a>LocalSource <a href="..\Source_fire\icetexture.html#56" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> LocalSource;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MasterCount" class="hidden"></a>MasterCount <a href="..\Source_fire\icetexture.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MasterCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldGlassTex" class="hidden"></a>OldGlassTex <a href="..\Source_fire\icetexture.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> OldGlassTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldSourceTex" class="hidden"></a>OldSourceTex <a href="..\Source_fire\icetexture.html#55" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> OldSourceTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldUDisplace" class="hidden"></a>OldUDisplace <a href="..\Source_fire\icetexture.html#52" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> OldUDisplace;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldVDisplace" class="hidden"></a>OldVDisplace <a href="..\Source_fire\icetexture.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> OldVDisplace;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TickAccu" class="hidden"></a>TickAccu <a href="..\Source_fire\icetexture.html#51" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">float</font> TickAccu;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UDisplace" class="hidden"></a>UDisplace <a href="..\Source_fire\icetexture.html#44" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> UDisplace;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UPosition" class="hidden"></a>UPosition <a href="..\Source_fire\icetexture.html#46" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> UPosition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_VDisplace" class="hidden"></a>VDisplace <a href="..\Source_fire\icetexture.html#45" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> VDisplace;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_VPosition" class="hidden"></a>VPosition <a href="..\Source_fire\icetexture.html#47" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> VPosition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">IceLayer</h3>
+<h4><a name="_Amplitude" class="hidden"></a>Amplitude <a href="..\Source_fire\icetexture.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(IceLayer) <font class="source_keyword">byte</font> Amplitude;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Frequency" class="hidden"></a>Frequency <a href="..\Source_fire\icetexture.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(IceLayer) <font class="source_keyword">byte</font> Frequency;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GlassTexture" class="hidden"></a>GlassTexture <a href="..\Source_fire\icetexture.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(IceLayer) <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> GlassTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HorizPanSpeed" class="hidden"></a>HorizPanSpeed <a href="..\Source_fire\icetexture.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(IceLayer) <font class="source_keyword">byte</font> HorizPanSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MoveIce" class="hidden"></a>MoveIce <a href="..\Source_fire\icetexture.html#42" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(IceLayer) <font class="source_keyword">bool</font> MoveIce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PanningStyle" class="hidden"></a>PanningStyle <a href="..\Source_fire\icetexture.html#35" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(IceLayer) <font class="source_type"><a href="icetexture.html#PanningType" class="source">PanningType</a></font> PanningStyle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SourceTexture" class="hidden"></a>SourceTexture <a href="..\Source_fire\icetexture.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(IceLayer) <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> SourceTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimeMethod" class="hidden"></a>TimeMethod <a href="..\Source_fire\icetexture.html#36" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(IceLayer) <font class="source_type"><a href="icetexture.html#TimingType" class="source">TimingType</a></font> TimeMethod;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_VertPanSpeed" class="hidden"></a>VertPanSpeed <a href="..\Source_fire\icetexture.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(IceLayer) <font class="source_keyword">byte</font> VertPanSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_PanningType" class="hidden"></a>PanningType <a href="..\Source_fire\icetexture.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="icetexture.html#PanningType" class="source">PanningType</a></font><br />
+{<blockquote>SLIDE_Linear,
+SLIDE_Circular,
+SLIDE_Gestation,
+SLIDE_WavyX,
+SLIDE_WavyY,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimingType" class="hidden"></a>TimingType <a href="..\Source_fire\icetexture.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="icetexture.html#TimingType" class="source">TimingType</a></font><br />
+{<blockquote>TIME_FrameRateSync,
+TIME_RealTimeScroll,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="fire-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_fire\icetexture.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#IceTexture">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="fractaltexture.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="watertexture.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:46:54.984 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

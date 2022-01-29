@@ -1,0 +1,847 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.LastManStanding</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\lastmanstanding.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#LastManStanding">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="laddertransition.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="lightbox.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\lastmanstanding.html">LastManStanding</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// LastManStanding.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\lastmanstanding.html" class="source">LastManStanding</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\botpack\deathmatchplus.html" class="source">DeathMatchPlus</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> bHighDetailGhosts;
+<a name="7"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font> Lives;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> TotalKills, NumGhosts;
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AltStartupMessage;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> LocalPlayer;
+<a name="11"></a>
+<a name="12"></a><font class="source_keyword">event</font> InitGame( <font class="source_keyword">string</font> Options, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error )
+<a name="13"></a>{
+<a name="14"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> InOpt;
+<a name="15"></a>
+<a name="16"></a>    <font class="source_keyword">Super</font>.InitGame(Options, Error);
+<a name="17"></a>    <font class="source_keyword">if</font> ( FragLimit == <font class="source_int">0</font> )
+<a name="18"></a>        Lives = <font class="source_int">10</font>;
+<a name="19"></a>    <font class="source_keyword">else</font>
+<a name="20"></a>        Lives = Fraglimit;
+<a name="21"></a>}
+<a name="22"></a>
+<a name="23"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> GameThreatAdd(<font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font> aBot, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)
+<a name="24"></a>{
+<a name="25"></a>    <font class="source_keyword">if</font> ( !Other.bIsPlayer ) 
+<a name="26"></a>        <font class="source_keyword">return</font> <font class="source_int">0</font>;
+<a name="27"></a>    <font class="source_keyword">else</font>
+<a name="28"></a>        <font class="source_keyword">return</font> <font class="source_int">0.1</font> * Other.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score;
+<a name="29"></a>}
+<a name="30"></a>
+<a name="31"></a><font class="source_keyword">event</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font> Login
+<a name="32"></a>(
+<a name="33"></a>    <font class="source_keyword">string</font> Portal,
+<a name="34"></a>    <font class="source_keyword">string</font> Options,
+<a name="35"></a>    <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error,
+<a name="36"></a>    <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font>&gt; SpawnClass
+<a name="37"></a>)
+<a name="38"></a>{
+<a name="39"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font> NewPlayer;
+<a name="40"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="41"></a>
+<a name="42"></a>    <font class="source_comment">// if more than 15% of the game is over, must join as spectator
+</font><a name="43"></a>    <font class="source_keyword">if</font> ( TotalKills &gt; <font class="source_int">0.15</font> * (NumPlayers + NumBots) * Lives )
+<a name="44"></a>    {
+<a name="45"></a>        bDisallowOverride = <font class="source_keyword">true</font>;
+<a name="46"></a>        SpawnClass = <font class="source_keyword">class</font><font class="source_name">'CHSpectator'</font>;
+<a name="47"></a>        <font class="source_keyword">if</font> ( (NumSpectators &gt;= MaxSpectators)
+<a name="48"></a>            && ((<font class="source_type">Level</font>.NetMode != NM_ListenServer) || (NumPlayers &gt; <font class="source_int">0</font>)) )
+<a name="49"></a>        {
+<a name="50"></a>            MaxSpectators++;
+<a name="51"></a>        }
+<a name="52"></a>    }
+<a name="53"></a>    NewPlayer = <font class="source_keyword">Super</font>.Login(Portal, Options, Error, SpawnClass);
+<a name="54"></a>
+<a name="55"></a>    <font class="source_keyword">if</font> ( (NewPlayer != <font class="source_keyword">None</font>) && !NewPlayer.IsA(<font class="source_name">'Spectator'</font>) && !NewPlayer.IsA(<font class="source_name">'Commander'</font>) )
+<a name="56"></a>        NewPlayer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score = Lives;
+<a name="57"></a>
+<a name="58"></a>    <font class="source_keyword">return</font> NewPlayer;
+<a name="59"></a>}
+<a name="60"></a>
+<a name="61"></a><font class="source_keyword">event</font> PostLogin( <font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font> NewPlayer )
+<a name="62"></a>{
+<a name="63"></a>    <font class="source_keyword">if</font>( NewPlayer.<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font> != <font class="source_keyword">None</font> && <font class="source_type">Viewport</font>(NewPlayer.<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font>) != <font class="source_keyword">None</font>)
+<a name="64"></a>        LocalPlayer = NewPlayer;
+<a name="65"></a>
+<a name="66"></a>    <font class="source_keyword">if</font> ( (TotalKills &gt; <font class="source_int">0.15</font> * (NumPlayers + NumBots) * Lives) && NewPlayer.IsA(<font class="source_name">'CHSpectator'</font>) )
+<a name="67"></a>        GameName = AltStartupMessage;   
+<a name="68"></a>    <font class="source_keyword">Super</font>.PostLogin(NewPlayer);
+<a name="69"></a>    GameName = Default.GameName;
+<a name="70"></a>}
+<a name="71"></a>
+<a name="72"></a><font class="source_keyword">function</font> Timer()
+<a name="73"></a>{
+<a name="74"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="75"></a>
+<a name="76"></a>    <font class="source_keyword">Super</font>.Timer();
+<a name="77"></a>    <font class="source_keyword">For</font> ( P=<font class="source_type">Level</font>.PawnList; P!=<font class="source_keyword">None</font>; P=P.NextPawn )
+<a name="78"></a>        <font class="source_keyword">if</font> ( P.IsInState(<font class="source_name">'FeigningDeath'</font>) )
+<a name="79"></a>            P.GibbedBy(P);
+<a name="80"></a>}
+<a name="81"></a> 
+<a name="82"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> NeedPlayers()
+<a name="83"></a>{
+<a name="84"></a>    <font class="source_keyword">if</font> ( bGameEnded || (TotalKills &gt; <font class="source_int">0.15</font> * (NumPlayers + NumBots) * Lives) )
+<a name="85"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="86"></a>    <font class="source_keyword">return</font> (NumPlayers + NumBots &lt; MinPlayers);
+<a name="87"></a>}
+<a name="88"></a>
+<a name="89"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> IsRelevant(<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other) 
+<a name="90"></a>{
+<a name="91"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\mutator.html" class="source">Mutator</a></font> M;
+<a name="92"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bArenaMutator;
+<a name="93"></a>
+<a name="94"></a>    <font class="source_keyword">for</font> (M = BaseMutator; M != <font class="source_keyword">None</font>; M = M.NextMutator)
+<a name="95"></a>    {
+<a name="96"></a>        <font class="source_keyword">if</font> (M.IsA(<font class="source_name">'Arena'</font>))
+<a name="97"></a>            bArenaMutator = <font class="source_keyword">True</font>;
+<a name="98"></a>    }
+<a name="99"></a>
+<a name="100"></a>    <font class="source_keyword">if</font> ( bArenaMutator )
+<a name="101"></a>    {
+<a name="102"></a>        <font class="source_keyword">if</font> ( Other.IsA(<font class="source_name">'Inventory'</font>) && (<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>(Other).MyMarker != <font class="source_keyword">None</font>) && !Other.IsA(<font class="source_name">'UT_Jumpboots'</font>) && !Other.IsA(<font class="source_name">'Ammo'</font>))
+<a name="103"></a>        {
+<a name="104"></a>            <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>(Other).MyMarker.markedItem = <font class="source_keyword">None</font>;
+<a name="105"></a>            <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="106"></a>        }
+<a name="107"></a>    } <font class="source_keyword">else</font> {
+<a name="108"></a>        <font class="source_keyword">if</font> ( Other.IsA(<font class="source_name">'Inventory'</font>) && (<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>(Other).MyMarker != <font class="source_keyword">None</font>) && !Other.IsA(<font class="source_name">'UT_Jumpboots'</font>))
+<a name="109"></a>        {
+<a name="110"></a>            <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>(Other).MyMarker.markedItem = <font class="source_keyword">None</font>;
+<a name="111"></a>            <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="112"></a>        }
+<a name="113"></a>    }
+<a name="114"></a>
+<a name="115"></a>    <font class="source_keyword">return</font> <font class="source_keyword">Super</font>.IsRelevant(Other);
+<a name="116"></a>}
+<a name="117"></a>
+<a name="118"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> RestartPlayer( <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> aPlayer ) 
+<a name="119"></a>{
+<a name="120"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font> startSpot;
+<a name="121"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> foundStart;
+<a name="122"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="123"></a>
+<a name="124"></a>    <font class="source_keyword">if</font>( bRestartLevel && <font class="source_type">Level</font>.NetMode!=NM_DedicatedServer && <font class="source_type">Level</font>.NetMode!=NM_ListenServer )
+<a name="125"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="126"></a>
+<a name="127"></a>    <font class="source_keyword">if</font> ( aPlayer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score &lt; <font class="source_int">1</font> )
+<a name="128"></a>    {
+<a name="129"></a>        BroadcastLocalizedMessage(<font class="source_keyword">class</font><font class="source_name">'LMSOutMessage'</font>, <font class="source_int">0</font>, aPlayer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>);
+<a name="130"></a>        <font class="source_keyword">For</font> ( P=<font class="source_type">Level</font>.PawnList; P!=<font class="source_keyword">None</font>; P=P.NextPawn )
+<a name="131"></a>            <font class="source_keyword">if</font> ( P.bIsPlayer && (P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score &gt;= <font class="source_int">1</font>) )
+<a name="132"></a>                P.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score += <font class="source_int">0.00001</font>;
+<a name="133"></a>        <font class="source_keyword">if</font> ( aPlayer.IsA(<font class="source_name">'Bot'</font>) )
+<a name="134"></a>        {
+<a name="135"></a>            aPlayer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.bIsSpectator = <font class="source_keyword">true</font>;
+<a name="136"></a>            aPlayer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.bWaitingPlayer = <font class="source_keyword">true</font>;
+<a name="137"></a>            aPlayer.GotoState(<font class="source_name">'GameEnded'</font>);
+<a name="138"></a>            <font class="source_keyword">return</font> <font class="source_keyword">false</font>; <font class="source_comment">// bots don't respawn when ghosts
+</font><a name="139"></a>        }
+<a name="140"></a>    }
+<a name="141"></a>
+<a name="142"></a>    startSpot = FindPlayerStart(<font class="source_keyword">None</font>, <font class="source_int">255</font>);
+<a name="143"></a>    <font class="source_keyword">if</font>( startSpot == <font class="source_keyword">None</font> )
+<a name="144"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="145"></a>        
+<a name="146"></a>    foundStart = aPlayer.SetLocation(startSpot.Location);
+<a name="147"></a>    <font class="source_keyword">if</font>( foundStart )
+<a name="148"></a>    {
+<a name="149"></a>        startSpot.PlayTeleportEffect(aPlayer, <font class="source_keyword">true</font>);
+<a name="150"></a>        aPlayer.SetRotation(startSpot.Rotation);
+<a name="151"></a>        aPlayer.ViewRotation = aPlayer.Rotation;
+<a name="152"></a>        aPlayer.Acceleration = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="153"></a>        aPlayer.Velocity = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="154"></a>        aPlayer.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> = aPlayer.Default.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font>;
+<a name="155"></a>        aPlayer.ClientSetRotation( startSpot.Rotation );
+<a name="156"></a>        aPlayer.bHidden = <font class="source_keyword">false</font>;
+<a name="157"></a>        aPlayer.SoundDampening = aPlayer.Default.SoundDampening;
+<a name="158"></a>        <font class="source_keyword">if</font> ( aPlayer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score &lt; <font class="source_int">1</font> )
+<a name="159"></a>        {
+<a name="160"></a>            <font class="source_comment">// This guy is a ghost.  Add a visual effect.
+</font><a name="161"></a>            <font class="source_keyword">if</font> ( bHighDetailGhosts )
+<a name="162"></a>            {
+<a name="163"></a>                aPlayer.Style = STY_Translucent;
+<a name="164"></a>                aPlayer.ScaleGlow = <font class="source_int">0.5</font>;
+<a name="165"></a>            } 
+<a name="166"></a>            <font class="source_keyword">else</font> 
+<a name="167"></a>                aPlayer.bHidden = <font class="source_keyword">true</font>;
+<a name="168"></a>            aPlayer.PlayerRestartState = <font class="source_name">'PlayerSpectating'</font>;
+<a name="169"></a>        } 
+<a name="170"></a>        <font class="source_keyword">else</font>
+<a name="171"></a>        {
+<a name="172"></a>            aPlayer.SetCollision( <font class="source_keyword">true</font>, <font class="source_keyword">true</font>, <font class="source_keyword">true</font> );
+<a name="173"></a>            AddDefaultInventory(aPlayer);
+<a name="174"></a>        }
+<a name="175"></a>    }
+<a name="176"></a>    <font class="source_keyword">return</font> foundStart;
+<a name="177"></a>}
+<a name="178"></a>
+<a name="179"></a><font class="source_keyword">function</font> Logout( <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Exiting )
+<a name="180"></a>{
+<a name="181"></a>    <font class="source_keyword">Super</font>.Logout(Exiting);
+<a name="182"></a>
+<a name="183"></a>    <font class="source_comment">// Don't run endgame if it's the local player leaving
+</font><a name="184"></a>    <font class="source_comment">// - stats saveconfig messes up saved defaults
+</font><a name="185"></a>    <font class="source_keyword">if</font>( LocalPlayer == <font class="source_keyword">None</font> || Exiting != LocalPlayer )
+<a name="186"></a>        CheckEndGame();
+<a name="187"></a>}
+<a name="188"></a>
+<a name="189"></a><font class="source_keyword">function</font> Killed( <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> killer, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Other, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font> )
+<a name="190"></a>{
+<a name="191"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> OldFragLimit;
+<a name="192"></a>
+<a name="193"></a>    OldFragLimit = FragLimit;
+<a name="194"></a>    FragLimit = <font class="source_int">0</font>;
+<a name="195"></a>
+<a name="196"></a>    <font class="source_keyword">if</font> ( Other.bIsPlayer )
+<a name="197"></a>        TotalKills++;
+<a name="198"></a>            
+<a name="199"></a>    <font class="source_keyword">Super</font>.Killed(Killer, Other, <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>);    
+<a name="200"></a>
+<a name="201"></a>    FragLimit = OldFragLimit;
+<a name="202"></a>
+<a name="203"></a>    CheckEndGame();
+<a name="204"></a>}
+<a name="205"></a>
+<a name="206"></a><font class="source_keyword">function</font> CheckEndGame()
+<a name="207"></a>{
+<a name="208"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> PawnLink;
+<a name="209"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> StillPlaying;
+<a name="210"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bStillHuman;
+<a name="211"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\bot.html" class="source">bot</a></font> B, D;
+<a name="212"></a>
+<a name="213"></a>    <font class="source_keyword">if</font> ( bGameEnded )
+<a name="214"></a>        <font class="source_keyword">return</font>;
+<a name="215"></a>
+<a name="216"></a>    <font class="source_comment">// Check to see if everyone is a ghost.
+</font><a name="217"></a>    NumGhosts = <font class="source_int">0</font>;
+<a name="218"></a>    <font class="source_keyword">for</font> ( PawnLink=<font class="source_type">Level</font>.PawnList; PawnLink!=<font class="source_keyword">None</font>; PawnLink=PawnLink.nextPawn )
+<a name="219"></a>        <font class="source_keyword">if</font> ( PawnLink.bIsPlayer )
+<a name="220"></a>        {
+<a name="221"></a>            <font class="source_keyword">if</font> ( PawnLink.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score &lt; <font class="source_int">1</font> )
+<a name="222"></a>                NumGhosts++;
+<a name="223"></a>            <font class="source_keyword">else</font>
+<a name="224"></a>            {
+<a name="225"></a>                <font class="source_keyword">if</font> ( PawnLink.IsA(<font class="source_name">'PlayerPawn'</font>) )
+<a name="226"></a>                    bStillHuman = <font class="source_keyword">true</font>;
+<a name="227"></a>                StillPlaying++;
+<a name="228"></a>            }
+<a name="229"></a>        }
+<a name="230"></a>
+<a name="231"></a>    <font class="source_comment">// End the game if there is only one man standing.
+</font><a name="232"></a>    <font class="source_keyword">if</font> ( StillPlaying &lt; <font class="source_int">2</font> )
+<a name="233"></a>        <font class="source_type"><a href="..\unreali\endgame.html" class="source">EndGame</a></font>(<font class="source_string">"lastmanstanding"</font>);
+<a name="234"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( !bStillHuman )
+<a name="235"></a>    {
+<a name="236"></a>        <font class="source_comment">// no humans left - get bots to be more aggressive and finish up
+</font><a name="237"></a>        <font class="source_keyword">for</font> ( PawnLink=<font class="source_type">Level</font>.PawnList; PawnLink!=<font class="source_keyword">None</font>; PawnLink=PawnLink.NextPawn )
+<a name="238"></a>        {
+<a name="239"></a>            B = <font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>(PawnLink);
+<a name="240"></a>            <font class="source_keyword">if</font> ( B != <font class="source_keyword">None</font> )
+<a name="241"></a>            {
+<a name="242"></a>                B.CampingRate = <font class="source_int">0</font>;
+<a name="243"></a>                B.Aggressiveness += <font class="source_int">5.0</font>;
+<a name="244"></a>                <font class="source_keyword">if</font> ( D == <font class="source_keyword">None</font> )
+<a name="245"></a>                    D = B;
+<a name="246"></a>                <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( B.Enemy == <font class="source_keyword">None</font> )
+<a name="247"></a>                    B.SetEnemy(D);
+<a name="248"></a>            }
+<a name="249"></a>        }
+<a name="250"></a>    }       
+<a name="251"></a>}
+<a name="252"></a>
+<a name="253"></a><font class="source_keyword">function</font> ScoreKill(<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Killer, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Other)
+<a name="254"></a>{
+<a name="255"></a>    Other.DieCount++;
+<a name="256"></a>    <font class="source_keyword">if</font> (Other.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score &gt; <font class="source_int">0</font>)
+<a name="257"></a>        Other.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score -= <font class="source_int">1</font>;
+<a name="258"></a>    <font class="source_keyword">if</font>( (killer != Other) && (killer != <font class="source_keyword">None</font>) )
+<a name="259"></a>        killer.killCount++;
+<a name="260"></a>    BaseMutator.ScoreKill(Killer, Other);
+<a name="261"></a>}   
+<a name="262"></a>
+<a name="263"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> PickupQuery( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other, <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> item )
+<a name="264"></a>{
+<a name="265"></a>    <font class="source_keyword">if</font> ( Other.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score &lt; <font class="source_int">1</font> )
+<a name="266"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="267"></a>    
+<a name="268"></a>    <font class="source_keyword">return</font> <font class="source_keyword">Super</font>.PickupQuery( Other, item );
+<a name="269"></a>}
+<a name="270"></a>
+<a name="271"></a><font class="source_comment">/*
+<a name="272"></a>AssessBotAttitude returns a value that translates to an attitude
+<a name="273"></a>        0 = ATTITUDE_Fear;
+<a name="274"></a>        1 = return ATTITUDE_Hate;
+<a name="275"></a>        2 = return ATTITUDE_Ignore;
+<a name="276"></a>        3 = return ATTITUDE_Friendly;
+<a name="277"></a>*/</font>  
+<a name="278"></a><font class="source_keyword">function</font> <font class="source_keyword">byte</font> AssessBotAttitude(<font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font> aBot, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)
+<a name="279"></a>{
+<a name="280"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> Adjust;
+<a name="281"></a>
+<a name="282"></a>    <font class="source_keyword">if</font> ( aBot.bNovice )
+<a name="283"></a>        Adjust = -<font class="source_int">0.2</font>;
+<a name="284"></a>    <font class="source_keyword">else</font>
+<a name="285"></a>        Adjust = -<font class="source_int">0.2</font> - <font class="source_int">0.1</font> * aBot.Skill;
+<a name="286"></a>    <font class="source_keyword">if</font> ( Other.bIsPlayer && (Other.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score &lt; <font class="source_int">1</font>) )
+<a name="287"></a>        <font class="source_keyword">return</font> <font class="source_int">2</font>; <font class="source_comment">//bots ignore ghosts
+</font><a name="288"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( aBot.bKamikaze )
+<a name="289"></a>        <font class="source_keyword">return</font> <font class="source_int">1</font>;
+<a name="290"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Other.IsA(<font class="source_name">'TeamCannon'</font>)
+<a name="291"></a>        || (aBot.RelativeStrength(Other) &gt; aBot.Aggressiveness - Adjust) )
+<a name="292"></a>        <font class="source_keyword">return</font> <font class="source_int">0</font>;
+<a name="293"></a>    <font class="source_keyword">else</font>
+<a name="294"></a>        <font class="source_keyword">return</font> <font class="source_int">1</font>;
+<a name="295"></a>}
+<a name="296"></a>
+<a name="297"></a><font class="source_keyword">function</font> AddDefaultInventory( <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> )
+<a name="298"></a>{
+<a name="299"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> weap;
+<a name="300"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="301"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> Inv;
+<a name="302"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> F;
+<a name="303"></a>
+<a name="304"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>.IsA(<font class="source_name">'Spectator'</font>) || (bRequireReady && (CountDown &gt; <font class="source_int">0</font>)) )
+<a name="305"></a>        <font class="source_keyword">return</font>;
+<a name="306"></a>    <font class="source_keyword">Super</font>.AddDefaultInventory(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>);
+<a name="307"></a>
+<a name="308"></a>    GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.ShockRifle"</font>);
+<a name="309"></a>    GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.UT_BioRifle"</font>);
+<a name="310"></a>    GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.Ripper"</font>);
+<a name="311"></a>    GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.UT_FlakCannon"</font>);
+<a name="312"></a>
+<a name="313"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>.IsA(<font class="source_name">'PlayerPawn'</font>) )
+<a name="314"></a>    {
+<a name="315"></a>        GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.SniperRifle"</font>);
+<a name="316"></a>        GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.PulseGun"</font>);
+<a name="317"></a>        GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.Minigun2"</font>);
+<a name="318"></a>        GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.UT_Eightball"</font>);
+<a name="319"></a>        <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>.SwitchToBestWeapon();
+<a name="320"></a>    }
+<a name="321"></a>    <font class="source_keyword">else</font>
+<a name="322"></a>    {
+<a name="323"></a>        <font class="source_comment">// randomize order for bots so they don't always use the same weapon
+</font><a name="324"></a>        F = FRand();
+<a name="325"></a>        <font class="source_keyword">if</font> ( F &lt; <font class="source_int">0.7</font> ) 
+<a name="326"></a>        {
+<a name="327"></a>            GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.SniperRifle"</font>);
+<a name="328"></a>            GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.PulseGun"</font>);
+<a name="329"></a>            <font class="source_keyword">if</font> ( F &lt; <font class="source_int">0.4</font> )
+<a name="330"></a>            {
+<a name="331"></a>                GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.Minigun2"</font>);
+<a name="332"></a>                GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.UT_Eightball"</font>);
+<a name="333"></a>            }
+<a name="334"></a>            <font class="source_keyword">else</font>
+<a name="335"></a>            {
+<a name="336"></a>                GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.UT_Eightball"</font>);
+<a name="337"></a>                GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.Minigun2"</font>);
+<a name="338"></a>            }
+<a name="339"></a>        }
+<a name="340"></a>        <font class="source_keyword">else</font>
+<a name="341"></a>        {
+<a name="342"></a>            GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.Minigun2"</font>);
+<a name="343"></a>            GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.UT_Eightball"</font>);
+<a name="344"></a>            <font class="source_keyword">if</font> ( F &lt; <font class="source_int">0.88</font> )
+<a name="345"></a>            {
+<a name="346"></a>                GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.SniperRifle"</font>);
+<a name="347"></a>                GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.PulseGun"</font>);
+<a name="348"></a>            }
+<a name="349"></a>            <font class="source_keyword">else</font>
+<a name="350"></a>            {
+<a name="351"></a>                GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.PulseGun"</font>);
+<a name="352"></a>                GiveWeapon(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_string">"Botpack.SniperRifle"</font>);
+<a name="353"></a>            }
+<a name="354"></a>        }
+<a name="355"></a>    }
+<a name="356"></a>                
+<a name="357"></a>    <font class="source_keyword">for</font> ( inv=<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>.<font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font>; inv!=<font class="source_keyword">None</font>; inv=inv.<font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> )
+<a name="358"></a>    {
+<a name="359"></a>        weap = <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>(inv);
+<a name="360"></a>        <font class="source_keyword">if</font> ( (weap != <font class="source_keyword">None</font>) && (weap.AmmoType != <font class="source_keyword">None</font>) )
+<a name="361"></a>            weap.AmmoType.AmmoAmount = weap.AmmoType.MaxAmmo;
+<a name="362"></a>    }
+<a name="363"></a>
+<a name="364"></a>    inv = Spawn(<font class="source_keyword">class</font><font class="source_name">'Armor2'</font>);
+<a name="365"></a>    <font class="source_keyword">if</font>( inv != <font class="source_keyword">None</font> )
+<a name="366"></a>    {
+<a name="367"></a>        inv.bHeldItem = <font class="source_keyword">true</font>;
+<a name="368"></a>        inv.RespawnTime = <font class="source_int">0.0</font>;
+<a name="369"></a>        inv.GiveTo(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>);
+<a name="370"></a>    }
+<a name="371"></a>}   
+<a name="372"></a>
+<a name="373"></a><font class="source_keyword">function</font> ModifyBehaviour(<font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font> NewBot)
+<a name="374"></a>{
+<a name="375"></a>    <font class="source_comment">// Set the Bot's Lives
+</font><a name="376"></a>    NewBot.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score = Lives;
+<a name="377"></a>
+<a name="378"></a>    NewBot.CampingRate += FRand();
+<a name="379"></a>}
+<a name="380"></a>
+<a name="381"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> OneOnOne()
+<a name="382"></a>{
+<a name="383"></a>    <font class="source_keyword">return</font> ( NumPlayers + NumBots - NumGhosts == <font class="source_int">2</font> );
+<a name="384"></a>}
+<a name="385"></a>
+<a name="386"></a><font class="source_keyword">defaultproperties</font>
+<a name="387"></a>{
+<a name="388"></a>     bTournament=<font class="source_keyword">True</font>
+<a name="389"></a>     StartUpMessage=<font class="source_string">"Last Man Standing.  How long can you live?"</font>
+<a name="390"></a>     AltStartUpMessage<font class="source_string">"Last Man Standing - already in progress!"</font>
+<a name="391"></a>     BeaconName=<font class="source_string">"LMS"</font>
+<a name="392"></a>     GameName=<font class="source_string">"Last Man Standing"</font>
+<a name="393"></a>     ScoreBoardType=<font class="source_keyword">Class</font><font class="source_name">'Botpack.LMSScoreBoard'</font>
+<a name="394"></a>     RulesMenuType=<font class="source_string">"UTMenu.UTLMSRulesSC"</font>
+<a name="395"></a>     bAlwaysForceRespawn=<font class="source_keyword">true</font>
+<a name="396"></a>}
+<a name="397"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\lastmanstanding.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#LastManStanding">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="laddertransition.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="lightbox.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:21:42.000 - Creation time: Wed 26/5/2004 10:48:23.578 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

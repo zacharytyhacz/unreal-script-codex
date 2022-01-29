@@ -1,0 +1,300 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - ParticleSystems.FireworksFrag</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="particlesystems-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_particlesystems\fireworksfrag.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#FireworksFrag">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="firework09nl.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="flame01.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="particlesystems-overview.html">ParticleSystems</a>.FireworksFrag</h1>
+<b>Extends:</b> <a href="..\engine\fragment.html">Fragment</a><br>
+<b>Modifiers:</b> <br>
+<a href="..\Source_particlesystems\fireworksfrag.html"><b>Source code</b></a>
+
+<p>
+FireworksFrag.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\projectile.html">Projectile</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\fragment.html">Fragment</a>
+            |   
+            +-- <a href="particlesystems-overview.html">ParticleSystems</a>.<a href="fireworksfrag.html">FireworksFrag</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bExploded" name="bExploded">bExploded</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ExpTime" name="ExpTime">ExpTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="fireworksfrag.html#FireworkCombo">FireworkCombo</a></td><td width="66%"><a href="#_Fireworks[5]" name="Fireworks[5]">Fireworks[5]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MaxExpTime" name="MaxExpTime">MaxExpTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MinExpTime" name="MinExpTime">MinExpTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="particlesprayer.html">ParticleSprayer</a></td><td width="66%"><a href="#_Proj" name="Proj">Proj</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_SelectedFirework" name="SelectedFirework">SelectedFirework</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\fragment.html">Fragment</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\fragment.html#bFirstHit">bFirstHit</a>, <a href="..\engine\fragment.html#Fragments[11]">Fragments[11]</a>, <a href="..\engine\fragment.html#numFragmentTypes">numFragmentTypes</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\projectile.html">Projectile</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\projectile.html#Damage">Damage</a>, <a href="..\engine\projectile.html#ExplosionDecal">ExplosionDecal</a>, <a href="..\engine\projectile.html#ExploWallOut">ExploWallOut</a>, <a href="..\engine\projectile.html#ImpactSound">ImpactSound</a>, <a href="..\engine\projectile.html#MaxSpeed">MaxSpeed</a>, <a href="..\engine\projectile.html#MiscSound">MiscSound</a>, <a href="..\engine\projectile.html#MomentumTransfer">MomentumTransfer</a>, <a href="..\engine\projectile.html#MyDamageType">MyDamageType</a>, <a href="..\engine\projectile.html#SpawnSound">SpawnSound</a>, <a href="..\engine\projectile.html#Speed">Speed</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_FireworkCombo" name="FireworkCombo">FireworkCombo</a><br /><span class="small">ProjType, ExpType</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CalcVelocity+" name="CalcVelocity">CalcVelocity</a> (<a href="..\core\object.html#Vector">vector</a> Momentum, float ExplosionSize)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PreBeginPlay+" name="PreBeginPlay">PreBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\fragment.html">Fragment</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\fragment.html#BeginState">BeginState</a>, <a href="..\engine\fragment.html#CalcVelocity">CalcVelocity</a>, <a href="..\engine\fragment.html#HitWall">HitWall</a>, <a href="..\engine\fragment.html#PostBeginPlay">PostBeginPlay</a>, <a href="..\engine\fragment.html#TakeDamage">TakeDamage</a>, <a href="..\engine\fragment.html#timer">timer</a>, <a href="..\engine\fragment.html#Touch">Touch</a>, <a href="..\engine\fragment.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\projectile.html">Projectile</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\projectile.html#EncroachingOn">EncroachingOn</a>, <a href="..\engine\projectile.html#Explode">Explode</a>, <a href="..\engine\projectile.html#HitWall">HitWall</a>, <a href="..\engine\projectile.html#ProcessTouch">ProcessTouch</a>, <a href="..\engine\projectile.html#RandSpin">RandSpin</a>, <a href="..\engine\projectile.html#Touch">Touch</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bExploded" class="hidden"></a>bExploded <a href="..\Source_particlesystems\fireworksfrag.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bExploded;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ExpTime" class="hidden"></a>ExpTime <a href="..\Source_particlesystems\fireworksfrag.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> ExpTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Fireworks[5]" class="hidden"></a>Fireworks[5] <a href="..\Source_particlesystems\fireworksfrag.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="fireworksfrag.html#FireworkCombo" class="source">FireworkCombo</a></font> Fireworks[<font class="source_int">5</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxExpTime" class="hidden"></a>MaxExpTime <a href="..\Source_particlesystems\fireworksfrag.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MaxExpTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinExpTime" class="hidden"></a>MinExpTime <a href="..\Source_particlesystems\fireworksfrag.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MinExpTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Proj" class="hidden"></a>Proj <a href="..\Source_particlesystems\fireworksfrag.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="particlesprayer.html" class="source">ParticleSprayer</a></font> Proj;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SelectedFirework" class="hidden"></a>SelectedFirework <a href="..\Source_particlesystems\fireworksfrag.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> SelectedFirework;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_FireworkCombo" class="hidden"></a>FireworkCombo <a href="..\Source_particlesystems\fireworksfrag.html#6" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="fireworksfrag.html#FireworkCombo" class="source">FireworkCombo</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="particlesprayer.html" class="source">ParticleSprayer</a></font>&gt; ExpType;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="particlesprayer.html" class="source">ParticleSprayer</a></font>&gt; ProjType;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CalcVelocity+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CalcVelocity <span class="function_state"></span> <a href="..\Source_particlesystems\fireworksfrag.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CalcVelocity (<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Momentum, <font class="source_keyword">float</font> ExplosionSize)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PreBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PreBeginPlay <span class="function_state"></span> <a href="..\Source_particlesystems\fireworksfrag.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PreBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state"></span> <a href="..\Source_particlesystems\fireworksfrag.html#36" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     Fireworks(<font class="source_int">0</font>)=(ProjType=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.Firework01'</font>,ExpType=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.Firework05'</font>)
+     Fireworks(<font class="source_int">1</font>)=(ProjType=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.Firework06'</font>,ExpType=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.Firework05'</font>)
+     Fireworks(<font class="source_int">2</font>)=(ProjType=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.Firework03'</font>,ExpType=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.Firework09'</font>)
+     Fireworks(<font class="source_int">3</font>)=(ProjType=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.Firework04'</font>,ExpType=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.Firework08'</font>)
+     Fireworks(<font class="source_int">4</font>)=(ProjType=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.Firework02'</font>,ExpType=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.Firework07'</font>)
+     MinExpTime=<font class="source_int">2.000000</font>
+     MaxExpTime=<font class="source_int">6.000000</font>
+     Mass=<font class="source_int">1.000000</font>
+     Physics=PHYS_Projectile
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="particlesystems-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_particlesystems\fireworksfrag.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#FireworksFrag">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="firework09nl.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="flame01.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:46:51.828 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

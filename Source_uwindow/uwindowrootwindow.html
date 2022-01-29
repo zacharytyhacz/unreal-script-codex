@@ -1,0 +1,915 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UWindow.UWindowRootWindow</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\uwindow\uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="..\uwindow\uwindowrootwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UWindowRootWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowrightclickmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindowsbdownbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowrootwindow.html">UWindowRootWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// UWindowRootWindow - the root window.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\uwindow\uwindowrootwindow.html" class="source">UWindowRootWindow</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MouseCursor FILE=Textures\MouseCursor.bmp GROUP="Icons" FLAGS=2 MIPS=OFF
+</font><a name="7"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MouseMove FILE=Textures\MouseMove.bmp GROUP="Icons" FLAGS=2 MIPS=OFF
+</font><a name="8"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MouseDiag1 FILE=Textures\MouseDiag1.bmp GROUP="Icons" FLAGS=2 MIPS=OFF
+</font><a name="9"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MouseDiag2 FILE=Textures\MouseDiag2.bmp GROUP="Icons" FLAGS=2 MIPS=OFF
+</font><a name="10"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MouseNS FILE=Textures\MouseNS.bmp GROUP="Icons" FLAGS=2 MIPS=OFF
+</font><a name="11"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MouseWE FILE=Textures\MouseWE.bmp GROUP="Icons" FLAGS=2 MIPS=OFF
+</font><a name="12"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MouseHand FILE=Textures\MouseHand.bmp GROUP="Icons" FLAGS=2 MIPS=OFF
+</font><a name="13"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MouseHSplit FILE=Textures\MouseHSplit.bmp GROUP="Icons" FLAGS=2 MIPS=OFF
+</font><a name="14"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MouseVSplit FILE=Textures\MouseVSplit.bmp GROUP="Icons" FLAGS=2 MIPS=OFF
+</font><a name="15"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=MouseWait FILE=Textures\MouseWait.bmp GROUP="Icons" FLAGS=2 MIPS=OFF
+</font><a name="16"></a>
+<a name="17"></a>
+<a name="18"></a><font class="source_comment">//!! Japanese text (experimental).
+</font><a name="19"></a><font class="source_comment">//#exec OBJ LOAD FILE=..\Textures\Japanese.utx
+</font><a name="20"></a>
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>       MouseWindow;        <font class="source_comment">// The window the mouse is over
+</font><a name="22"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                bMouseCapture;
+<a name="23"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font>               MouseX, MouseY;
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font>               OldMouseX, OldMouseY;
+<a name="25"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\windowconsole.html" class="source">WindowConsole</a></font>       <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>;
+<a name="26"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>       FocusedWindow;
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>       KeyFocusWindow;     <font class="source_comment">// window with keyboard focus
+</font><a name="28"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowwindow.html#MouseCursor" class="source">MouseCursor</a></font>         NormalCursor, MoveCursor, DiagCursor1, HandCursor, HSplitCursor, VSplitCursor, DiagCursor2, NSCursor, WECursor, WaitCursor;
+<a name="29"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                bQuickKeyEnable;
+<a name="30"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></font> HotkeyWindows;
+<a name="31"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">float</font>        GUIScale;
+<a name="32"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font>               RealWidth, RealHeight;
+<a name="33"></a><font class="source_keyword">var</font> <font class="source_type">Font</font>                Fonts[<font class="source_int">10</font>];
+<a name="34"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowlookandfeel.html" class="source">UWindowLookAndFeel</a></font>  LooksAndFeels[<font class="source_int">20</font>];
+<a name="35"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font>       LookAndFeelClass;
+<a name="36"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                bRequestQuit;
+<a name="37"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font>               QuitTime;
+<a name="38"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                bAllowConsole;
+<a name="39"></a>
+<a name="40"></a><font class="source_keyword">function</font> BeginPlay() 
+<a name="41"></a>{
+<a name="42"></a>    Root = Self;
+<a name="43"></a>    MouseWindow = Self;
+<a name="44"></a>    KeyFocusWindow = Self;
+<a name="45"></a>}
+<a name="46"></a>
+<a name="47"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\uwindow\uwindowlookandfeel.html" class="source">UWindowLookAndFeel</a></font> GetLookAndFeel(<font class="source_keyword">String</font> LFClassName)
+<a name="48"></a>{
+<a name="49"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="50"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowlookandfeel.html" class="source">UWindowLookAndFeel</a></font>&gt; LFClass;
+<a name="51"></a>
+<a name="52"></a>    LFClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowlookandfeel.html" class="source">UWindowLookAndFeel</a></font>&gt;(DynamicLoadObject(LFClassName, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="53"></a>
+<a name="54"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>;i&lt;<font class="source_int">20</font>;i++)
+<a name="55"></a>    {
+<a name="56"></a>        <font class="source_keyword">if</font>(LooksAndFeels[i] == <font class="source_keyword">None</font>)
+<a name="57"></a>        {
+<a name="58"></a>            LooksAndFeels[i] = new LFClass;
+<a name="59"></a>            LooksAndFeels[i].Setup();
+<a name="60"></a>            <font class="source_keyword">return</font> LooksAndFeels[i];
+<a name="61"></a>        }
+<a name="62"></a>
+<a name="63"></a>        <font class="source_keyword">if</font>(LooksAndFeels[i].<font class="source_keyword">Class</font> == LFClass)
+<a name="64"></a>            <font class="source_keyword">return</font> LooksAndFeels[i];
+<a name="65"></a>    }
+<a name="66"></a>    Log(<font class="source_string">"Out of LookAndFeel array space!!"</font>);
+<a name="67"></a>    <font class="source_keyword">return</font> <font class="source_keyword">None</font>;
+<a name="68"></a>}
+<a name="69"></a>
+<a name="70"></a>
+<a name="71"></a><font class="source_keyword">function</font> Created() 
+<a name="72"></a>{
+<a name="73"></a>    LookAndFeel = GetLookAndFeel(LookAndFeelClass);
+<a name="74"></a>    SetupFonts();
+<a name="75"></a>
+<a name="76"></a>    NormalCursor.tex = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'MouseCursor'</font>;
+<a name="77"></a>    NormalCursor.HotX = <font class="source_int">0</font>;
+<a name="78"></a>    NormalCursor.HotY = <font class="source_int">0</font>;
+<a name="79"></a>    NormalCursor.WindowsCursor = <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.IDC_ARROW;
+<a name="80"></a>
+<a name="81"></a>    MoveCursor.tex = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'MouseMove'</font>;
+<a name="82"></a>    MoveCursor.HotX = <font class="source_int">8</font>;
+<a name="83"></a>    MoveCursor.HotY = <font class="source_int">8</font>;
+<a name="84"></a>    MoveCursor.WindowsCursor = <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.IDC_SIZEALL;
+<a name="85"></a>    
+<a name="86"></a>    DiagCursor1.tex = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'MouseDiag1'</font>;
+<a name="87"></a>    DiagCursor1.HotX = <font class="source_int">8</font>;
+<a name="88"></a>    DiagCursor1.HotY = <font class="source_int">8</font>;
+<a name="89"></a>    DiagCursor1.WindowsCursor = <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.IDC_SIZENWSE;
+<a name="90"></a>    
+<a name="91"></a>    HandCursor.tex = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'MouseHand'</font>;
+<a name="92"></a>    HandCursor.HotX = <font class="source_int">11</font>;
+<a name="93"></a>    HandCursor.HotY = <font class="source_int">1</font>;
+<a name="94"></a>    HandCursor.WindowsCursor = <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.IDC_ARROW;
+<a name="95"></a>
+<a name="96"></a>    HSplitCursor.tex = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'MouseHSplit'</font>;
+<a name="97"></a>    HSplitCursor.HotX = <font class="source_int">9</font>;
+<a name="98"></a>    HSplitCursor.HotY = <font class="source_int">9</font>;
+<a name="99"></a>    HSplitCursor.WindowsCursor = <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.IDC_SIZEWE;
+<a name="100"></a>
+<a name="101"></a>    VSplitCursor.tex = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'MouseVSplit'</font>;
+<a name="102"></a>    VSplitCursor.HotX = <font class="source_int">9</font>;
+<a name="103"></a>    VSplitCursor.HotY = <font class="source_int">9</font>;
+<a name="104"></a>    VSplitCursor.WindowsCursor = <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.IDC_SIZENS;
+<a name="105"></a>
+<a name="106"></a>    DiagCursor2.tex = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'MouseDiag2'</font>;
+<a name="107"></a>    DiagCursor2.HotX = <font class="source_int">7</font>;
+<a name="108"></a>    DiagCursor2.HotY = <font class="source_int">7</font>;
+<a name="109"></a>    DiagCursor2.WindowsCursor = <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.IDC_SIZENESW;
+<a name="110"></a>
+<a name="111"></a>    NSCursor.tex = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'MouseNS'</font>;
+<a name="112"></a>    NSCursor.HotX = <font class="source_int">3</font>;
+<a name="113"></a>    NSCursor.HotY = <font class="source_int">7</font>;
+<a name="114"></a>    NSCursor.WindowsCursor = <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.IDC_SIZENS;
+<a name="115"></a>
+<a name="116"></a>    WECursor.tex = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'MouseWE'</font>;
+<a name="117"></a>    WECursor.HotX = <font class="source_int">7</font>;
+<a name="118"></a>    WECursor.HotY = <font class="source_int">3</font>;
+<a name="119"></a>    WECursor.WindowsCursor = <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.IDC_SIZEWE;
+<a name="120"></a>
+<a name="121"></a>    WaitCursor.tex = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'MouseWait'</font>;
+<a name="122"></a>    WECursor.HotX = <font class="source_int">6</font>;
+<a name="123"></a>    WECursor.HotY = <font class="source_int">9</font>;
+<a name="124"></a>    WECursor.WindowsCursor = <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.IDC_WAIT;
+<a name="125"></a>
+<a name="126"></a>
+<a name="127"></a>    HotkeyWindows = New <font class="source_keyword">class</font><font class="source_name">'UWindowHotkeyWindowList'</font>;
+<a name="128"></a>    HotkeyWindows.Last = HotkeyWindows;
+<a name="129"></a>    HotkeyWindows.Next = <font class="source_keyword">None</font>;
+<a name="130"></a>    HotkeyWindows.Sentinel = HotkeyWindows;
+<a name="131"></a>
+<a name="132"></a>    Cursor = NormalCursor;
+<a name="133"></a>}
+<a name="134"></a>
+<a name="135"></a><font class="source_keyword">function</font> MoveMouse(<font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="136"></a>{
+<a name="137"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font> NewMouseWindow;
+<a name="138"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> tx, ty;
+<a name="139"></a>
+<a name="140"></a>    MouseX = X;
+<a name="141"></a>    MouseY = Y;
+<a name="142"></a>
+<a name="143"></a>    <font class="source_keyword">if</font>(!bMouseCapture)
+<a name="144"></a>        NewMouseWindow = FindWindowUnder(X, Y);
+<a name="145"></a>    <font class="source_keyword">else</font>
+<a name="146"></a>        NewMouseWindow = MouseWindow;
+<a name="147"></a>
+<a name="148"></a>    <font class="source_keyword">if</font>(NewMouseWindow != MouseWindow)
+<a name="149"></a>    {
+<a name="150"></a>        MouseWindow.MouseLeave();
+<a name="151"></a>        NewMouseWindow.MouseEnter();
+<a name="152"></a>        MouseWindow = NewMouseWindow;
+<a name="153"></a>    }
+<a name="154"></a>
+<a name="155"></a>    <font class="source_keyword">if</font>(MouseX != OldMouseX || MouseY != OldMouseY)
+<a name="156"></a>    {
+<a name="157"></a>        OldMouseX = MouseX;
+<a name="158"></a>        OldMouseY = MouseY;
+<a name="159"></a>
+<a name="160"></a>        MouseWindow.GetMouseXY(tx, ty);
+<a name="161"></a>        MouseWindow.MouseMove(tx, ty);
+<a name="162"></a>    }
+<a name="163"></a>}
+<a name="164"></a>
+<a name="165"></a><font class="source_keyword">function</font> DrawMouse(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C) 
+<a name="166"></a>{
+<a name="167"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> X, Y;
+<a name="168"></a>
+<a name="169"></a>    <font class="source_keyword">if</font>(<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.bWindowsMouseAvailable)
+<a name="170"></a>    {
+<a name="171"></a>        <font class="source_comment">// Set the windows cursor...
+</font><a name="172"></a>        <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.SelectedCursor = MouseWindow.Cursor.WindowsCursor;
+<a name="173"></a>    }
+<a name="174"></a>    <font class="source_keyword">else</font>
+<a name="175"></a>    {
+<a name="176"></a>        C.DrawColor.R = <font class="source_int">255</font>;
+<a name="177"></a>        C.DrawColor.G = <font class="source_int">255</font>;
+<a name="178"></a>        C.DrawColor.B = <font class="source_int">255</font>;
+<a name="179"></a>        C.bNoSmooth = <font class="source_keyword">True</font>;
+<a name="180"></a>
+<a name="181"></a>        C.SetPos(MouseX * GUIScale - MouseWindow.Cursor.HotX, MouseY * GUIScale - MouseWindow.Cursor.HotY);
+<a name="182"></a>        C.DrawIcon(MouseWindow.Cursor.tex, <font class="source_int">1.0</font>);
+<a name="183"></a>    }
+<a name="184"></a>
+<a name="185"></a>
+<a name="186"></a>
+<a name="187"></a>    <font class="source_comment">/* DEBUG - show which window mouse is over
+<a name="188"></a>
+<a name="189"></a>    MouseWindow.GetMouseXY(X, Y);
+<a name="190"></a>    C.Font = Fonts[F_Normal];
+<a name="191"></a>
+<a name="192"></a>    C.DrawColor.R = 0;
+<a name="193"></a>    C.DrawColor.G = 0;
+<a name="194"></a>    C.DrawColor.B = 0;
+<a name="195"></a>    C.SetPos(MouseX * GUIScale - MouseWindow.Cursor.HotX, MouseY * GUIScale - MouseWindow.Cursor.HotY);
+<a name="196"></a>    C.DrawText( GetPlayerOwner().GetItemName(string(MouseWindow))$" "$int(MouseX * GUIScale)$", "$int(MouseY * GUIScale)$" ("$int(X)$", "$int(Y)$")");
+<a name="197"></a>
+<a name="198"></a>    C.DrawColor.R = 255;
+<a name="199"></a>    C.DrawColor.G = 255;
+<a name="200"></a>    C.DrawColor.B = 0;
+<a name="201"></a>    C.SetPos(-1 + MouseX * GUIScale - MouseWindow.Cursor.HotX, -1 + MouseY * GUIScale - MouseWindow.Cursor.HotY);
+<a name="202"></a>    C.DrawText( GetPlayerOwner().GetItemName(string(MouseWindow))$" "$int(MouseX * GUIScale)$", "$int(MouseY * GUIScale)$" ("$int(X)$", "$int(Y)$")");
+<a name="203"></a>
+<a name="204"></a>    */</font>
+<a name="205"></a>}
+<a name="206"></a>
+<a name="207"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CheckCaptureMouseUp()
+<a name="208"></a>{
+<a name="209"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> X, Y;
+<a name="210"></a>
+<a name="211"></a>    <font class="source_keyword">if</font>(bMouseCapture) {
+<a name="212"></a>        MouseWindow.GetMouseXY(X, Y);
+<a name="213"></a>        MouseWindow.LMouseUp(X, Y);
+<a name="214"></a>        bMouseCapture = <font class="source_keyword">False</font>;
+<a name="215"></a>        <font class="source_keyword">return</font> <font class="source_keyword">True</font>;
+<a name="216"></a>    }
+<a name="217"></a>    <font class="source_keyword">return</font> <font class="source_keyword">False</font>;
+<a name="218"></a>}
+<a name="219"></a>
+<a name="220"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CheckCaptureMouseDown()
+<a name="221"></a>{
+<a name="222"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> X, Y;
+<a name="223"></a>
+<a name="224"></a>    <font class="source_keyword">if</font>(bMouseCapture) {
+<a name="225"></a>        MouseWindow.GetMouseXY(X, Y);
+<a name="226"></a>        MouseWindow.LMouseDown(X, Y);
+<a name="227"></a>        bMouseCapture = <font class="source_keyword">False</font>;
+<a name="228"></a>        <font class="source_keyword">return</font> <font class="source_keyword">True</font>;
+<a name="229"></a>    }
+<a name="230"></a>    <font class="source_keyword">return</font> <font class="source_keyword">False</font>;
+<a name="231"></a>}
+<a name="232"></a>
+<a name="233"></a>
+<a name="234"></a><font class="source_keyword">function</font> CancelCapture()
+<a name="235"></a>{
+<a name="236"></a>    bMouseCapture = <font class="source_keyword">False</font>;
+<a name="237"></a>}
+<a name="238"></a>
+<a name="239"></a>
+<a name="240"></a><font class="source_keyword">function</font> CaptureMouse(<font class="source_keyword2">optional</font> <font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font> W)
+<a name="241"></a>{
+<a name="242"></a>    bMouseCapture = <font class="source_keyword">True</font>;
+<a name="243"></a>    <font class="source_keyword">if</font>(W != <font class="source_keyword">None</font>)
+<a name="244"></a>        MouseWindow = W;
+<a name="245"></a>    <font class="source_comment">//Log(MouseWindow.Class$": Captured Mouse");
+</font><a name="246"></a>}
+<a name="247"></a>
+<a name="248"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font> GetLookAndFeelTexture()
+<a name="249"></a>{
+<a name="250"></a>    <font class="source_keyword">Return</font> LookAndFeel.Active;
+<a name="251"></a>}
+<a name="252"></a>
+<a name="253"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> IsActive()
+<a name="254"></a>{
+<a name="255"></a>    <font class="source_keyword">Return</font> <font class="source_keyword">True</font>;
+<a name="256"></a>}
+<a name="257"></a>
+<a name="258"></a><font class="source_keyword">function</font> AddHotkeyWindow(<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font> W)
+<a name="259"></a>{
+<a name="260"></a><font class="source_comment">//	Log("Adding hotkeys for "$W);
+</font><a name="261"></a>    <font class="source_type"><a href="..\uwindow\uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></font>(HotkeyWindows.Insert(<font class="source_keyword">class</font><font class="source_name">'UWindowHotkeyWindowList'</font>)).Window = W;
+<a name="262"></a>}
+<a name="263"></a>
+<a name="264"></a><font class="source_keyword">function</font> RemoveHotkeyWindow(<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font> W)
+<a name="265"></a>{
+<a name="266"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></font> L;
+<a name="267"></a>
+<a name="268"></a><font class="source_comment">//	Log("Removing hotkeys for "$W);
+</font><a name="269"></a>
+<a name="270"></a>    L = HotkeyWindows.FindWindow(W);
+<a name="271"></a>    <font class="source_keyword">if</font>(L != <font class="source_keyword">None</font>)
+<a name="272"></a>        L.Remove();
+<a name="273"></a>}
+<a name="274"></a>
+<a name="275"></a>
+<a name="276"></a><font class="source_keyword">function</font> WindowEvent(<font class="source_type"><a href="..\uwindow\uwindowwindow.html#WinMessage" class="source">WinMessage</a></font> Msg, <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y, <font class="source_keyword">int</font> Key) 
+<a name="277"></a>{
+<a name="278"></a>    <font class="source_keyword">switch</font>(Msg) {
+<a name="279"></a>    <font class="source_keyword">case</font> WM_KeyDown:
+<a name="280"></a>        <font class="source_keyword">if</font>(HotKeyDown(Key, X, Y))
+<a name="281"></a>            <font class="source_keyword">return</font>;
+<a name="282"></a>        <font class="source_keyword">break</font>;
+<a name="283"></a>    <font class="source_keyword">case</font> WM_KeyUp:
+<a name="284"></a>        <font class="source_keyword">if</font>(HotKeyUp(Key, X, Y))
+<a name="285"></a>            <font class="source_keyword">return</font>;
+<a name="286"></a>        <font class="source_keyword">break</font>;
+<a name="287"></a>    }
+<a name="288"></a>
+<a name="289"></a>    <font class="source_keyword">Super</font>.WindowEvent(Msg, C, X, Y, Key);
+<a name="290"></a>}
+<a name="291"></a>
+<a name="292"></a>
+<a name="293"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HotKeyDown(<font class="source_keyword">int</font> Key, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="294"></a>{
+<a name="295"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></font> l;
+<a name="296"></a>
+<a name="297"></a>    l = <font class="source_type"><a href="..\uwindow\uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></font>(HotkeyWindows.Next);
+<a name="298"></a>    <font class="source_keyword">while</font>(l != <font class="source_keyword">None</font>) 
+<a name="299"></a>    {
+<a name="300"></a>        <font class="source_keyword">if</font>(l.Window != Self && l.Window.HotKeyDown(Key, X, Y)) <font class="source_keyword">return</font> <font class="source_keyword">True</font>;
+<a name="301"></a>        l = <font class="source_type"><a href="..\uwindow\uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></font>(l.Next);
+<a name="302"></a>    }
+<a name="303"></a>
+<a name="304"></a>    <font class="source_keyword">return</font> <font class="source_keyword">False</font>;
+<a name="305"></a>}
+<a name="306"></a>
+<a name="307"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HotKeyUp(<font class="source_keyword">int</font> Key, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="308"></a>{
+<a name="309"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\uwindow\uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></font> l;
+<a name="310"></a>
+<a name="311"></a>    l = <font class="source_type"><a href="..\uwindow\uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></font>(HotkeyWindows.Next);
+<a name="312"></a>    <font class="source_keyword">while</font>(l != <font class="source_keyword">None</font>) 
+<a name="313"></a>    {
+<a name="314"></a>        <font class="source_keyword">if</font>(l.Window != Self && l.Window.HotKeyUp(Key, X, Y)) <font class="source_keyword">return</font> <font class="source_keyword">True</font>;
+<a name="315"></a>        l = <font class="source_type"><a href="..\uwindow\uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></font>(l.Next);
+<a name="316"></a>    }
+<a name="317"></a>
+<a name="318"></a>    <font class="source_keyword">return</font> <font class="source_keyword">False</font>;
+<a name="319"></a>}
+<a name="320"></a>
+<a name="321"></a><font class="source_keyword">function</font> CloseActiveWindow()
+<a name="322"></a>{
+<a name="323"></a>    <font class="source_keyword">if</font>(ActiveWindow != <font class="source_keyword">None</font>)
+<a name="324"></a>        ActiveWindow.EscClose();
+<a name="325"></a>    <font class="source_keyword">else</font>
+<a name="326"></a>        <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.CloseUWindow();
+<a name="327"></a>}
+<a name="328"></a>
+<a name="329"></a><font class="source_keyword">function</font> Resized()
+<a name="330"></a>{
+<a name="331"></a>    ResolutionChanged(WinWidth, WinHeight);
+<a name="332"></a>}
+<a name="333"></a>
+<a name="334"></a><font class="source_keyword">function</font> SetScale(<font class="source_keyword">float</font> NewScale)
+<a name="335"></a>{
+<a name="336"></a>    WinWidth = RealWidth / NewScale;
+<a name="337"></a>    WinHeight = RealHeight / NewScale;
+<a name="338"></a>
+<a name="339"></a>    GUIScale = NewScale;
+<a name="340"></a>
+<a name="341"></a>    ClippingRegion.X = <font class="source_int">0</font>;
+<a name="342"></a>    ClippingRegion.Y = <font class="source_int">0</font>;
+<a name="343"></a>    ClippingRegion.W = WinWidth;
+<a name="344"></a>    ClippingRegion.H = WinHeight;
+<a name="345"></a>
+<a name="346"></a>    SetupFonts();
+<a name="347"></a>
+<a name="348"></a>    Resized();
+<a name="349"></a>}
+<a name="350"></a>
+<a name="351"></a><font class="source_keyword">function</font> SetupFonts()
+<a name="352"></a>{
+<a name="353"></a>    <font class="source_comment">//!! Japanese text (experimental).
+</font><a name="354"></a>    <font class="source_comment">/*if( true )
+<a name="355"></a>    {
+<a name="356"></a>        Fonts[F_Normal]    = Font(DynamicLoadObject("Japanese.Japanese", class'Font'));
+<a name="357"></a>        Fonts[F_Bold]      = Font(DynamicLoadObject("Japanese.Japanese", class'Font'));
+<a name="358"></a>        Fonts[F_Large]     = Font(DynamicLoadObject("Japanese.Japanese", class'Font'));
+<a name="359"></a>        Fonts[F_LargeBold] = Font(DynamicLoadObject("Japanese.Japanese", class'Font'));
+<a name="360"></a>        return;
+<a name="361"></a>    }*/</font>
+<a name="362"></a>    <font class="source_keyword">if</font>(GUIScale == <font class="source_int">2</font>)
+<a name="363"></a>    {
+<a name="364"></a>        Fonts[F_Normal] = <font class="source_type">Font</font>(DynamicLoadObject(<font class="source_string">"UWindowFonts.Tahoma20"</font>, <font class="source_keyword">class</font><font class="source_name">'Font'</font>));
+<a name="365"></a>        Fonts[F_Bold] = <font class="source_type">Font</font>(DynamicLoadObject(<font class="source_string">"UWindowFonts.TahomaB20"</font>, <font class="source_keyword">class</font><font class="source_name">'Font'</font>));
+<a name="366"></a>        Fonts[F_Large] = <font class="source_type">Font</font>(DynamicLoadObject(<font class="source_string">"UWindowFonts.Tahoma30"</font>, <font class="source_keyword">class</font><font class="source_name">'Font'</font>));
+<a name="367"></a>        Fonts[F_LargeBold] = <font class="source_type">Font</font>(DynamicLoadObject(<font class="source_string">"UWindowFonts.TahomaB30"</font>, <font class="source_keyword">class</font><font class="source_name">'Font'</font>));
+<a name="368"></a>    }
+<a name="369"></a>    <font class="source_keyword">else</font>
+<a name="370"></a>    {
+<a name="371"></a>        Fonts[F_Normal] = <font class="source_type">Font</font>(DynamicLoadObject(<font class="source_string">"UWindowFonts.Tahoma10"</font>, <font class="source_keyword">class</font><font class="source_name">'Font'</font>));
+<a name="372"></a>        Fonts[F_Bold] = <font class="source_type">Font</font>(DynamicLoadObject(<font class="source_string">"UWindowFonts.TahomaB10"</font>, <font class="source_keyword">class</font><font class="source_name">'Font'</font>));
+<a name="373"></a>        Fonts[F_Large] = <font class="source_type">Font</font>(DynamicLoadObject(<font class="source_string">"UWindowFonts.Tahoma20"</font>, <font class="source_keyword">class</font><font class="source_name">'Font'</font>));
+<a name="374"></a>        Fonts[F_LargeBold] = <font class="source_type">Font</font>(DynamicLoadObject(<font class="source_string">"UWindowFonts.TahomaB20"</font>, <font class="source_keyword">class</font><font class="source_name">'Font'</font>));
+<a name="375"></a>    }   
+<a name="376"></a>}
+<a name="377"></a>
+<a name="378"></a><font class="source_keyword">function</font> ChangeLookAndFeel(<font class="source_keyword">string</font> NewLookAndFeel)
+<a name="379"></a>{
+<a name="380"></a>    LookAndFeelClass = NewLookAndFeel;
+<a name="381"></a>    SaveConfig();
+<a name="382"></a>
+<a name="383"></a>    <font class="source_comment">// Completely restart UWindow system on the next paint
+</font><a name="384"></a>    <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.ResetUWindow();
+<a name="385"></a>}
+<a name="386"></a>
+<a name="387"></a><font class="source_keyword">function</font> HideWindow()
+<a name="388"></a>{
+<a name="389"></a>}
+<a name="390"></a>
+<a name="391"></a><font class="source_keyword">function</font> SetMousePos(<font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="392"></a>{
+<a name="393"></a>    <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.MouseX = X;
+<a name="394"></a>    <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.MouseY = Y;
+<a name="395"></a>}
+<a name="396"></a>
+<a name="397"></a><font class="source_keyword">function</font> QuitGame()
+<a name="398"></a>{
+<a name="399"></a>    bRequestQuit = <font class="source_keyword">True</font>;
+<a name="400"></a>    QuitTime = <font class="source_int">0</font>;
+<a name="401"></a>    NotifyQuitUnreal();
+<a name="402"></a>}
+<a name="403"></a>
+<a name="404"></a><font class="source_keyword">function</font> DoQuitGame()
+<a name="405"></a>{
+<a name="406"></a>    SaveConfig();
+<a name="407"></a>    <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.SaveConfig();
+<a name="408"></a>    <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">ViewPort</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.SaveConfig();
+<a name="409"></a>    Close();
+<a name="410"></a>    <font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.<font class="source_type">Viewport</font>.<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>.ConsoleCommand(<font class="source_string">"exit"</font>);
+<a name="411"></a>}
+<a name="412"></a>
+<a name="413"></a><font class="source_keyword">function</font> Tick(<font class="source_keyword">float</font> Delta)
+<a name="414"></a>{
+<a name="415"></a>    <font class="source_keyword">if</font>(bRequestQuit)
+<a name="416"></a>    {
+<a name="417"></a>        <font class="source_comment">// Give everything time to close itself down (ie sockets).
+</font><a name="418"></a>        <font class="source_keyword">if</font>(QuitTime &gt; <font class="source_int">0.25</font>)
+<a name="419"></a>            DoQuitGame();
+<a name="420"></a>        QuitTime += Delta;
+<a name="421"></a>    }
+<a name="422"></a>
+<a name="423"></a>    <font class="source_keyword">Super</font>.Tick(Delta);
+<a name="424"></a>}
+<a name="425"></a>
+<a name="426"></a><font class="source_keyword">defaultproperties</font>
+<a name="427"></a>{
+<a name="428"></a>    GUIScale=<font class="source_int">1</font>
+<a name="429"></a>    LookAndFeelClass=<font class="source_string">""</font>
+<a name="430"></a>    bAllowConsole=<font class="source_keyword">True</font>
+<a name="431"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\uwindow\uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="..\uwindow\uwindowrootwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UWindowRootWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowrightclickmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindowsbdownbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:28:06.000 - Creation time: Wed 26/5/2004 10:49:05.140 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

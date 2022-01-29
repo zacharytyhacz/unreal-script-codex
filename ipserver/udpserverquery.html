@@ -1,0 +1,400 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - IpServer.UdpServerQuery</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ipserver-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ipserver\udpserverquery.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UdpServerQuery">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="udpserveruplink.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="udpserveruplink.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="ipserver-overview.html">IpServer</a>.UdpServerQuery</h1>
+<b>Extends:</b> <a href="..\ipdrv\udplink.html">UdpLink</a><br>
+<b>Modifiers:</b> config <br>
+<a href="..\Source_ipserver\udpserverquery.html"><b>Source code</b></a>
+
+<p>
+UdpServerQuery<br />
+<br />
+Version: 1.5<br />
+<br />
+This query server is compliant with the GameSpy Uplink Specification.<br />
+The specification is available at <a href="http://www.gamespy.com/developer" target="_blank">http://www.gamespy.com/developer</a><br />
+and might be of use to progammers who are writing or maintaining<br />
+their own stat gathering/game querying software.<br />
+<br />
+Note: Currently, SendText returns false if successful.<br />
+<br />
+Full documentation on this class is available at <a href="http://unreal.epicgames.com/" target="_blank">http://unreal.epicgames.com/</a><br />
+<br />
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\info.html">Info</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\internetinfo.html">InternetInfo</a>
+            |   
+            +-- <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\internetlink.html">InternetLink</a>
+                |   
+                +-- <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\udplink.html">UdpLink</a>
+                    |   
+                    +-- <a href="ipserver-overview.html">IpServer</a>.<a href="udpserverquery.html">UdpServerQuery</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRestartServerOnPortSwap" name="bRestartServerOnPortSwap">bRestartServerOnPortSwap</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CurrentQueryNum" name="CurrentQueryNum">CurrentQueryNum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameName" name="GameName">GameName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MinNetVer" name="MinNetVer">MinNetVer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_OldQueryPortNumber" name="OldQueryPortNumber">OldQueryPortNumber</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_QueryName" name="QueryName">QueryName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ReplyData" name="ReplyData">ReplyData</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\udplink.html">UdpLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\udplink.html#BroadcastAddr">BroadcastAddr</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\internetlink.html#DataPending">DataPending</a>, <a href="..\ipdrv\internetlink.html#LinkMode">LinkMode</a>, <a href="..\ipdrv\internetlink.html#Port">Port</a>, <a href="..\ipdrv\internetlink.html#PrivateResolveInfo">PrivateResolveInfo</a>, <a href="..\ipdrv\internetlink.html#ReceiveMode">ReceiveMode</a>, <a href="..\ipdrv\internetlink.html#RemoteSocket">RemoteSocket</a>, <a href="..\ipdrv\internetlink.html#Socket">Socket</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\internetlink.html#ELinkMode">ELinkMode</a>, <a href="..\ipdrv\internetlink.html#EReceiveMode">EReceiveMode</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\internetlink.html#IpAddr">IpAddr</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetBasic+" name="GetBasic">GetBasic</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetGameProperty+" name="GetGameProperty">GetGameProperty</a> (string Prop)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetInfo+" name="GetInfo">GetInfo</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetLevelProperty+" name="GetLevelProperty">GetLevelProperty</a> (string Prop)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetPlayer+" name="GetPlayer">GetPlayer</a> (<a href="..\engine\playerpawn.html">PlayerPawn</a> P, int PlayerNum)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetPlayerProperty+" name="GetPlayerProperty">GetPlayerProperty</a> (string Prop)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetRules+" name="GetRules">GetRules</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ParseNextQuery+" name="ParseNextQuery">ParseNextQuery</a> (string Query, out string QueryType, out string QueryValue, out string QueryRest, out int bFinalPacket)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_ParseQuery+" name="ParseQuery">ParseQuery</a> (<a href="..\ipdrv\internetlink.html#IpAddr">IpAddr</a> Addr, coerce string Query, int QueryNum, out int PacketNum)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PostBeginPlay+" name="PostBeginPlay">PostBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PreBeginPlay+" name="PreBeginPlay">PreBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_ReceivedText+" name="ReceivedText">ReceivedText</a> (<a href="..\ipdrv\internetlink.html#IpAddr">IpAddr</a> Addr, string Text)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_SendAPacket+" name="SendAPacket">SendAPacket</a> (<a href="..\ipdrv\internetlink.html#IpAddr">IpAddr</a> Addr, int QueryNum, out int PacketNum, int bFinalPacket)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_SendPlayers+" name="SendPlayers">SendPlayers</a> (<a href="..\ipdrv\internetlink.html#IpAddr">IpAddr</a> Addr, int QueryNum, out int PacketNum, int bFinalPacket)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_SendQueryPacket+" name="SendQueryPacket">SendQueryPacket</a> (<a href="..\ipdrv\internetlink.html#IpAddr">IpAddr</a> Addr, coerce string SendString, int QueryNum, out int PacketNum, int bFinalPacket)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\udplink.html">UdpLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\udplink.html#BindPort">BindPort</a>, <a href="..\ipdrv\udplink.html#ReadBinary">ReadBinary</a>, <a href="..\ipdrv\udplink.html#ReadText">ReadText</a>, <a href="..\ipdrv\udplink.html#ReceivedBinary">ReceivedBinary</a>, <a href="..\ipdrv\udplink.html#ReceivedLine">ReceivedLine</a>, <a href="..\ipdrv\udplink.html#ReceivedText">ReceivedText</a>, <a href="..\ipdrv\udplink.html#SendBinary">SendBinary</a>, <a href="..\ipdrv\udplink.html#SendText">SendText</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\ipdrv\ipdrv-overview.html">IpDrv</a>.<a href="..\ipdrv\internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\ipdrv\internetlink.html#GetLastError">GetLastError</a>, <a href="..\ipdrv\internetlink.html#GetLocalIP">GetLocalIP</a>, <a href="..\ipdrv\internetlink.html#IpAddrToString">IpAddrToString</a>, <a href="..\ipdrv\internetlink.html#IsDataPending">IsDataPending</a>, <a href="..\ipdrv\internetlink.html#ParseURL">ParseURL</a>, <a href="..\ipdrv\internetlink.html#Resolve">Resolve</a>, <a href="..\ipdrv\internetlink.html#Resolved">Resolved</a>, <a href="..\ipdrv\internetlink.html#ResolveFailed">ResolveFailed</a>, <a href="..\ipdrv\internetlink.html#StringToIpAddr">StringToIpAddr</a>, <a href="..\ipdrv\internetlink.html#Validate">Validate</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bRestartServerOnPortSwap" class="hidden"></a>bRestartServerOnPortSwap <a href="..\Source_ipserver\udpserverquery.html#29" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bRestartServerOnPortSwap;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CurrentQueryNum" class="hidden"></a>CurrentQueryNum <a href="..\Source_ipserver\udpserverquery.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> CurrentQueryNum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GameName" class="hidden"></a>GameName <a href="..\Source_ipserver\udpserverquery.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">string</font> GameName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinNetVer" class="hidden"></a>MinNetVer <a href="..\Source_ipserver\udpserverquery.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">int</font> MinNetVer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldQueryPortNumber" class="hidden"></a>OldQueryPortNumber <a href="..\Source_ipserver\udpserverquery.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">int</font> OldQueryPortNumber;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_QueryName" class="hidden"></a>QueryName <a href="..\Source_ipserver\udpserverquery.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">name</font> QueryName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReplyData" class="hidden"></a>ReplyData <a href="..\Source_ipserver\udpserverquery.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> ReplyData;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_GetBasic+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetBasic <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#258" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetBasic ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetGameProperty+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetGameProperty <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#430" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetGameProperty (<font class="source_keyword">string</font> Prop)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetInfo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetInfo <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#281" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetInfo ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetLevelProperty+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetLevelProperty <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#420" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetLevelProperty (<font class="source_keyword">string</font> Prop)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetPlayer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetPlayer <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#350" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetPlayer (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> P, <font class="source_keyword">int</font> PlayerNum)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetPlayerProperty+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetPlayerProperty <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#440" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetPlayerProperty (<font class="source_keyword">string</font> Prop)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetRules+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetRules <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#332" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetRules ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ParseNextQuery+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ParseNextQuery <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#100" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ParseNextQuery (<font class="source_keyword">string</font> Query, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> QueryType, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> QueryValue, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> QueryRest, <font class="source_keyword2">out</font> <font class="source_keyword">int</font> bFinalPacket)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ParseQuery+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ParseQuery <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#153" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> ParseQuery (<font class="source_type"><a href="..\ipdrv\internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Query, <font class="source_keyword">int</font> QueryNum, <font class="source_keyword2">out</font> <font class="source_keyword">int</font> PacketNum)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PostBeginPlay <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#59" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PostBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PreBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PreBeginPlay <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PreBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReceivedText+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> ReceivedText <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#71" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> ReceivedText (<font class="source_type"><a href="..\ipdrv\internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword">string</font> Text)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SendAPacket+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SendAPacket <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#224" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SendAPacket (<font class="source_type"><a href="..\ipdrv\internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword">int</font> QueryNum, <font class="source_keyword2">out</font> <font class="source_keyword">int</font> PacketNum, <font class="source_keyword">int</font> bFinalPacket)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SendPlayers+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SendPlayers <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#393" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SendPlayers (<font class="source_type"><a href="..\ipdrv\internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword">int</font> QueryNum, <font class="source_keyword2">out</font> <font class="source_keyword">int</font> PacketNum, <font class="source_keyword">int</font> bFinalPacket)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SendQueryPacket+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SendQueryPacket <span class="function_state"></span> <a href="..\Source_ipserver\udpserverquery.html#240" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SendQueryPacket (<font class="source_type"><a href="..\ipdrv\internetlink.html#IpAddr" class="source">IpAddr</a></font> Addr, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> SendString, <font class="source_keyword">int</font> QueryNum, <font class="source_keyword2">out</font> <font class="source_keyword">int</font> PacketNum, <font class="source_keyword">int</font> bFinalPacket)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     QueryName=MasterUplink
+     GameName=<font class="source_string">"ut"</font>
+     RemoteRole=ROLE_None
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ipserver-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ipserver\udpserverquery.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UdpServerQuery">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="udpserveruplink.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="udpserveruplink.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:42.093 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

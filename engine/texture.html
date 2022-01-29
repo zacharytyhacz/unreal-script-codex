@@ -1,0 +1,694 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Engine.Texture</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\texture.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Texture">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="testobj.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="trigger.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="engine-overview.html">Engine</a>.Texture</h1>
+<b>Extends:</b> <a href="bitmap.html">Bitmap</a><br>
+<b>Modifiers:</b> safereplace native noexport <br>
+<a href="..\Source_engine\texture.html"><b>Source code</b></a>
+
+<p>
+Texture: An Unreal texture map.<br />
+This is a built-in Unreal class and it shouldn't be modified.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="engine-overview.html">Engine</a>.<a href="bitmap.html">Bitmap</a>
+    |   
+    +-- <a href="engine-overview.html">Engine</a>.<a href="texture.html">Texture</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\fire\fractaltexture.html">FractalTexture</a>, <a href="scriptedtexture.html">ScriptedTexture</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#MaxInt">MaxInt</a>, <a href="..\core\object.html#Pi">Pi</a>, <a href="..\core\object.html#RF_NotForClient">RF_NotForClient</a>, <a href="..\core\object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="..\core\object.html#RF_NotForServer">RF_NotForServer</a>, <a href="..\core\object.html#RF_Public">RF_Public</a>, <a href="..\core\object.html#RF_Transactional">RF_Transactional</a>, <a href="..\core\object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Accumulator" name="Accumulator">Accumulator</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="texture.html">texture</a></td><td width="66%"><a href="#_AnimCurrent" name="AnimCurrent">AnimCurrent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDirtyShadows" name="bDirtyShadows">bDirtyShadows</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bGouraud" name="bGouraud">bGouraud</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHasComp" name="bHasComp">bHasComp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHighLedge" name="bHighLedge">bHighLedge</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHighShadowDetail" name="bHighShadowDetail">bHighShadowDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInvisible" name="bInvisible">bInvisible</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLowShadowDetail" name="bLowShadowDetail">bLowShadowDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMirrored" name="bMirrored">bMirrored</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoMerge" name="bNoMerge">bNoMerge</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNotSolid" name="bNotSolid">bNotSolid</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bParametric" name="bParametric">bParametric</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPortal" name="bPortal">bPortal</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRealtime" name="bRealtime">bRealtime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRealtimeChanged" name="bRealtimeChanged">bRealtimeChanged</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSemisolid" name="bSemisolid">bSemisolid</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSpecialLit" name="bSpecialLit">bSpecialLit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bX2" name="bX2">bX2</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bX3" name="bX3">bX3</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bX4" name="bX4">bX4</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bX5" name="bX5">bX5</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bX6" name="bX6">bX6</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bX7" name="bX7">bX7</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="bitmap.html#ETextureFormat">ETextureFormat</a></td><td width="66%"><a href="#_CompFormat" name="CompFormat">CompFormat</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;int&gt;</td><td width="66%"><a href="#_CompMips" name="CompMips">CompMips</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_FootstepSound" name="FootstepSound">FootstepSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_HitSound" name="HitSound">HitSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MinFrameRate" name="MinFrameRate">MinFrameRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;int&gt;</td><td width="66%"><a href="#_Mips" name="Mips">Mips</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_PrimeCurrent" name="PrimeCurrent">PrimeCurrent</a></td></tr>
+<tr><th colspan="2" class="small">Animation</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="texture.html">texture</a></td><td width="66%"><a href="#_AnimNext" name="AnimNext">AnimNext</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MaxFrameRate" name="MaxFrameRate">MaxFrameRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_PrimeCount" name="PrimeCount">PrimeCount</a></td></tr>
+<tr><th colspan="2" class="small">Quality</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHighColorQuality" name="bHighColorQuality">bHighColorQuality</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHighTextureQuality" name="bHighTextureQuality">bHighTextureQuality</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="texture.html#ELODSet">ELODSet</a></td><td width="66%"><a href="#_LODSet" name="LODSet">LODSet</a></td></tr>
+<tr><th colspan="2" class="small">Surface</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAutoUPan" name="bAutoUPan">bAutoUPan</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAutoVPan" name="bAutoVPan">bAutoVPan</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bBigWavy" name="bBigWavy">bBigWavy</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCloudWavy" name="bCloudWavy">bCloudWavy</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bEnvironment" name="bEnvironment">bEnvironment</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFakeBackdrop" name="bFakeBackdrop">bFakeBackdrop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMasked" name="bMasked">bMasked</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bModulate" name="bModulate">bModulate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoSmooth" name="bNoSmooth">bNoSmooth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSmallWavy" name="bSmallWavy">bSmallWavy</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTransparent" name="bTransparent">bTransparent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTwoSided" name="bTwoSided">bTwoSided</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUnlit" name="bUnlit">bUnlit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bWaterWavy" name="bWaterWavy">bWaterWavy</a></td></tr>
+<tr><th colspan="2" class="small">Texture</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Alpha" name="Alpha">Alpha</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="texture.html">texture</a></td><td width="66%"><a href="#_BumpMap" name="BumpMap">BumpMap</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="texture.html">texture</a></td><td width="66%"><a href="#_DetailTexture" name="DetailTexture">DetailTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Diffuse" name="Diffuse">Diffuse</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DrawScale" name="DrawScale">DrawScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Friction" name="Friction">Friction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="texture.html">texture</a></td><td width="66%"><a href="#_MacroTexture" name="MacroTexture">MacroTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MipMult" name="MipMult">MipMult</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Specular" name="Specular">Specular</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="engine-overview.html">Engine</a>.<a href="bitmap.html">Bitmap</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="bitmap.html#Format">Format</a>, <a href="bitmap.html#InternalTime[2]">InternalTime[2]</a>, <a href="bitmap.html#MaxColor">MaxColor</a>, <a href="bitmap.html#MipZero">MipZero</a>, <a href="bitmap.html#Palette">Palette</a>, <a href="bitmap.html#UBits">UBits</a>, <a href="bitmap.html#UClamp">UClamp</a>, <a href="bitmap.html#USize">USize</a>, <a href="bitmap.html#VBits">VBits</a>, <a href="bitmap.html#VClamp">VClamp</a>, <a href="bitmap.html#VSize">VSize</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#Class">Class</a>, <a href="..\core\object.html#Name">Name</a>, <a href="..\core\object.html#ObjectFlags">ObjectFlags</a>, <a href="..\core\object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="..\core\object.html#Outer">Outer</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_ELODSet" name="ELODSet">ELODSet</a><br /><span class="small">LODSET_None,
+LODSET_World,
+LODSET_Skin,
+</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="engine-overview.html">Engine</a>.<a href="bitmap.html">Bitmap</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="bitmap.html#ETextureFormat">ETextureFormat</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#BoundingBox">BoundingBox</a>, <a href="..\core\object.html#BoundingVolume">BoundingVolume</a>, <a href="..\core\object.html#Color">Color</a>, <a href="..\core\object.html#Coords">Coords</a>, <a href="..\core\object.html#Guid">Guid</a>, <a href="..\core\object.html#Plane">Plane</a>, <a href="..\core\object.html#Rotator">Rotator</a>, <a href="..\core\object.html#Scale">Scale</a>, <a href="..\core\object.html#Vector">Vector</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#!">!</a>, <a href="..\core\object.html#!=">!=</a>, <a href="..\core\object.html#$">$</a>, <a href="..\core\object.html#">%</a>, <a href="..\core\object.html#&">&</a>, <a href="..\core\object.html#&&">&&</a>, <a href="..\core\object.html#*">*</a>, <a href="..\core\object.html#**">**</a>, <a href="..\core\object.html#*=">*=</a>, <a href="..\core\object.html#+">+</a>, <a href="..\core\object.html#++">++</a>, <a href="..\core\object.html#+=">+=</a>, <a href="..\core\object.html#-">-</a>, <a href="..\core\object.html#-=">-=</a>, <a href="..\core\object.html#/">/ </a>, <a href="..\core\object.html#/=">/=</a>, <a href="..\core\object.html#&lt;">&lt;</a>, <a href="..\core\object.html#&lt;&lt;">&lt;&lt;</a>, <a href="..\core\object.html#&lt;=">&lt;=</a>, <a href="..\core\object.html#==">==</a>, <a href="..\core\object.html#&gt;">&gt;</a>, <a href="..\core\object.html#&gt;=">&gt;=</a>, <a href="..\core\object.html#&gt;&gt;">&gt;&gt;</a>, <a href="..\core\object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="..\core\object.html#@">@</a>, <a href="..\core\object.html#Abs">Abs</a>, <a href="..\core\object.html#Asc">Asc</a>, <a href="..\core\object.html#Atan">Atan</a>, <a href="..\core\object.html#BeginState">BeginState</a>, <a href="..\core\object.html#Caps">Caps</a>, <a href="..\core\object.html#Chr">Chr</a>, <a href="..\core\object.html#Clamp">Clamp</a>, <a href="..\core\object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="..\core\object.html#Cos">Cos</a>, <a href="..\core\object.html#Cross">Cross</a>, <a href="..\core\object.html#Disable">Disable</a>, <a href="..\core\object.html#Dot">Dot</a>, <a href="..\core\object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="..\core\object.html#Enable">Enable</a>, <a href="..\core\object.html#EndState">EndState</a>, <a href="..\core\object.html#Exp">Exp</a>, <a href="..\core\object.html#FClamp">FClamp</a>, <a href="..\core\object.html#FMax">FMax</a>, <a href="..\core\object.html#FMin">FMin</a>, <a href="..\core\object.html#FRand">FRand</a>, <a href="..\core\object.html#GetAxes">GetAxes</a>, <a href="..\core\object.html#GetEnum">GetEnum</a>, <a href="..\core\object.html#GetPropertyText">GetPropertyText</a>, <a href="..\core\object.html#GetStateName">GetStateName</a>, <a href="..\core\object.html#GetUnAxes">GetUnAxes</a>, <a href="..\core\object.html#GotoState">GotoState</a>, <a href="..\core\object.html#InStr">InStr</a>, <a href="..\core\object.html#Invert">Invert</a>, <a href="..\core\object.html#IsA">IsA</a>, <a href="..\core\object.html#IsInState">IsInState</a>, <a href="..\core\object.html#Left">Left</a>, <a href="..\core\object.html#Len">Len</a>, <a href="..\core\object.html#Lerp">Lerp</a>, <a href="..\core\object.html#Localize">Localize</a>, <a href="..\core\object.html#Log">Log</a>, <a href="..\core\object.html#Loge">Loge</a>, <a href="..\core\object.html#Max">Max</a>, <a href="..\core\object.html#Mid">Mid</a>, <a href="..\core\object.html#Min">Min</a>, <a href="..\core\object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="..\core\object.html#Normal">Normal</a>, <a href="..\core\object.html#Normalize">Normalize</a>, <a href="..\core\object.html#OrthoRotation">OrthoRotation</a>, <a href="..\core\object.html#Rand">Rand</a>, <a href="..\core\object.html#RandRange">RandRange</a>, <a href="..\core\object.html#ResetConfig">ResetConfig</a>, <a href="..\core\object.html#Right">Right</a>, <a href="..\core\object.html#RotRand">RotRand</a>, <a href="..\core\object.html#SaveConfig">SaveConfig</a>, <a href="..\core\object.html#SetPropertyText">SetPropertyText</a>, <a href="..\core\object.html#Sin">Sin</a>, <a href="..\core\object.html#Smerp">Smerp</a>, <a href="..\core\object.html#Sqrt">Sqrt</a>, <a href="..\core\object.html#Square">Square</a>, <a href="..\core\object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="..\core\object.html#Tan">Tan</a>, <a href="..\core\object.html#VRand">VRand</a>, <a href="..\core\object.html#VSize">VSize</a>, <a href="..\core\object.html#Warn">Warn</a>, <a href="..\core\object.html#^">^</a>, <a href="..\core\object.html#^^">^^</a>, <a href="..\core\object.html#|">|</a>, <a href="..\core\object.html#||">||</a>, <a href="..\core\object.html#~">~</a>, <a href="..\core\object.html#~=">~=</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Accumulator" class="hidden"></a>Accumulator <a href="..\Source_engine\texture.html#78" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">float</font> Accumulator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AnimCurrent" class="hidden"></a>AnimCurrent <a href="..\Source_engine\texture.html#74" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="texture.html" class="source">texture</a></font> AnimCurrent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bDirtyShadows" class="hidden"></a>bDirtyShadows <a href="..\Source_engine\texture.html#46" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDirtyShadows;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bGouraud" class="hidden"></a>bGouraud <a href="..\Source_engine\texture.html#49" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bGouraud;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHasComp" class="hidden"></a>bHasComp <a href="..\Source_engine\texture.html#62" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">private</font> <font class="source_keyword">bool</font> bHasComp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHighLedge" class="hidden"></a>bHighLedge <a href="..\Source_engine\texture.html#47" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHighLedge;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHighShadowDetail" class="hidden"></a>bHighShadowDetail <a href="..\Source_engine\texture.html#51" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHighShadowDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bInvisible" class="hidden"></a>bInvisible <a href="..\Source_engine\texture.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bInvisible;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bLowShadowDetail" class="hidden"></a>bLowShadowDetail <a href="..\Source_engine\texture.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bLowShadowDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bMirrored" class="hidden"></a>bMirrored <a href="..\Source_engine\texture.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bMirrored;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNoMerge" class="hidden"></a>bNoMerge <a href="..\Source_engine\texture.html#44" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNoMerge;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNotSolid" class="hidden"></a>bNotSolid <a href="..\Source_engine\texture.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNotSolid;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bParametric" class="hidden"></a>bParametric <a href="..\Source_engine\texture.html#60" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">private</font> <font class="source_keyword">bool</font> bParametric;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bPortal" class="hidden"></a>bPortal <a href="..\Source_engine\texture.html#52" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPortal;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bRealtime" class="hidden"></a>bRealtime <a href="..\Source_engine\texture.html#59" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">private</font> <font class="source_keyword">bool</font> bRealtime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bRealtimeChanged" class="hidden"></a>bRealtimeChanged <a href="..\Source_engine\texture.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">private</font> <font class="source_keyword2">transient</font> <font class="source_keyword">bool</font> bRealtimeChanged;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bSemisolid" class="hidden"></a>bSemisolid <a href="..\Source_engine\texture.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSemisolid;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bSpecialLit" class="hidden"></a>bSpecialLit <a href="..\Source_engine\texture.html#48" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSpecialLit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bX2" class="hidden"></a>bX2 <a href="..\Source_engine\texture.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bX2;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bX3" class="hidden"></a>bX3 <a href="..\Source_engine\texture.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bX3;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bX4" class="hidden"></a>bX4 <a href="..\Source_engine\texture.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bX4;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bX5" class="hidden"></a>bX5 <a href="..\Source_engine\texture.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bX5;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bX6" class="hidden"></a>bX6 <a href="..\Source_engine\texture.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bX6;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bX7" class="hidden"></a>bX7 <a href="..\Source_engine\texture.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bX7;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CompFormat" class="hidden"></a>CompFormat <a href="..\Source_engine\texture.html#82" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="bitmap.html#ETextureFormat" class="source">ETextureFormat</a></font> CompFormat;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CompMips" class="hidden"></a>CompMips <a href="..\Source_engine\texture.html#81" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">private</font> <font class="source_keyword2">native</font> <font class="source_keyword">const</font> <font class="source_keyword">array</font>&lt;<font class="source_keyword">int</font>&gt; CompMips;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FootstepSound" class="hidden"></a>FootstepSound <a href="..\Source_engine\texture.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">sound</font> FootstepSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HitSound" class="hidden"></a>HitSound <a href="..\Source_engine\texture.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">sound</font> HitSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinFrameRate" class="hidden"></a>MinFrameRate <a href="..\Source_engine\texture.html#77" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MinFrameRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Mips" class="hidden"></a>Mips <a href="..\Source_engine\texture.html#81" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">private</font> <font class="source_keyword2">native</font> <font class="source_keyword">const</font> <font class="source_keyword">array</font>&lt;<font class="source_keyword">int</font>&gt; Mips;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PrimeCurrent" class="hidden"></a>PrimeCurrent <a href="..\Source_engine\texture.html#76" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">byte</font> PrimeCurrent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Animation</h3>
+<h4><a name="_AnimNext" class="hidden"></a>AnimNext <a href="..\Source_engine\texture.html#73" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type">Animation</font>) <font class="source_type"><a href="texture.html" class="source">texture</a></font> AnimNext;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxFrameRate" class="hidden"></a>MaxFrameRate <a href="..\Source_engine\texture.html#77" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type">Animation</font>) <font class="source_keyword">float</font> MaxFrameRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PrimeCount" class="hidden"></a>PrimeCount <a href="..\Source_engine\texture.html#75" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type">Animation</font>) <font class="source_keyword">byte</font> PrimeCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Quality</h3>
+<h4><a name="_bHighColorQuality" class="hidden"></a>bHighColorQuality <a href="..\Source_engine\texture.html#57" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Quality) <font class="source_keyword2">private</font> <font class="source_keyword">bool</font> bHighColorQuality;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHighTextureQuality" class="hidden"></a>bHighTextureQuality <a href="..\Source_engine\texture.html#58" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Quality) <font class="source_keyword2">private</font> <font class="source_keyword">bool</font> bHighTextureQuality;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LODSet" class="hidden"></a>LODSet <a href="..\Source_engine\texture.html#65" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Quality) <font class="source_type"><a href="texture.html#ELODSet" class="source">ELODSet</a></font> LODSet;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Surface</h3>
+<h4><a name="_bAutoUPan" class="hidden"></a>bAutoUPan <a href="..\Source_engine\texture.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bAutoUPan;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bAutoVPan" class="hidden"></a>bAutoVPan <a href="..\Source_engine\texture.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bAutoVPan;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bBigWavy" class="hidden"></a>bBigWavy <a href="..\Source_engine\texture.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bBigWavy;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bCloudWavy" class="hidden"></a>bCloudWavy <a href="..\Source_engine\texture.html#45" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bCloudWavy;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bEnvironment" class="hidden"></a>bEnvironment <a href="..\Source_engine\texture.html#32" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bEnvironment;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bFakeBackdrop" class="hidden"></a>bFakeBackdrop <a href="..\Source_engine\texture.html#35" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bFakeBackdrop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bMasked" class="hidden"></a>bMasked <a href="..\Source_engine\texture.html#29" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword2">editconst</font> <font class="source_keyword">bool</font> bMasked;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bModulate" class="hidden"></a>bModulate <a href="..\Source_engine\texture.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bModulate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNoSmooth" class="hidden"></a>bNoSmooth <a href="..\Source_engine\texture.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bNoSmooth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bSmallWavy" class="hidden"></a>bSmallWavy <a href="..\Source_engine\texture.html#41" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bSmallWavy;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTransparent" class="hidden"></a>bTransparent <a href="..\Source_engine\texture.html#30" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bTransparent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTwoSided" class="hidden"></a>bTwoSided <a href="..\Source_engine\texture.html#36" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bTwoSided;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bUnlit" class="hidden"></a>bUnlit <a href="..\Source_engine\texture.html#50" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bUnlit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bWaterWavy" class="hidden"></a>bWaterWavy <a href="..\Source_engine\texture.html#42" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Surface) <font class="source_keyword">bool</font> bWaterWavy;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Texture</h3>
+<h4><a name="_Alpha" class="hidden"></a>Alpha <a href="..\Source_engine\texture.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type"><a href="texture.html" class="source">Texture</a></font>) <font class="source_keyword">float</font> Alpha;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BumpMap" class="hidden"></a>BumpMap <a href="..\Source_engine\texture.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type"><a href="texture.html" class="source">Texture</a></font>) <font class="source_type"><a href="texture.html" class="source">texture</a></font> BumpMap;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DetailTexture" class="hidden"></a>DetailTexture <a href="..\Source_engine\texture.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type"><a href="texture.html" class="source">Texture</a></font>) <font class="source_type"><a href="texture.html" class="source">texture</a></font> DetailTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Diffuse" class="hidden"></a>Diffuse <a href="..\Source_engine\texture.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type"><a href="texture.html" class="source">Texture</a></font>) <font class="source_keyword">float</font> Diffuse;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawScale" class="hidden"></a>DrawScale <a href="..\Source_engine\texture.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type"><a href="texture.html" class="source">Texture</a></font>) <font class="source_keyword">float</font> DrawScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Friction" class="hidden"></a>Friction <a href="..\Source_engine\texture.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type"><a href="texture.html" class="source">Texture</a></font>) <font class="source_keyword">float</font> Friction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MacroTexture" class="hidden"></a>MacroTexture <a href="..\Source_engine\texture.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type"><a href="texture.html" class="source">Texture</a></font>) <font class="source_type"><a href="texture.html" class="source">texture</a></font> MacroTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MipMult" class="hidden"></a>MipMult <a href="..\Source_engine\texture.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type"><a href="texture.html" class="source">Texture</a></font>) <font class="source_keyword">float</font> MipMult;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Specular" class="hidden"></a>Specular <a href="..\Source_engine\texture.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(<font class="source_type"><a href="texture.html" class="source">Texture</a></font>) <font class="source_keyword">float</font> Specular;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ELODSet" class="hidden"></a>ELODSet <a href="..\Source_engine\texture.html#65" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="texture.html#ELODSet" class="source">ELODSet</a></font><br />
+{<blockquote>LODSET_None,
+LODSET_World,
+LODSET_Skin,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    MipMult=<font class="source_int">1</font>
+    Diffuse=<font class="source_int">1</font>
+    Specular=<font class="source_int">1</font>
+    DrawScale=<font class="source_int">1</font>
+    Friction=<font class="source_int">1</font>
+    LODSet=LODSET_World
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\texture.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Texture">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="testobj.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="trigger.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:34.703 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,923 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.GuidedWarShell</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\guidedwarshell.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#GuidedWarShell">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="greentapestry.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="healthpack.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\guidedwarshell.html">GuidedWarShell</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// GuidedWarShell.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\guidedwarshell.html" class="source">GuidedWarShell</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\botpack\warshell.html" class="source">WarShell</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Guider;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> OldGuiderRotation, GuidedRotation;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> CurrentTimeStamp, LastUpdateTime,ClientBuffer,ServerUpdate;
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bUpdatePosition;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDestroyed;
+<a name="11"></a>
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\savedmove.html" class="source">SavedMove</a></font> SavedMoves;
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\savedmove.html" class="source">SavedMove</a></font> FreeMoves;
+<a name="14"></a>
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> RealLocation, RealVelocity;
+<a name="16"></a>
+<a name="17"></a><font class="source_keyword">replication</font>
+<a name="18"></a>{
+<a name="19"></a>    <font class="source_comment">// Things the server should send to the client.
+</font><a name="20"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="21"></a>        ClientAdjustPosition, bDestroyed;
+<a name="22"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font> ( Role==ROLE_Authority && bNetOwner && bNetInitial )
+<a name="23"></a>        GuidedRotation, OldGuiderRotation;
+<a name="24"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority && !bNetOwner )
+<a name="25"></a>        RealLocation, RealVelocity;
+<a name="26"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( Role==ROLE_AutonomousProxy )
+<a name="27"></a>        ServerMove;
+<a name="28"></a>}
+<a name="29"></a>
+<a name="30"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> Timer()
+<a name="31"></a>{
+<a name="32"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\ut_spritesmokepuff.html" class="source">ut_SpriteSmokePuff</a></font> b;
+<a name="33"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> SmokeRate;
+<a name="34"></a>
+<a name="35"></a>    <font class="source_keyword">if</font> ( (Role == ROLE_Authority) && (<font class="source_type">Level</font>.TimeSeconds - ServerUpdate &gt; <font class="source_int">4</font>) )
+<a name="36"></a>    {
+<a name="37"></a>        Explode(Location,Vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">1</font>));
+<a name="38"></a>        <font class="source_keyword">return</font>;
+<a name="39"></a>    }
+<a name="40"></a>
+<a name="41"></a>    <font class="source_keyword">if</font> ( Trail == <font class="source_keyword">None</font> )
+<a name="42"></a>        Trail = Spawn(<font class="source_keyword">class</font><font class="source_name">'RedeemerTrail'</font>,self);
+<a name="43"></a>
+<a name="44"></a>    CannonTimer += SmokeRate;
+<a name="45"></a>    <font class="source_keyword">if</font> ( CannonTimer &gt; <font class="source_int">0.6</font> )
+<a name="46"></a>    {
+<a name="47"></a>        WarnCannons();
+<a name="48"></a>        CannonTimer -= <font class="source_int">0.6</font>;
+<a name="49"></a>    }
+<a name="50"></a>
+<a name="51"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone || (<font class="source_type">Level</font>.NetMode == NM_DedicatedServer) )
+<a name="52"></a>    {
+<a name="53"></a>        SetTimer(SmokeRate, <font class="source_keyword">false</font>);
+<a name="54"></a>        <font class="source_keyword">Return</font>;
+<a name="55"></a>    }
+<a name="56"></a>
+<a name="57"></a>    <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.bHighDetailMode )
+<a name="58"></a>    {
+<a name="59"></a>        <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.bDropDetail )
+<a name="60"></a>            SmokeRate = <font class="source_int">0.07</font>;
+<a name="61"></a>        <font class="source_keyword">else</font>
+<a name="62"></a>            SmokeRate = <font class="source_int">0.02</font>; 
+<a name="63"></a>    }
+<a name="64"></a>    <font class="source_keyword">else</font> 
+<a name="65"></a>    {
+<a name="66"></a>        SmokeRate = <font class="source_int">0.15</font>;
+<a name="67"></a>    }
+<a name="68"></a>    b = Spawn(<font class="source_keyword">class</font><font class="source_name">'ut_SpriteSmokePuff'</font>);
+<a name="69"></a>    b.RemoteRole = ROLE_None;
+<a name="70"></a>    SetTimer(SmokeRate, <font class="source_keyword">false</font>);
+<a name="71"></a>}
+<a name="72"></a>
+<a name="73"></a>
+<a name="74"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> Destroyed()
+<a name="75"></a>{
+<a name="76"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\warheadlauncher.html" class="source">WarheadLauncher</a></font> W;
+<a name="77"></a>
+<a name="78"></a>    bDestroyed = <font class="source_keyword">true</font>;
+<a name="79"></a>    <font class="source_keyword">if</font> ( (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Guider) != <font class="source_keyword">None</font>) )
+<a name="80"></a>        <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Guider).ViewTarget = <font class="source_keyword">None</font>;
+<a name="81"></a>
+<a name="82"></a>    <font class="source_keyword">While</font> ( FreeMoves != <font class="source_keyword">None</font> )
+<a name="83"></a>    {
+<a name="84"></a>        FreeMoves.Destroy();
+<a name="85"></a>        FreeMoves = FreeMoves.NextMove;
+<a name="86"></a>    }
+<a name="87"></a>
+<a name="88"></a>    <font class="source_keyword">While</font> ( SavedMoves != <font class="source_keyword">None</font> )
+<a name="89"></a>    {
+<a name="90"></a>        SavedMoves.Destroy();
+<a name="91"></a>        SavedMoves = SavedMoves.NextMove;
+<a name="92"></a>    }
+<a name="93"></a>
+<a name="94"></a>    <font class="source_keyword">if</font> ( (Guider != <font class="source_keyword">None</font>) && (<font class="source_type">Level</font>.NetMode != NM_Client) )
+<a name="95"></a>    {
+<a name="96"></a>        W = <font class="source_type"><a href="..\botpack\warheadlauncher.html" class="source">WarheadLauncher</a></font>(Guider.FindInventoryType(<font class="source_keyword">class</font><font class="source_name">'WarheadLauncher'</font>));
+<a name="97"></a>        <font class="source_keyword">if</font> ( W != <font class="source_keyword">None</font> )
+<a name="98"></a>        {
+<a name="99"></a>            W.GuidedShell = <font class="source_keyword">None</font>;
+<a name="100"></a>            W.GotoState(<font class="source_name">'Finishing'</font>);
+<a name="101"></a>        }
+<a name="102"></a>    }
+<a name="103"></a>    <font class="source_keyword">Super</font>.Destroyed();
+<a name="104"></a>}
+<a name="105"></a>
+<a name="106"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> Tick(<font class="source_keyword">float</font> DeltaTime)
+<a name="107"></a>{
+<a name="108"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> DeltaYaw, DeltaPitch;
+<a name="109"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> YawDiff, PitchDiff;
+<a name="110"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\savedmove.html" class="source">SavedMove</a></font> NewMove;
+<a name="111"></a>
+<a name="112"></a>    <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.NetMode == NM_Client )
+<a name="113"></a>    {
+<a name="114"></a>        <font class="source_keyword">if</font> ( (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Instigator) != <font class="source_keyword">None</font>) && (<font class="source_type">ViewPort</font>(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Instigator).<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font>) != <font class="source_keyword">None</font>) )
+<a name="115"></a>        {
+<a name="116"></a>            Guider = Instigator;
+<a name="117"></a>            <font class="source_keyword">if</font> ( bDestroyed || (Instigator.<font class="source_type"><a href="..\unrealshare\health.html" class="source">health</a></font> &lt; <font class="source_int">0</font>) )
+<a name="118"></a>            {
+<a name="119"></a>                <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Instigator).ViewTarget = <font class="source_keyword">None</font>;
+<a name="120"></a>                Destroy();
+<a name="121"></a>                <font class="source_keyword">if</font> ( Instigator.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>.IsA(<font class="source_name">'WarheadLauncher'</font>) )
+<a name="122"></a>                    <font class="source_type"><a href="..\botpack\warheadlauncher.html" class="source">WarheadLauncher</a></font>(Instigator.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>).bGuiding = <font class="source_keyword">false</font>;
+<a name="123"></a>                <font class="source_keyword">return</font>;
+<a name="124"></a>            }
+<a name="125"></a>            <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Instigator).ViewTarget = self;
+<a name="126"></a>            <font class="source_keyword">if</font> ( Instigator.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>.IsA(<font class="source_name">'WarheadLauncher'</font>) )
+<a name="127"></a>            {
+<a name="128"></a>                <font class="source_type"><a href="..\botpack\warheadlauncher.html" class="source">WarheadLauncher</a></font>(Instigator.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>).GuidedShell = self;
+<a name="129"></a>                <font class="source_type"><a href="..\botpack\warheadlauncher.html" class="source">WarheadLauncher</a></font>(Instigator.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>).bGuiding = <font class="source_keyword">true</font>;
+<a name="130"></a>            }
+<a name="131"></a>        }
+<a name="132"></a>        <font class="source_keyword">else</font>
+<a name="133"></a>        {
+<a name="134"></a>            <font class="source_keyword">if</font> ( RealLocation != vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>) )
+<a name="135"></a>            {
+<a name="136"></a>                SetLocation(RealLocation);
+<a name="137"></a>                RealLocation = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="138"></a>            }
+<a name="139"></a>            <font class="source_keyword">if</font> ( RealVelocity != vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>) )
+<a name="140"></a>            {
+<a name="141"></a>                Velocity = RealVelocity;
+<a name="142"></a>                SetRotation(<font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font>(Velocity));
+<a name="143"></a>                RealVelocity = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="144"></a>            }
+<a name="145"></a>            <font class="source_keyword">return</font>;
+<a name="146"></a>        }
+<a name="147"></a>    }
+<a name="148"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.NetMode != NM_Standalone) && (RemoteRole == ROLE_AutonomousProxy) ) 
+<a name="149"></a>            <font class="source_keyword">return</font>;
+<a name="150"></a>
+<a name="151"></a>    <font class="source_comment">// if server updated client position, client needs to replay moves after the update
+</font><a name="152"></a>    <font class="source_keyword">if</font> ( bUpdatePosition )
+<a name="153"></a>        ClientUpdatePosition();
+<a name="154"></a>
+<a name="155"></a>    DeltaYaw = (Guider.ViewRotation.Yaw & <font class="source_int">65535</font>) - (OldGuiderRotation.Yaw & <font class="source_int">65535</font>);
+<a name="156"></a>    DeltaPitch = (Guider.ViewRotation.Pitch & <font class="source_int">65535</font>) - (OldGuiderRotation.Pitch & <font class="source_int">65535</font>);
+<a name="157"></a>    <font class="source_keyword">if</font> ( DeltaPitch &lt; -<font class="source_int">32768</font> )
+<a name="158"></a>        DeltaPitch += <font class="source_int">65536</font>;
+<a name="159"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( DeltaPitch &gt; <font class="source_int">32768</font> )
+<a name="160"></a>        DeltaPitch -= <font class="source_int">65536</font>;
+<a name="161"></a>    <font class="source_keyword">if</font> ( DeltaYaw &lt; -<font class="source_int">32768</font> )
+<a name="162"></a>        DeltaYaw += <font class="source_int">65536</font>;
+<a name="163"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( DeltaYaw &gt; <font class="source_int">32768</font> )
+<a name="164"></a>        DeltaYaw -= <font class="source_int">65536</font>;
+<a name="165"></a>
+<a name="166"></a>    YawDiff = (Rotation.Yaw & <font class="source_int">65535</font>) - (GuidedRotation.Yaw & <font class="source_int">65535</font>) - DeltaYaw;
+<a name="167"></a>    <font class="source_keyword">if</font> ( DeltaYaw &lt; <font class="source_int">0</font> )
+<a name="168"></a>    {
+<a name="169"></a>        <font class="source_keyword">if</font> ( ((YawDiff &gt; <font class="source_int">0</font>) && (YawDiff &lt; <font class="source_int">16384</font>)) || (YawDiff &lt; -<font class="source_int">49152</font>) )
+<a name="170"></a>            GuidedRotation.Yaw += DeltaYaw;
+<a name="171"></a>    }   
+<a name="172"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( ((YawDiff &lt; <font class="source_int">0</font>) && (YawDiff &gt; -<font class="source_int">16384</font>)) || (YawDiff &gt; <font class="source_int">49152</font>) )
+<a name="173"></a>        GuidedRotation.Yaw += DeltaYaw;
+<a name="174"></a>
+<a name="175"></a>    GuidedRotation.Pitch += DeltaPitch;
+<a name="176"></a>    OldGuiderRotation = Guider.ViewRotation;
+<a name="177"></a>    <font class="source_keyword">if</font> ( Role == ROLE_AutonomousProxy )
+<a name="178"></a>    {
+<a name="179"></a>        <font class="source_comment">// Send the move to the server
+</font><a name="180"></a>        <font class="source_comment">// skip move if too soon
+</font><a name="181"></a>        <font class="source_keyword">if</font> ( ClientBuffer &lt; <font class="source_int">0</font> )
+<a name="182"></a>        {
+<a name="183"></a>            ClientBuffer += DeltaTime;
+<a name="184"></a>            MoveRocket(DeltaTime, Velocity, GuidedRotation);
+<a name="185"></a>            <font class="source_keyword">return</font>;
+<a name="186"></a>        }
+<a name="187"></a>        <font class="source_keyword">else</font>
+<a name="188"></a>            ClientBuffer = ClientBuffer + DeltaTime - <font class="source_int">80.0</font>/PlayerPawn(Instigator).<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font>.CurrentNetSpeed;
+<a name="189"></a>
+<a name="190"></a>        <font class="source_comment">// I'm  a client, so I'll save my moves in case I need to replay them
+</font><a name="191"></a>        <font class="source_comment">// Get a SavedMove actor to store the movement in.
+</font><a name="192"></a>        <font class="source_keyword">if</font> ( SavedMoves == <font class="source_keyword">None</font> )
+<a name="193"></a>        {
+<a name="194"></a>            SavedMoves = GetFreeMove();
+<a name="195"></a>            NewMove = SavedMoves;
+<a name="196"></a>        }
+<a name="197"></a>        <font class="source_keyword">else</font>
+<a name="198"></a>        {
+<a name="199"></a>            NewMove = SavedMoves;
+<a name="200"></a>            <font class="source_keyword">while</font> ( NewMove.NextMove != <font class="source_keyword">None</font> )
+<a name="201"></a>                NewMove = NewMove.NextMove;
+<a name="202"></a>            NewMove.NextMove = GetFreeMove();
+<a name="203"></a>            NewMove = NewMove.NextMove;
+<a name="204"></a>        }
+<a name="205"></a>
+<a name="206"></a>        NewMove.TimeStamp = <font class="source_type">Level</font>.TimeSeconds;
+<a name="207"></a>        NewMove.Delta = DeltaTime;
+<a name="208"></a>        NewMove.Velocity = Velocity;
+<a name="209"></a>        NewMove.SetRotation(GuidedRotation);
+<a name="210"></a>
+<a name="211"></a>        MoveRocket(DeltaTime, Velocity, GuidedRotation);
+<a name="212"></a>        ServerMove(<font class="source_type">Level</font>.TimeSeconds, Location, NewMove.Rotation.Pitch, NewMove.Rotation.Yaw);
+<a name="213"></a>        <font class="source_keyword">return</font>;
+<a name="214"></a>    }
+<a name="215"></a>    MoveRocket(DeltaTime, Velocity, GuidedRotation);
+<a name="216"></a>}
+<a name="217"></a>
+<a name="218"></a><font class="source_comment">// Server sends ClientAdjustPosition to the client to adjust the warhead position on the client side when the error
+</font><a name="219"></a><font class="source_comment">// is excessive
+</font><a name="220"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> ClientAdjustPosition
+<a name="221"></a>(
+<a name="222"></a>    <font class="source_keyword">float</font> TimeStamp, 
+<a name="223"></a>    <font class="source_keyword">float</font> NewLocX, 
+<a name="224"></a>    <font class="source_keyword">float</font> NewLocY, 
+<a name="225"></a>    <font class="source_keyword">float</font> NewLocZ, 
+<a name="226"></a>    <font class="source_keyword">float</font> NewVelX, 
+<a name="227"></a>    <font class="source_keyword">float</font> NewVelY, 
+<a name="228"></a>    <font class="source_keyword">float</font> NewVelZ
+<a name="229"></a>)
+<a name="230"></a>{
+<a name="231"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> NewLocation;
+<a name="232"></a>
+<a name="233"></a>    <font class="source_keyword">if</font> ( CurrentTimeStamp &gt; TimeStamp )
+<a name="234"></a>        <font class="source_keyword">return</font>;
+<a name="235"></a>    CurrentTimeStamp = TimeStamp;
+<a name="236"></a>
+<a name="237"></a>    NewLocation.X = NewLocX;
+<a name="238"></a>    NewLocation.Y = NewLocY;
+<a name="239"></a>    NewLocation.Z = NewLocZ;
+<a name="240"></a>    Velocity.X = NewVelX;
+<a name="241"></a>    Velocity.Y = NewVelY;
+<a name="242"></a>    Velocity.Z = NewVelZ;
+<a name="243"></a>
+<a name="244"></a>    SetLocation(NewLocation);
+<a name="245"></a>
+<a name="246"></a>    bUpdatePosition = <font class="source_keyword">true</font>;
+<a name="247"></a>}
+<a name="248"></a>
+<a name="249"></a><font class="source_comment">// Client calls this to replay moves after getting its position updated by the server
+</font><a name="250"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> ClientUpdatePosition()
+<a name="251"></a>{
+<a name="252"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\savedmove.html" class="source">SavedMove</a></font> CurrentMove;
+<a name="253"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> realbRun, realbDuck;
+<a name="254"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bRealJump;
+<a name="255"></a>
+<a name="256"></a>    bUpdatePosition = <font class="source_keyword">false</font>;
+<a name="257"></a>    CurrentMove = SavedMoves;
+<a name="258"></a>    <font class="source_keyword">while</font> ( CurrentMove != <font class="source_keyword">None</font> )
+<a name="259"></a>    {
+<a name="260"></a>        <font class="source_keyword">if</font> ( CurrentMove.TimeStamp &lt;= CurrentTimeStamp )
+<a name="261"></a>        {
+<a name="262"></a>            SavedMoves = CurrentMove.NextMove;
+<a name="263"></a>            CurrentMove.NextMove = FreeMoves;
+<a name="264"></a>            FreeMoves = CurrentMove;
+<a name="265"></a>            FreeMoves.Clear();
+<a name="266"></a>            CurrentMove = SavedMoves;
+<a name="267"></a>        }
+<a name="268"></a>        <font class="source_keyword">else</font>
+<a name="269"></a>        {
+<a name="270"></a>            MoveRocket(CurrentMove.Delta, CurrentMove.Velocity, CurrentMove.Rotation);
+<a name="271"></a>            CurrentMove = CurrentMove.NextMove;
+<a name="272"></a>        }
+<a name="273"></a>    }
+<a name="274"></a>}
+<a name="275"></a>    
+<a name="276"></a><font class="source_comment">// server moves the rocket based on clients input, and compares the resultant location to the client's view of the location
+</font><a name="277"></a><font class="source_keyword">function</font> ServerMove(<font class="source_keyword">float</font> TimeStamp, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> ClientLoc, <font class="source_keyword">int</font> Pitch, <font class="source_keyword">int</font> Yaw)
+<a name="278"></a>{
+<a name="279"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> ClientErr, DeltaTime;
+<a name="280"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> LocDiff;
+<a name="281"></a>
+<a name="282"></a>    <font class="source_keyword">if</font> ( CurrentTimeStamp &gt;= TimeStamp )
+<a name="283"></a>        <font class="source_keyword">return</font>;
+<a name="284"></a>
+<a name="285"></a>    <font class="source_keyword">if</font> ( CurrentTimeStamp &gt; <font class="source_int">0</font> )
+<a name="286"></a>        DeltaTime = TimeStamp - CurrentTimeStamp;
+<a name="287"></a>    CurrentTimeStamp = TimeStamp;
+<a name="288"></a>    GuidedRotation.Pitch = Pitch;
+<a name="289"></a>    GuidedRotation.Yaw = Yaw;
+<a name="290"></a>    <font class="source_keyword">if</font> ( DeltaTime &gt; <font class="source_int">0</font> )    
+<a name="291"></a>        MoveRocket(DeltaTime, Velocity, GuidedRotation);
+<a name="292"></a>    <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.TimeSeconds - LastUpdateTime &gt; <font class="source_int">0.3</font> )
+<a name="293"></a>    {
+<a name="294"></a>        ClientErr = <font class="source_int">10000</font>;
+<a name="295"></a>    }
+<a name="296"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.TimeSeconds - LastUpdateTime &gt; <font class="source_int">0.07</font> )
+<a name="297"></a>    {
+<a name="298"></a>        LocDiff = Location - ClientLoc;
+<a name="299"></a>        ClientErr = LocDiff Dot LocDiff;
+<a name="300"></a>    }
+<a name="301"></a>
+<a name="302"></a>    <font class="source_comment">// If client has accumulated a noticeable positional error, correct him.
+</font><a name="303"></a>    <font class="source_keyword">if</font> ( ClientErr &gt; <font class="source_int">3</font> )
+<a name="304"></a>    {
+<a name="305"></a>        LastUpdateTime = <font class="source_type">Level</font>.TimeSeconds;
+<a name="306"></a>        ClientAdjustPosition(TimeStamp, Location.X, Location.Y, Location.Z, Velocity.X, Velocity.Y, Velocity.Z);
+<a name="307"></a>    }
+<a name="308"></a>}
+<a name="309"></a>
+<a name="310"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> MoveRocket(<font class="source_keyword">float</font> DeltaTime, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> CurrentVelocity, <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> GuideRotation )
+<a name="311"></a>{
+<a name="312"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> OldRoll, RollMag;
+<a name="313"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> NewRot;
+<a name="314"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> SmoothRoll;
+<a name="315"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> OldVelocity, X,Y,Z;
+<a name="316"></a>
+<a name="317"></a>    <font class="source_keyword">if</font> ( (Role == ROLE_Authority) && ( (Guider == <font class="source_keyword">None</font>) || (Guider.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &lt;= <font class="source_int">0</font>)
+<a name="318"></a>                || (Guider.IsA(<font class="source_name">'PlayerPawn'</font>) && (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Guider).ViewTarget != self)) || Guider.IsInState(<font class="source_name">'FeigningDeath'</font>)) )
+<a name="319"></a>    {
+<a name="320"></a>        Explode(Location,Vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">1</font>));
+<a name="321"></a>        <font class="source_keyword">return</font>;
+<a name="322"></a>    }
+<a name="323"></a>
+<a name="324"></a>    ServerUpdate = <font class="source_type">Level</font>.TimeSeconds;
+<a name="325"></a>    OldRoll = Rotation.Roll & <font class="source_int">65535</font>;
+<a name="326"></a>    OldVelocity = CurrentVelocity;
+<a name="327"></a>    Velocity = CurrentVelocity + <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font>(GuideRotation) * <font class="source_int">1500</font> * DeltaTime;
+<a name="328"></a>    Velocity = Normal(Velocity) * <font class="source_int">550</font>;
+<a name="329"></a>    NewRot = <font class="source_type"><a href="..\core\object.html#Rotator" class="source">Rotator</a></font>(Velocity);
+<a name="330"></a>
+<a name="331"></a>    <font class="source_comment">// Roll Warhead based on acceleration
+</font><a name="332"></a>    GetAxes(NewRot, X,Y,Z);
+<a name="333"></a>    RollMag = <font class="source_keyword">int</font>(<font class="source_int">10</font> * (Y Dot (Velocity - OldVelocity))/DeltaTime);
+<a name="334"></a>    <font class="source_keyword">if</font> ( RollMag &gt; <font class="source_int">0</font> ) 
+<a name="335"></a>        NewRot.Roll = Min(<font class="source_int">12000</font>, RollMag); 
+<a name="336"></a>    <font class="source_keyword">else</font>
+<a name="337"></a>        NewRot.Roll = Max(<font class="source_int">53535</font>, <font class="source_int">65536</font> + RollMag);
+<a name="338"></a>
+<a name="339"></a>    <font class="source_comment">//smoothly change rotation
+</font><a name="340"></a>    <font class="source_keyword">if</font> (NewRot.Roll &gt; <font class="source_int">32768</font>)
+<a name="341"></a>    {
+<a name="342"></a>        <font class="source_keyword">if</font> (OldRoll &lt; <font class="source_int">32768</font>)
+<a name="343"></a>            OldRoll += <font class="source_int">65536</font>;
+<a name="344"></a>    }
+<a name="345"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (OldRoll &gt; <font class="source_int">32768</font>)
+<a name="346"></a>        OldRoll -= <font class="source_int">65536</font>;
+<a name="347"></a>
+<a name="348"></a>    SmoothRoll = FMin(<font class="source_int">1.0</font>, <font class="source_int">5.0</font> * deltaTime);
+<a name="349"></a>    NewRot.Roll = NewRot.Roll * SmoothRoll + OldRoll * (<font class="source_int">1</font> - SmoothRoll);
+<a name="350"></a>    SetRotation(NewRot);
+<a name="351"></a>
+<a name="352"></a>    <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.NetMode != NM_Standalone)
+<a name="353"></a>        && ((<font class="source_type">Level</font>.NetMode != NM_ListenServer) || (Instigator == <font class="source_keyword">None</font>) 
+<a name="354"></a>            || (Instigator.IsA(<font class="source_name">'PlayerPawn'</font>) && (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Instigator).<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font> != <font class="source_keyword">None</font>)
+<a name="355"></a>                && (<font class="source_type">ViewPort</font>(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Instigator).<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font>) == <font class="source_keyword">None</font>))) )
+<a name="356"></a>        AutonomousPhysics(DeltaTime);
+<a name="357"></a>
+<a name="358"></a>    <font class="source_keyword">if</font> ( Role == ROLE_Authority )
+<a name="359"></a>    {
+<a name="360"></a>        RealLocation = Location;
+<a name="361"></a>        RealVelocity = Velocity;
+<a name="362"></a>    }
+<a name="363"></a>}
+<a name="364"></a>
+<a name="365"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PostRender( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> )
+<a name="366"></a>{
+<a name="367"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> Dist;
+<a name="368"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="369"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> XPos, YPos;
+<a name="370"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> X,Y,Z, Dir;
+<a name="371"></a>
+<a name="372"></a>    GetAxes(Rotation, X,Y,Z);
+<a name="373"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = <font class="source_type">Font</font><font class="source_name">'TinyRedFont'</font>;
+<a name="374"></a>    <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.bHighDetailMode )
+<a name="375"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.Style = <font class="source_type"><a href="..\engine\actor.html#ERenderStyle" class="source">ERenderStyle</a></font>.STY_Translucent;
+<a name="376"></a>    <font class="source_keyword">else</font>
+<a name="377"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.Style = <font class="source_type"><a href="..\engine\actor.html#ERenderStyle" class="source">ERenderStyle</a></font>.STY_Normal;
+<a name="378"></a>    <font class="source_keyword">foreach</font> visiblecollidingactors(<font class="source_keyword">class</font><font class="source_name">'Pawn'</font>, P, <font class="source_int">2000</font>,, <font class="source_keyword">true</font>)
+<a name="379"></a>    {
+<a name="380"></a>        Dir = P.Location - Location;
+<a name="381"></a>        Dist = VSize(Dir);
+<a name="382"></a>        Dir = Dir/Dist;
+<a name="383"></a>        <font class="source_keyword">if</font> ( (Dir Dot X) &gt; <font class="source_int">0.7</font> )
+<a name="384"></a>        {
+<a name="385"></a>            XPos = <font class="source_int">0.5</font> * <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX * (<font class="source_int">1</font> + <font class="source_int">1.4</font> * (Dir Dot Y));
+<a name="386"></a>            YPos = <font class="source_int">0.5</font> * <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY * (<font class="source_int">1</font> - <font class="source_int">1.4</font> * (Dir Dot Z));
+<a name="387"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(XPos - <font class="source_int">8</font>, YPos - <font class="source_int">8</font>);
+<a name="388"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawIcon(<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'CrossHair6'</font>, <font class="source_int">1.0</font>);
+<a name="389"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(Xpos - <font class="source_int">12</font>, YPos + <font class="source_int">8</font>);
+<a name="390"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(Dist, <font class="source_keyword">true</font>);
+<a name="391"></a>        }
+<a name="392"></a>    }   
+<a name="393"></a>}       
+<a name="394"></a>
+<a name="395"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\savedmove.html" class="source">SavedMove</a></font> GetFreeMove()
+<a name="396"></a>{
+<a name="397"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\savedmove.html" class="source">SavedMove</a></font> s;
+<a name="398"></a>
+<a name="399"></a>    <font class="source_keyword">if</font> ( FreeMoves == <font class="source_keyword">None</font> )
+<a name="400"></a>        <font class="source_keyword">return</font> Spawn(<font class="source_keyword">class</font><font class="source_name">'SavedMove'</font>);
+<a name="401"></a>    <font class="source_keyword">else</font>
+<a name="402"></a>    {
+<a name="403"></a>        s = FreeMoves;
+<a name="404"></a>        FreeMoves = FreeMoves.NextMove;
+<a name="405"></a>        s.NextMove = <font class="source_keyword">None</font>;
+<a name="406"></a>        <font class="source_keyword">return</font> s;
+<a name="407"></a>    }   
+<a name="408"></a>}
+<a name="409"></a>
+<a name="410"></a><font class="source_keyword2">auto</font> <font class="source_keyword">state</font> Flying
+<a name="411"></a>{
+<a name="412"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="413"></a>    {
+<a name="414"></a>        ServerUpdate = <font class="source_type">Level</font>.TimeSeconds;
+<a name="415"></a>        GuidedRotation = Rotation;
+<a name="416"></a>        OldGuiderRotation = Rotation;
+<a name="417"></a>        Velocity = speed*<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>(Rotation);
+<a name="418"></a>        Acceleration = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="419"></a>        <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.NetMode != NM_Standalone) && (Role == ROLE_Authority) )
+<a name="420"></a>        {
+<a name="421"></a>            <font class="source_keyword">if</font> ( (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Instigator) != <font class="source_keyword">None</font>) 
+<a name="422"></a>                && (<font class="source_type">ViewPort</font>(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Instigator).<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font>) != <font class="source_keyword">None</font>) )
+<a name="423"></a>                RemoteRole = ROLE_SimulatedProxy;
+<a name="424"></a>            <font class="source_keyword">else</font>
+<a name="425"></a>                RemoteRole = ROLE_AutonomousProxy;
+<a name="426"></a>        }
+<a name="427"></a>    }
+<a name="428"></a>}
+<a name="429"></a>
+<a name="430"></a><font class="source_keyword">defaultproperties</font>
+<a name="431"></a>{
+<a name="432"></a>    RemoteRole=ROLE_DumbProxy
+<a name="433"></a>    NetPriority=<font class="source_int">3</font>
+<a name="434"></a>}
+<a name="435"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\guidedwarshell.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#GuidedWarShell">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="greentapestry.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="healthpack.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:21:34.000 - Creation time: Wed 26/5/2004 10:48:20.562 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

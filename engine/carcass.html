@@ -1,0 +1,421 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Engine.Carcass</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\carcass.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Carcass">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="canvas.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="clipmarker.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="engine-overview.html">Engine</a>.Carcass</h1>
+<b>Extends:</b> <a href="decoration.html">Decoration</a><br>
+<b>Modifiers:</b> native <br>
+<a href="..\Source_engine\carcass.html"><b>Source code</b></a>
+
+<p>
+Carcass.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a>
+    |   
+    +-- <a href="engine-overview.html">Engine</a>.<a href="decoration.html">Decoration</a>
+        |   
+        +-- <a href="engine-overview.html">Engine</a>.<a href="carcass.html">Carcass</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\unrealshare\creaturecarcass.html">CreatureCarcass</a>, <a href="..\unrealshare\creaturechunks.html">CreatureChunks</a>, <a href="..\botpack\utcreaturechunks.html">UTCreatureChunks</a>, <a href="..\botpack\uthumancarcass.html">UTHumanCarcass</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDecorative" name="bDecorative">bDecorative</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPlayerCarcass" name="bPlayerCarcass">bPlayerCarcass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bReducedHeight" name="bReducedHeight">bReducedHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSlidingCarcass" name="bSlidingCarcass">bSlidingCarcass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="pawn.html">Pawn</a></td><td width="66%"><a href="#_Bugs" name="Bugs">Bugs</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CumulativeDamage" name="CumulativeDamage">CumulativeDamage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_flies" name="flies">flies</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="playerreplicationinfo.html">PlayerReplicationInfo</a></td><td width="66%"><a href="#_PlayerOwner" name="PlayerOwner">PlayerOwner</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_rats" name="rats">rats</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="engine-overview.html">Engine</a>.<a href="decoration.html">Decoration</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="decoration.html#bBobbing">bBobbing</a>, <a href="decoration.html#bOnlyTriggerable">bOnlyTriggerable</a>, <a href="decoration.html#bPushable">bPushable</a>, <a href="decoration.html#bPushSoundPlaying">bPushSoundPlaying</a>, <a href="decoration.html#bSplash">bSplash</a>, <a href="decoration.html#bWasCarried">bWasCarried</a>, <a href="decoration.html#content2">content2</a>, <a href="decoration.html#content3">content3</a>, <a href="decoration.html#contents">contents</a>, <a href="decoration.html#EffectWhenDestroyed">EffectWhenDestroyed</a>, <a href="decoration.html#EndPushSound">EndPushSound</a>, <a href="decoration.html#numLandings">numLandings</a>, <a href="decoration.html#PushSound">PushSound</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#Acceleration">Acceleration</a>, <a href="actor.html#AmbientGlow">AmbientGlow</a>, <a href="actor.html#AmbientSound">AmbientSound</a>, <a href="actor.html#AnimFrame">AnimFrame</a>, <a href="actor.html#AnimLast">AnimLast</a>, <a href="actor.html#AnimMinRate">AnimMinRate</a>, <a href="actor.html#AnimRate">AnimRate</a>, <a href="actor.html#AnimSequence">AnimSequence</a>, <a href="actor.html#AttachTag">AttachTag</a>, <a href="actor.html#bActorShadows">bActorShadows</a>, <a href="actor.html#bAlwaysRelevant">bAlwaysRelevant</a>, <a href="actor.html#bAlwaysTick">bAlwaysTick</a>, <a href="actor.html#bAnimByOwner">bAnimByOwner</a>, <a href="actor.html#bAnimFinished">bAnimFinished</a>, <a href="actor.html#bAnimLoop">bAnimLoop</a>, <a href="actor.html#bAnimNotify">bAnimNotify</a>, <a href="actor.html#Base">Base</a>, <a href="actor.html#bAssimilated">bAssimilated</a>, <a href="actor.html#bBlockActors">bBlockActors</a>, <a href="actor.html#bBlockPlayers">bBlockPlayers</a>, <a href="actor.html#bBounce">bBounce</a>, <a href="actor.html#bCanTeleport">bCanTeleport</a>, <a href="actor.html#bCarriedItem">bCarriedItem</a>, <a href="actor.html#bClientAnim">bClientAnim</a>, <a href="actor.html#bClientDemoNetFunc">bClientDemoNetFunc</a>, <a href="actor.html#bClientDemoRecording">bClientDemoRecording</a>, <a href="actor.html#bCollideActors">bCollideActors</a>, <a href="actor.html#bCollideWhenPlacing">bCollideWhenPlacing</a>, <a href="actor.html#bCollideWorld">bCollideWorld</a>, <a href="actor.html#bCorona">bCorona</a>, <a href="actor.html#bDeleteMe">bDeleteMe</a>, <a href="actor.html#bDemoRecording">bDemoRecording</a>, <a href="actor.html#bDifficulty0">bDifficulty0</a>, <a href="actor.html#bDifficulty1">bDifficulty1</a>, <a href="actor.html#bDifficulty2">bDifficulty2</a>, <a href="actor.html#bDifficulty3">bDifficulty3</a>, <a href="actor.html#bDirectional">bDirectional</a>, <a href="actor.html#bDynamicLight">bDynamicLight</a>, <a href="actor.html#bEdLocked">bEdLocked</a>, <a href="actor.html#bEdShouldSnap">bEdShouldSnap</a>, <a href="actor.html#bEdSnap">bEdSnap</a>, <a href="actor.html#bFilterByVolume">bFilterByVolume</a>, <a href="actor.html#bFixedRotationDir">bFixedRotationDir</a>, <a href="actor.html#bForcePhysicsUpdate">bForcePhysicsUpdate</a>, <a href="actor.html#bForceStasis">bForceStasis</a>, <a href="actor.html#bGameRelevant">bGameRelevant</a>, <a href="actor.html#bHidden">bHidden</a>, <a href="actor.html#bHiddenEd">bHiddenEd</a>, <a href="actor.html#bHighDetail">bHighDetail</a>, <a href="actor.html#bHighlighted">bHighlighted</a>, <a href="actor.html#bHurtEntry">bHurtEntry</a>, <a href="actor.html#bInterpolating">bInterpolating</a>, <a href="actor.html#bIsItemGoal">bIsItemGoal</a>, <a href="actor.html#bIsKillGoal">bIsKillGoal</a>, <a href="actor.html#bIsMover">bIsMover</a>, <a href="actor.html#bIsPawn">bIsPawn</a>, <a href="actor.html#bIsSecretGoal">bIsSecretGoal</a>, <a href="actor.html#bJustTeleported">bJustTeleported</a>, <a href="actor.html#bLensFlare">bLensFlare</a>, <a href="actor.html#bLightChanged">bLightChanged</a>, <a href="actor.html#bMemorized">bMemorized</a>, <a href="actor.html#bMeshCurvy">bMeshCurvy</a>, <a href="actor.html#bMeshEnviroMap">bMeshEnviroMap</a>, <a href="actor.html#bMovable">bMovable</a>, <a href="actor.html#bNet">bNet</a>, <a href="actor.html#bNetFeel">bNetFeel</a>, <a href="actor.html#bNetHear">bNetHear</a>, <a href="actor.html#bNetInitial">bNetInitial</a>, <a href="actor.html#bNetOptional">bNetOptional</a>, <a href="actor.html#bNetOwner">bNetOwner</a>, <a href="actor.html#bNetRelevant">bNetRelevant</a>, <a href="actor.html#bNetSee">bNetSee</a>, <a href="actor.html#bNetSpecial">bNetSpecial</a>, <a href="actor.html#bNetTemporary">bNetTemporary</a>, <a href="actor.html#bNoDelete">bNoDelete</a>, <a href="actor.html#bNoSmooth">bNoSmooth</a>, <a href="actor.html#bOnlyOwnerSee">bOnlyOwnerSee</a>, <a href="actor.html#bOwnerNoSee">bOwnerNoSee</a>, <a href="actor.html#bParticles">bParticles</a>, <a href="actor.html#bProjTarget">bProjTarget</a>, <a href="actor.html#bRandomFrame">bRandomFrame</a>, <a href="actor.html#bReplicateInstigator">bReplicateInstigator</a>, <a href="actor.html#bRotateToDesired">bRotateToDesired</a>, <a href="actor.html#Brush">Brush</a>, <a href="actor.html#bScriptInitialized">bScriptInitialized</a>, <a href="actor.html#bSelected">bSelected</a>, <a href="actor.html#bShadowCast">bShadowCast</a>, <a href="actor.html#bSimFall">bSimFall</a>, <a href="actor.html#bSimulatedPawn">bSimulatedPawn</a>, <a href="actor.html#bSinglePlayer">bSinglePlayer</a>, <a href="actor.html#bSpecialLit">bSpecialLit</a>, <a href="actor.html#bStasis">bStasis</a>, <a href="actor.html#bStatic">bStatic</a>, <a href="actor.html#bTempEditor">bTempEditor</a>, <a href="actor.html#bTicked">bTicked</a>, <a href="actor.html#bTimerLoop">bTimerLoop</a>, <a href="actor.html#bTrailerPrePivot">bTrailerPrePivot</a>, <a href="actor.html#bTrailerSameRotation">bTrailerSameRotation</a>, <a href="actor.html#bTravel">bTravel</a>, <a href="actor.html#bUnlit">bUnlit</a>, <a href="actor.html#Buoyancy">Buoyancy</a>, <a href="actor.html#CollisionHeight">CollisionHeight</a>, <a href="actor.html#CollisionRadius">CollisionRadius</a>, <a href="actor.html#CollisionTag">CollisionTag</a>, <a href="actor.html#ColLocation">ColLocation</a>, <a href="actor.html#Deleted">Deleted</a>, <a href="actor.html#DesiredRotation">DesiredRotation</a>, <a href="actor.html#DodgeDir">DodgeDir</a>, <a href="actor.html#DrawScale">DrawScale</a>, <a href="actor.html#DrawType">DrawType</a>, <a href="actor.html#Event">Event</a>, <a href="actor.html#ExtraTag">ExtraTag</a>, <a href="actor.html#Fatness">Fatness</a>, <a href="actor.html#Group">Group</a>, <a href="actor.html#HitActor">HitActor</a>, <a href="actor.html#InitialState">InitialState</a>, <a href="actor.html#Instigator">Instigator</a>, <a href="actor.html#Inventory">Inventory</a>, <a href="actor.html#LatentActor">LatentActor</a>, <a href="actor.html#LatentByte">LatentByte</a>, <a href="actor.html#LatentFloat">LatentFloat</a>, <a href="actor.html#LatentInt">LatentInt</a>, <a href="actor.html#Level">Level</a>, <a href="actor.html#LifeSpan">LifeSpan</a>, <a href="actor.html#LightBrightness">LightBrightness</a>, <a href="actor.html#LightCone">LightCone</a>, <a href="actor.html#LightEffect">LightEffect</a>, <a href="actor.html#LightHue">LightHue</a>, <a href="actor.html#LightingTag">LightingTag</a>, <a href="actor.html#LightPeriod">LightPeriod</a>, <a href="actor.html#LightPhase">LightPhase</a>, <a href="actor.html#LightRadius">LightRadius</a>, <a href="actor.html#LightSaturation">LightSaturation</a>, <a href="actor.html#LightType">LightType</a>, <a href="actor.html#Location">Location</a>, <a href="actor.html#LODBias">LODBias</a>, <a href="actor.html#Mass">Mass</a>, <a href="actor.html#Mesh">Mesh</a>, <a href="actor.html#MiscNumber">MiscNumber</a>, <a href="actor.html#MultiSkins[8]">MultiSkins[8]</a>, <a href="actor.html#NetPriority">NetPriority</a>, <a href="actor.html#NetTag">NetTag</a>, <a href="actor.html#NetUpdateFrequency">NetUpdateFrequency</a>, <a href="actor.html#OddsOfAppearing">OddsOfAppearing</a>, <a href="actor.html#OldAnimRate">OldAnimRate</a>, <a href="actor.html#OldLocation">OldLocation</a>, <a href="actor.html#OtherTag">OtherTag</a>, <a href="actor.html#Owner">Owner</a>, <a href="actor.html#PendingTouch">PendingTouch</a>, <a href="actor.html#PhysAlpha">PhysAlpha</a>, <a href="actor.html#Physics">Physics</a>, <a href="actor.html#PhysRate">PhysRate</a>, <a href="actor.html#PrePivot">PrePivot</a>, <a href="actor.html#Region">Region</a>, <a href="actor.html#RemoteRole">RemoteRole</a>, <a href="actor.html#RenderInterface">RenderInterface</a>, <a href="actor.html#RenderIteratorClass">RenderIteratorClass</a>, <a href="actor.html#Role">Role</a>, <a href="actor.html#Rotation">Rotation</a>, <a href="actor.html#RotationRate">RotationRate</a>, <a href="actor.html#ScaleGlow">ScaleGlow</a>, <a href="actor.html#SimAnim">SimAnim</a>, <a href="actor.html#SkelAnim">SkelAnim</a>, <a href="actor.html#Skin">Skin</a>, <a href="actor.html#SoundPitch">SoundPitch</a>, <a href="actor.html#SoundRadius">SoundRadius</a>, <a href="actor.html#SoundVolume">SoundVolume</a>, <a href="actor.html#SpecialTag">SpecialTag</a>, <a href="actor.html#Sprite">Sprite</a>, <a href="actor.html#SpriteProjForward">SpriteProjForward</a>, <a href="actor.html#StandingCount">StandingCount</a>, <a href="actor.html#Style">Style</a>, <a href="actor.html#Tag">Tag</a>, <a href="actor.html#Target">Target</a>, <a href="actor.html#Texture">Texture</a>, <a href="actor.html#TimerCounter">TimerCounter</a>, <a href="actor.html#TimerRate">TimerRate</a>, <a href="actor.html#Touching[4]">Touching[4]</a>, <a href="actor.html#TransientSoundRadius">TransientSoundRadius</a>, <a href="actor.html#TransientSoundVolume">TransientSoundVolume</a>, <a href="actor.html#TweenRate">TweenRate</a>, <a href="actor.html#Velocity">Velocity</a>, <a href="actor.html#VisibilityHeight">VisibilityHeight</a>, <a href="actor.html#VisibilityRadius">VisibilityRadius</a>, <a href="actor.html#VolumeBrightness">VolumeBrightness</a>, <a href="actor.html#VolumeFog">VolumeFog</a>, <a href="actor.html#VolumeRadius">VolumeRadius</a>, <a href="actor.html#XLevel">XLevel</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#EDodgeDir">EDodgeDir</a>, <a href="actor.html#EDrawType">EDrawType</a>, <a href="actor.html#EInputAction">EInputAction</a>, <a href="actor.html#EInputKey">EInputKey</a>, <a href="actor.html#ELightEffect">ELightEffect</a>, <a href="actor.html#ELightType">ELightType</a>, <a href="actor.html#EMusicTransition">EMusicTransition</a>, <a href="actor.html#ENetRole">ENetRole</a>, <a href="actor.html#EPhysics">EPhysics</a>, <a href="actor.html#ERenderStyle">ERenderStyle</a>, <a href="actor.html#ESoundSlot">ESoundSlot</a>, <a href="actor.html#ETravelType">ETravelType</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#PointRegion">PointRegion</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AddFliesAndRats+Dead" name="AddFliesAndRats">AddFliesAndRats</a> ()<br /><span class="function_state">Dead</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_AllowChunk+" name="AllowChunk">AllowChunk</a> (int N, name A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+Dead" name="BeginState">BeginState</a> ()<br /><span class="function_state">Dead</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CheckZoneCarcasses+Dead" name="CheckZoneCarcasses">CheckZoneCarcasses</a> ()<br /><span class="function_state">Dead</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ChunkUp+" name="ChunkUp">ChunkUp</a> (int Damage)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CreateReplacement+" name="CreateReplacement">CreateReplacement</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Destroyed+" name="Destroyed">Destroyed</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Initfor+" name="Initfor">Initfor</a> (<a href="actor.html">actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TakeDamage+" name="TakeDamage">TakeDamage</a> (int Damage, <a href="pawn.html">Pawn</a> instigatedBy, <a href="..\core\object.html#Vector">Vector</a> hitlocation, <a href="..\core\object.html#Vector">Vector</a> momentum, name damageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+Dead" name="Timer">Timer</a> ()<br /><span class="function_state">Dead</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="engine-overview.html">Engine</a>.<a href="decoration.html">Decoration</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="decoration.html#BaseChange">BaseChange</a>, <a href="decoration.html#Bump">Bump</a>, <a href="decoration.html#Destroyed">Destroyed</a>, <a href="decoration.html#Drop">Drop</a>, <a href="decoration.html#FollowHolder">FollowHolder</a>, <a href="decoration.html#Frag">Frag</a>, <a href="decoration.html#Landed">Landed</a>, <a href="decoration.html#skinnedFrag">skinnedFrag</a>, <a href="decoration.html#Timer">Timer</a>, <a href="decoration.html#Trigger">Trigger</a>, <a href="decoration.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#*">*</a>, <a href="actor.html#+">+</a>, <a href="actor.html#-">-</a>, <a href="actor.html#AllActors">AllActors</a>, <a href="actor.html#AnimEnd">AnimEnd</a>, <a href="actor.html#Attach">Attach</a>, <a href="actor.html#AutonomousPhysics">AutonomousPhysics</a>, <a href="actor.html#BaseChange">BaseChange</a>, <a href="actor.html#BasedActors">BasedActors</a>, <a href="actor.html#BecomeViewTarget">BecomeViewTarget</a>, <a href="actor.html#BeginEvent">BeginEvent</a>, <a href="actor.html#BeginPlay">BeginPlay</a>, <a href="actor.html#BroadcastLocalizedMessage">BroadcastLocalizedMessage</a>, <a href="actor.html#BroadcastMessage">BroadcastMessage</a>, <a href="actor.html#Bump">Bump</a>, <a href="actor.html#ChildActors">ChildActors</a>, <a href="actor.html#ConsoleCommand">ConsoleCommand</a>, <a href="actor.html#DemoPlaySound">DemoPlaySound</a>, <a href="actor.html#Destroy">Destroy</a>, <a href="actor.html#Destroyed">Destroyed</a>, <a href="actor.html#Detach">Detach</a>, <a href="actor.html#EncroachedBy">EncroachedBy</a>, <a href="actor.html#EncroachingOn">EncroachingOn</a>, <a href="actor.html#EndedRotation">EndedRotation</a>, <a href="actor.html#EndEvent">EndEvent</a>, <a href="actor.html#Error">Error</a>, <a href="actor.html#Expired">Expired</a>, <a href="actor.html#Falling">Falling</a>, <a href="actor.html#FastTrace">FastTrace</a>, <a href="actor.html#FellOutOfWorld">FellOutOfWorld</a>, <a href="actor.html#FinishAnim">FinishAnim</a>, <a href="actor.html#FinishInterpolation">FinishInterpolation</a>, <a href="actor.html#GainedChild">GainedChild</a>, <a href="actor.html#GetAnimGroup">GetAnimGroup</a>, <a href="actor.html#GetCacheEntry">GetCacheEntry</a>, <a href="actor.html#GetHumanName">GetHumanName</a>, <a href="actor.html#GetItemName">GetItemName</a>, <a href="actor.html#GetMapName">GetMapName</a>, <a href="actor.html#GetNextInt">GetNextInt</a>, <a href="actor.html#GetNextIntDesc">GetNextIntDesc</a>, <a href="actor.html#GetNextSkin">GetNextSkin</a>, <a href="actor.html#GetSoundDuration">GetSoundDuration</a>, <a href="actor.html#GetURLMap">GetURLMap</a>, <a href="actor.html#HasAnim">HasAnim</a>, <a href="actor.html#HitWall">HitWall</a>, <a href="actor.html#HurtRadius">HurtRadius</a>, <a href="actor.html#InterpolateEnd">InterpolateEnd</a>, <a href="actor.html#IsAnimating">IsAnimating</a>, <a href="actor.html#KillCredit">KillCredit</a>, <a href="actor.html#KilledBy">KilledBy</a>, <a href="actor.html#Landed">Landed</a>, <a href="actor.html#LinkSkelAnim">LinkSkelAnim</a>, <a href="actor.html#LoopAnim">LoopAnim</a>, <a href="actor.html#LostChild">LostChild</a>, <a href="actor.html#MakeNoise">MakeNoise</a>, <a href="actor.html#Move">Move</a>, <a href="actor.html#MoveCacheEntry">MoveCacheEntry</a>, <a href="actor.html#MoveSmooth">MoveSmooth</a>, <a href="actor.html#PlayAnim">PlayAnim</a>, <a href="actor.html#PlayerCanSeeMe">PlayerCanSeeMe</a>, <a href="actor.html#PlayOwnedSound">PlayOwnedSound</a>, <a href="actor.html#PlaySound">PlaySound</a>, <a href="actor.html#PostBeginPlay">PostBeginPlay</a>, <a href="actor.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="actor.html#PostTeleport">PostTeleport</a>, <a href="actor.html#PostTouch">PostTouch</a>, <a href="actor.html#PreBeginPlay">PreBeginPlay</a>, <a href="actor.html#PreTeleport">PreTeleport</a>, <a href="actor.html#RadiusActors">RadiusActors</a>, <a href="actor.html#RenderOverlays">RenderOverlays</a>, <a href="actor.html#RenderTexture">RenderTexture</a>, <a href="actor.html#SetBase">SetBase</a>, <a href="actor.html#SetCollision">SetCollision</a>, <a href="actor.html#SetCollisionSize">SetCollisionSize</a>, <a href="actor.html#SetDefaultDisplayProperties">SetDefaultDisplayProperties</a>, <a href="actor.html#SetDisplayProperties">SetDisplayProperties</a>, <a href="actor.html#SetInitialState">SetInitialState</a>, <a href="actor.html#SetLocation">SetLocation</a>, <a href="actor.html#SetOwner">SetOwner</a>, <a href="actor.html#SetPhysics">SetPhysics</a>, <a href="actor.html#SetRotation">SetRotation</a>, <a href="actor.html#SetTimer">SetTimer</a>, <a href="actor.html#Sleep">Sleep</a>, <a href="actor.html#Spawn">Spawn</a>, <a href="actor.html#Spawned">Spawned</a>, <a href="actor.html#SpecialHandling">SpecialHandling</a>, <a href="actor.html#TakeDamage">TakeDamage</a>, <a href="actor.html#Tick">Tick</a>, <a href="actor.html#Timer">Timer</a>, <a href="actor.html#Touch">Touch</a>, <a href="actor.html#TouchingActors">TouchingActors</a>, <a href="actor.html#Trace">Trace</a>, <a href="actor.html#TraceActors">TraceActors</a>, <a href="actor.html#TravelPostAccept">TravelPostAccept</a>, <a href="actor.html#TravelPreAccept">TravelPreAccept</a>, <a href="actor.html#Trigger">Trigger</a>, <a href="actor.html#TweenAnim">TweenAnim</a>, <a href="actor.html#UnTouch">UnTouch</a>, <a href="actor.html#UnTrigger">UnTrigger</a>, <a href="actor.html#VisibleActors">VisibleActors</a>, <a href="actor.html#VisibleCollidingActors">VisibleCollidingActors</a>, <a href="actor.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Dead <a href="..\Source_engine\carcass.html#83" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Dead <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AddFliesAndRats+Dead">AddFliesAndRats</a>, <a href="#_BeginState+Dead">BeginState</a>, <a href="#_CheckZoneCarcasses+Dead">CheckZoneCarcasses</a>, <a href="#_Timer+Dead">Timer</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Dying <a href="..\Source_engine\carcass.html#74" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">auto state</span> Dying <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bDecorative" class="hidden"></a>bDecorative <a href="..\Source_engine\carcass.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDecorative;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bPlayerCarcass" class="hidden"></a>bPlayerCarcass <a href="..\Source_engine\carcass.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPlayerCarcass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bReducedHeight" class="hidden"></a>bReducedHeight <a href="..\Source_engine\carcass.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bReducedHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bSlidingCarcass" class="hidden"></a>bSlidingCarcass <a href="..\Source_engine\carcass.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSlidingCarcass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Bugs" class="hidden"></a>Bugs <a href="..\Source_engine\carcass.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Bugs;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CumulativeDamage" class="hidden"></a>CumulativeDamage <a href="..\Source_engine\carcass.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> CumulativeDamage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_flies" class="hidden"></a>flies <a href="..\Source_engine\carcass.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">byte</font> flies;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayerOwner" class="hidden"></a>PlayerOwner <a href="..\Source_engine\carcass.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> PlayerOwner;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_rats" class="hidden"></a>rats <a href="..\Source_engine\carcass.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">byte</font> rats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddFliesAndRats+Dead" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AddFliesAndRats <span class="function_state">Dead</span> <a href="..\Source_engine\carcass.html#102" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AddFliesAndRats ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AllowChunk+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AllowChunk <span class="function_state"></span> <a href="..\Source_engine\carcass.html#48" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> AllowChunk (<font class="source_keyword">int</font> N, <font class="source_keyword">name</font> A)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+Dead" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">Dead</span> <a href="..\Source_engine\carcass.html#110" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CheckZoneCarcasses+Dead" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CheckZoneCarcasses <span class="function_state">Dead</span> <a href="..\Source_engine\carcass.html#106" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CheckZoneCarcasses ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ChunkUp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ChunkUp <span class="function_state"></span> <a href="..\Source_engine\carcass.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ChunkUp (<font class="source_keyword">int</font> Damage)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CreateReplacement+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CreateReplacement <span class="function_state"></span> <a href="..\Source_engine\carcass.html#22" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CreateReplacement ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Destroyed+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Destroyed <span class="function_state"></span> <a href="..\Source_engine\carcass.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Destroyed ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Initfor+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Initfor <span class="function_state"></span> <a href="..\Source_engine\carcass.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Initfor (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TakeDamage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TakeDamage <span class="function_state"></span> <a href="..\Source_engine\carcass.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TakeDamage (<font class="source_keyword">int</font> Damage, <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> instigatedBy, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> hitlocation, 
+                            <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> momentum, <font class="source_keyword">name</font> <font class="source_type"><a href="damagetype.html" class="source">damageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+Dead" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state">Dead</span> <a href="..\Source_engine\carcass.html#85" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     bDecorative=<font class="source_keyword">True</font>
+     bStatic=<font class="source_keyword">False</font>
+     DrawType=DT_Mesh
+     <font class="source_type"><a href="texture.html" class="source">Texture</a></font>=S_Corpse
+     bMeshCurvy=<font class="source_keyword">False</font>
+     bStasis=<font class="source_keyword">False</font>
+     CollisionRadius=+<font class="source_int">00018.000000</font>
+     CollisionHeight=+<font class="source_int">00004.000000</font>
+     bCollideActors=<font class="source_keyword">True</font>
+     bCollideWorld=<font class="source_keyword">True</font>
+     bProjTarget=<font class="source_keyword">True</font>
+     Physics=PHYS_Falling
+     Mass=+<font class="source_int">00180.000000</font>
+     Buoyancy=+<font class="source_int">00105.000000</font>
+     LifeSpan=+<font class="source_int">00180.000000</font>
+     AnimSequence=Dead
+     AnimFrame=+<font class="source_int">00000.900000</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\carcass.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Carcass">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="canvas.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="clipmarker.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:46:43.484 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

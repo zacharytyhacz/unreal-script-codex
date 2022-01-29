@@ -1,0 +1,2117 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealI.Krall</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\krall.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Krall">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="kraalbolt.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="krallcarcass.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unreali\unreali-overview.html">UnrealI</a>.<a href="..\unreali\krall.html">Krall</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+00562<br>
+00563<br>
+00564<br>
+00565<br>
+00566<br>
+00567<br>
+00568<br>
+00569<br>
+00570<br>
+00571<br>
+00572<br>
+00573<br>
+00574<br>
+00575<br>
+00576<br>
+00577<br>
+00578<br>
+00579<br>
+00580<br>
+00581<br>
+00582<br>
+00583<br>
+00584<br>
+00585<br>
+00586<br>
+00587<br>
+00588<br>
+00589<br>
+00590<br>
+00591<br>
+00592<br>
+00593<br>
+00594<br>
+00595<br>
+00596<br>
+00597<br>
+00598<br>
+00599<br>
+00600<br>
+00601<br>
+00602<br>
+00603<br>
+00604<br>
+00605<br>
+00606<br>
+00607<br>
+00608<br>
+00609<br>
+00610<br>
+00611<br>
+00612<br>
+00613<br>
+00614<br>
+00615<br>
+00616<br>
+00617<br>
+00618<br>
+00619<br>
+00620<br>
+00621<br>
+00622<br>
+00623<br>
+00624<br>
+00625<br>
+00626<br>
+00627<br>
+00628<br>
+00629<br>
+00630<br>
+00631<br>
+00632<br>
+00633<br>
+00634<br>
+00635<br>
+00636<br>
+00637<br>
+00638<br>
+00639<br>
+00640<br>
+00641<br>
+00642<br>
+00643<br>
+00644<br>
+00645<br>
+00646<br>
+00647<br>
+00648<br>
+00649<br>
+00650<br>
+00651<br>
+00652<br>
+00653<br>
+00654<br>
+00655<br>
+00656<br>
+00657<br>
+00658<br>
+00659<br>
+00660<br>
+00661<br>
+00662<br>
+00663<br>
+00664<br>
+00665<br>
+00666<br>
+00667<br>
+00668<br>
+00669<br>
+00670<br>
+00671<br>
+00672<br>
+00673<br>
+00674<br>
+00675<br>
+00676<br>
+00677<br>
+00678<br>
+00679<br>
+00680<br>
+00681<br>
+00682<br>
+00683<br>
+00684<br>
+00685<br>
+00686<br>
+00687<br>
+00688<br>
+00689<br>
+00690<br>
+00691<br>
+00692<br>
+00693<br>
+00694<br>
+00695<br>
+00696<br>
+00697<br>
+00698<br>
+00699<br>
+00700<br>
+00701<br>
+00702<br>
+00703<br>
+00704<br>
+00705<br>
+00706<br>
+00707<br>
+00708<br>
+00709<br>
+00710<br>
+00711<br>
+00712<br>
+00713<br>
+00714<br>
+00715<br>
+00716<br>
+00717<br>
+00718<br>
+00719<br>
+00720<br>
+00721<br>
+00722<br>
+00723<br>
+00724<br>
+00725<br>
+00726<br>
+00727<br>
+00728<br>
+00729<br>
+00730<br>
+00731<br>
+00732<br>
+00733<br>
+00734<br>
+00735<br>
+00736<br>
+00737<br>
+00738<br>
+00739<br>
+00740<br>
+00741<br>
+00742<br>
+00743<br>
+00744<br>
+00745<br>
+00746<br>
+00747<br>
+00748<br>
+00749<br>
+00750<br>
+00751<br>
+00752<br>
+00753<br>
+00754<br>
+00755<br>
+00756<br>
+00757<br>
+00758<br>
+00759<br>
+00760<br>
+00761<br>
+00762<br>
+00763<br>
+00764<br>
+00765<br>
+00766<br>
+00767<br>
+00768<br>
+00769<br>
+00770<br>
+00771<br>
+00772<br>
+00773<br>
+00774<br>
+00775<br>
+00776<br>
+00777<br>
+00778<br>
+00779<br>
+00780<br>
+00781<br>
+00782<br>
+00783<br>
+00784<br>
+00785<br>
+00786<br>
+00787<br>
+00788<br>
+00789<br>
+00790<br>
+00791<br>
+00792<br>
+00793<br>
+00794<br>
+00795<br>
+00796<br>
+00797<br>
+00798<br>
+00799<br>
+00800<br>
+00801<br>
+00802<br>
+00803<br>
+00804<br>
+00805<br>
+00806<br>
+00807<br>
+00808<br>
+00809<br>
+00810<br>
+00811<br>
+00812<br>
+00813<br>
+00814<br>
+00815<br>
+00816<br>
+00817<br>
+00818<br>
+00819<br>
+00820<br>
+00821<br>
+00822<br>
+00823<br>
+00824<br>
+00825<br>
+00826<br>
+00827<br>
+00828<br>
+00829<br>
+00830<br>
+00831<br>
+00832<br>
+00833<br>
+00834<br>
+00835<br>
+00836<br>
+00837<br>
+00838<br>
+00839<br>
+00840<br>
+00841<br>
+00842<br>
+00843<br>
+00844<br>
+00845<br>
+00846<br>
+00847<br>
+00848<br>
+00849<br>
+00850<br>
+00851<br>
+00852<br>
+00853<br>
+00854<br>
+00855<br>
+00856<br>
+00857<br>
+00858<br>
+00859<br>
+00860<br>
+00861<br>
+00862<br>
+00863<br>
+00864<br>
+00865<br>
+00866<br>
+00867<br>
+00868<br>
+00869<br>
+00870<br>
+00871<br>
+00872<br>
+00873<br>
+00874<br>
+00875<br>
+00876<br>
+00877<br>
+00878<br>
+00879<br>
+00880<br>
+00881<br>
+00882<br>
+00883<br>
+00884<br>
+00885<br>
+00886<br>
+00887<br>
+00888<br>
+00889<br>
+00890<br>
+00891<br>
+00892<br>
+00893<br>
+00894<br>
+00895<br>
+00896<br>
+00897<br>
+00898<br>
+00899<br>
+00900<br>
+00901<br>
+00902<br>
+00903<br>
+00904<br>
+00905<br>
+00906<br>
+00907<br>
+00908<br>
+00909<br>
+00910<br>
+00911<br>
+00912<br>
+00913<br>
+00914<br>
+00915<br>
+00916<br>
+00917<br>
+00918<br>
+00919<br>
+00920<br>
+00921<br>
+00922<br>
+00923<br>
+00924<br>
+00925<br>
+00926<br>
+00927<br>
+00928<br>
+00929<br>
+00930<br>
+00931<br>
+00932<br>
+00933<br>
+00934<br>
+00935<br>
+00936<br>
+00937<br>
+00938<br>
+00939<br>
+00940<br>
+00941<br>
+00942<br>
+00943<br>
+00944<br>
+00945<br>
+00946<br>
+00947<br>
+00948<br>
+00949<br>
+00950<br>
+00951<br>
+00952<br>
+00953<br>
+00954<br>
+00955<br>
+00956<br>
+00957<br>
+00958<br>
+00959<br>
+00960<br>
+00961<br>
+00962<br>
+00963<br>
+00964<br>
+00965<br>
+00966<br>
+00967<br>
+00968<br>
+00969<br>
+00970<br>
+00971<br>
+00972<br>
+00973<br>
+00974<br>
+00975<br>
+00976<br>
+00977<br>
+00978<br>
+00979<br>
+00980<br>
+00981<br>
+00982<br>
+00983<br>
+00984<br>
+00985<br>
+00986<br>
+00987<br>
+00988<br>
+00989<br>
+00990<br>
+00991<br>
+00992<br>
+00993<br>
+00994<br>
+00995<br>
+00996<br>
+00997<br>
+00998<br>
+00999<br>
+01000<br>
+01001<br>
+01002<br>
+01003<br>
+01004<br>
+01005<br>
+01006<br>
+01007<br>
+01008<br>
+01009<br>
+01010<br>
+01011<br>
+01012<br>
+01013<br>
+01014<br>
+01015<br>
+01016<br>
+01017<br>
+01018<br>
+01019<br>
+01020<br>
+01021<br>
+01022<br>
+01023<br>
+01024<br>
+01025<br>
+01026<br>
+01027<br>
+01028<br>
+01029<br>
+01030<br>
+01031<br>
+01032<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// Krall.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\unrealshare\scriptedpawn.html" class="source">ScriptedPawn</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec MESH IMPORT MESH=KrallM ANIVFILE=MODELS\krall_a.3D DATAFILE=MODELS\krall_d.3D LODSTYLE=2 ZEROTEX=1
+</font><a name="7"></a><font class="source_macro">#exec MESH ORIGIN MESH=KrallM X=70 Y=-240 Z=-120 YAW=64 ROLL=-64
+</font><a name="8"></a>
+<a name="9"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=All          STARTFRAME=0   NUMFRAMES=498
+</font><a name="10"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Breath       STARTFRAME=0   NUMFRAMES=6   RATE=6
+</font><a name="11"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Crouch       STARTFRAME=6   NUMFRAMES=1				GROUP=Ducking
+</font><a name="12"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Die1         STARTFRAME=7   NUMFRAMES=23  RATE=15
+</font><a name="13"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Die2         STARTFRAME=30  NUMFRAMES=22  RATE=15
+</font><a name="14"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Die3         STARTFRAME=52  NUMFRAMES=12  RATE=15
+</font><a name="15"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Die4         STARTFRAME=64  NUMFRAMES=17  RATE=15
+</font><a name="16"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Fighter      STARTFRAME=157 NUMFRAMES=1 
+</font><a name="17"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Hit          STARTFRAME=81  NUMFRAMES=7   RATE=15
+</font><a name="18"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=HeadHit      STARTFRAME=88  NUMFRAMES=1
+</font><a name="19"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=LeftHit      STARTFRAME=89  NUMFRAMES=1
+</font><a name="20"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=GutHit       STARTFRAME=90  NUMFRAMES=1
+</font><a name="21"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=RightHit     STARTFRAME=91  NUMFRAMES=1
+</font><a name="22"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Jump         STARTFRAME=92  NUMFRAMES=1
+</font><a name="23"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Land		    STARTFRAME=93  NUMFRAMES=1
+</font><a name="24"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Look         STARTFRAME=94  NUMFRAMES=23  RATE=15
+</font><a name="25"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Run          STARTFRAME=117 NUMFRAMES=10  RATE=15
+</font><a name="26"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Shoot1       STARTFRAME=127 NUMFRAMES=8   RATE=15   Group=Attack
+</font><a name="27"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=ThreatShoot1 STARTFRAME=127 NUMFRAMES=3   RATE=15
+</font><a name="28"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Shoot2       STARTFRAME=135 NUMFRAMES=22  RATE=15	GROUP=MovingAttack
+</font><a name="29"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Strike1      STARTFRAME=157 NUMFRAMES=11  RATE=15   Group=Attack
+</font><a name="30"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Strike2      STARTFRAME=168 NUMFRAMES=12  RATE=15   Group=Attack
+</font><a name="31"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Strike3      STARTFRAME=180 NUMFRAMES=15  RATE=15   Group=Attack
+</font><a name="32"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Swim         STARTFRAME=195 NUMFRAMES=15  RATE=15
+</font><a name="33"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=T3           STARTFRAME=210 NUMFRAMES=7   RATE=15
+</font><a name="34"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Throw        STARTFRAME=217 NUMFRAMES=25  RATE=15   Group=Attack
+</font><a name="35"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Twirl        STARTFRAME=242 NUMFRAMES=35
+</font><a name="36"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Walk         STARTFRAME=277 NUMFRAMES=15  RATE=15
+</font><a name="37"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Breath2      STARTFRAME=292 NUMFRAMES=7   RATE=6	GROUP=Ducking
+</font><a name="38"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Grasp        STARTFRAME=299 NUMFRAMES=18  RATE=15	GROUP=Ducking
+</font><a name="39"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=HeadRub      STARTFRAME=317 NUMFRAMES=18  RATE=15	GROUP=Ducking
+</font><a name="40"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Laugh        STARTFRAME=335 NUMFRAMES=25  RATE=15	GROUP=Ducking
+</font><a name="41"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Toss         STARTFRAME=360 NUMFRAMES=25  RATE=15	GROUP=Ducking
+</font><a name="42"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Dead5        STARTFRAME=385 NUMFRAMES=31  RATE=15	
+</font><a name="43"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Drag         STARTFRAME=416 NUMFRAMES=20  RATE=15	
+</font><a name="44"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=LegLoss      STARTFRAME=436 NUMFRAMES=13  RATE=15	
+</font><a name="45"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Shoot3       STARTFRAME=449 NUMFRAMES=10  RATE=15	
+</font><a name="46"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Sleep1       STARTFRAME=459 NUMFRAMES=8   RATE=6	
+</font><a name="47"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Sleep2       STARTFRAME=467 NUMFRAMES=8   RATE=6	
+</font><a name="48"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=Sleep3       STARTFRAME=475 NUMFRAMES=8   RATE=6	
+</font><a name="49"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=SwimFire     STARTFRAME=483 NUMFRAMES=15  RATE=15	
+</font><a name="50"></a><font class="source_macro">#exec MESH SEQUENCE MESH=krallM SEQ=LeglessDeath STARTFRAME=448 NUMFRAMES=1	
+</font><a name="51"></a>
+<a name="52"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=jkrall FILE=MODELS\krall.PCX GROUP=Skins 
+</font><a name="53"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=krallM X=0.11 Y=0.11 Z=0.22
+</font><a name="54"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=krallM NUM=0 TEXTURE=jkrall
+</font><a name="55"></a>
+<a name="56"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Shoot1 TIME=0.25 FUNCTION=SpawnShot
+</font><a name="57"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Shoot2 TIME=0.48 FUNCTION=SpawnShot
+</font><a name="58"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Shoot2 TIME=0.8 FUNCTION=ShotMove
+</font><a name="59"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Shoot3 TIME=0.35 FUNCTION=SpawnShot
+</font><a name="60"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Strike1 TIME=0.375 FUNCTION=StrikeDamageTarget
+</font><a name="61"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Strike2 TIME=0.5 FUNCTION=StrikeDamageTarget
+</font><a name="62"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Strike3 TIME=0.26 FUNCTION=PoundDamageTarget
+</font><a name="63"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Throw TIME=0.19 FUNCTION=ThrowDamageTarget
+</font><a name="64"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Throw TIME=0.42 FUNCTION=ThrowTarget
+</font><a name="65"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Grasp TIME=0.58 FUNCTION=GrabDice
+</font><a name="66"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Toss  TIME=0.63 FUNCTION=ThrowDice
+</font><a name="67"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Die1  TIME=0.64 FUNCTION=LandThump
+</font><a name="68"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Die2  TIME=0.81 FUNCTION=LandThump
+</font><a name="69"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Die3  TIME=0.54 FUNCTION=LandThump
+</font><a name="70"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Die4  TIME=0.75 FUNCTION=LandThump
+</font><a name="71"></a><font class="source_macro">#exec MESH NOTIFY MESH=krallM SEQ=Dead5 TIME=0.83 FUNCTION=LandThump
+</font><a name="72"></a>
+<a name="73"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\amb1kr.WAV" NAME="amb1kr" GROUP="Krall"
+</font><a name="74"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\syl13kr.WAV" NAME="syl1kr" GROUP="Krall"
+</font><a name="75"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\syl14kr.WAV" NAME="syl2kr" GROUP="Krall"
+</font><a name="76"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\syl15kr.WAV" NAME="syl3kr" GROUP="Krall"
+</font><a name="77"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\syl16kr.WAV" NAME="syl4kr" GROUP="Krall"
+</font><a name="78"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\syl17kr.WAV" NAME="syl5kr" GROUP="Krall"
+</font><a name="79"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\syl18kr.WAV" NAME="syl6kr" GROUP="Krall"
+</font><a name="80"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\death1a.WAV" NAME="death1k" GROUP="Krall"
+</font><a name="81"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\death2a.WAV" NAME="death2k" GROUP="Krall"
+</font><a name="82"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\strike1kr.WAV" NAME="strike1k" GROUP="Krall"
+</font><a name="83"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\staflp4kr.WAV" NAME="staflp4k" GROUP="Krall"
+</font><a name="84"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\injur1a.WAV" NAME="injur1k" GROUP="Krall"
+</font><a name="85"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\injur2a.WAV" NAME="injur2k" GROUP="Krall"
+</font><a name="86"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\chlng1a.WAV" NAME="chlng1k" GROUP="Krall"
+</font><a name="87"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\chlng2a.WAV" NAME="chlng2k" GROUP="Krall"
+</font><a name="88"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\hit2a.WAV" NAME="hit2k" GROUP="Krall"
+</font><a name="89"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\throw1kr.WAV" NAME="throw1k" GROUP="Krall"
+</font><a name="90"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Krall\snore1kr.WAV" NAME="snore1k" GROUP="Krall"
+</font><a name="91"></a><font class="source_comment">//FIXME - also have look1a (for look anim)
+</font><a name="92"></a><font class="source_comment">//FIXME- How to use strike3kr?
+</font><a name="93"></a>
+<a name="94"></a><font class="source_keyword">var</font>() <font class="source_keyword">byte</font> StrikeDamage,
+<a name="95"></a>    ThrowDamage,
+<a name="96"></a>    PoundDamage;
+<a name="97"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> AttackSuccess;
+<a name="98"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bSpearToss;
+<a name="99"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bDicePlayer;
+<a name="100"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bSleeping;
+<a name="101"></a><font class="source_keyword">var</font>   <font class="source_keyword">bool</font> bHasDice;
+<a name="102"></a><font class="source_keyword">var</font>   <font class="source_keyword">bool</font> bHeldDice;
+<a name="103"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> strike1;
+<a name="104"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> strike2;
+<a name="105"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> twirl;
+<a name="106"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable1;
+<a name="107"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable2;
+<a name="108"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable3;
+<a name="109"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable4;
+<a name="110"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable5;
+<a name="111"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable6;
+<a name="112"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> die2;
+<a name="113"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> spearHit;
+<a name="114"></a><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> spearThrow;
+<a name="115"></a><font class="source_keyword">var</font>     <font class="source_keyword">name</font> phrase;
+<a name="116"></a><font class="source_keyword">var</font>     <font class="source_keyword">byte</font> phrasesyllable;
+<a name="117"></a><font class="source_keyword">var</font>     <font class="source_keyword">float</font>   voicePitch;
+<a name="118"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\unreali\dice.html" class="source">Dice</a></font> Toy1;
+<a name="119"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\unreali\dice.html" class="source">Dice</a></font> Toy2;
+<a name="120"></a><font class="source_keyword">var</font>()   <font class="source_keyword">float</font> MinDuckTime;
+<a name="121"></a><font class="source_keyword">var</font>     <font class="source_keyword">float</font> LastDuckTime;
+<a name="122"></a>
+<a name="123"></a><font class="source_keyword">function</font> PreBeginPlay()
+<a name="124"></a>{
+<a name="125"></a>    bCanSpeak = <font class="source_keyword">true</font>;
+<a name="126"></a>    voicePitch = <font class="source_int">0.25</font> + <font class="source_int">0.5</font> * FRand();
+<a name="127"></a>    <font class="source_keyword">if</font> ( CombatStyle == Default.CombatStyle)
+<a name="128"></a>        CombatStyle = CombatStyle + <font class="source_int">0.4</font> * FRand() - <font class="source_int">0.2</font>;
+<a name="129"></a>    bCanDuck = (FRand() &lt; <font class="source_int">0.5</font>);
+<a name="130"></a>    <font class="source_keyword">Super</font>.PreBeginPlay();
+<a name="131"></a>    <font class="source_keyword">if</font> ( bDicePlayer )
+<a name="132"></a>        PeripheralVision = <font class="source_int">1.0</font>; 
+<a name="133"></a>    <font class="source_keyword">if</font> ( Skill == <font class="source_int">0</font> )
+<a name="134"></a>        ProjectileSpeed *= <font class="source_int">0.85</font>;
+<a name="135"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Skill &gt; <font class="source_int">2</font> )
+<a name="136"></a>    {
+<a name="137"></a>        bCanStrafe = <font class="source_keyword">true</font>;
+<a name="138"></a>        ProjectileSpeed *= <font class="source_int">1.1</font>;
+<a name="139"></a>    }
+<a name="140"></a>    <font class="source_keyword">if</font> ( !IsA(<font class="source_name">'KrallElite'</font>) )
+<a name="141"></a>        bLeadTarget = <font class="source_keyword">false</font>;
+<a name="142"></a>}
+<a name="143"></a>
+<a name="144"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\carcass.html" class="source">Carcass</a></font> SpawnCarcass()
+<a name="145"></a>{
+<a name="146"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\carcass.html" class="source">carcass</a></font> carc;
+<a name="147"></a>    
+<a name="148"></a>    carc = Spawn(CarcassType);
+<a name="149"></a>    carc.Initfor(self);
+<a name="150"></a>    carc.bReducedHeight = <font class="source_keyword">true</font>;
+<a name="151"></a>    carc.PrePivot = PrePivot;
+<a name="152"></a>    <font class="source_keyword">return</font> carc;
+<a name="153"></a>}
+<a name="154"></a>
+<a name="155"></a><font class="source_keyword">function</font> PlayTakeHit(<font class="source_keyword">float</font> tweentime, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLoc, <font class="source_keyword">int</font> damage)
+<a name="156"></a>{
+<a name="157"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\carcass.html" class="source">carcass</a></font> carc;
+<a name="158"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\unreali\leglesskrall.html" class="source">LeglessKrall</a></font> rep;
+<a name="159"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> OtherPawn;
+<a name="160"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> A;
+<a name="161"></a>
+<a name="162"></a>    <font class="source_keyword">if</font> ( (<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &gt; <font class="source_int">30</font>) || (damage &lt; <font class="source_int">24</font>) || (HitLoc.Z &gt; Location.Z) || (FRand() &lt; <font class="source_int">0.6</font>) || <font class="source_type">Level</font>.Game.bVeryLowGore )
+<a name="163"></a>    {
+<a name="164"></a>        <font class="source_keyword">Super</font>.PlayTakeHit(tweentime, HitLoc, damage);
+<a name="165"></a>        <font class="source_keyword">return</font>;
+<a name="166"></a>    }
+<a name="167"></a>
+<a name="168"></a>    carc = Spawn(<font class="source_keyword">class</font> <font class="source_name">'CreatureChunks'</font>,,, Location - CollisionHeight * vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0.5</font>), Rotation + rot(<font class="source_int">3000</font>,<font class="source_int">0</font>,<font class="source_int">16384</font>) );
+<a name="169"></a>    <font class="source_keyword">if</font> (carc != <font class="source_keyword">None</font>)
+<a name="170"></a>    {
+<a name="171"></a>        carc.<font class="source_type">Mesh</font> = <font class="source_type">mesh</font><font class="source_name">'KrallFoot'</font>;
+<a name="172"></a>        carc.Initfor(self);
+<a name="173"></a>        carc.Velocity = Velocity + VSize(Velocity) * VRand();
+<a name="174"></a>        carc.Velocity.Z = FMax(carc.Velocity.Z, Velocity.Z);
+<a name="175"></a>    }
+<a name="176"></a>    carc = Spawn(<font class="source_keyword">class</font> <font class="source_name">'CreatureChunks'</font>,,, Location - CollisionHeight * vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0.5</font>), Rotation + rot(<font class="source_int">3000</font>,<font class="source_int">0</font>,<font class="source_int">16384</font>) );
+<a name="177"></a>    <font class="source_keyword">if</font> (carc != <font class="source_keyword">None</font>)
+<a name="178"></a>    {
+<a name="179"></a>        carc.<font class="source_type">Mesh</font> = <font class="source_type">mesh</font><font class="source_name">'KrallFoot'</font>;
+<a name="180"></a>        carc.Initfor(self);
+<a name="181"></a>        carc.Velocity = Velocity + VSize(Velocity) * VRand();
+<a name="182"></a>        carc.Velocity.Z = FMax(carc.Velocity.Z, Velocity.Z);
+<a name="183"></a>    }
+<a name="184"></a>
+<a name="185"></a>    SetCollision(<font class="source_keyword">false</font>, <font class="source_keyword">false</font>, <font class="source_keyword">false</font>);
+<a name="186"></a>    OtherPawn = <font class="source_type">Level</font>.PawnList;
+<a name="187"></a>    <font class="source_keyword">while</font> ( OtherPawn != <font class="source_keyword">None</font> )
+<a name="188"></a>    {
+<a name="189"></a>        OtherPawn.Killed(enemy, self, <font class="source_name">''</font>);
+<a name="190"></a>        OtherPawn = OtherPawn.nextPawn;
+<a name="191"></a>    }
+<a name="192"></a>    <font class="source_keyword">if</font> ( CarriedDecoration != <font class="source_keyword">None</font> )
+<a name="193"></a>        DropDecoration();
+<a name="194"></a>    <font class="source_keyword">if</font> ( <font class="source_keyword">Event</font> != <font class="source_name">''</font> )
+<a name="195"></a>        <font class="source_keyword">foreach</font> AllActors( <font class="source_keyword">class</font> <font class="source_name">'Actor'</font>, A, <font class="source_keyword">Event</font> )
+<a name="196"></a>            A.<font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font>( self, enemy );
+<a name="197"></a>    <font class="source_type">Level</font>.Game.DiscardInventory(self);
+<a name="198"></a>    Velocity.Z *= <font class="source_int">1.3</font>;
+<a name="199"></a>    rep = Spawn(<font class="source_keyword">class</font><font class="source_name">'LeglessKrall'</font>);
+<a name="200"></a>    rep.InitFor(self);
+<a name="201"></a>    destroy();
+<a name="202"></a>}
+<a name="203"></a>
+<a name="204"></a><font class="source_keyword">function</font> ZoneChange(<font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> newZone)
+<a name="205"></a>{
+<a name="206"></a>    bCanSwim = newZone.bWaterZone; <font class="source_comment">//only when it must
+</font><a name="207"></a>        
+<a name="208"></a>    <font class="source_keyword">if</font> ( newZone.bWaterZone )
+<a name="209"></a>        CombatStyle = <font class="source_int">1.0</font>; <font class="source_comment">//always charges when in the water
+</font><a name="210"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Physics == PHYS_Swimming)
+<a name="211"></a>        CombatStyle = Default.CombatStyle;
+<a name="212"></a>
+<a name="213"></a>    <font class="source_keyword">Super</font>.ZoneChange(newZone);
+<a name="214"></a>}
+<a name="215"></a>
+<a name="216"></a><font class="source_keyword">function</font> SetMovementPhysics()
+<a name="217"></a>{
+<a name="218"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone )
+<a name="219"></a>        SetPhysics(PHYS_Swimming);
+<a name="220"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Physics != PHYS_Walking)
+<a name="221"></a>        SetPhysics(PHYS_Walking); 
+<a name="222"></a>}
+<a name="223"></a>
+<a name="224"></a><font class="source_keyword">function</font> TryToDuck(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> duckDir, <font class="source_keyword">bool</font> bReversed)
+<a name="225"></a>{
+<a name="226"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation, HitNormal, Extent;
+<a name="227"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> HitActor;
+<a name="228"></a>
+<a name="229"></a>    <font class="source_comment">//log("duck");
+</font><a name="230"></a>    
+<a name="231"></a>    <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.TimeSeconds - LastDuckTime &lt; (<font class="source_int">0.25</font> + <font class="source_int">0.5</font> * FRand()) * MinDuckTime )
+<a name="232"></a>        <font class="source_keyword">return</font>; 
+<a name="233"></a>    duckDir.Z = <font class="source_int">0</font>;
+<a name="234"></a>    <font class="source_keyword">if</font> ( (Skill == <font class="source_int">0</font>) && (FRand() &lt; <font class="source_int">0.5</font>) )
+<a name="235"></a>        DuckDir *= -<font class="source_int">1</font>;  
+<a name="236"></a>
+<a name="237"></a>    Extent.X = CollisionRadius;
+<a name="238"></a>    Extent.Y = CollisionRadius;
+<a name="239"></a>    Extent.Z = CollisionHeight;
+<a name="240"></a>    HitActor = Trace(HitLocation, HitNormal, Location + <font class="source_int">128</font> * duckDir, Location, <font class="source_keyword">false</font>, Extent);
+<a name="241"></a>    <font class="source_keyword">if</font> (HitActor != <font class="source_keyword">None</font>)
+<a name="242"></a>    {
+<a name="243"></a>        duckDir *= -<font class="source_int">1</font>;
+<a name="244"></a>        HitActor = Trace(HitLocation, HitNormal, Location + <font class="source_int">128</font> * duckDir, Location, <font class="source_keyword">false</font>, Extent);
+<a name="245"></a>    }
+<a name="246"></a>    <font class="source_keyword">if</font> (HitActor != <font class="source_keyword">None</font>)
+<a name="247"></a>        <font class="source_keyword">return</font>;
+<a name="248"></a>    
+<a name="249"></a>    HitActor = Trace(HitLocation, HitNormal, Location + <font class="source_int">128</font> * duckDir - MaxStepHeight * vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">1</font>), Location + <font class="source_int">128</font> * duckDir, <font class="source_keyword">false</font>, Extent);
+<a name="250"></a>    <font class="source_keyword">if</font> (HitActor == <font class="source_keyword">None</font>)
+<a name="251"></a>        <font class="source_keyword">return</font>;
+<a name="252"></a>        
+<a name="253"></a>    <font class="source_comment">//log("good duck");
+</font><a name="254"></a>
+<a name="255"></a>    LastDuckTime = <font class="source_type">Level</font>.TimeSeconds;
+<a name="256"></a>    SetFall();
+<a name="257"></a>    TweenAnim(<font class="source_name">'Jump'</font>, <font class="source_int">0.3</font>);
+<a name="258"></a>    Velocity = duckDir * <font class="source_int">1.5</font> * GroundSpeed;
+<a name="259"></a>    Velocity.Z = <font class="source_int">200</font>;
+<a name="260"></a>    SetPhysics(PHYS_Falling);
+<a name="261"></a>    GotoState(<font class="source_name">'FallingState'</font>,<font class="source_name">'Ducking'</font>);
+<a name="262"></a>}   
+<a name="263"></a>
+<a name="264"></a><font class="source_comment">//=========================================================================================
+</font><a name="265"></a><font class="source_comment">// Speech
+</font><a name="266"></a>
+<a name="267"></a>
+<a name="268"></a><font class="source_keyword">function</font> SpeechTimer()
+<a name="269"></a>{
+<a name="270"></a>    <font class="source_comment">//last syllable expired.  Decide whether to keep the floor or quit
+</font><a name="271"></a>    <font class="source_keyword">if</font> (FRand() &lt; <font class="source_int">0.3</font>)
+<a name="272"></a>    {
+<a name="273"></a>        bIsSpeaking = <font class="source_keyword">false</font>;
+<a name="274"></a>        <font class="source_keyword">if</font> (TeamLeader != <font class="source_keyword">None</font>)
+<a name="275"></a>            TeamLeader.bTeamSpeaking = <font class="source_keyword">false</font>;
+<a name="276"></a>    }
+<a name="277"></a>    <font class="source_keyword">else</font>
+<a name="278"></a>        Speak();
+<a name="279"></a>}
+<a name="280"></a>
+<a name="281"></a><font class="source_keyword">function</font> SpeakOrderTo(<font class="source_type"><a href="..\unrealshare\scriptedpawn.html" class="source">ScriptedPawn</a></font> TeamMember)
+<a name="282"></a>{
+<a name="283"></a>    phrase = <font class="source_name">''</font>;
+<a name="284"></a>    <font class="source_keyword">if</font> ( !TeamMember.bCanSpeak || (FRand() &lt; <font class="source_int">0.5</font>) )
+<a name="285"></a>        Speak();
+<a name="286"></a>    <font class="source_keyword">else</font>  
+<a name="287"></a>    {
+<a name="288"></a>        <font class="source_keyword">if</font> (<font class="source_type"><a href="..\unrealshare\skaarjwarrior.html" class="source">SkaarjWarrior</a></font>(TeamMember) != <font class="source_keyword">None</font>)
+<a name="289"></a>            <font class="source_type"><a href="..\unrealshare\skaarjwarrior.html" class="source">SkaarjWarrior</a></font>(TeamMember).phrase = <font class="source_name">''</font>;
+<a name="290"></a>        TeamMember.Speak();
+<a name="291"></a>    }
+<a name="292"></a>}
+<a name="293"></a>
+<a name="294"></a><font class="source_keyword">function</font> SpeakTo(<font class="source_type"><a href="..\unrealshare\scriptedpawn.html" class="source">ScriptedPawn</a></font> Other)
+<a name="295"></a>{
+<a name="296"></a>    <font class="source_keyword">if</font> (Other.bIsSpeaking || ((TeamLeader != <font class="source_keyword">None</font>) && TeamLeader.bTeamSpeaking) )
+<a name="297"></a>        <font class="source_keyword">return</font>;
+<a name="298"></a>    
+<a name="299"></a>    phrase = <font class="source_name">''</font>;
+<a name="300"></a>    Speak();
+<a name="301"></a>}
+<a name="302"></a>
+<a name="303"></a><font class="source_keyword">function</font> Speak()
+<a name="304"></a>{
+<a name="305"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> decision;
+<a name="306"></a>    
+<a name="307"></a>    <font class="source_comment">//if (phrase != '')
+</font><a name="308"></a>    <font class="source_comment">//	SpeakPhrase();
+</font><a name="309"></a>    bIsSpeaking = <font class="source_keyword">true</font>;
+<a name="310"></a>    decision = FRand();
+<a name="311"></a>    <font class="source_keyword">if</font> (TeamLeader != <font class="source_keyword">None</font>) 
+<a name="312"></a>        TeamLeader.bTeamSpeaking = <font class="source_keyword">true</font>;
+<a name="313"></a>    <font class="source_keyword">if</font> (decision &lt; <font class="source_int">0.167</font>)
+<a name="314"></a>        PlaySound(Syllable1,SLOT_Talk,<font class="source_int">0.3</font> + FRand(),,, FRand() + voicePitch);
+<a name="315"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (decision &lt; <font class="source_int">0.333</font>)
+<a name="316"></a>        PlaySound(Syllable2,SLOT_Talk,<font class="source_int">0.3</font> + FRand(),,, FRand() + voicePitch);
+<a name="317"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (decision &lt; <font class="source_int">0.5</font>)
+<a name="318"></a>        PlaySound(Syllable3,SLOT_Talk,<font class="source_int">0.3</font> + FRand(),,, FRand() + voicePitch);
+<a name="319"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (decision &lt; <font class="source_int">0.667</font>)
+<a name="320"></a>        PlaySound(Syllable4,SLOT_Talk,<font class="source_int">0.3</font> + FRand(),,, FRand() + voicePitch);
+<a name="321"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (decision &lt; <font class="source_int">0.833</font>)
+<a name="322"></a>        PlaySound(Syllable5,SLOT_Talk,<font class="source_int">0.3</font> + FRand(),,, FRand() + voicePitch);
+<a name="323"></a>    <font class="source_keyword">else</font> 
+<a name="324"></a>        PlaySound(Syllable6,SLOT_Talk,<font class="source_int">0.3</font> + FRand(),,, FRand() + voicePitch);
+<a name="325"></a>
+<a name="326"></a>    SpeechTime = <font class="source_int">0.1</font> + <font class="source_int">0.3</font> * FRand();
+<a name="327"></a>}
+<a name="328"></a>    
+<a name="329"></a><font class="source_keyword">function</font> PlayAcquisitionSound()
+<a name="330"></a>{
+<a name="331"></a>    <font class="source_keyword">if</font> ( bCanSpeak && (TeamLeader != <font class="source_keyword">None</font>) && !TeamLeader.bTeamSpeaking )
+<a name="332"></a>    {
+<a name="333"></a>        phrase = <font class="source_name">'Acquisition'</font>;
+<a name="334"></a>        phrasesyllable = <font class="source_int">0</font>;
+<a name="335"></a>        Speak();
+<a name="336"></a>        <font class="source_keyword">return</font>;
+<a name="337"></a>    }
+<a name="338"></a>    <font class="source_keyword">Super</font>.PlayAcquisitionSound(); 
+<a name="339"></a>}
+<a name="340"></a>
+<a name="341"></a><font class="source_keyword">function</font> PlayFearSound()
+<a name="342"></a>{
+<a name="343"></a>    <font class="source_keyword">if</font> ( bCanSpeak && (TeamLeader != <font class="source_keyword">None</font>) && !TeamLeader.bTeamSpeaking )
+<a name="344"></a>    {
+<a name="345"></a>        phrase = <font class="source_name">'Fear'</font>;
+<a name="346"></a>        phrasesyllable = <font class="source_int">0</font>;
+<a name="347"></a>        Speak();
+<a name="348"></a>        <font class="source_keyword">return</font>;
+<a name="349"></a>    }
+<a name="350"></a>    <font class="source_keyword">Super</font>.PlayFearSound(); 
+<a name="351"></a>}
+<a name="352"></a>
+<a name="353"></a><font class="source_keyword">function</font> PlayRoamingSound()
+<a name="354"></a>{
+<a name="355"></a>    <font class="source_keyword">if</font> ( bCanSpeak && (TeamLeader != <font class="source_keyword">None</font>) && !TeamLeader.bTeamSpeaking  && (FRand() &lt; <font class="source_int">0.5</font>) )
+<a name="356"></a>    {
+<a name="357"></a>        phrase = <font class="source_name">''</font>;
+<a name="358"></a>        Speak();
+<a name="359"></a>        <font class="source_keyword">return</font>;
+<a name="360"></a>    } 
+<a name="361"></a>    <font class="source_keyword">Super</font>.PlayRoamingSound();
+<a name="362"></a>}
+<a name="363"></a>
+<a name="364"></a><font class="source_keyword">function</font> PlayThreateningSound()
+<a name="365"></a>{
+<a name="366"></a>    <font class="source_keyword">if</font> ( bCanSpeak && (FRand() &lt; <font class="source_int">0.6</font>) && ((TeamLeader == <font class="source_keyword">None</font>) || !TeamLeader.bTeamSpeaking) )
+<a name="367"></a>    {
+<a name="368"></a>        phrase = <font class="source_name">'Threaten'</font>;
+<a name="369"></a>        phrasesyllable = <font class="source_int">0</font>;
+<a name="370"></a>        Speak();
+<a name="371"></a>        <font class="source_keyword">return</font>;
+<a name="372"></a>    } 
+<a name="373"></a>    <font class="source_keyword">Super</font>.PlayThreateningSound();
+<a name="374"></a>}
+<a name="375"></a>
+<a name="376"></a><font class="source_comment">//=========================================================================================
+</font><a name="377"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\pawn.html#EAttitude" class="source">eAttitude</a></font> AttitudeToCreature(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)
+<a name="378"></a>{
+<a name="379"></a>    <font class="source_keyword">if</font> ( Other.IsA(<font class="source_name">'Nali'</font>) )
+<a name="380"></a>        <font class="source_keyword">return</font> ATTITUDE_Hate;
+<a name="381"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Other.IsA(<font class="source_name">'Krall'</font>) )
+<a name="382"></a>        <font class="source_keyword">return</font> ATTITUDE_Friendly;
+<a name="383"></a>    <font class="source_keyword">else</font>
+<a name="384"></a>        <font class="source_keyword">return</font> ATTITUDE_Ignore;
+<a name="385"></a>}
+<a name="386"></a>
+<a name="387"></a><font class="source_keyword">function</font> ThrowDice()
+<a name="388"></a>{
+<a name="389"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\unreali\dice.html" class="source">Dice</a></font> d1, d2;
+<a name="390"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> X,Y,Z, ThrowLoc;
+<a name="391"></a>
+<a name="392"></a>    d1 = <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font>(TeamLeader).Toy1;
+<a name="393"></a>    d2 = <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font>(TeamLeader).Toy2;
+<a name="394"></a>    GetAxes(Rotation, X,Y,Z);
+<a name="395"></a>    ThrowLoc = Location + X * CollisionRadius + Y * CollisionRadius - Z * <font class="source_int">0.6</font> * CollisionHeight; 
+<a name="396"></a>    d1.SetLocation(ThrowLoc);
+<a name="397"></a>    d2.SetLocation(ThrowLoc + vect(<font class="source_int">2</font>,<font class="source_int">2</font>,<font class="source_int">2</font>));
+<a name="398"></a>
+<a name="399"></a>    d1.instigator = self;
+<a name="400"></a>    d1.Throw(Y);
+<a name="401"></a>
+<a name="402"></a>    d2.instigator = self;
+<a name="403"></a>    d2.Throw(Y);
+<a name="404"></a>}
+<a name="405"></a>
+<a name="406"></a><font class="source_keyword">function</font> GrabDice()
+<a name="407"></a>{
+<a name="408"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font>(TeamLeader).Toy1 == <font class="source_keyword">None</font> )
+<a name="409"></a>        <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font>(TeamLeader).Toy1 = Spawn(<font class="source_keyword">class</font><font class="source_name">'Dice'</font>);
+<a name="410"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font>(TeamLeader).Toy2 == <font class="source_keyword">None</font> )
+<a name="411"></a>        <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font>(TeamLeader).Toy2 = Spawn(<font class="source_keyword">class</font><font class="source_name">'Dice'</font>);
+<a name="412"></a>        
+<a name="413"></a>    <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font>(TeamLeader).Toy1.bHidden = <font class="source_keyword">True</font>;
+<a name="414"></a>    <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font>(TeamLeader).Toy2.bHidden = <font class="source_keyword">True</font>;
+<a name="415"></a>}
+<a name="416"></a>
+<a name="417"></a>
+<a name="418"></a><font class="source_keyword">function</font> PlayWaiting()
+<a name="419"></a>{
+<a name="420"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> decision;
+<a name="421"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> animspeed;
+<a name="422"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="423"></a>    {
+<a name="424"></a>        PlaySwimming();
+<a name="425"></a>        <font class="source_keyword">return</font>;
+<a name="426"></a>    }
+<a name="427"></a>
+<a name="428"></a>    <font class="source_keyword">if</font> ( bSleeping )
+<a name="429"></a>    {
+<a name="430"></a>        animspeed = <font class="source_int">0.5</font> + <font class="source_int">0.5</font> * FRand(); 
+<a name="431"></a>        SetAlertness(-<font class="source_int">1.0</font>);
+<a name="432"></a>        LoopAnim(<font class="source_name">'Sleep1'</font>, AnimSpeed );
+<a name="433"></a>        PlaySound(<font class="source_type">sound</font><font class="source_name">'Snore1K'</font>,SLOT_Talk);
+<a name="434"></a>        <font class="source_keyword">return</font>;
+<a name="435"></a>    }
+<a name="436"></a>
+<a name="437"></a>    decision = FRand();
+<a name="438"></a>
+<a name="439"></a>    <font class="source_keyword">if</font> ( bDicePlayer ) 
+<a name="440"></a>    {
+<a name="441"></a>        animspeed = <font class="source_int">0.4</font> + <font class="source_int">0.6</font> * FRand(); 
+<a name="442"></a>        SetAlertness(-<font class="source_int">1.0</font>);
+<a name="443"></a>        
+<a name="444"></a>        <font class="source_keyword">if</font> ( TeamLeader == <font class="source_keyword">None</font> )
+<a name="445"></a>        {
+<a name="446"></a>            <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.9</font> )
+<a name="447"></a>                LoopAnim(<font class="source_name">'Breath2'</font>, animspeed, <font class="source_int">0.5</font>);
+<a name="448"></a>            <font class="source_keyword">else</font>
+<a name="449"></a>                LoopAnim(<font class="source_name">'HeadRub'</font>, animspeed);
+<a name="450"></a>            <font class="source_keyword">return</font>;
+<a name="451"></a>        }
+<a name="452"></a>
+<a name="453"></a>        <font class="source_keyword">if</font> ( !TeamLeader.bTeamSpeaking )
+<a name="454"></a>        {
+<a name="455"></a>            phrase = <font class="source_name">''</font>;
+<a name="456"></a>            Speak();
+<a name="457"></a>        }
+<a name="458"></a>        <font class="source_keyword">if</font> ( bHasDice )
+<a name="459"></a>        {
+<a name="460"></a>            <font class="source_keyword">if</font> ( AnimSequence == <font class="source_name">'Toss'</font> )
+<a name="461"></a>            {
+<a name="462"></a>                bHasDice = <font class="source_keyword">false</font>;
+<a name="463"></a>                <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font>(TeamLeader).bHeldDice = <font class="source_keyword">false</font>;
+<a name="464"></a>            }
+<a name="465"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( FRand() &lt; <font class="source_int">0.8</font> )
+<a name="466"></a>            {
+<a name="467"></a>                PlayAnim(<font class="source_name">'Toss'</font>, animspeed);
+<a name="468"></a>                <font class="source_keyword">return</font>;
+<a name="469"></a>            }
+<a name="470"></a>        }
+<a name="471"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font>(TeamLeader).bHeldDice || ( FRand() &lt; <font class="source_int">0.65</font>) )
+<a name="472"></a>        {
+<a name="473"></a>            <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.8</font> )
+<a name="474"></a>                LoopAnim(<font class="source_name">'Breath2'</font>, animspeed, <font class="source_int">0.5</font>);
+<a name="475"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.9</font> )
+<a name="476"></a>                LoopAnim(<font class="source_name">'Laugh'</font>, animspeed);
+<a name="477"></a>            <font class="source_keyword">else</font> 
+<a name="478"></a>                LoopAnim(<font class="source_name">'HeadRub'</font>, animspeed);
+<a name="479"></a>            <font class="source_keyword">return</font>;
+<a name="480"></a>        }
+<a name="481"></a>        <font class="source_type"><a href="..\unreali\krall.html" class="source">Krall</a></font>(TeamLeader).bHeldDice = <font class="source_keyword">True</font>;
+<a name="482"></a>        bHasDice = <font class="source_keyword">True</font>;
+<a name="483"></a>        PlayAnim(<font class="source_name">'Grasp'</font>, animspeed);
+<a name="484"></a>        <font class="source_keyword">return</font>;
+<a name="485"></a>    }
+<a name="486"></a>
+<a name="487"></a>    <font class="source_keyword">if</font> (AnimSequence == <font class="source_name">'Look'</font>)
+<a name="488"></a>    {
+<a name="489"></a>        SetAlertness(<font class="source_int">0.0</font>);
+<a name="490"></a>        <font class="source_keyword">if</font> (!bQuiet && decision &lt; <font class="source_int">0.3</font>) 
+<a name="491"></a>        {
+<a name="492"></a>            LoopAnim(<font class="source_name">'Twirl'</font>, <font class="source_int">0.3</font> + <font class="source_int">0.6</font> * FRand());
+<a name="493"></a>            PlaySound(Twirl,SLOT_Interact,<font class="source_int">0.5</font>,,<font class="source_int">500</font>);
+<a name="494"></a>        }   
+<a name="495"></a>        <font class="source_keyword">else</font> 
+<a name="496"></a>            LoopAnim(<font class="source_name">'Breath'</font>, <font class="source_int">0.2</font> + <font class="source_int">0.7</font> * FRand());
+<a name="497"></a>        <font class="source_keyword">return</font>;
+<a name="498"></a>    }
+<a name="499"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (AnimSequence == <font class="source_name">'Twirl'</font>)
+<a name="500"></a>    {
+<a name="501"></a>        SetAlertness(<font class="source_int">0.0</font>);
+<a name="502"></a>        <font class="source_keyword">if</font> (decision &lt; <font class="source_int">0.5</font>) 
+<a name="503"></a>        {
+<a name="504"></a>            PlaySound(Twirl,SLOT_Interact,<font class="source_int">0.5</font>,,<font class="source_int">500</font>);    
+<a name="505"></a>            LoopAnim(<font class="source_name">'Twirl'</font>, <font class="source_int">0.3</font> + <font class="source_int">0.6</font> * FRand());
+<a name="506"></a>        }
+<a name="507"></a>        <font class="source_keyword">else</font> 
+<a name="508"></a>            LoopAnim( <font class="source_name">'Breath'</font>, <font class="source_int">0.2</font> + <font class="source_int">0.7</font> * FRand());
+<a name="509"></a>        <font class="source_keyword">return</font>;
+<a name="510"></a>    }
+<a name="511"></a>    
+<a name="512"></a>    <font class="source_keyword">if</font> (decision &lt; <font class="source_int">0.2</font>)
+<a name="513"></a>    {
+<a name="514"></a>        SetAlertness(<font class="source_int">0.5</font>);
+<a name="515"></a>        LoopAnim(<font class="source_name">'Look'</font>, <font class="source_int">0.2</font> + <font class="source_int">0.7</font> * FRand());
+<a name="516"></a>    }
+<a name="517"></a>    <font class="source_keyword">else</font>
+<a name="518"></a>    {
+<a name="519"></a>        SetAlertness(<font class="source_int">0.0</font>);
+<a name="520"></a>        LoopAnim(<font class="source_name">'Breath'</font>, <font class="source_int">0.2</font> + <font class="source_int">0.7</font> * FRand());
+<a name="521"></a>    }
+<a name="522"></a>}
+<a name="523"></a>
+<a name="524"></a><font class="source_keyword">function</font> PlayPatrolStop()
+<a name="525"></a>{
+<a name="526"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="527"></a>    {
+<a name="528"></a>        PlaySwimming();
+<a name="529"></a>        <font class="source_keyword">return</font>;
+<a name="530"></a>    }
+<a name="531"></a>        
+<a name="532"></a>    <font class="source_keyword">if</font> ( (AnimSequence == <font class="source_name">'Breath'</font>) && (FRand() &lt; <font class="source_int">0.4</font>) )
+<a name="533"></a>    {
+<a name="534"></a>        SetAlertness(<font class="source_int">0.5</font>);
+<a name="535"></a>        LoopAnim(<font class="source_name">'Look'</font>, <font class="source_int">0.2</font> + <font class="source_int">0.7</font> * FRand());
+<a name="536"></a>        <font class="source_keyword">return</font>;
+<a name="537"></a>    }
+<a name="538"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( !bQuiet && (AnimSequence == <font class="source_name">'Look'</font>) && (FRand() &lt; <font class="source_int">0.3</font>) )
+<a name="539"></a>    {
+<a name="540"></a>        SetAlertness(<font class="source_int">0.0</font>);
+<a name="541"></a>        PlaySound(Twirl,SLOT_Interact,<font class="source_int">0.5</font>,,<font class="source_int">500</font>);    
+<a name="542"></a>        LoopAnim(<font class="source_name">'Twirl'</font>, <font class="source_int">0.3</font> + <font class="source_int">0.6</font> * FRand());
+<a name="543"></a>        <font class="source_keyword">return</font>;
+<a name="544"></a>    }
+<a name="545"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (AnimSequence == <font class="source_name">'Twirl'</font>) && (FRand() &lt; <font class="source_int">0.5</font>) )
+<a name="546"></a>    {
+<a name="547"></a>        SetAlertness(<font class="source_int">0.0</font>);
+<a name="548"></a>        PlaySound(Twirl,SLOT_Interact,<font class="source_int">0.5</font>,,<font class="source_int">500</font>);    
+<a name="549"></a>        LoopAnim(<font class="source_name">'Twirl'</font>, <font class="source_int">0.3</font> + <font class="source_int">0.6</font> * FRand());
+<a name="550"></a>        <font class="source_keyword">return</font>;
+<a name="551"></a>    }
+<a name="552"></a>    SetAlertness(<font class="source_int">0.0</font>);
+<a name="553"></a>    LoopAnim(<font class="source_name">'Breath'</font>, <font class="source_int">0.2</font> + <font class="source_int">0.7</font> * FRand());
+<a name="554"></a>}
+<a name="555"></a>    
+<a name="556"></a><font class="source_keyword">function</font> PlayWaitingAmbush()
+<a name="557"></a>{
+<a name="558"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="559"></a>    {
+<a name="560"></a>        PlaySwimming();
+<a name="561"></a>        <font class="source_keyword">return</font>;
+<a name="562"></a>    }
+<a name="563"></a>    <font class="source_keyword">if</font> (FRand() &lt; <font class="source_int">0.4</font>)
+<a name="564"></a>        LoopAnim(<font class="source_name">'Look'</font>, <font class="source_int">0.3</font>);
+<a name="565"></a>    <font class="source_keyword">else</font> 
+<a name="566"></a>        LoopAnim(<font class="source_name">'Breath'</font>, <font class="source_int">0.3</font> + <font class="source_int">0.5</font> * FRand());
+<a name="567"></a>}
+<a name="568"></a>
+<a name="569"></a><font class="source_keyword">function</font> PlayChallenge()
+<a name="570"></a>{
+<a name="571"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="572"></a>    {
+<a name="573"></a>        PlaySwimming();
+<a name="574"></a>        <font class="source_keyword">return</font>;
+<a name="575"></a>    }
+<a name="576"></a>    <font class="source_keyword">if</font> ( TryToCrouch() )
+<a name="577"></a>    {
+<a name="578"></a>        TweenAnim(<font class="source_name">'Crouch'</font>, <font class="source_int">0.12</font>);
+<a name="579"></a>        <font class="source_keyword">return</font>;
+<a name="580"></a>    }   
+<a name="581"></a>    PlayThreateningSound();
+<a name="582"></a>    PlayAnim(<font class="source_name">'T3'</font>, <font class="source_int">0.7</font>, <font class="source_int">0.15</font>);
+<a name="583"></a>}
+<a name="584"></a>
+<a name="585"></a><font class="source_keyword">function</font> PlayDive()
+<a name="586"></a>{
+<a name="587"></a>    TweenToSwimming(<font class="source_int">0.2</font>);
+<a name="588"></a>}
+<a name="589"></a>
+<a name="590"></a><font class="source_keyword">function</font> TweenToFighter(<font class="source_keyword">float</font> tweentime)
+<a name="591"></a>{
+<a name="592"></a>    <font class="source_keyword">if</font> ( bDicePlayer )
+<a name="593"></a>    {
+<a name="594"></a>        PeripheralVision = Default.PeripheralVision;
+<a name="595"></a>        bDicePlayer = <font class="source_keyword">false</font>;
+<a name="596"></a>    }
+<a name="597"></a>    bSleeping = <font class="source_keyword">false</font>;
+<a name="598"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="599"></a>    {
+<a name="600"></a>        TweenToSwimming(tweentime);
+<a name="601"></a>        <font class="source_keyword">return</font>;
+<a name="602"></a>    }
+<a name="603"></a>    TweenAnim(<font class="source_name">'Fighter'</font>, tweentime);
+<a name="604"></a>}
+<a name="605"></a>
+<a name="606"></a><font class="source_keyword">function</font> TweenToRunning(<font class="source_keyword">float</font> tweentime)
+<a name="607"></a>{
+<a name="608"></a>    <font class="source_keyword">if</font> ( bDicePlayer )
+<a name="609"></a>    {
+<a name="610"></a>        PeripheralVision = Default.PeripheralVision;
+<a name="611"></a>        bDicePlayer = <font class="source_keyword">false</font>;
+<a name="612"></a>    }
+<a name="613"></a>    bSleeping = <font class="source_keyword">false</font>;
+<a name="614"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="615"></a>    {
+<a name="616"></a>        TweenToSwimming(tweentime);
+<a name="617"></a>        <font class="source_keyword">return</font>;
+<a name="618"></a>    }
+<a name="619"></a>    <font class="source_keyword">if</font> ( (AnimSequence == <font class="source_name">'Shoot2'</font>) && IsAnimating() )
+<a name="620"></a>        <font class="source_keyword">return</font>;
+<a name="621"></a>    <font class="source_keyword">if</font> ( (AnimSequence != <font class="source_name">'Run'</font>) || !bAnimLoop )
+<a name="622"></a>        TweenAnim(<font class="source_name">'Run'</font>, tweentime);
+<a name="623"></a>}
+<a name="624"></a>
+<a name="625"></a><font class="source_keyword">function</font> TweenToWalking(<font class="source_keyword">float</font> tweentime)
+<a name="626"></a>{
+<a name="627"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="628"></a>    {
+<a name="629"></a>        TweenToSwimming(tweentime);
+<a name="630"></a>        <font class="source_keyword">return</font>;
+<a name="631"></a>    }
+<a name="632"></a>    TweenAnim(<font class="source_name">'Walk'</font>, tweentime);
+<a name="633"></a>}
+<a name="634"></a>
+<a name="635"></a><font class="source_keyword">function</font> TweenToWaiting(<font class="source_keyword">float</font> tweentime)
+<a name="636"></a>{
+<a name="637"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="638"></a>    {
+<a name="639"></a>        TweenToSwimming(tweentime);
+<a name="640"></a>        <font class="source_keyword">return</font>;
+<a name="641"></a>    }
+<a name="642"></a>    <font class="source_keyword">if</font> ( bDicePlayer ) 
+<a name="643"></a>    {
+<a name="644"></a>        TweenAnim(<font class="source_name">'Breath2'</font>, tweentime);
+<a name="645"></a>        <font class="source_keyword">return</font>;
+<a name="646"></a>    }
+<a name="647"></a>    TweenAnim(<font class="source_name">'Breath'</font>, tweentime);
+<a name="648"></a>}
+<a name="649"></a>
+<a name="650"></a><font class="source_keyword">function</font> TweenToPatrolStop(<font class="source_keyword">float</font> tweentime)
+<a name="651"></a>{
+<a name="652"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="653"></a>    {
+<a name="654"></a>        TweenToSwimming(tweentime);
+<a name="655"></a>        <font class="source_keyword">return</font>;
+<a name="656"></a>    }
+<a name="657"></a>    TweenAnim(<font class="source_name">'Breath'</font>, tweentime);
+<a name="658"></a>}
+<a name="659"></a>
+<a name="660"></a><font class="source_keyword">function</font> TweenToFalling()
+<a name="661"></a>{
+<a name="662"></a>    TweenAnim(<font class="source_name">'Jump'</font>, <font class="source_int">0.35</font>);
+<a name="663"></a>}
+<a name="664"></a>
+<a name="665"></a><font class="source_keyword">function</font> PlayInAir()
+<a name="666"></a>{
+<a name="667"></a>    TweenAnim(<font class="source_name">'Jump'</font>, <font class="source_int">0.2</font>);
+<a name="668"></a>}
+<a name="669"></a>
+<a name="670"></a><font class="source_keyword">function</font> PlayOutOfWater()
+<a name="671"></a>{
+<a name="672"></a>    TweenAnim(<font class="source_name">'Land'</font>,<font class="source_int">0.8</font>);
+<a name="673"></a>}
+<a name="674"></a>
+<a name="675"></a><font class="source_keyword">function</font> PlayLanded(<font class="source_keyword">float</font> impactVel)
+<a name="676"></a>{
+<a name="677"></a>    TweenAnim(<font class="source_name">'Land'</font>, <font class="source_int">0.1</font>);
+<a name="678"></a>}
+<a name="679"></a>
+<a name="680"></a><font class="source_keyword">function</font> PlayMovingAttack()
+<a name="681"></a>{
+<a name="682"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="683"></a>    {
+<a name="684"></a>        PlayAnim(<font class="source_name">'SwimFire'</font>);
+<a name="685"></a>        SpawnShot();
+<a name="686"></a>        <font class="source_keyword">return</font>;
+<a name="687"></a>    }
+<a name="688"></a>    DesiredSpeed = <font class="source_int">0.4</font>;
+<a name="689"></a>    MoveTimer += <font class="source_int">0.2</font>;
+<a name="690"></a>    PlayAnim(<font class="source_name">'Shoot2'</font>);
+<a name="691"></a>}
+<a name="692"></a>
+<a name="693"></a><font class="source_keyword">function</font> PlayRunning()
+<a name="694"></a>{
+<a name="695"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="696"></a>    {
+<a name="697"></a>        PlaySwimming();
+<a name="698"></a>        <font class="source_keyword">return</font>;
+<a name="699"></a>    }
+<a name="700"></a>
+<a name="701"></a>    DesiredSpeed = <font class="source_int">1.0</font>;
+<a name="702"></a>    <font class="source_keyword">if</font> (Focus == Destination)
+<a name="703"></a>    {
+<a name="704"></a>        LoopAnim(<font class="source_name">'Run'</font>, -<font class="source_int">1.0</font>/GroundSpeed,, <font class="source_int">0.4</font>);
+<a name="705"></a>        <font class="source_keyword">return</font>;
+<a name="706"></a>    }   
+<a name="707"></a>    LoopAnim(<font class="source_name">'Run'</font>, StrafeAdjust(),,<font class="source_int">0.3</font>);
+<a name="708"></a>}
+<a name="709"></a>
+<a name="710"></a><font class="source_keyword">function</font> PlayWalking()
+<a name="711"></a>{
+<a name="712"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="713"></a>    {
+<a name="714"></a>        PlaySwimming();
+<a name="715"></a>        <font class="source_keyword">return</font>;
+<a name="716"></a>    }
+<a name="717"></a>    LoopAnim(<font class="source_name">'Walk'</font>, <font class="source_int">0.88</font>);
+<a name="718"></a>}
+<a name="719"></a>
+<a name="720"></a><font class="source_keyword">function</font> TweenToSwimming(<font class="source_keyword">float</font> tweentime)
+<a name="721"></a>{
+<a name="722"></a>    <font class="source_keyword">if</font> ( (AnimSequence != <font class="source_name">'Swim'</font>) || !bAnimLoop )
+<a name="723"></a>        TweenAnim(<font class="source_name">'Swim'</font>, tweentime);
+<a name="724"></a>}
+<a name="725"></a>
+<a name="726"></a><font class="source_keyword">function</font> PlaySwimming()
+<a name="727"></a>{
+<a name="728"></a>    LoopAnim(<font class="source_name">'Swim'</font>, -<font class="source_int">1.0</font>/WaterSpeed,,<font class="source_int">0.3</font>);
+<a name="729"></a>}
+<a name="730"></a>
+<a name="731"></a><font class="source_keyword">function</font> PlayThreatening()
+<a name="732"></a>{
+<a name="733"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> decision, animspeed;
+<a name="734"></a>
+<a name="735"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="736"></a>    {
+<a name="737"></a>        PlaySwimming();
+<a name="738"></a>        <font class="source_keyword">return</font>;
+<a name="739"></a>    }
+<a name="740"></a>    decision = FRand();
+<a name="741"></a>    animspeed = <font class="source_int">0.4</font> + <font class="source_int">0.6</font> * FRand(); 
+<a name="742"></a>
+<a name="743"></a>    <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.6</font> )
+<a name="744"></a>        PlayAnim(<font class="source_name">'Breath'</font>, animspeed, <font class="source_int">0.3</font>);
+<a name="745"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.7</font> )
+<a name="746"></a>    {
+<a name="747"></a>        PlaySound(Twirl,SLOT_Interact,<font class="source_int">0.5</font>,,<font class="source_int">500</font>);    
+<a name="748"></a>        PlayAnim(<font class="source_name">'Twirl'</font>, animspeed, <font class="source_int">0.3</font>);
+<a name="749"></a>    }
+<a name="750"></a>    <font class="source_keyword">else</font> 
+<a name="751"></a>    {
+<a name="752"></a>        PlayThreateningSound();
+<a name="753"></a>        <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.8</font> )
+<a name="754"></a>            PlayAnim(<font class="source_name">'T3'</font>, animspeed, <font class="source_int">0.3</font>);
+<a name="755"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( decision &lt; <font class="source_int">0.9</font> )
+<a name="756"></a>            PlayAnim(<font class="source_name">'ThreatShoot1'</font>, <font class="source_int">0.3</font>, <font class="source_int">0.3</font>);
+<a name="757"></a>        <font class="source_keyword">else</font> 
+<a name="758"></a>            TweenAnim(<font class="source_name">'Fighter'</font>, <font class="source_int">0.3</font>);
+<a name="759"></a>    }
+<a name="760"></a>}
+<a name="761"></a>
+<a name="762"></a><font class="source_keyword">function</font> PlayTurning()
+<a name="763"></a>{
+<a name="764"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="765"></a>    {
+<a name="766"></a>        PlaySwimming();
+<a name="767"></a>        <font class="source_keyword">return</font>;
+<a name="768"></a>    }
+<a name="769"></a>    TweenAnim(<font class="source_name">'Walk'</font>, <font class="source_int">0.3</font>);
+<a name="770"></a>}
+<a name="771"></a>
+<a name="772"></a><font class="source_keyword">function</font> PlayBigDeath(<font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>)
+<a name="773"></a>{
+<a name="774"></a>    PlaySound(Die2, SLOT_Talk, <font class="source_int">4</font> * TransientSoundVolume);
+<a name="775"></a>    PlayAnim(<font class="source_name">'Die2'</font>,<font class="source_int">0.7</font>,<font class="source_int">0.1</font>);
+<a name="776"></a>}
+<a name="777"></a>
+<a name="778"></a><font class="source_keyword">function</font> PlayHeadDeath(<font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>)
+<a name="779"></a>{
+<a name="780"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\carcass.html" class="source">carcass</a></font> carc;
+<a name="781"></a>
+<a name="782"></a>    <font class="source_keyword">if</font> ( ((<font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font> == <font class="source_name">'Decapitated'</font>) || ((<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &lt; -<font class="source_int">20</font>) && (FRand() &lt; <font class="source_int">0.5</font>)))
+<a name="783"></a>         && !<font class="source_type">Level</font>.Game.bVeryLowGore )
+<a name="784"></a>    {
+<a name="785"></a>        carc = Spawn(<font class="source_keyword">class</font> <font class="source_name">'CreatureChunks'</font>,,, Location + CollisionHeight * vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0.8</font>), Rotation + rot(<font class="source_int">3000</font>,<font class="source_int">0</font>,<font class="source_int">16384</font>) );
+<a name="786"></a>        <font class="source_keyword">if</font> (carc != <font class="source_keyword">None</font>)
+<a name="787"></a>        {
+<a name="788"></a>            carc.<font class="source_type">Mesh</font> = <font class="source_type">mesh</font><font class="source_name">'KrallHead'</font>;
+<a name="789"></a>            carc.Initfor(self);
+<a name="790"></a>            carc.Velocity = Velocity + VSize(Velocity) * VRand();
+<a name="791"></a>            carc.Velocity.Z = FMax(carc.Velocity.Z, Velocity.Z);
+<a name="792"></a>        }
+<a name="793"></a>        PlayAnim(<font class="source_name">'Dead5'</font>,<font class="source_int">0.7</font>,<font class="source_int">0.1</font>);
+<a name="794"></a>        <font class="source_keyword">if</font> ( Velocity.Z &lt; <font class="source_int">120</font> )
+<a name="795"></a>        {
+<a name="796"></a>            Velocity = GroundSpeed * <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>(Rotation);
+<a name="797"></a>            Velocity.Z = <font class="source_int">150</font>;
+<a name="798"></a>        }
+<a name="799"></a>    }
+<a name="800"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( FRand() &lt; <font class="source_int">0.5</font> )
+<a name="801"></a>        PlayAnim(<font class="source_name">'Die4'</font>,<font class="source_int">0.7</font>,<font class="source_int">0.1</font>);
+<a name="802"></a>    <font class="source_keyword">else</font>
+<a name="803"></a>        PlayAnim(<font class="source_name">'Die3'</font>,<font class="source_int">0.7</font>,<font class="source_int">0.1</font>);
+<a name="804"></a>    PlaySound(Die, SLOT_Talk, <font class="source_int">4</font> * TransientSoundVolume);
+<a name="805"></a>}
+<a name="806"></a>
+<a name="807"></a><font class="source_keyword">function</font> PlayLeftDeath(<font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>)
+<a name="808"></a>{
+<a name="809"></a>    PlayAnim(<font class="source_name">'Die4'</font>,<font class="source_int">0.7</font>, <font class="source_int">0.1</font>);
+<a name="810"></a>    PlaySound(Die,SLOT_Talk, <font class="source_int">4</font> * TransientSoundVolume);
+<a name="811"></a>}
+<a name="812"></a>
+<a name="813"></a><font class="source_keyword">function</font> PlayRightDeath(<font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>)
+<a name="814"></a>{
+<a name="815"></a>    PlayAnim(<font class="source_name">'Die3'</font>,<font class="source_int">0.7</font>,<font class="source_int">0.1</font>);
+<a name="816"></a>    PlaySound(Die,SLOT_Talk, <font class="source_int">4</font> * TransientSoundVolume);
+<a name="817"></a>}
+<a name="818"></a>
+<a name="819"></a><font class="source_keyword">function</font> PlayGutDeath(<font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>)
+<a name="820"></a>{
+<a name="821"></a>    <font class="source_keyword">if</font> ( Velocity.Z &gt; <font class="source_int">100</font> )
+<a name="822"></a>        PlayAnim(<font class="source_name">'Die3'</font>,<font class="source_int">0.7</font>,<font class="source_int">0.1</font>);
+<a name="823"></a>    <font class="source_keyword">else</font>
+<a name="824"></a>        PlayAnim(<font class="source_name">'Die1'</font>,<font class="source_int">0.7</font>,<font class="source_int">0.1</font>);
+<a name="825"></a>    PlaySound(Die,SLOT_Talk, <font class="source_int">4</font> * TransientSoundVolume);
+<a name="826"></a>}
+<a name="827"></a>
+<a name="828"></a><font class="source_keyword">function</font> PlayVictoryDance()
+<a name="829"></a>{
+<a name="830"></a>    PlaySound(Twirl,SLOT_Interact,<font class="source_int">0.5</font>,,<font class="source_int">500</font>);    
+<a name="831"></a>    PlayAnim(<font class="source_name">'Twirl'</font>, <font class="source_int">0.5</font>, <font class="source_int">0.1</font>);
+<a name="832"></a>}
+<a name="833"></a>
+<a name="834"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CanFireAtEnemy()
+<a name="835"></a>{
+<a name="836"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation, HitNormal,X,Y,Z, projStart, EnemyDir, EnemyUp;
+<a name="837"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> HitActor;
+<a name="838"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> EnemyDist;
+<a name="839"></a>        
+<a name="840"></a>    EnemyDir = Enemy.Location - Location;
+<a name="841"></a>    EnemyDist = VSize(EnemyDir);
+<a name="842"></a>    EnemyUp = Enemy.CollisionHeight * vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0.9</font>);
+<a name="843"></a>    <font class="source_keyword">if</font> ( EnemyDist &gt; <font class="source_int">300</font> )
+<a name="844"></a>    {
+<a name="845"></a>        EnemyDir = <font class="source_int">300</font> * EnemyDir/EnemyDist;
+<a name="846"></a>        EnemyUp = <font class="source_int">300</font> * EnemyUp/EnemyDist;
+<a name="847"></a>    }
+<a name="848"></a>    
+<a name="849"></a>    GetAxes(Rotation,X,Y,Z);
+<a name="850"></a>    projStart = Location + <font class="source_int">0.9</font> * CollisionRadius * X - <font class="source_int">0.7</font> * CollisionRadius * Y;
+<a name="851"></a>    HitActor = Trace(HitLocation, HitNormal, projStart + EnemyDir + EnemyUp, projStart, <font class="source_keyword">true</font>);
+<a name="852"></a>
+<a name="853"></a>    <font class="source_keyword">if</font> ( (HitActor == <font class="source_keyword">None</font>) || (HitActor == Enemy) 
+<a name="854"></a>        || ((<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor) != <font class="source_keyword">None</font>) && (AttitudeTo(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor)) &lt;= ATTITUDE_Ignore)) )
+<a name="855"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="856"></a>
+<a name="857"></a>    HitActor = Trace(HitLocation, HitNormal, projStart + EnemyDir, projStart , <font class="source_keyword">true</font>);
+<a name="858"></a>
+<a name="859"></a>    <font class="source_keyword">return</font> ( (HitActor == <font class="source_keyword">None</font>) || (HitActor == Enemy) 
+<a name="860"></a>            || ((<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor) != <font class="source_keyword">None</font>) && (AttitudeTo(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(HitActor)) &lt;= ATTITUDE_Ignore)) );
+<a name="861"></a>}
+<a name="862"></a>    
+<a name="863"></a><font class="source_keyword">function</font> SpawnShot()
+<a name="864"></a>{
+<a name="865"></a>    DesiredSpeed = <font class="source_int">0.0</font>; <font class="source_comment">//For Kraal shoot2 (walking shoot, w/ pause)
+</font><a name="866"></a>    FireProjectile( vect(<font class="source_int">0.9</font>, -<font class="source_int">0.5</font>, <font class="source_int">0</font>), <font class="source_int">500</font>);
+<a name="867"></a>}
+<a name="868"></a>
+<a name="869"></a><font class="source_keyword">function</font> ShotMove()
+<a name="870"></a>{
+<a name="871"></a>    DesiredSpeed = <font class="source_int">1.0</font>;
+<a name="872"></a>}
+<a name="873"></a>
+<a name="874"></a><font class="source_keyword">function</font> StrikeDamageTarget()
+<a name="875"></a>{
+<a name="876"></a>    <font class="source_keyword">if</font> (MeleeDamageTarget(StrikeDamage, StrikeDamage * <font class="source_int">700</font> * Normal(Target.Location - Location)))
+<a name="877"></a>        PlaySound(SpearHit,SLOT_Interact);
+<a name="878"></a>}
+<a name="879"></a>
+<a name="880"></a><font class="source_keyword">function</font> PoundDamageTarget()
+<a name="881"></a>{
+<a name="882"></a>    <font class="source_keyword">if</font> (MeleeDamageTarget(PoundDamage, PoundDamage * <font class="source_int">500</font> * Normal(Target.Location - Location)))
+<a name="883"></a>        PlaySound(SpearHit,SLOT_Interact);
+<a name="884"></a>}
+<a name="885"></a>
+<a name="886"></a><font class="source_keyword">function</font> ThrowDamageTarget()
+<a name="887"></a>{
+<a name="888"></a>    AttackSuccess = MeleeDamageTarget(ThrowDamage, vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>));
+<a name="889"></a>}
+<a name="890"></a>
+<a name="891"></a><font class="source_keyword">function</font> ThrowTarget() 
+<a name="892"></a>{
+<a name="893"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> newRot;
+<a name="894"></a>    <font class="source_keyword">if</font> (AttackSuccess && (Vsize(Target.Location - Location) &lt; CollisionRadius + Target.CollisionRadius + <font class="source_int">1.5</font> * MeleeRange) )
+<a name="895"></a>    {
+<a name="896"></a>        PlaySound(SpearThrow,SLOT_Interact);
+<a name="897"></a>        newRot = Target.Rotation;
+<a name="898"></a>        newRot.Pitch = <font class="source_int">4096</font>;
+<a name="899"></a>        Target.SetRotation(newRot);
+<a name="900"></a>        <font class="source_keyword">if</font> (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Target) != <font class="source_keyword">None</font>)
+<a name="901"></a>        {
+<a name="902"></a>            <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Target).AddVelocity( 
+<a name="903"></a>                (<font class="source_int">50000.0</font> * (Normal(Target.Location - Location) + vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">1</font>)))/Target.Mass);
+<a name="904"></a>            <font class="source_keyword">if</font> (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Target) != <font class="source_keyword">None</font>)
+<a name="905"></a>                <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Target).ShakeView(<font class="source_int">0.2</font>, <font class="source_int">2000</font>, -<font class="source_int">10</font>);
+<a name="906"></a>        }
+<a name="907"></a>    }
+<a name="908"></a>}
+<a name="909"></a>    
+<a name="910"></a><font class="source_keyword">function</font> PlayMeleeAttack()
+<a name="911"></a>{
+<a name="912"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> decision;
+<a name="913"></a>
+<a name="914"></a>    decision = FRand();
+<a name="915"></a>    <font class="source_keyword">if</font> (!bSpearToss)
+<a name="916"></a>        decision *= <font class="source_int">0.7</font>;
+<a name="917"></a>    <font class="source_keyword">if</font> (decision &lt; <font class="source_int">0.2</font>)
+<a name="918"></a>    {
+<a name="919"></a>        PlayAnim(<font class="source_name">'Strike1'</font>); 
+<a name="920"></a>        PlaySound(Strike1,SLOT_Interact);
+<a name="921"></a>    }
+<a name="922"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (decision &lt; <font class="source_int">0.4</font>)
+<a name="923"></a>    {
+<a name="924"></a>        PlayAnim(<font class="source_name">'Strike2'</font>);
+<a name="925"></a>        PlaySound(Strike2,SLOT_Interact);
+<a name="926"></a>    }
+<a name="927"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (decision &lt; <font class="source_int">0.7</font>)
+<a name="928"></a>    {
+<a name="929"></a>        PlayAnim(<font class="source_name">'Strike3'</font>);
+<a name="930"></a>        PlaySound(Strike1,SLOT_Interact);
+<a name="931"></a>    }
+<a name="932"></a>    <font class="source_keyword">else</font>
+<a name="933"></a>    {
+<a name="934"></a>        PlayAnim(<font class="source_name">'Throw'</font>);
+<a name="935"></a>        PlaySound(Strike2,SLOT_Interact);
+<a name="936"></a>    } 
+<a name="937"></a>}
+<a name="938"></a>
+<a name="939"></a><font class="source_keyword">function</font> PlayRangedAttack()
+<a name="940"></a>{
+<a name="941"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> tweenin;
+<a name="942"></a>    
+<a name="943"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="944"></a>    {
+<a name="945"></a>        PlayAnim(<font class="source_name">'SwimFire'</font>);
+<a name="946"></a>        SpawnShot();
+<a name="947"></a>        <font class="source_keyword">return</font>;
+<a name="948"></a>    }
+<a name="949"></a>    <font class="source_keyword">if</font> (AnimSequence == <font class="source_name">'Shoot1'</font>)
+<a name="950"></a>        tweenin = <font class="source_int">0.3</font> * FRand();
+<a name="951"></a>    <font class="source_keyword">else</font>
+<a name="952"></a>        tweenin = <font class="source_int">0.35</font>;
+<a name="953"></a>    PlayAnim(<font class="source_name">'Shoot1'</font>, <font class="source_int">1.0</font>, tweenin);
+<a name="954"></a>}
+<a name="955"></a>
+<a name="956"></a><font class="source_keyword">state</font> TacticalMove
+<a name="957"></a>{
+<a name="958"></a><font class="source_keyword">ignores</font> SeePlayer, HearNoise;
+<a name="959"></a>
+<a name="960"></a>    <font class="source_keyword">function</font> TweenToRunning(<font class="source_keyword">float</font> tweentime)
+<a name="961"></a>    {
+<a name="962"></a>        <font class="source_keyword">if</font> ( bDicePlayer )
+<a name="963"></a>        {
+<a name="964"></a>            PeripheralVision = Default.PeripheralVision;
+<a name="965"></a>            bDicePlayer = <font class="source_keyword">false</font>;
+<a name="966"></a>        }
+<a name="967"></a>        <font class="source_keyword">if</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="968"></a>        {
+<a name="969"></a>            TweenToSwimming(tweentime);
+<a name="970"></a>            <font class="source_keyword">return</font>;
+<a name="971"></a>        }
+<a name="972"></a>        <font class="source_keyword">if</font> ( bCanStrafe && (AnimSequence == <font class="source_name">'Shoot2'</font>) && IsAnimating() )
+<a name="973"></a>            <font class="source_keyword">return</font>;
+<a name="974"></a>        <font class="source_keyword">if</font> ( (AnimSequence != <font class="source_name">'Run'</font>) || !bAnimLoop )
+<a name="975"></a>            TweenAnim(<font class="source_name">'Run'</font>, tweentime);
+<a name="976"></a>    }
+<a name="977"></a>}
+<a name="978"></a>    
+<a name="979"></a><font class="source_keyword">defaultproperties</font>
+<a name="980"></a>{
+<a name="981"></a>     StrikeDamage=<font class="source_int">20</font>
+<a name="982"></a>     ThrowDamage=<font class="source_int">30</font>
+<a name="983"></a>     PoundDamage=<font class="source_int">20</font>
+<a name="984"></a>     RangedProjectile=<font class="source_type"><a href="..\unreali\kraalbolt.html" class="source">KraalBolt</a></font>
+<a name="985"></a>     bSpearToss=<font class="source_keyword">True</font>
+<a name="986"></a>     Strike1=strike1k
+<a name="987"></a>     Strike2=strike1k
+<a name="988"></a>     Twirl=staflp4k
+<a name="989"></a>     syllable1=syl1kr
+<a name="990"></a>     syllable2=syl2kr
+<a name="991"></a>     syllable3=syl3kr
+<a name="992"></a>     syllable4=syl4kr
+<a name="993"></a>     syllable5=syl5kr
+<a name="994"></a>     syllable6=syl6kr
+<a name="995"></a>     Die2=death2k
+<a name="996"></a>     spearHit=hit2k
+<a name="997"></a>     spearThrow=throw1k
+<a name="998"></a>     Aggressiveness=+<font class="source_int">00000.500000</font>
+<a name="999"></a>     MinDuckTime=+<font class="source_int">00008.000000</font>
+<a name="1000"></a>     ReFireRate=+<font class="source_int">00000.500000</font>
+<a name="1001"></a>     bHasRangedAttack=<font class="source_keyword">True</font>
+<a name="1002"></a>     bMovingRangedAttack=<font class="source_keyword">True</font>
+<a name="1003"></a>     bLeadTarget=<font class="source_keyword">False</font>
+<a name="1004"></a>     Acquire=chlng1k
+<a name="1005"></a>     Fear=chlng2k
+<a name="1006"></a>     Threaten=chlng2k
+<a name="1007"></a>     <font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font>=<font class="source_int">180</font>
+<a name="1008"></a>     HearingThreshold=+<font class="source_int">00000.000000</font>
+<a name="1009"></a>     MeleeRange=+<font class="source_int">00050.000000</font>
+<a name="1010"></a>     Intelligence=BRAINS_HUMAN
+<a name="1011"></a>     GroundSpeed=+<font class="source_int">00240.000000</font>
+<a name="1012"></a>     AirSpeed=+<font class="source_int">00240.000000</font>
+<a name="1013"></a>     AccelRate=+<font class="source_int">00500.000000</font>
+<a name="1014"></a>     JumpZ=+<font class="source_int">00360.000000</font>
+<a name="1015"></a>     MaxStepHeight=+<font class="source_int">00025.000000</font>
+<a name="1016"></a>     HitSound1=injur1k
+<a name="1017"></a>     HitSound2=injur2k
+<a name="1018"></a>     Die=death1k
+<a name="1019"></a>     CombatStyle=+<font class="source_int">00000.800000</font>
+<a name="1020"></a>     CarcassType=<font class="source_type"><a href="..\unreali\krallcarcass.html" class="source">KrallCarcass</a></font>
+<a name="1021"></a>     DrawType=DT_Mesh
+<a name="1022"></a>     <font class="source_type">Mesh</font>=KrallM
+<a name="1023"></a>     bMeshCurvy=<font class="source_keyword">False</font>
+<a name="1024"></a>     <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font>=amb1kr
+<a name="1025"></a>     CollisionRadius=+<font class="source_int">00025.000000</font>
+<a name="1026"></a>     CollisionHeight=+<font class="source_int">00046.000000</font>
+<a name="1027"></a>     Mass=+<font class="source_int">00140.000000</font>
+<a name="1028"></a>     Buoyancy=+<font class="source_int">00140.000000</font>
+<a name="1029"></a>     RotationRate=(Pitch=<font class="source_int">3072</font>,Yaw=<font class="source_int">60000</font>,Roll=<font class="source_int">0</font>)
+<a name="1030"></a>     TransientSoundVolume=+<font class="source_int">00001.500000</font>
+<a name="1031"></a>}
+<a name="1032"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\krall.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Krall">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="kraalbolt.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="krallcarcass.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:28.000 - Creation time: Wed 26/5/2004 10:48:22.828 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UWindow.UWindowMessageBoxArea</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\uwindow\uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="..\uwindow\uwindowmessageboxarea.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UWindowMessageBoxArea">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowmessagebox.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindowmessageboxcw.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowmessageboxarea.html">UWindowMessageBoxArea</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\uwindow\uwindowmessageboxarea.html" class="source">UWindowMessageBoxArea</a></font> <font class="source_keyword">expands</font> <font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> Message;
+<a name="4"></a>
+<a name="5"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetHeight(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C)
+<a name="6"></a>{
+<a name="7"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> TW, TH, H;
+<a name="8"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> L;
+<a name="9"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> OldWinHeight;
+<a name="10"></a>
+<a name="11"></a>    OldWinHeight = WinHeight;
+<a name="12"></a>    WinHeight = <font class="source_int">1000</font>;
+<a name="13"></a>    C.<font class="source_type">Font</font> = Root.Fonts[F_Normal];
+<a name="14"></a>    TextSize(C, <font class="source_string">"A"</font>, TW, TH);
+<a name="15"></a>    L = WrapClipText(C, <font class="source_int">0</font>, <font class="source_int">0</font>, Message,,,, <font class="source_keyword">True</font>);
+<a name="16"></a>    H = TH * L;
+<a name="17"></a>    WinHeight = OldWinHeight;
+<a name="18"></a>    <font class="source_keyword">return</font> H;
+<a name="19"></a>}
+<a name="20"></a>
+<a name="21"></a><font class="source_keyword">function</font> Paint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="22"></a>{
+<a name="23"></a>    C.<font class="source_type">Font</font> = Root.Fonts[F_Normal];
+<a name="24"></a>    C.DrawColor.R = <font class="source_int">0</font>;
+<a name="25"></a>    C.DrawColor.G = <font class="source_int">0</font>;
+<a name="26"></a>    C.DrawColor.B = <font class="source_int">0</font>;
+<a name="27"></a>    WrapClipText(C, <font class="source_int">0</font>, <font class="source_int">0</font>, Message);
+<a name="28"></a>    C.DrawColor.R = <font class="source_int">255</font>;
+<a name="29"></a>    C.DrawColor.G = <font class="source_int">255</font>;
+<a name="30"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="31"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\uwindow\uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="..\uwindow\uwindowmessageboxarea.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UWindowMessageBoxArea">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uwindowmessagebox.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="uwindowmessageboxcw.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:28:02.000 - Creation time: Wed 26/5/2004 10:49:04.875 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

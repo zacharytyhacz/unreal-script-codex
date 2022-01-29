@@ -1,0 +1,699 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Editor.EditorEngine</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="editor-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_editor\editorengine.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#EditorEngine">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="cylinderbuilder.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="linearstairbuilder.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="editor-overview.html">Editor</a>.EditorEngine</h1>
+<b>Extends:</b> <a href="..\engine\engine.html">Engine</a><br>
+<b>Modifiers:</b> native noexport transient <br>
+<a href="..\Source_editor\editorengine.html"><b>Source code</b></a>
+
+<p>
+EditorEngine: The UnrealEd subsystem.<br />
+This is a built-in Unreal class and it shouldn't be modified.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\core\core-overview.html">Core</a>.<a href="..\core\subsystem.html">Subsystem</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\engine.html">Engine</a>
+        |   
+        +-- <a href="editor-overview.html">Editor</a>.<a href="editorengine.html">EditorEngine</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_AddLocation" name="AddLocation">AddLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Plane">plane</a></td><td width="66%"><a href="#_AddPlane" name="AddPlane">AddPlane</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_AutoSaveCount" name="AutoSaveCount">AutoSaveCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_AutoSaveIndex" name="AutoSaveIndex">AutoSaveIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_Bad" name="Bad">Bad</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bBootstrapping" name="bBootstrapping">bBootstrapping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFastRebuild" name="bFastRebuild">bFastRebuild</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_Bkgnd" name="Bkgnd">Bkgnd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_BkgndHi" name="BkgndHi">BkgndHi</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class</td><td width="66%"><a href="#_BrowseClass" name="BrowseClass">BrowseClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ClickFlags" name="ClickFlags">ClickFlags</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_CollOff" name="CollOff">CollOff</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_CollOn" name="CollOn">CollOn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ConstraintsVtbl" name="ConstraintsVtbl">ConstraintsVtbl</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class</td><td width="66%"><a href="#_CurrentClass" name="CurrentClass">CurrentClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_CurrentTexture" name="CurrentTexture">CurrentTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_ActorArrow" name="C_ActorArrow">C_ActorArrow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_ActorHiWire" name="C_ActorHiWire">C_ActorHiWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_ActorWire" name="C_ActorWire">C_ActorWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_AddWire" name="C_AddWire">C_AddWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_Black" name="C_Black">C_Black</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_BrushSnap" name="C_BrushSnap">C_BrushSnap</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_BrushVertex" name="C_BrushVertex">C_BrushVertex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_BrushWire" name="C_BrushWire">C_BrushWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_Current" name="C_Current">C_Current</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_GreyWire" name="C_GreyWire">C_GreyWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_GroundHighlight" name="C_GroundHighlight">C_GroundHighlight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_GroundPlane" name="C_GroundPlane">C_GroundPlane</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_Invalid" name="C_Invalid">C_Invalid</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_Mask" name="C_Mask">C_Mask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_Mover" name="C_Mover">C_Mover</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_NonSolidWire" name="C_NonSolidWire">C_NonSolidWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_Pivot" name="C_Pivot">C_Pivot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_ScaleBox" name="C_ScaleBox">C_ScaleBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_ScaleBoxHi" name="C_ScaleBoxHi">C_ScaleBoxHi</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_Select" name="C_Select">C_Select</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_SemiSolidWire" name="C_SemiSolidWire">C_SemiSolidWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_SubtractWire" name="C_SubtractWire">C_SubtractWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_White" name="C_White">C_White</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_WireBackground" name="C_WireBackground">C_WireBackground</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_WireGridAxis" name="C_WireGridAxis">C_WireGridAxis</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_WorldBox" name="C_WorldBox">C_WorldBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_ZoneWire" name="C_ZoneWire">C_ZoneWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">level</td><td width="66%"><a href="#_Level" name="Level">Level</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_LiteOff" name="LiteOff">LiteOff</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_LiteOn" name="LiteOn">LiteOn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_MenuDn" name="MenuDn">MenuDn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_MenuUp" name="MenuUp">MenuUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Mode" name="Mode">Mode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MovementSpeed" name="MovementSpeed">MovementSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NotifyVtbl" name="NotifyVtbl">NotifyVtbl</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">package</td><td width="66%"><a href="#_PackageContext" name="PackageContext">PackageContext</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Pad[8]" name="Pad[8]">Pad[8]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_PlyrOff" name="PlyrOff">PlyrOff</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">texture</a></td><td width="66%"><a href="#_PlyrOn" name="PlyrOn">PlyrOn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">textbuffer</td><td width="66%"><a href="#_Results" name="Results">Results</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">model</td><td width="66%"><a href="#_TempModel" name="TempModel">TempModel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="..\core\object.html">Object</a>&gt;</td><td width="66%"><a href="#_Tools" name="Tools">Tools</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">transbuffer</td><td width="66%"><a href="#_Trans" name="Trans">Trans</a></td></tr>
+<tr><th colspan="2" class="small">Advanced</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_AutoSave" name="AutoSave">AutoSave</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_AutosaveTimeMinutes" name="AutosaveTimeMinutes">AutosaveTimeMinutes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;string&gt;</td><td width="66%"><a href="#_EditPackages" name="EditPackages">EditPackages</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FovAngleDegrees" name="FovAngleDegrees">FovAngleDegrees</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameCommandLine" name="GameCommandLine">GameCommandLine</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_GodMode" name="GodMode">GodMode</a></td></tr>
+<tr><th colspan="2" class="small">Colors</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Color">color</a></td><td width="66%"><a href="#_C_OrthoBackground" name="C_OrthoBackground">C_OrthoBackground</a></td></tr>
+<tr><th colspan="2" class="small">Grid</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_AffectRegion" name="AffectRegion">AffectRegion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_GridEnabled" name="GridEnabled">GridEnabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_GridSize" name="GridSize">GridSize</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_SelectionLock" name="SelectionLock">SelectionLock</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SnapDistance" name="SnapDistance">SnapDistance</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_SnapVertices" name="SnapVertices">SnapVertices</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_TextureLock" name="TextureLock">TextureLock</a></td></tr>
+<tr><th colspan="2" class="small">RotationGrid</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_RotGridEnabled" name="RotGridEnabled">RotGridEnabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Rotator">rotator</a></td><td width="66%"><a href="#_RotGridSize" name="RotGridSize">RotGridSize</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\engine.html">Engine</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\engine.html#Audio">Audio</a>, <a href="..\engine\engine.html#AudioDevice">AudioDevice</a>, <a href="..\engine\engine.html#CacheSizeMegs">CacheSizeMegs</a>, <a href="..\engine\engine.html#Client">Client</a>, <a href="..\engine\engine.html#ClientCycles">ClientCycles</a>, <a href="..\engine\engine.html#Console">Console</a>, <a href="..\engine\engine.html#CurrentTickRate">CurrentTickRate</a>, <a href="..\engine\engine.html#Cylinder">Cylinder</a>, <a href="..\engine\engine.html#GameCycles">GameCycles</a>, <a href="..\engine\engine.html#GameRenderDevice">GameRenderDevice</a>, <a href="..\engine\engine.html#Language">Language</a>, <a href="..\engine\engine.html#NetworkDevice">NetworkDevice</a>, <a href="..\engine\engine.html#Render">Render</a>, <a href="..\engine\engine.html#TickCycles">TickCycles</a>, <a href="..\engine\engine.html#UseSound">UseSound</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\subsystem.html">Subsystem</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\subsystem.html#ExecVtbl">ExecVtbl</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddLocation" class="hidden"></a>AddLocation <a href="..\Source_editor\editorengine.html#50" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> AddLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AddPlane" class="hidden"></a>AddPlane <a href="..\Source_editor\editorengine.html#51" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\core\object.html#Plane" class="source">plane</a></font> AddPlane;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AutoSaveCount" class="hidden"></a>AutoSaveCount <a href="..\Source_editor\editorengine.html#47" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> AutoSaveCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AutoSaveIndex" class="hidden"></a>AutoSaveIndex <a href="..\Source_editor\editorengine.html#46" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> AutoSaveIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Bad" class="hidden"></a>Bad <a href="..\Source_editor\editorengine.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> Bad;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bBootstrapping" class="hidden"></a>bBootstrapping <a href="..\Source_editor\editorengine.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bBootstrapping;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bFastRebuild" class="hidden"></a>bFastRebuild <a href="..\Source_editor\editorengine.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bFastRebuild;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Bkgnd" class="hidden"></a>Bkgnd <a href="..\Source_editor\editorengine.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> Bkgnd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BkgndHi" class="hidden"></a>BkgndHi <a href="..\Source_editor\editorengine.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> BkgndHi;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BrowseClass" class="hidden"></a>BrowseClass <a href="..\Source_editor\editorengine.html#55" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">class</font> BrowseClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClickFlags" class="hidden"></a>ClickFlags <a href="..\Source_editor\editorengine.html#47" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> ClickFlags;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CollOff" class="hidden"></a>CollOff <a href="..\Source_editor\editorengine.html#35" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> CollOff;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CollOn" class="hidden"></a>CollOn <a href="..\Source_editor\editorengine.html#35" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> CollOn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ConstraintsVtbl" class="hidden"></a>ConstraintsVtbl <a href="..\Source_editor\editorengine.html#58" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> ConstraintsVtbl;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CurrentClass" class="hidden"></a>CurrentClass <a href="..\Source_editor\editorengine.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">class</font> CurrentClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CurrentTexture" class="hidden"></a>CurrentTexture <a href="..\Source_editor\editorengine.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> CurrentTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_ActorArrow" class="hidden"></a>C_ActorArrow <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_ActorArrow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_ActorHiWire" class="hidden"></a>C_ActorHiWire <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_ActorHiWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_ActorWire" class="hidden"></a>C_ActorWire <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_ActorWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_AddWire" class="hidden"></a>C_AddWire <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_AddWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_Black" class="hidden"></a>C_Black <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_Black;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_BrushSnap" class="hidden"></a>C_BrushSnap <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_BrushSnap;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_BrushVertex" class="hidden"></a>C_BrushVertex <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_BrushVertex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_BrushWire" class="hidden"></a>C_BrushWire <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_BrushWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_Current" class="hidden"></a>C_Current <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_Current;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_GreyWire" class="hidden"></a>C_GreyWire <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_GreyWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_GroundHighlight" class="hidden"></a>C_GroundHighlight <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_GroundHighlight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_GroundPlane" class="hidden"></a>C_GroundPlane <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_GroundPlane;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_Invalid" class="hidden"></a>C_Invalid <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_Invalid;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_Mask" class="hidden"></a>C_Mask <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_Mask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_Mover" class="hidden"></a>C_Mover <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_Mover;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_NonSolidWire" class="hidden"></a>C_NonSolidWire <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_NonSolidWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_Pivot" class="hidden"></a>C_Pivot <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_Pivot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_ScaleBox" class="hidden"></a>C_ScaleBox <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_ScaleBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_ScaleBoxHi" class="hidden"></a>C_ScaleBoxHi <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_ScaleBoxHi;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_Select" class="hidden"></a>C_Select <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_Select;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_SemiSolidWire" class="hidden"></a>C_SemiSolidWire <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_SemiSolidWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_SubtractWire" class="hidden"></a>C_SubtractWire <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_SubtractWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_White" class="hidden"></a>C_White <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_White;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_WireBackground" class="hidden"></a>C_WireBackground <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_WireBackground;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_WireGridAxis" class="hidden"></a>C_WireGridAxis <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_WireGridAxis;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_WorldBox" class="hidden"></a>C_WorldBox <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_WorldBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_C_ZoneWire" class="hidden"></a>C_ZoneWire <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_ZoneWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Level" class="hidden"></a>Level <a href="..\Source_editor\editorengine.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type">level</font> <font class="source_type">Level</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LiteOff" class="hidden"></a>LiteOff <a href="..\Source_editor\editorengine.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> LiteOff;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LiteOn" class="hidden"></a>LiteOn <a href="..\Source_editor\editorengine.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> LiteOn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MenuDn" class="hidden"></a>MenuDn <a href="..\Source_editor\editorengine.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> MenuDn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MenuUp" class="hidden"></a>MenuUp <a href="..\Source_editor\editorengine.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> MenuUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Mode" class="hidden"></a>Mode <a href="..\Source_editor\editorengine.html#47" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> Mode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MovementSpeed" class="hidden"></a>MovementSpeed <a href="..\Source_editor\editorengine.html#48" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">float</font> MovementSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NotifyVtbl" class="hidden"></a>NotifyVtbl <a href="..\Source_editor\editorengine.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> NotifyVtbl;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PackageContext" class="hidden"></a>PackageContext <a href="..\Source_editor\editorengine.html#49" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type">package</font> PackageContext;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Pad[8]" class="hidden"></a>Pad[8] <a href="..\Source_editor\editorengine.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> Pad[<font class="source_int">8</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlyrOff" class="hidden"></a>PlyrOff <a href="..\Source_editor\editorengine.html#36" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> PlyrOff;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlyrOn" class="hidden"></a>PlyrOn <a href="..\Source_editor\editorengine.html#36" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> PlyrOn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Results" class="hidden"></a>Results <a href="..\Source_editor\editorengine.html#30" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type">textbuffer</font> Results;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TempModel" class="hidden"></a>TempModel <a href="..\Source_editor\editorengine.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type">model</font> TempModel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tools" class="hidden"></a>Tools <a href="..\Source_editor\editorengine.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">array</font>&lt;<font class="source_type"><a href="..\core\object.html" class="source">Object</a></font>&gt; Tools;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Trans" class="hidden"></a>Trans <a href="..\Source_editor\editorengine.html#29" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type">transbuffer</font> Trans;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Advanced</h3>
+<h4><a name="_AutoSave" class="hidden"></a>AutoSave <a href="..\Source_editor\editorengine.html#74" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Advanced) <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> AutoSave;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AutosaveTimeMinutes" class="hidden"></a>AutosaveTimeMinutes <a href="..\Source_editor\editorengine.html#75" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Advanced) <font class="source_keyword2">config</font> <font class="source_keyword">byte</font> AutosaveTimeMinutes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EditPackages" class="hidden"></a>EditPackages <a href="..\Source_editor\editorengine.html#77" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Advanced) <font class="source_keyword2">config</font> <font class="source_keyword">array</font>&lt;<font class="source_keyword">string</font>&gt; EditPackages;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FovAngleDegrees" class="hidden"></a>FovAngleDegrees <a href="..\Source_editor\editorengine.html#72" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Advanced) <font class="source_keyword2">config</font> <font class="source_keyword">float</font> FovAngleDegrees;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GameCommandLine" class="hidden"></a>GameCommandLine <a href="..\Source_editor\editorengine.html#76" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Advanced) <font class="source_keyword2">config</font> <font class="source_keyword">string</font> GameCommandLine;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GodMode" class="hidden"></a>GodMode <a href="..\Source_editor\editorengine.html#73" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Advanced) <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> GodMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Colors</h3>
+<h4><a name="_C_OrthoBackground" class="hidden"></a>C_OrthoBackground <a href="..\Source_editor\editorengine.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Colors) <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> C_OrthoBackground;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Grid</h3>
+<h4><a name="_AffectRegion" class="hidden"></a>AffectRegion <a href="..\Source_editor\editorengine.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Grid) <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> AffectRegion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GridEnabled" class="hidden"></a>GridEnabled <a href="..\Source_editor\editorengine.html#59" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Grid) <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> GridEnabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GridSize" class="hidden"></a>GridSize <a href="..\Source_editor\editorengine.html#65" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Grid) <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> GridSize;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SelectionLock" class="hidden"></a>SelectionLock <a href="..\Source_editor\editorengine.html#63" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Grid) <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> SelectionLock;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SnapDistance" class="hidden"></a>SnapDistance <a href="..\Source_editor\editorengine.html#64" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Grid) <font class="source_keyword2">config</font> <font class="source_keyword">float</font> SnapDistance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SnapVertices" class="hidden"></a>SnapVertices <a href="..\Source_editor\editorengine.html#60" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Grid) <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> SnapVertices;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TextureLock" class="hidden"></a>TextureLock <a href="..\Source_editor\editorengine.html#62" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Grid) <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> TextureLock;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">RotationGrid</h3>
+<h4><a name="_RotGridEnabled" class="hidden"></a>RotGridEnabled <a href="..\Source_editor\editorengine.html#68" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(RotationGrid) <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> RotGridEnabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RotGridSize" class="hidden"></a>RotGridSize <a href="..\Source_editor\editorengine.html#69" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(RotationGrid) <font class="source_keyword2">config</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> RotGridSize;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     MenuUp=B_MenuUp
+     MenuDn=B_MenuDn
+     CollOn=B_CollOn
+     CollOff=B_CollOf
+     PlyrOn=B_PlyrOn
+     PlyrOff=B_PlyrOf
+     LiteOn=B_LiteOn
+     Bad=Bad
+     Bkgnd=Bkgnd
+     BkgndHi=BkgndHi
+     GridSize=(X=<font class="source_int">16</font>,Y=<font class="source_int">16</font>,Z=<font class="source_int">16</font>)
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="editor-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_editor\editorengine.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#EditorEngine">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="cylinderbuilder.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="linearstairbuilder.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:46:49.375 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

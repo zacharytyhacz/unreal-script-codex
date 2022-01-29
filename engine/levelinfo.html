@@ -1,0 +1,653 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Engine.LevelInfo</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\levelinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#LevelInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="keypoint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="levelsummary.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="engine-overview.html">Engine</a>.LevelInfo</h1>
+<b>Extends:</b> <a href="zoneinfo.html">ZoneInfo</a><br>
+<b>Modifiers:</b> native nativereplication <br>
+<a href="..\Source_engine\levelinfo.html"><b>Source code</b></a>
+
+<p>
+LevelInfo contains information about the current level. There should<br />
+be one per level and it should be actor 0. UnrealEd creates each level's<br />
+LevelInfo automatically so you should never have to place one<br />
+manually.<br />
+<br />
+The ZoneInfo properties in the LevelInfo are used to define<br />
+the properties of all zones which don't themselves have ZoneInfo.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a>
+    |   
+    +-- <a href="engine-overview.html">Engine</a>.<a href="info.html">Info</a>
+        |   
+        +-- <a href="engine-overview.html">Engine</a>.<a href="zoneinfo.html">ZoneInfo</a>
+            |   
+            +-- <a href="engine-overview.html">Engine</a>.<a href="levelinfo.html">LevelInfo</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_AIProfile[8]" name="AIProfile[8]">AIProfile[8]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_Author" name="Author">Author</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_AvgAITime" name="AvgAITime">AvgAITime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAggressiveLOD" name="bAggressiveLOD">bAggressiveLOD</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAllowFOV" name="bAllowFOV">bAllowFOV</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bBegunPlay" name="bBegunPlay">bBegunPlay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCheckWalkSurfaces" name="bCheckWalkSurfaces">bCheckWalkSurfaces</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDropDetail" name="bDropDetail">bDropDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHighDetailMode" name="bHighDetailMode">bHighDetailMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHumansOnly" name="bHumansOnly">bHumansOnly</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLonePlayer" name="bLonePlayer">bLonePlayer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLowRes" name="bLowRes">bLowRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNeverPrecache" name="bNeverPrecache">bNeverPrecache</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNextItems" name="bNextItems">bNextItems</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoCheating" name="bNoCheating">bNoCheating</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPlayersOnly" name="bPlayersOnly">bPlayersOnly</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Brightness" name="Brightness">Brightness</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bStartup" name="bStartup">bStartup</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ComputerName" name="ComputerName">ComputerName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Day" name="Day">Day</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_DayOfWeek" name="DayOfWeek">DayOfWeek</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="gameinfo.html">gameinfo</a>&gt;</td><td width="66%"><a href="#_DefaultGameType" name="DefaultGameType">DefaultGameType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="texture.html">texture</a></td><td width="66%"><a href="#_DefaultTexture" name="DefaultTexture">DefaultTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_EngineVersion" name="EngineVersion">EngineVersion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="gameinfo.html">GameInfo</a></td><td width="66%"><a href="#_Game" name="Game">Game</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Hour" name="Hour">Hour</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_HubStackLevel" name="HubStackLevel">HubStackLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_IdealPlayerCount" name="IdealPlayerCount">IdealPlayerCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="levelinfo.html#ELevelAction">ELevelAction</a></td><td width="66%"><a href="#_LevelAction" name="LevelAction">LevelAction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LevelEnterText" name="LevelEnterText">LevelEnterText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LocalizedPkg" name="LocalizedPkg">LocalizedPkg</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Millisecond" name="Millisecond">Millisecond</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MinNetVersion" name="MinNetVersion">MinNetVersion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Minute" name="Minute">Minute</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Month" name="Month">Month</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="navigationpoint.html">NavigationPoint</a></td><td width="66%"><a href="#_NavigationPointList" name="NavigationPointList">NavigationPointList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="levelinfo.html#ENetMode">ENetMode</a></td><td width="66%"><a href="#_NetMode" name="NetMode">NetMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_NextSwitchCountdown" name="NextSwitchCountdown">NextSwitchCountdown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_NextURL" name="NextURL">NextURL</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_Pauser" name="Pauser">Pauser</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="pawn.html">Pawn</a></td><td width="66%"><a href="#_PawnList" name="PawnList">PawnList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_RecommendedEnemies" name="RecommendedEnemies">RecommendedEnemies</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_RecommendedTeammates" name="RecommendedTeammates">RecommendedTeammates</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="texture.html">texture</a></td><td width="66%"><a href="#_Screenshot" name="Screenshot">Screenshot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Second" name="Second">Second</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="spawnnotify.html">SpawnNotify</a></td><td width="66%"><a href="#_SpawnNotify" name="SpawnNotify">SpawnNotify</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="levelsummary.html">levelsummary</a></td><td width="66%"><a href="#_Summary" name="Summary">Summary</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TimeDilation" name="TimeDilation">TimeDilation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TimeSeconds" name="TimeSeconds">TimeSeconds</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_Title" name="Title">Title</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_VisibleGroups" name="VisibleGroups">VisibleGroups</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Year" name="Year">Year</a></td></tr>
+<tr><th colspan="2" class="small">Audio</th></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_CdTrack" name="CdTrack">CdTrack</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_PlayerDoppler" name="PlayerDoppler">PlayerDoppler</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">music</td><td width="66%"><a href="#_Song" name="Song">Song</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_SongSection" name="SongSection">SongSection</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="engine-overview.html">Engine</a>.<a href="zoneinfo.html">ZoneInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="zoneinfo.html#AmbientBrightness">AmbientBrightness</a>, <a href="zoneinfo.html#AmbientHue">AmbientHue</a>, <a href="zoneinfo.html#AmbientSaturation">AmbientSaturation</a>, <a href="zoneinfo.html#bBounceVelocity">bBounceVelocity</a>, <a href="zoneinfo.html#bDestructive">bDestructive</a>, <a href="zoneinfo.html#bFogZone">bFogZone</a>, <a href="zoneinfo.html#bGravityZone">bGravityZone</a>, <a href="zoneinfo.html#bKillZone">bKillZone</a>, <a href="zoneinfo.html#bMoveProjectiles">bMoveProjectiles</a>, <a href="zoneinfo.html#bNeutralZone">bNeutralZone</a>, <a href="zoneinfo.html#bNoInventory">bNoInventory</a>, <a href="zoneinfo.html#bPainZone">bPainZone</a>, <a href="zoneinfo.html#bRaytraceReverb">bRaytraceReverb</a>, <a href="zoneinfo.html#bReverbZone">bReverbZone</a>, <a href="zoneinfo.html#bWaterZone">bWaterZone</a>, <a href="zoneinfo.html#CutoffHz">CutoffHz</a>, <a href="zoneinfo.html#DamagePerSec">DamagePerSec</a>, <a href="zoneinfo.html#DamageString">DamageString</a>, <a href="zoneinfo.html#DamageType">DamageType</a>, <a href="zoneinfo.html#Delay[6]">Delay[6]</a>, <a href="zoneinfo.html#EntryActor">EntryActor</a>, <a href="zoneinfo.html#EntrySound">EntrySound</a>, <a href="zoneinfo.html#EnvironmentMap">EnvironmentMap</a>, <a href="zoneinfo.html#ExitActor">ExitActor</a>, <a href="zoneinfo.html#ExitSound">ExitSound</a>, <a href="zoneinfo.html#FogColor">FogColor</a>, <a href="zoneinfo.html#FogDistance">FogDistance</a>, <a href="zoneinfo.html#Gain[6]">Gain[6]</a>, <a href="zoneinfo.html#LensFlareOffset[12]">LensFlareOffset[12]</a>, <a href="zoneinfo.html#LensFlareScale[12]">LensFlareScale[12]</a>, <a href="zoneinfo.html#LensFlare[12]">LensFlare[12]</a>, <a href="zoneinfo.html#LocationID">LocationID</a>, <a href="zoneinfo.html#MasterGain">MasterGain</a>, <a href="zoneinfo.html#MaxCarcasses">MaxCarcasses</a>, <a href="zoneinfo.html#MaxLightCount">MaxLightCount</a>, <a href="zoneinfo.html#MaxLightingPolyCount">MaxLightingPolyCount</a>, <a href="zoneinfo.html#MinLightCount">MinLightCount</a>, <a href="zoneinfo.html#MinLightingPolyCount">MinLightingPolyCount</a>, <a href="zoneinfo.html#NumCarcasses">NumCarcasses</a>, <a href="zoneinfo.html#SkyZone">SkyZone</a>, <a href="zoneinfo.html#SpeedOfSound">SpeedOfSound</a>, <a href="zoneinfo.html#TexUPanSpeed">TexUPanSpeed</a>, <a href="zoneinfo.html#TexVPanSpeed">TexVPanSpeed</a>, <a href="zoneinfo.html#ViewFlash">ViewFlash</a>, <a href="zoneinfo.html#ViewFog">ViewFog</a>, <a href="zoneinfo.html#ZoneFluidFriction">ZoneFluidFriction</a>, <a href="zoneinfo.html#ZoneGravity">ZoneGravity</a>, <a href="zoneinfo.html#ZoneGroundFriction">ZoneGroundFriction</a>, <a href="zoneinfo.html#ZoneName">ZoneName</a>, <a href="zoneinfo.html#ZonePlayerCount">ZonePlayerCount</a>, <a href="zoneinfo.html#ZonePlayerEvent">ZonePlayerEvent</a>, <a href="zoneinfo.html#ZoneTag">ZoneTag</a>, <a href="zoneinfo.html#ZoneTerminalVelocity">ZoneTerminalVelocity</a>, <a href="zoneinfo.html#ZoneVelocity">ZoneVelocity</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_ELevelAction" name="ELevelAction">ELevelAction</a><br /><span class="small">LEVACT_None,
+LEVACT_Loading,
+LEVACT_Saving,
+LEVACT_Connecting,
+LEVACT_Precaching</span></td></tr>
+<tr><td><a href="#_ENetMode" name="ENetMode">ENetMode</a><br /><span class="small">NM_Standalone,
+NM_DedicatedServer,
+NM_ListenServer,
+NM_Client</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetAddressURL+" name="GetAddressURL">GetAddressURL</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetLocalURL+" name="GetLocalURL">GetLocalURL</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_ServerTravel+" name="ServerTravel">ServerTravel</a> (string URL, bool bItems)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="engine-overview.html">Engine</a>.<a href="zoneinfo.html">ZoneInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="zoneinfo.html#ActorEntered">ActorEntered</a>, <a href="zoneinfo.html#ActorLeaving">ActorLeaving</a>, <a href="zoneinfo.html#LinkToSkybox">LinkToSkybox</a>, <a href="zoneinfo.html#PreBeginPlay">PreBeginPlay</a>, <a href="zoneinfo.html#Trigger">Trigger</a>, <a href="zoneinfo.html#ZoneActors">ZoneActors</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AIProfile[8]" class="hidden"></a>AIProfile[8] <a href="..\Source_engine\levelinfo.html#127" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> AIProfile[<font class="source_int">8</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Author" class="hidden"></a>Author <a href="..\Source_engine\levelinfo.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> Author;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AvgAITime" class="hidden"></a>AvgAITime <a href="..\Source_engine\levelinfo.html#128" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> AvgAITime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bAggressiveLOD" class="hidden"></a>bAggressiveLOD <a href="..\Source_engine\levelinfo.html#56" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bAggressiveLOD;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bAllowFOV" class="hidden"></a>bAllowFOV <a href="..\Source_engine\levelinfo.html#60" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bAllowFOV;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bBegunPlay" class="hidden"></a>bBegunPlay <a href="..\Source_engine\levelinfo.html#52" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bBegunPlay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bCheckWalkSurfaces" class="hidden"></a>bCheckWalkSurfaces <a href="..\Source_engine\levelinfo.html#133" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bCheckWalkSurfaces;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bDropDetail" class="hidden"></a>bDropDetail <a href="..\Source_engine\levelinfo.html#55" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDropDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHighDetailMode" class="hidden"></a>bHighDetailMode <a href="..\Source_engine\levelinfo.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHighDetailMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHumansOnly" class="hidden"></a>bHumansOnly <a href="..\Source_engine\levelinfo.html#58" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHumansOnly;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bLonePlayer" class="hidden"></a>bLonePlayer <a href="..\Source_engine\levelinfo.html#51" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bLonePlayer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bLowRes" class="hidden"></a>bLowRes <a href="..\Source_engine\levelinfo.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> bLowRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNeverPrecache" class="hidden"></a>bNeverPrecache <a href="..\Source_engine\levelinfo.html#89" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNeverPrecache;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNextItems" class="hidden"></a>bNextItems <a href="..\Source_engine\levelinfo.html#121" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNextItems;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNoCheating" class="hidden"></a>bNoCheating <a href="..\Source_engine\levelinfo.html#59" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNoCheating;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bPlayersOnly" class="hidden"></a>bPlayersOnly <a href="..\Source_engine\levelinfo.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPlayersOnly;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Brightness" class="hidden"></a>Brightness <a href="..\Source_engine\levelinfo.html#74" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> Brightness;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bStartup" class="hidden"></a>bStartup <a href="..\Source_engine\levelinfo.html#57" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bStartup;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ComputerName" class="hidden"></a>ComputerName <a href="..\Source_engine\levelinfo.html#101" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> ComputerName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Day" class="hidden"></a>Day <a href="..\Source_engine\levelinfo.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> Day;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DayOfWeek" class="hidden"></a>DayOfWeek <a href="..\Source_engine\levelinfo.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> DayOfWeek;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DefaultGameType" class="hidden"></a>DefaultGameType <a href="..\Source_engine\levelinfo.html#108" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="gameinfo.html" class="source">gameinfo</a></font>&gt; DefaultGameType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DefaultTexture" class="hidden"></a>DefaultTexture <a href="..\Source_engine\levelinfo.html#76" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="texture.html" class="source">texture</a></font> DefaultTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EngineVersion" class="hidden"></a>EngineVersion <a href="..\Source_engine\levelinfo.html#102" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> EngineVersion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Game" class="hidden"></a>Game <a href="..\Source_engine\levelinfo.html#109" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="gameinfo.html" class="source">GameInfo</a></font> Game;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Hour" class="hidden"></a>Hour <a href="..\Source_engine\levelinfo.html#29" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> Hour;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HubStackLevel" class="hidden"></a>HubStackLevel <a href="..\Source_engine\levelinfo.html#77" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> HubStackLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_IdealPlayerCount" class="hidden"></a>IdealPlayerCount <a href="..\Source_engine\levelinfo.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> IdealPlayerCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LevelAction" class="hidden"></a>LevelAction <a href="..\Source_engine\levelinfo.html#78" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="levelinfo.html#ELevelAction" class="source">ELevelAction</a></font> LevelAction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LevelEnterText" class="hidden"></a>LevelEnterText <a href="..\Source_engine\levelinfo.html#42" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> LevelEnterText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LocalizedPkg" class="hidden"></a>LocalizedPkg <a href="..\Source_engine\levelinfo.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> LocalizedPkg;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Millisecond" class="hidden"></a>Millisecond <a href="..\Source_engine\levelinfo.html#32" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> Millisecond;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinNetVersion" class="hidden"></a>MinNetVersion <a href="..\Source_engine\levelinfo.html#103" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> MinNetVersion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Minute" class="hidden"></a>Minute <a href="..\Source_engine\levelinfo.html#30" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> Minute;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Month" class="hidden"></a>Month <a href="..\Source_engine\levelinfo.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> Month;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NavigationPointList" class="hidden"></a>NavigationPointList <a href="..\Source_engine\levelinfo.html#114" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="navigationpoint.html" class="source">NavigationPoint</a></font> NavigationPointList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NetMode" class="hidden"></a>NetMode <a href="..\Source_engine\levelinfo.html#94" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="levelinfo.html#ENetMode" class="source">ENetMode</a></font> NetMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NextSwitchCountdown" class="hidden"></a>NextSwitchCountdown <a href="..\Source_engine\levelinfo.html#122" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> NextSwitchCountdown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NextURL" class="hidden"></a>NextURL <a href="..\Source_engine\levelinfo.html#120" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> NextURL;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Pauser" class="hidden"></a>Pauser <a href="..\Source_engine\levelinfo.html#44" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> Pauser;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PawnList" class="hidden"></a>PawnList <a href="..\Source_engine\levelinfo.html#115" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> PawnList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RecommendedEnemies" class="hidden"></a>RecommendedEnemies <a href="..\Source_engine\levelinfo.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> RecommendedEnemies;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RecommendedTeammates" class="hidden"></a>RecommendedTeammates <a href="..\Source_engine\levelinfo.html#41" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> RecommendedTeammates;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Screenshot" class="hidden"></a>Screenshot <a href="..\Source_engine\levelinfo.html#75" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="texture.html" class="source">texture</a></font> Screenshot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Second" class="hidden"></a>Second <a href="..\Source_engine\levelinfo.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> Second;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpawnNotify" class="hidden"></a>SpawnNotify <a href="..\Source_engine\levelinfo.html#137" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="spawnnotify.html" class="source">SpawnNotify</a></font> <font class="source_type"><a href="spawnnotify.html" class="source">SpawnNotify</a></font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Summary" class="hidden"></a>Summary <a href="..\Source_engine\levelinfo.html#45" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="levelsummary.html" class="source">levelsummary</a></font> Summary;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimeDilation" class="hidden"></a>TimeDilation <a href="..\Source_engine\levelinfo.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> TimeDilation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimeSeconds" class="hidden"></a>TimeSeconds <a href="..\Source_engine\levelinfo.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> TimeSeconds;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Title" class="hidden"></a>Title <a href="..\Source_engine\levelinfo.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> Title;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_VisibleGroups" class="hidden"></a>VisibleGroups <a href="..\Source_engine\levelinfo.html#46" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> VisibleGroups;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Year" class="hidden"></a>Year <a href="..\Source_engine\levelinfo.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> Year;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Audio</h3>
+<h4><a name="_CdTrack" class="hidden"></a>CdTrack <a href="..\Source_engine\levelinfo.html#68" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Audio) <font class="source_keyword">const</font> <font class="source_keyword">byte</font> CdTrack;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayerDoppler" class="hidden"></a>PlayerDoppler <a href="..\Source_engine\levelinfo.html#69" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Audio) <font class="source_keyword">float</font> PlayerDoppler;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Song" class="hidden"></a>Song <a href="..\Source_engine\levelinfo.html#66" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Audio) <font class="source_keyword">const</font> <font class="source_type">music</font> Song;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SongSection" class="hidden"></a>SongSection <a href="..\Source_engine\levelinfo.html#67" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Audio) <font class="source_keyword">const</font> <font class="source_keyword">byte</font> SongSection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ELevelAction" class="hidden"></a>ELevelAction <a href="..\Source_engine\levelinfo.html#78" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="levelinfo.html#ELevelAction" class="source">ELevelAction</a></font><br />
+{<blockquote>LEVACT_None,
+LEVACT_Loading,
+LEVACT_Saving,
+LEVACT_Connecting,
+LEVACT_Precaching</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ENetMode" class="hidden"></a>ENetMode <a href="..\Source_engine\levelinfo.html#94" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="levelinfo.html#ENetMode" class="source">ENetMode</a></font><br />
+{<blockquote>NM_Standalone,
+NM_DedicatedServer,
+NM_ListenServer,
+NM_Client</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_GetAddressURL+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetAddressURL <span class="function_state"></span> <a href="..\Source_engine\levelinfo.html#151" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetAddressURL ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetLocalURL+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetLocalURL <span class="function_state"></span> <a href="..\Source_engine\levelinfo.html#145" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetLocalURL ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ServerTravel+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> ServerTravel <span class="function_state"></span> <a href="..\Source_engine\levelinfo.html#156" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> ServerTravel (<font class="source_keyword">string</font> URL, <font class="source_keyword">bool</font> bItems)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     TimeDilation=+<font class="source_int">00001.000000</font>
+     Brightness=<font class="source_int">1</font>
+     Title=<font class="source_string">"Untitled"</font>
+     bHiddenEd=<font class="source_keyword">True</font>
+     CdTrack=<font class="source_int">255</font>
+     DefaultTexture=DefaultTexture
+     HubStackLevel=<font class="source_int">0</font>
+     bHighDetailMode=<font class="source_keyword">True</font>
+     PlayerDoppler=<font class="source_int">0</font>
+     VisibleGroups=<font class="source_string">"None"</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\levelinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#LevelInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="keypoint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="levelsummary.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:00.765 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

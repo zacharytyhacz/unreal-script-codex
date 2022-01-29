@@ -1,0 +1,613 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealShare.UnrealServerMenu</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\unrealservermenu.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UnrealServerMenu">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="unrealscoreboard.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="unrealshortmenu.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\unrealservermenu.html">UnrealServerMenu</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// UnrealServerMenu
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unrealshare\unrealservermenu.html" class="source">UnrealServerMenu</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\unrealshare\unreallongmenu.html" class="source">UnrealLongMenu</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> Map;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> GameType;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> Games[<font class="source_int">16</font>];
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> MaxGames;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> CurrentGame;
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font>&gt; GameClass;
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bStandalone;
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BotTitle;
+<a name="14"></a><font class="source_keyword">var</font> <font class="source_keyword">byte</font> Difficulty;
+<a name="15"></a>
+<a name="16"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="17"></a>{
+<a name="18"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NextGame;
+<a name="19"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bFoundSavedGameClass;
+<a name="20"></a>
+<a name="21"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="22"></a>    Difficulty = -<font class="source_int">1</font>; <font class="source_comment">// 
+</font><a name="23"></a>    NextGame = GetNextInt(<font class="source_string">"GameInfo"</font>, <font class="source_int">0</font>); 
+<a name="24"></a>    <font class="source_keyword">while</font> ( (NextGame != <font class="source_string">""</font>) && (MaxGames &lt; <font class="source_int">16</font>) )
+<a name="25"></a>    {
+<a name="26"></a>        <font class="source_keyword">if</font> ( !bFoundSavedGameClass && (NextGame ~= GameType) )
+<a name="27"></a>        {
+<a name="28"></a>            bFoundSavedGameClass = <font class="source_keyword">true</font>;
+<a name="29"></a>            CurrentGame = MaxGames;
+<a name="30"></a>        }
+<a name="31"></a>        Games[MaxGames] = NextGame;
+<a name="32"></a>        MaxGames++;
+<a name="33"></a>        NextGame = GetNextInt(<font class="source_string">"GameInfo"</font>, MaxGames);
+<a name="34"></a>    }
+<a name="35"></a>}
+<a name="36"></a>
+<a name="37"></a><font class="source_keyword">function</font> UpdateGameClass( <font class="source_keyword">string</font> NewGame, <font class="source_keyword">int</font> Offset )
+<a name="38"></a>{
+<a name="39"></a>    Games[Offset] = NewGame;
+<a name="40"></a>}
+<a name="41"></a>
+<a name="42"></a><font class="source_keyword">function</font> SetGameClass()
+<a name="43"></a>{
+<a name="44"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="45"></a>
+<a name="46"></a>    GameType = Games[CurrentGame];
+<a name="47"></a>    GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">gameinfo</a></font>&gt;(DynamicLoadObject(GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="48"></a>    <font class="source_keyword">if</font> ( GameClass == <font class="source_keyword">None</font> )
+<a name="49"></a>    {
+<a name="50"></a>        MaxGames--;
+<a name="51"></a>        <font class="source_keyword">if</font> ( MaxGames &gt; CurrentGame )
+<a name="52"></a>        {
+<a name="53"></a>            <font class="source_keyword">for</font> ( i=CurrentGame; i&lt;MaxGames; i++ )
+<a name="54"></a>                Games[i] = Games[i+<font class="source_int">1</font>];
+<a name="55"></a>        }
+<a name="56"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( CurrentGame &gt; <font class="source_int">0</font> )
+<a name="57"></a>            CurrentGame--;
+<a name="58"></a>        SetGameClass();
+<a name="59"></a>        <font class="source_keyword">return</font>;
+<a name="60"></a>    }
+<a name="61"></a>    Map = GetMapName(GameClass.Default.MapPrefix, Map,<font class="source_int">0</font>);
+<a name="62"></a>}
+<a name="63"></a>
+<a name="64"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ProcessLeft()
+<a name="65"></a>{
+<a name="66"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="67"></a>
+<a name="68"></a>    <font class="source_keyword">if</font> ( Selection == <font class="source_int">1</font> )
+<a name="69"></a>    {
+<a name="70"></a>        <font class="source_keyword">if</font> ( MaxGames == <font class="source_int">0</font> )
+<a name="71"></a>        {
+<a name="72"></a>            CurrentGame = <font class="source_int">0</font>;
+<a name="73"></a>            <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="74"></a>        }
+<a name="75"></a>        CurrentGame--;
+<a name="76"></a>        <font class="source_keyword">if</font> ( CurrentGame &lt; <font class="source_int">0</font> )
+<a name="77"></a>            CurrentGame = MaxGames - <font class="source_int">1</font>;
+<a name="78"></a>        SetGameClass();
+<a name="79"></a>        <font class="source_keyword">if</font> ( (GameClass == <font class="source_keyword">None</font>) && (MaxGames &gt; <font class="source_int">0</font>) )
+<a name="80"></a>            ProcessLeft();
+<a name="81"></a>    }
+<a name="82"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Selection == <font class="source_int">2</font> )
+<a name="83"></a>    {
+<a name="84"></a>        GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">gameinfo</a></font>&gt;(DynamicLoadObject(GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="85"></a>        <font class="source_keyword">if</font> ( GameClass == <font class="source_keyword">None</font> )
+<a name="86"></a>        {
+<a name="87"></a>            MaxGames--;
+<a name="88"></a>            <font class="source_keyword">if</font> ( MaxGames &gt; CurrentGame )
+<a name="89"></a>            {
+<a name="90"></a>                <font class="source_keyword">for</font> ( i=CurrentGame; i&lt;MaxGames; i++ )
+<a name="91"></a>                    Games[i] = Games[i+<font class="source_int">1</font>];
+<a name="92"></a>            }
+<a name="93"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( CurrentGame &gt; <font class="source_int">0</font> )
+<a name="94"></a>                CurrentGame--;
+<a name="95"></a>        }
+<a name="96"></a>        Map = GetMapName(GameClass.Default.MapPrefix, Map, -<font class="source_int">1</font>);
+<a name="97"></a>    }
+<a name="98"></a>    <font class="source_keyword">else</font> 
+<a name="99"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="100"></a>
+<a name="101"></a>    <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="102"></a>}
+<a name="103"></a>
+<a name="104"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ProcessRight()
+<a name="105"></a>{
+<a name="106"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="107"></a>
+<a name="108"></a>    <font class="source_keyword">if</font> ( Selection == <font class="source_int">1</font> )
+<a name="109"></a>    {
+<a name="110"></a>        <font class="source_keyword">if</font> ( MaxGames == <font class="source_int">0</font> )
+<a name="111"></a>        {
+<a name="112"></a>            CurrentGame = <font class="source_int">0</font>;
+<a name="113"></a>            <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="114"></a>        }
+<a name="115"></a>        CurrentGame++;
+<a name="116"></a>        <font class="source_keyword">if</font> ( CurrentGame &gt;= MaxGames )
+<a name="117"></a>            CurrentGame = <font class="source_int">0</font>;
+<a name="118"></a>        SetGameClass();
+<a name="119"></a>        <font class="source_keyword">if</font> ( (GameClass == <font class="source_keyword">None</font>) && (MaxGames &gt; <font class="source_int">0</font>) )
+<a name="120"></a>            ProcessRight();
+<a name="121"></a>    }
+<a name="122"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Selection == <font class="source_int">2</font> )
+<a name="123"></a>    {
+<a name="124"></a>        GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">gameinfo</a></font>&gt;(DynamicLoadObject(GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="125"></a>        <font class="source_keyword">if</font> ( GameClass == <font class="source_keyword">None</font> )
+<a name="126"></a>        {
+<a name="127"></a>            MaxGames--;
+<a name="128"></a>            <font class="source_keyword">if</font> ( MaxGames &gt; CurrentGame )
+<a name="129"></a>            {
+<a name="130"></a>                <font class="source_keyword">for</font> ( i=CurrentGame; i&lt;MaxGames; i++ )
+<a name="131"></a>                    Games[i] = Games[i+<font class="source_int">1</font>];
+<a name="132"></a>            }
+<a name="133"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( CurrentGame &gt; <font class="source_int">0</font> )
+<a name="134"></a>                CurrentGame--;
+<a name="135"></a>        }
+<a name="136"></a>        Map = GetMapName(GameClass.Default.MapPrefix, Map, <font class="source_int">1</font>);
+<a name="137"></a>    }
+<a name="138"></a>    <font class="source_keyword">else</font>
+<a name="139"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="140"></a>
+<a name="141"></a>    <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="142"></a>}
+<a name="143"></a>
+<a name="144"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ProcessSelection()
+<a name="145"></a>{
+<a name="146"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\menu.html" class="source">Menu</a></font> ChildMenu;
+<a name="147"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> URL;
+<a name="148"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font> NewGame;
+<a name="149"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="150"></a>
+<a name="151"></a>    GameClass = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">gameinfo</a></font>&gt;(DynamicLoadObject(GameType, <font class="source_keyword">class</font><font class="source_name">'Class'</font>));
+<a name="152"></a>    <font class="source_keyword">if</font> ( GameClass == <font class="source_keyword">None</font> )
+<a name="153"></a>    {
+<a name="154"></a>        MaxGames--;
+<a name="155"></a>        <font class="source_keyword">if</font> ( MaxGames &gt; CurrentGame )
+<a name="156"></a>        {
+<a name="157"></a>            <font class="source_keyword">for</font> ( i=CurrentGame; i&lt;MaxGames; i++ )
+<a name="158"></a>                Games[i] = Games[i+<font class="source_int">1</font>];
+<a name="159"></a>        }
+<a name="160"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( CurrentGame &gt; <font class="source_int">0</font> )
+<a name="161"></a>            CurrentGame--;
+<a name="162"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="163"></a>    }
+<a name="164"></a>
+<a name="165"></a>    <font class="source_keyword">if</font>( Selection == <font class="source_int">3</font> )
+<a name="166"></a>    {
+<a name="167"></a>        ChildMenu = spawn( GameClass.Default.GameMenuType, owner );
+<a name="168"></a>        <font class="source_type"><a href="..\engine\hud.html" class="source">HUD</a></font>(Owner).MainMenu = ChildMenu;
+<a name="169"></a>        ChildMenu.ParentMenu = self;
+<a name="170"></a>        ChildMenu.PlayerOwner = PlayerOwner;
+<a name="171"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="172"></a>    }
+<a name="173"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Selection == <font class="source_int">4</font> )
+<a name="174"></a>    {
+<a name="175"></a>        NewGame = Spawn(GameClass);
+<a name="176"></a>        NewGame.ResetGame();
+<a name="177"></a>        NewGame.Destroy();
+<a name="178"></a>
+<a name="179"></a>        URL = Map $ <font class="source_string">"?Game="</font>$GameType;
+<a name="180"></a>        <font class="source_keyword">if</font> ( (Difficulty &lt; <font class="source_int">0</font>) || (Difficulty &gt; <font class="source_int">3</font>) )
+<a name="181"></a>            Difficulty = <font class="source_int">1</font>;
+<a name="182"></a>        URL = URL$<font class="source_string">"?Difficulty="</font>$Difficulty;
+<a name="183"></a>        <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.Game != <font class="source_keyword">None</font> )
+<a name="184"></a>            URL = URL$<font class="source_string">"?GameSpeed="</font>$<font class="source_type">Level</font>.Game.GameSpeed;
+<a name="185"></a>        <font class="source_keyword">if</font>( !bStandAlone )
+<a name="186"></a>            URL = URL $ <font class="source_string">"?Listen"</font>;
+<a name="187"></a>        SaveConfigs();
+<a name="188"></a>        ChildMenu = spawn(<font class="source_keyword">class</font><font class="source_name">'UnrealMeshMenu'</font>, owner);
+<a name="189"></a>        <font class="source_keyword">if</font> ( ChildMenu != <font class="source_keyword">None</font> )
+<a name="190"></a>        {
+<a name="191"></a>            <font class="source_type"><a href="..\unrealshare\unrealmeshmenu.html" class="source">UnrealMeshMenu</a></font>(ChildMenu).StartMap = URL;
+<a name="192"></a>            <font class="source_type"><a href="..\engine\hud.html" class="source">HUD</a></font>(Owner).MainMenu = ChildMenu;
+<a name="193"></a>            ChildMenu.ParentMenu = self;
+<a name="194"></a>            ChildMenu.PlayerOwner = PlayerOwner;
+<a name="195"></a>        }
+<a name="196"></a>        log( <font class="source_string">"URL: '"</font> $ URL $ <font class="source_string">"'"</font> );
+<a name="197"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="198"></a>    }
+<a name="199"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Selection == <font class="source_int">5</font> )
+<a name="200"></a>    {
+<a name="201"></a>        NewGame = Spawn(GameClass);
+<a name="202"></a>        NewGame.ResetGame();
+<a name="203"></a>        NewGame.Destroy();
+<a name="204"></a>
+<a name="205"></a>        URL = Map $ <font class="source_string">"?Game="</font>$GameType;
+<a name="206"></a>        <font class="source_keyword">if</font> ( (Difficulty &lt; <font class="source_int">0</font>) || (Difficulty &gt; <font class="source_int">3</font>) )
+<a name="207"></a>            Difficulty = <font class="source_int">1</font>;
+<a name="208"></a>        URL = URL$<font class="source_string">"?Difficulty="</font>$Difficulty;
+<a name="209"></a>        SaveConfigs();
+<a name="210"></a>        PlayerOwner.ConsoleCommand(<font class="source_string">"RELAUNCH "</font>$URL$<font class="source_string">" -server log=server.log"</font>);
+<a name="211"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="212"></a>    }
+<a name="213"></a>    <font class="source_keyword">else</font> <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="214"></a>}
+<a name="215"></a>
+<a name="216"></a><font class="source_keyword">function</font> SaveConfigs()
+<a name="217"></a>{
+<a name="218"></a>    SaveConfig();
+<a name="219"></a>    PlayerOwner.SaveConfig();
+<a name="220"></a>    <font class="source_comment">//PlayerOwner.PlayerReplicationInfo.SaveConfig();
+</font><a name="221"></a>}
+<a name="222"></a>
+<a name="223"></a><font class="source_keyword">function</font> DrawMenu(<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)
+<a name="224"></a>{
+<a name="225"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, StartX, StartY, Spacing;
+<a name="226"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> MapName;
+<a name="227"></a>
+<a name="228"></a>    DrawBackGround(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">false</font>);
+<a name="229"></a>
+<a name="230"></a>    <font class="source_comment">// Draw Title
+</font><a name="231"></a>    <font class="source_keyword">if</font> ( bStandAlone )
+<a name="232"></a>    {
+<a name="233"></a>        MenuLength = <font class="source_int">4</font>;
+<a name="234"></a>        MenuTitle = BotTitle;
+<a name="235"></a>    }
+<a name="236"></a>    DrawTitle(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>);
+<a name="237"></a>        
+<a name="238"></a>    Spacing = Clamp(<font class="source_int">0.07</font> * <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY, <font class="source_int">12</font>, <font class="source_int">48</font>);
+<a name="239"></a>    StartX = Max(<font class="source_int">40</font>, <font class="source_int">0.5</font> * <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX - <font class="source_int">120</font>);
+<a name="240"></a>    StartY = Max(<font class="source_int">40</font>, <font class="source_int">0.5</font> * (<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY - MenuLength * Spacing - <font class="source_int">128</font>));
+<a name="241"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.MedFont;
+<a name="242"></a>
+<a name="243"></a>    <font class="source_comment">// draw text
+</font><a name="244"></a>    <font class="source_keyword">for</font>( i=<font class="source_int">1</font>; i&lt;MenuLength+<font class="source_int">1</font>; i++ )
+<a name="245"></a>        MenuList[i] = Default.MenuList[i];
+<a name="246"></a>
+<a name="247"></a>    DrawList(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">false</font>, Spacing, StartX, StartY);  
+<a name="248"></a>
+<a name="249"></a>    <font class="source_comment">// draw values
+</font><a name="250"></a>    SetGameClass();
+<a name="251"></a>    MenuList[<font class="source_int">1</font>] = GameClass.Default.GameName;
+<a name="252"></a>    MapName = Left(Map, Len(Map) - <font class="source_int">4</font> ); 
+<a name="253"></a>    MenuList[<font class="source_int">2</font>] = MapName;
+<a name="254"></a>    MenuList[<font class="source_int">3</font>] = <font class="source_string">""</font>;
+<a name="255"></a>    MenuList[<font class="source_int">4</font>] = <font class="source_string">""</font>;
+<a name="256"></a>    MenuList[<font class="source_int">5</font>] = <font class="source_string">""</font>;
+<a name="257"></a>    DrawList(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">false</font>, Spacing, StartX + <font class="source_int">100</font>, StartY);  
+<a name="258"></a>
+<a name="259"></a>    <font class="source_comment">// Draw help panel
+</font><a name="260"></a>    DrawHelpPanel(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, StartY + MenuLength * Spacing + <font class="source_int">8</font>, <font class="source_int">228</font>);
+<a name="261"></a>}
+<a name="262"></a>
+<a name="263"></a><font class="source_keyword">defaultproperties</font>
+<a name="264"></a>{
+<a name="265"></a>     GameType=<font class="source_string">"UnrealShare.DeathMatchGame"</font>
+<a name="266"></a>     BotTitle=<font class="source_string">"BOTMATCH"</font>
+<a name="267"></a>     MenuLength=<font class="source_int">5</font>
+<a name="268"></a>     HelpMessage(<font class="source_int">1</font>)=<font class="source_string">"Choose Game Type."</font>
+<a name="269"></a>     HelpMessage(<font class="source_int">2</font>)=<font class="source_string">"Choose Map."</font>
+<a name="270"></a>     HelpMessage(<font class="source_int">3</font>)=<font class="source_string">"Modify Game Options."</font>
+<a name="271"></a>     HelpMessage(<font class="source_int">4</font>)=<font class="source_string">"Start Game."</font>
+<a name="272"></a>     HelpMessage(<font class="source_int">5</font>)=<font class="source_string">"Start a dedicated server on this machine."</font>
+<a name="273"></a>     MenuList(<font class="source_int">1</font>)=<font class="source_string">"Select Game"</font>
+<a name="274"></a>     MenuList(<font class="source_int">2</font>)=<font class="source_string">"Select Map"</font>
+<a name="275"></a>     MenuList(<font class="source_int">3</font>)=<font class="source_string">"Configure Game"</font>
+<a name="276"></a>     MenuList(<font class="source_int">4</font>)=<font class="source_string">"Start Game"</font>
+<a name="277"></a>     MenuList(<font class="source_int">5</font>)=<font class="source_string">"Launch Dedicated Server"</font>
+<a name="278"></a>     MenuTitle=<font class="source_string">"MULTIPLAYER"</font>
+<a name="279"></a>}
+<a name="280"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\unrealservermenu.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UnrealServerMenu">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="unrealscoreboard.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="unrealshortmenu.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:10.000 - Creation time: Wed 26/5/2004 10:48:57.046 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

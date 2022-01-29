@@ -1,0 +1,512 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Engine.NavigationPoint</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\navigationpoint.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#NavigationPoint">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="mutator.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="palette.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="engine-overview.html">Engine</a>.NavigationPoint</h1>
+<b>Extends:</b> <a href="actor.html">Actor</a><br>
+<b>Modifiers:</b> native <br>
+<a href="..\Source_engine\navigationpoint.html"><b>Source code</b></a>
+
+<p>
+NavigationPoint.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a>
+    |   
+    +-- <a href="engine-overview.html">Engine</a>.<a href="navigationpoint.html">NavigationPoint</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\unrealshare\alarmpoint.html">AlarmPoint</a>, <a href="..\botpack\alternatepath.html">AlternatePath</a>, <a href="ambushpoint.html">AmbushPoint</a>, <a href="..\botpack\assaultrandomizer.html">AssaultRandomizer</a>, <a href="..\botpack\blockedpath.html">BlockedPath</a>, <a href="buttonmarker.html">ButtonMarker</a>, <a href="..\botpack\controlpoint.html">ControlPoint</a>, <a href="..\botpack\flagbase.html">FlagBase</a>, <a href="homebase.html">HomeBase</a>, <a href="inventoryspot.html">InventorySpot</a>, <a href="liftcenter.html">LiftCenter</a>, <a href="liftexit.html">LiftExit</a>, <a href="pathnode.html">PathNode</a>, <a href="patrolpoint.html">PatrolPoint</a>, <a href="playerstart.html">PlayerStart</a>, <a href="..\unreali\queendest.html">QueenDest</a>, <a href="..\unrealshare\spawnpoint.html">SpawnPoint</a>, <a href="teleporter.html">Teleporter</a>, <a href="..\unrealshare\transporter.html">Transporter</a>, <a href="triggermarker.html">TriggerMarker</a>, <a href="warpzonemarker.html">WarpZoneMarker</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#MaxInt">MaxInt</a>, <a href="..\core\object.html#Pi">Pi</a>, <a href="..\core\object.html#RF_NotForClient">RF_NotForClient</a>, <a href="..\core\object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="..\core\object.html#RF_NotForServer">RF_NotForServer</a>, <a href="..\core\object.html#RF_Public">RF_Public</a>, <a href="..\core\object.html#RF_Transactional">RF_Transactional</a>, <a href="..\core\object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAutoBuilt" name="bAutoBuilt">bAutoBuilt</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bEndPoint" name="bEndPoint">bEndPoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bEndPointOnly" name="bEndPointOnly">bEndPointOnly</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_bestPathWeight" name="bestPathWeight">bestPathWeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNeverUseStrafing" name="bNeverUseStrafing">bNeverUseStrafing</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bOneWayPath" name="bOneWayPath">bOneWayPath</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPlayerOnly" name="bPlayerOnly">bPlayerOnly</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSpecialCost" name="bSpecialCost">bSpecialCost</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTwoWay" name="bTwoWay">bTwoWay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_cost" name="cost">cost</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ExtraCost" name="ExtraCost">ExtraCost</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="navigationpoint.html">NavigationPoint</a></td><td width="66%"><a href="#_nextNavigationPoint" name="nextNavigationPoint">nextNavigationPoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="navigationpoint.html">NavigationPoint</a></td><td width="66%"><a href="#_nextOrdered" name="nextOrdered">nextOrdered</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_ownerTeam" name="ownerTeam">ownerTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Paths[16]" name="Paths[16]">Paths[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="navigationpoint.html">NavigationPoint</a></td><td width="66%"><a href="#_previousPath" name="previousPath">previousPath</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="navigationpoint.html">NavigationPoint</a></td><td width="66%"><a href="#_prevOrdered" name="prevOrdered">prevOrdered</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_PrunedPaths[16]" name="PrunedPaths[16]">PrunedPaths[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="actor.html">actor</a></td><td width="66%"><a href="#_routeCache" name="routeCache">routeCache</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="navigationpoint.html">NavigationPoint</a></td><td width="66%"><a href="#_startPath" name="startPath">startPath</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_taken" name="taken">taken</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_upstreamPaths[16]" name="upstreamPaths[16]">upstreamPaths[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_visitedWeight" name="visitedWeight">visitedWeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="navigationpoint.html">NavigationPoint</a></td><td width="66%"><a href="#_VisNoReachPaths[16]" name="VisNoReachPaths[16]">VisNoReachPaths[16]</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#Acceleration">Acceleration</a>, <a href="actor.html#AmbientGlow">AmbientGlow</a>, <a href="actor.html#AmbientSound">AmbientSound</a>, <a href="actor.html#AnimFrame">AnimFrame</a>, <a href="actor.html#AnimLast">AnimLast</a>, <a href="actor.html#AnimMinRate">AnimMinRate</a>, <a href="actor.html#AnimRate">AnimRate</a>, <a href="actor.html#AnimSequence">AnimSequence</a>, <a href="actor.html#AttachTag">AttachTag</a>, <a href="actor.html#bActorShadows">bActorShadows</a>, <a href="actor.html#bAlwaysRelevant">bAlwaysRelevant</a>, <a href="actor.html#bAlwaysTick">bAlwaysTick</a>, <a href="actor.html#bAnimByOwner">bAnimByOwner</a>, <a href="actor.html#bAnimFinished">bAnimFinished</a>, <a href="actor.html#bAnimLoop">bAnimLoop</a>, <a href="actor.html#bAnimNotify">bAnimNotify</a>, <a href="actor.html#Base">Base</a>, <a href="actor.html#bAssimilated">bAssimilated</a>, <a href="actor.html#bBlockActors">bBlockActors</a>, <a href="actor.html#bBlockPlayers">bBlockPlayers</a>, <a href="actor.html#bBounce">bBounce</a>, <a href="actor.html#bCanTeleport">bCanTeleport</a>, <a href="actor.html#bCarriedItem">bCarriedItem</a>, <a href="actor.html#bClientAnim">bClientAnim</a>, <a href="actor.html#bClientDemoNetFunc">bClientDemoNetFunc</a>, <a href="actor.html#bClientDemoRecording">bClientDemoRecording</a>, <a href="actor.html#bCollideActors">bCollideActors</a>, <a href="actor.html#bCollideWhenPlacing">bCollideWhenPlacing</a>, <a href="actor.html#bCollideWorld">bCollideWorld</a>, <a href="actor.html#bCorona">bCorona</a>, <a href="actor.html#bDeleteMe">bDeleteMe</a>, <a href="actor.html#bDemoRecording">bDemoRecording</a>, <a href="actor.html#bDifficulty0">bDifficulty0</a>, <a href="actor.html#bDifficulty1">bDifficulty1</a>, <a href="actor.html#bDifficulty2">bDifficulty2</a>, <a href="actor.html#bDifficulty3">bDifficulty3</a>, <a href="actor.html#bDirectional">bDirectional</a>, <a href="actor.html#bDynamicLight">bDynamicLight</a>, <a href="actor.html#bEdLocked">bEdLocked</a>, <a href="actor.html#bEdShouldSnap">bEdShouldSnap</a>, <a href="actor.html#bEdSnap">bEdSnap</a>, <a href="actor.html#bFilterByVolume">bFilterByVolume</a>, <a href="actor.html#bFixedRotationDir">bFixedRotationDir</a>, <a href="actor.html#bForcePhysicsUpdate">bForcePhysicsUpdate</a>, <a href="actor.html#bForceStasis">bForceStasis</a>, <a href="actor.html#bGameRelevant">bGameRelevant</a>, <a href="actor.html#bHidden">bHidden</a>, <a href="actor.html#bHiddenEd">bHiddenEd</a>, <a href="actor.html#bHighDetail">bHighDetail</a>, <a href="actor.html#bHighlighted">bHighlighted</a>, <a href="actor.html#bHurtEntry">bHurtEntry</a>, <a href="actor.html#bInterpolating">bInterpolating</a>, <a href="actor.html#bIsItemGoal">bIsItemGoal</a>, <a href="actor.html#bIsKillGoal">bIsKillGoal</a>, <a href="actor.html#bIsMover">bIsMover</a>, <a href="actor.html#bIsPawn">bIsPawn</a>, <a href="actor.html#bIsSecretGoal">bIsSecretGoal</a>, <a href="actor.html#bJustTeleported">bJustTeleported</a>, <a href="actor.html#bLensFlare">bLensFlare</a>, <a href="actor.html#bLightChanged">bLightChanged</a>, <a href="actor.html#bMemorized">bMemorized</a>, <a href="actor.html#bMeshCurvy">bMeshCurvy</a>, <a href="actor.html#bMeshEnviroMap">bMeshEnviroMap</a>, <a href="actor.html#bMovable">bMovable</a>, <a href="actor.html#bNet">bNet</a>, <a href="actor.html#bNetFeel">bNetFeel</a>, <a href="actor.html#bNetHear">bNetHear</a>, <a href="actor.html#bNetInitial">bNetInitial</a>, <a href="actor.html#bNetOptional">bNetOptional</a>, <a href="actor.html#bNetOwner">bNetOwner</a>, <a href="actor.html#bNetRelevant">bNetRelevant</a>, <a href="actor.html#bNetSee">bNetSee</a>, <a href="actor.html#bNetSpecial">bNetSpecial</a>, <a href="actor.html#bNetTemporary">bNetTemporary</a>, <a href="actor.html#bNoDelete">bNoDelete</a>, <a href="actor.html#bNoSmooth">bNoSmooth</a>, <a href="actor.html#bOnlyOwnerSee">bOnlyOwnerSee</a>, <a href="actor.html#bOwnerNoSee">bOwnerNoSee</a>, <a href="actor.html#bParticles">bParticles</a>, <a href="actor.html#bProjTarget">bProjTarget</a>, <a href="actor.html#bRandomFrame">bRandomFrame</a>, <a href="actor.html#bReplicateInstigator">bReplicateInstigator</a>, <a href="actor.html#bRotateToDesired">bRotateToDesired</a>, <a href="actor.html#Brush">Brush</a>, <a href="actor.html#bScriptInitialized">bScriptInitialized</a>, <a href="actor.html#bSelected">bSelected</a>, <a href="actor.html#bShadowCast">bShadowCast</a>, <a href="actor.html#bSimFall">bSimFall</a>, <a href="actor.html#bSimulatedPawn">bSimulatedPawn</a>, <a href="actor.html#bSinglePlayer">bSinglePlayer</a>, <a href="actor.html#bSpecialLit">bSpecialLit</a>, <a href="actor.html#bStasis">bStasis</a>, <a href="actor.html#bStatic">bStatic</a>, <a href="actor.html#bTempEditor">bTempEditor</a>, <a href="actor.html#bTicked">bTicked</a>, <a href="actor.html#bTimerLoop">bTimerLoop</a>, <a href="actor.html#bTrailerPrePivot">bTrailerPrePivot</a>, <a href="actor.html#bTrailerSameRotation">bTrailerSameRotation</a>, <a href="actor.html#bTravel">bTravel</a>, <a href="actor.html#bUnlit">bUnlit</a>, <a href="actor.html#Buoyancy">Buoyancy</a>, <a href="actor.html#CollisionHeight">CollisionHeight</a>, <a href="actor.html#CollisionRadius">CollisionRadius</a>, <a href="actor.html#CollisionTag">CollisionTag</a>, <a href="actor.html#ColLocation">ColLocation</a>, <a href="actor.html#Deleted">Deleted</a>, <a href="actor.html#DesiredRotation">DesiredRotation</a>, <a href="actor.html#DodgeDir">DodgeDir</a>, <a href="actor.html#DrawScale">DrawScale</a>, <a href="actor.html#DrawType">DrawType</a>, <a href="actor.html#Event">Event</a>, <a href="actor.html#ExtraTag">ExtraTag</a>, <a href="actor.html#Fatness">Fatness</a>, <a href="actor.html#Group">Group</a>, <a href="actor.html#HitActor">HitActor</a>, <a href="actor.html#InitialState">InitialState</a>, <a href="actor.html#Instigator">Instigator</a>, <a href="actor.html#Inventory">Inventory</a>, <a href="actor.html#LatentActor">LatentActor</a>, <a href="actor.html#LatentByte">LatentByte</a>, <a href="actor.html#LatentFloat">LatentFloat</a>, <a href="actor.html#LatentInt">LatentInt</a>, <a href="actor.html#Level">Level</a>, <a href="actor.html#LifeSpan">LifeSpan</a>, <a href="actor.html#LightBrightness">LightBrightness</a>, <a href="actor.html#LightCone">LightCone</a>, <a href="actor.html#LightEffect">LightEffect</a>, <a href="actor.html#LightHue">LightHue</a>, <a href="actor.html#LightingTag">LightingTag</a>, <a href="actor.html#LightPeriod">LightPeriod</a>, <a href="actor.html#LightPhase">LightPhase</a>, <a href="actor.html#LightRadius">LightRadius</a>, <a href="actor.html#LightSaturation">LightSaturation</a>, <a href="actor.html#LightType">LightType</a>, <a href="actor.html#Location">Location</a>, <a href="actor.html#LODBias">LODBias</a>, <a href="actor.html#Mass">Mass</a>, <a href="actor.html#Mesh">Mesh</a>, <a href="actor.html#MiscNumber">MiscNumber</a>, <a href="actor.html#MultiSkins[8]">MultiSkins[8]</a>, <a href="actor.html#NetPriority">NetPriority</a>, <a href="actor.html#NetTag">NetTag</a>, <a href="actor.html#NetUpdateFrequency">NetUpdateFrequency</a>, <a href="actor.html#OddsOfAppearing">OddsOfAppearing</a>, <a href="actor.html#OldAnimRate">OldAnimRate</a>, <a href="actor.html#OldLocation">OldLocation</a>, <a href="actor.html#OtherTag">OtherTag</a>, <a href="actor.html#Owner">Owner</a>, <a href="actor.html#PendingTouch">PendingTouch</a>, <a href="actor.html#PhysAlpha">PhysAlpha</a>, <a href="actor.html#Physics">Physics</a>, <a href="actor.html#PhysRate">PhysRate</a>, <a href="actor.html#PrePivot">PrePivot</a>, <a href="actor.html#Region">Region</a>, <a href="actor.html#RemoteRole">RemoteRole</a>, <a href="actor.html#RenderInterface">RenderInterface</a>, <a href="actor.html#RenderIteratorClass">RenderIteratorClass</a>, <a href="actor.html#Role">Role</a>, <a href="actor.html#Rotation">Rotation</a>, <a href="actor.html#RotationRate">RotationRate</a>, <a href="actor.html#ScaleGlow">ScaleGlow</a>, <a href="actor.html#SimAnim">SimAnim</a>, <a href="actor.html#SkelAnim">SkelAnim</a>, <a href="actor.html#Skin">Skin</a>, <a href="actor.html#SoundPitch">SoundPitch</a>, <a href="actor.html#SoundRadius">SoundRadius</a>, <a href="actor.html#SoundVolume">SoundVolume</a>, <a href="actor.html#SpecialTag">SpecialTag</a>, <a href="actor.html#Sprite">Sprite</a>, <a href="actor.html#SpriteProjForward">SpriteProjForward</a>, <a href="actor.html#StandingCount">StandingCount</a>, <a href="actor.html#Style">Style</a>, <a href="actor.html#Tag">Tag</a>, <a href="actor.html#Target">Target</a>, <a href="actor.html#Texture">Texture</a>, <a href="actor.html#TimerCounter">TimerCounter</a>, <a href="actor.html#TimerRate">TimerRate</a>, <a href="actor.html#Touching[4]">Touching[4]</a>, <a href="actor.html#TransientSoundRadius">TransientSoundRadius</a>, <a href="actor.html#TransientSoundVolume">TransientSoundVolume</a>, <a href="actor.html#TweenRate">TweenRate</a>, <a href="actor.html#Velocity">Velocity</a>, <a href="actor.html#VisibilityHeight">VisibilityHeight</a>, <a href="actor.html#VisibilityRadius">VisibilityRadius</a>, <a href="actor.html#VolumeBrightness">VolumeBrightness</a>, <a href="actor.html#VolumeFog">VolumeFog</a>, <a href="actor.html#VolumeRadius">VolumeRadius</a>, <a href="actor.html#XLevel">XLevel</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#Class">Class</a>, <a href="..\core\object.html#Name">Name</a>, <a href="..\core\object.html#ObjectFlags">ObjectFlags</a>, <a href="..\core\object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="..\core\object.html#Outer">Outer</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#EDodgeDir">EDodgeDir</a>, <a href="actor.html#EDrawType">EDrawType</a>, <a href="actor.html#EInputAction">EInputAction</a>, <a href="actor.html#EInputKey">EInputKey</a>, <a href="actor.html#ELightEffect">ELightEffect</a>, <a href="actor.html#ELightType">ELightType</a>, <a href="actor.html#EMusicTransition">EMusicTransition</a>, <a href="actor.html#ENetRole">ENetRole</a>, <a href="actor.html#EPhysics">EPhysics</a>, <a href="actor.html#ERenderStyle">ERenderStyle</a>, <a href="actor.html#ESoundSlot">ESoundSlot</a>, <a href="actor.html#ETravelType">ETravelType</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#PointRegion">PointRegion</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#BoundingBox">BoundingBox</a>, <a href="..\core\object.html#BoundingVolume">BoundingVolume</a>, <a href="..\core\object.html#Color">Color</a>, <a href="..\core\object.html#Coords">Coords</a>, <a href="..\core\object.html#Guid">Guid</a>, <a href="..\core\object.html#Plane">Plane</a>, <a href="..\core\object.html#Rotator">Rotator</a>, <a href="..\core\object.html#Scale">Scale</a>, <a href="..\core\object.html#Vector">Vector</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>bool&nbsp;</td><td><a href="#_Accept+" name="Accept">Accept</a> (<a href="actor.html">actor</a> Incoming, <a href="actor.html">actor</a> Source)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_describeSpec+" name="describeSpec">describeSpec</a> (int iSpec, out <a href="actor.html">Actor</a> Start, out <a href="actor.html">Actor</a> End, out int ReachFlags, out int Distance)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayTeleportEffect+" name="PlayTeleportEffect">PlayTeleportEffect</a> (<a href="actor.html">actor</a> Incoming, bool bOut)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>int&nbsp;</td><td><a href="#_SpecialCost+" name="SpecialCost">SpecialCost</a> (<a href="pawn.html">Pawn</a> Seeker)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#*">*</a>, <a href="actor.html#+">+</a>, <a href="actor.html#-">-</a>, <a href="actor.html#AllActors">AllActors</a>, <a href="actor.html#AnimEnd">AnimEnd</a>, <a href="actor.html#Attach">Attach</a>, <a href="actor.html#AutonomousPhysics">AutonomousPhysics</a>, <a href="actor.html#BaseChange">BaseChange</a>, <a href="actor.html#BasedActors">BasedActors</a>, <a href="actor.html#BecomeViewTarget">BecomeViewTarget</a>, <a href="actor.html#BeginEvent">BeginEvent</a>, <a href="actor.html#BeginPlay">BeginPlay</a>, <a href="actor.html#BroadcastLocalizedMessage">BroadcastLocalizedMessage</a>, <a href="actor.html#BroadcastMessage">BroadcastMessage</a>, <a href="actor.html#Bump">Bump</a>, <a href="actor.html#ChildActors">ChildActors</a>, <a href="actor.html#ConsoleCommand">ConsoleCommand</a>, <a href="actor.html#DemoPlaySound">DemoPlaySound</a>, <a href="actor.html#Destroy">Destroy</a>, <a href="actor.html#Destroyed">Destroyed</a>, <a href="actor.html#Detach">Detach</a>, <a href="actor.html#EncroachedBy">EncroachedBy</a>, <a href="actor.html#EncroachingOn">EncroachingOn</a>, <a href="actor.html#EndedRotation">EndedRotation</a>, <a href="actor.html#EndEvent">EndEvent</a>, <a href="actor.html#Error">Error</a>, <a href="actor.html#Expired">Expired</a>, <a href="actor.html#Falling">Falling</a>, <a href="actor.html#FastTrace">FastTrace</a>, <a href="actor.html#FellOutOfWorld">FellOutOfWorld</a>, <a href="actor.html#FinishAnim">FinishAnim</a>, <a href="actor.html#FinishInterpolation">FinishInterpolation</a>, <a href="actor.html#GainedChild">GainedChild</a>, <a href="actor.html#GetAnimGroup">GetAnimGroup</a>, <a href="actor.html#GetCacheEntry">GetCacheEntry</a>, <a href="actor.html#GetHumanName">GetHumanName</a>, <a href="actor.html#GetItemName">GetItemName</a>, <a href="actor.html#GetMapName">GetMapName</a>, <a href="actor.html#GetNextInt">GetNextInt</a>, <a href="actor.html#GetNextIntDesc">GetNextIntDesc</a>, <a href="actor.html#GetNextSkin">GetNextSkin</a>, <a href="actor.html#GetSoundDuration">GetSoundDuration</a>, <a href="actor.html#GetURLMap">GetURLMap</a>, <a href="actor.html#HasAnim">HasAnim</a>, <a href="actor.html#HitWall">HitWall</a>, <a href="actor.html#HurtRadius">HurtRadius</a>, <a href="actor.html#InterpolateEnd">InterpolateEnd</a>, <a href="actor.html#IsAnimating">IsAnimating</a>, <a href="actor.html#KillCredit">KillCredit</a>, <a href="actor.html#KilledBy">KilledBy</a>, <a href="actor.html#Landed">Landed</a>, <a href="actor.html#LinkSkelAnim">LinkSkelAnim</a>, <a href="actor.html#LoopAnim">LoopAnim</a>, <a href="actor.html#LostChild">LostChild</a>, <a href="actor.html#MakeNoise">MakeNoise</a>, <a href="actor.html#Move">Move</a>, <a href="actor.html#MoveCacheEntry">MoveCacheEntry</a>, <a href="actor.html#MoveSmooth">MoveSmooth</a>, <a href="actor.html#PlayAnim">PlayAnim</a>, <a href="actor.html#PlayerCanSeeMe">PlayerCanSeeMe</a>, <a href="actor.html#PlayOwnedSound">PlayOwnedSound</a>, <a href="actor.html#PlaySound">PlaySound</a>, <a href="actor.html#PostBeginPlay">PostBeginPlay</a>, <a href="actor.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="actor.html#PostTeleport">PostTeleport</a>, <a href="actor.html#PostTouch">PostTouch</a>, <a href="actor.html#PreBeginPlay">PreBeginPlay</a>, <a href="actor.html#PreTeleport">PreTeleport</a>, <a href="actor.html#RadiusActors">RadiusActors</a>, <a href="actor.html#RenderOverlays">RenderOverlays</a>, <a href="actor.html#RenderTexture">RenderTexture</a>, <a href="actor.html#SetBase">SetBase</a>, <a href="actor.html#SetCollision">SetCollision</a>, <a href="actor.html#SetCollisionSize">SetCollisionSize</a>, <a href="actor.html#SetDefaultDisplayProperties">SetDefaultDisplayProperties</a>, <a href="actor.html#SetDisplayProperties">SetDisplayProperties</a>, <a href="actor.html#SetInitialState">SetInitialState</a>, <a href="actor.html#SetLocation">SetLocation</a>, <a href="actor.html#SetOwner">SetOwner</a>, <a href="actor.html#SetPhysics">SetPhysics</a>, <a href="actor.html#SetRotation">SetRotation</a>, <a href="actor.html#SetTimer">SetTimer</a>, <a href="actor.html#Sleep">Sleep</a>, <a href="actor.html#Spawn">Spawn</a>, <a href="actor.html#Spawned">Spawned</a>, <a href="actor.html#SpecialHandling">SpecialHandling</a>, <a href="actor.html#TakeDamage">TakeDamage</a>, <a href="actor.html#Tick">Tick</a>, <a href="actor.html#Timer">Timer</a>, <a href="actor.html#Touch">Touch</a>, <a href="actor.html#TouchingActors">TouchingActors</a>, <a href="actor.html#Trace">Trace</a>, <a href="actor.html#TraceActors">TraceActors</a>, <a href="actor.html#TravelPostAccept">TravelPostAccept</a>, <a href="actor.html#TravelPreAccept">TravelPreAccept</a>, <a href="actor.html#Trigger">Trigger</a>, <a href="actor.html#TweenAnim">TweenAnim</a>, <a href="actor.html#UnTouch">UnTouch</a>, <a href="actor.html#UnTrigger">UnTrigger</a>, <a href="actor.html#VisibleActors">VisibleActors</a>, <a href="actor.html#VisibleCollidingActors">VisibleCollidingActors</a>, <a href="actor.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#!">!</a>, <a href="..\core\object.html#!=">!=</a>, <a href="..\core\object.html#$">$</a>, <a href="..\core\object.html#">%</a>, <a href="..\core\object.html#&">&</a>, <a href="..\core\object.html#&&">&&</a>, <a href="..\core\object.html#*">*</a>, <a href="..\core\object.html#**">**</a>, <a href="..\core\object.html#*=">*=</a>, <a href="..\core\object.html#+">+</a>, <a href="..\core\object.html#++">++</a>, <a href="..\core\object.html#+=">+=</a>, <a href="..\core\object.html#-">-</a>, <a href="..\core\object.html#-=">-=</a>, <a href="..\core\object.html#/">/ </a>, <a href="..\core\object.html#/=">/=</a>, <a href="..\core\object.html#&lt;">&lt;</a>, <a href="..\core\object.html#&lt;&lt;">&lt;&lt;</a>, <a href="..\core\object.html#&lt;=">&lt;=</a>, <a href="..\core\object.html#==">==</a>, <a href="..\core\object.html#&gt;">&gt;</a>, <a href="..\core\object.html#&gt;=">&gt;=</a>, <a href="..\core\object.html#&gt;&gt;">&gt;&gt;</a>, <a href="..\core\object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="..\core\object.html#@">@</a>, <a href="..\core\object.html#Abs">Abs</a>, <a href="..\core\object.html#Asc">Asc</a>, <a href="..\core\object.html#Atan">Atan</a>, <a href="..\core\object.html#BeginState">BeginState</a>, <a href="..\core\object.html#Caps">Caps</a>, <a href="..\core\object.html#Chr">Chr</a>, <a href="..\core\object.html#Clamp">Clamp</a>, <a href="..\core\object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="..\core\object.html#Cos">Cos</a>, <a href="..\core\object.html#Cross">Cross</a>, <a href="..\core\object.html#Disable">Disable</a>, <a href="..\core\object.html#Dot">Dot</a>, <a href="..\core\object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="..\core\object.html#Enable">Enable</a>, <a href="..\core\object.html#EndState">EndState</a>, <a href="..\core\object.html#Exp">Exp</a>, <a href="..\core\object.html#FClamp">FClamp</a>, <a href="..\core\object.html#FMax">FMax</a>, <a href="..\core\object.html#FMin">FMin</a>, <a href="..\core\object.html#FRand">FRand</a>, <a href="..\core\object.html#GetAxes">GetAxes</a>, <a href="..\core\object.html#GetEnum">GetEnum</a>, <a href="..\core\object.html#GetPropertyText">GetPropertyText</a>, <a href="..\core\object.html#GetStateName">GetStateName</a>, <a href="..\core\object.html#GetUnAxes">GetUnAxes</a>, <a href="..\core\object.html#GotoState">GotoState</a>, <a href="..\core\object.html#InStr">InStr</a>, <a href="..\core\object.html#Invert">Invert</a>, <a href="..\core\object.html#IsA">IsA</a>, <a href="..\core\object.html#IsInState">IsInState</a>, <a href="..\core\object.html#Left">Left</a>, <a href="..\core\object.html#Len">Len</a>, <a href="..\core\object.html#Lerp">Lerp</a>, <a href="..\core\object.html#Localize">Localize</a>, <a href="..\core\object.html#Log">Log</a>, <a href="..\core\object.html#Loge">Loge</a>, <a href="..\core\object.html#Max">Max</a>, <a href="..\core\object.html#Mid">Mid</a>, <a href="..\core\object.html#Min">Min</a>, <a href="..\core\object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="..\core\object.html#Normal">Normal</a>, <a href="..\core\object.html#Normalize">Normalize</a>, <a href="..\core\object.html#OrthoRotation">OrthoRotation</a>, <a href="..\core\object.html#Rand">Rand</a>, <a href="..\core\object.html#RandRange">RandRange</a>, <a href="..\core\object.html#ResetConfig">ResetConfig</a>, <a href="..\core\object.html#Right">Right</a>, <a href="..\core\object.html#RotRand">RotRand</a>, <a href="..\core\object.html#SaveConfig">SaveConfig</a>, <a href="..\core\object.html#SetPropertyText">SetPropertyText</a>, <a href="..\core\object.html#Sin">Sin</a>, <a href="..\core\object.html#Smerp">Smerp</a>, <a href="..\core\object.html#Sqrt">Sqrt</a>, <a href="..\core\object.html#Square">Square</a>, <a href="..\core\object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="..\core\object.html#Tan">Tan</a>, <a href="..\core\object.html#VRand">VRand</a>, <a href="..\core\object.html#VSize">VSize</a>, <a href="..\core\object.html#Warn">Warn</a>, <a href="..\core\object.html#^">^</a>, <a href="..\core\object.html#^^">^^</a>, <a href="..\core\object.html#|">|</a>, <a href="..\core\object.html#||">||</a>, <a href="..\core\object.html#~">~</a>, <a href="..\core\object.html#~=">~=</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bAutoBuilt" class="hidden"></a>bAutoBuilt <a href="..\Source_engine\navigationpoint.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bAutoBuilt;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bEndPoint" class="hidden"></a>bEndPoint <a href="..\Source_engine\navigationpoint.html#29" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bEndPoint;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bEndPointOnly" class="hidden"></a>bEndPointOnly <a href="..\Source_engine\navigationpoint.html#30" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bEndPointOnly;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bestPathWeight" class="hidden"></a>bestPathWeight <a href="..\Source_engine\navigationpoint.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> bestPathWeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNeverUseStrafing" class="hidden"></a>bNeverUseStrafing <a href="..\Source_engine\navigationpoint.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNeverUseStrafing;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bOneWayPath" class="hidden"></a>bOneWayPath <a href="..\Source_engine\navigationpoint.html#32" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bOneWayPath;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bPlayerOnly" class="hidden"></a>bPlayerOnly <a href="..\Source_engine\navigationpoint.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPlayerOnly;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bSpecialCost" class="hidden"></a>bSpecialCost <a href="..\Source_engine\navigationpoint.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSpecialCost;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTwoWay" class="hidden"></a>bTwoWay <a href="..\Source_engine\navigationpoint.html#35" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTwoWay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_cost" class="hidden"></a>cost <a href="..\Source_engine\navigationpoint.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> cost;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ExtraCost" class="hidden"></a>ExtraCost <a href="..\Source_engine\navigationpoint.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> ExtraCost;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_nextNavigationPoint" class="hidden"></a>nextNavigationPoint <a href="..\Source_engine\navigationpoint.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="navigationpoint.html" class="source">NavigationPoint</a></font> nextNavigationPoint;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_nextOrdered" class="hidden"></a>nextOrdered <a href="..\Source_engine\navigationpoint.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="navigationpoint.html" class="source">NavigationPoint</a></font> nextOrdered;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ownerTeam" class="hidden"></a>ownerTeam <a href="..\Source_engine\navigationpoint.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">name</font> ownerTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Paths[16]" class="hidden"></a>Paths[16] <a href="..\Source_engine\navigationpoint.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> Paths[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_previousPath" class="hidden"></a>previousPath <a href="..\Source_engine\navigationpoint.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="navigationpoint.html" class="source">NavigationPoint</a></font> previousPath;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_prevOrdered" class="hidden"></a>prevOrdered <a href="..\Source_engine\navigationpoint.html#22" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="navigationpoint.html" class="source">NavigationPoint</a></font> prevOrdered;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PrunedPaths[16]" class="hidden"></a>PrunedPaths[16] <a href="..\Source_engine\navigationpoint.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> PrunedPaths[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_routeCache" class="hidden"></a>routeCache <a href="..\Source_engine\navigationpoint.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="actor.html" class="source">actor</a></font> routeCache;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_startPath" class="hidden"></a>startPath <a href="..\Source_engine\navigationpoint.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="navigationpoint.html" class="source">NavigationPoint</a></font> startPath;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_taken" class="hidden"></a>taken <a href="..\Source_engine\navigationpoint.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> taken;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_upstreamPaths[16]" class="hidden"></a>upstreamPaths[16] <a href="..\Source_engine\navigationpoint.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> upstreamPaths[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_visitedWeight" class="hidden"></a>visitedWeight <a href="..\Source_engine\navigationpoint.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> visitedWeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_VisNoReachPaths[16]" class="hidden"></a>VisNoReachPaths[16] <a href="..\Source_engine\navigationpoint.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="navigationpoint.html" class="source">NavigationPoint</a></font> VisNoReachPaths[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Accept+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Accept <span class="function_state"></span> <a href="..\Source_engine\navigationpoint.html#42" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> <font class="source_keyword">bool</font> Accept (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Incoming, <font class="source_type"><a href="actor.html" class="source">actor</a></font> Source)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_describeSpec+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> describeSpec <span class="function_state"></span> <a href="..\Source_engine\navigationpoint.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> describeSpec (<font class="source_keyword">int</font> iSpec, <font class="source_keyword2">out</font> <font class="source_type"><a href="actor.html" class="source">Actor</a></font> Start, <font class="source_keyword2">out</font> <font class="source_type"><a href="actor.html" class="source">Actor</a></font> End, <font class="source_keyword2">out</font> <font class="source_keyword">int</font> ReachFlags, <font class="source_keyword2">out</font> <font class="source_keyword">int</font> Distance)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayTeleportEffect+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayTeleportEffect <span class="function_state"></span> <a href="..\Source_engine\navigationpoint.html#56" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayTeleportEffect (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Incoming, <font class="source_keyword">bool</font> bOut)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpecialCost+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> SpecialCost <span class="function_state"></span> <a href="..\Source_engine\navigationpoint.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> <font class="source_keyword">int</font> SpecialCost (<font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Seeker)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     upstreamPaths(<font class="source_int">0</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">1</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">2</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">3</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">4</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">5</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">6</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">7</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">8</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">9</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">10</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">11</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">12</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">13</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">14</font>)=-<font class="source_int">1</font>
+     upstreamPaths(<font class="source_int">15</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">0</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">1</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">2</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">3</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">4</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">5</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">6</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">7</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">8</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">9</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">10</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">11</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">12</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">13</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">14</font>)=-<font class="source_int">1</font>
+     Paths(<font class="source_int">15</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">0</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">1</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">2</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">3</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">4</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">5</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">6</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">7</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">8</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">9</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">10</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">11</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">12</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">13</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">14</font>)=-<font class="source_int">1</font>
+     PrunedPaths(<font class="source_int">15</font>)=-<font class="source_int">1</font>
+     bStatic=<font class="source_keyword">True</font>
+     bHidden=<font class="source_keyword">True</font>
+     bCollideWhenPlacing=<font class="source_keyword">True</font>
+     SoundVolume=<font class="source_int">0</font>
+     CollisionRadius=+<font class="source_int">00046.000000</font>
+     CollisionHeight=+<font class="source_int">00050.000000</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\navigationpoint.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#NavigationPoint">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="mutator.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="palette.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:06.937 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

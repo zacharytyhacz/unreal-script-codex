@@ -1,0 +1,133 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealI.Sludge</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\sludge.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Sludge">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="skaarjtrooper.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="sludgebarrel.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unreali\unreali-overview.html">UnrealI</a>.<a href="..\unreali\sludge.html">Sludge</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// Sludge.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unreali\sludge.html" class="source">Sludge</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\ammo.html" class="source">Ammo</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=I_SludgeAmmo FILE=TEXTURES\HUD\i_sludge.PCX GROUP="Icons" MIPS=OFF
+</font><a name="7"></a>
+<a name="8"></a><font class="source_macro">#exec MESH IMPORT MESH=sludgemesh ANIVFILE=MODELS\sludge_a.3D DATAFILE=MODELS\sludge_d.3D LODSTYLE=8
+</font><a name="9"></a><font class="source_macro">#exec MESH ORIGIN MESH=sludgemesh X=0 Y=0 Z=0 YAW=0
+</font><a name="10"></a><font class="source_macro">#exec MESH SEQUENCE MESH=sludgemesh SEQ=All    STARTFRAME=0  NUMFRAMES=11
+</font><a name="11"></a><font class="source_macro">#exec MESH SEQUENCE MESH=sludgemesh SEQ=Swirl    STARTFRAME=0  NUMFRAMES=11
+</font><a name="12"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Jsludge1 FILE=MODELS\pickup.PCX GROUP="Skins"
+</font><a name="13"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=sludgemesh X=0.04 Y=0.04 Z=0.08
+</font><a name="14"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=sludgemesh NUM=1 TEXTURE=Jsludge1
+</font><a name="15"></a>
+<a name="16"></a><font class="source_keyword2">auto</font> <font class="source_keyword">state</font> <font class="source_keyword2">Init</font>
+<a name="17"></a>{
+<a name="18"></a>Begin:
+<a name="19"></a>    BecomePickup();
+<a name="20"></a>    LoopAnim(<font class="source_name">'Swirl'</font>,<font class="source_int">0.3</font>);
+<a name="21"></a>    GoToState(<font class="source_name">'Pickup'</font>);
+<a name="22"></a>}
+<a name="23"></a>
+<a name="24"></a><font class="source_keyword">defaultproperties</font>
+<a name="25"></a>{
+<a name="26"></a>     AmmoAmount=<font class="source_int">25</font>
+<a name="27"></a>     MaxAmmo=<font class="source_int">100</font>
+<a name="28"></a>     UsedInWeaponSlot(<font class="source_int">8</font>)=<font class="source_int">1</font>
+<a name="29"></a>     PickupMessage=<font class="source_string">"You picked up 25 Kilos of Tarydium Sludge"</font>
+<a name="30"></a>     PickupViewMesh=<font class="source_type">Mesh</font><font class="source_name">'UnrealI.sludgemesh'</font>
+<a name="31"></a>     MaxDesireability=<font class="source_int">0.220000</font>
+<a name="32"></a>     PickupSound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Pickups.AmmoSnd'</font>
+<a name="33"></a>     Icon=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'UnrealI.Icons.I_SludgeAmmo'</font>
+<a name="34"></a>     <font class="source_type">Mesh</font>=<font class="source_type">Mesh</font><font class="source_name">'UnrealI.sludgemesh'</font>
+<a name="35"></a>     bMeshCurvy=<font class="source_keyword">False</font>
+<a name="36"></a>     CollisionRadius=<font class="source_int">22.000000</font>
+<a name="37"></a>     CollisionHeight=<font class="source_int">15.000000</font>
+<a name="38"></a>     bCollideActors=<font class="source_keyword">True</font>
+<a name="39"></a>}
+<a name="40"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unreali\unreali-overview.html">Package</a></td>
+	<td class="header"><a href="..\unreali\sludge.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Sludge">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="skaarjtrooper.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="sludgebarrel.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:42.000 - Creation time: Wed 26/5/2004 10:48:38.500 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

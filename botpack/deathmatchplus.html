@@ -1,0 +1,1090 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Botpack.DeathMatchPlus</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\deathmatchplus.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#DeathMatchPlus">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="deathmatchmessage.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="deathmatchtrophy.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="botpack-overview.html">Botpack</a>.DeathMatchPlus</h1>
+<b>Extends:</b> <a href="tournamentgameinfo.html">TournamentGameInfo</a><br>
+<b>Modifiers:</b> config <br>
+<a href="..\Source_botpack\deathmatchplus.html"><b>Source code</b></a>
+
+<p>
+DeathMatchPlus.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\info.html">Info</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\gameinfo.html">GameInfo</a>
+            |   
+            +-- <a href="botpack-overview.html">Botpack</a>.<a href="tournamentgameinfo.html">TournamentGameInfo</a>
+                |   
+                +-- <a href="botpack-overview.html">Botpack</a>.<a href="deathmatchplus.html">DeathMatchPlus</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="challengedmp.html">ChallengeDMP</a>, <a href="challengeintro.html">ChallengeIntro</a>, <a href="lastmanstanding.html">LastManStanding</a>, <a href="tdarkmatch.html">TDarkMatch</a>, <a href="teamgameplus.html">TeamGamePlus</a>, <a href="trainingdm.html">TrainingDM</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_AirControl" name="AirControl">AirControl</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_AvgOpponentRating" name="AvgOpponentRating">AvgOpponentRating</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAlreadyChanged" name="bAlreadyChanged">bAlreadyChanged</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAltScoring" name="bAltScoring">bAltScoring</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAlwaysForceRespawn" name="bAlwaysForceRespawn">bAlwaysForceRespawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bChallengeMode" name="bChallengeMode">bChallengeMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bChangeLevels" name="bChangeLevels">bChangeLevels</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDontRestart" name="bDontRestart">bDontRestart</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFirstBlood" name="bFirstBlood">bFirstBlood</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bForceRespawn" name="bForceRespawn">bForceRespawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bFulfilledSpecial" name="bFulfilledSpecial">bFulfilledSpecial</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHardCoreMode" name="bHardCoreMode">bHardCoreMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bJumpMatch" name="bJumpMatch">bJumpMatch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMegaSpeed" name="bMegaSpeed">bMegaSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bMultiWeaponStay" name="bMultiWeaponStay">bMultiWeaponStay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNetReady" name="bNetReady">bNetReady</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoviceMode" name="bNoviceMode">bNoviceMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="challengebotinfo.html">ChallengeBotInfo</a></td><td width="66%"><a href="#_BotConfig" name="BotConfig">BotConfig</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="challengebotinfo.html">ChallengeBotInfo</a>&gt;</td><td width="66%"><a href="#_BotConfigType" name="BotConfigType">BotConfigType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRatedTranslocator" name="bRatedTranslocator">bRatedTranslocator</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRequireReady" name="bRequireReady">bRequireReady</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bStartMatch" name="bStartMatch">bStartMatch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bThreePlus" name="bThreePlus">bThreePlus</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTournament" name="bTournament">bTournament</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTutorialGame" name="bTutorialGame">bTutorialGame</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseTranslocator" name="bUseTranslocator">bUseTranslocator</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CountDown" name="CountDown">CountDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_CountDownMessage" name="CountDownMessage">CountDownMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ElapsedTime" name="ElapsedTime">ElapsedTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_EndTime" name="EndTime">EndTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_FragLimit" name="FragLimit">FragLimit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameEndedMessage" name="GameEndedMessage">GameEndedMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_gamegoal" name="gamegoal">gamegoal</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_IDnum" name="IDnum">IDnum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_InitialBots" name="InitialBots">InitialBots</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LadderTypeIndex" name="LadderTypeIndex">LadderTypeIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\navigationpoint.html">NavigationPoint</a></td><td width="66%"><a href="#_LastStartSpot" name="LastStartSpot">LastStartSpot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LastTauntTime" name="LastTauntTime">LastTauntTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastTaunt[4]" name="LastTaunt[4]">LastTaunt[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LoseCount" name="LoseCount">LoseCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MaxCommanders" name="MaxCommanders">MaxCommanders</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_MinPlayers" name="MinPlayers">MinPlayers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NetWait" name="NetWait">NetWait</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_NoNameChange" name="NoNameChange">NoNameChange</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_NotReadyMessage" name="NotReadyMessage">NotReadyMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NumBots" name="NumBots">NumBots</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NumCommanders" name="NumCommanders">NumCommanders</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NumOpp" name="NumOpp">NumOpp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_OvertimeMessage" name="OvertimeMessage">OvertimeMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_PlayerRating" name="PlayerRating">PlayerRating</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ladderinventory.html">LadderInventory</a></td><td width="66%"><a href="#_RatedGameLadderObj" name="RatedGameLadderObj">RatedGameLadderObj</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ratedmatchinfo.html">RatedMatchInfo</a></td><td width="66%"><a href="#_RatedMatchConfig" name="RatedMatchConfig">RatedMatchConfig</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\playerpawn.html">PlayerPawn</a></td><td width="66%"><a href="#_RatedPlayer" name="RatedPlayer">RatedPlayer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ReadyMessage" name="ReadyMessage">ReadyMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_RemainingBots" name="RemainingBots">RemainingBots</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_RemainingTime" name="RemainingTime">RemainingTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_RestartWait" name="RestartWait">RestartWait</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_SingleWaitingMessage" name="SingleWaitingMessage">SingleWaitingMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_StartCount" name="StartCount">StartCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_StartMessage" name="StartMessage">StartMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_StartUpMessage" name="StartUpMessage">StartUpMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TimeLimit" name="TimeLimit">TimeLimit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TourneyMessage" name="TourneyMessage">TourneyMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_WaitingMessage1" name="WaitingMessage1">WaitingMessage1</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_WaitingMessage2" name="WaitingMessage2">WaitingMessage2</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_WinCount" name="WinCount">WinCount</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="botpack-overview.html">Botpack</a>.<a href="tournamentgameinfo.html">TournamentGameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="tournamentgameinfo.html#bDisallowOverride">bDisallowOverride</a>, <a href="tournamentgameinfo.html#BestFPHs[3]">BestFPHs[3]</a>, <a href="tournamentgameinfo.html#BestPlayers[3]">BestPlayers[3]</a>, <a href="tournamentgameinfo.html#BestRecordDate[3]">BestRecordDate[3]</a>, <a href="tournamentgameinfo.html#bRatedGame">bRatedGame</a>, <a href="tournamentgameinfo.html#BurnedMessage">BurnedMessage</a>, <a href="tournamentgameinfo.html#CorrodedMessage">CorrodedMessage</a>, <a href="tournamentgameinfo.html#DeathMessage[32]">DeathMessage[32]</a>, <a href="tournamentgameinfo.html#DeathModifier[5]">DeathModifier[5]</a>, <a href="tournamentgameinfo.html#DeathPrep">DeathPrep</a>, <a href="tournamentgameinfo.html#DeathTerm">DeathTerm</a>, <a href="tournamentgameinfo.html#DeathVerb">DeathVerb</a>, <a href="tournamentgameinfo.html#DrownedMessage">DrownedMessage</a>, <a href="tournamentgameinfo.html#EndStatsClass">EndStatsClass</a>, <a href="tournamentgameinfo.html#ExplodeMessage">ExplodeMessage</a>, <a href="tournamentgameinfo.html#FallMessage">FallMessage</a>, <a href="tournamentgameinfo.html#FemaleSuicideMessage">FemaleSuicideMessage</a>, <a href="tournamentgameinfo.html#HackedMessage">HackedMessage</a>, <a href="tournamentgameinfo.html#HeadLossMessage[2]">HeadLossMessage[2]</a>, <a href="tournamentgameinfo.html#MajorDeathMessage[8]">MajorDeathMessage[8]</a>, <a href="tournamentgameinfo.html#MaleSuicideMessage">MaleSuicideMessage</a>, <a href="tournamentgameinfo.html#MortarMessage">MortarMessage</a>, <a href="tournamentgameinfo.html#RedeemerClass">RedeemerClass</a>, <a href="tournamentgameinfo.html#SuicideMessage">SuicideMessage</a>, <a href="tournamentgameinfo.html#TotalDeaths">TotalDeaths</a>, <a href="tournamentgameinfo.html#TotalFlags">TotalFlags</a>, <a href="tournamentgameinfo.html#TotalFrags">TotalFrags</a>, <a href="tournamentgameinfo.html#TotalGames">TotalGames</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\gameinfo.html">GameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\gameinfo.html#AdminPassword">AdminPassword</a>, <a href="..\engine\gameinfo.html#AutoAim">AutoAim</a>, <a href="..\engine\gameinfo.html#bAllowFOV">bAllowFOV</a>, <a href="..\engine\gameinfo.html#bAlternateMode">bAlternateMode</a>, <a href="..\engine\gameinfo.html#BaseMutator">BaseMutator</a>, <a href="..\engine\gameinfo.html#bBatchLocal">bBatchLocal</a>, <a href="..\engine\gameinfo.html#bCanChangeSkin">bCanChangeSkin</a>, <a href="..\engine\gameinfo.html#bCanViewOthers">bCanViewOthers</a>, <a href="..\engine\gameinfo.html#bClassicDeathmessages">bClassicDeathmessages</a>, <a href="..\engine\gameinfo.html#bCoopWeaponMode">bCoopWeaponMode</a>, <a href="..\engine\gameinfo.html#bDeathMatch">bDeathMatch</a>, <a href="..\engine\gameinfo.html#BeaconName">BeaconName</a>, <a href="..\engine\gameinfo.html#bExternalBatcher">bExternalBatcher</a>, <a href="..\engine\gameinfo.html#bGameEnded">bGameEnded</a>, <a href="..\engine\gameinfo.html#bHumansOnly">bHumansOnly</a>, <a href="..\engine\gameinfo.html#bLocalLog">bLocalLog</a>, <a href="..\engine\gameinfo.html#bLoggingGame">bLoggingGame</a>, <a href="..\engine\gameinfo.html#bLowGore">bLowGore</a>, <a href="..\engine\gameinfo.html#bMuteSpectators">bMuteSpectators</a>, <a href="..\engine\gameinfo.html#bNoCheating">bNoCheating</a>, <a href="..\engine\gameinfo.html#bNoMonsters">bNoMonsters</a>, <a href="..\engine\gameinfo.html#BotMenuType">BotMenuType</a>, <a href="..\engine\gameinfo.html#bOverTime">bOverTime</a>, <a href="..\engine\gameinfo.html#bPauseable">bPauseable</a>, <a href="..\engine\gameinfo.html#bRestartLevel">bRestartLevel</a>, <a href="..\engine\gameinfo.html#bTeamGame">bTeamGame</a>, <a href="..\engine\gameinfo.html#bVeryLowGore">bVeryLowGore</a>, <a href="..\engine\gameinfo.html#bWorldLog">bWorldLog</a>, <a href="..\engine\gameinfo.html#CurrentID">CurrentID</a>, <a href="..\engine\gameinfo.html#DamageMutator">DamageMutator</a>, <a href="..\engine\gameinfo.html#DeathMessageClass">DeathMessageClass</a>, <a href="..\engine\gameinfo.html#DefaultPlayerClass">DefaultPlayerClass</a>, <a href="..\engine\gameinfo.html#DefaultPlayerName">DefaultPlayerName</a>, <a href="..\engine\gameinfo.html#DefaultPlayerState">DefaultPlayerState</a>, <a href="..\engine\gameinfo.html#DefaultWeapon">DefaultWeapon</a>, <a href="..\engine\gameinfo.html#DemoBuild">DemoBuild</a>, <a href="..\engine\gameinfo.html#DemoHasTuts">DemoHasTuts</a>, <a href="..\engine\gameinfo.html#Difficulty">Difficulty</a>, <a href="..\engine\gameinfo.html#DMMessageClass">DMMessageClass</a>, <a href="..\engine\gameinfo.html#EnabledMutators">EnabledMutators</a>, <a href="..\engine\gameinfo.html#EnteredMessage">EnteredMessage</a>, <a href="..\engine\gameinfo.html#FailedPlaceMessage">FailedPlaceMessage</a>, <a href="..\engine\gameinfo.html#FailedSpawnMessage">FailedSpawnMessage</a>, <a href="..\engine\gameinfo.html#FailedTeamMessage">FailedTeamMessage</a>, <a href="..\engine\gameinfo.html#GameMenuType">GameMenuType</a>, <a href="..\engine\gameinfo.html#GameName">GameName</a>, <a href="..\engine\gameinfo.html#GameOptionsMenuType">GameOptionsMenuType</a>, <a href="..\engine\gameinfo.html#GamePassword">GamePassword</a>, <a href="..\engine\gameinfo.html#GameReplicationInfo">GameReplicationInfo</a>, <a href="..\engine\gameinfo.html#GameReplicationInfoClass">GameReplicationInfoClass</a>, <a href="..\engine\gameinfo.html#GameSpeed">GameSpeed</a>, <a href="..\engine\gameinfo.html#GameUMenuType">GameUMenuType</a>, <a href="..\engine\gameinfo.html#HUDType">HUDType</a>, <a href="..\engine\gameinfo.html#IPBanned">IPBanned</a>, <a href="..\engine\gameinfo.html#IPPolicies[50]">IPPolicies[50]</a>, <a href="..\engine\gameinfo.html#ItemGoals">ItemGoals</a>, <a href="..\engine\gameinfo.html#KillGoals">KillGoals</a>, <a href="..\engine\gameinfo.html#LeftMessage">LeftMessage</a>, <a href="..\engine\gameinfo.html#LocalLog">LocalLog</a>, <a href="..\engine\gameinfo.html#LocalLogFileName">LocalLogFileName</a>, <a href="..\engine\gameinfo.html#MapListType">MapListType</a>, <a href="..\engine\gameinfo.html#MapPrefix">MapPrefix</a>, <a href="..\engine\gameinfo.html#MaxedOutMessage">MaxedOutMessage</a>, <a href="..\engine\gameinfo.html#MaxPlayers">MaxPlayers</a>, <a href="..\engine\gameinfo.html#MaxSpectators">MaxSpectators</a>, <a href="..\engine\gameinfo.html#MessageMutator">MessageMutator</a>, <a href="..\engine\gameinfo.html#MultiplayerUMenuType">MultiplayerUMenuType</a>, <a href="..\engine\gameinfo.html#MutatorClass">MutatorClass</a>, <a href="..\engine\gameinfo.html#NameChangedMessage">NameChangedMessage</a>, <a href="..\engine\gameinfo.html#NeedPassword">NeedPassword</a>, <a href="..\engine\gameinfo.html#NumPlayers">NumPlayers</a>, <a href="..\engine\gameinfo.html#NumSpectators">NumSpectators</a>, <a href="..\engine\gameinfo.html#RulesMenuType">RulesMenuType</a>, <a href="..\engine\gameinfo.html#ScoreBoardType">ScoreBoardType</a>, <a href="..\engine\gameinfo.html#SecretGoals">SecretGoals</a>, <a href="..\engine\gameinfo.html#SentText">SentText</a>, <a href="..\engine\gameinfo.html#ServerLogName">ServerLogName</a>, <a href="..\engine\gameinfo.html#SettingsMenuType">SettingsMenuType</a>, <a href="..\engine\gameinfo.html#SpecialDamageString">SpecialDamageString</a>, <a href="..\engine\gameinfo.html#StartTime">StartTime</a>, <a href="..\engine\gameinfo.html#StatLogClass">StatLogClass</a>, <a href="..\engine\gameinfo.html#SwitchLevelMessage">SwitchLevelMessage</a>, <a href="..\engine\gameinfo.html#WaterZoneType">WaterZoneType</a>, <a href="..\engine\gameinfo.html#WorldLog">WorldLog</a>, <a href="..\engine\gameinfo.html#WorldLogFileName">WorldLogFileName</a>, <a href="..\engine\gameinfo.html#WrongPassword">WrongPassword</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AcceptInventory+" name="AcceptInventory">AcceptInventory</a> (<a href="..\engine\pawn.html">pawn</a> PlayerPawn)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_AddBot+" name="AddBot">AddBot</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AddDefaultInventory+" name="AddDefaultInventory">AddDefaultInventory</a> (<a href="..\engine\pawn.html">pawn</a> PlayerPawn)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_AllowTranslocation+" name="AllowTranslocation">AllowTranslocation</a> (<a href="..\engine\pawn.html">Pawn</a> Other, <a href="..\core\object.html#Vector">vector</a> Dest)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>byte&nbsp;</td><td><a href="#_AssessBotAttitude+" name="AssessBotAttitude">AssessBotAttitude</a> (<a href="bot.html">Bot</a> aBot, <a href="..\engine\pawn.html">Pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_CanSpectate+" name="CanSpectate">CanSpectate</a> (<a href="..\engine\pawn.html">pawn</a> Viewer, <a href="..\engine\actor.html">actor</a> ViewTarget)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_CanTranslocate+" name="CanTranslocate">CanTranslocate</a> (<a href="bot.html">Bot</a> aBot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ChangeName+" name="ChangeName">ChangeName</a> (<a href="..\engine\pawn.html">Pawn</a> Other, string S, bool bNameChange)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CheckReady+" name="CheckReady">CheckReady</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_CheckThisTranslocator+" name="CheckThisTranslocator">CheckThisTranslocator</a> (<a href="bot.html">Bot</a> aBot, <a href="translocatortarget.html">TranslocatorTarget</a> T)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndSpree+" name="EndSpree">EndSpree</a> (<a href="..\engine\pawn.html">Pawn</a> Killer, <a href="..\engine\pawn.html">Pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="..\engine\navigationpoint.html">NavigationPoint</a>&nbsp;</td><td><a href="#_FindPlayerStart+" name="FindPlayerStart">FindPlayerStart</a> (<a href="..\engine\pawn.html">Pawn</a> Player, optional byte InTeam, optional string incomingName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ForceAddBot+" name="ForceAddBot">ForceAddBot</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GameThreatAdd+" name="GameThreatAdd">GameThreatAdd</a> (<a href="bot.html">Bot</a> aBot, <a href="..\engine\pawn.html">Pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetRules+" name="GetRules">GetRules</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_GiveWeapon+" name="GiveWeapon">GiveWeapon</a> (<a href="..\engine\pawn.html">Pawn</a> PlayerPawn, string aClassName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_InitGame+" name="InitGame">InitGame</a> (string Options, out string Error)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_InitGameReplicationInfo+" name="InitGameReplicationInfo">InitGameReplicationInfo</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_InitRatedGame+" name="InitRatedGame">InitRatedGame</a> (<a href="ladderinventory.html">LadderInventory</a> LadderObj, <a href="..\engine\playerpawn.html">PlayerPawn</a> LadderPlayer)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Killed+" name="Killed">Killed</a> (<a href="..\engine\pawn.html">pawn</a> killer, <a href="..\engine\pawn.html">pawn</a> Other, name damageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_LogGameParameters+" name="LogGameParameters">LogGameParameters</a> (<a href="..\engine\statlog.html">StatLog</a> StatLog)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td><a href="..\engine\playerpawn.html">playerpawn</a>&nbsp;</td><td><a href="#_Login+" name="Login">Login</a> (string Portal, string Options, out string Error, class&lt;<a href="..\engine\playerpawn.html">playerpawn</a>&gt; SpawnClass)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Logout+" name="Logout">Logout</a> (<a href="..\engine\pawn.html">pawn</a> Exiting)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ModifyBehaviour+" name="ModifyBehaviour">ModifyBehaviour</a> (<a href="bot.html">Bot</a> NewBot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_NeedPlayers+" name="NeedPlayers">NeedPlayers</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_NeverStakeOut+" name="NeverStakeOut">NeverStakeOut</a> (<a href="bot.html">bot</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_NotifySpree+" name="NotifySpree">NotifySpree</a> (<a href="..\engine\pawn.html">Pawn</a> Other, int num)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_OneOnOne+" name="OneOnOne">OneOnOne</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PickAmbushSpotFor+" name="PickAmbushSpotFor">PickAmbushSpotFor</a> (<a href="bot.html">Bot</a> aBot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_PlayerJumpZScaling+" name="PlayerJumpZScaling">PlayerJumpZScaling</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayStartUpMessage+" name="PlayStartUpMessage">PlayStartUpMessage</a> (<a href="..\engine\playerpawn.html">PlayerPawn</a> NewPlayer)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayTeleportEffect+" name="PlayTeleportEffect">PlayTeleportEffect</a> (<a href="..\engine\actor.html">actor</a> Incoming, bool bOut, bool bSound)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayWinMessage+" name="PlayWinMessage">PlayWinMessage</a> (<a href="..\engine\playerpawn.html">PlayerPawn</a> Player, bool bWinner)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PostBeginPlay+" name="PostBeginPlay">PostBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_PostLogin+" name="PostLogin">PostLogin</a> (<a href="..\engine\playerpawn.html">playerpawn</a> NewPlayer)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PreCacheReferences+" name="PreCacheReferences">PreCacheReferences</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RateVs+" name="RateVs">RateVs</a> (<a href="..\engine\pawn.html">Pawn</a> Other, <a href="..\engine\pawn.html">Pawn</a> Killer)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_ReduceDamage+" name="ReduceDamage">ReduceDamage</a> (int Damage, name DamageType, <a href="..\engine\pawn.html">pawn</a> injured, <a href="..\engine\pawn.html">pawn</a> instigatedBy)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RestartGame+" name="RestartGame">RestartGame</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_RestartPlayer+" name="RestartPlayer">RestartPlayer</a> (<a href="..\engine\pawn.html">pawn</a> aPlayer)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ScoreKill+" name="ScoreKill">ScoreKill</a> (<a href="..\engine\pawn.html">pawn</a> Killer, <a href="..\engine\pawn.html">pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SendStartMessage+" name="SendStartMessage">SendStartMessage</a> (<a href="..\engine\playerpawn.html">PlayerPawn</a> P)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_SetEndCams+" name="SetEndCams">SetEndCams</a> (string Reason)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetGameSpeed+" name="SetGameSpeed">SetGameSpeed</a> (Float T)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ShouldRespawn+" name="ShouldRespawn">ShouldRespawn</a> (<a href="..\engine\actor.html">Actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Skip+" name="Skip">Skip</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SkipAll+" name="SkipAll">SkipAll</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="bot.html">Bot</a>&nbsp;</td><td><a href="#_SpawnBot+" name="SpawnBot">SpawnBot</a> (out <a href="..\engine\navigationpoint.html">NavigationPoint</a> StartSpot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="bot.html">Bot</a>&nbsp;</td><td><a href="#_SpawnRatedBot+" name="SpawnRatedBot">SpawnRatedBot</a> (out <a href="..\engine\navigationpoint.html">NavigationPoint</a> StartSpot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_SpawnWait+" name="SpawnWait">SpawnWait</a> (<a href="bot.html">bot</a> B)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_StartMatch+" name="StartMatch">StartMatch</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_SuccessfulGame+" name="SuccessfulGame">SuccessfulGame</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+" name="Timer">Timer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_TooManyBots+" name="TooManyBots">TooManyBots</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="botpack-overview.html">Botpack</a>.<a href="tournamentgameinfo.html">TournamentGameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="tournamentgameinfo.html#AtCapacity">AtCapacity</a>, <a href="tournamentgameinfo.html#BroadcastRegularDeathMessage">BroadcastRegularDeathMessage</a>, <a href="tournamentgameinfo.html#CalcEndStats">CalcEndStats</a>, <a href="tournamentgameinfo.html#CreatureKillMessage">CreatureKillMessage</a>, <a href="tournamentgameinfo.html#DiscardInventory">DiscardInventory</a>, <a href="tournamentgameinfo.html#EmptyBestSlot">EmptyBestSlot</a>, <a href="tournamentgameinfo.html#GetTimeStamp">GetTimeStamp</a>, <a href="tournamentgameinfo.html#KillMessage">KillMessage</a>, <a href="tournamentgameinfo.html#Login">Login</a>, <a href="tournamentgameinfo.html#PlayerKillMessage">PlayerKillMessage</a>, <a href="tournamentgameinfo.html#PlaySpawnEffect">PlaySpawnEffect</a>, <a href="tournamentgameinfo.html#PlayTeleportEffect">PlayTeleportEffect</a>, <a href="tournamentgameinfo.html#ShouldRespawn">ShouldRespawn</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\gameinfo.html">GameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\gameinfo.html#AcceptInventory">AcceptInventory</a>, <a href="..\engine\gameinfo.html#AddBot">AddBot</a>, <a href="..\engine\gameinfo.html#AddDefaultInventory">AddDefaultInventory</a>, <a href="..\engine\gameinfo.html#AdminLogin">AdminLogin</a>, <a href="..\engine\gameinfo.html#AdminLogout">AdminLogout</a>, <a href="..\engine\gameinfo.html#AllowsBroadcast">AllowsBroadcast</a>, <a href="..\engine\gameinfo.html#AtCapacity">AtCapacity</a>, <a href="..\engine\gameinfo.html#BroadcastRegularDeathMessage">BroadcastRegularDeathMessage</a>, <a href="..\engine\gameinfo.html#CanSpectate">CanSpectate</a>, <a href="..\engine\gameinfo.html#ChangeName">ChangeName</a>, <a href="..\engine\gameinfo.html#ChangeTeam">ChangeTeam</a>, <a href="..\engine\gameinfo.html#CheckIPPolicy">CheckIPPolicy</a>, <a href="..\engine\gameinfo.html#CreatureKillMessage">CreatureKillMessage</a>, <a href="..\engine\gameinfo.html#DetailChange">DetailChange</a>, <a href="..\engine\gameinfo.html#DiscardInventory">DiscardInventory</a>, <a href="..\engine\gameinfo.html#EndGame">EndGame</a>, <a href="..\engine\gameinfo.html#FindPlayerStart">FindPlayerStart</a>, <a href="..\engine\gameinfo.html#ForceAddBot">ForceAddBot</a>, <a href="..\engine\gameinfo.html#GameEnding">GameEnding</a>, <a href="..\engine\gameinfo.html#GetBeaconText">GetBeaconText</a>, <a href="..\engine\gameinfo.html#GetInfo">GetInfo</a>, <a href="..\engine\gameinfo.html#GetIntOption">GetIntOption</a>, <a href="..\engine\gameinfo.html#GetKeyValue">GetKeyValue</a>, <a href="..\engine\gameinfo.html#GetNetworkNumber">GetNetworkNumber</a>, <a href="..\engine\gameinfo.html#GetRules">GetRules</a>, <a href="..\engine\gameinfo.html#GetServerPort">GetServerPort</a>, <a href="..\engine\gameinfo.html#GrabOption">GrabOption</a>, <a href="..\engine\gameinfo.html#HasOption">HasOption</a>, <a href="..\engine\gameinfo.html#InitGame">InitGame</a>, <a href="..\engine\gameinfo.html#InitGameReplicationInfo">InitGameReplicationInfo</a>, <a href="..\engine\gameinfo.html#InitLogging">InitLogging</a>, <a href="..\engine\gameinfo.html#IsRelevant">IsRelevant</a>, <a href="..\engine\gameinfo.html#Killed">Killed</a>, <a href="..\engine\gameinfo.html#KillMessage">KillMessage</a>, <a href="..\engine\gameinfo.html#LogGameParameters">LogGameParameters</a>, <a href="..\engine\gameinfo.html#Login">Login</a>, <a href="..\engine\gameinfo.html#Logout">Logout</a>, <a href="..\engine\gameinfo.html#ParseKillMessage">ParseKillMessage</a>, <a href="..\engine\gameinfo.html#ParseOption">ParseOption</a>, <a href="..\engine\gameinfo.html#PickupQuery">PickupQuery</a>, <a href="..\engine\gameinfo.html#PlayerJumpZScaling">PlayerJumpZScaling</a>, <a href="..\engine\gameinfo.html#PlayerKillMessage">PlayerKillMessage</a>, <a href="..\engine\gameinfo.html#PlaySpawnEffect">PlaySpawnEffect</a>, <a href="..\engine\gameinfo.html#PlayTeleportEffect">PlayTeleportEffect</a>, <a href="..\engine\gameinfo.html#PostBeginPlay">PostBeginPlay</a>, <a href="..\engine\gameinfo.html#PostLogin">PostLogin</a>, <a href="..\engine\gameinfo.html#PreBeginPlay">PreBeginPlay</a>, <a href="..\engine\gameinfo.html#PreLogin">PreLogin</a>, <a href="..\engine\gameinfo.html#ProcessServerTravel">ProcessServerTravel</a>, <a href="..\engine\gameinfo.html#ReduceDamage">ReduceDamage</a>, <a href="..\engine\gameinfo.html#RegisterDamageMutator">RegisterDamageMutator</a>, <a href="..\engine\gameinfo.html#RegisterMessageMutator">RegisterMessageMutator</a>, <a href="..\engine\gameinfo.html#ResetGame">ResetGame</a>, <a href="..\engine\gameinfo.html#RestartGame">RestartGame</a>, <a href="..\engine\gameinfo.html#RestartPlayer">RestartPlayer</a>, <a href="..\engine\gameinfo.html#ScoreEvent">ScoreEvent</a>, <a href="..\engine\gameinfo.html#ScoreKill">ScoreKill</a>, <a href="..\engine\gameinfo.html#SendPlayer">SendPlayer</a>, <a href="..\engine\gameinfo.html#SetEndCams">SetEndCams</a>, <a href="..\engine\gameinfo.html#SetGameSpeed">SetGameSpeed</a>, <a href="..\engine\gameinfo.html#SetPause">SetPause</a>, <a href="..\engine\gameinfo.html#ShouldRespawn">ShouldRespawn</a>, <a href="..\engine\gameinfo.html#StartPlayer">StartPlayer</a>, <a href="..\engine\gameinfo.html#Timer">Timer</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AirControl" class="hidden"></a>AirControl <a href="..\Source_botpack\deathmatchplus.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">float</font> AirControl;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AvgOpponentRating" class="hidden"></a>AvgOpponentRating <a href="..\Source_botpack\deathmatchplus.html#70" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> AvgOpponentRating;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bAlreadyChanged" class="hidden"></a>bAlreadyChanged <a href="..\Source_botpack\deathmatchplus.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bAlreadyChanged;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bAltScoring" class="hidden"></a>bAltScoring <a href="..\Source_botpack\deathmatchplus.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bAltScoring;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bAlwaysForceRespawn" class="hidden"></a>bAlwaysForceRespawn <a href="..\Source_botpack\deathmatchplus.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bAlwaysForceRespawn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bChallengeMode" class="hidden"></a>bChallengeMode <a href="..\Source_botpack\deathmatchplus.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bChallengeMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bChangeLevels" class="hidden"></a>bChangeLevels <a href="..\Source_botpack\deathmatchplus.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bChangeLevels;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bDontRestart" class="hidden"></a>bDontRestart <a href="..\Source_botpack\deathmatchplus.html#22" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDontRestart;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bFirstBlood" class="hidden"></a>bFirstBlood <a href="..\Source_botpack\deathmatchplus.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bFirstBlood;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bForceRespawn" class="hidden"></a>bForceRespawn <a href="..\Source_botpack\deathmatchplus.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> bForceRespawn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bFulfilledSpecial" class="hidden"></a>bFulfilledSpecial <a href="..\Source_botpack\deathmatchplus.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bFulfilledSpecial;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHardCoreMode" class="hidden"></a>bHardCoreMode <a href="..\Source_botpack\deathmatchplus.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bHardCoreMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bJumpMatch" class="hidden"></a>bJumpMatch <a href="..\Source_botpack\deathmatchplus.html#32" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bJumpMatch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bMegaSpeed" class="hidden"></a>bMegaSpeed <a href="..\Source_botpack\deathmatchplus.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bMegaSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bMultiWeaponStay" class="hidden"></a>bMultiWeaponStay <a href="..\Source_botpack\deathmatchplus.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> bMultiWeaponStay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNetReady" class="hidden"></a>bNetReady <a href="..\Source_botpack\deathmatchplus.html#35" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNetReady;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNoviceMode" class="hidden"></a>bNoviceMode <a href="..\Source_botpack\deathmatchplus.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNoviceMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BotConfig" class="hidden"></a>BotConfig <a href="..\Source_botpack\deathmatchplus.html#65" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="challengebotinfo.html" class="source">ChallengeBotInfo</a></font> BotConfig;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BotConfigType" class="hidden"></a>BotConfigType <a href="..\Source_botpack\deathmatchplus.html#67" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="challengebotinfo.html" class="source">ChallengeBotInfo</a></font>&gt; BotConfigType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bRatedTranslocator" class="hidden"></a>bRatedTranslocator <a href="..\Source_botpack\deathmatchplus.html#36" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bRatedTranslocator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bRequireReady" class="hidden"></a>bRequireReady <a href="..\Source_botpack\deathmatchplus.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bRequireReady;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bStartMatch" class="hidden"></a>bStartMatch <a href="..\Source_botpack\deathmatchplus.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bStartMatch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bThreePlus" class="hidden"></a>bThreePlus <a href="..\Source_botpack\deathmatchplus.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bThreePlus;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTournament" class="hidden"></a>bTournament <a href="..\Source_botpack\deathmatchplus.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bTournament;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTutorialGame" class="hidden"></a>bTutorialGame <a href="..\Source_botpack\deathmatchplus.html#58" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTutorialGame;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bUseTranslocator" class="hidden"></a>bUseTranslocator <a href="..\Source_botpack\deathmatchplus.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font> bUseTranslocator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CountDown" class="hidden"></a>CountDown <a href="..\Source_botpack\deathmatchplus.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> CountDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CountDownMessage" class="hidden"></a>CountDownMessage <a href="..\Source_botpack\deathmatchplus.html#47" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CountDownMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ElapsedTime" class="hidden"></a>ElapsedTime <a href="..\Source_botpack\deathmatchplus.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> ElapsedTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndTime" class="hidden"></a>EndTime <a href="..\Source_botpack\deathmatchplus.html#75" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> EndTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FragLimit" class="hidden"></a>FragLimit <a href="..\Source_botpack\deathmatchplus.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> FragLimit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GameEndedMessage" class="hidden"></a>GameEndedMessage <a href="..\Source_botpack\deathmatchplus.html#49" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GameEndedMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_gamegoal" class="hidden"></a>gamegoal <a href="..\Source_botpack\deathmatchplus.html#51" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> gamegoal;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_IDnum" class="hidden"></a>IDnum <a href="..\Source_botpack\deathmatchplus.html#73" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> IDnum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InitialBots" class="hidden"></a>InitialBots <a href="..\Source_botpack\deathmatchplus.html#64" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">int</font> InitialBots;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LadderTypeIndex" class="hidden"></a>LadderTypeIndex <a href="..\Source_botpack\deathmatchplus.html#76" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> LadderTypeIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastStartSpot" class="hidden"></a>LastStartSpot <a href="..\Source_botpack\deathmatchplus.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font> LastStartSpot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastTauntTime" class="hidden"></a>LastTauntTime <a href="..\Source_botpack\deathmatchplus.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastTauntTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastTaunt[4]" class="hidden"></a>LastTaunt[4] <a href="..\Source_botpack\deathmatchplus.html#63" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> LastTaunt[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LoseCount" class="hidden"></a>LoseCount <a href="..\Source_botpack\deathmatchplus.html#71" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> LoseCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxCommanders" class="hidden"></a>MaxCommanders <a href="..\Source_botpack\deathmatchplus.html#55" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> MaxCommanders;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinPlayers" class="hidden"></a>MinPlayers <a href="..\Source_botpack\deathmatchplus.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">int</font> MinPlayers;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NetWait" class="hidden"></a>NetWait <a href="..\Source_botpack\deathmatchplus.html#29" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">int</font> NetWait;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NoNameChange" class="hidden"></a>NoNameChange <a href="..\Source_botpack\deathmatchplus.html#66" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> NoNameChange;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NotReadyMessage" class="hidden"></a>NotReadyMessage <a href="..\Source_botpack\deathmatchplus.html#46" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> NotReadyMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NumBots" class="hidden"></a>NumBots <a href="..\Source_botpack\deathmatchplus.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> NumBots;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NumCommanders" class="hidden"></a>NumCommanders <a href="..\Source_botpack\deathmatchplus.html#56" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> NumCommanders;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NumOpp" class="hidden"></a>NumOpp <a href="..\Source_botpack\deathmatchplus.html#71" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> NumOpp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OvertimeMessage" class="hidden"></a>OvertimeMessage <a href="..\Source_botpack\deathmatchplus.html#66" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> OvertimeMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayerRating" class="hidden"></a>PlayerRating <a href="..\Source_botpack\deathmatchplus.html#70" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> PlayerRating;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RatedGameLadderObj" class="hidden"></a>RatedGameLadderObj <a href="..\Source_botpack\deathmatchplus.html#78" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ladderinventory.html" class="source">LadderInventory</a></font> RatedGameLadderObj;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RatedMatchConfig" class="hidden"></a>RatedMatchConfig <a href="..\Source_botpack\deathmatchplus.html#74" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ratedmatchinfo.html" class="source">RatedMatchInfo</a></font> RatedMatchConfig;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RatedPlayer" class="hidden"></a>RatedPlayer <a href="..\Source_botpack\deathmatchplus.html#72" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> RatedPlayer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReadyMessage" class="hidden"></a>ReadyMessage <a href="..\Source_botpack\deathmatchplus.html#45" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ReadyMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RemainingBots" class="hidden"></a>RemainingBots <a href="..\Source_botpack\deathmatchplus.html#62" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> RemainingBots;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RemainingTime" class="hidden"></a>RemainingTime <a href="..\Source_botpack\deathmatchplus.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> RemainingTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RestartWait" class="hidden"></a>RestartWait <a href="..\Source_botpack\deathmatchplus.html#30" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">globalconfig</font> <font class="source_keyword">int</font> RestartWait;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SingleWaitingMessage" class="hidden"></a>SingleWaitingMessage <a href="..\Source_botpack\deathmatchplus.html#50" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SingleWaitingMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StartCount" class="hidden"></a>StartCount <a href="..\Source_botpack\deathmatchplus.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> StartCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StartMessage" class="hidden"></a>StartMessage <a href="..\Source_botpack\deathmatchplus.html#48" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> StartMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StartUpMessage" class="hidden"></a>StartUpMessage <a href="..\Source_botpack\deathmatchplus.html#41" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> StartUpMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimeLimit" class="hidden"></a>TimeLimit <a href="..\Source_botpack\deathmatchplus.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> TimeLimit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TourneyMessage" class="hidden"></a>TourneyMessage <a href="..\Source_botpack\deathmatchplus.html#42" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TourneyMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WaitingMessage1" class="hidden"></a>WaitingMessage1 <a href="..\Source_botpack\deathmatchplus.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WaitingMessage1;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WaitingMessage2" class="hidden"></a>WaitingMessage2 <a href="..\Source_botpack\deathmatchplus.html#44" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WaitingMessage2;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WinCount" class="hidden"></a>WinCount <a href="..\Source_botpack\deathmatchplus.html#71" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> WinCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AcceptInventory+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AcceptInventory <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#283" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AcceptInventory (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AddBot+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AddBot <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#949" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> AddBot ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AddDefaultInventory+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AddDefaultInventory <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1013" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AddDefaultInventory (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AllowTranslocation+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AllowTranslocation <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1101" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> AllowTranslocation (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Dest)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AssessBotAttitude+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AssessBotAttitude <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1078" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">byte</font> AssessBotAttitude (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CanSpectate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CanSpectate <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1238" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CanSpectate (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Viewer, <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> ViewTarget)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CanTranslocate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CanTranslocate <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1106" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CanTranslocate (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ChangeName+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ChangeName <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1251" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ChangeName (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other, <font class="source_keyword">string</font> S, <font class="source_keyword">bool</font> bNameChange)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CheckReady+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CheckReady <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#119" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CheckReady ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CheckThisTranslocator+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CheckThisTranslocator <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1525" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CheckThisTranslocator (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot, <font class="source_type"><a href="translocatortarget.html" class="source">TranslocatorTarget</a></font> T)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndSpree+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndSpree <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#372" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndSpree (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Killer, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FindPlayerStart+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FindPlayerStart <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1289" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font> FindPlayerStart (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> <font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font>, <font class="source_keyword2">optional</font> <font class="source_keyword">byte</font> InTeam, <font class="source_keyword2">optional</font> <font class="source_keyword">string</font> incomingName)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceAddBot+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceAddBot <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#941" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ForceAddBot ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GameThreatAdd+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GameThreatAdd <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1095" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GameThreatAdd (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetRules+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetRules <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1493" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetRules ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GiveWeapon+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GiveWeapon <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1049" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> GiveWeapon (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>, <font class="source_keyword">string</font> aClassName)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InitGame+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> InitGame <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#166" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> InitGame (<font class="source_keyword">string</font> Options, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InitGameReplicationInfo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> InitGameReplicationInfo <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1517" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> InitGameReplicationInfo ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InitRatedGame+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> InitRatedGame <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#212" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> InitRatedGame (<font class="source_type"><a href="ladderinventory.html" class="source">LadderInventory</a></font> LadderObj, <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> LadderPlayer)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Killed+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Killed <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#397" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Killed (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> killer, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Other, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LogGameParameters+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> LogGameParameters <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1454" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> LogGameParameters (<font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font> <font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Login+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Login <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#494" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font> Login (<font class="source_keyword">string</font> Portal,
+    <font class="source_keyword">string</font> Options,
+    <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error,
+    <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font>&gt; SpawnClass)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Logout+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Logout <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1382" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Logout (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Exiting)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ModifyBehaviour+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ModifyBehaviour <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#980" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ModifyBehaviour (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> NewBot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NeedPlayers+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> NeedPlayers <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1393" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> NeedPlayers ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NeverStakeOut+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> NeverStakeOut <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1544" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> NeverStakeOut (<font class="source_type"><a href="bot.html" class="source">bot</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NotifySpree+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> NotifySpree <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#350" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> NotifySpree (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other, <font class="source_keyword">int</font> num)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OneOnOne+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> OneOnOne <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1530" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> OneOnOne ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PickAmbushSpotFor+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PickAmbushSpotFor <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1113" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PickAmbushSpotFor (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayerJumpZScaling+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayerJumpZScaling <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1001" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> PlayerJumpZScaling ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayStartUpMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayStartUpMessage <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#982" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayStartUpMessage (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> NewPlayer)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayTeleportEffect+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayTeleportEffect <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#147" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayTeleportEffect (<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Incoming, <font class="source_keyword">bool</font> bOut, <font class="source_keyword">bool</font> bSound)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayWinMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayWinMessage <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#344" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayWinMessage (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> <font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font>, <font class="source_keyword">bool</font> bWinner)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PostBeginPlay <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PostBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostLogin+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> PostLogin <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#540" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> PostLogin (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font> NewPlayer)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PreCacheReferences+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PreCacheReferences <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#99" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PreCacheReferences ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RateVs+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RateVs <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1125" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RateVs (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Killer)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReduceDamage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ReduceDamage <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#558" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> ReduceDamage (<font class="source_keyword">int</font> Damage, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> injured, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> instigatedBy)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RestartGame+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RestartGame <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1398" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RestartGame ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RestartPlayer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RestartPlayer <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#779" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> RestartPlayer (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> aPlayer)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ScoreKill+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ScoreKill <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#388" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ScoreKill (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Killer, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SendStartMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SendStartMessage <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#799" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SendStartMessage (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> P)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetEndCams+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetEndCams <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#303" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SetEndCams (<font class="source_keyword">string</font> Reason)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetGameSpeed+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetGameSpeed <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#131" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetGameSpeed (<font class="source_keyword">Float</font> T)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShouldRespawn+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ShouldRespawn <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1246" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ShouldRespawn (<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Skip+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Skip <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1198" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Skip ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SkipAll+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SkipAll <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1213" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SkipAll ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpawnBot+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SpawnBot <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#805" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="bot.html" class="source">Bot</a></font> SpawnBot (<font class="source_keyword2">out</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font> StartSpot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpawnRatedBot+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SpawnRatedBot <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#891" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="bot.html" class="source">Bot</a></font> SpawnRatedBot (<font class="source_keyword2">out</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font> StartSpot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpawnWait+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SpawnWait <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1535" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> SpawnWait (<font class="source_type"><a href="bot.html" class="source">bot</a></font> B)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StartMatch+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> StartMatch <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#586" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> StartMatch ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SuccessfulGame+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SuccessfulGame <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#1184" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SuccessfulGame ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#633" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TooManyBots+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TooManyBots <span class="function_state"></span> <a href="..\Source_botpack\deathmatchplus.html#774" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> TooManyBots ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     bMultiWeaponStay=<font class="source_keyword">true</font>
+     Fraglimit=<font class="source_int">30</font>
+     MaxCommanders=<font class="source_int">0</font>
+     bDeathMatch=<font class="source_keyword">true</font>
+     bLoggingGame=<font class="source_keyword">true</font>
+     bTournament=<font class="source_keyword">false</font>
+     CountDown=<font class="source_int">10</font>
+     StartUpMessage=<font class="source_string">""</font>
+     StartMessage=<font class="source_string">"The match has begun!"</font>
+     TourneyMessage=<font class="source_string">"Waiting for other players."</font>
+     WaitingMessage1=<font class="source_string">"Waiting for ready signals."</font>
+     WaitingMessage2=<font class="source_string">"(Use your fire button to toggle ready!)"</font>
+     SingleWaitingMessage=<font class="source_string">"Press Fire to start."</font>
+     gamegoal=<font class="source_string">"frags wins the match."</font>
+     ReadyMessage=<font class="source_string">"You are READY!"</font>
+     NotReadyMessage=<font class="source_string">"You are NOT READY!"</font>
+     CountDownMessage=<font class="source_string">" seconds until play starts!"</font>
+     GameEndedMessage=<font class="source_string">"wins the match!"</font>
+     OverTimeMessage=<font class="source_string">"Score tied at the end of regulation. Sudden Death Overtime!!!"</font>
+     HUDType=<font class="source_keyword">Class</font><font class="source_name">'BotPack.ChallengeHUD'</font>
+     BeaconName=<font class="source_string">"TDM"</font>
+     GameName=<font class="source_string">"Tournament DeathMatch"</font>
+     GameOptionsMenuType=<font class="source_string">"UTMenu.UTOptionsMenu"</font>
+     BotConfigType=<font class="source_keyword">Class</font><font class="source_name">'BotPack.ChallengeBotInfo'</font>
+     DefaultWeapon=<font class="source_keyword">class</font><font class="source_name">'Botpack.ImpactHammer'</font>
+     RulesMenuType=<font class="source_string">"UTMenu.UTRulesSClient"</font>
+     SettingsMenuType=<font class="source_string">"UTMenu.UTSettingsSClient"</font>
+     MapListType=<font class="source_keyword">Class</font><font class="source_name">'BotPack.TDMMapList'</font>
+     GameUMenuType=<font class="source_string">"UTMenu.UTGameMenu"</font>
+     MultiplayerUMenuType=<font class="source_string">"UTMenu.UTMultiplayerMenu"</font>
+     BotMenuType=<font class="source_string">"UTMenu.UTBotConfigSClient"</font>
+     bChangeLevels=<font class="source_keyword">True</font>
+     InitialBots=<font class="source_int">4</font>
+     NoNameChange=<font class="source_string">" is already in use."</font>
+     bNoMonsters=<font class="source_keyword">True</font>
+     bRestartLevel=<font class="source_keyword">False</font>
+     bPauseable=<font class="source_keyword">False</font>
+     bHardCoreMode=<font class="source_keyword">True</font>
+     AutoAim=<font class="source_int">1.000000</font>
+     ScoreBoardType=<font class="source_keyword">Class</font><font class="source_name">'Botpack.TournamentScoreBoard'</font>
+     MapPrefix=<font class="source_string">"DM"</font>
+     BeaconName=<font class="source_string">"DM"</font>
+     MaxPlayers=<font class="source_int">10</font>
+     AirControl=+<font class="source_int">0.35</font>
+     LadderTypeIndex=<font class="source_int">1</font>
+     MutatorClass=<font class="source_keyword">class</font><font class="source_name">'Botpack.DMMutator'</font>
+     GameReplicationInfoClass=<font class="source_keyword">Class</font><font class="source_name">'BotPack.TournamentGameReplicationInfo'</font>
+     DeathMessageClass=<font class="source_keyword">class</font><font class="source_name">'Botpack.DeathMessagePlus'</font>
+     DMMessageClass=<font class="source_keyword">class</font><font class="source_name">'Botpack.DeathMatchMessage'</font>
+     NetWait=<font class="source_int">10</font>
+     RestartWait=<font class="source_int">15</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\deathmatchplus.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#DeathMatchPlus">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="deathmatchmessage.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="deathmatchtrophy.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:46:46.937 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

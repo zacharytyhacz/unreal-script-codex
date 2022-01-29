@@ -1,0 +1,843 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Botpack.TournamentWeapon</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\tournamentweapon.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#TournamentWeapon">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="tournamentscoreboard.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="trainingas.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="botpack-overview.html">Botpack</a>.TournamentWeapon</h1>
+<b>Extends:</b> <a href="..\engine\weapon.html">Weapon</a><br>
+<b>Modifiers:</b> abstract <br>
+<a href="..\Source_botpack\tournamentweapon.html"><b>Source code</b></a>
+
+<p>
+TournamentWeapon.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\inventory.html">Inventory</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\weapon.html">Weapon</a>
+            |   
+            +-- <a href="botpack-overview.html">Botpack</a>.<a href="tournamentweapon.html">TournamentWeapon</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="chainsaw.html">ChainSaw</a>, <a href="enforcer.html">Enforcer</a>, <a href="impacthammer.html">ImpactHammer</a>, <a href="minigun2.html">Minigun2</a>, <a href="pulsegun.html">PulseGun</a>, <a href="ripper.html">Ripper</a>, <a href="shockrifle.html">ShockRifle</a>, <a href="sniperrifle.html">SniperRifle</a>, <a href="translocator.html">Translocator</a>, <a href="ut_biorifle.html">UT_BioRifle</a>, <a href="ut_eightball.html">UT_Eightball</a>, <a href="ut_flakcannon.html">UT_FlakCannon</a>, <a href="warheadlauncher.html">WarHeadLauncher</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="tournamentpickup.html">TournamentPickup</a></td><td width="66%"><a href="#_Affector" name="Affector">Affector</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_AltFireTime" name="AltFireTime">AltFireTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCanClientFire" name="bCanClientFire">bCanClientFire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bForceAltFire" name="bForceAltFire">bForceAltFire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bForceFire" name="bForceFire">bForceFire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FireAdjust" name="FireAdjust">FireAdjust</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FireStartTime" name="FireStartTime">FireStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FireTime" name="FireTime">FireTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_InstFlash" name="InstFlash">InstFlash</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_InstFog" name="InstFog">InstFog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_WeaponDescription" name="WeaponDescription">WeaponDescription</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\weapon.html">Weapon</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\weapon.html#AdjustedAim">AdjustedAim</a>, <a href="..\engine\weapon.html#AimError">AimError</a>, <a href="..\engine\weapon.html#AIRating">AIRating</a>, <a href="..\engine\weapon.html#AltDamageType">AltDamageType</a>, <a href="..\engine\weapon.html#AltFireSound">AltFireSound</a>, <a href="..\engine\weapon.html#AltProjectileClass">AltProjectileClass</a>, <a href="..\engine\weapon.html#AltProjectileSpeed">AltProjectileSpeed</a>, <a href="..\engine\weapon.html#AltRefireRate">AltRefireRate</a>, <a href="..\engine\weapon.html#AmmoName">AmmoName</a>, <a href="..\engine\weapon.html#AmmoType">AmmoType</a>, <a href="..\engine\weapon.html#bAltInstantHit">bAltInstantHit</a>, <a href="..\engine\weapon.html#bAltWarnTarget">bAltWarnTarget</a>, <a href="..\engine\weapon.html#bCanThrow">bCanThrow</a>, <a href="..\engine\weapon.html#bChangeWeapon">bChangeWeapon</a>, <a href="..\engine\weapon.html#bDrawMuzzleFlash">bDrawMuzzleFlash</a>, <a href="..\engine\weapon.html#bHideWeapon">bHideWeapon</a>, <a href="..\engine\weapon.html#bInstantHit">bInstantHit</a>, <a href="..\engine\weapon.html#bLockedOn">bLockedOn</a>, <a href="..\engine\weapon.html#bMeleeWeapon">bMeleeWeapon</a>, <a href="..\engine\weapon.html#bMuzzleFlash">bMuzzleFlash</a>, <a href="..\engine\weapon.html#bOwnsCrosshair">bOwnsCrosshair</a>, <a href="..\engine\weapon.html#bPointing">bPointing</a>, <a href="..\engine\weapon.html#bRapidFire">bRapidFire</a>, <a href="..\engine\weapon.html#bRecommendAltSplashDamage">bRecommendAltSplashDamage</a>, <a href="..\engine\weapon.html#bRecommendSplashDamage">bRecommendSplashDamage</a>, <a href="..\engine\weapon.html#bSetFlashTime">bSetFlashTime</a>, <a href="..\engine\weapon.html#bSpecialIcon">bSpecialIcon</a>, <a href="..\engine\weapon.html#bSplashDamage">bSplashDamage</a>, <a href="..\engine\weapon.html#bWarnTarget">bWarnTarget</a>, <a href="..\engine\weapon.html#bWeaponStay">bWeaponStay</a>, <a href="..\engine\weapon.html#bWeaponUp">bWeaponUp</a>, <a href="..\engine\weapon.html#CockingSound">CockingSound</a>, <a href="..\engine\weapon.html#DeathMessage">DeathMessage</a>, <a href="..\engine\weapon.html#FireOffset">FireOffset</a>, <a href="..\engine\weapon.html#FireSound">FireSound</a>, <a href="..\engine\weapon.html#FiringSpeed">FiringSpeed</a>, <a href="..\engine\weapon.html#FlareOffset">FlareOffset</a>, <a href="..\engine\weapon.html#FlashC">FlashC</a>, <a href="..\engine\weapon.html#FlashLength">FlashLength</a>, <a href="..\engine\weapon.html#FlashO">FlashO</a>, <a href="..\engine\weapon.html#FlashS">FlashS</a>, <a href="..\engine\weapon.html#FlashTime">FlashTime</a>, <a href="..\engine\weapon.html#FlashY">FlashY</a>, <a href="..\engine\weapon.html#MaxTargetRange">MaxTargetRange</a>, <a href="..\engine\weapon.html#MessageNoAmmo">MessageNoAmmo</a>, <a href="..\engine\weapon.html#MFTexture">MFTexture</a>, <a href="..\engine\weapon.html#Misc1Sound">Misc1Sound</a>, <a href="..\engine\weapon.html#Misc2Sound">Misc2Sound</a>, <a href="..\engine\weapon.html#Misc3Sound">Misc3Sound</a>, <a href="..\engine\weapon.html#MuzzleFlare">MuzzleFlare</a>, <a href="..\engine\weapon.html#MuzzleScale">MuzzleScale</a>, <a href="..\engine\weapon.html#MyDamageType">MyDamageType</a>, <a href="..\engine\weapon.html#NameColor">NameColor</a>, <a href="..\engine\weapon.html#PickupAmmoCount">PickupAmmoCount</a>, <a href="..\engine\weapon.html#ProjectileClass">ProjectileClass</a>, <a href="..\engine\weapon.html#ProjectileSpeed">ProjectileSpeed</a>, <a href="..\engine\weapon.html#RefireRate">RefireRate</a>, <a href="..\engine\weapon.html#ReloadCount">ReloadCount</a>, <a href="..\engine\weapon.html#SelectSound">SelectSound</a>, <a href="..\engine\weapon.html#ShakeMag">ShakeMag</a>, <a href="..\engine\weapon.html#ShakeTime">ShakeTime</a>, <a href="..\engine\weapon.html#ShakeVert">ShakeVert</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\inventory.html">Inventory</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\inventory.html#AbsorptionPriority">AbsorptionPriority</a>, <a href="..\engine\inventory.html#ActivateSound">ActivateSound</a>, <a href="..\engine\inventory.html#ArmorAbsorption">ArmorAbsorption</a>, <a href="..\engine\inventory.html#AutoSwitchPriority">AutoSwitchPriority</a>, <a href="..\engine\inventory.html#bActivatable">bActivatable</a>, <a href="..\engine\inventory.html#bActive">bActive</a>, <a href="..\engine\inventory.html#bAmbientGlow">bAmbientGlow</a>, <a href="..\engine\inventory.html#bDisplayableInv">bDisplayableInv</a>, <a href="..\engine\inventory.html#bFirstFrame">bFirstFrame</a>, <a href="..\engine\inventory.html#bHeldItem">bHeldItem</a>, <a href="..\engine\inventory.html#bInstantRespawn">bInstantRespawn</a>, <a href="..\engine\inventory.html#bIsAnArmor">bIsAnArmor</a>, <a href="..\engine\inventory.html#bMuzzleFlashParticles">bMuzzleFlashParticles</a>, <a href="..\engine\inventory.html#BobDamping">BobDamping</a>, <a href="..\engine\inventory.html#bRotatingPickup">bRotatingPickup</a>, <a href="..\engine\inventory.html#bSleepTouch">bSleepTouch</a>, <a href="..\engine\inventory.html#bSteadyFlash3rd">bSteadyFlash3rd</a>, <a href="..\engine\inventory.html#bSteadyToggle">bSteadyToggle</a>, <a href="..\engine\inventory.html#bToggleSteadyFlash">bToggleSteadyFlash</a>, <a href="..\engine\inventory.html#bTossedOut">bTossedOut</a>, <a href="..\engine\inventory.html#Charge">Charge</a>, <a href="..\engine\inventory.html#DeActivateSound">DeActivateSound</a>, <a href="..\engine\inventory.html#FlashCount">FlashCount</a>, <a href="..\engine\inventory.html#Icon">Icon</a>, <a href="..\engine\inventory.html#InventoryGroup">InventoryGroup</a>, <a href="..\engine\inventory.html#ItemArticle">ItemArticle</a>, <a href="..\engine\inventory.html#ItemMessageClass">ItemMessageClass</a>, <a href="..\engine\inventory.html#ItemName">ItemName</a>, <a href="..\engine\inventory.html#MaxDesireability">MaxDesireability</a>, <a href="..\engine\inventory.html#MuzzleFlashMesh">MuzzleFlashMesh</a>, <a href="..\engine\inventory.html#MuzzleFlashScale">MuzzleFlashScale</a>, <a href="..\engine\inventory.html#MuzzleFlashStyle">MuzzleFlashStyle</a>, <a href="..\engine\inventory.html#MuzzleFlashTexture">MuzzleFlashTexture</a>, <a href="..\engine\inventory.html#MyMarker">MyMarker</a>, <a href="..\engine\inventory.html#M_Activated">M_Activated</a>, <a href="..\engine\inventory.html#M_Deactivated">M_Deactivated</a>, <a href="..\engine\inventory.html#M_Selected">M_Selected</a>, <a href="..\engine\inventory.html#NextArmor">NextArmor</a>, <a href="..\engine\inventory.html#OldFlashCount">OldFlashCount</a>, <a href="..\engine\inventory.html#PickupMessage">PickupMessage</a>, <a href="..\engine\inventory.html#PickupMessageClass">PickupMessageClass</a>, <a href="..\engine\inventory.html#PickupSound">PickupSound</a>, <a href="..\engine\inventory.html#PickupViewMesh">PickupViewMesh</a>, <a href="..\engine\inventory.html#PickupViewScale">PickupViewScale</a>, <a href="..\engine\inventory.html#PlayerLastTouched">PlayerLastTouched</a>, <a href="..\engine\inventory.html#PlayerViewMesh">PlayerViewMesh</a>, <a href="..\engine\inventory.html#PlayerViewOffset">PlayerViewOffset</a>, <a href="..\engine\inventory.html#PlayerViewScale">PlayerViewScale</a>, <a href="..\engine\inventory.html#ProtectionType1">ProtectionType1</a>, <a href="..\engine\inventory.html#ProtectionType2">ProtectionType2</a>, <a href="..\engine\inventory.html#RespawnSound">RespawnSound</a>, <a href="..\engine\inventory.html#RespawnTime">RespawnTime</a>, <a href="..\engine\inventory.html#StatusIcon">StatusIcon</a>, <a href="..\engine\inventory.html#ThirdPersonMesh">ThirdPersonMesh</a>, <a href="..\engine\inventory.html#ThirdPersonScale">ThirdPersonScale</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AltFire+" name="AltFire">AltFire</a> (float Value)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AltFire+AltFiring" name="AltFire">AltFire</a> (float F)<br /><span class="function_state">AltFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AltFire+NormalFire" name="AltFire">AltFire</a> (float F)<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AnimEnd+" name="AnimEnd">AnimEnd</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AnimEnd+AltFiring" name="AnimEnd">AnimEnd</a> ()<br /><span class="function_state">AltFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AnimEnd+ClientActive" name="AnimEnd">AnimEnd</a> ()<br /><span class="function_state">ClientActive</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AnimEnd+ClientAltFiring" name="AnimEnd">AnimEnd</a> ()<br /><span class="function_state">ClientAltFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AnimEnd+ClientDown" name="AnimEnd">AnimEnd</a> ()<br /><span class="function_state">ClientDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AnimEnd+ClientFiring" name="AnimEnd">AnimEnd</a> ()<br /><span class="function_state">ClientFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AnimEnd+NormalFire" name="AnimEnd">AnimEnd</a> ()<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BecomeItem+" name="BecomeItem">BecomeItem</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+ClientActive" name="BeginState">BeginState</a> ()<br /><span class="function_state">ClientActive</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+ClientDown" name="BeginState">BeginState</a> ()<br /><span class="function_state">ClientDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+DownWeapon" name="BeginState">BeginState</a> ()<br /><span class="function_state">DownWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ClientAltFire+" name="ClientAltFire">ClientAltFire</a> (float Value)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ClientAltFire+ClientActive" name="ClientAltFire">ClientAltFire</a> (float Value)<br /><span class="function_state">ClientActive</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ClientAltFire+ClientAltFiring" name="ClientAltFire">ClientAltFire</a> (float Value)<br /><span class="function_state">ClientAltFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ClientAltFire+ClientDown" name="ClientAltFire">ClientAltFire</a> (float Value)<br /><span class="function_state">ClientDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ClientAltFire+ClientFiring" name="ClientAltFire">ClientAltFire</a> (float Value)<br /><span class="function_state">ClientFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ClientFire+" name="ClientFire">ClientFire</a> (float Value)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ClientFire+ClientActive" name="ClientFire">ClientFire</a> (float Value)<br /><span class="function_state">ClientActive</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ClientFire+ClientAltFiring" name="ClientFire">ClientFire</a> (float Value)<br /><span class="function_state">ClientAltFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ClientFire+ClientDown" name="ClientFire">ClientFire</a> (float Value)<br /><span class="function_state">ClientDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ClientFire+ClientFiring" name="ClientFire">ClientFire</a> (float Value)<br /><span class="function_state">ClientFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ClientPutDown+" name="ClientPutDown">ClientPutDown</a> (<a href="..\engine\weapon.html">weapon</a> NextWeapon)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DropFrom+" name="DropFrom">DropFrom</a> (<a href="..\core\object.html#Vector">vector</a> StartLocation)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndState+Active" name="EndState">EndState</a> ()<br /><span class="function_state">Active</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndState+ClientActive" name="EndState">EndState</a> ()<br /><span class="function_state">ClientActive</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndState+ClientAltFiring" name="EndState">EndState</a> ()<br /><span class="function_state">ClientAltFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndState+ClientFiring" name="EndState">EndState</a> ()<br /><span class="function_state">ClientFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Finish+" name="Finish">Finish</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Fire+" name="Fire">Fire</a> (float Value)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Fire+AltFiring" name="Fire">Fire</a> (float F)<br /><span class="function_state">AltFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Fire+NormalFire" name="Fire">Fire</a> (float F)<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceAltFire+" name="ForceAltFire">ForceAltFire</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceAltFire+Active" name="ForceAltFire">ForceAltFire</a> ()<br /><span class="function_state">Active</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceAltFire+AltFiring" name="ForceAltFire">ForceAltFire</a> ()<br /><span class="function_state">AltFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceAltFire+NormalFire" name="ForceAltFire">ForceAltFire</a> ()<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceClientAltFire+" name="ForceClientAltFire">ForceClientAltFire</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceClientAltFire+ClientActive" name="ForceClientAltFire">ForceClientAltFire</a> ()<br /><span class="function_state">ClientActive</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceClientAltFire+ClientDown" name="ForceClientAltFire">ForceClientAltFire</a> ()<br /><span class="function_state">ClientDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceClientFire+" name="ForceClientFire">ForceClientFire</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceClientFire+ClientActive" name="ForceClientFire">ForceClientFire</a> ()<br /><span class="function_state">ClientActive</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceClientFire+ClientDown" name="ForceClientFire">ForceClientFire</a> ()<br /><span class="function_state">ClientDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceFire+" name="ForceFire">ForceFire</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceFire+Active" name="ForceFire">ForceFire</a> ()<br /><span class="function_state">Active</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceFire+AltFiring" name="ForceFire">ForceFire</a> ()<br /><span class="function_state">AltFiring</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ForceFire+NormalFire" name="ForceFire">ForceFire</a> ()<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandlePickupQuery+" name="HandlePickupQuery">HandlePickupQuery</a> (<a href="..\engine\inventory.html">inventory</a> Item)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Landed+" name="Landed">Landed</a> (<a href="..\core\object.html#Vector">vector</a> HitNormal)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Landed+Pickup" name="Landed">Landed</a> (<a href="..\core\object.html#Vector">Vector</a> HitNormal)<br /><span class="function_state">Pickup</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayIdleAnim+" name="PlayIdleAnim">PlayIdleAnim</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayPostSelect+" name="PlayPostSelect">PlayPostSelect</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlaySelect+" name="PlaySelect">PlaySelect</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetWeaponStay+" name="SetWeaponStay">SetWeaponStay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+ClientDown" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state">ClientDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TweenDown+" name="TweenDown">TweenDown</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TweenToStill+" name="TweenToStill">TweenToStill</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\weapon.html">Weapon</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\weapon.html#AltFire">AltFire</a>, <a href="..\engine\weapon.html#AnimEnd">AnimEnd</a>, <a href="..\engine\weapon.html#BecomePickup">BecomePickup</a>, <a href="..\engine\weapon.html#BeginState">BeginState</a>, <a href="..\engine\weapon.html#BotDesireability">BotDesireability</a>, <a href="..\engine\weapon.html#BringUp">BringUp</a>, <a href="..\engine\weapon.html#CheckVisibility">CheckVisibility</a>, <a href="..\engine\weapon.html#ClientAltFire">ClientAltFire</a>, <a href="..\engine\weapon.html#ClientFire">ClientFire</a>, <a href="..\engine\weapon.html#ClientPutDown">ClientPutDown</a>, <a href="..\engine\weapon.html#ClientWeaponEvent">ClientWeaponEvent</a>, <a href="..\engine\weapon.html#Destroyed">Destroyed</a>, <a href="..\engine\weapon.html#DropFrom">DropFrom</a>, <a href="..\engine\weapon.html#Finish">Finish</a>, <a href="..\engine\weapon.html#Fire">Fire</a>, <a href="..\engine\weapon.html#ForceAltFire">ForceAltFire</a>, <a href="..\engine\weapon.html#ForceFire">ForceFire</a>, <a href="..\engine\weapon.html#GiveAmmo">GiveAmmo</a>, <a href="..\engine\weapon.html#HandlePickupQuery">HandlePickupQuery</a>, <a href="..\engine\weapon.html#PlayAltFiring">PlayAltFiring</a>, <a href="..\engine\weapon.html#PlayFiring">PlayFiring</a>, <a href="..\engine\weapon.html#PlayIdleAnim">PlayIdleAnim</a>, <a href="..\engine\weapon.html#PlayPostSelect">PlayPostSelect</a>, <a href="..\engine\weapon.html#PlaySelect">PlaySelect</a>, <a href="..\engine\weapon.html#PostBeginPlay">PostBeginPlay</a>, <a href="..\engine\weapon.html#PostRender">PostRender</a>, <a href="..\engine\weapon.html#PreRender">PreRender</a>, <a href="..\engine\weapon.html#ProcessTraceHit">ProcessTraceHit</a>, <a href="..\engine\weapon.html#ProjectileFire">ProjectileFire</a>, <a href="..\engine\weapon.html#PutDown">PutDown</a>, <a href="..\engine\weapon.html#RaiseUp">RaiseUp</a>, <a href="..\engine\weapon.html#RateSelf">RateSelf</a>, <a href="..\engine\weapon.html#RecommendWeapon">RecommendWeapon</a>, <a href="..\engine\weapon.html#RenderOverlays">RenderOverlays</a>, <a href="..\engine\weapon.html#setHand">setHand</a>, <a href="..\engine\weapon.html#SetSwitchPriority">SetSwitchPriority</a>, <a href="..\engine\weapon.html#SetWeaponStay">SetWeaponStay</a>, <a href="..\engine\weapon.html#SpawnCopy">SpawnCopy</a>, <a href="..\engine\weapon.html#SplashJump">SplashJump</a>, <a href="..\engine\weapon.html#SuggestAttackStyle">SuggestAttackStyle</a>, <a href="..\engine\weapon.html#SuggestDefenseStyle">SuggestDefenseStyle</a>, <a href="..\engine\weapon.html#SwitchPriority">SwitchPriority</a>, <a href="..\engine\weapon.html#TraceFire">TraceFire</a>, <a href="..\engine\weapon.html#TravelPostAccept">TravelPostAccept</a>, <a href="..\engine\weapon.html#TweenDown">TweenDown</a>, <a href="..\engine\weapon.html#TweenSelect">TweenSelect</a>, <a href="..\engine\weapon.html#TweenToStill">TweenToStill</a>, <a href="..\engine\weapon.html#WeaponChange">WeaponChange</a>, <a href="..\engine\weapon.html#WeaponSet">WeaponSet</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\inventory.html">Inventory</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\inventory.html#Activate">Activate</a>, <a href="..\engine\inventory.html#ActivateTranslator">ActivateTranslator</a>, <a href="..\engine\inventory.html#AltFire">AltFire</a>, <a href="..\engine\inventory.html#ArmorAbsorbDamage">ArmorAbsorbDamage</a>, <a href="..\engine\inventory.html#ArmorImpactEffect">ArmorImpactEffect</a>, <a href="..\engine\inventory.html#ArmorPriority">ArmorPriority</a>, <a href="..\engine\inventory.html#BecomeItem">BecomeItem</a>, <a href="..\engine\inventory.html#BecomePickup">BecomePickup</a>, <a href="..\engine\inventory.html#BeginState">BeginState</a>, <a href="..\engine\inventory.html#BotDesireability">BotDesireability</a>, <a href="..\engine\inventory.html#CalcDrawOffset">CalcDrawOffset</a>, <a href="..\engine\inventory.html#ChangedWeapon">ChangedWeapon</a>, <a href="..\engine\inventory.html#CheckTouching">CheckTouching</a>, <a href="..\engine\inventory.html#Destroyed">Destroyed</a>, <a href="..\engine\inventory.html#DrawStatusIconAt">DrawStatusIconAt</a>, <a href="..\engine\inventory.html#DropFrom">DropFrom</a>, <a href="..\engine\inventory.html#DropInventory">DropInventory</a>, <a href="..\engine\inventory.html#EndState">EndState</a>, <a href="..\engine\inventory.html#Fire">Fire</a>, <a href="..\engine\inventory.html#GetHumanName">GetHumanName</a>, <a href="..\engine\inventory.html#GiveTo">GiveTo</a>, <a href="..\engine\inventory.html#HandlePickupQuery">HandlePickupQuery</a>, <a href="..\engine\inventory.html#InventoryCapsFloat">InventoryCapsFloat</a>, <a href="..\engine\inventory.html#InventoryCapsString">InventoryCapsString</a>, <a href="..\engine\inventory.html#Landed">Landed</a>, <a href="..\engine\inventory.html#OwnerJumped">OwnerJumped</a>, <a href="..\engine\inventory.html#PostBeginPlay">PostBeginPlay</a>, <a href="..\engine\inventory.html#PrioritizeArmor">PrioritizeArmor</a>, <a href="..\engine\inventory.html#RecommendWeapon">RecommendWeapon</a>, <a href="..\engine\inventory.html#ReduceDamage">ReduceDamage</a>, <a href="..\engine\inventory.html#RenderOverlays">RenderOverlays</a>, <a href="..\engine\inventory.html#SelectNext">SelectNext</a>, <a href="..\engine\inventory.html#SetOwnerDisplay">SetOwnerDisplay</a>, <a href="..\engine\inventory.html#SetRespawn">SetRespawn</a>, <a href="..\engine\inventory.html#SpawnCopy">SpawnCopy</a>, <a href="..\engine\inventory.html#Timer">Timer</a>, <a href="..\engine\inventory.html#Touch">Touch</a>, <a href="..\engine\inventory.html#TravelPreAccept">TravelPreAccept</a>, <a href="..\engine\inventory.html#Use">Use</a>, <a href="..\engine\inventory.html#ValidTouch">ValidTouch</a>, <a href="..\engine\inventory.html#WeaponChange">WeaponChange</a>, <a href="..\engine\inventory.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Active <a href="..\Source_botpack\tournamentweapon.html#506" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Active <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_EndState+Active">EndState</a>, <a href="#_ForceAltFire+Active">ForceAltFire</a>, <a href="#_ForceFire+Active">ForceFire</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>AltFiring <a href="..\Source_botpack\tournamentweapon.html#477" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> AltFiring <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+AltFiring">AltFire</a>, <a href="#_AnimEnd+AltFiring">AnimEnd</a>, <a href="#_Fire+AltFiring">Fire</a>, <a href="#_ForceAltFire+AltFiring">ForceAltFire</a>, <a href="#_ForceFire+AltFiring">ForceFire</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>ClientActive <a href="..\Source_botpack\tournamentweapon.html#550" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ClientActive <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AnimEnd+ClientActive">AnimEnd</a>, <a href="#_BeginState+ClientActive">BeginState</a>, <a href="#_ClientAltFire+ClientActive">ClientAltFire</a>, <a href="#_ClientFire+ClientActive">ClientFire</a>, <a href="#_EndState+ClientActive">EndState</a>, <a href="#_ForceClientAltFire+ClientActive">ForceClientAltFire</a>, <a href="#_ForceClientFire+ClientActive">ForceClientFire</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>ClientAltFiring <a href="..\Source_botpack\tournamentweapon.html#409" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ClientAltFiring <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AnimEnd+ClientAltFiring">AnimEnd</a>, <a href="#_ClientAltFire+ClientAltFiring">ClientAltFire</a>, <a href="#_ClientFire+ClientAltFiring">ClientFire</a>, <a href="#_EndState+ClientAltFiring">EndState</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>ClientDown <a href="..\Source_botpack\tournamentweapon.html#615" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ClientDown <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AnimEnd+ClientDown">AnimEnd</a>, <a href="#_BeginState+ClientDown">BeginState</a>, <a href="#_ClientAltFire+ClientDown">ClientAltFire</a>, <a href="#_ClientFire+ClientDown">ClientFire</a>, <a href="#_ForceClientAltFire+ClientDown">ForceClientAltFire</a>, <a href="#_ForceClientFire+ClientDown">ForceClientFire</a>, <a href="#_Tick+ClientDown">Tick</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>ClientFiring <a href="..\Source_botpack\tournamentweapon.html#370" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ClientFiring <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AnimEnd+ClientFiring">AnimEnd</a>, <a href="#_ClientAltFire+ClientFiring">ClientAltFire</a>, <a href="#_ClientFire+ClientFiring">ClientFire</a>, <a href="#_EndState+ClientFiring">EndState</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>DownWeapon <a href="..\Source_botpack\tournamentweapon.html#675" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> DownWeapon <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+DownWeapon">BeginState</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>NormalFire <a href="..\Source_botpack\tournamentweapon.html#448" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> NormalFire <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+NormalFire">AltFire</a>, <a href="#_AnimEnd+NormalFire">AnimEnd</a>, <a href="#_Fire+NormalFire">Fire</a>, <a href="#_ForceAltFire+NormalFire">ForceAltFire</a>, <a href="#_ForceFire+NormalFire">ForceFire</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Pickup <a href="..\Source_botpack\tournamentweapon.html#350" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">auto state</span> Pickup <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Landed+Pickup">Landed</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Affector" class="hidden"></a>Affector <a href="..\Source_botpack\tournamentweapon.html#7" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="tournamentpickup.html" class="source">TournamentPickup</a></font> Affector;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AltFireTime" class="hidden"></a>AltFireTime <a href="..\Source_botpack\tournamentweapon.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> AltFireTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bCanClientFire" class="hidden"></a>bCanClientFire <a href="..\Source_botpack\tournamentweapon.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bCanClientFire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bForceAltFire" class="hidden"></a>bForceAltFire <a href="..\Source_botpack\tournamentweapon.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bForceAltFire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bForceFire" class="hidden"></a>bForceFire <a href="..\Source_botpack\tournamentweapon.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bForceFire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FireAdjust" class="hidden"></a>FireAdjust <a href="..\Source_botpack\tournamentweapon.html#8" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> FireAdjust;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FireStartTime" class="hidden"></a>FireStartTime <a href="..\Source_botpack\tournamentweapon.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> FireStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FireTime" class="hidden"></a>FireTime <a href="..\Source_botpack\tournamentweapon.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> FireTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InstFlash" class="hidden"></a>InstFlash <a href="..\Source_botpack\tournamentweapon.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> InstFlash;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InstFog" class="hidden"></a>InstFog <a href="..\Source_botpack\tournamentweapon.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> InstFog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WeaponDescription" class="hidden"></a>WeaponDescription <a href="..\Source_botpack\tournamentweapon.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WeaponDescription;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AltFire+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AltFire <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#251" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AltFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AltFire+AltFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AltFire <span class="function_state">AltFiring</span> <a href="..\Source_botpack\tournamentweapon.html#483" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AltFire (<font class="source_keyword">float</font> F)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AltFire+NormalFire" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AltFire <span class="function_state">NormalFire</span> <a href="..\Source_botpack\tournamentweapon.html#463" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AltFire (<font class="source_keyword">float</font> F)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AnimEnd+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AnimEnd <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#171" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AnimEnd ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AnimEnd+AltFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AnimEnd <span class="function_state">AltFiring</span> <a href="..\Source_botpack\tournamentweapon.html#497" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AnimEnd ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AnimEnd+ClientActive" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AnimEnd <span class="function_state">ClientActive</span> <a href="..\Source_botpack\tournamentweapon.html#574" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AnimEnd ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AnimEnd+ClientAltFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AnimEnd <span class="function_state">ClientAltFiring</span> <a href="..\Source_botpack\tournamentweapon.html#420" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AnimEnd ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AnimEnd+ClientDown" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AnimEnd <span class="function_state">ClientDown</span> <a href="..\Source_botpack\tournamentweapon.html#646" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AnimEnd ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AnimEnd+ClientFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AnimEnd <span class="function_state">ClientFiring</span> <a href="..\Source_botpack\tournamentweapon.html#382" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AnimEnd ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AnimEnd+NormalFire" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AnimEnd <span class="function_state">NormalFire</span> <a href="..\Source_botpack\tournamentweapon.html#467" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AnimEnd ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BecomeItem+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BecomeItem <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#141" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BecomeItem ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+ClientActive" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">ClientActive</span> <a href="..\Source_botpack\tournamentweapon.html#600" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+ClientDown" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">ClientDown</span> <a href="..\Source_botpack\tournamentweapon.html#669" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+DownWeapon" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">DownWeapon</span> <a href="..\Source_botpack\tournamentweapon.html#679" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientAltFire+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientAltFire <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#230" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientAltFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientAltFire+ClientActive" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientAltFire <span class="function_state">ClientActive</span> <a href="..\Source_botpack\tournamentweapon.html#568" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientAltFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientAltFire+ClientAltFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientAltFire <span class="function_state">ClientAltFiring</span> <a href="..\Source_botpack\tournamentweapon.html#416" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientAltFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientAltFire+ClientDown" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientAltFire <span class="function_state">ClientDown</span> <a href="..\Source_botpack\tournamentweapon.html#632" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientAltFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientAltFire+ClientFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientAltFire <span class="function_state">ClientFiring</span> <a href="..\Source_botpack\tournamentweapon.html#377" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientAltFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientFire+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientFire <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#187" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientFire+ClientActive" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientFire <span class="function_state">ClientActive</span> <a href="..\Source_botpack\tournamentweapon.html#562" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientFire+ClientAltFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientFire <span class="function_state">ClientAltFiring</span> <a href="..\Source_botpack\tournamentweapon.html#411" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientFire+ClientDown" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientFire <span class="function_state">ClientDown</span> <a href="..\Source_botpack\tournamentweapon.html#627" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientFire+ClientFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientFire <span class="function_state">ClientFiring</span> <a href="..\Source_botpack\tournamentweapon.html#372" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientFire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientPutDown+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClientPutDown <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#123" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ClientPutDown (<font class="source_type"><a href="..\engine\weapon.html" class="source">weapon</a></font> NextWeapon)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DropFrom+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DropFrom <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#94" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DropFrom (<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> StartLocation)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndState+Active" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndState <span class="function_state">Active</span> <a href="..\Source_botpack\tournamentweapon.html#520" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndState+ClientActive" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndState <span class="function_state">ClientActive</span> <a href="..\Source_botpack\tournamentweapon.html#608" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndState+ClientAltFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndState <span class="function_state">ClientAltFiring</span> <a href="..\Source_botpack\tournamentweapon.html#441" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndState+ClientFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndState <span class="function_state">ClientFiring</span> <a href="..\Source_botpack\tournamentweapon.html#403" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Finish+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Finish <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#42" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Finish ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Fire+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Fire <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#208" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Fire (<font class="source_keyword">float</font> Value)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Fire+AltFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Fire <span class="function_state">AltFiring</span> <a href="..\Source_botpack\tournamentweapon.html#479" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Fire (<font class="source_keyword">float</font> F)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Fire+NormalFire" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Fire <span class="function_state">NormalFire</span> <a href="..\Source_botpack\tournamentweapon.html#460" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Fire (<font class="source_keyword">float</font> F)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceAltFire+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceAltFire <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceAltFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceAltFire+Active" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceAltFire <span class="function_state">Active</span> <a href="..\Source_botpack\tournamentweapon.html#515" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceAltFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceAltFire+AltFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceAltFire <span class="function_state">AltFiring</span> <a href="..\Source_botpack\tournamentweapon.html#492" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceAltFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceAltFire+NormalFire" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceAltFire <span class="function_state">NormalFire</span> <a href="..\Source_botpack\tournamentweapon.html#455" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceAltFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceClientAltFire+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceClientAltFire <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#182" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceClientAltFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceClientAltFire+ClientActive" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceClientAltFire <span class="function_state">ClientActive</span> <a href="..\Source_botpack\tournamentweapon.html#557" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceClientAltFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceClientAltFire+ClientDown" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceClientAltFire <span class="function_state">ClientDown</span> <a href="..\Source_botpack\tournamentweapon.html#622" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceClientAltFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceClientFire+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceClientFire <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#177" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceClientFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceClientFire+ClientActive" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceClientFire <span class="function_state">ClientActive</span> <a href="..\Source_botpack\tournamentweapon.html#552" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceClientFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceClientFire+ClientDown" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceClientFire <span class="function_state">ClientDown</span> <a href="..\Source_botpack\tournamentweapon.html#617" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceClientFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceFire+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceFire <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#23" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceFire+Active" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceFire <span class="function_state">Active</span> <a href="..\Source_botpack\tournamentweapon.html#510" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceFire+AltFiring" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceFire <span class="function_state">AltFiring</span> <a href="..\Source_botpack\tournamentweapon.html#487" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ForceFire+NormalFire" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ForceFire <span class="function_state">NormalFire</span> <a href="..\Source_botpack\tournamentweapon.html#450" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ForceFire ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandlePickupQuery+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandlePickupQuery <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#318" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandlePickupQuery (<font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> Item)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Landed+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Landed <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#309" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Landed (<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Landed+Pickup" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Landed <span class="function_state">Pickup</span> <a href="..\Source_botpack\tournamentweapon.html#355" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Landed (<font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> HitNormal)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayIdleAnim+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayIdleAnim <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#305" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayIdleAnim ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayPostSelect+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayPostSelect <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#284" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayPostSelect ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlaySelect+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlaySelect <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#274" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlaySelect ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetWeaponStay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetWeaponStay <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetWeaponStay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+ClientDown" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state">ClientDown</span> <a href="..\Source_botpack\tournamentweapon.html#637" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TweenDown+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TweenDown <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#297" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TweenDown ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TweenToStill+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TweenToStill <span class="function_state"></span> <a href="..\Source_botpack\tournamentweapon.html#136" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TweenToStill ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    bClientAnim=<font class="source_keyword">true</font>
+    FireAdjust=<font class="source_int">1.0</font>
+    MyDamageType=Unspecified
+    AltDamageType=Unspecified
+    PickupMessageClass=<font class="source_keyword">class</font><font class="source_name">'Botpack.PickupMessagePlus'</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\tournamentweapon.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#TournamentWeapon">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="tournamentscoreboard.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="trainingas.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:37.281 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

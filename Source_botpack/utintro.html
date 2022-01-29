@@ -1,0 +1,337 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.UTIntro</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\utintro.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTIntro">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uthumancarcass.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utliver.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\utintro.html">UTIntro</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// UTIntro.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\utintro.html" class="source">UTIntro</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\botpack\tournamentgameinfo.html" class="source">TournamentGameInfo</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bOpened;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> TickCount;
+<a name="8"></a>
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">string</font> CityIntroHUDClass;
+<a name="10"></a>
+<a name="11"></a><font class="source_keyword">event</font> PreBeginPlay()
+<a name="12"></a>{
+<a name="13"></a>    <font class="source_keyword">if</font>( CityIntroHUDClass!=<font class="source_string">""</font> && Left(<font class="source_keyword">string</font>(<font class="source_type">Level</font>), <font class="source_int">9</font>) ~=<font class="source_string">"cityintro"</font> )
+<a name="14"></a>    {
+<a name="15"></a>        HUDType = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\hud.html" class="source">HUD</a></font>&gt;( DynamicLoadObject(CityIntroHUDClass, <font class="source_keyword">class</font><font class="source_name">'Class'</font>) );
+<a name="16"></a>        Log(<font class="source_string">"Using CityIntro HUD: "</font>$HUDType);
+<a name="17"></a>    }       
+<a name="18"></a>    <font class="source_keyword">Super</font>.PreBeginPlay();
+<a name="19"></a>}
+<a name="20"></a>
+<a name="21"></a><font class="source_keyword">event</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font> Login
+<a name="22"></a>(
+<a name="23"></a>    <font class="source_keyword">string</font> Portal,
+<a name="24"></a>    <font class="source_keyword">string</font> Options,
+<a name="25"></a>    <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error,
+<a name="26"></a>    <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font>&gt; SpawnClass
+<a name="27"></a>)
+<a name="28"></a>{
+<a name="29"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> NewPlayer;
+<a name="30"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\spectatorcam.html" class="source">SpectatorCam</a></font> Cam;
+<a name="31"></a>
+<a name="32"></a>    <font class="source_comment">// Don't allow player to be a spectator
+</font><a name="33"></a>    <font class="source_keyword">if</font>( !SpawnClass.Default.bCollideActors )
+<a name="34"></a>        SpawnClass = <font class="source_keyword">class</font><font class="source_name">'TMale2'</font>;
+<a name="35"></a>
+<a name="36"></a>    bRatedGame = <font class="source_keyword">true</font>;
+<a name="37"></a>    NewPlayer = <font class="source_keyword">Super</font>.Login(Portal, Options, Error, SpawnClass);
+<a name="38"></a>    bRatedGame = <font class="source_keyword">false</font>;
+<a name="39"></a>    NewPlayer.bHidden = <font class="source_keyword">True</font>;
+<a name="40"></a>
+<a name="41"></a>    <font class="source_keyword">foreach</font> AllActors(<font class="source_keyword">class</font><font class="source_name">'SpectatorCam'</font>, Cam) 
+<a name="42"></a>        NewPlayer.ViewTarget = Cam;
+<a name="43"></a>
+<a name="44"></a>    <font class="source_keyword">return</font> NewPlayer;
+<a name="45"></a>}
+<a name="46"></a>
+<a name="47"></a><font class="source_comment">/* AcceptInventory()
+<a name="48"></a>Examine the passed player's inventory, and accept or discard each item
+<a name="49"></a>* AcceptInventory needs to gracefully handle the case of some inventory
+<a name="50"></a>being accepted but other inventory not being accepted (such as the default
+<a name="51"></a>weapon).  There are several things that can go wrong: A weapon's
+<a name="52"></a>AmmoType not being accepted but the weapon being accepted -- the weapon
+<a name="53"></a>should be killed off. Or the player's selected inventory item, active
+<a name="54"></a>weapon, etc. not being accepted, leaving the player weaponless or leaving
+<a name="55"></a>the HUD inventory rendering messed up (AcceptInventory should pick another
+<a name="56"></a>applicable weapon/item as current).
+<a name="57"></a>*/</font>
+<a name="58"></a><font class="source_keyword">function</font> AcceptInventory(<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>)
+<a name="59"></a>{
+<a name="60"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> Inv;
+<a name="61"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\ladderinventory.html" class="source">LadderInventory</a></font> LadderObj;
+<a name="62"></a>
+<a name="63"></a>    <font class="source_comment">// DeathMatchPlus accepts LadderInventory
+</font><a name="64"></a>    <font class="source_keyword">for</font>( Inv=<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>.<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>; Inv!=<font class="source_keyword">None</font>; Inv=Inv.<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> )
+<a name="65"></a>    {
+<a name="66"></a>        <font class="source_keyword">if</font> (Inv.IsA(<font class="source_name">'LadderInventory'</font>))
+<a name="67"></a>        {
+<a name="68"></a>            LadderObj = <font class="source_type"><a href="..\botpack\ladderinventory.html" class="source">LadderInventory</a></font>(Inv);
+<a name="69"></a>        } 
+<a name="70"></a>        <font class="source_keyword">else</font>    
+<a name="71"></a>            Inv.Destroy();
+<a name="72"></a>    }
+<a name="73"></a>    <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> = <font class="source_keyword">None</font>;
+<a name="74"></a>    <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>.SelectedItem = <font class="source_keyword">None</font>;
+<a name="75"></a>}
+<a name="76"></a>
+<a name="77"></a><font class="source_keyword">function</font> PlayTeleportEffect( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Incoming, <font class="source_keyword">bool</font> bOut, <font class="source_keyword">bool</font> bSound)
+<a name="78"></a>{
+<a name="79"></a>}
+<a name="80"></a>
+<a name="81"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> PlaySpawnEffect(<font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> Inv)
+<a name="82"></a>{
+<a name="83"></a>}
+<a name="84"></a>
+<a name="85"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SetPause( <font class="source_keyword">BOOL</font> bPause, <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> P )
+<a name="86"></a>{
+<a name="87"></a>    <font class="source_keyword">return</font> <font class="source_keyword">False</font>;
+<a name="88"></a>}
+<a name="89"></a>
+<a name="90"></a><font class="source_keyword2">auto</font> <font class="source_keyword">state</font> Startup
+<a name="91"></a>{
+<a name="92"></a>    <font class="source_keyword">function</font> Tick(<font class="source_keyword">float</font> DeltaTime)
+<a name="93"></a>    {
+<a name="94"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="95"></a>
+<a name="96"></a>        <font class="source_keyword">if</font>( <font class="source_type">Level</font>.LevelAction == LEVACT_Connecting )
+<a name="97"></a>        {
+<a name="98"></a>            bOpened = <font class="source_keyword">True</font>;
+<a name="99"></a>            Disable(<font class="source_name">'Tick'</font>);
+<a name="100"></a>            <font class="source_keyword">return</font>;
+<a name="101"></a>        }
+<a name="102"></a>
+<a name="103"></a>        TickCount++;
+<a name="104"></a>        <font class="source_keyword">if</font>(TickCount &lt; <font class="source_int">2</font>)
+<a name="105"></a>            <font class="source_keyword">return</font>;
+<a name="106"></a>
+<a name="107"></a>        <font class="source_keyword">if</font> (DemoBuild == <font class="source_int">1</font> && !bOpened )
+<a name="108"></a>        {
+<a name="109"></a>            <font class="source_keyword">for</font> ( P=<font class="source_type">Level</font>.PawnList; P!=<font class="source_keyword">None</font>; P=P.NextPawn )
+<a name="110"></a>            {
+<a name="111"></a>                <font class="source_keyword">if</font> ( P.IsA(<font class="source_name">'PlayerPawn'</font>) && (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(P) != <font class="source_keyword">None</font>)
+<a name="112"></a>                    && (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(P).<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font> != <font class="source_keyword">None</font>)
+<a name="113"></a>                    && (<font class="source_type"><a href="..\botpack\tournamentconsole.html" class="source">TournamentConsole</a></font>(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(P).<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font>.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>) != <font class="source_keyword">None</font>) 
+<a name="114"></a>                    && <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(P).ProgressMessage[<font class="source_int">0</font>] == <font class="source_string">""</font>)
+<a name="115"></a>                    <font class="source_type"><a href="..\botpack\tournamentconsole.html" class="source">TournamentConsole</a></font>(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(P).<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font>.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>).LaunchUWindow();
+<a name="116"></a>            }
+<a name="117"></a>        }
+<a name="118"></a>        bOpened = <font class="source_keyword">True</font>;
+<a name="119"></a>        Disable(<font class="source_name">'Tick'</font>);
+<a name="120"></a>    }
+<a name="121"></a>}
+<a name="122"></a>
+<a name="123"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CanSpectate( <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Viewer, <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> ViewTarget )
+<a name="124"></a>{
+<a name="125"></a>    <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="126"></a>}
+<a name="127"></a>
+<a name="128"></a><font class="source_keyword">defaultproperties</font>
+<a name="129"></a>{
+<a name="130"></a>    bCanViewOthers=<font class="source_keyword">false</font>
+<a name="131"></a>    bGameEnded=<font class="source_keyword">true</font>
+<a name="132"></a>     bPauseable=<font class="source_keyword">True</font>
+<a name="133"></a>     DefaultWeapon=<font class="source_keyword">None</font>
+<a name="134"></a>     HUDType=<font class="source_keyword">Class</font><font class="source_name">'Botpack.CHNullHUD'</font>
+<a name="135"></a>     RulesMenuType=<font class="source_string">"UTMenu.UTRulesSClient"</font>
+<a name="136"></a>     SettingsMenuType=<font class="source_string">"UTMenu.UTRulesSClient"</font>
+<a name="137"></a>     GameUMenuType=<font class="source_string">"UTMenu.UTGameMenu"</font>
+<a name="138"></a>     MultiplayerUMenuType=<font class="source_string">"UTMenu.UTMultiplayerMenu"</font>
+<a name="139"></a>     GameOptionsMenuType=<font class="source_string">"UTMenu.UTOptionsMenu"</font>
+<a name="140"></a>     CityIntroHUDClass=<font class="source_string">""</font>;
+<a name="141"></a>}
+<a name="142"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\utintro.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTIntro">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="uthumancarcass.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utliver.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:22:56.000 - Creation time: Wed 26/5/2004 10:48:59.234 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

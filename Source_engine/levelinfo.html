@@ -1,0 +1,435 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Engine.LevelInfo</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\levelinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#LevelInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="keypoint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="levelsummary.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\levelinfo.html">LevelInfo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// LevelInfo contains information about the current level. There should 
+</font><a name="3"></a><font class="source_comment">// be one per level and it should be actor 0. UnrealEd creates each level's 
+</font><a name="4"></a><font class="source_comment">// LevelInfo automatically so you should never have to place one
+</font><a name="5"></a><font class="source_comment">// manually.
+</font><a name="6"></a><font class="source_comment">//
+</font><a name="7"></a><font class="source_comment">// The ZoneInfo properties in the LevelInfo are used to define
+</font><a name="8"></a><font class="source_comment">// the properties of all zones which don't themselves have ZoneInfo.
+</font><a name="9"></a><font class="source_comment">//=============================================================================
+</font><a name="10"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\engine\levelinfo.html" class="source">LevelInfo</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font>
+<a name="11"></a>    <font class="source_keyword2">native</font>
+<a name="12"></a>    <font class="source_keyword2">nativereplication</font>;
+<a name="13"></a>
+<a name="14"></a><font class="source_comment">// Textures.
+</font><a name="15"></a><font class="source_macro">#exec Texture Import File=Textures\DefaultTexture.pcx
+</font><a name="16"></a>
+<a name="17"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="18"></a><font class="source_comment">// Level time.
+</font><a name="19"></a>
+<a name="20"></a><font class="source_comment">// Time passage.
+</font><a name="21"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font> TimeDilation;          <font class="source_comment">// Normally 1 - scales real time passage.
+</font><a name="22"></a>
+<a name="23"></a><font class="source_comment">// Current time.
+</font><a name="24"></a><font class="source_keyword">var</font>           <font class="source_keyword">float</font> TimeSeconds;   <font class="source_comment">// Time in seconds since level began play.
+</font><a name="25"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font>   Year;          <font class="source_comment">// Year.
+</font><a name="26"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font>   Month;         <font class="source_comment">// Month.
+</font><a name="27"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font>   Day;           <font class="source_comment">// Day of month.
+</font><a name="28"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font>   DayOfWeek;     <font class="source_comment">// Day of week.
+</font><a name="29"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font>   Hour;          <font class="source_comment">// Hour.
+</font><a name="30"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font>   Minute;        <font class="source_comment">// Minute.
+</font><a name="31"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font>   Second;        <font class="source_comment">// Second.
+</font><a name="32"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font>   Millisecond;   <font class="source_comment">// Millisecond.
+</font><a name="33"></a>
+<a name="34"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="35"></a><font class="source_comment">// Text info about level.
+</font><a name="36"></a>
+<a name="37"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> Title;
+<a name="38"></a><font class="source_keyword">var</font>()           <font class="source_keyword">string</font> Author;          <font class="source_comment">// Who built it.
+</font><a name="39"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> IdealPlayerCount;<font class="source_comment">// Ideal number of players for this level. I.E.: 6-8
+</font><a name="40"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font>   RecommendedEnemies;         <font class="source_comment">// number of enemy bots recommended (used by rated games)
+</font><a name="41"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font>   RecommendedTeammates;       <font class="source_comment">// number of friendly bots recommended (used by rated games)
+</font><a name="42"></a><font class="source_keyword">var</font>() <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> LevelEnterText;  <font class="source_comment">// Message to tell players when they enter.
+</font><a name="43"></a><font class="source_keyword">var</font>()           <font class="source_keyword">string</font> LocalizedPkg;    <font class="source_comment">// Package to look in for localizations.
+</font><a name="44"></a><font class="source_keyword">var</font>             <font class="source_keyword">string</font> Pauser;          <font class="source_comment">// If paused, name of person pausing the game.
+</font><a name="45"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\levelsummary.html" class="source">levelsummary</a></font> Summary;
+<a name="46"></a><font class="source_keyword">var</font>           <font class="source_keyword">string</font> VisibleGroups;         <font class="source_comment">// List of the group names which were checked when the level was last saved
+</font><a name="47"></a>
+<a name="48"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="49"></a><font class="source_comment">// Flags affecting the level.
+</font><a name="50"></a>
+<a name="51"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>           bLonePlayer;     <font class="source_comment">// No multiplayer coordination, i.e. for entranceways.
+</font><a name="52"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>             bBegunPlay;      <font class="source_comment">// Whether gameplay has begun.
+</font><a name="53"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>             bPlayersOnly;    <font class="source_comment">// Only update players.
+</font><a name="54"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>             bHighDetailMode; <font class="source_comment">// Client high-detail mode.
+</font><a name="55"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>             bDropDetail;     <font class="source_comment">// frame rate is below DesiredFrameRate, so drop high detail actors
+</font><a name="56"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>             bAggressiveLOD;  <font class="source_comment">// frame rate is well below DesiredFrameRate, so make LOD more aggressive
+</font><a name="57"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>             bStartup;        <font class="source_comment">// Starting gameplay.
+</font><a name="58"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>           bHumansOnly;     <font class="source_comment">// Only allow "human" player pawns in this level
+</font><a name="59"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>             bNoCheating;     
+<a name="60"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>             bAllowFOV;
+<a name="61"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">bool</font>      bLowRes;         <font class="source_comment">// optimize for low resolution (e.g. TV)
+</font><a name="62"></a>
+<a name="63"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="64"></a><font class="source_comment">// Audio properties.
+</font><a name="65"></a>
+<a name="66"></a><font class="source_keyword">var</font>(Audio) <font class="source_keyword">const</font> <font class="source_type">music</font>  Song;          <font class="source_comment">// Default song for level.
+</font><a name="67"></a><font class="source_keyword">var</font>(Audio) <font class="source_keyword">const</font> <font class="source_keyword">byte</font>   SongSection;   <font class="source_comment">// Default song order for level.
+</font><a name="68"></a><font class="source_keyword">var</font>(Audio) <font class="source_keyword">const</font> <font class="source_keyword">byte</font>   CdTrack;       <font class="source_comment">// Default CD track for level.
+</font><a name="69"></a><font class="source_keyword">var</font>(Audio) <font class="source_keyword">float</font>        PlayerDoppler; <font class="source_comment">// Player doppler shift, 0=none, 1=full.
+</font><a name="70"></a>
+<a name="71"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="72"></a><font class="source_comment">// Miscellaneous information.
+</font><a name="73"></a>
+<a name="74"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font> Brightness;
+<a name="75"></a><font class="source_keyword">var</font>() <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> Screenshot;
+<a name="76"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> DefaultTexture;
+<a name="77"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> HubStackLevel;
+<a name="78"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\levelinfo.html#ELevelAction" class="source">ELevelAction</a></font>
+<a name="79"></a>{
+<a name="80"></a>    LEVACT_None,
+<a name="81"></a>    LEVACT_Loading,
+<a name="82"></a>    LEVACT_Saving,
+<a name="83"></a>    LEVACT_Connecting,
+<a name="84"></a>    LEVACT_Precaching
+<a name="85"></a>} LevelAction;
+<a name="86"></a>
+<a name="87"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="88"></a><font class="source_comment">// Renderer Management.
+</font><a name="89"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bNeverPrecache;
+<a name="90"></a>
+<a name="91"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="92"></a><font class="source_comment">// Networking.
+</font><a name="93"></a>
+<a name="94"></a><font class="source_keyword">var</font> <font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\levelinfo.html#ENetMode" class="source">ENetMode</a></font>
+<a name="95"></a>{
+<a name="96"></a>    NM_Standalone,        <font class="source_comment">// Standalone game.
+</font><a name="97"></a>    NM_DedicatedServer,   <font class="source_comment">// Dedicated server, no local client.
+</font><a name="98"></a>    NM_ListenServer,      <font class="source_comment">// Listen server.
+</font><a name="99"></a>    NM_Client             <font class="source_comment">// Client only, no local server.
+</font><a name="100"></a>} NetMode;
+<a name="101"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> ComputerName;  <font class="source_comment">// Machine's name according to the OS.
+</font><a name="102"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> EngineVersion; <font class="source_comment">// Engine version.
+</font><a name="103"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> MinNetVersion; <font class="source_comment">// Min engine version that is net compatible.
+</font><a name="104"></a>
+<a name="105"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="106"></a><font class="source_comment">// Gameplay rules
+</font><a name="107"></a>
+<a name="108"></a><font class="source_keyword">var</font>() <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\gameinfo.html" class="source">gameinfo</a></font>&gt; DefaultGameType;
+<a name="109"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\gameinfo.html" class="source">GameInfo</a></font> Game;
+<a name="110"></a>
+<a name="111"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="112"></a><font class="source_comment">// Navigation point and Pawn lists (chained using nextNavigationPoint and nextPawn).
+</font><a name="113"></a>
+<a name="114"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font> NavigationPointList;
+<a name="115"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> PawnList;
+<a name="116"></a>
+<a name="117"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="118"></a><font class="source_comment">// Server related.
+</font><a name="119"></a>
+<a name="120"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> NextURL;
+<a name="121"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNextItems;
+<a name="122"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> NextSwitchCountdown;
+<a name="123"></a>
+<a name="124"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="125"></a><font class="source_comment">// Actor Performance Management
+</font><a name="126"></a>
+<a name="127"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> AIProfile[<font class="source_int">8</font>]; <font class="source_comment">// TEMP statistics
+</font><a name="128"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> AvgAITime;    <font class="source_comment">//moving average of Actor time
+</font><a name="129"></a>
+<a name="130"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="131"></a><font class="source_comment">// Physics control
+</font><a name="132"></a>
+<a name="133"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font> bCheckWalkSurfaces; <font class="source_comment">// enable texture-specific physics code for Pawns.
+</font><a name="134"></a>
+<a name="135"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="136"></a><font class="source_comment">// Spawn notification list
+</font><a name="137"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\spawnnotify.html" class="source">SpawnNotify</a></font> <font class="source_type"><a href="..\engine\spawnnotify.html" class="source">SpawnNotify</a></font>;
+<a name="138"></a>
+<a name="139"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="140"></a><font class="source_comment">// Functions.
+</font><a name="141"></a>
+<a name="142"></a><font class="source_comment">//
+</font><a name="143"></a><font class="source_comment">// Return the URL of this level on the local machine.
+</font><a name="144"></a><font class="source_comment">//
+</font><a name="145"></a><font class="source_keyword2">native</font> <font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetLocalURL();
+<a name="146"></a>
+<a name="147"></a><font class="source_comment">//
+</font><a name="148"></a><font class="source_comment">// Return the URL of this level, which may possibly
+</font><a name="149"></a><font class="source_comment">// exist on a remote machine.
+</font><a name="150"></a><font class="source_comment">//
+</font><a name="151"></a><font class="source_keyword2">native</font> <font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetAddressURL();
+<a name="152"></a>
+<a name="153"></a><font class="source_comment">//
+</font><a name="154"></a><font class="source_comment">// Jump the server to a new level.
+</font><a name="155"></a><font class="source_comment">//
+</font><a name="156"></a><font class="source_keyword">event</font> ServerTravel( <font class="source_keyword">string</font> URL, <font class="source_keyword">bool</font> bItems )
+<a name="157"></a>{
+<a name="158"></a>    <font class="source_keyword">if</font>( NextURL==<font class="source_string">""</font> )
+<a name="159"></a>    {
+<a name="160"></a>        bNextItems          = bItems;
+<a name="161"></a>        NextURL             = URL;
+<a name="162"></a>        <font class="source_keyword">if</font>( Game!=<font class="source_keyword">None</font> )
+<a name="163"></a>            Game.ProcessServerTravel( URL, bItems );
+<a name="164"></a>        <font class="source_keyword">else</font>
+<a name="165"></a>            NextSwitchCountdown = <font class="source_int">0</font>;
+<a name="166"></a>    }
+<a name="167"></a>}
+<a name="168"></a>
+<a name="169"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="170"></a><font class="source_comment">// Network replication.
+</font><a name="171"></a>
+<a name="172"></a><font class="source_keyword">replication</font>
+<a name="173"></a>{
+<a name="174"></a>    <font class="source_keyword">reliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="175"></a>        Pauser, TimeDilation, bNoCheating, bAllowFOV;
+<a name="176"></a>}
+<a name="177"></a>
+<a name="178"></a><font class="source_keyword">defaultproperties</font>
+<a name="179"></a>{
+<a name="180"></a>     TimeDilation=+<font class="source_int">00001.000000</font>
+<a name="181"></a>     Brightness=<font class="source_int">1</font>
+<a name="182"></a>     Title=<font class="source_string">"Untitled"</font>
+<a name="183"></a>     bHiddenEd=<font class="source_keyword">True</font>
+<a name="184"></a>     CdTrack=<font class="source_int">255</font>
+<a name="185"></a>     DefaultTexture=DefaultTexture
+<a name="186"></a>     HubStackLevel=<font class="source_int">0</font>
+<a name="187"></a>     bHighDetailMode=<font class="source_keyword">True</font>
+<a name="188"></a>     PlayerDoppler=<font class="source_int">0</font>
+<a name="189"></a>     VisibleGroups=<font class="source_string">"None"</font>
+<a name="190"></a>}
+<a name="191"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\levelinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#LevelInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="keypoint.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="levelsummary.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:23:18.000 - Creation time: Wed 26/5/2004 10:48:23.828 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

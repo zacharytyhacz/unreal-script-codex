@@ -1,0 +1,1120 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Engine.Mover</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\mover.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Mover">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="messagingspectator.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="musicevent.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="engine-overview.html">Engine</a>.Mover</h1>
+<b>Extends:</b> <a href="brush.html">Brush</a><br>
+<b>Modifiers:</b> native nativereplication <br>
+<a href="..\Source_engine\mover.html"><b>Source code</b></a>
+
+<p>
+The moving brush class.<br />
+This is a built-in Unreal class and it shouldn't be modified.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a>
+    |   
+    +-- <a href="engine-overview.html">Engine</a>.<a href="brush.html">Brush</a>
+        |   
+        +-- <a href="engine-overview.html">Engine</a>.<a href="mover.html">Mover</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\unrealshare\assertmover.html">AssertMover</a>, <a href="..\unrealshare\attachmover.html">AttachMover</a>, <a href="..\unreali\elevatormover.html">ElevatorMover</a>, <a href="..\unreali\gradualmover.html">GradualMover</a>, <a href="..\unreali\loopmover.html">LoopMover</a>, <a href="..\unreali\mixmover.html">MixMover</a>, <a href="..\unrealshare\rotatingmover.html">RotatingMover</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_BasePos" name="BasePos">BasePos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Rotator">rotator</a></td><td width="66%"><a href="#_BaseRot" name="BaseRot">BaseRot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bClientPause" name="bClientPause">bClientPause</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDamageTriggered" name="bDamageTriggered">bDamageTriggered</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDelaying" name="bDelaying">bDelaying</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDynamicLightMover" name="bDynamicLightMover">bDynamicLightMover</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bOpening" name="bOpening">bOpening</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPlayerOnly" name="bPlayerOnly">bPlayerOnly</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_BrushRaytraceKey" name="BrushRaytraceKey">BrushRaytraceKey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSlave" name="bSlave">bSlave</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTriggerOnceOnly" name="bTriggerOnceOnly">bTriggerOnceOnly</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_BumpEvent" name="BumpEvent">BumpEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="mover.html#EBumpType">EBumpType</a></td><td width="66%"><a href="#_BumpType" name="BumpType">BumpType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bUseTriggered" name="bUseTriggered">bUseTriggered</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ClientUpdate" name="ClientUpdate">ClientUpdate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DamageThreshold" name="DamageThreshold">DamageThreshold</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DelayTime" name="DelayTime">DelayTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_EncroachDamage" name="EncroachDamage">EncroachDamage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="mover.html">Mover</a></td><td width="66%"><a href="#_Follower" name="Follower">Follower</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_KeyNum" name="KeyNum">KeyNum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_KeyPos[8]" name="KeyPos[8]">KeyPos[8]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Rotator">rotator</a></td><td width="66%"><a href="#_KeyRot[8]" name="KeyRot[8]">KeyRot[8]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="mover.html">Mover</a></td><td width="66%"><a href="#_Leader" name="Leader">Leader</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="mover.html#EMoverEncroachType">EMoverEncroachType</a></td><td width="66%"><a href="#_MoverEncroachType" name="MoverEncroachType">MoverEncroachType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="mover.html#EMoverGlideType">EMoverGlideType</a></td><td width="66%"><a href="#_MoverGlideType" name="MoverGlideType">MoverGlideType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MoveTime" name="MoveTime">MoveTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="navigationpoint.html">NavigationPoint</a></td><td width="66%"><a href="#_myMarker" name="myMarker">myMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_NumKeys" name="NumKeys">NumKeys</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_numTriggerEvents" name="numTriggerEvents">numTriggerEvents</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_OldPos" name="OldPos">OldPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_OldPrePivot" name="OldPrePivot">OldPrePivot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Rotator">rotator</a></td><td width="66%"><a href="#_OldRot" name="OldRot">OldRot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_OtherTime" name="OtherTime">OtherTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_PlayerBumpEvent" name="PlayerBumpEvent">PlayerBumpEvent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_PrevKeyNum" name="PrevKeyNum">PrevKeyNum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_RealPosition" name="RealPosition">RealPosition</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Rotator">rotator</a></td><td width="66%"><a href="#_RealRotation" name="RealRotation">RealRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="trigger.html">Trigger</a></td><td width="66%"><a href="#_RecommendedTrigger" name="RecommendedTrigger">RecommendedTrigger</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_ReturnGroup" name="ReturnGroup">ReturnGroup</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_SavedPos" name="SavedPos">SavedPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Rotator">rotator</a></td><td width="66%"><a href="#_SavedRot" name="SavedRot">SavedRot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="actor.html">actor</a></td><td width="66%"><a href="#_SavedTrigger" name="SavedTrigger">SavedTrigger</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_SimInterpolate" name="SimInterpolate">SimInterpolate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_SimOldPos" name="SimOldPos">SimOldPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_SimOldRotPitch" name="SimOldRotPitch">SimOldRotPitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_SimOldRotRoll" name="SimOldRotRoll">SimOldRotRoll</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_SimOldRotYaw" name="SimOldRotYaw">SimOldRotYaw</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_StayOpenTime" name="StayOpenTime">StayOpenTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="actor.html">Actor</a></td><td width="66%"><a href="#_TriggerActor" name="TriggerActor">TriggerActor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="actor.html">Actor</a></td><td width="66%"><a href="#_TriggerActor2" name="TriggerActor2">TriggerActor2</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="pawn.html">Pawn</a></td><td width="66%"><a href="#_WaitingPawn" name="WaitingPawn">WaitingPawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_WorldRaytraceKey" name="WorldRaytraceKey">WorldRaytraceKey</a></td></tr>
+<tr><th colspan="2" class="small">MoverSounds</th></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_ClosedSound" name="ClosedSound">ClosedSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_ClosingSound" name="ClosingSound">ClosingSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_MoveAmbientSound" name="MoveAmbientSound">MoveAmbientSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_OpenedSound" name="OpenedSound">OpenedSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_OpeningSound" name="OpeningSound">OpeningSound</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="engine-overview.html">Engine</a>.<a href="brush.html">Brush</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="brush.html#bColored">bColored</a>, <a href="brush.html#BrushColor">BrushColor</a>, <a href="brush.html#CsgOper">CsgOper</a>, <a href="brush.html#MainScale">MainScale</a>, <a href="brush.html#PolyFlags">PolyFlags</a>, <a href="brush.html#PostPivot">PostPivot</a>, <a href="brush.html#PostScale">PostScale</a>, <a href="brush.html#TempScale">TempScale</a>, <a href="brush.html#UnusedLightMesh">UnusedLightMesh</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#Acceleration">Acceleration</a>, <a href="actor.html#AmbientGlow">AmbientGlow</a>, <a href="actor.html#AmbientSound">AmbientSound</a>, <a href="actor.html#AnimFrame">AnimFrame</a>, <a href="actor.html#AnimLast">AnimLast</a>, <a href="actor.html#AnimMinRate">AnimMinRate</a>, <a href="actor.html#AnimRate">AnimRate</a>, <a href="actor.html#AnimSequence">AnimSequence</a>, <a href="actor.html#AttachTag">AttachTag</a>, <a href="actor.html#bActorShadows">bActorShadows</a>, <a href="actor.html#bAlwaysRelevant">bAlwaysRelevant</a>, <a href="actor.html#bAlwaysTick">bAlwaysTick</a>, <a href="actor.html#bAnimByOwner">bAnimByOwner</a>, <a href="actor.html#bAnimFinished">bAnimFinished</a>, <a href="actor.html#bAnimLoop">bAnimLoop</a>, <a href="actor.html#bAnimNotify">bAnimNotify</a>, <a href="actor.html#Base">Base</a>, <a href="actor.html#bAssimilated">bAssimilated</a>, <a href="actor.html#bBlockActors">bBlockActors</a>, <a href="actor.html#bBlockPlayers">bBlockPlayers</a>, <a href="actor.html#bBounce">bBounce</a>, <a href="actor.html#bCanTeleport">bCanTeleport</a>, <a href="actor.html#bCarriedItem">bCarriedItem</a>, <a href="actor.html#bClientAnim">bClientAnim</a>, <a href="actor.html#bClientDemoNetFunc">bClientDemoNetFunc</a>, <a href="actor.html#bClientDemoRecording">bClientDemoRecording</a>, <a href="actor.html#bCollideActors">bCollideActors</a>, <a href="actor.html#bCollideWhenPlacing">bCollideWhenPlacing</a>, <a href="actor.html#bCollideWorld">bCollideWorld</a>, <a href="actor.html#bCorona">bCorona</a>, <a href="actor.html#bDeleteMe">bDeleteMe</a>, <a href="actor.html#bDemoRecording">bDemoRecording</a>, <a href="actor.html#bDifficulty0">bDifficulty0</a>, <a href="actor.html#bDifficulty1">bDifficulty1</a>, <a href="actor.html#bDifficulty2">bDifficulty2</a>, <a href="actor.html#bDifficulty3">bDifficulty3</a>, <a href="actor.html#bDirectional">bDirectional</a>, <a href="actor.html#bDynamicLight">bDynamicLight</a>, <a href="actor.html#bEdLocked">bEdLocked</a>, <a href="actor.html#bEdShouldSnap">bEdShouldSnap</a>, <a href="actor.html#bEdSnap">bEdSnap</a>, <a href="actor.html#bFilterByVolume">bFilterByVolume</a>, <a href="actor.html#bFixedRotationDir">bFixedRotationDir</a>, <a href="actor.html#bForcePhysicsUpdate">bForcePhysicsUpdate</a>, <a href="actor.html#bForceStasis">bForceStasis</a>, <a href="actor.html#bGameRelevant">bGameRelevant</a>, <a href="actor.html#bHidden">bHidden</a>, <a href="actor.html#bHiddenEd">bHiddenEd</a>, <a href="actor.html#bHighDetail">bHighDetail</a>, <a href="actor.html#bHighlighted">bHighlighted</a>, <a href="actor.html#bHurtEntry">bHurtEntry</a>, <a href="actor.html#bInterpolating">bInterpolating</a>, <a href="actor.html#bIsItemGoal">bIsItemGoal</a>, <a href="actor.html#bIsKillGoal">bIsKillGoal</a>, <a href="actor.html#bIsMover">bIsMover</a>, <a href="actor.html#bIsPawn">bIsPawn</a>, <a href="actor.html#bIsSecretGoal">bIsSecretGoal</a>, <a href="actor.html#bJustTeleported">bJustTeleported</a>, <a href="actor.html#bLensFlare">bLensFlare</a>, <a href="actor.html#bLightChanged">bLightChanged</a>, <a href="actor.html#bMemorized">bMemorized</a>, <a href="actor.html#bMeshCurvy">bMeshCurvy</a>, <a href="actor.html#bMeshEnviroMap">bMeshEnviroMap</a>, <a href="actor.html#bMovable">bMovable</a>, <a href="actor.html#bNet">bNet</a>, <a href="actor.html#bNetFeel">bNetFeel</a>, <a href="actor.html#bNetHear">bNetHear</a>, <a href="actor.html#bNetInitial">bNetInitial</a>, <a href="actor.html#bNetOptional">bNetOptional</a>, <a href="actor.html#bNetOwner">bNetOwner</a>, <a href="actor.html#bNetRelevant">bNetRelevant</a>, <a href="actor.html#bNetSee">bNetSee</a>, <a href="actor.html#bNetSpecial">bNetSpecial</a>, <a href="actor.html#bNetTemporary">bNetTemporary</a>, <a href="actor.html#bNoDelete">bNoDelete</a>, <a href="actor.html#bNoSmooth">bNoSmooth</a>, <a href="actor.html#bOnlyOwnerSee">bOnlyOwnerSee</a>, <a href="actor.html#bOwnerNoSee">bOwnerNoSee</a>, <a href="actor.html#bParticles">bParticles</a>, <a href="actor.html#bProjTarget">bProjTarget</a>, <a href="actor.html#bRandomFrame">bRandomFrame</a>, <a href="actor.html#bReplicateInstigator">bReplicateInstigator</a>, <a href="actor.html#bRotateToDesired">bRotateToDesired</a>, <a href="actor.html#Brush">Brush</a>, <a href="actor.html#bScriptInitialized">bScriptInitialized</a>, <a href="actor.html#bSelected">bSelected</a>, <a href="actor.html#bShadowCast">bShadowCast</a>, <a href="actor.html#bSimFall">bSimFall</a>, <a href="actor.html#bSimulatedPawn">bSimulatedPawn</a>, <a href="actor.html#bSinglePlayer">bSinglePlayer</a>, <a href="actor.html#bSpecialLit">bSpecialLit</a>, <a href="actor.html#bStasis">bStasis</a>, <a href="actor.html#bStatic">bStatic</a>, <a href="actor.html#bTempEditor">bTempEditor</a>, <a href="actor.html#bTicked">bTicked</a>, <a href="actor.html#bTimerLoop">bTimerLoop</a>, <a href="actor.html#bTrailerPrePivot">bTrailerPrePivot</a>, <a href="actor.html#bTrailerSameRotation">bTrailerSameRotation</a>, <a href="actor.html#bTravel">bTravel</a>, <a href="actor.html#bUnlit">bUnlit</a>, <a href="actor.html#Buoyancy">Buoyancy</a>, <a href="actor.html#CollisionHeight">CollisionHeight</a>, <a href="actor.html#CollisionRadius">CollisionRadius</a>, <a href="actor.html#CollisionTag">CollisionTag</a>, <a href="actor.html#ColLocation">ColLocation</a>, <a href="actor.html#Deleted">Deleted</a>, <a href="actor.html#DesiredRotation">DesiredRotation</a>, <a href="actor.html#DodgeDir">DodgeDir</a>, <a href="actor.html#DrawScale">DrawScale</a>, <a href="actor.html#DrawType">DrawType</a>, <a href="actor.html#Event">Event</a>, <a href="actor.html#ExtraTag">ExtraTag</a>, <a href="actor.html#Fatness">Fatness</a>, <a href="actor.html#Group">Group</a>, <a href="actor.html#HitActor">HitActor</a>, <a href="actor.html#InitialState">InitialState</a>, <a href="actor.html#Instigator">Instigator</a>, <a href="actor.html#Inventory">Inventory</a>, <a href="actor.html#LatentActor">LatentActor</a>, <a href="actor.html#LatentByte">LatentByte</a>, <a href="actor.html#LatentFloat">LatentFloat</a>, <a href="actor.html#LatentInt">LatentInt</a>, <a href="actor.html#Level">Level</a>, <a href="actor.html#LifeSpan">LifeSpan</a>, <a href="actor.html#LightBrightness">LightBrightness</a>, <a href="actor.html#LightCone">LightCone</a>, <a href="actor.html#LightEffect">LightEffect</a>, <a href="actor.html#LightHue">LightHue</a>, <a href="actor.html#LightingTag">LightingTag</a>, <a href="actor.html#LightPeriod">LightPeriod</a>, <a href="actor.html#LightPhase">LightPhase</a>, <a href="actor.html#LightRadius">LightRadius</a>, <a href="actor.html#LightSaturation">LightSaturation</a>, <a href="actor.html#LightType">LightType</a>, <a href="actor.html#Location">Location</a>, <a href="actor.html#LODBias">LODBias</a>, <a href="actor.html#Mass">Mass</a>, <a href="actor.html#Mesh">Mesh</a>, <a href="actor.html#MiscNumber">MiscNumber</a>, <a href="actor.html#MultiSkins[8]">MultiSkins[8]</a>, <a href="actor.html#NetPriority">NetPriority</a>, <a href="actor.html#NetTag">NetTag</a>, <a href="actor.html#NetUpdateFrequency">NetUpdateFrequency</a>, <a href="actor.html#OddsOfAppearing">OddsOfAppearing</a>, <a href="actor.html#OldAnimRate">OldAnimRate</a>, <a href="actor.html#OldLocation">OldLocation</a>, <a href="actor.html#OtherTag">OtherTag</a>, <a href="actor.html#Owner">Owner</a>, <a href="actor.html#PendingTouch">PendingTouch</a>, <a href="actor.html#PhysAlpha">PhysAlpha</a>, <a href="actor.html#Physics">Physics</a>, <a href="actor.html#PhysRate">PhysRate</a>, <a href="actor.html#PrePivot">PrePivot</a>, <a href="actor.html#Region">Region</a>, <a href="actor.html#RemoteRole">RemoteRole</a>, <a href="actor.html#RenderInterface">RenderInterface</a>, <a href="actor.html#RenderIteratorClass">RenderIteratorClass</a>, <a href="actor.html#Role">Role</a>, <a href="actor.html#Rotation">Rotation</a>, <a href="actor.html#RotationRate">RotationRate</a>, <a href="actor.html#ScaleGlow">ScaleGlow</a>, <a href="actor.html#SimAnim">SimAnim</a>, <a href="actor.html#SkelAnim">SkelAnim</a>, <a href="actor.html#Skin">Skin</a>, <a href="actor.html#SoundPitch">SoundPitch</a>, <a href="actor.html#SoundRadius">SoundRadius</a>, <a href="actor.html#SoundVolume">SoundVolume</a>, <a href="actor.html#SpecialTag">SpecialTag</a>, <a href="actor.html#Sprite">Sprite</a>, <a href="actor.html#SpriteProjForward">SpriteProjForward</a>, <a href="actor.html#StandingCount">StandingCount</a>, <a href="actor.html#Style">Style</a>, <a href="actor.html#Tag">Tag</a>, <a href="actor.html#Target">Target</a>, <a href="actor.html#Texture">Texture</a>, <a href="actor.html#TimerCounter">TimerCounter</a>, <a href="actor.html#TimerRate">TimerRate</a>, <a href="actor.html#Touching[4]">Touching[4]</a>, <a href="actor.html#TransientSoundRadius">TransientSoundRadius</a>, <a href="actor.html#TransientSoundVolume">TransientSoundVolume</a>, <a href="actor.html#TweenRate">TweenRate</a>, <a href="actor.html#Velocity">Velocity</a>, <a href="actor.html#VisibilityHeight">VisibilityHeight</a>, <a href="actor.html#VisibilityRadius">VisibilityRadius</a>, <a href="actor.html#VolumeBrightness">VolumeBrightness</a>, <a href="actor.html#VolumeFog">VolumeFog</a>, <a href="actor.html#VolumeRadius">VolumeRadius</a>, <a href="actor.html#XLevel">XLevel</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EBumpType" name="EBumpType">EBumpType</a><br /><span class="small">BT_PlayerBump,
+BT_PawnBump,
+BT_AnyBump,
+</span></td></tr>
+<tr><td><a href="#_EMoverEncroachType" name="EMoverEncroachType">EMoverEncroachType</a><br /><span class="small">ME_StopWhenEncroach,
+ME_ReturnWhenEncroach,
+ME_CrushWhenEncroach,
+ME_IgnoreWhenEncroach,
+</span></td></tr>
+<tr><td><a href="#_EMoverGlideType" name="EMoverGlideType">EMoverGlideType</a><br /><span class="small">MV_MoveByTime,
+MV_GlideByTime,
+</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="engine-overview.html">Engine</a>.<a href="brush.html">Brush</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="brush.html#ECsgOper">ECsgOper</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#EDodgeDir">EDodgeDir</a>, <a href="actor.html#EDrawType">EDrawType</a>, <a href="actor.html#EInputAction">EInputAction</a>, <a href="actor.html#EInputKey">EInputKey</a>, <a href="actor.html#ELightEffect">ELightEffect</a>, <a href="actor.html#ELightType">ELightType</a>, <a href="actor.html#EMusicTransition">EMusicTransition</a>, <a href="actor.html#ENetRole">ENetRole</a>, <a href="actor.html#EPhysics">EPhysics</a>, <a href="actor.html#ERenderStyle">ERenderStyle</a>, <a href="actor.html#ESoundSlot">ESoundSlot</a>, <a href="actor.html#ETravelType">ETravelType</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#PointRegion">PointRegion</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Attach+StandOpenTimed" name="Attach">Attach</a> (<a href="actor.html">actor</a> Other)<br /><span class="function_state">StandOpenTimed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginEvent+BumpButton" name="BeginEvent">BeginEvent</a> ()<br /><span class="function_state">BumpButton</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginPlay+" name="BeginPlay">BeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+TriggerControl" name="BeginState">BeginState</a> ()<br /><span class="function_state">TriggerControl</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+TriggerOpenTimed" name="BeginState">BeginState</a> ()<br /><span class="function_state">TriggerOpenTimed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+TriggerPound" name="BeginState">BeginState</a> ()<br /><span class="function_state">TriggerPound</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Bump+" name="Bump">Bump</a> (<a href="actor.html">actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Bump+BumpButton" name="Bump">Bump</a> (<a href="actor.html">actor</a> Other)<br /><span class="function_state">BumpButton</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Bump+BumpOpenTimed" name="Bump">Bump</a> (<a href="actor.html">actor</a> Other)<br /><span class="function_state">BumpOpenTimed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DoClose+" name="DoClose">DoClose</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DoOpen+" name="DoOpen">DoOpen</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_EncroachingOn+" name="EncroachingOn">EncroachingOn</a> (<a href="actor.html">actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndEvent+BumpButton" name="EndEvent">EndEvent</a> ()<br /><span class="function_state">BumpButton</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_FindTriggerActor+" name="FindTriggerActor">FindTriggerActor</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_FinishedClosing+" name="FinishedClosing">FinishedClosing</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_FinishedOpening+" name="FinishedOpening">FinishedOpening</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_FinishNotify+" name="FinishNotify">FinishNotify</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandleDoor+" name="HandleDoor">HandleDoor</a> (<a href="pawn.html">pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandleDoor+BumpButton" name="HandleDoor">HandleDoor</a> (<a href="pawn.html">pawn</a> Other)<br /><span class="function_state">BumpButton</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandleDoor+BumpOpenTimed" name="HandleDoor">HandleDoor</a> (<a href="pawn.html">pawn</a> Other)<br /><span class="function_state">BumpOpenTimed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandleDoor+StandOpenTimed" name="HandleDoor">HandleDoor</a> (<a href="pawn.html">pawn</a> Other)<br /><span class="function_state">StandOpenTimed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandleDoor+TriggerControl" name="HandleDoor">HandleDoor</a> (<a href="pawn.html">pawn</a> Other)<br /><span class="function_state">TriggerControl</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandleDoor+TriggerOpenTimed" name="HandleDoor">HandleDoor</a> (<a href="pawn.html">pawn</a> Other)<br /><span class="function_state">TriggerOpenTimed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandleDoor+TriggerPound" name="HandleDoor">HandleDoor</a> (<a href="pawn.html">pawn</a> Other)<br /><span class="function_state">TriggerPound</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandleDoor+TriggerToggle" name="HandleDoor">HandleDoor</a> (<a href="pawn.html">pawn</a> Other)<br /><span class="function_state">TriggerToggle</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_HandleTriggerDoor+" name="HandleTriggerDoor">HandleTriggerDoor</a> (<a href="pawn.html">pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_InterpolateEnd+" name="InterpolateEnd">InterpolateEnd</a> (<a href="actor.html">actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_InterpolateTo+" name="InterpolateTo">InterpolateTo</a> (byte NewKeyNum, float Seconds)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_MakeGroupReturn+" name="MakeGroupReturn">MakeGroupReturn</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_MakeGroupStop+" name="MakeGroupStop">MakeGroupStop</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PostBeginPlay+" name="PostBeginPlay">PostBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetKeyframe+" name="SetKeyframe">SetKeyframe</a> (byte NewKeyNum, <a href="..\core\object.html#Vector">vector</a> NewLocation, <a href="..\core\object.html#Rotator">rotator</a> NewRotation)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="actor.html">Actor</a>&nbsp;</td><td><a href="#_SpecialHandling+" name="SpecialHandling">SpecialHandling</a> (<a href="pawn.html">Pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TakeDamage+" name="TakeDamage">TakeDamage</a> (int Damage, <a href="pawn.html">Pawn</a> instigatedBy, <a href="..\core\object.html#Vector">Vector</a> hitlocation, <a href="..\core\object.html#Vector">Vector</a> momentum, name damageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Timer+" name="Timer">Timer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Trigger+TriggerControl" name="Trigger">Trigger</a> (<a href="actor.html">actor</a> Other, <a href="pawn.html">pawn</a> EventInstigator)<br /><span class="function_state">TriggerControl</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Trigger+TriggerOpenTimed" name="Trigger">Trigger</a> (<a href="actor.html">actor</a> Other, <a href="pawn.html">pawn</a> EventInstigator)<br /><span class="function_state">TriggerOpenTimed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Trigger+TriggerPound" name="Trigger">Trigger</a> (<a href="actor.html">actor</a> Other, <a href="pawn.html">pawn</a> EventInstigator)<br /><span class="function_state">TriggerPound</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Trigger+TriggerToggle" name="Trigger">Trigger</a> (<a href="actor.html">actor</a> Other, <a href="pawn.html">pawn</a> EventInstigator)<br /><span class="function_state">TriggerToggle</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_UnTrigger+TriggerControl" name="UnTrigger">UnTrigger</a> (<a href="actor.html">actor</a> Other, <a href="pawn.html">pawn</a> EventInstigator)<br /><span class="function_state">TriggerControl</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_UnTrigger+TriggerPound" name="UnTrigger">UnTrigger</a> (<a href="actor.html">actor</a> Other, <a href="pawn.html">pawn</a> EventInstigator)<br /><span class="function_state">TriggerPound</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="engine-overview.html">Engine</a>.<a href="actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="actor.html#*">*</a>, <a href="actor.html#+">+</a>, <a href="actor.html#-">-</a>, <a href="actor.html#AllActors">AllActors</a>, <a href="actor.html#AnimEnd">AnimEnd</a>, <a href="actor.html#Attach">Attach</a>, <a href="actor.html#AutonomousPhysics">AutonomousPhysics</a>, <a href="actor.html#BaseChange">BaseChange</a>, <a href="actor.html#BasedActors">BasedActors</a>, <a href="actor.html#BecomeViewTarget">BecomeViewTarget</a>, <a href="actor.html#BeginEvent">BeginEvent</a>, <a href="actor.html#BeginPlay">BeginPlay</a>, <a href="actor.html#BroadcastLocalizedMessage">BroadcastLocalizedMessage</a>, <a href="actor.html#BroadcastMessage">BroadcastMessage</a>, <a href="actor.html#Bump">Bump</a>, <a href="actor.html#ChildActors">ChildActors</a>, <a href="actor.html#ConsoleCommand">ConsoleCommand</a>, <a href="actor.html#DemoPlaySound">DemoPlaySound</a>, <a href="actor.html#Destroy">Destroy</a>, <a href="actor.html#Destroyed">Destroyed</a>, <a href="actor.html#Detach">Detach</a>, <a href="actor.html#EncroachedBy">EncroachedBy</a>, <a href="actor.html#EncroachingOn">EncroachingOn</a>, <a href="actor.html#EndedRotation">EndedRotation</a>, <a href="actor.html#EndEvent">EndEvent</a>, <a href="actor.html#Error">Error</a>, <a href="actor.html#Expired">Expired</a>, <a href="actor.html#Falling">Falling</a>, <a href="actor.html#FastTrace">FastTrace</a>, <a href="actor.html#FellOutOfWorld">FellOutOfWorld</a>, <a href="actor.html#FinishAnim">FinishAnim</a>, <a href="actor.html#FinishInterpolation">FinishInterpolation</a>, <a href="actor.html#GainedChild">GainedChild</a>, <a href="actor.html#GetAnimGroup">GetAnimGroup</a>, <a href="actor.html#GetCacheEntry">GetCacheEntry</a>, <a href="actor.html#GetHumanName">GetHumanName</a>, <a href="actor.html#GetItemName">GetItemName</a>, <a href="actor.html#GetMapName">GetMapName</a>, <a href="actor.html#GetNextInt">GetNextInt</a>, <a href="actor.html#GetNextIntDesc">GetNextIntDesc</a>, <a href="actor.html#GetNextSkin">GetNextSkin</a>, <a href="actor.html#GetSoundDuration">GetSoundDuration</a>, <a href="actor.html#GetURLMap">GetURLMap</a>, <a href="actor.html#HasAnim">HasAnim</a>, <a href="actor.html#HitWall">HitWall</a>, <a href="actor.html#HurtRadius">HurtRadius</a>, <a href="actor.html#InterpolateEnd">InterpolateEnd</a>, <a href="actor.html#IsAnimating">IsAnimating</a>, <a href="actor.html#KillCredit">KillCredit</a>, <a href="actor.html#KilledBy">KilledBy</a>, <a href="actor.html#Landed">Landed</a>, <a href="actor.html#LinkSkelAnim">LinkSkelAnim</a>, <a href="actor.html#LoopAnim">LoopAnim</a>, <a href="actor.html#LostChild">LostChild</a>, <a href="actor.html#MakeNoise">MakeNoise</a>, <a href="actor.html#Move">Move</a>, <a href="actor.html#MoveCacheEntry">MoveCacheEntry</a>, <a href="actor.html#MoveSmooth">MoveSmooth</a>, <a href="actor.html#PlayAnim">PlayAnim</a>, <a href="actor.html#PlayerCanSeeMe">PlayerCanSeeMe</a>, <a href="actor.html#PlayOwnedSound">PlayOwnedSound</a>, <a href="actor.html#PlaySound">PlaySound</a>, <a href="actor.html#PostBeginPlay">PostBeginPlay</a>, <a href="actor.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="actor.html#PostTeleport">PostTeleport</a>, <a href="actor.html#PostTouch">PostTouch</a>, <a href="actor.html#PreBeginPlay">PreBeginPlay</a>, <a href="actor.html#PreTeleport">PreTeleport</a>, <a href="actor.html#RadiusActors">RadiusActors</a>, <a href="actor.html#RenderOverlays">RenderOverlays</a>, <a href="actor.html#RenderTexture">RenderTexture</a>, <a href="actor.html#SetBase">SetBase</a>, <a href="actor.html#SetCollision">SetCollision</a>, <a href="actor.html#SetCollisionSize">SetCollisionSize</a>, <a href="actor.html#SetDefaultDisplayProperties">SetDefaultDisplayProperties</a>, <a href="actor.html#SetDisplayProperties">SetDisplayProperties</a>, <a href="actor.html#SetInitialState">SetInitialState</a>, <a href="actor.html#SetLocation">SetLocation</a>, <a href="actor.html#SetOwner">SetOwner</a>, <a href="actor.html#SetPhysics">SetPhysics</a>, <a href="actor.html#SetRotation">SetRotation</a>, <a href="actor.html#SetTimer">SetTimer</a>, <a href="actor.html#Sleep">Sleep</a>, <a href="actor.html#Spawn">Spawn</a>, <a href="actor.html#Spawned">Spawned</a>, <a href="actor.html#SpecialHandling">SpecialHandling</a>, <a href="actor.html#TakeDamage">TakeDamage</a>, <a href="actor.html#Tick">Tick</a>, <a href="actor.html#Timer">Timer</a>, <a href="actor.html#Touch">Touch</a>, <a href="actor.html#TouchingActors">TouchingActors</a>, <a href="actor.html#Trace">Trace</a>, <a href="actor.html#TraceActors">TraceActors</a>, <a href="actor.html#TravelPostAccept">TravelPostAccept</a>, <a href="actor.html#TravelPreAccept">TravelPreAccept</a>, <a href="actor.html#Trigger">Trigger</a>, <a href="actor.html#TweenAnim">TweenAnim</a>, <a href="actor.html#UnTouch">UnTouch</a>, <a href="actor.html#UnTrigger">UnTrigger</a>, <a href="actor.html#VisibleActors">VisibleActors</a>, <a href="actor.html#VisibleCollidingActors">VisibleCollidingActors</a>, <a href="actor.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>BumpButton <a href="..\Source_engine\mover.html#910" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> BumpButton <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginEvent+BumpButton">BeginEvent</a>, <a href="#_Bump+BumpButton">Bump</a>, <a href="#_EndEvent+BumpButton">EndEvent</a>, <a href="#_HandleDoor+BumpButton">HandleDoor</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>BumpOpenTimed <a href="..\Source_engine\mover.html#863" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> BumpOpenTimed <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Bump+BumpOpenTimed">Bump</a>, <a href="#_HandleDoor+BumpOpenTimed">HandleDoor</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>StandOpenTimed <a href="..\Source_engine\mover.html#969" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> StandOpenTimed <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Attach+StandOpenTimed">Attach</a>, <a href="#_HandleDoor+StandOpenTimed">HandleDoor</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>TriggerControl <a href="..\Source_engine\mover.html#756" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> TriggerControl <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+TriggerControl">BeginState</a>, <a href="#_HandleDoor+TriggerControl">HandleDoor</a>, <a href="#_Trigger+TriggerControl">Trigger</a>, <a href="#_UnTrigger+TriggerControl">UnTrigger</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>TriggerOpenTimed <a href="..\Source_engine\mover.html#677" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> TriggerOpenTimed <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+TriggerOpenTimed">BeginState</a>, <a href="#_HandleDoor+TriggerOpenTimed">HandleDoor</a>, <a href="#_Trigger+TriggerOpenTimed">Trigger</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>TriggerPound <a href="..\Source_engine\mover.html#810" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> TriggerPound <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+TriggerPound">BeginState</a>, <a href="#_HandleDoor+TriggerPound">HandleDoor</a>, <a href="#_Trigger+TriggerPound">Trigger</a>, <a href="#_UnTrigger+TriggerPound">UnTrigger</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>TriggerToggle <a href="..\Source_engine\mover.html#719" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> TriggerToggle <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_HandleDoor+TriggerToggle">HandleDoor</a>, <a href="#_Trigger+TriggerToggle">Trigger</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BasePos" class="hidden"></a>BasePos <a href="..\Source_engine\mover.html#77" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> BasePos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BaseRot" class="hidden"></a>BaseRot <a href="..\Source_engine\mover.html#78" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> BaseRot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bClientPause" class="hidden"></a>bClientPause <a href="..\Source_engine\mover.html#85" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bClientPause;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bDamageTriggered" class="hidden"></a>bDamageTriggered <a href="..\Source_engine\mover.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDamageTriggered;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bDelaying" class="hidden"></a>bDelaying <a href="..\Source_engine\mover.html#85" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDelaying;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bDynamicLightMover" class="hidden"></a>bDynamicLightMover <a href="..\Source_engine\mover.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDynamicLightMover;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bOpening" class="hidden"></a>bOpening <a href="..\Source_engine\mover.html#85" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bOpening;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bPlayerOnly" class="hidden"></a>bPlayerOnly <a href="..\Source_engine\mover.html#86" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPlayerOnly;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BrushRaytraceKey" class="hidden"></a>BrushRaytraceKey <a href="..\Source_engine\mover.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">byte</font> BrushRaytraceKey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bSlave" class="hidden"></a>bSlave <a href="..\Source_engine\mover.html#51" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSlave;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTriggerOnceOnly" class="hidden"></a>bTriggerOnceOnly <a href="..\Source_engine\mover.html#50" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTriggerOnceOnly;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BumpEvent" class="hidden"></a>BumpEvent <a href="..\Source_engine\mover.html#56" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">name</font> BumpEvent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BumpType" class="hidden"></a>BumpType <a href="..\Source_engine\mover.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="mover.html#EBumpType" class="source">EBumpType</a></font> BumpType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bUseTriggered" class="hidden"></a>bUseTriggered <a href="..\Source_engine\mover.html#52" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bUseTriggered;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClientUpdate" class="hidden"></a>ClientUpdate <a href="..\Source_engine\mover.html#95" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> ClientUpdate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DamageThreshold" class="hidden"></a>DamageThreshold <a href="..\Source_engine\mover.html#58" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> DamageThreshold;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DelayTime" class="hidden"></a>DelayTime <a href="..\Source_engine\mover.html#63" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> DelayTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EncroachDamage" class="hidden"></a>EncroachDamage <a href="..\Source_engine\mover.html#46" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> EncroachDamage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Follower" class="hidden"></a>Follower <a href="..\Source_engine\mover.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="mover.html" class="source">Mover</a></font> Follower;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyNum" class="hidden"></a>KeyNum <a href="..\Source_engine\mover.html#35" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">byte</font> KeyNum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyPos[8]" class="hidden"></a>KeyPos[8] <a href="..\Source_engine\mover.html#75" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> KeyPos[<font class="source_int">8</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyRot[8]" class="hidden"></a>KeyRot[8] <a href="..\Source_engine\mover.html#76" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> KeyRot[<font class="source_int">8</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Leader" class="hidden"></a>Leader <a href="..\Source_engine\mover.html#60" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="mover.html" class="source">Mover</a></font> Leader;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MoverEncroachType" class="hidden"></a>MoverEncroachType <a href="..\Source_engine\mover.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="mover.html#EMoverEncroachType" class="source">EMoverEncroachType</a></font> MoverEncroachType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MoverGlideType" class="hidden"></a>MoverGlideType <a href="..\Source_engine\mover.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="mover.html#EMoverGlideType" class="source">EMoverGlideType</a></font> MoverGlideType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MoveTime" class="hidden"></a>MoveTime <a href="..\Source_engine\mover.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MoveTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_myMarker" class="hidden"></a>myMarker <a href="..\Source_engine\mover.html#81" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="navigationpoint.html" class="source">NavigationPoint</a></font> myMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NumKeys" class="hidden"></a>NumKeys <a href="..\Source_engine\mover.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">byte</font> NumKeys;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_numTriggerEvents" class="hidden"></a>numTriggerEvents <a href="..\Source_engine\mover.html#59" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> numTriggerEvents;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldPos" class="hidden"></a>OldPos <a href="..\Source_engine\mover.html#77" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> OldPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldPrePivot" class="hidden"></a>OldPrePivot <a href="..\Source_engine\mover.html#77" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> OldPrePivot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OldRot" class="hidden"></a>OldRot <a href="..\Source_engine\mover.html#78" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> OldRot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OtherTime" class="hidden"></a>OtherTime <a href="..\Source_engine\mover.html#45" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> OtherTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayerBumpEvent" class="hidden"></a>PlayerBumpEvent <a href="..\Source_engine\mover.html#55" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">name</font> PlayerBumpEvent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PrevKeyNum" class="hidden"></a>PrevKeyNum <a href="..\Source_engine\mover.html#36" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">byte</font> PrevKeyNum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RealPosition" class="hidden"></a>RealPosition <a href="..\Source_engine\mover.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> RealPosition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RealRotation" class="hidden"></a>RealRotation <a href="..\Source_engine\mover.html#94" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> RealRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RecommendedTrigger" class="hidden"></a>RecommendedTrigger <a href="..\Source_engine\mover.html#87" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="trigger.html" class="source">Trigger</a></font> RecommendedTrigger;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReturnGroup" class="hidden"></a>ReturnGroup <a href="..\Source_engine\mover.html#62" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">name</font> ReturnGroup;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SavedPos" class="hidden"></a>SavedPos <a href="..\Source_engine\mover.html#77" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> SavedPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SavedRot" class="hidden"></a>SavedRot <a href="..\Source_engine\mover.html#78" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> SavedRot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SavedTrigger" class="hidden"></a>SavedTrigger <a href="..\Source_engine\mover.html#57" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="actor.html" class="source">actor</a></font> SavedTrigger;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SimInterpolate" class="hidden"></a>SimInterpolate <a href="..\Source_engine\mover.html#92" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> SimInterpolate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SimOldPos" class="hidden"></a>SimOldPos <a href="..\Source_engine\mover.html#90" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> SimOldPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SimOldRotPitch" class="hidden"></a>SimOldRotPitch <a href="..\Source_engine\mover.html#91" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> SimOldRotPitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SimOldRotRoll" class="hidden"></a>SimOldRotRoll <a href="..\Source_engine\mover.html#91" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> SimOldRotRoll;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SimOldRotYaw" class="hidden"></a>SimOldRotYaw <a href="..\Source_engine\mover.html#91" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> SimOldRotYaw;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StayOpenTime" class="hidden"></a>StayOpenTime <a href="..\Source_engine\mover.html#44" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> StayOpenTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TriggerActor" class="hidden"></a>TriggerActor <a href="..\Source_engine\mover.html#82" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="actor.html" class="source">Actor</a></font> TriggerActor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TriggerActor2" class="hidden"></a>TriggerActor2 <a href="..\Source_engine\mover.html#83" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="actor.html" class="source">Actor</a></font> TriggerActor2;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WaitingPawn" class="hidden"></a>WaitingPawn <a href="..\Source_engine\mover.html#84" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> WaitingPawn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WorldRaytraceKey" class="hidden"></a>WorldRaytraceKey <a href="..\Source_engine\mover.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">byte</font> WorldRaytraceKey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">MoverSounds</h3>
+<h4><a name="_ClosedSound" class="hidden"></a>ClosedSound <a href="..\Source_engine\mover.html#70" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(MoverSounds) <font class="source_type">sound</font> ClosedSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClosingSound" class="hidden"></a>ClosingSound <a href="..\Source_engine\mover.html#69" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(MoverSounds) <font class="source_type">sound</font> ClosingSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MoveAmbientSound" class="hidden"></a>MoveAmbientSound <a href="..\Source_engine\mover.html#71" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(MoverSounds) <font class="source_type">sound</font> MoveAmbientSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OpenedSound" class="hidden"></a>OpenedSound <a href="..\Source_engine\mover.html#68" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(MoverSounds) <font class="source_type">sound</font> OpenedSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OpeningSound" class="hidden"></a>OpeningSound <a href="..\Source_engine\mover.html#67" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(MoverSounds) <font class="source_type">sound</font> OpeningSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EBumpType" class="hidden"></a>EBumpType <a href="..\Source_engine\mover.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="mover.html#EBumpType" class="source">EBumpType</a></font><br />
+{<blockquote>BT_PlayerBump,
+BT_PawnBump,
+BT_AnyBump,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EMoverEncroachType" class="hidden"></a>EMoverEncroachType <a href="..\Source_engine\mover.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="mover.html#EMoverEncroachType" class="source">EMoverEncroachType</a></font><br />
+{<blockquote>ME_StopWhenEncroach,
+ME_ReturnWhenEncroach,
+ME_CrushWhenEncroach,
+ME_IgnoreWhenEncroach,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EMoverGlideType" class="hidden"></a>EMoverGlideType <a href="..\Source_engine\mover.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="mover.html#EMoverGlideType" class="source">EMoverGlideType</a></font><br />
+{<blockquote>MV_MoveByTime,
+MV_GlideByTime,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Attach+StandOpenTimed" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Attach <span class="function_state">StandOpenTimed</span> <a href="..\Source_engine\mover.html#982" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Attach (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginEvent+BumpButton" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginEvent <span class="function_state">BumpButton</span> <a href="..\Source_engine\mover.html#934" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginEvent ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginPlay <span class="function_state"></span> <a href="..\Source_engine\mover.html#472" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+TriggerControl" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">TriggerControl</span> <a href="..\Source_engine\mover.html#785" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+TriggerOpenTimed" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">TriggerOpenTimed</span> <a href="..\Source_engine\mover.html#693" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+TriggerPound" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">TriggerPound</span> <a href="..\Source_engine\mover.html#835" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Bump+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Bump <span class="function_state"></span> <a href="..\Source_engine\mover.html#638" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Bump (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Bump+BumpButton" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Bump <span class="function_state">BumpButton</span> <a href="..\Source_engine\mover.html#921" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Bump (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Bump+BumpOpenTimed" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Bump <span class="function_state">BumpOpenTimed</span> <a href="..\Source_engine\mover.html#876" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Bump (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DoClose+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DoClose <span class="function_state"></span> <a href="..\Source_engine\mover.html#454" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DoClose ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DoOpen+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DoOpen <span class="function_state"></span> <a href="..\Source_engine\mover.html#444" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DoOpen ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EncroachingOn+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EncroachingOn <span class="function_state"></span> <a href="..\Source_engine\mover.html#576" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> EncroachingOn (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndEvent+BumpButton" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndEvent <span class="function_state">BumpButton</span> <a href="..\Source_engine\mover.html#938" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndEvent ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FindTriggerActor+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FindTriggerActor <span class="function_state"></span> <a href="..\Source_engine\mover.html#137" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> FindTriggerActor ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FinishedClosing+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FinishedClosing <span class="function_state"></span> <a href="..\Source_engine\mover.html#414" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> FinishedClosing ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FinishedOpening+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FinishedOpening <span class="function_state"></span> <a href="..\Source_engine\mover.html#428" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> FinishedOpening ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FinishNotify+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FinishNotify <span class="function_state"></span> <a href="..\Source_engine\mover.html#389" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> FinishNotify ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandleDoor+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandleDoor <span class="function_state"></span> <a href="..\Source_engine\mover.html#180" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleDoor (<font class="source_type"><a href="pawn.html" class="source">pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandleDoor+BumpButton" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandleDoor <span class="function_state">BumpButton</span> <a href="..\Source_engine\mover.html#912" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleDoor (<font class="source_type"><a href="pawn.html" class="source">pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandleDoor+BumpOpenTimed" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandleDoor <span class="function_state">BumpOpenTimed</span> <a href="..\Source_engine\mover.html#865" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleDoor (<font class="source_type"><a href="pawn.html" class="source">pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandleDoor+StandOpenTimed" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandleDoor <span class="function_state">StandOpenTimed</span> <a href="..\Source_engine\mover.html#971" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleDoor (<font class="source_type"><a href="pawn.html" class="source">pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandleDoor+TriggerControl" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandleDoor <span class="function_state">TriggerControl</span> <a href="..\Source_engine\mover.html#758" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleDoor (<font class="source_type"><a href="pawn.html" class="source">pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandleDoor+TriggerOpenTimed" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandleDoor <span class="function_state">TriggerOpenTimed</span> <a href="..\Source_engine\mover.html#679" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleDoor (<font class="source_type"><a href="pawn.html" class="source">pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandleDoor+TriggerPound" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandleDoor <span class="function_state">TriggerPound</span> <a href="..\Source_engine\mover.html#812" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleDoor (<font class="source_type"><a href="pawn.html" class="source">pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandleDoor+TriggerToggle" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandleDoor <span class="function_state">TriggerToggle</span> <a href="..\Source_engine\mover.html#721" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleDoor (<font class="source_type"><a href="pawn.html" class="source">pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HandleTriggerDoor+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HandleTriggerDoor <span class="function_state"></span> <a href="..\Source_engine\mover.html#185" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandleTriggerDoor (<font class="source_type"><a href="pawn.html" class="source">pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InterpolateEnd+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> InterpolateEnd <span class="function_state"></span> <a href="..\Source_engine\mover.html#353" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> InterpolateEnd (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InterpolateTo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> InterpolateTo <span class="function_state"></span> <a href="..\Source_engine\mover.html#309" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> InterpolateTo (<font class="source_keyword">byte</font> NewKeyNum, <font class="source_keyword">float</font> Seconds)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MakeGroupReturn+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MakeGroupReturn <span class="function_state"></span> <a href="..\Source_engine\mover.html#561" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> MakeGroupReturn ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MakeGroupStop+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> MakeGroupStop <span class="function_state"></span> <a href="..\Source_engine\mover.html#550" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> MakeGroupStop ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PostBeginPlay <span class="function_state"></span> <a href="..\Source_engine\mover.html#510" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PostBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetKeyframe+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetKeyframe <span class="function_state"></span> <a href="..\Source_engine\mover.html#345" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetKeyframe (<font class="source_keyword">byte</font> NewKeyNum, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> NewLocation, <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> NewRotation)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpecialHandling+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SpecialHandling <span class="function_state"></span> <a href="..\Source_engine\mover.html#284" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="actor.html" class="source">Actor</a></font> SpecialHandling (<font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TakeDamage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TakeDamage <span class="function_state"></span> <a href="..\Source_engine\mover.html#666" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TakeDamage (<font class="source_keyword">int</font> Damage, <font class="source_type"><a href="pawn.html" class="source">Pawn</a></font> instigatedBy, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> hitlocation, 
+                        <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> momentum, <font class="source_keyword">name</font> <font class="source_type"><a href="damagetype.html" class="source">damageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Timer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Timer <span class="function_state"></span> <a href="..\Source_engine\mover.html#104" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Timer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Trigger+TriggerControl" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Trigger <span class="function_state">TriggerControl</span> <a href="..\Source_engine\mover.html#763" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="trigger.html" class="source">Trigger</a></font> (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="pawn.html" class="source">pawn</a></font> EventInstigator)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Trigger+TriggerOpenTimed" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Trigger <span class="function_state">TriggerOpenTimed</span> <a href="..\Source_engine\mover.html#684" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="trigger.html" class="source">Trigger</a></font> (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="pawn.html" class="source">pawn</a></font> EventInstigator)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Trigger+TriggerPound" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Trigger <span class="function_state">TriggerPound</span> <a href="..\Source_engine\mover.html#817" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="trigger.html" class="source">Trigger</a></font> (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="pawn.html" class="source">pawn</a></font> EventInstigator)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Trigger+TriggerToggle" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Trigger <span class="function_state">TriggerToggle</span> <a href="..\Source_engine\mover.html#726" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="trigger.html" class="source">Trigger</a></font> (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="pawn.html" class="source">pawn</a></font> EventInstigator)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UnTrigger+TriggerControl" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> UnTrigger <span class="function_state">TriggerControl</span> <a href="..\Source_engine\mover.html#772" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> UnTrigger (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="pawn.html" class="source">pawn</a></font> EventInstigator)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UnTrigger+TriggerPound" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> UnTrigger <span class="function_state">TriggerPound</span> <a href="..\Source_engine\mover.html#824" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> UnTrigger (<font class="source_type"><a href="actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="pawn.html" class="source">pawn</a></font> EventInstigator)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     MoverEncroachType=ME_ReturnWhenEncroach
+     MoverGlideType=MV_GlideByTime
+     NumKeys=<font class="source_int">2</font>
+     BrushRaytraceKey=<font class="source_int">0</font>
+     MoveTime=+<font class="source_int">00001.000000</font>
+     StayOpenTime=+<font class="source_int">00004.000000</font>
+     bStatic=<font class="source_keyword">False</font>
+     bDynamicLightMover=<font class="source_keyword">False</font>
+     bIsMover=<font class="source_keyword">True</font>
+     CollisionRadius=+<font class="source_int">00160.000000</font>
+     CollisionHeight=+<font class="source_int">00160.000000</font>
+     bCollideActors=<font class="source_keyword">True</font>
+     bBlockActors=<font class="source_keyword">True</font>
+     bBlockPlayers=<font class="source_keyword">True</font>
+     Physics=PHYS_MovingBrush
+     InitialState=BumpOpenTimed
+     TransientSoundVolume=+<font class="source_int">00003.000000</font>
+     SoundVolume=<font class="source_int">228</font>
+     NetPriority=<font class="source_int">2.7</font>
+     bAlwaysRelevant=<font class="source_keyword">true</font>
+     bHidden=<font class="source_keyword">false</font>
+     RemoteRole=ROLE_SimulatedProxy
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\mover.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Mover">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="messagingspectator.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="musicevent.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:06.031 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

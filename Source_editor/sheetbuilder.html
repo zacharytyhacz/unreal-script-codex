@@ -1,0 +1,165 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Editor.SheetBuilder</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\editor\editor-overview.html">Package</a></td>
+	<td class="header"><a href="..\editor\sheetbuilder.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#SheetBuilder">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="linearstairbuilder.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="spiralstairbuilder.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\editor\editor-overview.html">Editor</a>.<a href="..\editor\sheetbuilder.html">SheetBuilder</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// SheetBuilder: Builds a simple sheet.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\editor\sheetbuilder.html" class="source">SheetBuilder</a></font>
+<a name="5"></a>    <font class="source_keyword">extends</font> <font class="source_type"><a href="..\editor\brushbuilder.html" class="source">BrushBuilder</a></font>;
+<a name="6"></a>
+<a name="7"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font> Height, Width;
+<a name="8"></a><font class="source_keyword">var</font>() <font class="source_keyword">enum</font> <font class="source_type"><a href="..\editor\sheetbuilder.html#ESheetAxis" class="source">ESheetAxis</a></font>
+<a name="9"></a>{
+<a name="10"></a>    AX_Horizontal,
+<a name="11"></a>    AX_XAxis,
+<a name="12"></a>    AX_YAxis,
+<a name="13"></a>} Axis;
+<a name="14"></a><font class="source_keyword">var</font>() <font class="source_keyword">name</font> GroupName;
+<a name="15"></a>
+<a name="16"></a><font class="source_keyword">event</font> <font class="source_keyword">bool</font> Build()
+<a name="17"></a>{
+<a name="18"></a>    <font class="source_keyword">if</font>( Height&lt;=<font class="source_int">0</font> || Width&lt;=<font class="source_int">0</font> )
+<a name="19"></a>        <font class="source_keyword">return</font> BadParameters();
+<a name="20"></a>
+<a name="21"></a>    BeginBrush( <font class="source_keyword">false</font>, GroupName );
+<a name="22"></a>    <font class="source_keyword">if</font>( Axis==AX_Horizontal )
+<a name="23"></a>    {
+<a name="24"></a>        Vertex3f(  Width/2,  Height/2, <font class="source_int">0</font> );
+<a name="25"></a>        Vertex3f(  Width/2, -Height/2, <font class="source_int">0</font> );
+<a name="26"></a>        Vertex3f( -Width/2, -Height/2, <font class="source_int">0</font> );
+<a name="27"></a>        Vertex3f( -Width/2,  Height/2, <font class="source_int">0</font> );
+<a name="28"></a>    }
+<a name="29"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font>( Axis==AX_XAxis )
+<a name="30"></a>    {
+<a name="31"></a>        Vertex3f( <font class="source_int">0</font>,  Width/2,  Height/2 );
+<a name="32"></a>        Vertex3f( <font class="source_int">0</font>,  Width/2, -Height/2 );
+<a name="33"></a>        Vertex3f( <font class="source_int">0</font>, -Width/2, -Height/2 );
+<a name="34"></a>        Vertex3f( <font class="source_int">0</font>, -Width/2,  Height/2 );
+<a name="35"></a>    }
+<a name="36"></a>    <font class="source_keyword">else</font>
+<a name="37"></a>    {
+<a name="38"></a>        Vertex3f(  Width/2, <font class="source_int">0</font>,  Height/2 );
+<a name="39"></a>        Vertex3f( -Width/2, <font class="source_int">0</font>,  Height/2 );
+<a name="40"></a>        Vertex3f( -Width/2, <font class="source_int">0</font>, -Height/2 );
+<a name="41"></a>        Vertex3f(  Width/2, <font class="source_int">0</font>, -Height/2 );
+<a name="42"></a>    }
+<a name="43"></a>    Poly4i(+<font class="source_int">1</font>,<font class="source_int">0</font>,<font class="source_int">1</font>,<font class="source_int">2</font>,<font class="source_int">3</font>,<font class="source_name">'Sheet'</font>,<font class="source_int">0x00000108</font>); <font class="source_comment">// PF_TwoSided|PF_NotSolid.
+</font><a name="44"></a>    <font class="source_keyword">return</font> EndBrush();
+<a name="45"></a>}
+<a name="46"></a>
+<a name="47"></a><font class="source_keyword">defaultproperties</font>
+<a name="48"></a>{
+<a name="49"></a>    Height=<font class="source_int">256</font>
+<a name="50"></a>    Width=<font class="source_int">256</font>
+<a name="51"></a>    Axis=SHEETAXIS_FloorCeiling
+<a name="52"></a>    GroupName=Sheet
+<a name="53"></a>    BitmapFilename=<font class="source_string">"BBSheet"</font>
+<a name="54"></a>    ToolTip=<font class="source_string">"Sheet"</font>
+<a name="55"></a>}
+<a name="56"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\editor\editor-overview.html">Package</a></td>
+	<td class="header"><a href="..\editor\sheetbuilder.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#SheetBuilder">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="linearstairbuilder.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="spiralstairbuilder.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:23:08.000 - Creation time: Wed 26/5/2004 10:48:36.937 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealShare.ASMDAmmo</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\asmdammo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#ASMDAmmo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="asmd.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="assertmover.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\asmdammo.html">ASMDAmmo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// ASMDAmmo.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unrealshare\asmdammo.html" class="source">ASMDAmmo</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\ammo.html" class="source">Ammo</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Pickups\AMMOPUP1.WAV" NAME="AmmoSnd" GROUP="Pickups"
+</font><a name="7"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\general\steam4.WAV" NAME="Steam" GROUP="Pickups"
+</font><a name="8"></a>
+<a name="9"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=I_ASMD FILE=TEXTURES\HUD\i_asmd.PCX GROUP="Icons" MIPS=OFF
+</font><a name="10"></a>
+<a name="11"></a><font class="source_macro">#exec MESH IMPORT MESH=AsmdAmmoM ANIVFILE=MODELS\asmdam_a.3D DATAFILE=MODELS\asmdam_d.3D LODSTYLE=2
+</font><a name="12"></a><font class="source_macro">#exec MESH LODPARAMS MESH=AsmdAmmoM STRENGTH=0.3
+</font><a name="13"></a>
+<a name="14"></a><font class="source_macro">#exec MESH ORIGIN MESH=AsmdAmmoM X=0 Y=0 Z=0 YAW=0
+</font><a name="15"></a><font class="source_macro">#exec MESH SEQUENCE MESH=AsmdAmmoM SEQ=All    STARTFRAME=0  NUMFRAMES=1
+</font><a name="16"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=JAsmdAmmo1 FILE=MODELS\asmdammo.PCX GROUP="Skins"
+</font><a name="17"></a><font class="source_macro">#exec OBJ LOAD FILE=Textures\fireeffectASMD.utx  PACKAGE=UnrealShare.EffectASMD
+</font><a name="18"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=AsmdAmmoM X=0.045 Y=0.045 Z=0.09
+</font><a name="19"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=AsmdAmmoM NUM=1 TEXTURE=JAsmdammo1 TLOD=5
+</font><a name="20"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=AsmdAmmoM NUM=0 TEXTURE=UnrealShare.EffectASMD.FireEffectASMD TLOD=5
+</font><a name="21"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=AsmdAmmoM NUM=2 TEXTURE=UnrealShare.EffectASMD.ASMDSMoke TLOD=5
+</font><a name="22"></a>
+<a name="23"></a><font class="source_keyword">defaultproperties</font>
+<a name="24"></a>{
+<a name="25"></a>     AmmoAmount=<font class="source_int">10</font>
+<a name="26"></a>     MaxAmmo=<font class="source_int">50</font>
+<a name="27"></a>     UsedInWeaponSlot(<font class="source_int">4</font>)=<font class="source_int">1</font>
+<a name="28"></a>     PickupMessage=<font class="source_string">"You picked up an ASMD core."</font>
+<a name="29"></a>     PickupViewMesh=<font class="source_type">Mesh</font><font class="source_name">'UnrealShare.AsmdAmmoM'</font>
+<a name="30"></a>     PickupSound=<font class="source_type">Sound</font><font class="source_name">'UnrealShare.Pickups.AmmoSnd'</font>
+<a name="31"></a>     Icon=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'UnrealShare.Icons.I_ASMD'</font>
+<a name="32"></a>     <font class="source_type">Mesh</font>=<font class="source_type">Mesh</font><font class="source_name">'UnrealShare.AsmdAmmoM'</font>
+<a name="33"></a>     bMeshCurvy=<font class="source_keyword">False</font>
+<a name="34"></a>     SoundRadius=<font class="source_int">26</font>
+<a name="35"></a>     SoundVolume=<font class="source_int">37</font>
+<a name="36"></a>     SoundPitch=<font class="source_int">73</font>
+<a name="37"></a>     CollisionRadius=<font class="source_int">10.000000</font>
+<a name="38"></a>     CollisionHeight=<font class="source_int">20.000000</font>
+<a name="39"></a>     bCollideActors=<font class="source_keyword">True</font>
+<a name="40"></a>}
+<a name="41"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\asmdammo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#ASMDAmmo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="asmd.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="assertmover.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:25:50.000 - Creation time: Wed 26/5/2004 10:48:06.140 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

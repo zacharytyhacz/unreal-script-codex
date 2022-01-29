@@ -1,0 +1,903 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.ServerInfo</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\serverinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#ServerInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="selectiondude.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="serverinfoas.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\serverinfo.html">ServerInfo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\serverinfo.html" class="source">ServerInfo</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\info.html" class="source">Info</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ServerInfoText;
+<a name="4"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ContactInfoText;
+<a name="5"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> NameText;
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AdminText;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> EMailText;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> UnknownText;
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MOTD;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ServerStatsText;
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FragsLoggedText;
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GamesHostedText;
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> VictimsText;
+<a name="14"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GameStatsText;
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GameTypeText;
+<a name="16"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PlayersText;
+<a name="17"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FragsText;
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TopPlayersText;
+<a name="19"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BestNameText;
+<a name="20"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BestFPHText;
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BestRecordSetText;
+<a name="22"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> BotText;
+<a name="23"></a>
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\botpack\fontinfo.html" class="source">FontInfo</a></font> MyFonts;
+<a name="25"></a>
+<a name="26"></a><font class="source_keyword">function</font> Destroyed()
+<a name="27"></a>{
+<a name="28"></a>    <font class="source_keyword">Super</font>.Destroyed();
+<a name="29"></a>    <font class="source_keyword">if</font> ( MyFonts != <font class="source_keyword">None</font> )
+<a name="30"></a>        MyFonts.Destroy();
+<a name="31"></a>}
+<a name="32"></a>
+<a name="33"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="34"></a>{
+<a name="35"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="36"></a>    MyFonts = <font class="source_type"><a href="..\botpack\fontinfo.html" class="source">FontInfo</a></font>(spawn(<font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>&gt;(DynamicLoadObject(<font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.FontInfoClass, <font class="source_keyword">class</font><font class="source_name">'Class'</font>))));
+<a name="37"></a>}
+<a name="38"></a>
+<a name="39"></a><font class="source_keyword">function</font> RenderInfo( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C )
+<a name="40"></a>{
+<a name="41"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font> GRI;
+<a name="42"></a>    GRI = <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner).<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>;
+<a name="43"></a>
+<a name="44"></a>    DrawTitle(C);
+<a name="45"></a>
+<a name="46"></a>    <font class="source_keyword">if</font> (C.ClipX &gt; <font class="source_int">512</font>)
+<a name="47"></a>    {
+<a name="48"></a>        DrawContactInfo(C, GRI);
+<a name="49"></a>        DrawMOTD(C, GRI);
+<a name="50"></a>        DrawServerStats(C, GRI);
+<a name="51"></a>        DrawGameStats(C, GRI);
+<a name="52"></a>        DrawLeaderBoard(C, GRI);
+<a name="53"></a>    } <font class="source_keyword">else</font> {
+<a name="54"></a>        DrawShortContactInfo(C, GRI);
+<a name="55"></a>        DrawShortMOTD(C, GRI);
+<a name="56"></a>    }
+<a name="57"></a>}
+<a name="58"></a>
+<a name="59"></a><font class="source_keyword">function</font> DrawTitle( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C )
+<a name="60"></a>{
+<a name="61"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL;
+<a name="62"></a>
+<a name="63"></a>    C.<font class="source_type">Font</font> = MyFonts.GetHugeFont( C.ClipX );
+<a name="64"></a>    C.DrawColor.R = <font class="source_int">9</font>;
+<a name="65"></a>    C.DrawColor.G = <font class="source_int">151</font>;
+<a name="66"></a>    C.DrawColor.B = <font class="source_int">247</font>;
+<a name="67"></a>
+<a name="68"></a>    C.StrLen( ServerInfoText, XL, YL );
+<a name="69"></a>    C.SetPos( (C.ClipX - XL) / <font class="source_int">2</font>, YL );
+<a name="70"></a>    C.DrawText( ServerInfoText, <font class="source_keyword">True</font> );
+<a name="71"></a>}
+<a name="72"></a>
+<a name="73"></a><font class="source_keyword">function</font> DrawContactInfo( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C, <font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font> GRI )
+<a name="74"></a>{
+<a name="75"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL, XL2, YL2;
+<a name="76"></a>
+<a name="77"></a>    C.DrawColor.R = <font class="source_int">9</font>;
+<a name="78"></a>    C.DrawColor.G = <font class="source_int">151</font>;
+<a name="79"></a>    C.DrawColor.B = <font class="source_int">247</font>;
+<a name="80"></a>
+<a name="81"></a>    C.<font class="source_type">Font</font> = MyFonts.GetBigFont( C.ClipX );
+<a name="82"></a>    C.StrLen( <font class="source_string">"TEMP"</font>, XL, YL );
+<a name="83"></a>
+<a name="84"></a>    C.SetPos( C.ClipX / <font class="source_int">8</font>, (C.ClipY / <font class="source_int">8</font>) );
+<a name="85"></a>    C.DrawText( ContactInfoText, <font class="source_keyword">True</font>);
+<a name="86"></a>
+<a name="87"></a>    C.DrawColor.R = <font class="source_int">0</font>;
+<a name="88"></a>    C.DrawColor.G = <font class="source_int">128</font>;
+<a name="89"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="90"></a>
+<a name="91"></a>    C.<font class="source_type">Font</font> = MyFonts.GetSmallFont( C.ClipX );
+<a name="92"></a>    C.StrLen( <font class="source_string">"TEMP"</font>, XL2, YL2 );
+<a name="93"></a>
+<a name="94"></a>    C.SetPos( C.ClipX / <font class="source_int">8</font>, (C.ClipY / <font class="source_int">8</font>) + (YL+<font class="source_int">1</font>) );
+<a name="95"></a>    C.DrawText( NameText, <font class="source_keyword">True</font>);
+<a name="96"></a>
+<a name="97"></a>    C.SetPos( C.ClipX / <font class="source_int">8</font>, (C.ClipY / <font class="source_int">8</font>) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>) );
+<a name="98"></a>    C.DrawText( AdminText, <font class="source_keyword">True</font>);
+<a name="99"></a>
+<a name="100"></a>    C.SetPos( C.ClipX / <font class="source_int">8</font>, (C.ClipY / <font class="source_int">8</font>) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">2</font> );
+<a name="101"></a>    C.DrawText( EMailText, <font class="source_keyword">True</font>);
+<a name="102"></a>
+<a name="103"></a>    C.DrawColor.R = <font class="source_int">255</font>;
+<a name="104"></a>    C.DrawColor.G = <font class="source_int">255</font>;
+<a name="105"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="106"></a>
+<a name="107"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>) + XL2*<font class="source_int">2</font>, (C.ClipY / <font class="source_int">8</font>) + (YL+<font class="source_int">1</font>) );
+<a name="108"></a>    C.DrawText( GRI.ServerName, <font class="source_keyword">True</font>);
+<a name="109"></a>
+<a name="110"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>) + XL2*<font class="source_int">2</font>, (C.ClipY / <font class="source_int">8</font>) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>) );
+<a name="111"></a>    <font class="source_keyword">if</font> (GRI.AdminName != <font class="source_string">""</font>)
+<a name="112"></a>        C.DrawText( GRI.AdminName, <font class="source_keyword">True</font> );
+<a name="113"></a>    <font class="source_keyword">else</font>
+<a name="114"></a>        C.DrawText( UnknownText, <font class="source_keyword">True</font> );
+<a name="115"></a>
+<a name="116"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>) + XL2*<font class="source_int">2</font>, (C.ClipY / <font class="source_int">8</font>) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">2</font> );
+<a name="117"></a>    <font class="source_keyword">if</font> (GRI.AdminEmail != <font class="source_string">""</font>)
+<a name="118"></a>        C.DrawText( GRI.AdminEmail, <font class="source_keyword">True</font> );
+<a name="119"></a>    <font class="source_keyword">else</font>
+<a name="120"></a>        C.DrawText( UnknownText, <font class="source_keyword">True</font> );
+<a name="121"></a>}
+<a name="122"></a>
+<a name="123"></a><font class="source_keyword">function</font> DrawMOTD( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C, <font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font> GRI )
+<a name="124"></a>{
+<a name="125"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL, XL2, YL2;
+<a name="126"></a>
+<a name="127"></a>    C.DrawColor.R = <font class="source_int">9</font>;
+<a name="128"></a>    C.DrawColor.G = <font class="source_int">151</font>;
+<a name="129"></a>    C.DrawColor.B = <font class="source_int">247</font>;
+<a name="130"></a>
+<a name="131"></a>    C.<font class="source_type">Font</font> = MyFonts.GetBigFont( C.ClipX );
+<a name="132"></a>    C.StrLen( <font class="source_string">"TEMP"</font>, XL, YL );
+<a name="133"></a>
+<a name="134"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font>, C.ClipY / <font class="source_int">8</font> );
+<a name="135"></a>    C.DrawText( MOTD, <font class="source_keyword">True</font>);
+<a name="136"></a>
+<a name="137"></a>    C.DrawColor.R = <font class="source_int">255</font>;
+<a name="138"></a>    C.DrawColor.G = <font class="source_int">255</font>;
+<a name="139"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="140"></a>
+<a name="141"></a>    C.<font class="source_type">Font</font> = MyFonts.GetSmallFont( C.ClipX );
+<a name="142"></a>    C.StrLen( <font class="source_string">"TEMP"</font>, XL2, YL2 );
+<a name="143"></a>
+<a name="144"></a>    C.StrLen( GRI.MOTDLine1, XL2, YL2 );
+<a name="145"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font>, (C.ClipY / <font class="source_int">8</font>) + (YL+<font class="source_int">1</font>) );
+<a name="146"></a>    C.DrawText( GRI.MOTDLine1, <font class="source_keyword">True</font> );
+<a name="147"></a>
+<a name="148"></a>    C.StrLen( GRI.MOTDLine2, XL2, YL2 );
+<a name="149"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font>, (C.ClipY / <font class="source_int">8</font>) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>) );
+<a name="150"></a>    C.DrawText( GRI.MOTDLine2, <font class="source_keyword">True</font> );
+<a name="151"></a>
+<a name="152"></a>    C.StrLen( GRI.MOTDLine3, XL2, YL2 );
+<a name="153"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font>, (C.ClipY / <font class="source_int">8</font>) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">2</font> );
+<a name="154"></a>    C.DrawText( GRI.MOTDLine3, <font class="source_keyword">True</font> );
+<a name="155"></a>
+<a name="156"></a>    C.StrLen( GRI.MOTDLine4, XL2, YL2 );
+<a name="157"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font>, (C.ClipY / <font class="source_int">8</font>) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">3</font> );
+<a name="158"></a>    C.DrawText( GRI.MOTDLine4, <font class="source_keyword">True</font> );
+<a name="159"></a>}
+<a name="160"></a>
+<a name="161"></a><font class="source_keyword">function</font> DrawServerStats( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C, <font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font> GRI )
+<a name="162"></a>{
+<a name="163"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL, XL2, YL2;
+<a name="164"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\tournamentgamereplicationinfo.html" class="source">TournamentGameReplicationInfo</a></font> TGRI;
+<a name="165"></a>
+<a name="166"></a>    C.DrawColor.R = <font class="source_int">9</font>;
+<a name="167"></a>    C.DrawColor.G = <font class="source_int">151</font>;
+<a name="168"></a>    C.DrawColor.B = <font class="source_int">247</font>;
+<a name="169"></a>
+<a name="170"></a>    C.<font class="source_type">Font</font> = MyFonts.GetBigFont( C.ClipX );
+<a name="171"></a>    C.StrLen( <font class="source_string">"TEMP"</font>, XL, YL );
+<a name="172"></a>
+<a name="173"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> );
+<a name="174"></a>    C.DrawText( ServerStatsText, <font class="source_keyword">True</font>);
+<a name="175"></a>
+<a name="176"></a>    C.DrawColor.R = <font class="source_int">0</font>;
+<a name="177"></a>    C.DrawColor.G = <font class="source_int">128</font>;
+<a name="178"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="179"></a>
+<a name="180"></a>    C.<font class="source_type">Font</font> = MyFonts.GetSmallFont( C.ClipX );
+<a name="181"></a>    C.StrLen( <font class="source_string">"TEMP"</font>, XL2, YL2 );
+<a name="182"></a>
+<a name="183"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) );
+<a name="184"></a>    C.DrawText( GamesHostedText, <font class="source_keyword">True</font>);
+<a name="185"></a>
+<a name="186"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>) );
+<a name="187"></a>    C.DrawText( FragsLoggedText, <font class="source_keyword">True</font>);
+<a name="188"></a>
+<a name="189"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">2</font> );
+<a name="190"></a>    C.DrawText( VictimsText, <font class="source_keyword">True</font>);
+<a name="191"></a>
+<a name="192"></a>    C.DrawColor.R = <font class="source_int">255</font>;
+<a name="193"></a>    C.DrawColor.G = <font class="source_int">255</font>;
+<a name="194"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="195"></a>
+<a name="196"></a>    TGRI = <font class="source_type"><a href="..\botpack\tournamentgamereplicationinfo.html" class="source">TournamentGameReplicationInfo</a></font>(GRI);
+<a name="197"></a>
+<a name="198"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">6</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) );
+<a name="199"></a>    C.DrawText( TGRI.TotalGames, <font class="source_keyword">True</font>);
+<a name="200"></a>
+<a name="201"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">6</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>) );
+<a name="202"></a>    C.DrawText( TGRI.TotalFrags, <font class="source_keyword">True</font>);
+<a name="203"></a>
+<a name="204"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">6</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">2</font> );
+<a name="205"></a>    C.DrawText( TGRI.TotalDeaths, <font class="source_keyword">True</font>);
+<a name="206"></a>}
+<a name="207"></a>
+<a name="208"></a><font class="source_keyword">function</font> DrawGameStats( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C, <font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font> GRI )
+<a name="209"></a>{
+<a name="210"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL, XL2, YL2;
+<a name="211"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\tournamentgamereplicationinfo.html" class="source">TournamentGameReplicationInfo</a></font> TGRI;
+<a name="212"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, NumBots;
+<a name="213"></a>
+<a name="214"></a>    C.DrawColor.R = <font class="source_int">9</font>;
+<a name="215"></a>    C.DrawColor.G = <font class="source_int">151</font>;
+<a name="216"></a>    C.DrawColor.B = <font class="source_int">247</font>;
+<a name="217"></a>
+<a name="218"></a>    C.<font class="source_type">Font</font> = MyFonts.GetBigFont( C.ClipX );
+<a name="219"></a>    C.StrLen( <font class="source_string">"TEMP"</font>, XL, YL );
+<a name="220"></a>
+<a name="221"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>), (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> );
+<a name="222"></a>    C.DrawText( GameStatsText, <font class="source_keyword">True</font>);
+<a name="223"></a>
+<a name="224"></a>    C.DrawColor.R = <font class="source_int">0</font>;
+<a name="225"></a>    C.DrawColor.G = <font class="source_int">128</font>;
+<a name="226"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="227"></a>
+<a name="228"></a>    C.<font class="source_type">Font</font> = MyFonts.GetSmallFont( C.ClipX );
+<a name="229"></a>    C.StrLen( <font class="source_string">"TEMP"</font>, XL2, YL2 );
+<a name="230"></a>
+<a name="231"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>), (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) );
+<a name="232"></a>    C.DrawText( GameTypeText, <font class="source_keyword">True</font>);
+<a name="233"></a>
+<a name="234"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>), (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>) );
+<a name="235"></a>    C.DrawText( PlayersText, <font class="source_keyword">True</font>);
+<a name="236"></a>
+<a name="237"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>), (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">2</font> );
+<a name="238"></a>    C.DrawText( FragsText, <font class="source_keyword">True</font>);
+<a name="239"></a>
+<a name="240"></a>    C.DrawColor.R = <font class="source_int">255</font>;
+<a name="241"></a>    C.DrawColor.G = <font class="source_int">255</font>;
+<a name="242"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="243"></a>
+<a name="244"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">2</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) );
+<a name="245"></a>    C.DrawText( GRI.GameName, <font class="source_keyword">True</font>);
+<a name="246"></a>
+<a name="247"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">32</font>; i++)
+<a name="248"></a>        <font class="source_keyword">if</font> ((GRI.PRIArray[i] != <font class="source_keyword">None</font>) && (GRI.PRIArray[i].bIsABot))
+<a name="249"></a>            NumBots++;
+<a name="250"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">2</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>) );
+<a name="251"></a>    C.DrawText( GRI.NumPlayers$<font class="source_string">"   ["</font>$NumBots@BotText$<font class="source_string">"]"</font>, <font class="source_keyword">True</font>);
+<a name="252"></a>
+<a name="253"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">2</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">3</font> + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">2</font> );
+<a name="254"></a>    C.DrawText( GRI.SumFrags, <font class="source_keyword">True</font>);
+<a name="255"></a>}
+<a name="256"></a>
+<a name="257"></a><font class="source_keyword">function</font> DrawLeaderBoard( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C, <font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font> GRI )
+<a name="258"></a>{
+<a name="259"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL;
+<a name="260"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="261"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\tournamentgamereplicationinfo.html" class="source">TournamentGameReplicationInfo</a></font> TGRI;
+<a name="262"></a>
+<a name="263"></a>    C.DrawColor.R = <font class="source_int">9</font>;
+<a name="264"></a>    C.DrawColor.G = <font class="source_int">151</font>;
+<a name="265"></a>    C.DrawColor.B = <font class="source_int">247</font>;
+<a name="266"></a>
+<a name="267"></a>    C.<font class="source_type">Font</font> = MyFonts.GetBigFont( C.ClipX );
+<a name="268"></a>    C.StrLen( TopPlayersText, XL, YL );
+<a name="269"></a>
+<a name="270"></a>    C.SetPos( (C.ClipX - XL) / <font class="source_int">2</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">5</font> );
+<a name="271"></a>    C.DrawText( TopPlayersText, <font class="source_keyword">True</font>);
+<a name="272"></a>
+<a name="273"></a>    C.DrawColor.R = <font class="source_int">0</font>;
+<a name="274"></a>    C.DrawColor.G = <font class="source_int">128</font>;
+<a name="275"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="276"></a>
+<a name="277"></a>    C.<font class="source_type">Font</font> = MyFonts.GetSmallFont( C.ClipX );
+<a name="278"></a>
+<a name="279"></a>    C.SetPos( C.ClipX / <font class="source_int">8</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">5</font> + (YL+<font class="source_int">1</font>) );
+<a name="280"></a>    C.DrawText( BestNameText, <font class="source_keyword">True</font>);
+<a name="281"></a>
+<a name="282"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">5</font> + (YL+<font class="source_int">1</font>) );
+<a name="283"></a>    C.DrawText( BestFPHText, <font class="source_keyword">True</font>);
+<a name="284"></a>
+<a name="285"></a>    C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">6</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">5</font> + (YL+<font class="source_int">1</font>) );
+<a name="286"></a>    C.DrawText( BestRecordSetText, <font class="source_keyword">True</font>);
+<a name="287"></a>
+<a name="288"></a>    C.DrawColor.R = <font class="source_int">255</font>;
+<a name="289"></a>    C.DrawColor.G = <font class="source_int">255</font>;
+<a name="290"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="291"></a>
+<a name="292"></a>    TGRI = <font class="source_type"><a href="..\botpack\tournamentgamereplicationinfo.html" class="source">TournamentGameReplicationInfo</a></font>(GRI);
+<a name="293"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">3</font>; i++)
+<a name="294"></a>    {
+<a name="295"></a>        C.SetPos( C.ClipX / <font class="source_int">8</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">5</font> + (YL+<font class="source_int">1</font>)*(i+<font class="source_int">2</font>) );
+<a name="296"></a>        <font class="source_keyword">if</font> ( TGRI.BestPlayers[i] != <font class="source_string">""</font> )
+<a name="297"></a>            C.DrawText( TGRI.BestPlayers[i], <font class="source_keyword">True</font>);
+<a name="298"></a>        <font class="source_keyword">else</font>
+<a name="299"></a>            C.DrawText( <font class="source_string">"--"</font>, <font class="source_keyword">True</font>);
+<a name="300"></a>
+<a name="301"></a>        C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">5</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">5</font> + (YL+<font class="source_int">1</font>)*(i+<font class="source_int">2</font>) );
+<a name="302"></a>        <font class="source_keyword">if</font> ( TGRI.BestPlayers[i] != <font class="source_string">""</font> )
+<a name="303"></a>            C.DrawText( TGRI.BestFPHs[i], <font class="source_keyword">True</font>);
+<a name="304"></a>        <font class="source_keyword">else</font>
+<a name="305"></a>            C.DrawText( <font class="source_string">"--"</font>, <font class="source_keyword">True</font>);
+<a name="306"></a>
+<a name="307"></a>        C.SetPos( (C.ClipX / <font class="source_int">8</font>)*<font class="source_int">6</font>, (C.ClipY / <font class="source_int">8</font>)*<font class="source_int">5</font> + (YL+<font class="source_int">1</font>)*(i+<font class="source_int">2</font>) );
+<a name="308"></a>        <font class="source_keyword">if</font> ( TGRI.BestPlayers[i] != <font class="source_string">""</font> )
+<a name="309"></a>            C.DrawText( TGRI.BestRecordDate[i], <font class="source_keyword">True</font>);
+<a name="310"></a>        <font class="source_keyword">else</font>
+<a name="311"></a>            C.DrawText( <font class="source_string">"--"</font>, <font class="source_keyword">True</font>);
+<a name="312"></a>    }
+<a name="313"></a>}
+<a name="314"></a>
+<a name="315"></a><font class="source_keyword">function</font> DrawShortContactInfo( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C, <font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font> GRI )
+<a name="316"></a>{
+<a name="317"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL, XL2, YL2;
+<a name="318"></a>
+<a name="319"></a>    C.DrawColor.R = <font class="source_int">9</font>;
+<a name="320"></a>    C.DrawColor.G = <font class="source_int">151</font>;
+<a name="321"></a>    C.DrawColor.B = <font class="source_int">247</font>;
+<a name="322"></a>
+<a name="323"></a>    C.<font class="source_type">Font</font> = MyFonts.GetBigFont( C.ClipX );
+<a name="324"></a>    C.StrLen( ContactInfoText, XL, YL );
+<a name="325"></a>
+<a name="326"></a>    C.SetPos( (C.ClipX-XL)/2, (C.ClipY / <font class="source_int">4</font>) );
+<a name="327"></a>    C.DrawText( ContactInfoText, <font class="source_keyword">True</font>);
+<a name="328"></a>
+<a name="329"></a>    C.DrawColor.R = <font class="source_int">0</font>;
+<a name="330"></a>    C.DrawColor.G = <font class="source_int">128</font>;
+<a name="331"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="332"></a>
+<a name="333"></a>    C.<font class="source_type">Font</font> = MyFonts.GetSmallFont( C.ClipX );
+<a name="334"></a>    C.StrLen( <font class="source_string">"TEMP"</font>, XL2, YL2 );
+<a name="335"></a>
+<a name="336"></a>    C.SetPos( C.ClipX / <font class="source_int">4</font>, (C.ClipY / <font class="source_int">4</font>) + (YL+<font class="source_int">1</font>) );
+<a name="337"></a>    C.DrawText( NameText, <font class="source_keyword">True</font>);
+<a name="338"></a>
+<a name="339"></a>    C.SetPos( C.ClipX / <font class="source_int">4</font>, (C.ClipY / <font class="source_int">4</font>) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>) );
+<a name="340"></a>    C.DrawText( AdminText, <font class="source_keyword">True</font>);
+<a name="341"></a>
+<a name="342"></a>    C.SetPos( C.ClipX / <font class="source_int">4</font>, (C.ClipY / <font class="source_int">4</font>) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">2</font> );
+<a name="343"></a>    C.DrawText( EMailText, <font class="source_keyword">True</font>);
+<a name="344"></a>
+<a name="345"></a>    C.DrawColor.R = <font class="source_int">255</font>;
+<a name="346"></a>    C.DrawColor.G = <font class="source_int">255</font>;
+<a name="347"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="348"></a>
+<a name="349"></a>    C.SetPos( (C.ClipX / <font class="source_int">4</font>) + XL2*<font class="source_int">2</font>, (C.ClipY / <font class="source_int">4</font>) + (YL+<font class="source_int">1</font>) );
+<a name="350"></a>    C.DrawText( GRI.ServerName, <font class="source_keyword">True</font>);
+<a name="351"></a>
+<a name="352"></a>    C.SetPos( (C.ClipX / <font class="source_int">4</font>) + XL2*<font class="source_int">2</font>, (C.ClipY / <font class="source_int">4</font>) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>) );
+<a name="353"></a>    <font class="source_keyword">if</font> (GRI.AdminName != <font class="source_string">""</font>)
+<a name="354"></a>        C.DrawText( GRI.AdminName, <font class="source_keyword">True</font> );
+<a name="355"></a>    <font class="source_keyword">else</font>
+<a name="356"></a>        C.DrawText( UnknownText, <font class="source_keyword">True</font> );
+<a name="357"></a>
+<a name="358"></a>    C.SetPos( (C.ClipX / <font class="source_int">4</font>) + XL2*<font class="source_int">2</font>, (C.ClipY / <font class="source_int">4</font>) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">2</font> );
+<a name="359"></a>    <font class="source_keyword">if</font> (GRI.AdminEmail != <font class="source_string">""</font>)
+<a name="360"></a>        C.DrawText( GRI.AdminEmail, <font class="source_keyword">True</font> );
+<a name="361"></a>    <font class="source_keyword">else</font>
+<a name="362"></a>        C.DrawText( UnknownText, <font class="source_keyword">True</font> );
+<a name="363"></a>}
+<a name="364"></a>
+<a name="365"></a><font class="source_keyword">function</font> DrawShortMOTD( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> C, <font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font> GRI )
+<a name="366"></a>{
+<a name="367"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XL, YL, XL2, YL2;
+<a name="368"></a>
+<a name="369"></a>    C.DrawColor.R = <font class="source_int">9</font>;
+<a name="370"></a>    C.DrawColor.G = <font class="source_int">151</font>;
+<a name="371"></a>    C.DrawColor.B = <font class="source_int">247</font>;
+<a name="372"></a>
+<a name="373"></a>    C.<font class="source_type">Font</font> = MyFonts.GetBigFont( C.ClipX );
+<a name="374"></a>    C.StrLen( MOTD, XL, YL );
+<a name="375"></a>
+<a name="376"></a>    C.SetPos( (C.ClipX-XL)/2, C.ClipY/2 );
+<a name="377"></a>    C.DrawText( MOTD, <font class="source_keyword">True</font>);
+<a name="378"></a>
+<a name="379"></a>    C.DrawColor.R = <font class="source_int">255</font>;
+<a name="380"></a>    C.DrawColor.G = <font class="source_int">255</font>;
+<a name="381"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="382"></a>
+<a name="383"></a>    C.<font class="source_type">Font</font> = MyFonts.GetSmallFont( C.ClipX );
+<a name="384"></a>    C.StrLen( <font class="source_string">"TEMP"</font>, XL2, YL2 );
+<a name="385"></a>
+<a name="386"></a>    C.StrLen( GRI.MOTDLine1, XL2, YL2 );
+<a name="387"></a>    C.SetPos( (C.ClipX/8)*<font class="source_int">3</font>, (C.ClipY/2) + (YL+<font class="source_int">1</font>) );
+<a name="388"></a>    C.DrawText( GRI.MOTDLine1, <font class="source_keyword">True</font> );
+<a name="389"></a>
+<a name="390"></a>    C.StrLen( GRI.MOTDLine2, XL2, YL2 );
+<a name="391"></a>    C.SetPos( (C.ClipX/8)*<font class="source_int">3</font>, (C.ClipY/2) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>) );
+<a name="392"></a>    C.DrawText( GRI.MOTDLine2, <font class="source_keyword">True</font> );
+<a name="393"></a>
+<a name="394"></a>    C.StrLen( GRI.MOTDLine3, XL2, YL2 );
+<a name="395"></a>    C.SetPos( (C.ClipX/8)*<font class="source_int">3</font>, (C.ClipY/2) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">2</font> );
+<a name="396"></a>    C.DrawText( GRI.MOTDLine3, <font class="source_keyword">True</font> );
+<a name="397"></a>
+<a name="398"></a>    C.StrLen( GRI.MOTDLine4, XL2, YL2 );
+<a name="399"></a>    C.SetPos( (C.ClipX/8)*<font class="source_int">3</font>, (C.ClipY/2) + (YL+<font class="source_int">1</font>) + (YL2+<font class="source_int">1</font>)*<font class="source_int">3</font> );
+<a name="400"></a>    C.DrawText( GRI.MOTDLine4, <font class="source_keyword">True</font> );
+<a name="401"></a>}
+<a name="402"></a>
+<a name="403"></a><font class="source_keyword">defaultproperties</font>
+<a name="404"></a>{
+<a name="405"></a>    ServerInfoText=<font class="source_string">"Server Info"</font>
+<a name="406"></a>    ContactInfoText=<font class="source_string">"Contact Info"</font>
+<a name="407"></a>    NameText=<font class="source_string">"Name:"</font>
+<a name="408"></a>    AdminText=<font class="source_string">"Admin:"</font>
+<a name="409"></a>    EMailText=<font class="source_string">"EMail:"</font>
+<a name="410"></a>    UnknownText=<font class="source_string">"Unknown"</font>
+<a name="411"></a>    MOTD=<font class="source_string">"Message of the Day"</font>
+<a name="412"></a>    ServerStatsText=<font class="source_string">"Server Stats"</font>
+<a name="413"></a>    GamesHostedText=<font class="source_string">"Games Hosted:"</font>
+<a name="414"></a>    FragsLoggedText=<font class="source_string">"Frags Logged:"</font>
+<a name="415"></a>    VictimsText=<font class="source_string">"Lives Claimed:"</font>
+<a name="416"></a>    GameStatsText=<font class="source_string">"Game Stats"</font>
+<a name="417"></a>    GameTypeText=<font class="source_string">"GameType:"</font>
+<a name="418"></a>    PlayersText=<font class="source_string">"Players:"</font>
+<a name="419"></a>    FragsText=<font class="source_string">"Total Frags:"</font>
+<a name="420"></a>    TopPlayersText=<font class="source_string">"Top Players [Frags per Hour]"</font>
+<a name="421"></a>    BestNameText=<font class="source_string">"Name"</font>
+<a name="422"></a>    BestFPHText=<font class="source_string">"Best FPH"</font>
+<a name="423"></a>    BestRecordSetText=<font class="source_string">"Record Set"</font>
+<a name="424"></a>    BotText=<font class="source_string">"Bots"</font>
+<a name="425"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\serverinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#ServerInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="selectiondude.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="serverinfoas.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:22:16.000 - Creation time: Wed 26/5/2004 10:48:36.625 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

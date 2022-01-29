@@ -1,0 +1,1511 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTMenu.UTChallengeHUDConfig</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utchallengehudconfig.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTChallengeHUDConfig">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utbotmatchwindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utconfigindivbotscw.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utmenu\utmenu-overview.html">UTMenu</a>.<a href="..\utmenu\utchallengehudconfig.html">UTChallengeHUDConfig</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+00562<br>
+00563<br>
+00564<br>
+00565<br>
+00566<br>
+00567<br>
+00568<br>
+00569<br>
+00570<br>
+00571<br>
+00572<br>
+00573<br>
+00574<br>
+00575<br>
+00576<br>
+00577<br>
+00578<br>
+00579<br>
+00580<br>
+00581<br>
+00582<br>
+00583<br>
+00584<br>
+00585<br>
+00586<br>
+00587<br>
+00588<br>
+00589<br>
+00590<br>
+00591<br>
+00592<br>
+00593<br>
+00594<br>
+00595<br>
+00596<br>
+00597<br>
+00598<br>
+00599<br>
+00600<br>
+00601<br>
+00602<br>
+00603<br>
+00604<br>
+00605<br>
+00606<br>
+00607<br>
+00608<br>
+00609<br>
+00610<br>
+00611<br>
+00612<br>
+00613<br>
+00614<br>
+00615<br>
+00616<br>
+00617<br>
+00618<br>
+00619<br>
+00620<br>
+00621<br>
+00622<br>
+00623<br>
+00624<br>
+00625<br>
+00626<br>
+00627<br>
+00628<br>
+00629<br>
+00630<br>
+00631<br>
+00632<br>
+00633<br>
+00634<br>
+00635<br>
+00636<br>
+00637<br>
+00638<br>
+00639<br>
+00640<br>
+00641<br>
+00642<br>
+00643<br>
+00644<br>
+00645<br>
+00646<br>
+00647<br>
+00648<br>
+00649<br>
+00650<br>
+00651<br>
+00652<br>
+00653<br>
+00654<br>
+00655<br>
+00656<br>
+00657<br>
+00658<br>
+00659<br>
+00660<br>
+00661<br>
+00662<br>
+00663<br>
+00664<br>
+00665<br>
+00666<br>
+00667<br>
+00668<br>
+00669<br>
+00670<br>
+00671<br>
+00672<br>
+00673<br>
+00674<br>
+00675<br>
+00676<br>
+00677<br>
+00678<br>
+00679<br>
+00680<br>
+00681<br>
+00682<br>
+00683<br>
+00684<br>
+00685<br>
+00686<br>
+00687<br>
+00688<br>
+00689<br>
+00690<br>
+00691<br>
+00692<br>
+00693<br>
+00694<br>
+00695<br>
+00696<br>
+00697<br>
+00698<br>
+00699<br>
+00700<br>
+00701<br>
+00702<br>
+00703<br>
+00704<br>
+00705<br>
+00706<br>
+00707<br>
+00708<br>
+00709<br>
+00710<br>
+00711<br>
+00712<br>
+00713<br>
+00714<br>
+00715<br>
+00716<br>
+00717<br>
+00718<br>
+00719<br>
+00720<br>
+00721<br>
+00722<br>
+00723<br>
+00724<br>
+00725<br>
+00726<br>
+00727<br>
+00728<br>
+00729<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utmenu\utchallengehudconfig.html" class="source">UTChallengeHUDConfig</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\umenu\umenupagewindow.html" class="source">UMenuPageWindow</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=HudPreview FILE=TEXTURES\HudPreview.PCX GROUP="Icons" MIPS=OFF FLAGS=2
+</font><a name="4"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=HudPreviewBG FILE=TEXTURES\HudPreviewBG.PCX GROUP="Icons" MIPS=OFF FLAGS=2
+</font><a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> ShowHUDCheck;
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowHUDText;
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowHUDHelp;
+<a name="9"></a>
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> ShowWeaponsCheck;
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowWeaponsText;
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowWeaponsHelp;
+<a name="13"></a>
+<a name="14"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> ShowStatusCheck;
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowStatusText;
+<a name="16"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowStatusHelp;
+<a name="17"></a>
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> ShowAmmoCheck;
+<a name="19"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowAmmoText;
+<a name="20"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowAmmoHelp;
+<a name="21"></a>
+<a name="22"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> ShowTeamInfoCheck;
+<a name="23"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowTeamInfoText;
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowTeamInfoHelp;
+<a name="25"></a>
+<a name="26"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> ShowFacesCheck;
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowFacesText;
+<a name="28"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowFacesHelp;
+<a name="29"></a>
+<a name="30"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> ShowFragsCheck;
+<a name="31"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowFragsText;
+<a name="32"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ShowFragsHelp;
+<a name="33"></a>
+<a name="34"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font> UseTeamColorCheck;
+<a name="35"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> UseTeamColorText;
+<a name="36"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> UseTeamColorHelp;
+<a name="37"></a>
+<a name="38"></a><font class="source_comment">// HUD Color
+</font><a name="39"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> HUDColorCombo;
+<a name="40"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDColorText;
+<a name="41"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDColorHelp;
+<a name="42"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDColorNames[<font class="source_int">20</font>];
+<a name="43"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDColorValues[<font class="source_int">20</font>];
+<a name="44"></a>
+<a name="45"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> HUDRSlider;
+<a name="46"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDRText;
+<a name="47"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDRHelp;
+<a name="48"></a>
+<a name="49"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> HUDGSlider;
+<a name="50"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDGText;
+<a name="51"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDGHelp;
+<a name="52"></a>
+<a name="53"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> HUDBSlider;
+<a name="54"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDBText;
+<a name="55"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDBHelp;
+<a name="56"></a>
+<a name="57"></a><font class="source_comment">// Crosshair Color
+</font><a name="58"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> CrosshairColorCombo;
+<a name="59"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CrosshairColorText;
+<a name="60"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CrosshairColorHelp;
+<a name="61"></a>
+<a name="62"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> CrosshairRSlider;
+<a name="63"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CrosshairRText;
+<a name="64"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CrosshairRHelp;
+<a name="65"></a>
+<a name="66"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> CrosshairGSlider;
+<a name="67"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CrosshairGText;
+<a name="68"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CrosshairGHelp;
+<a name="69"></a>
+<a name="70"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> CrosshairBSlider;
+<a name="71"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CrosshairBText;
+<a name="72"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CrosshairBHelp;
+<a name="73"></a>
+<a name="74"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> OpacitySlider;
+<a name="75"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> OpacityText;
+<a name="76"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> OpacityHelp;
+<a name="77"></a>
+<a name="78"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> HUDScaleSlider;
+<a name="79"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDScaleText;
+<a name="80"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> HUDScaleHelp;
+<a name="81"></a>
+<a name="82"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> WeaponScaleSlider;
+<a name="83"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WeaponScaleText;
+<a name="84"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> WeaponScaleHelp;
+<a name="85"></a>
+<a name="86"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> StatusScaleSlider;
+<a name="87"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> StatusScaleText;
+<a name="88"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> StatusScaleHelp;
+<a name="89"></a>
+<a name="90"></a><font class="source_comment">// Crosshair
+</font><a name="91"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font> CrosshairSlider;
+<a name="92"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CrosshairText;
+<a name="93"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CrosshairHelp;
+<a name="94"></a>
+<a name="95"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowsmallbutton.html" class="source">UWindowSmallButton</a></font> DefaultsButton;
+<a name="96"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DefaultsText;
+<a name="97"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DefaultsHelp;
+<a name="98"></a>
+<a name="99"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bInitialized;
+<a name="100"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> ControlOffset;
+<a name="101"></a>
+<a name="102"></a><font class="source_keyword">function</font> Created()
+<a name="103"></a>{
+<a name="104"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="105"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos;
+<a name="106"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> I, S;
+<a name="107"></a>
+<a name="108"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="109"></a>
+<a name="110"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="111"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="112"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="113"></a>
+<a name="114"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="115"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="116"></a>
+<a name="117"></a>    DesiredWidth = <font class="source_int">220</font>;
+<a name="118"></a>
+<a name="119"></a>    <font class="source_comment">// Defaults Button
+</font><a name="120"></a>    DefaultsButton = <font class="source_type"><a href="..\uwindow\uwindowsmallbutton.html" class="source">UWindowSmallButton</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowSmallButton'</font>, <font class="source_int">30</font>, ControlOffset, <font class="source_int">48</font>, <font class="source_int">16</font>));
+<a name="121"></a>    DefaultsButton.SetText(DefaultsText);
+<a name="122"></a>    DefaultsButton.SetFont(F_Normal);
+<a name="123"></a>    DefaultsButton.SetHelpText(DefaultsHelp);
+<a name="124"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="125"></a>
+<a name="126"></a>    ShowHUDCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="127"></a>    ShowHUDCheck.SetText(ShowHUDText);
+<a name="128"></a>    ShowHUDCheck.SetHelpText(ShowHUDHelp);
+<a name="129"></a>    ShowHUDCheck.SetFont(F_Normal);
+<a name="130"></a>    ShowHUDCheck.Align = TA_Left;
+<a name="131"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="132"></a>
+<a name="133"></a>    ShowWeaponsCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="134"></a>    ShowWeaponsCheck.SetText(ShowWeaponsText);
+<a name="135"></a>    ShowWeaponsCheck.SetHelpText(ShowWeaponsHelp);
+<a name="136"></a>    ShowWeaponsCheck.SetFont(F_Normal);
+<a name="137"></a>    ShowWeaponsCheck.Align = TA_Left;
+<a name="138"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="139"></a>
+<a name="140"></a>    ShowStatusCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="141"></a>    ShowStatusCheck.SetText(ShowStatusText);
+<a name="142"></a>    ShowStatusCheck.SetHelpText(ShowStatusHelp);
+<a name="143"></a>    ShowStatusCheck.SetFont(F_Normal);
+<a name="144"></a>    ShowStatusCheck.Align = TA_Left;
+<a name="145"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="146"></a>
+<a name="147"></a>    ShowAmmoCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="148"></a>    ShowAmmoCheck.SetText(ShowAmmoText);
+<a name="149"></a>    ShowAmmoCheck.SetHelpText(ShowAmmoHelp);
+<a name="150"></a>    ShowAmmoCheck.SetFont(F_Normal);
+<a name="151"></a>    ShowAmmoCheck.Align = TA_Left;
+<a name="152"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="153"></a>
+<a name="154"></a>    ShowTeamInfoCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="155"></a>    ShowTeamInfoCheck.SetText(ShowTeamInfoText);
+<a name="156"></a>    ShowTeamInfoCheck.SetHelpText(ShowTeamInfoHelp);
+<a name="157"></a>    ShowTeamInfoCheck.SetFont(F_Normal);
+<a name="158"></a>    ShowTeamInfoCheck.Align = TA_Left;
+<a name="159"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="160"></a>
+<a name="161"></a>    ShowFragsCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="162"></a>    ShowFragsCheck.SetText(ShowFragsText);
+<a name="163"></a>    ShowFragsCheck.SetHelpText(ShowFragsHelp);
+<a name="164"></a>    ShowFragsCheck.SetFont(F_Normal);
+<a name="165"></a>    ShowFragsCheck.Align = TA_Left;
+<a name="166"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="167"></a>
+<a name="168"></a>    ShowFacesCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="169"></a>    ShowFacesCheck.SetText(ShowFacesText);
+<a name="170"></a>    ShowFacesCheck.SetHelpText(ShowFacesHelp);
+<a name="171"></a>    ShowFacesCheck.SetFont(F_Normal);
+<a name="172"></a>    ShowFacesCheck.Align = TA_Left;
+<a name="173"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="174"></a>
+<a name="175"></a>    UseTeamColorCheck = <font class="source_type"><a href="..\uwindow\uwindowcheckbox.html" class="source">UWindowCheckbox</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowCheckbox'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="176"></a>    UseTeamColorCheck.SetText(UseTeamColorText);
+<a name="177"></a>    UseTeamColorCheck.SetHelpText(UseTeamColorHelp);
+<a name="178"></a>    UseTeamColorCheck.SetFont(F_Normal);
+<a name="179"></a>    UseTeamColorCheck.Align = TA_Left;
+<a name="180"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="181"></a>
+<a name="182"></a>    HUDColorCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="183"></a>    HUDColorCombo.SetText(HUDColorText);
+<a name="184"></a>    HUDColorCombo.SetHelpText(HUDColorHelp);
+<a name="185"></a>    HUDColorCombo.SetFont(F_Normal);
+<a name="186"></a>    HUDColorCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="187"></a>    HUDColorCombo.Align = TA_Left;
+<a name="188"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="189"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>;i&lt;<font class="source_int">20</font> && HUDColorNames[i]!=<font class="source_string">""</font>;i++)
+<a name="190"></a>        HUDColorCombo.AddItem(HUDColorNames[i], HUDColorValues[i]);
+<a name="191"></a>
+<a name="192"></a>    HUDRSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="193"></a>    HUDRSlider.SetRange(<font class="source_int">0</font>, <font class="source_int">16</font>, <font class="source_int">1</font>);
+<a name="194"></a>    HUDRSlider.SetText(HUDRText);
+<a name="195"></a>    HUDRSlider.SetHelpText(HUDRHelp);
+<a name="196"></a>    HUDRSlider.SetFont(F_Normal);
+<a name="197"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="198"></a>
+<a name="199"></a>    HUDGSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="200"></a>    HUDGSlider.SetRange(<font class="source_int">0</font>, <font class="source_int">16</font>, <font class="source_int">1</font>);
+<a name="201"></a>    HUDGSlider.SetText(HUDGText);
+<a name="202"></a>    HUDGSlider.SetHelpText(HUDGHelp);
+<a name="203"></a>    HUDGSlider.SetFont(F_Normal);
+<a name="204"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="205"></a>
+<a name="206"></a>    HUDBSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="207"></a>    HUDBSlider.SetRange(<font class="source_int">0</font>, <font class="source_int">16</font>, <font class="source_int">1</font>);
+<a name="208"></a>    HUDBSlider.SetText(HUDBText);
+<a name="209"></a>    HUDBSlider.SetHelpText(HUDBHelp);
+<a name="210"></a>    HUDBSlider.SetFont(F_Normal);
+<a name="211"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="212"></a>
+<a name="213"></a>    OpacitySlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="214"></a>    OpacitySlider.SetRange(<font class="source_int">1</font>, <font class="source_int">16</font>, <font class="source_int">1</font>);
+<a name="215"></a>    OpacitySlider.SetText(OpacityText);
+<a name="216"></a>    OpacitySlider.SetHelpText(OpacityHelp);
+<a name="217"></a>    OpacitySlider.SetFont(F_Normal);
+<a name="218"></a>    ControlOffset += <font class="source_int">105</font>;
+<a name="219"></a>
+<a name="220"></a>    HUDScaleSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="221"></a>    HUDScaleSlider.SetRange(<font class="source_int">1</font>, <font class="source_int">5</font>, <font class="source_int">1</font>);
+<a name="222"></a>    HUDScaleSlider.SetText(HUDScaleText);
+<a name="223"></a>    HUDScaleSlider.SetHelpText(HUDScaleHelp);
+<a name="224"></a>    HUDScaleSlider.SetFont(F_Normal);
+<a name="225"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="226"></a>
+<a name="227"></a>    WeaponScaleSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="228"></a>    WeaponScaleSlider.SetRange(<font class="source_int">1</font>, <font class="source_int">5</font>, <font class="source_int">1</font>);
+<a name="229"></a>    WeaponScaleSlider.SetText(WeaponScaleText);
+<a name="230"></a>    WeaponScaleSlider.SetHelpText(WeaponScaleHelp);
+<a name="231"></a>    WeaponScaleSlider.SetFont(F_Normal);
+<a name="232"></a>    ControlOffset += <font class="source_int">25</font>;
+<a name="233"></a>
+<a name="234"></a>    StatusScaleSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="235"></a>    StatusScaleSlider.SetRange(<font class="source_int">5</font>, <font class="source_int">15</font>, <font class="source_int">1</font>);
+<a name="236"></a>    StatusScaleSlider.SetText(StatusScaleText);
+<a name="237"></a>    StatusScaleSlider.SetHelpText(StatusScaleHelp);
+<a name="238"></a>    StatusScaleSlider.SetFont(F_Normal);
+<a name="239"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="240"></a>
+<a name="241"></a>    CrosshairColorCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="242"></a>    CrosshairColorCombo.SetText(CrosshairColorText);
+<a name="243"></a>    CrosshairColorCombo.SetHelpText(CrosshairColorHelp);
+<a name="244"></a>    CrosshairColorCombo.SetFont(F_Normal);
+<a name="245"></a>    CrosshairColorCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="246"></a>    CrosshairColorCombo.Align = TA_Left;
+<a name="247"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="248"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>;i&lt;<font class="source_int">20</font> && HUDColorNames[i]!=<font class="source_string">""</font>;i++)
+<a name="249"></a>        CrosshairColorCombo.AddItem(HUDColorNames[i], HUDColorValues[i]);
+<a name="250"></a>
+<a name="251"></a>    CrosshairRSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="252"></a>    CrosshairRSlider.SetRange(<font class="source_int">0</font>, <font class="source_int">16</font>, <font class="source_int">1</font>);
+<a name="253"></a>    CrosshairRSlider.SetText(CrosshairRText);
+<a name="254"></a>    CrosshairRSlider.SetHelpText(CrosshairRHelp);
+<a name="255"></a>    CrosshairRSlider.SetFont(F_Normal);
+<a name="256"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="257"></a>
+<a name="258"></a>    CrosshairGSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="259"></a>    CrosshairGSlider.SetRange(<font class="source_int">0</font>, <font class="source_int">16</font>, <font class="source_int">1</font>);
+<a name="260"></a>    CrosshairGSlider.SetText(CrosshairGText);
+<a name="261"></a>    CrosshairGSlider.SetHelpText(CrosshairGHelp);
+<a name="262"></a>    CrosshairGSlider.SetFont(F_Normal);
+<a name="263"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="264"></a>
+<a name="265"></a>    CrosshairBSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="266"></a>    CrosshairBSlider.SetRange(<font class="source_int">0</font>, <font class="source_int">16</font>, <font class="source_int">1</font>);
+<a name="267"></a>    CrosshairBSlider.SetText(CrosshairBText);
+<a name="268"></a>    CrosshairBSlider.SetHelpText(CrosshairBHelp);
+<a name="269"></a>    CrosshairBSlider.SetFont(F_Normal);
+<a name="270"></a>    ControlOffset += <font class="source_int">20</font>;
+<a name="271"></a>
+<a name="272"></a>    CrosshairSlider = <font class="source_type"><a href="..\uwindow\uwindowhslidercontrol.html" class="source">UWindowHSliderControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowHSliderControl'</font>, CenterPos, ControlOffset, CenterWidth, <font class="source_int">1</font>));
+<a name="273"></a>    CrosshairSlider.SetText(CrosshairText);
+<a name="274"></a>    CrosshairSlider.SetHelpText(CrosshairHelp);
+<a name="275"></a>    CrosshairSlider.SetFont(F_Normal);
+<a name="276"></a>    ControlOffset += <font class="source_int">30</font>;
+<a name="277"></a>
+<a name="278"></a>    DesiredHeight = ControlOffset + <font class="source_int">70</font>;
+<a name="279"></a>    
+<a name="280"></a>    LoadCurrentValues();
+<a name="281"></a>}
+<a name="282"></a>
+<a name="283"></a><font class="source_keyword">function</font> LoadCurrentValues()
+<a name="284"></a>{ 
+<a name="285"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="286"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font> H;
+<a name="287"></a>
+<a name="288"></a>    bInitialized = <font class="source_keyword">False</font>;
+<a name="289"></a>
+<a name="290"></a>    H = <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font>(GetPlayerOwner().MyHUD);
+<a name="291"></a>
+<a name="292"></a>    ShowHUDCheck.bChecked = !H.bHideHUD;
+<a name="293"></a>    ShowWeaponsCheck.bChecked = !H.bHideAllWeapons;
+<a name="294"></a>    ShowStatusCheck.bChecked = !H.bHideStatus;
+<a name="295"></a>    ShowAmmoCheck.bChecked = !H.bHideAmmo;
+<a name="296"></a>    ShowTeamInfoCheck.bChecked = !H.bHideTeamInfo;
+<a name="297"></a>    ShowFragsCheck.bChecked = !H.bHideFrags;
+<a name="298"></a>    ShowFacesCheck.bChecked = !H.bHideFaces;
+<a name="299"></a>    UseTeamColorCheck.bChecked = H.bUseTeamColor;
+<a name="300"></a>    OpacitySlider.SetValue(H.Opacity);
+<a name="301"></a>    HUDScaleSlider.SetValue(H.HUDScale*<font class="source_int">5</font>);
+<a name="302"></a>    WeaponScaleSlider.SetValue(H.WeaponScale*<font class="source_int">5</font>);
+<a name="303"></a>    StatusScaleSlider.SetValue(H.StatusScale*<font class="source_int">10</font>);
+<a name="304"></a>    CrosshairSlider.SetRange(<font class="source_int">0</font>, H.CrosshairCount - <font class="source_int">1</font>, <font class="source_int">1</font>);
+<a name="305"></a>    CrosshairSlider.SetValue(GetPlayerOwner().myHUD.Crosshair);
+<a name="306"></a>    i = HUDColorCombo.FindItemIndex2(H.FavoriteHUDColor.R$<font class="source_string">","</font>$H.FavoriteHUDColor.G$<font class="source_string">","</font>$H.FavoriteHUDColor.B, <font class="source_keyword">False</font>);
+<a name="307"></a>    <font class="source_keyword">if</font>(i == -<font class="source_int">1</font>)
+<a name="308"></a>        HUDColorCombo.SetSelectedIndex(Max(HUDColorCombo.FindItemIndex2(<font class="source_string">"cust"</font>, <font class="source_keyword">False</font>), <font class="source_int">0</font>));
+<a name="309"></a>    <font class="source_keyword">else</font>
+<a name="310"></a>        HUDColorCombo.SetSelectedIndex(i);
+<a name="311"></a>
+<a name="312"></a>    HUDRSlider.SetValue(H.FavoriteHUDColor.R);
+<a name="313"></a>    HUDGSlider.SetValue(H.FavoriteHUDColor.G);
+<a name="314"></a>    HUDBSlider.SetValue(H.FavoriteHUDColor.B);
+<a name="315"></a>
+<a name="316"></a>    i = CrosshairColorCombo.FindItemIndex2(H.CrosshairColor.R$<font class="source_string">","</font>$H.CrosshairColor.G$<font class="source_string">","</font>$H.CrosshairColor.B, <font class="source_keyword">False</font>);
+<a name="317"></a>    <font class="source_keyword">if</font>(i == -<font class="source_int">1</font>)
+<a name="318"></a>        CrosshairColorCombo.SetSelectedIndex(Max(CrosshairColorCombo.FindItemIndex2(<font class="source_string">"cust"</font>, <font class="source_keyword">False</font>), <font class="source_int">0</font>));
+<a name="319"></a>    <font class="source_keyword">else</font>
+<a name="320"></a>        CrosshairColorCombo.SetSelectedIndex(i);
+<a name="321"></a>
+<a name="322"></a>    CrosshairRSlider.SetValue(H.CrosshairColor.R);
+<a name="323"></a>    CrosshairGSlider.SetValue(H.CrosshairColor.G);
+<a name="324"></a>    CrosshairBSlider.SetValue(H.CrosshairColor.B);
+<a name="325"></a>
+<a name="326"></a>    ShowWeaponsCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="327"></a>    ShowStatusCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="328"></a>    ShowAmmoCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="329"></a>    ShowTeamInfoCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="330"></a>    ShowFragsCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="331"></a>    ShowFacesCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="332"></a>    UseTeamColorCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="333"></a>
+<a name="334"></a>    bInitialized = <font class="source_keyword">True</font>;
+<a name="335"></a>}
+<a name="336"></a>
+<a name="337"></a><font class="source_keyword">function</font> LoadDefaultValues()
+<a name="338"></a>{
+<a name="339"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font> H;
+<a name="340"></a>
+<a name="341"></a>    H = <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font>(GetPlayerOwner().MyHUD);
+<a name="342"></a>
+<a name="343"></a>    H.Crosshair = <font class="source_keyword">class</font><font class="source_name">'HUD'</font>.default.Crosshair;
+<a name="344"></a>    H.bHideHUD = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.bHideHUD;
+<a name="345"></a>    H.bHideAllWeapons = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.bHideAllWeapons;
+<a name="346"></a>    H.bHideStatus = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.bHideStatus;
+<a name="347"></a>    H.bHideAmmo = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.bHideAmmo;
+<a name="348"></a>    H.bHideTeamInfo = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.bHideTeamInfo;
+<a name="349"></a>    H.bHideFrags = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.bHideFrags;
+<a name="350"></a>    H.bHideFaces = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.bHideFaces;
+<a name="351"></a>    H.bUseTeamColor = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.bUseTeamColor;
+<a name="352"></a>    H.Opacity = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.Opacity;
+<a name="353"></a>    H.HUDScale = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.HUDScale;
+<a name="354"></a>    H.WeaponScale = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.WeaponScale;
+<a name="355"></a>    H.StatusScale = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.StatusScale;
+<a name="356"></a>    H.FavoriteHUDColor.R = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.FavoriteHUDColor.R;
+<a name="357"></a>    H.FavoriteHUDColor.G = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.FavoriteHUDColor.G;
+<a name="358"></a>    H.FavoriteHUDColor.B = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.FavoriteHUDColor.B; 
+<a name="359"></a>    H.CrosshairColor.R = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.CrosshairColor.R;
+<a name="360"></a>    H.CrosshairColor.G = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.CrosshairColor.G;
+<a name="361"></a>    H.CrosshairColor.B = <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.default.CrosshairColor.B; 
+<a name="362"></a>}
+<a name="363"></a>
+<a name="364"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="365"></a>{
+<a name="366"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="367"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos;
+<a name="368"></a>
+<a name="369"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="370"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="371"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="372"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="373"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="374"></a>
+<a name="375"></a>    DefaultsButton.AutoWidth(C);
+<a name="376"></a>    DefaultsButton.WinLeft = CenterPos + CenterWidth - DefaultsButton.WinWidth;
+<a name="377"></a>
+<a name="378"></a>    ShowHUDCheck.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="379"></a>    ShowHUDCheck.WinLeft = CenterPos;
+<a name="380"></a>    ShowWeaponsCheck.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="381"></a>    ShowWeaponsCheck.WinLeft = CenterPos;
+<a name="382"></a>    ShowStatusCheck.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="383"></a>    ShowStatusCheck.WinLeft = CenterPos;
+<a name="384"></a>    ShowAmmoCheck.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="385"></a>    ShowAmmoCheck.WinLeft = CenterPos;
+<a name="386"></a>    ShowTeamInfoCheck.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="387"></a>    ShowTeamInfoCheck.WinLeft = CenterPos;
+<a name="388"></a>    ShowFragsCheck.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="389"></a>    ShowFragsCheck.WinLeft = CenterPos;
+<a name="390"></a>    ShowFacesCheck.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="391"></a>    ShowFacesCheck.WinLeft = CenterPos;
+<a name="392"></a>    OpacitySlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="393"></a>    OpacitySlider.SliderWidth = <font class="source_int">90</font>;
+<a name="394"></a>    OpacitySlider.WinLeft = CenterPos;
+<a name="395"></a>    UseTeamColorCheck.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="396"></a>    UseTeamColorCheck.WinLeft = CenterPos;
+<a name="397"></a>    HUDColorCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="398"></a>    HUDColorCombo.WinLeft = CenterPos;
+<a name="399"></a>    HUDColorCombo.EditBoxWidth = <font class="source_int">90</font>;
+<a name="400"></a>    HUDRSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="401"></a>    HUDRSlider.SliderWidth = <font class="source_int">90</font>;
+<a name="402"></a>    HUDRSlider.WinLeft = CenterPos;
+<a name="403"></a>    HUDGSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="404"></a>    HUDGSlider.SliderWidth = <font class="source_int">90</font>;
+<a name="405"></a>    HUDGSlider.WinLeft = CenterPos;
+<a name="406"></a>    HUDBSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="407"></a>    HUDBSlider.SliderWidth = <font class="source_int">90</font>;
+<a name="408"></a>    HUDBSlider.WinLeft = CenterPos;
+<a name="409"></a>    HUDScaleSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="410"></a>    HUDScaleSlider.SliderWidth = <font class="source_int">90</font>;
+<a name="411"></a>    HUDScaleSlider.WinLeft = CenterPos;
+<a name="412"></a>    WeaponScaleSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="413"></a>    WeaponScaleSlider.SliderWidth = <font class="source_int">90</font>;
+<a name="414"></a>    WeaponScaleSlider.WinLeft = CenterPos;
+<a name="415"></a>    StatusScaleSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="416"></a>    StatusScaleSlider.SliderWidth = <font class="source_int">90</font>;
+<a name="417"></a>    StatusScaleSlider.WinLeft = CenterPos;
+<a name="418"></a>    CrosshairSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="419"></a>    CrosshairSlider.SliderWidth = <font class="source_int">90</font>;
+<a name="420"></a>    CrosshairSlider.WinLeft = CenterPos;
+<a name="421"></a>    CrosshairColorCombo.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="422"></a>    CrosshairColorCombo.WinLeft = CenterPos;
+<a name="423"></a>    CrosshairColorCombo.EditBoxWidth = <font class="source_int">90</font>;
+<a name="424"></a>    CrosshairRSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="425"></a>    CrosshairRSlider.SliderWidth = <font class="source_int">90</font>;
+<a name="426"></a>    CrosshairRSlider.WinLeft = CenterPos;
+<a name="427"></a>    CrosshairGSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="428"></a>    CrosshairGSlider.SliderWidth = <font class="source_int">90</font>;
+<a name="429"></a>    CrosshairGSlider.WinLeft = CenterPos;
+<a name="430"></a>    CrosshairBSlider.SetSize(CenterWidth, <font class="source_int">1</font>);
+<a name="431"></a>    CrosshairBSlider.SliderWidth = <font class="source_int">90</font>;
+<a name="432"></a>    CrosshairBSlider.WinLeft = CenterPos;
+<a name="433"></a>}
+<a name="434"></a>
+<a name="435"></a><font class="source_keyword">function</font> Paint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="436"></a>{
+<a name="437"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ControlWidth, ControlLeft, ControlRight;
+<a name="438"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CenterWidth, CenterPos, CrosshairX, HUDX;
+<a name="439"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font> H;
+<a name="440"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font> CrossHair, T;
+<a name="441"></a>
+<a name="442"></a>    ControlWidth = WinWidth/2.<font class="source_int">5</font>;
+<a name="443"></a>    ControlLeft = (WinWidth/2 - ControlWidth)/2;
+<a name="444"></a>    ControlRight = WinWidth/2 + ControlLeft;
+<a name="445"></a>
+<a name="446"></a>    CenterWidth = (WinWidth/4)*<font class="source_int">3</font>;
+<a name="447"></a>    CenterPos = (WinWidth - CenterWidth)/2;
+<a name="448"></a>
+<a name="449"></a>    <font class="source_keyword">Super</font>.Paint(C, X, Y);
+<a name="450"></a>
+<a name="451"></a>    H = <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font>(GetPlayerOwner().MyHUD);
+<a name="452"></a>    CrossHair = H.CrosshairTextures[H.Crosshair];
+<a name="453"></a>    <font class="source_keyword">if</font>(CrossHair == <font class="source_keyword">None</font>)
+<a name="454"></a>        CrossHair = H.LoadCrosshair(H.Crosshair);
+<a name="455"></a>
+<a name="456"></a>    CrosshairX = (WinWidth - Crosshair.USize) / <font class="source_int">2</font>;
+<a name="457"></a>    T = GetLookAndFeelTexture();
+<a name="458"></a>    DrawUpBevel(C, CrosshairX - <font class="source_int">3</font>, CrosshairSlider.WinTop + <font class="source_int">20</font> - <font class="source_int">3</font>, CrossHair.USize + <font class="source_int">6</font>, CrossHair.VSize + <font class="source_int">6</font>, T);
+<a name="459"></a>    DrawStretchedTexture(C, CrosshairX, CrosshairSlider.WinTop + <font class="source_int">20</font>, CrossHair.USize, CrossHair.VSize, <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'BlackTexture'</font>);
+<a name="460"></a>
+<a name="461"></a>    C.DrawColor.R = <font class="source_int">15</font> * H.CrosshairColor.R;
+<a name="462"></a>    C.DrawColor.G = <font class="source_int">15</font> * H.CrosshairColor.G;
+<a name="463"></a>    C.DrawColor.B = <font class="source_int">15</font> * H.CrosshairColor.B;
+<a name="464"></a>    DrawClippedTexture(C, CrosshairX, CrosshairSlider.WinTop + <font class="source_int">20</font>, CrossHair);
+<a name="465"></a>
+<a name="466"></a>
+<a name="467"></a>    HUDX = (WinWidth - <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'HudPreview'</font>.USize) / <font class="source_int">2</font>;
+<a name="468"></a>    C.DrawColor.R = <font class="source_int">255</font>;
+<a name="469"></a>    C.DrawColor.G = <font class="source_int">255</font>;
+<a name="470"></a>    C.DrawColor.B = <font class="source_int">255</font>;
+<a name="471"></a>    DrawUpBevel(C, HUDX - <font class="source_int">3</font>, OpacitySlider.WinTop + <font class="source_int">20</font> - <font class="source_int">3</font>, <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'HudPreview'</font>.USize + <font class="source_int">6</font>, <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'HudPreview'</font>.VSize + <font class="source_int">6</font>, T);
+<a name="472"></a>    DrawClippedTexture(C, HUDX, OpacitySlider.WinTop + <font class="source_int">20</font>, <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'HudPreviewBG'</font>);
+<a name="473"></a>
+<a name="474"></a>    <font class="source_keyword">if</font> ( H.Opacity == <font class="source_int">16</font> )
+<a name="475"></a>    {
+<a name="476"></a>        C.Style = GetPlayerOwner().<font class="source_type"><a href="..\engine\actor.html#ERenderStyle" class="source">ERenderStyle</a></font>.STY_Normal;
+<a name="477"></a>        C.DrawColor.R = H.FavoriteHUDColor.R * <font class="source_int">15.9</font>;
+<a name="478"></a>        C.DrawColor.G = H.FavoriteHUDColor.G * <font class="source_int">15.9</font>;
+<a name="479"></a>        C.DrawColor.B = H.FavoriteHUDColor.B * <font class="source_int">15.9</font>;
+<a name="480"></a>    }
+<a name="481"></a>    <font class="source_keyword">else</font>
+<a name="482"></a>    {
+<a name="483"></a>        C.Style = GetPlayerOwner().<font class="source_type"><a href="..\engine\actor.html#ERenderStyle" class="source">ERenderStyle</a></font>.STY_Translucent;
+<a name="484"></a>        C.DrawColor.R = H.FavoriteHUDColor.R * (H.Opacity + <font class="source_int">0.9</font>);
+<a name="485"></a>        C.DrawColor.G = H.FavoriteHUDColor.G * (H.Opacity + <font class="source_int">0.9</font>);
+<a name="486"></a>        C.DrawColor.B = H.FavoriteHUDColor.B * (H.Opacity + <font class="source_int">0.9</font>);
+<a name="487"></a>    }
+<a name="488"></a>
+<a name="489"></a>    DrawClippedTexture(C, HUDX, OpacitySlider.WinTop + <font class="source_int">20</font>, <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'HudPreview'</font>);
+<a name="490"></a>}
+<a name="491"></a>
+<a name="492"></a><font class="source_keyword">function</font> Notify(<font class="source_type"><a href="..\uwindow\uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></font> C, <font class="source_keyword">byte</font> E)
+<a name="493"></a>{
+<a name="494"></a>    <font class="source_keyword">if</font>(C == DefaultsButton && E == DE_Click)
+<a name="495"></a>    {
+<a name="496"></a>        ResetHUD();
+<a name="497"></a>        <font class="source_keyword">return</font>;
+<a name="498"></a>    } 
+<a name="499"></a>
+<a name="500"></a>    <font class="source_keyword">switch</font>(E)
+<a name="501"></a>    {
+<a name="502"></a>    <font class="source_keyword">case</font> DE_Change:
+<a name="503"></a>        <font class="source_keyword">switch</font>(C)
+<a name="504"></a>        {
+<a name="505"></a>        <font class="source_keyword">case</font> CrosshairSlider:
+<a name="506"></a>            CrosshairChanged();
+<a name="507"></a>            <font class="source_keyword">break</font>;
+<a name="508"></a>        <font class="source_keyword">case</font> HUDRSlider:
+<a name="509"></a>        <font class="source_keyword">case</font> HUDGSlider:
+<a name="510"></a>        <font class="source_keyword">case</font> HUDBSlider:
+<a name="511"></a>            ChangeToCustomColor();
+<a name="512"></a>            HUDLayoutChanged();
+<a name="513"></a>            <font class="source_keyword">break</font>;
+<a name="514"></a>        <font class="source_keyword">case</font> CrosshairRSlider:
+<a name="515"></a>        <font class="source_keyword">case</font> CrosshairGSlider:
+<a name="516"></a>        <font class="source_keyword">case</font> CrosshairBSlider:
+<a name="517"></a>            ChangeToCustomCrosshairColor();
+<a name="518"></a>            HUDLayoutChanged();
+<a name="519"></a>            <font class="source_keyword">break</font>;
+<a name="520"></a>        <font class="source_keyword">case</font> ShowHUDCheck:
+<a name="521"></a>        <font class="source_keyword">case</font> ShowWeaponsCheck:
+<a name="522"></a>        <font class="source_keyword">case</font> ShowStatusCheck:
+<a name="523"></a>        <font class="source_keyword">case</font> ShowAmmoCheck:
+<a name="524"></a>        <font class="source_keyword">case</font> ShowTeamInfoCheck:
+<a name="525"></a>        <font class="source_keyword">case</font> ShowFragsCheck:
+<a name="526"></a>        <font class="source_keyword">case</font> ShowFacesCheck:
+<a name="527"></a>        <font class="source_keyword">case</font> OpacitySlider:
+<a name="528"></a>        <font class="source_keyword">case</font> HUDScaleSlider:
+<a name="529"></a>        <font class="source_keyword">case</font> WeaponScaleSlider:
+<a name="530"></a>        <font class="source_keyword">case</font> StatusScaleSlider:
+<a name="531"></a>        <font class="source_keyword">case</font> HUDColorCombo:
+<a name="532"></a>        <font class="source_keyword">case</font> CrosshairColorCombo:
+<a name="533"></a>        <font class="source_keyword">case</font> UseTeamColorCheck:
+<a name="534"></a>            HUDLayoutChanged();
+<a name="535"></a>            <font class="source_keyword">break</font>;
+<a name="536"></a>        }
+<a name="537"></a>    }
+<a name="538"></a>    <font class="source_keyword">Super</font>.Notify(C, E);
+<a name="539"></a>}
+<a name="540"></a>
+<a name="541"></a><font class="source_keyword">function</font> ResetHUD()
+<a name="542"></a>{
+<a name="543"></a>    <font class="source_keyword">class</font><font class="source_name">'HUD'</font>.<font class="source_keyword2">static</font>.ResetConfig();
+<a name="544"></a>    <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.<font class="source_keyword2">static</font>.ResetConfig();
+<a name="545"></a>    <font class="source_keyword">class</font><font class="source_name">'ChallengeHUD'</font>.<font class="source_keyword2">static</font>.StaticSaveConfig();
+<a name="546"></a>    LoadDefaultValues();
+<a name="547"></a>    LoadCurrentValues();
+<a name="548"></a>}
+<a name="549"></a>
+<a name="550"></a>singular <font class="source_keyword">function</font> ChangeToCustomColor()
+<a name="551"></a>{
+<a name="552"></a>    <font class="source_keyword">if</font>(!bInitialized) <font class="source_keyword">return</font>;
+<a name="553"></a>
+<a name="554"></a>    bInitialized = <font class="source_keyword">False</font>;
+<a name="555"></a>    HUDColorCombo.SetSelectedIndex(Max(HUDColorCombo.FindItemIndex2(<font class="source_string">"cust"</font>, <font class="source_keyword">False</font>), <font class="source_int">0</font>));
+<a name="556"></a>    bInitialized = <font class="source_keyword">True</font>;
+<a name="557"></a>}
+<a name="558"></a>
+<a name="559"></a>singular <font class="source_keyword">function</font> ChangeToCustomCrosshairColor()
+<a name="560"></a>{
+<a name="561"></a>    <font class="source_keyword">if</font>(!bInitialized) <font class="source_keyword">return</font>;
+<a name="562"></a>
+<a name="563"></a>    bInitialized = <font class="source_keyword">False</font>;
+<a name="564"></a>    CrosshairColorCombo.SetSelectedIndex(Max(CrosshairColorCombo.FindItemIndex2(<font class="source_string">"cust"</font>, <font class="source_keyword">False</font>), <font class="source_int">0</font>));
+<a name="565"></a>    bInitialized = <font class="source_keyword">True</font>;
+<a name="566"></a>}
+<a name="567"></a>
+<a name="568"></a>singular <font class="source_keyword">function</font> HUDLayoutChanged()
+<a name="569"></a>{
+<a name="570"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font> H;
+<a name="571"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Temp;
+<a name="572"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="573"></a>
+<a name="574"></a>    <font class="source_keyword">if</font>(!bInitialized) <font class="source_keyword">return</font>;
+<a name="575"></a>
+<a name="576"></a>    H = <font class="source_type"><a href="..\botpack\challengehud.html" class="source">ChallengeHUD</a></font>(GetPlayerOwner().MyHUD);
+<a name="577"></a>
+<a name="578"></a>    ShowWeaponsCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="579"></a>    ShowStatusCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="580"></a>    ShowAmmoCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="581"></a>    ShowTeamInfoCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="582"></a>    ShowFragsCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="583"></a>    ShowFacesCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="584"></a>    UseTeamColorCheck.bDisabled = !ShowHUDCheck.bChecked;
+<a name="585"></a>
+<a name="586"></a>    H.bHideHUD = !ShowHUDCheck.bChecked;
+<a name="587"></a>    H.bHideAllWeapons = !ShowWeaponsCheck.bChecked;
+<a name="588"></a>    H.bHideStatus = !ShowStatusCheck.bChecked;
+<a name="589"></a>    H.bHideAmmo = !ShowAmmoCheck.bChecked;
+<a name="590"></a>    H.bHideTeamInfo = !ShowTeamInfoCheck.bChecked;
+<a name="591"></a>    H.bHideFrags = !ShowFragsCheck.bChecked;
+<a name="592"></a>    H.bHideFaces = !ShowFacesCheck.bChecked;
+<a name="593"></a>    H.bUseTeamColor = UseTeamColorCheck.bChecked;
+<a name="594"></a>    H.Opacity = OpacitySlider.GetValue();
+<a name="595"></a>    H.HUDScale = HUDScaleSlider.GetValue()/5;
+<a name="596"></a>    H.WeaponScale = WeaponScaleSlider.GetValue()/5;
+<a name="597"></a>    H.StatusScale = StatusScaleSlider.GetValue()/1<font class="source_int">0</font>;
+<a name="598"></a>
+<a name="599"></a>    <font class="source_keyword">if</font>(HUDColorCombo.GetValue2() == <font class="source_string">"cust"</font>)
+<a name="600"></a>    {
+<a name="601"></a>        H.FavoriteHUDColor.R = HUDRSlider.GetValue();
+<a name="602"></a>        H.FavoriteHUDColor.G = HUDGSlider.GetValue();
+<a name="603"></a>        H.FavoriteHUDColor.B = HUDBSlider.GetValue();
+<a name="604"></a>    }
+<a name="605"></a>    <font class="source_keyword">else</font>
+<a name="606"></a>    {
+<a name="607"></a>        Temp = HUDColorCombo.GetValue2();
+<a name="608"></a>        i = InStr(Temp, <font class="source_string">","</font>);
+<a name="609"></a>        H.FavoriteHUDColor.R = <font class="source_keyword">Int</font>(Left(Temp, i));
+<a name="610"></a>        Temp = Mid(Temp, i+<font class="source_int">1</font>);
+<a name="611"></a>        i = InStr(Temp, <font class="source_string">","</font>);
+<a name="612"></a>        H.FavoriteHUDColor.G = <font class="source_keyword">Int</font>(Left(Temp, i));
+<a name="613"></a>        Temp = Mid(Temp, i+<font class="source_int">1</font>);
+<a name="614"></a>        H.FavoriteHUDColor.B = <font class="source_keyword">Int</font>(Temp);
+<a name="615"></a>
+<a name="616"></a>        bInitialized = <font class="source_keyword">False</font>;
+<a name="617"></a>        HUDRSlider.SetValue(H.FavoriteHUDColor.R);
+<a name="618"></a>        HUDGSlider.SetValue(H.FavoriteHUDColor.G);
+<a name="619"></a>        HUDBSlider.SetValue(H.FavoriteHUDColor.B);
+<a name="620"></a>        bInitialized = <font class="source_keyword">True</font>;
+<a name="621"></a>    }
+<a name="622"></a>
+<a name="623"></a>    <font class="source_keyword">if</font>(CrosshairColorCombo.GetValue2() == <font class="source_string">"cust"</font>)
+<a name="624"></a>    {
+<a name="625"></a>        H.CrosshairColor.R = CrosshairRSlider.GetValue();
+<a name="626"></a>        H.CrosshairColor.G = CrosshairGSlider.GetValue();
+<a name="627"></a>        H.CrosshairColor.B = CrosshairBSlider.GetValue();
+<a name="628"></a>    }
+<a name="629"></a>    <font class="source_keyword">else</font>
+<a name="630"></a>    {
+<a name="631"></a>        Temp = CrosshairColorCombo.GetValue2();
+<a name="632"></a>        i = InStr(Temp, <font class="source_string">","</font>);
+<a name="633"></a>        H.CrosshairColor.R = <font class="source_keyword">Int</font>(Left(Temp, i));
+<a name="634"></a>        Temp = Mid(Temp, i+<font class="source_int">1</font>);
+<a name="635"></a>        i = InStr(Temp, <font class="source_string">","</font>);
+<a name="636"></a>        H.CrosshairColor.G = <font class="source_keyword">Int</font>(Left(Temp, i));
+<a name="637"></a>        Temp = Mid(Temp, i+<font class="source_int">1</font>);
+<a name="638"></a>        H.CrosshairColor.B = <font class="source_keyword">Int</font>(Temp);
+<a name="639"></a>
+<a name="640"></a>        bInitialized = <font class="source_keyword">False</font>;
+<a name="641"></a>        CrosshairRSlider.SetValue(H.CrosshairColor.R);
+<a name="642"></a>        CrosshairGSlider.SetValue(H.CrosshairColor.G);
+<a name="643"></a>        CrosshairBSlider.SetValue(H.CrosshairColor.B);
+<a name="644"></a>        bInitialized = <font class="source_keyword">True</font>;
+<a name="645"></a>    }
+<a name="646"></a>}
+<a name="647"></a>
+<a name="648"></a><font class="source_keyword">function</font> CrosshairChanged()
+<a name="649"></a>{
+<a name="650"></a>    GetPlayerOwner().myHUD.Crosshair = <font class="source_keyword">int</font>(CrosshairSlider.Value);
+<a name="651"></a>}
+<a name="652"></a>
+<a name="653"></a><font class="source_keyword">function</font> SaveConfigs()
+<a name="654"></a>{
+<a name="655"></a>    GetPlayerOwner().SaveConfig();
+<a name="656"></a>    GetPlayerOwner().myHUD.SaveConfig();
+<a name="657"></a>    <font class="source_keyword">Super</font>.SaveConfigs();
+<a name="658"></a>}
+<a name="659"></a>
+<a name="660"></a><font class="source_keyword">defaultproperties</font>
+<a name="661"></a>{
+<a name="662"></a>    CrosshairText=<font class="source_string">"Crosshair Style"</font>
+<a name="663"></a>    CrosshairHelp=<font class="source_string">"Choose the crosshair appearing at the center of your screen."</font>
+<a name="664"></a>    ShowHUDText=<font class="source_string">"Show HUD"</font>
+<a name="665"></a>    ShowHUDHelp=<font class="source_string">"Show the Heads-up Display (HUD)."</font>
+<a name="666"></a>    ShowWeaponsText=<font class="source_string">"Show Weapon Display"</font>
+<a name="667"></a>    ShowWeaponsHelp=<font class="source_string">"Show weapon displays on the HUD."</font>
+<a name="668"></a>    ShowStatusText=<font class="source_string">"Show Player Status"</font>
+<a name="669"></a>    ShowStatusHelp=<font class="source_string">"Shows the player status indicator (top right) on the HUD."</font>
+<a name="670"></a>    ShowAmmoText=<font class="source_string">"Show Ammo Count"</font>
+<a name="671"></a>    ShowAmmoHelp=<font class="source_string">"Show your current ammo count on the HUD."</font>
+<a name="672"></a>    ShowTeamInfoText=<font class="source_string">"Show Team Info"</font>
+<a name="673"></a>    ShowTeamInfoHelp=<font class="source_string">"Show team-related information on the HUD."</font>
+<a name="674"></a>    ShowFragsText=<font class="source_string">"Show Frags"</font>
+<a name="675"></a>    ShowFragsHelp=<font class="source_string">"Show your frag count on the HUD."</font>
+<a name="676"></a>    ShowFacesText=<font class="source_string">"Show Chat Area"</font>
+<a name="677"></a>    ShowFacesHelp=<font class="source_string">"Show the chat area in the top left corner, where chat messages and kills appear."</font>
+<a name="678"></a>    OpacityText=<font class="source_string">"HUD Transparency"</font>
+<a name="679"></a>    OpacityHelp=<font class="source_string">"Adjust the level of transparency in the HUD."</font>
+<a name="680"></a>    HUDScaleText=<font class="source_string">"HUD Size"</font>
+<a name="681"></a>    HUDScaleHelp=<font class="source_string">"Adjust the size of the elements on the HUD."</font>
+<a name="682"></a>    WeaponScaleText=<font class="source_string">"Weapon Icon Size"</font>
+<a name="683"></a>    WeaponScaleHelp=<font class="source_string">"Adjust the size of the weapon icons on the HUD."</font>
+<a name="684"></a>    StatusScaleText=<font class="source_string">"Status Size"</font>
+<a name="685"></a>    StatusScaleHelp=<font class="source_string">"Adjust the scale of the player status indicator (top right) on the HUD."</font>
+<a name="686"></a>    UseTeamColorText=<font class="source_string">"Use Team Color in Team Games"</font>
+<a name="687"></a>    UseTeamColorHelp=<font class="source_string">"In team games, this setting uses your team color as the color for your HUD."</font>
+<a name="688"></a>    HUDColorText=<font class="source_string">"HUD Color"</font>
+<a name="689"></a>    HUDColorHelp=<font class="source_string">"Change your prefered HUD color.  In team games your team color will be used instead."</font>
+<a name="690"></a>    HUDColorNames(<font class="source_int">0</font>)=<font class="source_string">"Red"</font>
+<a name="691"></a>    HUDColorValues(<font class="source_int">0</font>)=<font class="source_string">"16,0,0"</font>
+<a name="692"></a>    HUDColorNames(<font class="source_int">1</font>)=<font class="source_string">"Purple"</font>
+<a name="693"></a>    HUDColorValues(<font class="source_int">1</font>)=<font class="source_string">"16,0,16"</font>
+<a name="694"></a>    HUDColorNames(<font class="source_int">2</font>)=<font class="source_string">"Light Blue"</font>
+<a name="695"></a>    HUDColorValues(<font class="source_int">2</font>)=<font class="source_string">"0,8,16"</font>
+<a name="696"></a>    HUDColorNames(<font class="source_int">3</font>)=<font class="source_string">"Turquoise"</font>
+<a name="697"></a>    HUDColorValues(<font class="source_int">3</font>)=<font class="source_string">"0,16,16"</font>
+<a name="698"></a>    HUDColorNames(<font class="source_int">4</font>)=<font class="source_string">"Green"</font>
+<a name="699"></a>    HUDColorValues(<font class="source_int">4</font>)=<font class="source_string">"0,16,0"</font>
+<a name="700"></a>    HUDColorNames(<font class="source_int">5</font>)=<font class="source_string">"Orange"</font>
+<a name="701"></a>    HUDColorValues(<font class="source_int">5</font>)=<font class="source_string">"16,8,0"</font>
+<a name="702"></a>    HUDColorNames(<font class="source_int">6</font>)=<font class="source_string">"Gold"</font>
+<a name="703"></a>    HUDColorValues(<font class="source_int">6</font>)=<font class="source_string">"16,16,0"</font>
+<a name="704"></a>    HUDColorNames(<font class="source_int">7</font>)=<font class="source_string">"Pink"</font>
+<a name="705"></a>    HUDColorValues(<font class="source_int">7</font>)=<font class="source_string">"16,0,8"</font>
+<a name="706"></a>    HUDColorNames(<font class="source_int">8</font>)=<font class="source_string">"White"</font>
+<a name="707"></a>    HUDColorValues(<font class="source_int">8</font>)=<font class="source_string">"16,16,16"</font>
+<a name="708"></a>    HUDColorNames(<font class="source_int">9</font>)=<font class="source_string">"Deep Blue"</font>
+<a name="709"></a>    HUDColorValues(<font class="source_int">9</font>)=<font class="source_string">"0,0,16"</font>
+<a name="710"></a>    HUDColorNames(<font class="source_int">10</font>)=<font class="source_string">"Custom"</font>
+<a name="711"></a>    HUDColorValues(<font class="source_int">10</font>)=<font class="source_string">"cust"</font>
+<a name="712"></a>    HUDRText=<font class="source_string">"HUD Color Red"</font>
+<a name="713"></a>    HUDRHelp=<font class="source_string">"Use the RGB sliders to select a custom HUD color."</font>
+<a name="714"></a>    HUDGText=<font class="source_string">"HUD Color Green"</font>
+<a name="715"></a>    HUDGHelp=<font class="source_string">"Use the RGB sliders to select a custom HUD color."</font>
+<a name="716"></a>    HUDBText=<font class="source_string">"HUD Color Blue"</font>
+<a name="717"></a>    HUDBHelp=<font class="source_string">"Use the RGB sliders to select a custom HUD color."</font>
+<a name="718"></a>    CrosshairRText=<font class="source_string">"Crosshair Color Red"</font>
+<a name="719"></a>    CrosshairRHelp=<font class="source_string">"Use the RGB sliders to select a custom Crosshair color."</font>
+<a name="720"></a>    CrosshairGText=<font class="source_string">"Crosshair Color Green"</font>
+<a name="721"></a>    CrosshairGHelp=<font class="source_string">"Use the RGB sliders to select a custom Crosshair color."</font>
+<a name="722"></a>    CrosshairBText=<font class="source_string">"Crosshair Color Blue"</font>
+<a name="723"></a>    CrosshairBHelp=<font class="source_string">"Use the RGB sliders to select a custom Crosshair color."</font>
+<a name="724"></a>    CrosshairColorText=<font class="source_string">"Crosshair Color"</font>
+<a name="725"></a>    CrosshairColorHelp=<font class="source_string">"Change your prefered Crosshair color."</font>
+<a name="726"></a>    ControlOffset=<font class="source_int">10</font>
+<a name="727"></a>    DefaultsText=<font class="source_string">"Reset"</font>
+<a name="728"></a>    DefaultsHelp=<font class="source_string">"Reset HUD settings to default values."</font>
+<a name="729"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\utchallengehudconfig.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTChallengeHUDConfig">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utbotmatchwindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utconfigindivbotscw.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:32.000 - Creation time: Wed 26/5/2004 10:48:58.203 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,851 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.CTFFlag</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ctfflag.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#CTFFlag">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ctfdefaultmaplist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ctfgame.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\ctfflag.html">CTFFlag</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// CTFFlag.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\ctfflag.html" class="source">CTFFlag</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\decoration.html" class="source">Decoration</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec MESH IMPORT MESH=pflag ANIVFILE=MODELS\pflag_a.3d DATAFILE=MODELS\pflag_d.3d X=0 Y=0 Z=0 ZEROTEX=1
+</font><a name="7"></a><font class="source_macro">#exec MESH ORIGIN MESH=pflag X=400 Y=0 Z=0 YAW=128
+</font><a name="8"></a>
+<a name="9"></a><font class="source_macro">#exec MESH SEQUENCE MESH=pflag SEQ=All   STARTFRAME=0 NUMFRAMES=133
+</font><a name="10"></a><font class="source_macro">#exec MESH SEQUENCE MESH=pflag SEQ=pflag STARTFRAME=0 NUMFRAMES=133
+</font><a name="11"></a>
+<a name="12"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=JpflagB FILE=MODELS\N-Flag-B.PCX GROUP=Skins FLAGS=2 // twosided
+</font><a name="13"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=JpflagR FILE=MODELS\N-Flag-R.PCX GROUP=Skins FLAGS=2 // twosided
+</font><a name="14"></a>
+<a name="15"></a><font class="source_macro">#exec MESHMAP NEW   MESHMAP=pflag MESH=pflag
+</font><a name="16"></a><font class="source_macro">#exec MESHMAP SCALE MESHMAP=pflag X=0.1 Y=0.1 Z=0.2
+</font><a name="17"></a>
+<a name="18"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=pflag NUM=0 TEXTURE=JpflagB
+</font><a name="19"></a>
+<a name="20"></a><font class="source_keyword">var</font> <font class="source_keyword">byte</font>         Team;          
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHome;
+<a name="22"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bKnownLocation; <font class="source_comment">//for bot AI
+</font><a name="23"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHeld;
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>        Holder;
+<a name="25"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\botpack\flagbase.html" class="source">FlagBase</a></font>    <font class="source_type"><a href="..\engine\homebase.html" class="source">HomeBase</a></font>;
+<a name="26"></a>
+<a name="27"></a><font class="source_keyword">replication</font>
+<a name="28"></a>{
+<a name="29"></a>    <font class="source_keyword">reliable</font> <font class="source_keyword">if</font> ( Role == ROLE_Authority )
+<a name="30"></a>        Team, bHome, bHeld;
+<a name="31"></a>}
+<a name="32"></a>
+<a name="33"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="34"></a>{
+<a name="35"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="36"></a>    LoopAnim(<font class="source_name">'pflag'</font>);
+<a name="37"></a>}
+<a name="38"></a>
+<a name="39"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Position()
+<a name="40"></a>{
+<a name="41"></a>    <font class="source_keyword">if</font> ( bHeld )
+<a name="42"></a>        <font class="source_keyword">return</font> Holder;
+<a name="43"></a>
+<a name="44"></a>    <font class="source_keyword">return</font> self;
+<a name="45"></a>}
+<a name="46"></a>
+<a name="47"></a><font class="source_keyword">event</font> FellOutOfWorld()
+<a name="48"></a>{
+<a name="49"></a>    SendHome();
+<a name="50"></a>}
+<a name="51"></a>    
+<a name="52"></a><font class="source_keyword">function</font> SendHome()
+<a name="53"></a>{
+<a name="54"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> aPawn;
+<a name="55"></a>
+<a name="56"></a>    <font class="source_keyword">if</font> ( Holder != <font class="source_keyword">None</font> )
+<a name="57"></a>    {
+<a name="58"></a>        Holder.AmbientGlow = Holder.Default.AmbientGlow;
+<a name="59"></a>        Holder.LightType = LT_None;
+<a name="60"></a>        Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.HasFlag = <font class="source_keyword">None</font>;
+<a name="61"></a>        <font class="source_keyword">if</font> ( Holder.<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> != <font class="source_keyword">None</font> )
+<a name="62"></a>            Holder.<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>.SetOwnerDisplay();
+<a name="63"></a>        Holder = <font class="source_keyword">None</font>;
+<a name="64"></a>    }
+<a name="65"></a>    GotoState(<font class="source_name">'Home'</font>);
+<a name="66"></a>    SetPhysics(PHYS_None);
+<a name="67"></a>    bCollideWorld = <font class="source_keyword">false</font>;
+<a name="68"></a>    SetLocation(<font class="source_type"><a href="..\engine\homebase.html" class="source">HomeBase</a></font>.Location);
+<a name="69"></a>    SetRotation(<font class="source_type"><a href="..\engine\homebase.html" class="source">HomeBase</a></font>.Rotation);
+<a name="70"></a>    SetBase(<font class="source_keyword">None</font>);
+<a name="71"></a>    SetCollision(<font class="source_keyword">true</font>,<font class="source_keyword">false</font>,<font class="source_keyword">false</font>);
+<a name="72"></a>    <font class="source_keyword">For</font> (aPawn = <font class="source_type">Level</font>.PawnList; aPawn!=<font class="source_keyword">None</font>; aPawn=aPawn.nextPawn )
+<a name="73"></a>        <font class="source_keyword">if</font> ( aPawn.MoveTarget == self )
+<a name="74"></a>            aPawn.MoveTimer = -<font class="source_int">1.0</font>;
+<a name="75"></a>}
+<a name="76"></a>    
+<a name="77"></a><font class="source_keyword">function</font> Landed(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormall)
+<a name="78"></a>{
+<a name="79"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> NewRot;
+<a name="80"></a>
+<a name="81"></a>    NewRot = Rot(<font class="source_int">16384</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="82"></a>    NewRot.Yaw = Rotation.Yaw;
+<a name="83"></a>    SetRotation(NewRot);
+<a name="84"></a>}
+<a name="85"></a>
+<a name="86"></a><font class="source_keyword">function</font> Drop(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> newVel)
+<a name="87"></a>{
+<a name="88"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> OldHolder;
+<a name="89"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> X,Y,Z;
+<a name="90"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bHolderPainZone;
+<a name="91"></a>
+<a name="92"></a>    BroadcastLocalizedMessage( <font class="source_keyword">class</font><font class="source_name">'CTFMessage'</font>, <font class="source_int">2</font>, Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>, <font class="source_keyword">None</font>, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team] );
+<a name="93"></a>    <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.WorldLog != <font class="source_keyword">None</font>)
+<a name="94"></a>        <font class="source_type">Level</font>.Game.WorldLog.LogSpecialEvent(<font class="source_string">"flag_dropped"</font>, Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerID, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team].TeamIndex);
+<a name="95"></a>    <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.LocalLog != <font class="source_keyword">None</font>)
+<a name="96"></a>        <font class="source_type">Level</font>.Game.LocalLog.LogSpecialEvent(<font class="source_string">"flag_dropped"</font>, Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerID, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team].TeamIndex);
+<a name="97"></a>
+<a name="98"></a>    RotationRate.Yaw = Rand(<font class="source_int">200000</font>) - <font class="source_int">100000</font>;
+<a name="99"></a>    RotationRate.Pitch = Rand(<font class="source_int">200000</font> - Abs(RotationRate.Yaw)) - <font class="source_int">0.5</font> * (<font class="source_int">200000</font> - Abs(RotationRate.Yaw));
+<a name="100"></a>    Velocity = (<font class="source_int">0.2</font> + FRand()) * (newVel + <font class="source_int">400</font> * FRand() * VRand());
+<a name="101"></a>    <font class="source_keyword">If</font> (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone)
+<a name="102"></a>        Velocity *= <font class="source_int">0.5</font>;
+<a name="103"></a>    OldHolder = Holder;
+<a name="104"></a>    Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.HasFlag = <font class="source_keyword">None</font>;
+<a name="105"></a>    Holder.AmbientGlow = Holder.Default.AmbientGlow;
+<a name="106"></a>    LightType = LT_Steady;
+<a name="107"></a>    Holder.LightType = LT_None;
+<a name="108"></a>    bHolderPainZone = (Holder.<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bPainZone && (Holder.<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.DamagePerSec &gt; <font class="source_int">0</font>));
+<a name="109"></a>    bHolderPainZone = bHolderPainZone || (Holder.FootRegion.Zone.bPainZone && (Holder.FootRegion.Zone.DamagePerSec &gt; <font class="source_int">0</font>));
+<a name="110"></a>    <font class="source_keyword">if</font> ( Holder.<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> != <font class="source_keyword">None</font> )
+<a name="111"></a>        Holder.<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>.SetOwnerDisplay();
+<a name="112"></a>    Holder = <font class="source_keyword">None</font>;
+<a name="113"></a>
+<a name="114"></a>    GetAxes(OldHolder.Rotation, X,Y,Z);
+<a name="115"></a>    SetRotation(<font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font>(-<font class="source_int">1</font> * X));
+<a name="116"></a>    bCollideWorld = <font class="source_keyword">true</font>;
+<a name="117"></a>    SetCollisionSize(<font class="source_int">0.5</font> * Default.CollisionRadius, CollisionHeight);
+<a name="118"></a>    <font class="source_keyword">if</font> ( !SetLocation(OldHolder.Location - <font class="source_int">2</font> * OldHolder.CollisionRadius * X + OldHolder.CollisionHeight * vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0.5</font>)) 
+<a name="119"></a>        && !SetLocation(OldHolder.Location) )
+<a name="120"></a>    {
+<a name="121"></a>        SetCollisionSize(<font class="source_int">0.8</font> * OldHolder.CollisionRadius, FMin(CollisionHeight, <font class="source_int">0.8</font> * OldHolder.CollisionHeight));
+<a name="122"></a>        <font class="source_keyword">if</font> ( !SetLocation(OldHolder.Location) )
+<a name="123"></a>        {
+<a name="124"></a>            SendHome();
+<a name="125"></a>            <font class="source_keyword">return</font>;
+<a name="126"></a>        }
+<a name="127"></a>    }
+<a name="128"></a>
+<a name="129"></a>    SetPhysics(PHYS_Falling);
+<a name="130"></a>    SetBase(<font class="source_keyword">None</font>);
+<a name="131"></a>    SetCollision(<font class="source_keyword">true</font>, <font class="source_keyword">false</font>, <font class="source_keyword">false</font>);
+<a name="132"></a>    GotoState(<font class="source_name">'Dropped'</font>);
+<a name="133"></a>    <font class="source_keyword">if</font> ( bHolderPainZone )
+<a name="134"></a>        Timer();
+<a name="135"></a>}
+<a name="136"></a>
+<a name="137"></a><font class="source_keyword">function</font> SetHolderLighting()
+<a name="138"></a>{
+<a name="139"></a>    Holder.AmbientGlow = <font class="source_int">254</font>;
+<a name="140"></a>    LightType = LT_None;
+<a name="141"></a>    Holder.LightEffect=LE_NonIncidence;
+<a name="142"></a>    Holder.LightBrightness=<font class="source_int">255</font>;
+<a name="143"></a>    Holder.LightHue=LightHue;
+<a name="144"></a>    Holder.LightRadius=<font class="source_int">6</font>;
+<a name="145"></a>    Holder.LightSaturation=LightSaturation;
+<a name="146"></a>    Holder.LightType=LT_Steady;
+<a name="147"></a>}
+<a name="148"></a>    
+<a name="149"></a><font class="source_keyword">state</font> Dropped
+<a name="150"></a>{
+<a name="151"></a>    <font class="source_keyword">function</font> TakeDamage( <font class="source_keyword">int</font> NDamage, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> instigatedBy, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> hitlocation, 
+<a name="152"></a>                        <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> momentum, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>)
+<a name="153"></a>    {
+<a name="154"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bPainZone && (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.DamagePerSec &gt; <font class="source_int">0</font>) )
+<a name="155"></a>            timer();
+<a name="156"></a>    }
+<a name="157"></a>
+<a name="158"></a>    singular <font class="source_keyword">function</font> ZoneChange( <font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> NewZone )
+<a name="159"></a>    {
+<a name="160"></a>        <font class="source_keyword">Super</font>.ZoneChange(NewZone);
+<a name="161"></a>        <font class="source_keyword">if</font> ( NewZone.bPainZone && (NewZone.DamagePerSec &gt; <font class="source_int">0</font>) )
+<a name="162"></a>            timer();
+<a name="163"></a>    }
+<a name="164"></a>
+<a name="165"></a>    <font class="source_keyword">function</font> Timer()
+<a name="166"></a>    {
+<a name="167"></a>        SendHome();
+<a name="168"></a>        BroadcastLocalizedMessage( <font class="source_keyword">class</font><font class="source_name">'CTFMessage'</font>, <font class="source_int">3</font>, <font class="source_keyword">None</font>, <font class="source_keyword">None</font>, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team] );
+<a name="169"></a>        <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.WorldLog != <font class="source_keyword">None</font>)
+<a name="170"></a>            <font class="source_type">Level</font>.Game.WorldLog.LogSpecialEvent(<font class="source_string">"flag_returned_timeout"</font>, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team].TeamIndex);
+<a name="171"></a>        <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.LocalLog != <font class="source_keyword">None</font>)
+<a name="172"></a>            <font class="source_type">Level</font>.Game.LocalLog.LogSpecialEvent(<font class="source_string">"flag_returned_timeout"</font>, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team].TeamIndex);
+<a name="173"></a>    }
+<a name="174"></a>
+<a name="175"></a>    <font class="source_keyword">function</font> Touch(<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other)
+<a name="176"></a>    {
+<a name="177"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\ctfflag.html" class="source">CTFFlag</a></font> aFlag;
+<a name="178"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> aPawn;
+<a name="179"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font> N;
+<a name="180"></a>        <font class="source_keyword">local</font> <font class="source_keyword">int</font> num, i;
+<a name="181"></a>
+<a name="182"></a>        aPawn = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other);
+<a name="183"></a>        <font class="source_keyword">if</font> ( (aPawn != <font class="source_keyword">None</font>) && aPawn.bIsPlayer && (aPawn.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &gt; <font class="source_int">0</font>)
+<a name="184"></a>            && !aPawn.IsInState(<font class="source_name">'FeigningDeath'</font>) )
+<a name="185"></a>        {
+<a name="186"></a>            aPawn.MoveTimer = -<font class="source_int">1</font>;
+<a name="187"></a>            <font class="source_keyword">if</font> ( aPawn.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Team == Team )
+<a name="188"></a>            {
+<a name="189"></a>                <font class="source_comment">// returned flag
+</font><a name="190"></a>                <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).ScoreFlag(aPawn, self);
+<a name="191"></a>                SendHome();
+<a name="192"></a>                <font class="source_keyword">return</font>;
+<a name="193"></a>            }
+<a name="194"></a>            <font class="source_keyword">else</font>
+<a name="195"></a>            {
+<a name="196"></a>                Holder = aPawn;
+<a name="197"></a>                Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.HasFlag = self;
+<a name="198"></a>                SetHolderLighting();
+<a name="199"></a>                <font class="source_keyword">if</font> ( Holder.IsA(<font class="source_name">'Bot'</font>) )
+<a name="200"></a>                {
+<a name="201"></a>                    <font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>(Holder).<font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font> = <font class="source_keyword">None</font>;
+<a name="202"></a>                    Holder.SendTeamMessage(<font class="source_keyword">None</font>, <font class="source_name">'OTHER'</font>, <font class="source_int">2</font>, <font class="source_int">10</font>);
+<a name="203"></a>                }
+<a name="204"></a>                <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Holder.IsA(<font class="source_name">'TournamentPlayer'</font>) && <font class="source_type"><a href="..\botpack\tournamentplayer.html" class="source">TournamentPlayer</a></font>(Holder).bAutoTaunt )
+<a name="205"></a>                    Holder.SendTeamMessage(<font class="source_keyword">None</font>, <font class="source_name">'OTHER'</font>, <font class="source_int">2</font>, <font class="source_int">10</font>);
+<a name="206"></a>            }
+<a name="207"></a>            BroadcastLocalizedMessage( <font class="source_keyword">class</font><font class="source_name">'CTFMessage'</font>, <font class="source_int">4</font>, Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>, <font class="source_keyword">None</font>, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team] );
+<a name="208"></a>            <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.WorldLog != <font class="source_keyword">None</font>)
+<a name="209"></a>                <font class="source_type">Level</font>.Game.WorldLog.LogSpecialEvent(<font class="source_string">"flag_pickedup"</font>, Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerID, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team].TeamIndex);
+<a name="210"></a>            <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.LocalLog != <font class="source_keyword">None</font>)
+<a name="211"></a>                <font class="source_type">Level</font>.Game.LocalLog.LogSpecialEvent(<font class="source_string">"flag_pickedup"</font>, Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerID, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team].TeamIndex);
+<a name="212"></a>            GotoState(<font class="source_name">'Held'</font>);
+<a name="213"></a>        }
+<a name="214"></a>    }
+<a name="215"></a>
+<a name="216"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="217"></a>    {
+<a name="218"></a>        LightEffect = LE_NonIncidence;
+<a name="219"></a>        SetTimer(<font class="source_int">25.0</font>, <font class="source_keyword">false</font>);
+<a name="220"></a>        bCollideWorld = <font class="source_keyword">true</font>;
+<a name="221"></a>        bKnownLocation = <font class="source_keyword">false</font>;
+<a name="222"></a>        bHidden = <font class="source_keyword">false</font>;
+<a name="223"></a>    }
+<a name="224"></a>
+<a name="225"></a>    <font class="source_keyword">function</font> EndState()
+<a name="226"></a>    {
+<a name="227"></a>        bHidden = <font class="source_keyword">true</font>;
+<a name="228"></a>    }
+<a name="229"></a>
+<a name="230"></a>Begin:
+<a name="231"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bPainZone && (<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.DamagePerSec &gt; <font class="source_int">0</font>) )
+<a name="232"></a>        timer();
+<a name="233"></a>
+<a name="234"></a>}
+<a name="235"></a>
+<a name="236"></a><font class="source_keyword">state</font> Held
+<a name="237"></a>{
+<a name="238"></a>    <font class="source_keyword">event</font> FellOutOfWorld()
+<a name="239"></a>    {
+<a name="240"></a>    }
+<a name="241"></a>
+<a name="242"></a>    <font class="source_keyword">function</font> Timer()
+<a name="243"></a>    {
+<a name="244"></a>        <font class="source_keyword">if</font> ( Holder == <font class="source_keyword">None</font> )
+<a name="245"></a>            SendHome();
+<a name="246"></a>    }
+<a name="247"></a>
+<a name="248"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="249"></a>    {
+<a name="250"></a>        bHeld = <font class="source_keyword">true</font>;
+<a name="251"></a>        bCollideWorld = <font class="source_keyword">false</font>;
+<a name="252"></a>        bKnownLocation = <font class="source_keyword">false</font>;
+<a name="253"></a>        <font class="source_type"><a href="..\engine\homebase.html" class="source">HomeBase</a></font>.PlayAlarm();
+<a name="254"></a>        SetPhysics(PHYS_None);
+<a name="255"></a>        SetCollision(<font class="source_keyword">false</font>, <font class="source_keyword">false</font>, <font class="source_keyword">false</font>);
+<a name="256"></a>        SetTimer(<font class="source_int">10.0</font>, <font class="source_keyword">true</font>);
+<a name="257"></a>    }
+<a name="258"></a>
+<a name="259"></a>    <font class="source_keyword">function</font> EndState()
+<a name="260"></a>    {
+<a name="261"></a>        bHeld = <font class="source_keyword">false</font>;
+<a name="262"></a>    }
+<a name="263"></a>}       
+<a name="264"></a>
+<a name="265"></a><font class="source_keyword2">auto</font> <font class="source_keyword">state</font> Home
+<a name="266"></a>{
+<a name="267"></a>    <font class="source_keyword">function</font> Timer()
+<a name="268"></a>    {
+<a name="269"></a>        <font class="source_keyword">if</font> ( VSize(Location - <font class="source_type"><a href="..\engine\homebase.html" class="source">HomeBase</a></font>.Location) &gt; <font class="source_int">10</font> )
+<a name="270"></a>        {
+<a name="271"></a>            SendHome();
+<a name="272"></a>            BroadcastLocalizedMessage( <font class="source_keyword">class</font><font class="source_name">'CTFMessage'</font>, <font class="source_int">5</font>, <font class="source_keyword">None</font>, <font class="source_keyword">None</font>, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team] );
+<a name="273"></a>        }
+<a name="274"></a>    }
+<a name="275"></a>
+<a name="276"></a>    <font class="source_keyword">function</font> Touch(<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other)
+<a name="277"></a>    {
+<a name="278"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\ctfflag.html" class="source">CTFFlag</a></font> aFlag;
+<a name="279"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> aPawn;
+<a name="280"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font> N;
+<a name="281"></a>        <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="282"></a>        <font class="source_keyword">local</font> <font class="source_keyword">float</font> totalweight, selection, PartialWeight;
+<a name="283"></a>        <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font> B;
+<a name="284"></a>
+<a name="285"></a>        aPawn = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other);
+<a name="286"></a>        <font class="source_keyword">if</font> ( (aPawn != <font class="source_keyword">None</font>) && aPawn.bIsPlayer && (aPawn.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &gt; <font class="source_int">0</font>) )
+<a name="287"></a>        {
+<a name="288"></a>            <font class="source_comment">// check if scored capture
+</font><a name="289"></a>            <font class="source_keyword">if</font> ( aPawn.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Team == Team )
+<a name="290"></a>            {
+<a name="291"></a>                <font class="source_keyword">if</font> ( aPawn.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.HasFlag != <font class="source_keyword">None</font> )
+<a name="292"></a>                {
+<a name="293"></a>                    <font class="source_comment">//Score!
+</font><a name="294"></a>                    aFlag = <font class="source_type"><a href="..\botpack\ctfflag.html" class="source">CTFFlag</a></font>(aPawn.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.HasFlag);
+<a name="295"></a>                    <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).ScoreFlag(aPawn, aFlag);
+<a name="296"></a>                    aFlag.SendHome();
+<a name="297"></a>                }
+<a name="298"></a>            }
+<a name="299"></a>            <font class="source_keyword">else</font>
+<a name="300"></a>            {
+<a name="301"></a>                Holder = aPawn;
+<a name="302"></a>                Holder.MoveTimer = -<font class="source_int">1</font>;
+<a name="303"></a>                Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.HasFlag = self;
+<a name="304"></a>                Holder.MakeNoise(<font class="source_int">2.0</font>);
+<a name="305"></a>                SetHolderLighting();
+<a name="306"></a>                B = <font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>(Holder);
+<a name="307"></a>                <font class="source_keyword">if</font> ( B != <font class="source_keyword">None</font> )
+<a name="308"></a>                {
+<a name="309"></a>                    B.<font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font> = <font class="source_keyword">None</font>;
+<a name="310"></a>                    <font class="source_keyword">if</font> ( FRand() &lt; <font class="source_int">0.5</font> )
+<a name="311"></a>                    {
+<a name="312"></a>                        <font class="source_keyword">for</font> ( N=<font class="source_type">Level</font>.NavigationPointList; N!=<font class="source_keyword">None</font>; N=N.nextNavigationPoint )
+<a name="313"></a>                            <font class="source_keyword">if</font> ( N.IsA(<font class="source_name">'AlternatePath'</font>) && (<font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font>(N).bTwoWay || (<font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font>(N).team == Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.team)) )
+<a name="314"></a>                            {
+<a name="315"></a>                                <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font>(N).bTwoWay && (<font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font>(N).team != Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.team) )
+<a name="316"></a>                                    TotalWeight += <font class="source_int">4000</font>;
+<a name="317"></a>                                TotalWeight += <font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font>(N).SelectionWeight;
+<a name="318"></a>                            }
+<a name="319"></a>                        selection = TotalWeight * FRand();
+<a name="320"></a>                        <font class="source_keyword">for</font> ( N=<font class="source_type">Level</font>.NavigationPointList; N!=<font class="source_keyword">None</font>; N=N.nextNavigationPoint )
+<a name="321"></a>                            <font class="source_keyword">if</font> ( N.IsA(<font class="source_name">'AlternatePath'</font>) && (<font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font>(N).bTwoWay ||(<font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font>(N).team == Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.team)) )
+<a name="322"></a>                            {
+<a name="323"></a>                                B.<font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font> = <font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font>(N);
+<a name="324"></a>                                <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font>(N).bTwoWay && (<font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font>(N).team != Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.team) )
+<a name="325"></a>                                {
+<a name="326"></a>                                    PartialWeight += <font class="source_int">4000</font>;
+<a name="327"></a>                                }
+<a name="328"></a>                                PartialWeight += <font class="source_type"><a href="..\botpack\alternatepath.html" class="source">AlternatePath</a></font>(N).SelectionWeight;
+<a name="329"></a>                                <font class="source_keyword">if</font> ( PartialWeight &gt; selection )
+<a name="330"></a>                                    <font class="source_keyword">break</font>;
+<a name="331"></a>                            }
+<a name="332"></a>                    }
+<a name="333"></a>                    B.SendTeamMessage(<font class="source_keyword">None</font>, <font class="source_name">'OTHER'</font>, <font class="source_int">2</font>, <font class="source_int">10</font>);
+<a name="334"></a>                }
+<a name="335"></a>                <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Holder.IsA(<font class="source_name">'TournamentPlayer'</font>) && <font class="source_type"><a href="..\botpack\tournamentplayer.html" class="source">TournamentPlayer</a></font>(Holder).bAutoTaunt )
+<a name="336"></a>                    Holder.SendTeamMessage(<font class="source_keyword">None</font>, <font class="source_name">'OTHER'</font>, <font class="source_int">2</font>, <font class="source_int">10</font>);
+<a name="337"></a>
+<a name="338"></a>                <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.WorldLog != <font class="source_keyword">None</font>)
+<a name="339"></a>                    <font class="source_type">Level</font>.Game.WorldLog.LogSpecialEvent(<font class="source_string">"flag_taken"</font>, Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerID, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team].TeamIndex);
+<a name="340"></a>                <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.LocalLog != <font class="source_keyword">None</font>)
+<a name="341"></a>                    <font class="source_type">Level</font>.Game.LocalLog.LogSpecialEvent(<font class="source_string">"flag_taken"</font>, Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerID, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team].TeamIndex);
+<a name="342"></a>                BroadcastLocalizedMessage( <font class="source_keyword">class</font><font class="source_name">'CTFMessage'</font>, <font class="source_int">6</font>, Holder.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>, <font class="source_keyword">None</font>, <font class="source_type"><a href="..\botpack\ctfgame.html" class="source">CTFGame</a></font>(<font class="source_type">Level</font>.Game).Teams[Team] );
+<a name="343"></a>                GotoState(<font class="source_name">'Held'</font>);
+<a name="344"></a>            }
+<a name="345"></a>        }
+<a name="346"></a>    }
+<a name="347"></a>
+<a name="348"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="349"></a>    {
+<a name="350"></a>        bHome = <font class="source_keyword">true</font>;
+<a name="351"></a>        bCollideWorld = <font class="source_keyword">false</font>;
+<a name="352"></a>        bKnownLocation = <font class="source_keyword">true</font>;
+<a name="353"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\homebase.html" class="source">HomeBase</a></font> != <font class="source_keyword">None</font> ) <font class="source_comment">// will be none when flag is created
+</font><a name="354"></a>        {
+<a name="355"></a>            <font class="source_type"><a href="..\engine\homebase.html" class="source">HomeBase</a></font>.bHidden = <font class="source_keyword">false</font>;
+<a name="356"></a>            <font class="source_type"><a href="..\engine\homebase.html" class="source">HomeBase</a></font>.<font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font> = <font class="source_keyword">None</font>;
+<a name="357"></a>        }
+<a name="358"></a>        SetTimer(<font class="source_int">1.0</font>, <font class="source_keyword">true</font>);
+<a name="359"></a>        SetCollisionSize(Default.CollisionRadius, Default.CollisionHeight);
+<a name="360"></a>    }
+<a name="361"></a>
+<a name="362"></a>    <font class="source_keyword">function</font> EndState()
+<a name="363"></a>    {
+<a name="364"></a>        bHome = <font class="source_keyword">false</font>;
+<a name="365"></a>        <font class="source_type"><a href="..\engine\homebase.html" class="source">HomeBase</a></font>.bHidden = <font class="source_keyword">true</font>;
+<a name="366"></a>        SetTimer(<font class="source_int">0.0</font>, <font class="source_keyword">false</font>);
+<a name="367"></a>    }
+<a name="368"></a>}
+<a name="369"></a>
+<a name="370"></a><font class="source_keyword">defaultproperties</font>
+<a name="371"></a>{
+<a name="372"></a>     bHidden=<font class="source_keyword">true</font>
+<a name="373"></a>     bStasis=<font class="source_keyword">false</font>
+<a name="374"></a>     Skin=JpFlagB
+<a name="375"></a>     bHome=<font class="source_keyword">True</font>
+<a name="376"></a>     bStatic=<font class="source_keyword">False</font>
+<a name="377"></a>     DrawScale=<font class="source_int">0.6</font>
+<a name="378"></a>     DrawType=DT_Mesh
+<a name="379"></a>     Style=STY_Masked
+<a name="380"></a>     <font class="source_type">Mesh</font>=<font class="source_type">Mesh</font><font class="source_name">'BotPack.pflag'</font>
+<a name="381"></a>     bUnlit=<font class="source_keyword">True</font>
+<a name="382"></a>     bAlwaysRelevant=<font class="source_keyword">True</font>
+<a name="383"></a>     CollisionRadius=<font class="source_int">48.000000</font>
+<a name="384"></a>     CollisionHeight=<font class="source_int">30.000000</font>
+<a name="385"></a>     bCollideActors=<font class="source_keyword">True</font>
+<a name="386"></a>     bCollideWorld=<font class="source_keyword">True</font>
+<a name="387"></a>     LightType=LT_Steady
+<a name="388"></a>     LightEffect=LE_NonIncidence
+<a name="389"></a>     LightBrightness=<font class="source_int">255</font>
+<a name="390"></a>     LightHue=<font class="source_int">170</font>
+<a name="391"></a>     LightRadius=<font class="source_int">6</font>
+<a name="392"></a>     bFixedRotationDir=<font class="source_keyword">True</font>
+<a name="393"></a>     Mass=<font class="source_int">30.000000</font>
+<a name="394"></a>     Buoyancy=<font class="source_int">20.000000</font>
+<a name="395"></a>     RotationRate=(Pitch=<font class="source_int">30000</font>,Roll=<font class="source_int">30000</font>)
+<a name="396"></a>     PrePivot=(X=<font class="source_int">2</font>, Y=<font class="source_int">0</font>, Z=<font class="source_int">0.5</font>)
+<a name="397"></a>     NetPriority=+<font class="source_int">00003.000000</font>
+<a name="398"></a>}
+<a name="399"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ctfflag.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#CTFFlag">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ctfdefaultmaplist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ctfgame.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:21:20.000 - Creation time: Wed 26/5/2004 10:48:12.734 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

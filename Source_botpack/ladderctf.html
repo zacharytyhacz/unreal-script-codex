@@ -1,0 +1,235 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.LadderCTF</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ladderctf.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#LadderCTF">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ladderchal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ladderctfdemo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\ladderctf.html">LadderCTF</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// LadderCTF
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\ladderctf.html" class="source">LadderCTF</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\botpack\ladder.html" class="source">Ladder</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">defaultproperties</font>
+<a name="7"></a>{
+<a name="8"></a>    Matches=<font class="source_int">10</font>
+<a name="9"></a>    bTeamGame=<font class="source_keyword">True</font>
+<a name="10"></a>    MapPrefix=<font class="source_string">"CTF-"</font>
+<a name="11"></a>
+<a name="12"></a>    Maps(<font class="source_int">0</font>)=<font class="source_string">"Tutorial.unr"</font>
+<a name="13"></a>    MapTitle(<font class="source_int">0</font>)=<font class="source_string">"CTF Tutorial"</font>
+<a name="14"></a>    MapAuthors(<font class="source_int">0</font>)=<font class="source_string">"Cliff Bleszinski"</font>
+<a name="15"></a>    MapDescription(<font class="source_int">0</font>)=<font class="source_string">"Learn the basic rules and systems of Capture the Flag in this special training environment. Test your skills against an untrained enemy team before entering the tournament proper."</font>
+<a name="16"></a>    GoalTeamScore(<font class="source_int">0</font>)=<font class="source_int">0</font>
+<a name="17"></a>    RankedGame(<font class="source_int">0</font>)=<font class="source_int">1</font>
+<a name="18"></a>    MatchInfo(<font class="source_int">0</font>)=<font class="source_string">"Botpack.RatedMatchCTFTUT"</font>
+<a name="19"></a>
+<a name="20"></a>    Maps(<font class="source_int">1</font>)=<font class="source_string">"Niven.unr"</font>
+<a name="21"></a>    MapTitle(<font class="source_int">1</font>)=<font class="source_string">"Niven"</font>
+<a name="22"></a>    MapAuthors(<font class="source_int">1</font>)=<font class="source_string">"Alan Willard 'Talisman'"</font>
+<a name="23"></a>    MapDescription(<font class="source_int">1</font>)=<font class="source_string">"An experimental orbital nuclear reactor, abandoned after funding for the project dried up. High radiation levels and waste leakage offer an environmental challenge for Tournament combatants."</font>
+<a name="24"></a>    GoalTeamScore(<font class="source_int">1</font>)=<font class="source_int">3</font>
+<a name="25"></a>    RankedGame(<font class="source_int">1</font>)=<font class="source_int">1</font>
+<a name="26"></a>    MatchInfo(<font class="source_int">1</font>)=<font class="source_string">"Botpack.RatedMatchCTF1"</font>
+<a name="27"></a>
+<a name="28"></a>    Maps(<font class="source_int">2</font>)=<font class="source_string">"Face.unr"</font>
+<a name="29"></a>    MapTitle(<font class="source_int">2</font>)=<font class="source_string">"Facing Worlds"</font>
+<a name="30"></a>    MapAuthors(<font class="source_int">2</font>)=<font class="source_string">"Cedric 'Inoxx' Fiorentino"</font>
+<a name="31"></a>    MapDescription(<font class="source_int">2</font>)=<font class="source_string">"This ancient asteroid has been converted to an Arena for the Tournament. It is highly dangerous due to aberrant gravitational properties and, of course, the snipers from the other team."</font>
+<a name="32"></a>    RankedGame(<font class="source_int">2</font>)=<font class="source_int">2</font>
+<a name="33"></a>    GoalTeamScore(<font class="source_int">2</font>)=<font class="source_int">3</font>
+<a name="34"></a>    MatchInfo(<font class="source_int">2</font>)=<font class="source_string">"Botpack.RatedMatchCTF3"</font>
+<a name="35"></a>
+<a name="36"></a>    Maps(<font class="source_int">3</font>)=<font class="source_string">"EternalCave.unr"</font>
+<a name="37"></a>    MapTitle(<font class="source_int">3</font>)=<font class="source_string">"Eternal Cave"</font>
+<a name="38"></a>    MapAuthors(<font class="source_int">3</font>)=<font class="source_string">"Juan Pancho Eekels"</font>
+<a name="39"></a>    MapDescription(<font class="source_int">3</font>)=<font class="source_string">"Ruins belonging to an unknown race, acquired by Liandri Corporation's Xenobiology Division for research and excavation. Deemed a 'valuable and entertaining venue' by the Tournament Board after 17 XD archeologists fell to their deaths."</font>
+<a name="40"></a>    RankedGame(<font class="source_int">3</font>)=<font class="source_int">2</font>
+<a name="41"></a>    GoalTeamScore(<font class="source_int">3</font>)=<font class="source_int">3</font>
+<a name="42"></a>    MatchInfo(<font class="source_int">3</font>)=<font class="source_string">"Botpack.RatedMatchCTF2"</font>
+<a name="43"></a>
+<a name="44"></a>    Maps(<font class="source_int">4</font>)=<font class="source_string">"Coret.unr"</font>
+<a name="45"></a>    MapTitle(<font class="source_int">4</font>)=<font class="source_string">"Coret"</font>
+<a name="46"></a>    MapAuthors(<font class="source_int">4</font>)=<font class="source_string">"Alan Willard 'Talisman'"</font>
+<a name="47"></a>    MapDescription(<font class="source_int">4</font>)=<font class="source_string">"Built into a mountaintop on the Coret moon, this facility was once the waypoint between the Interstellar zonegate in orbit over the moon and the Zeto Research Station located half the moon away in the frozen wastes."</font>
+<a name="48"></a>    RankedGame(<font class="source_int">4</font>)=<font class="source_int">3</font>
+<a name="49"></a>    GoalTeamScore(<font class="source_int">4</font>)=<font class="source_int">3</font>
+<a name="50"></a>    MatchInfo(<font class="source_int">4</font>)=<font class="source_string">"Botpack.RatedMatchCTF4"</font>
+<a name="51"></a>
+<a name="52"></a>    Maps(<font class="source_int">5</font>)=<font class="source_string">"Gauntlet.unr"</font>
+<a name="53"></a>    MapTitle(<font class="source_int">5</font>)=<font class="source_string">"The Gauntlet"</font>
+<a name="54"></a>    MapAuthors(<font class="source_int">5</font>)=<font class="source_string">"Cliff Bleszinski"</font>
+<a name="55"></a>    MapDescription(<font class="source_int">5</font>)=<font class="source_string">"Not all environments are retrofitted Liandri real estate. The Gauntlet is one of a small number of highly stylized combat arenas specifically designed for the Tournament. This particular venue has been customized for teamplay."</font>
+<a name="56"></a>    RankedGame(<font class="source_int">5</font>)=<font class="source_int">3</font>
+<a name="57"></a>    GoalTeamScore(<font class="source_int">5</font>)=<font class="source_int">3</font>
+<a name="58"></a>    MatchInfo(<font class="source_int">5</font>)=<font class="source_string">"Botpack.RatedMatchCTF5"</font>
+<a name="59"></a>
+<a name="60"></a>    Maps(<font class="source_int">6</font>)=<font class="source_string">"Dreary.unr"</font>
+<a name="61"></a>    MapTitle(<font class="source_int">6</font>)=<font class="source_string">"Dreary"</font>
+<a name="62"></a>    MapAuthors(<font class="source_int">6</font>)=<font class="source_string">"Shane Caudle"</font>
+<a name="63"></a>    MapDescription(<font class="source_int">6</font>)=<font class="source_string">"The distant wastemarsh of Vandaron 3 is said to be the wettest place in the galaxy. A post dreaded by soldiers due to its remote location, cramped quarters, and maddening echo of ever beating rain."</font>
+<a name="64"></a>    RankedGame(<font class="source_int">6</font>)=<font class="source_int">4</font>
+<a name="65"></a>    GoalTeamScore(<font class="source_int">6</font>)=<font class="source_int">3</font>
+<a name="66"></a>    MatchInfo(<font class="source_int">6</font>)=<font class="source_string">"Botpack.RatedMatchCTF6"</font>
+<a name="67"></a>
+<a name="68"></a>    Maps(<font class="source_int">7</font>)=<font class="source_string">"Command.unr"</font>
+<a name="69"></a>    MapTitle(<font class="source_int">7</font>)=<font class="source_string">"Last Command"</font>
+<a name="70"></a>    MapAuthors(<font class="source_int">7</font>)=<font class="source_string">"Myscha the sled dog"</font>
+<a name="71"></a>    MapDescription(<font class="source_int">7</font>)=<font class="source_string">"The Last Command is a fully functional Nuclear Processing Station owned by the Liandri Corporation. This facility's system oriented layout makes an ideal proving grounds for Capture the Flag Tournament matches. High Tech voluminous industrial architecture paired with curving maintenance corridors means fighting here will require quick reaction times if your team plans on surviving."</font>
+<a name="72"></a>    RankedGame(<font class="source_int">7</font>)=<font class="source_int">4</font>
+<a name="73"></a>    GoalTeamScore(<font class="source_int">7</font>)=<font class="source_int">3</font>
+<a name="74"></a>    MatchInfo(<font class="source_int">7</font>)=<font class="source_string">"Botpack.RatedMatchCTF7"</font>
+<a name="75"></a>
+<a name="76"></a>    Maps(<font class="source_int">8</font>)=<font class="source_string">"LavaGiant.unr"</font>
+<a name="77"></a>    MapTitle(<font class="source_int">8</font>)=<font class="source_string">"The Lava Giant"</font>
+<a name="78"></a>    MapAuthors(<font class="source_int">8</font>)=<font class="source_string">"Juan Pancho Eekels"</font>
+<a name="79"></a>    MapDescription(<font class="source_int">8</font>)=<font class="source_string">"This volatile world has an extremely low orbit around a superdense gas giant. The resulting gravitational forces have caused the planetary mantle to collapse. Combatants are issued special gravbelts for each match."</font>
+<a name="80"></a>    RankedGame(<font class="source_int">8</font>)=<font class="source_int">5</font>
+<a name="81"></a>    GoalTeamScore(<font class="source_int">8</font>)=<font class="source_int">3</font>
+<a name="82"></a>    MatchInfo(<font class="source_int">8</font>)=<font class="source_string">"Botpack.RatedMatchCTF8"</font>
+<a name="83"></a>
+<a name="84"></a>    Maps(<font class="source_int">9</font>)=<font class="source_string">"November.unr"</font>
+<a name="85"></a>    MapTitle(<font class="source_int">9</font>)=<font class="source_string">"November Sub Pen"</font>
+<a name="86"></a>    MapAuthors(<font class="source_int">9</font>)=<font class="source_string">"Myscha the sled dog"</font>
+<a name="87"></a>    MapDescription(<font class="source_int">9</font>)=<font class="source_string">"Battle around a retired November class nuclear submarine docked in an underground pen. This relic, left from the First Cold War, still includes machinegun nests and defensive positions key to victory."</font>
+<a name="88"></a>    RankedGame(<font class="source_int">9</font>)=<font class="source_int">6</font>
+<a name="89"></a>    GoalTeamScore(<font class="source_int">9</font>)=<font class="source_int">3</font>
+<a name="90"></a>    MatchInfo(<font class="source_int">9</font>)=<font class="source_string">"Botpack.RatedMatchCTF9"</font>
+<a name="91"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\ladderctf.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#LadderCTF">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ladderchal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ladderctfdemo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:21:40.000 - Creation time: Wed 26/5/2004 10:48:23.062 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

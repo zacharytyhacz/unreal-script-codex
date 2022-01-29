@@ -1,0 +1,290 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - UBrowser.UBrowserServerListFactory</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ubrowser-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ubrowser\ubrowserserverlistfactory.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserServerListFactory">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserserverlist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowserserverlistwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="ubrowser-overview.html">UBrowser</a>.UBrowserServerListFactory</h1>
+<b>Extends:</b> <a href="..\uwindow\uwindowlist.html">UWindowList</a><br>
+<b>Modifiers:</b> abstract <br>
+<a href="..\Source_ubrowser\ubrowserserverlistfactory.html"><b>Source code</b></a>
+
+<p>
+UBrowserServerListFactory<br />
+An abstract class to add servers to an existing server list.<br />
+eg GameSpy, HTTP master servers, favorites list, etc
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowbase.html">UWindowBase</a>
+    |   
+    +-- <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowlist.html">UWindowList</a>
+        |   
+        +-- <a href="ubrowser-overview.html">UBrowser</a>.<a href="ubrowserserverlistfactory.html">UBrowserServerListFactory</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="ubrowserfavoritesfact.html">UBrowserFavoritesFact</a>, <a href="ubrowsergspyfact.html">UBrowserGSpyFact</a>, <a href="ubrowserhttpfact.html">UBrowserHTTPFact</a>, <a href="ubrowserlocalfact.html">UBrowserLocalFact</a>, <a href="ubrowsersubsetfact.html">UBrowserSubsetFact</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowbase.html#F_Bold">F_Bold</a>, <a href="..\uwindow\uwindowbase.html#F_Large">F_Large</a>, <a href="..\uwindow\uwindowbase.html#F_LargeBold">F_LargeBold</a>, <a href="..\uwindow\uwindowbase.html#F_Normal">F_Normal</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIncrementalPing" name="bIncrementalPing">bIncrementalPing</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserserverlist.html">UBrowserServerList</a></td><td width="66%"><a href="#_Owner" name="Owner">Owner</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserserverlist.html">UBrowserServerList</a></td><td width="66%"><a href="#_PingedList" name="PingedList">PingedList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="ubrowserserverlist.html">UBrowserServerList</a></td><td width="66%"><a href="#_UnpingedList" name="UnpingedList">UnpingedList</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowlist.html">UWindowList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowlist.html#bItemOrderChanged">bItemOrderChanged</a>, <a href="..\uwindow\uwindowlist.html#BranchLeft">BranchLeft</a>, <a href="..\uwindow\uwindowlist.html#BranchRight">BranchRight</a>, <a href="..\uwindow\uwindowlist.html#bSortSuspended">bSortSuspended</a>, <a href="..\uwindow\uwindowlist.html#bSuspendableSort">bSuspendableSort</a>, <a href="..\uwindow\uwindowlist.html#bTreeSort">bTreeSort</a>, <a href="..\uwindow\uwindowlist.html#CompareCount">CompareCount</a>, <a href="..\uwindow\uwindowlist.html#CurrentSortItem">CurrentSortItem</a>, <a href="..\uwindow\uwindowlist.html#InternalCount">InternalCount</a>, <a href="..\uwindow\uwindowlist.html#Last">Last</a>, <a href="..\uwindow\uwindowlist.html#Next">Next</a>, <a href="..\uwindow\uwindowlist.html#ParentNode">ParentNode</a>, <a href="..\uwindow\uwindowlist.html#Prev">Prev</a>, <a href="..\uwindow\uwindowlist.html#Sentinel">Sentinel</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowbase.html#FrameHitTest">FrameHitTest</a>, <a href="..\uwindow\uwindowbase.html#MenuSound">MenuSound</a>, <a href="..\uwindow\uwindowbase.html#MessageBoxButtons">MessageBoxButtons</a>, <a href="..\uwindow\uwindowbase.html#MessageBoxResult">MessageBoxResult</a>, <a href="..\uwindow\uwindowbase.html#PropertyCondition">PropertyCondition</a>, <a href="..\uwindow\uwindowbase.html#TextAlign">TextAlign</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowbase.html#HTMLStyle">HTMLStyle</a>, <a href="..\uwindow\uwindowbase.html#Region">Region</a>, <a href="..\uwindow\uwindowbase.html#TexRegion">TexRegion</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="ubrowserserverlist.html">UBrowserServerList</a>&nbsp;</td><td><a href="#_FoundServer+" name="FoundServer">FoundServer</a> (string IP, int QueryPort, string Category, string GameName, optional string HostName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="..\engine\playerpawn.html">PlayerPawn</a>&nbsp;</td><td><a href="#_GetPlayerOwner+" name="GetPlayerOwner">GetPlayerOwner</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Query+" name="Query">Query</a> (optional bool bBySuperset, optional bool bInitial)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_QueryFinished+" name="QueryFinished">QueryFinished</a> (bool bSuccess, optional string ErrorMsg)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Shutdown+" name="Shutdown">Shutdown</a> (optional bool bBySuperset)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowlist.html">UWindowList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowlist.html#Append">Append</a>, <a href="..\uwindow\uwindowlist.html#AppendItem">AppendItem</a>, <a href="..\uwindow\uwindowlist.html#AppendListCopy">AppendListCopy</a>, <a href="..\uwindow\uwindowlist.html#Clear">Clear</a>, <a href="..\uwindow\uwindowlist.html#Compare">Compare</a>, <a href="..\uwindow\uwindowlist.html#ContinueSort">ContinueSort</a>, <a href="..\uwindow\uwindowlist.html#CopyExistingListItem">CopyExistingListItem</a>, <a href="..\uwindow\uwindowlist.html#Count">Count</a>, <a href="..\uwindow\uwindowlist.html#CountShown">CountShown</a>, <a href="..\uwindow\uwindowlist.html#CreateItem">CreateItem</a>, <a href="..\uwindow\uwindowlist.html#DestroyList">DestroyList</a>, <a href="..\uwindow\uwindowlist.html#DestroyListItem">DestroyListItem</a>, <a href="..\uwindow\uwindowlist.html#DisconnectList">DisconnectList</a>, <a href="..\uwindow\uwindowlist.html#DoAppendItem">DoAppendItem</a>, <a href="..\uwindow\uwindowlist.html#FindEntry">FindEntry</a>, <a href="..\uwindow\uwindowlist.html#GraftLeft">GraftLeft</a>, <a href="..\uwindow\uwindowlist.html#GraftRight">GraftRight</a>, <a href="..\uwindow\uwindowlist.html#Insert">Insert</a>, <a href="..\uwindow\uwindowlist.html#InsertAfter">InsertAfter</a>, <a href="..\uwindow\uwindowlist.html#InsertBefore">InsertBefore</a>, <a href="..\uwindow\uwindowlist.html#InsertItem">InsertItem</a>, <a href="..\uwindow\uwindowlist.html#InsertItemAfter">InsertItemAfter</a>, <a href="..\uwindow\uwindowlist.html#InsertItemBefore">InsertItemBefore</a>, <a href="..\uwindow\uwindowlist.html#LeftMost">LeftMost</a>, <a href="..\uwindow\uwindowlist.html#MoveItemSorted">MoveItemSorted</a>, <a href="..\uwindow\uwindowlist.html#Remove">Remove</a>, <a href="..\uwindow\uwindowlist.html#RightMost">RightMost</a>, <a href="..\uwindow\uwindowlist.html#SetupSentinel">SetupSentinel</a>, <a href="..\uwindow\uwindowlist.html#ShowThisItem">ShowThisItem</a>, <a href="..\uwindow\uwindowlist.html#Sort">Sort</a>, <a href="..\uwindow\uwindowlist.html#Tick">Tick</a>, <a href="..\uwindow\uwindowlist.html#Validate">Validate</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\uwindow\uwindow-overview.html">UWindow</a>.<a href="..\uwindow\uwindowbase.html">UWindowBase</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\uwindow\uwindowbase.html#BuildObjectWithProperties">BuildObjectWithProperties</a>, <a href="..\uwindow\uwindowbase.html#GetRegion">GetRegion</a>, <a href="..\uwindow\uwindowbase.html#InStrAfter">InStrAfter</a>, <a href="..\uwindow\uwindowbase.html#NewRegion">NewRegion</a>, <a href="..\uwindow\uwindowbase.html#NewTexRegion">NewTexRegion</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bIncrementalPing" class="hidden"></a>bIncrementalPing <a href="..\Source_ubrowser\ubrowserserverlistfactory.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bIncrementalPing;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Owner" class="hidden"></a>Owner <a href="..\Source_ubrowser\ubrowserserverlistfactory.html#11" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> Owner;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PingedList" class="hidden"></a>PingedList <a href="..\Source_ubrowser\ubrowserserverlistfactory.html#9" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> PingedList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UnpingedList" class="hidden"></a>UnpingedList <a href="..\Source_ubrowser\ubrowserserverlistfactory.html#10" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> UnpingedList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_FoundServer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FoundServer <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistfactory.html#32" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="ubrowserserverlist.html" class="source">UBrowserServerList</a></font> FoundServer (<font class="source_keyword">string</font> IP, <font class="source_keyword">int</font> QueryPort, <font class="source_keyword">string</font> Category, <font class="source_keyword">string</font> GameName, <font class="source_keyword2">optional</font> <font class="source_keyword">string</font> HostName)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetPlayerOwner+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetPlayerOwner <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistfactory.html#64" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> GetPlayerOwner ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Query+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Query <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistfactory.html#16" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Query (<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bBySuperset, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bInitial)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_QueryFinished+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> QueryFinished <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistfactory.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> QueryFinished (<font class="source_keyword">bool</font> bSuccess, <font class="source_keyword2">optional</font> <font class="source_keyword">string</font> ErrorMsg)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Shutdown+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Shutdown <span class="function_state"></span> <a href="..\Source_ubrowser\ubrowserserverlistfactory.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Shutdown (<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bBySuperset)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="ubrowser-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_ubrowser\ubrowserserverlistfactory.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#UBrowserServerListFactory">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ubrowserserverlist.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ubrowserserverlistwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:41.656 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

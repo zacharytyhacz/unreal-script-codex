@@ -1,0 +1,2359 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTMenu.NewCharacterWindow</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\newcharacterwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#NewCharacterWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="nameeditbox.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="newgameinterimobject.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utmenu\utmenu-overview.html">UTMenu</a>.<a href="..\utmenu\newcharacterwindow.html">NewCharacterWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+00562<br>
+00563<br>
+00564<br>
+00565<br>
+00566<br>
+00567<br>
+00568<br>
+00569<br>
+00570<br>
+00571<br>
+00572<br>
+00573<br>
+00574<br>
+00575<br>
+00576<br>
+00577<br>
+00578<br>
+00579<br>
+00580<br>
+00581<br>
+00582<br>
+00583<br>
+00584<br>
+00585<br>
+00586<br>
+00587<br>
+00588<br>
+00589<br>
+00590<br>
+00591<br>
+00592<br>
+00593<br>
+00594<br>
+00595<br>
+00596<br>
+00597<br>
+00598<br>
+00599<br>
+00600<br>
+00601<br>
+00602<br>
+00603<br>
+00604<br>
+00605<br>
+00606<br>
+00607<br>
+00608<br>
+00609<br>
+00610<br>
+00611<br>
+00612<br>
+00613<br>
+00614<br>
+00615<br>
+00616<br>
+00617<br>
+00618<br>
+00619<br>
+00620<br>
+00621<br>
+00622<br>
+00623<br>
+00624<br>
+00625<br>
+00626<br>
+00627<br>
+00628<br>
+00629<br>
+00630<br>
+00631<br>
+00632<br>
+00633<br>
+00634<br>
+00635<br>
+00636<br>
+00637<br>
+00638<br>
+00639<br>
+00640<br>
+00641<br>
+00642<br>
+00643<br>
+00644<br>
+00645<br>
+00646<br>
+00647<br>
+00648<br>
+00649<br>
+00650<br>
+00651<br>
+00652<br>
+00653<br>
+00654<br>
+00655<br>
+00656<br>
+00657<br>
+00658<br>
+00659<br>
+00660<br>
+00661<br>
+00662<br>
+00663<br>
+00664<br>
+00665<br>
+00666<br>
+00667<br>
+00668<br>
+00669<br>
+00670<br>
+00671<br>
+00672<br>
+00673<br>
+00674<br>
+00675<br>
+00676<br>
+00677<br>
+00678<br>
+00679<br>
+00680<br>
+00681<br>
+00682<br>
+00683<br>
+00684<br>
+00685<br>
+00686<br>
+00687<br>
+00688<br>
+00689<br>
+00690<br>
+00691<br>
+00692<br>
+00693<br>
+00694<br>
+00695<br>
+00696<br>
+00697<br>
+00698<br>
+00699<br>
+00700<br>
+00701<br>
+00702<br>
+00703<br>
+00704<br>
+00705<br>
+00706<br>
+00707<br>
+00708<br>
+00709<br>
+00710<br>
+00711<br>
+00712<br>
+00713<br>
+00714<br>
+00715<br>
+00716<br>
+00717<br>
+00718<br>
+00719<br>
+00720<br>
+00721<br>
+00722<br>
+00723<br>
+00724<br>
+00725<br>
+00726<br>
+00727<br>
+00728<br>
+00729<br>
+00730<br>
+00731<br>
+00732<br>
+00733<br>
+00734<br>
+00735<br>
+00736<br>
+00737<br>
+00738<br>
+00739<br>
+00740<br>
+00741<br>
+00742<br>
+00743<br>
+00744<br>
+00745<br>
+00746<br>
+00747<br>
+00748<br>
+00749<br>
+00750<br>
+00751<br>
+00752<br>
+00753<br>
+00754<br>
+00755<br>
+00756<br>
+00757<br>
+00758<br>
+00759<br>
+00760<br>
+00761<br>
+00762<br>
+00763<br>
+00764<br>
+00765<br>
+00766<br>
+00767<br>
+00768<br>
+00769<br>
+00770<br>
+00771<br>
+00772<br>
+00773<br>
+00774<br>
+00775<br>
+00776<br>
+00777<br>
+00778<br>
+00779<br>
+00780<br>
+00781<br>
+00782<br>
+00783<br>
+00784<br>
+00785<br>
+00786<br>
+00787<br>
+00788<br>
+00789<br>
+00790<br>
+00791<br>
+00792<br>
+00793<br>
+00794<br>
+00795<br>
+00796<br>
+00797<br>
+00798<br>
+00799<br>
+00800<br>
+00801<br>
+00802<br>
+00803<br>
+00804<br>
+00805<br>
+00806<br>
+00807<br>
+00808<br>
+00809<br>
+00810<br>
+00811<br>
+00812<br>
+00813<br>
+00814<br>
+00815<br>
+00816<br>
+00817<br>
+00818<br>
+00819<br>
+00820<br>
+00821<br>
+00822<br>
+00823<br>
+00824<br>
+00825<br>
+00826<br>
+00827<br>
+00828<br>
+00829<br>
+00830<br>
+00831<br>
+00832<br>
+00833<br>
+00834<br>
+00835<br>
+00836<br>
+00837<br>
+00838<br>
+00839<br>
+00840<br>
+00841<br>
+00842<br>
+00843<br>
+00844<br>
+00845<br>
+00846<br>
+00847<br>
+00848<br>
+00849<br>
+00850<br>
+00851<br>
+00852<br>
+00853<br>
+00854<br>
+00855<br>
+00856<br>
+00857<br>
+00858<br>
+00859<br>
+00860<br>
+00861<br>
+00862<br>
+00863<br>
+00864<br>
+00865<br>
+00866<br>
+00867<br>
+00868<br>
+00869<br>
+00870<br>
+00871<br>
+00872<br>
+00873<br>
+00874<br>
+00875<br>
+00876<br>
+00877<br>
+00878<br>
+00879<br>
+00880<br>
+00881<br>
+00882<br>
+00883<br>
+00884<br>
+00885<br>
+00886<br>
+00887<br>
+00888<br>
+00889<br>
+00890<br>
+00891<br>
+00892<br>
+00893<br>
+00894<br>
+00895<br>
+00896<br>
+00897<br>
+00898<br>
+00899<br>
+00900<br>
+00901<br>
+00902<br>
+00903<br>
+00904<br>
+00905<br>
+00906<br>
+00907<br>
+00908<br>
+00909<br>
+00910<br>
+00911<br>
+00912<br>
+00913<br>
+00914<br>
+00915<br>
+00916<br>
+00917<br>
+00918<br>
+00919<br>
+00920<br>
+00921<br>
+00922<br>
+00923<br>
+00924<br>
+00925<br>
+00926<br>
+00927<br>
+00928<br>
+00929<br>
+00930<br>
+00931<br>
+00932<br>
+00933<br>
+00934<br>
+00935<br>
+00936<br>
+00937<br>
+00938<br>
+00939<br>
+00940<br>
+00941<br>
+00942<br>
+00943<br>
+00944<br>
+00945<br>
+00946<br>
+00947<br>
+00948<br>
+00949<br>
+00950<br>
+00951<br>
+00952<br>
+00953<br>
+00954<br>
+00955<br>
+00956<br>
+00957<br>
+00958<br>
+00959<br>
+00960<br>
+00961<br>
+00962<br>
+00963<br>
+00964<br>
+00965<br>
+00966<br>
+00967<br>
+00968<br>
+00969<br>
+00970<br>
+00971<br>
+00972<br>
+00973<br>
+00974<br>
+00975<br>
+00976<br>
+00977<br>
+00978<br>
+00979<br>
+00980<br>
+00981<br>
+00982<br>
+00983<br>
+00984<br>
+00985<br>
+00986<br>
+00987<br>
+00988<br>
+00989<br>
+00990<br>
+00991<br>
+00992<br>
+00993<br>
+00994<br>
+00995<br>
+00996<br>
+00997<br>
+00998<br>
+00999<br>
+01000<br>
+01001<br>
+01002<br>
+01003<br>
+01004<br>
+01005<br>
+01006<br>
+01007<br>
+01008<br>
+01009<br>
+01010<br>
+01011<br>
+01012<br>
+01013<br>
+01014<br>
+01015<br>
+01016<br>
+01017<br>
+01018<br>
+01019<br>
+01020<br>
+01021<br>
+01022<br>
+01023<br>
+01024<br>
+01025<br>
+01026<br>
+01027<br>
+01028<br>
+01029<br>
+01030<br>
+01031<br>
+01032<br>
+01033<br>
+01034<br>
+01035<br>
+01036<br>
+01037<br>
+01038<br>
+01039<br>
+01040<br>
+01041<br>
+01042<br>
+01043<br>
+01044<br>
+01045<br>
+01046<br>
+01047<br>
+01048<br>
+01049<br>
+01050<br>
+01051<br>
+01052<br>
+01053<br>
+01054<br>
+01055<br>
+01056<br>
+01057<br>
+01058<br>
+01059<br>
+01060<br>
+01061<br>
+01062<br>
+01063<br>
+01064<br>
+01065<br>
+01066<br>
+01067<br>
+01068<br>
+01069<br>
+01070<br>
+01071<br>
+01072<br>
+01073<br>
+01074<br>
+01075<br>
+01076<br>
+01077<br>
+01078<br>
+01079<br>
+01080<br>
+01081<br>
+01082<br>
+01083<br>
+01084<br>
+01085<br>
+01086<br>
+01087<br>
+01088<br>
+01089<br>
+01090<br>
+01091<br>
+01092<br>
+01093<br>
+01094<br>
+01095<br>
+01096<br>
+01097<br>
+01098<br>
+01099<br>
+01100<br>
+01101<br>
+01102<br>
+01103<br>
+01104<br>
+01105<br>
+01106<br>
+01107<br>
+01108<br>
+01109<br>
+01110<br>
+01111<br>
+01112<br>
+01113<br>
+01114<br>
+01115<br>
+01116<br>
+01117<br>
+01118<br>
+01119<br>
+01120<br>
+01121<br>
+01122<br>
+01123<br>
+01124<br>
+01125<br>
+01126<br>
+01127<br>
+01128<br>
+01129<br>
+01130<br>
+01131<br>
+01132<br>
+01133<br>
+01134<br>
+01135<br>
+01136<br>
+01137<br>
+01138<br>
+01139<br>
+01140<br>
+01141<br>
+01142<br>
+01143<br>
+01144<br>
+01145<br>
+01146<br>
+01147<br>
+01148<br>
+01149<br>
+01150<br>
+01151<br>
+01152<br>
+01153<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utmenu\newcharacterwindow.html" class="source">NewCharacterWindow</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font>
+<a name="2"></a>    <font class="source_keyword2">config</font>(user);
+<a name="3"></a>
+<a name="4"></a><font class="source_comment">// New Character
+</font><a name="5"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=TeamPlate FILE=TEXTURES\NewCharacter\TeamPlate.PCX GROUP=Skins MIPS=OFF
+</font><a name="6"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC11 FILE=TEXTURES\NewCharacter\CC11.PCX GROUP=Skins MIPS=OFF
+</font><a name="7"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC12 FILE=TEXTURES\NewCharacter\CC12.PCX GROUP=Skins MIPS=OFF
+</font><a name="8"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC13 FILE=TEXTURES\NewCharacter\CC13.PCX GROUP=Skins MIPS=OFF
+</font><a name="9"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC14 FILE=TEXTURES\NewCharacter\CC14.PCX GROUP=Skins MIPS=OFF
+</font><a name="10"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC21 FILE=TEXTURES\NewCharacter\CC21.PCX GROUP=Skins MIPS=OFF
+</font><a name="11"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC22 FILE=TEXTURES\NewCharacter\CC22.PCX GROUP=Skins MIPS=OFF
+</font><a name="12"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC23 FILE=TEXTURES\NewCharacter\CC23.PCX GROUP=Skins MIPS=OFF
+</font><a name="13"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC24 FILE=TEXTURES\NewCharacter\CC24.PCX GROUP=Skins MIPS=OFF
+</font><a name="14"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC31 FILE=TEXTURES\NewCharacter\CC31.PCX GROUP=Skins MIPS=OFF
+</font><a name="15"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC32 FILE=TEXTURES\NewCharacter\CC32.PCX GROUP=Skins MIPS=OFF
+</font><a name="16"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC33 FILE=TEXTURES\NewCharacter\CC33.PCX GROUP=Skins MIPS=OFF
+</font><a name="17"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=CC34 FILE=TEXTURES\NewCharacter\CC34.PCX GROUP=Skins MIPS=OFF
+</font><a name="18"></a>
+<a name="19"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=LeftDown FILE=TEXTURES\Buttons\LDwn.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="20"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=LeftOver FILE=TEXTURES\Buttons\LOvr.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="21"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=LeftUp FILE=TEXTURES\Buttons\LUp.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="22"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=RightDown FILE=TEXTURES\Buttons\RDwn.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="23"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=RightOver FILE=TEXTURES\Buttons\ROvr.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="24"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=RightUp FILE=TEXTURES\Buttons\RUp.PCX GROUP=Skins MIPS=OFF FLAGS=2
+</font><a name="25"></a>
+<a name="26"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Plate FILE=TEXTURES\Ladr\Plate.PCX GROUP=Skins FLAGS=2 MIPS=OFF
+</font><a name="27"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Plate2 FILE=TEXTURES\Ladr\Plate2.PCX GROUP=Skins FLAGS=2 MIPS=OFF
+</font><a name="28"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=PlateCap FILE=TEXTURES\Ladr\PlateCap.PCX GROUP=Skins FLAGS=2 MIPS=OFF
+</font><a name="29"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=PlateLowCap FILE=TEXTURES\Ladr\PlateLowCap.PCX GROUP=Skins FLAGS=2 MIPS=OFF
+</font><a name="30"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Plate3 FILE=TEXTURES\Ladr\Plate3.PCX GROUP=Skins FLAGS=2 MIPS=OFF
+</font><a name="31"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Plate3Plain FILE=TEXTURES\Ladr\Plate3Plain.PCX GROUP=Skins FLAGS=2 MIPS=OFF
+</font><a name="32"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Plate3Cap FILE=TEXTURES\Ladr\Plate3Cap.PCX GROUP=Skins FLAGS=2 MIPS=OFF
+</font><a name="33"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=Plate3LowCap FILE=TEXTURES\Ladr\Plate3LowCap.PCX GROUP=Skins FLAGS=2 MIPS=OFF
+</font><a name="34"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=PlateYellow FILE=TEXTURES\Ladr\PlateYellow.PCX GROUP=Skins FLAGS=2 MIPS=OFF
+</font><a name="35"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=PlateYellow2 FILE=TEXTURES\Ladr\PlateYellow2.PCX GROUP=Skins FLAGS=2 MIPS=OFF
+</font><a name="36"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=PlateYellowCap FILE=TEXTURES\Ladr\PlateYellowCap.PCX GROUP=Skins FLAGS=2 MIPS=OFF 
+</font><a name="37"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=PlateYellowLowCap FILE=TEXTURES\Ladr\PlateYellowLowCap.PCX GROUP=Skins FLAGS=2 MIPS=OFF
+</font><a name="38"></a>
+<a name="39"></a><font class="source_comment">// Background
+</font><a name="40"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> BG1[<font class="source_int">4</font>];
+<a name="41"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> BG2[<font class="source_int">4</font>];
+<a name="42"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> BG3[<font class="source_int">4</font>];
+<a name="43"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> BGName1[<font class="source_int">4</font>];
+<a name="44"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> BGName2[<font class="source_int">4</font>];
+<a name="45"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> BGName3[<font class="source_int">4</font>];
+<a name="46"></a>
+<a name="47"></a><font class="source_comment">// Components
+</font><a name="48"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenuplayermeshclient.html" class="source">UMenuPlayerMeshClient</a></font> MeshWindow;
+<a name="49"></a><font class="source_keyword">var</font> <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\botpack\tournamentplayer.html" class="source">TournamentPlayer</a></font>&gt; MaleClass;
+<a name="50"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> MaleSkin, MaleFace;
+<a name="51"></a><font class="source_keyword">var</font> <font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\botpack\tournamentplayer.html" class="source">TournamentPlayer</a></font>&gt; FemaleClass;
+<a name="52"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> FemaleSkin, FemaleFace;
+<a name="53"></a>
+<a name="54"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> NameLabel;
+<a name="55"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> NameText;
+<a name="56"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> NameButton;
+<a name="57"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\nameeditbox.html" class="source">NameEditBox</a></font> NameEdit;
+<a name="58"></a>
+<a name="59"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> SexLabel;
+<a name="60"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SexText;
+<a name="61"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> SexButton;
+<a name="62"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MaleText;
+<a name="63"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FemaleText;
+<a name="64"></a>
+<a name="65"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> TeamLabel;
+<a name="66"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TeamText;
+<a name="67"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> TeamButton;
+<a name="68"></a>
+<a name="69"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> FaceLabel;
+<a name="70"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FaceText;
+<a name="71"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> FaceButton;
+<a name="72"></a>
+<a name="73"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> SkillLabel;
+<a name="74"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SkillsText;
+<a name="75"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> SkillButton;
+<a name="76"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SkillText[<font class="source_int">8</font>];
+<a name="77"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> CurrentSkill;
+<a name="78"></a>
+<a name="79"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> BackButton;
+<a name="80"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> NextButton;
+<a name="81"></a>
+<a name="82"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> TitleButton;
+<a name="83"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CCText;
+<a name="84"></a>
+<a name="85"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> Initialized;
+<a name="86"></a>
+<a name="87"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> FaceDescs[<font class="source_int">16</font>];
+<a name="88"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> Faces[<font class="source_int">16</font>];
+<a name="89"></a>
+<a name="90"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\utfadetextarea.html" class="source">UTFadeTextArea</a></font> TeamDescArea;
+<a name="91"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> Descscrollup;
+<a name="92"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font> Descscrolldown;
+<a name="93"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> TeamNameString;
+<a name="94"></a>
+<a name="95"></a><font class="source_comment">// Player
+</font><a name="96"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\botpack\ladderinventory.html" class="source">LadderInventory</a></font> LadderObj;
+<a name="97"></a>
+<a name="98"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> PreferredSkill;
+<a name="99"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> PreferredSex;
+<a name="100"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> PreferredTeam;
+<a name="101"></a><font class="source_keyword">var</font> <font class="source_keyword2">config</font> <font class="source_keyword">int</font> PreferredFace;
+<a name="102"></a>
+<a name="103"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bFlashOn;
+<a name="104"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> FlashTime;
+<a name="105"></a>
+<a name="106"></a><font class="source_keyword">function</font> Created()
+<a name="107"></a>{
+<a name="108"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> MeshName, SkinDesc, Temp;
+<a name="109"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="110"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> W, H;
+<a name="111"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XWidth, YHeight, XMod, YMod, XPos, YPos;
+<a name="112"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> TextColor;
+<a name="113"></a>
+<a name="114"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="115"></a>
+<a name="116"></a>    <font class="source_comment">/*
+<a name="117"></a>     * Setup window parameters.
+<a name="118"></a>     */</font>
+<a name="119"></a>
+<a name="120"></a>    bLeaveOnScreen = <font class="source_keyword">True</font>;
+<a name="121"></a>    bAlwaysOnTop = <font class="source_keyword">True</font>;
+<a name="122"></a>
+<a name="123"></a>    <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.SetupWinParams(Self, Root, W, H);
+<a name="124"></a>
+<a name="125"></a>    XMod = <font class="source_int">4</font>*W;
+<a name="126"></a>    YMod = <font class="source_int">3</font>*H;
+<a name="127"></a>
+<a name="128"></a>    <font class="source_comment">/*
+<a name="129"></a>     * Load the background.
+<a name="130"></a>     */</font>
+<a name="131"></a>
+<a name="132"></a>    BG1[<font class="source_int">0</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName1[<font class="source_int">0</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="133"></a>    BG1[<font class="source_int">1</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName1[<font class="source_int">1</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="134"></a>    BG1[<font class="source_int">2</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName1[<font class="source_int">2</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="135"></a>    BG1[<font class="source_int">3</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName1[<font class="source_int">3</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="136"></a>    BG2[<font class="source_int">0</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName2[<font class="source_int">0</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="137"></a>    BG2[<font class="source_int">1</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName2[<font class="source_int">1</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="138"></a>    BG2[<font class="source_int">2</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName2[<font class="source_int">2</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="139"></a>    BG2[<font class="source_int">3</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName2[<font class="source_int">3</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="140"></a>    BG3[<font class="source_int">0</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName3[<font class="source_int">0</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="141"></a>    BG3[<font class="source_int">1</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName3[<font class="source_int">1</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="142"></a>    BG3[<font class="source_int">2</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName3[<font class="source_int">2</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="143"></a>    BG3[<font class="source_int">3</font>] = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(BGName3[<font class="source_int">3</font>], <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="144"></a>
+<a name="145"></a>    <font class="source_comment">// Check ladder object.
+</font><a name="146"></a>    LadderObj = <font class="source_type"><a href="..\botpack\ladderinventory.html" class="source">LadderInventory</a></font>(GetPlayerOwner().FindInventoryType(<font class="source_keyword">class</font><font class="source_name">'LadderInventory'</font>));
+<a name="147"></a>    <font class="source_keyword">if</font> (LadderObj == <font class="source_keyword">None</font>)
+<a name="148"></a>    {
+<a name="149"></a>        Log(<font class="source_string">"NewCharacterWindow: Player has no LadderInventory!!"</font>);
+<a name="150"></a>    }
+<a name="151"></a>
+<a name="152"></a>    <font class="source_comment">/*
+<a name="153"></a>     * Create components.
+<a name="154"></a>     */</font>
+<a name="155"></a>
+<a name="156"></a>    <font class="source_keyword">if</font> (<font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.IsDemo())
+<a name="157"></a>        PreferredTeam = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.NumTeams;
+<a name="158"></a>
+<a name="159"></a>    MaleClass = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam].Default.MaleClass;
+<a name="160"></a>    MaleSkin = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam].Default.MaleSkin;
+<a name="161"></a>
+<a name="162"></a>    FemaleClass = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam].Default.FemaleClass;
+<a name="163"></a>    FemaleSkin = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam].Default.FemaleSkin;
+<a name="164"></a>
+<a name="165"></a>    IterateFaces(MaleSkin, GetPlayerOwner().GetItemName(<font class="source_keyword">string</font>(MaleClass.Default.<font class="source_type">Mesh</font>)));
+<a name="166"></a>
+<a name="167"></a>    LadderObj.Face = PreferredFace;
+<a name="168"></a>
+<a name="169"></a>    <font class="source_comment">// MeshView
+</font><a name="170"></a>    XPos = <font class="source_int">608.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="171"></a>    YPos = <font class="source_int">88.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="172"></a>    XWidth = <font class="source_int">323.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="173"></a>    YHeight = <font class="source_int">466.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="174"></a>    MeshWindow = <font class="source_type"><a href="..\umenu\umenuplayermeshclient.html" class="source">UMenuPlayerMeshClient</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'UMenuPlayerMeshClient'</font>, XPos, YPos, XWidth, YHeight));
+<a name="175"></a>    MeshWindow.SetMeshString(MaleClass.Default.SelectionMesh);
+<a name="176"></a>    MeshWindow.ClearSkins();
+<a name="177"></a>    MaleClass.<font class="source_keyword2">static</font>.SetMultiSkin(MeshWindow.<font class="source_type"><a href="..\umenu\meshactor.html" class="source">MeshActor</a></font>, MaleSkin, MaleFace, <font class="source_int">255</font>);
+<a name="178"></a>    GetPlayerOwner().UpdateURL(<font class="source_string">"Class"</font>, <font class="source_string">"Botpack."</font>$<font class="source_keyword">string</font>(MaleClass.<font class="source_keyword">Name</font>), <font class="source_keyword">True</font>);
+<a name="179"></a>    GetPlayerOwner().UpdateURL(<font class="source_string">"Skin"</font>, MaleSkin, <font class="source_keyword">True</font>);
+<a name="180"></a>    GetPlayerOwner().UpdateURL(<font class="source_string">"Face"</font>, Faces[PreferredFace], <font class="source_keyword">True</font>);
+<a name="181"></a>    GetPlayerOwner().UpdateURL(<font class="source_string">"Team"</font>, <font class="source_string">"255"</font>, <font class="source_keyword">True</font>);
+<a name="182"></a>    GetPlayerOwner().UpdateURL(<font class="source_string">"Voice"</font>, MaleClass.Default.VoiceType, <font class="source_keyword">True</font>);
+<a name="183"></a>
+<a name="184"></a>    <font class="source_comment">// Name Label
+</font><a name="185"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="186"></a>    YPos = <font class="source_int">263.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="187"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="188"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="189"></a>    NameLabel = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="190"></a>    NameLabel.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="191"></a>    NameLabel.Text = NameText;
+<a name="192"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="193"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="194"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="195"></a>    NameLabel.SetTextColor(TextColor);
+<a name="196"></a>    NameLabel.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="197"></a>    NameLabel.bStretched = <font class="source_keyword">True</font>;
+<a name="198"></a>    NameLabel.bDisabled = <font class="source_keyword">True</font>;
+<a name="199"></a>    NameLabel.bDontSetLabel = <font class="source_keyword">True</font>;
+<a name="200"></a>    NameLabel.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="201"></a>    NameLabel.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="202"></a>
+<a name="203"></a>    <font class="source_comment">// Name Button
+</font><a name="204"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="205"></a>    YPos = <font class="source_int">295.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="206"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="207"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="208"></a>    NameButton = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="209"></a>    NameButton.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="210"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="211"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="212"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="213"></a>    NameButton.SetTextColor(TextColor);
+<a name="214"></a>    NameButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="215"></a>    NameButton.bStretched = <font class="source_keyword">True</font>;
+<a name="216"></a>    NameButton.bDisabled = <font class="source_keyword">True</font>;
+<a name="217"></a>    NameButton.DisabledTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.Plate3Plain"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="218"></a>    NameButton.bDontSetLabel = <font class="source_keyword">True</font>;
+<a name="219"></a>    NameButton.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="220"></a>    NameButton.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="221"></a>    NameButton.OverSound = <font class="source_type">sound</font><font class="source_name">'LadderSounds.lcursorMove'</font>;
+<a name="222"></a>    NameButton.DownSound = <font class="source_type">sound</font><font class="source_name">'SpeechWindowClick'</font>;
+<a name="223"></a>
+<a name="224"></a>    <font class="source_comment">// Name Edit
+</font><a name="225"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="226"></a>    YPos = <font class="source_int">295.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="227"></a>    XWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="228"></a>    YHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="229"></a>    NameEdit = <font class="source_type"><a href="..\utmenu\nameeditbox.html" class="source">NameEditBox</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NameEditBox'</font>, XPos, YPos, XWidth, YHeight));
+<a name="230"></a>    NameEdit.bDelayedNotify = <font class="source_keyword">True</font>;
+<a name="231"></a>    NameEdit.SetValue(GetPlayerOwner().<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName);
+<a name="232"></a>    NameEdit.CharacterWindow = Self;
+<a name="233"></a>    NameEdit.bCanEdit = <font class="source_keyword">True</font>;
+<a name="234"></a>    NameEdit.bShowCaret = <font class="source_keyword">True</font>;
+<a name="235"></a>    NameEdit.bAlwaysOnTop = <font class="source_keyword">True</font>;
+<a name="236"></a>    NameEdit.bSelectOnFocus = <font class="source_keyword">True</font>;
+<a name="237"></a>    NameEdit.MaxLength = <font class="source_int">20</font>;
+<a name="238"></a>    NameEdit.TextColor.R = <font class="source_int">255</font>;
+<a name="239"></a>    NameEdit.TextColor.G = <font class="source_int">255</font>;
+<a name="240"></a>    NameEdit.TextColor.B = <font class="source_int">0</font>;
+<a name="241"></a>
+<a name="242"></a>    <font class="source_comment">// Sex Label
+</font><a name="243"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="244"></a>    YPos = <font class="source_int">338.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="245"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="246"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="247"></a>    SexLabel = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="248"></a>    SexLabel.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="249"></a>    SexLabel.Text = SexText;
+<a name="250"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="251"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="252"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="253"></a>    SexLabel.SetTextColor(TextColor);
+<a name="254"></a>    SexLabel.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="255"></a>    SexLabel.bStretched = <font class="source_keyword">True</font>;
+<a name="256"></a>    SexLabel.bDisabled = <font class="source_keyword">True</font>;
+<a name="257"></a>    SexLabel.bDontSetLabel = <font class="source_keyword">True</font>;
+<a name="258"></a>    SexLabel.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="259"></a>    SexLabel.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="260"></a>
+<a name="261"></a>    <font class="source_comment">// Sex Button
+</font><a name="262"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="263"></a>    YPos = <font class="source_int">370.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="264"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="265"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="266"></a>    SexButton = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="267"></a>    SexButton.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="268"></a>    SexButton.Text = MaleText;
+<a name="269"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="270"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="271"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="272"></a>    SexButton.SetTextColor(TextColor);
+<a name="273"></a>    SexButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="274"></a>    SexButton.bStretched = <font class="source_keyword">True</font>;
+<a name="275"></a>    SexButton.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.Plate3Plain"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="276"></a>    SexButton.DownTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.PlateYellow2"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="277"></a>    SexButton.OverTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.Plate2"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="278"></a>    SexButton.bDontSetLabel = <font class="source_keyword">True</font>;
+<a name="279"></a>    SexButton.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="280"></a>    SexButton.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="281"></a>    SexButton.bIgnoreLDoubleclick = <font class="source_keyword">True</font>;
+<a name="282"></a>    SexButton.OverSound = <font class="source_type">sound</font><font class="source_name">'LadderSounds.lcursorMove'</font>;
+<a name="283"></a>    SexButton.DownSound = <font class="source_type">sound</font><font class="source_name">'SpeechWindowClick'</font>;
+<a name="284"></a>
+<a name="285"></a>    <font class="source_comment">// Team Label
+</font><a name="286"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="287"></a>    YPos = <font class="source_int">413.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="288"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="289"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="290"></a>    TeamLabel = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="291"></a>    TeamLabel.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="292"></a>    TeamLabel.Text = TeamText;
+<a name="293"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="294"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="295"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="296"></a>    TeamLabel.SetTextColor(TextColor);
+<a name="297"></a>    TeamLabel.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="298"></a>    TeamLabel.bStretched = <font class="source_keyword">True</font>;
+<a name="299"></a>    TeamLabel.bDisabled = <font class="source_keyword">True</font>;
+<a name="300"></a>    TeamLabel.bDontSetLabel = <font class="source_keyword">True</font>;
+<a name="301"></a>    TeamLabel.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="302"></a>    TeamLabel.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="303"></a>
+<a name="304"></a>    <font class="source_comment">// Team Button
+</font><a name="305"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="306"></a>    YPos = <font class="source_int">445.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="307"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="308"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="309"></a>    TeamButton = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="310"></a>    TeamButton.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="311"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="312"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="313"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="314"></a>    TeamButton.SetTextColor(TextColor);
+<a name="315"></a>    TeamButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="316"></a>    TeamButton.bStretched = <font class="source_keyword">True</font>;
+<a name="317"></a>    TeamButton.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.Plate3Plain"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="318"></a>    TeamButton.DownTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.PlateYellow2"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="319"></a>    TeamButton.OverTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.Plate2"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="320"></a>    TeamButton.bDontSetLabel = <font class="source_keyword">True</font>;
+<a name="321"></a>    TeamButton.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="322"></a>    TeamButton.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="323"></a>    TeamButton.bIgnoreLDoubleclick = <font class="source_keyword">True</font>;
+<a name="324"></a>    <font class="source_keyword">if</font> ((PreferredTeam == <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.NumTeams) && (!<font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.IsDemo()))
+<a name="325"></a>        PreferredTeam = <font class="source_int">0</font>;
+<a name="326"></a>    TeamButton.Text = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam].Default.TeamName;
+<a name="327"></a>    LadderObj.Team = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam];
+<a name="328"></a>    TeamButton.OverSound = <font class="source_type">sound</font><font class="source_name">'LadderSounds.lcursorMove'</font>;
+<a name="329"></a>    TeamButton.DownSound = <font class="source_type">sound</font><font class="source_name">'SpeechWindowClick'</font>;
+<a name="330"></a>
+<a name="331"></a>    <font class="source_comment">// Face Label
+</font><a name="332"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="333"></a>    YPos = <font class="source_int">488.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="334"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="335"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="336"></a>    FaceLabel = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="337"></a>    FaceLabel.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="338"></a>    FaceLabel.Text = FaceText;
+<a name="339"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="340"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="341"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="342"></a>    FaceLabel.SetTextColor(TextColor);
+<a name="343"></a>    FaceLabel.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="344"></a>    FaceLabel.bStretched = <font class="source_keyword">True</font>;
+<a name="345"></a>    FaceLabel.bDisabled = <font class="source_keyword">True</font>;
+<a name="346"></a>    FaceLabel.bDontSetLabel = <font class="source_keyword">True</font>;
+<a name="347"></a>    FaceLabel.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="348"></a>    FaceLabel.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="349"></a>
+<a name="350"></a>    <font class="source_comment">// Face Button
+</font><a name="351"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="352"></a>    YPos = <font class="source_int">520.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="353"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="354"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="355"></a>    FaceButton = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="356"></a>    FaceButton.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="357"></a>    FaceButton.Text = FaceDescs[PreferredFace];
+<a name="358"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="359"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="360"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="361"></a>    FaceButton.SetTextColor(TextColor);
+<a name="362"></a>    FaceButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="363"></a>    FaceButton.bStretched = <font class="source_keyword">True</font>;
+<a name="364"></a>    FaceButton.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.Plate3Plain"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="365"></a>    FaceButton.DownTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.PlateYellow2"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="366"></a>    FaceButton.OverTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.Plate2"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="367"></a>    FaceButton.bDontSetLabel = <font class="source_keyword">True</font>;
+<a name="368"></a>    FaceButton.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="369"></a>    FaceButton.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="370"></a>    FaceButton.bIgnoreLDoubleclick = <font class="source_keyword">True</font>;
+<a name="371"></a>    FaceButton.OverSound = <font class="source_type">sound</font><font class="source_name">'LadderSounds.lcursorMove'</font>;
+<a name="372"></a>    FaceButton.DownSound = <font class="source_type">sound</font><font class="source_name">'SpeechWindowClick'</font>;
+<a name="373"></a>
+<a name="374"></a>    <font class="source_comment">// Skill Label
+</font><a name="375"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="376"></a>    YPos = <font class="source_int">563.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="377"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="378"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="379"></a>    SkillLabel = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="380"></a>    SkillLabel.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="381"></a>    SkillLabel.Text = SkillsText;
+<a name="382"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="383"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="384"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="385"></a>    SkillLabel.SetTextColor(TextColor);
+<a name="386"></a>    SkillLabel.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="387"></a>    SkillLabel.bStretched = <font class="source_keyword">True</font>;
+<a name="388"></a>    SkillLabel.bDisabled = <font class="source_keyword">True</font>;
+<a name="389"></a>    SkillLabel.bDontSetLabel = <font class="source_keyword">True</font>;
+<a name="390"></a>    SkillLabel.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="391"></a>    SkillLabel.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="392"></a>
+<a name="393"></a>    <font class="source_comment">// Skill Button
+</font><a name="394"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="395"></a>    YPos = <font class="source_int">595.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="396"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="397"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="398"></a>    SkillButton = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="399"></a>    SkillButton.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="400"></a>    SkillButton.Text = SkillText[<font class="source_int">1</font>];
+<a name="401"></a>    CurrentSkill = <font class="source_int">1</font>;
+<a name="402"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="403"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="404"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="405"></a>    SkillButton.SetTextColor(TextColor);
+<a name="406"></a>    SkillButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="407"></a>    SkillButton.bStretched = <font class="source_keyword">True</font>;
+<a name="408"></a>    SkillButton.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.Plate3Plain"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="409"></a>    SkillButton.DownTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.PlateYellow2"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="410"></a>    SkillButton.OverTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.Plate2"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="411"></a>    SkillButton.bDontSetLabel = <font class="source_keyword">True</font>;
+<a name="412"></a>    SkillButton.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="413"></a>    SkillButton.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="414"></a>    SkillButton.bIgnoreLDoubleclick = <font class="source_keyword">True</font>;
+<a name="415"></a>    CurrentSkill = PreferredSkill;
+<a name="416"></a>    SkillButton.Text = SkillText[CurrentSkill];
+<a name="417"></a>    LadderObj.TournamentDifficulty = CurrentSkill;
+<a name="418"></a>    LadderObj.SkillText = SkillText[LadderObj.TournamentDifficulty];
+<a name="419"></a>    SkillButton.OverSound = <font class="source_type">sound</font><font class="source_name">'LadderSounds.lcursorMove'</font>;
+<a name="420"></a>    SkillButton.DownSound = <font class="source_type">sound</font><font class="source_name">'SpeechWindowClick'</font>;
+<a name="421"></a>
+<a name="422"></a>    <font class="source_comment">// Title Button
+</font><a name="423"></a>    XPos = <font class="source_int">84.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="424"></a>    YPos = <font class="source_int">69.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="425"></a>    XWidth = <font class="source_int">342.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="426"></a>    YHeight = <font class="source_int">41.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="427"></a>    TitleButton = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="428"></a>    TitleButton.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="429"></a>    TitleButton.Text = CCText;
+<a name="430"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="431"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="432"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="433"></a>    TitleButton.SetTextColor(TextColor);
+<a name="434"></a>    TitleButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetHugeFont(Root);
+<a name="435"></a>    TitleButton.bStretched = <font class="source_keyword">True</font>;
+<a name="436"></a>
+<a name="437"></a>    <font class="source_comment">// Back Button
+</font><a name="438"></a>    XPos = <font class="source_int">192.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="439"></a>    YPos = <font class="source_int">701.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="440"></a>    XWidth = <font class="source_int">64.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="441"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="442"></a>    BackButton = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="443"></a>    BackButton.DisabledTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.LeftUp"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="444"></a>    BackButton.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.LeftUp"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="445"></a>    BackButton.DownTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.LeftDown"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="446"></a>    BackButton.OverTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.LeftOver"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="447"></a>    BackButton.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="448"></a>    BackButton.Text = <font class="source_string">""</font>;
+<a name="449"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="450"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="451"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="452"></a>    BackButton.SetTextColor(TextColor);
+<a name="453"></a>    BackButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="454"></a>    BackButton.bStretched = <font class="source_keyword">True</font>;
+<a name="455"></a>    BackButton.OverSound = <font class="source_type">sound</font><font class="source_name">'LadderSounds.lcursorMove'</font>;
+<a name="456"></a>    BackButton.DownSound = <font class="source_type">sound</font><font class="source_name">'LadderSounds.ladvance'</font>;
+<a name="457"></a>
+<a name="458"></a>    <font class="source_comment">// Next Button
+</font><a name="459"></a>    XPos = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="460"></a>    YPos = <font class="source_int">701.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="461"></a>    XWidth = <font class="source_int">64.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="462"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="463"></a>    NextButton = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="464"></a>    NextButton.DisabledTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.RightUp"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="465"></a>    NextButton.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.RightUp"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="466"></a>    NextButton.DownTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.RightDown"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="467"></a>    NextButton.OverTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.RightOver"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="468"></a>    NextButton.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="469"></a>    NextButton.Text = <font class="source_string">""</font>;
+<a name="470"></a>    TextColor.R = <font class="source_int">255</font>;
+<a name="471"></a>    TextColor.G = <font class="source_int">255</font>;
+<a name="472"></a>    TextColor.B = <font class="source_int">0</font>;
+<a name="473"></a>    NextButton.SetTextColor(TextColor);
+<a name="474"></a>    NextButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="475"></a>    NextButton.bStretched = <font class="source_keyword">True</font>;
+<a name="476"></a>    NextButton.OverSound = <font class="source_type">sound</font><font class="source_name">'LadderSounds.lcursorMove'</font>;
+<a name="477"></a>    NextButton.DownSound = <font class="source_type">sound</font><font class="source_name">'LadderSounds.ladvance'</font>;
+<a name="478"></a>
+<a name="479"></a>    <font class="source_comment">// Team Desc
+</font><a name="480"></a>    XPos = <font class="source_int">609.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="481"></a>    YPos = <font class="source_int">388.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="482"></a>    XWidth = <font class="source_int">321.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="483"></a>    YHeight = <font class="source_int">113.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="484"></a>    TeamDescArea = <font class="source_type"><a href="..\utmenu\utfadetextarea.html" class="source">UTFadeTextArea</a></font>(CreateWindow(<font class="source_keyword">Class</font>&lt;<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font>&gt;(DynamicLoadObject(<font class="source_string">"UTMenu.UTFadeTextArea"</font>, <font class="source_keyword">Class</font><font class="source_name">'Class'</font>)), XPos, YPos, XWidth, YHeight));
+<a name="485"></a>    TeamDescArea.TextColor.R = <font class="source_int">255</font>;
+<a name="486"></a>    TeamDescArea.TextColor.G = <font class="source_int">255</font>;
+<a name="487"></a>    TeamDescArea.TextColor.B = <font class="source_int">0</font>;
+<a name="488"></a>    TeamDescArea.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetSmallFont(Root);
+<a name="489"></a>    TeamDescArea.bAlwaysOnTop = <font class="source_keyword">True</font>;
+<a name="490"></a>    TeamDescArea.bMousePassThrough = <font class="source_keyword">True</font>;
+<a name="491"></a>    TeamDescArea.bAutoScrolling = <font class="source_keyword">True</font>;
+<a name="492"></a>    TeamDescArea.Clear();
+<a name="493"></a>    TeamDescArea.AddText(TeamNameString@LadderObj.Team.<font class="source_keyword2">Static</font>.GetTeamName());
+<a name="494"></a>    TeamDescArea.AddText(<font class="source_string">" "</font>);
+<a name="495"></a>    TeamDescArea.AddText(LadderObj.Team.<font class="source_keyword2">Static</font>.GetTeamBio());
+<a name="496"></a>
+<a name="497"></a>    <font class="source_comment">// DescScrollup
+</font><a name="498"></a>    XPos = <font class="source_int">715.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="499"></a>    YPos = <font class="source_int">538.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="500"></a>    XWidth = <font class="source_int">32.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="501"></a>    YHeight = <font class="source_int">16.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="502"></a>    DescScrollup = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="503"></a>    DescScrollup.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="504"></a>    DescScrollup.Text = <font class="source_string">""</font>;
+<a name="505"></a>    DescScrollup.bStretched = <font class="source_keyword">True</font>;
+<a name="506"></a>    DescScrollup.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.AroUup"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="507"></a>    DescScrollup.OverTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.AroUovr"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="508"></a>    DescScrollup.DownTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.AroUdwn"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="509"></a>    DescScrollup.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetSmallFont(Root);
+<a name="510"></a>    DescScrollup.bAlwaysOnTop = <font class="source_keyword">True</font>;
+<a name="511"></a>
+<a name="512"></a>    <font class="source_comment">// DescScrolldown
+</font><a name="513"></a>    XPos = <font class="source_int">799.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="514"></a>    YPos = <font class="source_int">538.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="515"></a>    XWidth = <font class="source_int">32.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="516"></a>    YHeight = <font class="source_int">16.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="517"></a>    DescScrolldown = <font class="source_type"><a href="..\utmenu\notifybutton.html" class="source">NotifyButton</a></font>(CreateWindow(<font class="source_keyword">class</font><font class="source_name">'NotifyButton'</font>, XPos, YPos, XWidth, YHeight));
+<a name="518"></a>    DescScrolldown.<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font> = Self;
+<a name="519"></a>    DescScrolldown.Text = <font class="source_string">""</font>;
+<a name="520"></a>    DescScrolldown.bStretched = <font class="source_keyword">True</font>;
+<a name="521"></a>    DescScrolldown.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.AroDup"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="522"></a>    DescScrolldown.OverTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.AroDovr"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="523"></a>    DescScrolldown.DownTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.AroDdwn"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="524"></a>    DescScrolldown.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetSmallFont(Root);
+<a name="525"></a>    DescScrolldown.bAlwaysOnTop = <font class="source_keyword">True</font>;
+<a name="526"></a>
+<a name="527"></a>    <font class="source_keyword">if</font> (PreferredSex == <font class="source_int">1</font>)
+<a name="528"></a>    {
+<a name="529"></a>        LadderObj.Sex = <font class="source_string">"F"</font>;
+<a name="530"></a>        SexButton.Text = MaleText;
+<a name="531"></a>    } <font class="source_keyword">else</font> {
+<a name="532"></a>        LadderObj.Sex = <font class="source_string">"M"</font>;
+<a name="533"></a>        SexButton.Text = FemaleText;
+<a name="534"></a>    }
+<a name="535"></a>    SexPressed();
+<a name="536"></a>
+<a name="537"></a>    Initialized = <font class="source_keyword">True</font>;
+<a name="538"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bBlackout = <font class="source_keyword">True</font>;
+<a name="539"></a>}
+<a name="540"></a>
+<a name="541"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="542"></a>{
+<a name="543"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="544"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> W, H;
+<a name="545"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XWidth, YHeight, XMod, YMod, XPos, YPos;
+<a name="546"></a>
+<a name="547"></a>    <font class="source_keyword">Super</font>.BeforePaint(C, X, Y);
+<a name="548"></a>
+<a name="549"></a>    <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.SetupWinParams(Self, Root, W, H);
+<a name="550"></a>
+<a name="551"></a>    XMod = <font class="source_int">4</font>*W;
+<a name="552"></a>    YMod = <font class="source_int">3</font>*H;
+<a name="553"></a>
+<a name="554"></a>    <font class="source_comment">// Mesh View
+</font><a name="555"></a>    XPos = <font class="source_int">608.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="556"></a>    YPos = <font class="source_int">88.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="557"></a>    XWidth = <font class="source_int">323.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="558"></a>    YHeight = <font class="source_int">466.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="559"></a>    MeshWindow.SetSize(XWidth, YHeight);
+<a name="560"></a>    MeshWindow.WinLeft = XPos;
+<a name="561"></a>    MeshWindow.WinTop = YPos;
+<a name="562"></a>
+<a name="563"></a>    <font class="source_comment">// Name Label
+</font><a name="564"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="565"></a>    YPos = <font class="source_int">263.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="566"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="567"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="568"></a>    NameLabel.SetSize(XWidth, YHeight);
+<a name="569"></a>    NameLabel.WinLeft = XPos;
+<a name="570"></a>    NameLabel.WinTop = YPos;
+<a name="571"></a>    NameLabel.LabelWidth = <font class="source_int">178</font>/1<font class="source_int">024</font> * XMod;
+<a name="572"></a>    NameLabel.LabelHeight = <font class="source_int">49</font>/7<font class="source_int">68</font> * YMod;
+<a name="573"></a>    NameLabel.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="574"></a>
+<a name="575"></a>    <font class="source_comment">// Name Button
+</font><a name="576"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="577"></a>    YPos = <font class="source_int">295.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="578"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="579"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="580"></a>    NameButton.SetSize(XWidth, YHeight);
+<a name="581"></a>    NameButton.WinLeft = XPos;
+<a name="582"></a>    NameButton.WinTop = YPos;
+<a name="583"></a>    NameButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="584"></a>
+<a name="585"></a>    <font class="source_comment">// Name Edit
+</font><a name="586"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="587"></a>    YPos = <font class="source_int">295.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="588"></a>    XWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="589"></a>    YHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="590"></a>    NameEdit.SetSize(XWidth, YHeight);
+<a name="591"></a>    NameEdit.WinLeft = XPos;
+<a name="592"></a>    NameEdit.WinTop = YPos;
+<a name="593"></a>
+<a name="594"></a>    <font class="source_comment">// Sex Label
+</font><a name="595"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="596"></a>    YPos = <font class="source_int">338.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="597"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="598"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="599"></a>    SexLabel.SetSize(XWidth, YHeight);
+<a name="600"></a>    SexLabel.WinLeft = XPos;
+<a name="601"></a>    SexLabel.WinTop = YPos;
+<a name="602"></a>    SexLabel.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="603"></a>    SexLabel.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="604"></a>    SexLabel.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="605"></a>
+<a name="606"></a>    <font class="source_comment">// Sex Button
+</font><a name="607"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="608"></a>    YPos = <font class="source_int">370.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="609"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="610"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="611"></a>    SexButton.SetSize(XWidth, YHeight);
+<a name="612"></a>    SexButton.WinLeft = XPos;
+<a name="613"></a>    SexButton.WinTop = YPos;
+<a name="614"></a>    SexButton.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="615"></a>    SexButton.LabelHeight = <font class="source_int">52.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="616"></a>    SexButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="617"></a>
+<a name="618"></a>    <font class="source_comment">// Team Label
+</font><a name="619"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="620"></a>    YPos = <font class="source_int">413.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="621"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="622"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="623"></a>    TeamLabel.SetSize(XWidth, YHeight);
+<a name="624"></a>    TeamLabel.WinLeft = XPos;
+<a name="625"></a>    TeamLabel.WinTop = YPos;
+<a name="626"></a>    TeamLabel.LabelWidth = <font class="source_int">178.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="627"></a>    TeamLabel.LabelHeight = <font class="source_int">49.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="628"></a>    TeamLabel.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="629"></a>
+<a name="630"></a>    <font class="source_comment">// Team Button
+</font><a name="631"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="632"></a>    YPos = <font class="source_int">445.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="633"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="634"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="635"></a>    TeamButton.SetSize(XWidth, YHeight);
+<a name="636"></a>    TeamButton.WinLeft = XPos;
+<a name="637"></a>    TeamButton.WinTop = YPos;
+<a name="638"></a>    TeamButton.LabelWidth = <font class="source_int">178</font>/1<font class="source_int">024</font> * XMod;
+<a name="639"></a>    TeamButton.LabelHeight = <font class="source_int">49</font>/7<font class="source_int">68</font> * YMod;
+<a name="640"></a>    TeamButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="641"></a>
+<a name="642"></a>    <font class="source_comment">// Face Label
+</font><a name="643"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="644"></a>    YPos = <font class="source_int">488.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="645"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="646"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="647"></a>    FaceLabel.SetSize(XWidth, YHeight);
+<a name="648"></a>    FaceLabel.WinLeft = XPos;
+<a name="649"></a>    FaceLabel.WinTop = YPos;
+<a name="650"></a>    FaceLabel.LabelWidth = <font class="source_int">178</font>/1<font class="source_int">024</font> * XMod;
+<a name="651"></a>    FaceLabel.LabelHeight = <font class="source_int">49</font>/7<font class="source_int">68</font> * YMod;
+<a name="652"></a>    FaceLabel.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="653"></a>
+<a name="654"></a>    <font class="source_comment">// Face Button
+</font><a name="655"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="656"></a>    YPos = <font class="source_int">520.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="657"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="658"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="659"></a>    FaceButton.SetSize(XWidth, YHeight);
+<a name="660"></a>    FaceButton.WinLeft = XPos;
+<a name="661"></a>    FaceButton.WinTop = YPos;
+<a name="662"></a>    FaceButton.LabelWidth = <font class="source_int">178</font>/1<font class="source_int">024</font> * XMod;
+<a name="663"></a>    FaceButton.LabelHeight = <font class="source_int">49</font>/7<font class="source_int">68</font> * YMod;
+<a name="664"></a>    FaceButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="665"></a>
+<a name="666"></a>    <font class="source_comment">// Skill Label
+</font><a name="667"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="668"></a>    YPos = <font class="source_int">563.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="669"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="670"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="671"></a>    SkillLabel.SetSize(XWidth, YHeight);
+<a name="672"></a>    SkillLabel.WinLeft = XPos;
+<a name="673"></a>    SkillLabel.WinTop = YPos;
+<a name="674"></a>    SkillLabel.LabelWidth = <font class="source_int">178</font>/1<font class="source_int">024</font> * XMod;
+<a name="675"></a>    SkillLabel.LabelHeight = <font class="source_int">49</font>/7<font class="source_int">68</font> * YMod;
+<a name="676"></a>    SkillLabel.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="677"></a>
+<a name="678"></a>    <font class="source_comment">// Skill Button
+</font><a name="679"></a>    XPos = <font class="source_int">164.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="680"></a>    YPos = <font class="source_int">595.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="681"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="682"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="683"></a>    SkillButton.SetSize(XWidth, YHeight);
+<a name="684"></a>    SkillButton.WinLeft = XPos;
+<a name="685"></a>    SkillButton.WinTop = YPos;
+<a name="686"></a>    SkillButton.LabelWidth = <font class="source_int">178</font>/1<font class="source_int">024</font> * XMod;
+<a name="687"></a>    SkillButton.LabelHeight = <font class="source_int">49</font>/7<font class="source_int">68</font> * YMod;
+<a name="688"></a>    SkillButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="689"></a>
+<a name="690"></a>    <font class="source_comment">// Title Button
+</font><a name="691"></a>    XPos = <font class="source_int">84.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="692"></a>    YPos = <font class="source_int">69.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="693"></a>    XWidth = <font class="source_int">342.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="694"></a>    YHeight = <font class="source_int">41.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="695"></a>    TitleButton.SetSize(XWidth, YHeight);
+<a name="696"></a>    TitleButton.WinLeft = XPos;
+<a name="697"></a>    TitleButton.WinTop = YPos;
+<a name="698"></a>    TitleButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetHugeFont(Root);
+<a name="699"></a>
+<a name="700"></a>    <font class="source_comment">// Back Button
+</font><a name="701"></a>    XPos = <font class="source_int">192.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="702"></a>    YPos = <font class="source_int">701.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="703"></a>    XWidth = <font class="source_int">64.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="704"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="705"></a>    BackButton.SetSize(XWidth, YHeight);
+<a name="706"></a>    BackButton.WinLeft = XPos;
+<a name="707"></a>    BackButton.WinTop = YPos;
+<a name="708"></a>
+<a name="709"></a>    <font class="source_comment">// Next Button
+</font><a name="710"></a>    XPos = <font class="source_int">256.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="711"></a>    YPos = <font class="source_int">701.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="712"></a>    XWidth = <font class="source_int">64.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="713"></a>    YHeight = <font class="source_int">64.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="714"></a>    NextButton.SetSize(XWidth, YHeight);
+<a name="715"></a>    NextButton.WinLeft = XPos;
+<a name="716"></a>    NextButton.WinTop = YPos;
+<a name="717"></a>
+<a name="718"></a>    <font class="source_comment">// Team Desc
+</font><a name="719"></a>    XPos = <font class="source_int">609.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="720"></a>    YPos = <font class="source_int">388.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="721"></a>    XWidth = <font class="source_int">321.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="722"></a>    YHeight = <font class="source_int">113.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="723"></a>    TeamDescArea.SetSize(XWidth, YHeight);
+<a name="724"></a>    TeamDescArea.WinLeft = XPos;
+<a name="725"></a>    TeamDescArea.WinTop = YPos;
+<a name="726"></a>    TeamDescArea.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.GetSmallFont(Root);
+<a name="727"></a>
+<a name="728"></a>    <font class="source_comment">// DescScrollup
+</font><a name="729"></a>    XPos = <font class="source_int">715.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="730"></a>    YPos = <font class="source_int">538.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="731"></a>    XWidth = <font class="source_int">32.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="732"></a>    YHeight = <font class="source_int">16.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="733"></a>    DescScrollup.WinLeft = XPos;
+<a name="734"></a>    DescScrollup.WinTop = YPos;
+<a name="735"></a>    DescScrollup.SetSize(XWidth, YHeight);
+<a name="736"></a>
+<a name="737"></a>    <font class="source_comment">// DescScrolldown
+</font><a name="738"></a>    XPos = <font class="source_int">799.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="739"></a>    YPos = <font class="source_int">538.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="740"></a>    XWidth = <font class="source_int">32.0</font>/1<font class="source_int">024</font> * XMod;
+<a name="741"></a>    YHeight = <font class="source_int">16.0</font>/7<font class="source_int">68</font> * YMod;
+<a name="742"></a>    DescScrolldown.WinLeft = XPos;
+<a name="743"></a>    DescScrolldown.WinTop = YPos;
+<a name="744"></a>    DescScrolldown.SetSize(XWidth, YHeight);
+<a name="745"></a>}
+<a name="746"></a>
+<a name="747"></a><font class="source_keyword">function</font> Tick(<font class="source_keyword">float</font> Delta)
+<a name="748"></a>{
+<a name="749"></a>    <font class="source_keyword">Super</font>.Tick(Delta);
+<a name="750"></a>
+<a name="751"></a>    FlashTime += Delta;
+<a name="752"></a>    <font class="source_keyword">if</font> (FlashTime &gt; <font class="source_int">1</font>)
+<a name="753"></a>    {
+<a name="754"></a>        FlashTime = <font class="source_int">0</font>;
+<a name="755"></a>        <font class="source_keyword">if</font> (bFlashOn)
+<a name="756"></a>        {
+<a name="757"></a>            NextButton.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.RightUp"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="758"></a>            bFlashOn = <font class="source_keyword">False</font>;
+<a name="759"></a>        } <font class="source_keyword">else</font> {
+<a name="760"></a>            NextButton.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>(DynamicLoadObject(<font class="source_string">"UTMenu.RightOver"</font>, <font class="source_keyword">Class</font><font class="source_name">'Texture'</font>));
+<a name="761"></a>            bFlashOn = <font class="source_keyword">True</font>;
+<a name="762"></a>        }
+<a name="763"></a>    }
+<a name="764"></a>}
+<a name="765"></a>
+<a name="766"></a><font class="source_keyword">function</font> Paint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="767"></a>{
+<a name="768"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> XOffset, YOffset;
+<a name="769"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> W, H;
+<a name="770"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XWidth, YHeight, XMod, YMod, XPos, YPos;
+<a name="771"></a>
+<a name="772"></a>    <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.SetupWinParams(Self, Root, W, H);
+<a name="773"></a>
+<a name="774"></a>    XMod = <font class="source_int">4</font>*W;
+<a name="775"></a>    YMod = <font class="source_int">3</font>*H;
+<a name="776"></a>
+<a name="777"></a>    XOffset = (WinWidth - (<font class="source_int">4</font> * W)) / <font class="source_int">2</font>;
+<a name="778"></a>    YOffset = (WinHeight - (<font class="source_int">3</font> * H)) / <font class="source_int">2</font>;
+<a name="779"></a>
+<a name="780"></a>    <font class="source_comment">// Background
+</font><a name="781"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">0</font> * W), YOffset + (<font class="source_int">0</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG1[<font class="source_int">0</font>]);
+<a name="782"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">1</font> * W), YOffset + (<font class="source_int">0</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG1[<font class="source_int">1</font>]);
+<a name="783"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">2</font> * W), YOffset + (<font class="source_int">0</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG1[<font class="source_int">2</font>]);
+<a name="784"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">3</font> * W), YOffset + (<font class="source_int">0</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG1[<font class="source_int">3</font>]);
+<a name="785"></a>
+<a name="786"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">0</font> * W), YOffset + (<font class="source_int">1</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG2[<font class="source_int">0</font>]);
+<a name="787"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">1</font> * W), YOffset + (<font class="source_int">1</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG2[<font class="source_int">1</font>]);
+<a name="788"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">2</font> * W), YOffset + (<font class="source_int">1</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG2[<font class="source_int">2</font>]);
+<a name="789"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">3</font> * W), YOffset + (<font class="source_int">1</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG2[<font class="source_int">3</font>]);
+<a name="790"></a>        
+<a name="791"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">0</font> * W), YOffset + (<font class="source_int">2</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG3[<font class="source_int">0</font>]);
+<a name="792"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">1</font> * W), YOffset + (<font class="source_int">2</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG3[<font class="source_int">1</font>]);
+<a name="793"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">2</font> * W), YOffset + (<font class="source_int">2</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG3[<font class="source_int">2</font>]);
+<a name="794"></a>    DrawStretchedTexture(C, XOffset + (<font class="source_int">3</font> * W), YOffset + (<font class="source_int">2</font> * H), W+<font class="source_int">1</font>, H+<font class="source_int">1</font>, BG3[<font class="source_int">3</font>]);
+<a name="795"></a>
+<a name="796"></a>    <font class="source_keyword">if</font> (Root.WinWidth &gt; <font class="source_int">500</font>)
+<a name="797"></a>    {
+<a name="798"></a>        DrawStretchedTexture(C, XOffset + (<font class="source_int">0</font> * W), YOffset + (<font class="source_int">0</font> * H), (W+<font class="source_int">1</font>)/2, (H+<font class="source_int">1</font>)/2, <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'TeamPlate'</font>);
+<a name="799"></a>        DrawStretchedTexture(C, XOffset + (<font class="source_int">0</font> * W) + (<font class="source_int">65.0</font>/1<font class="source_int">024</font>*XMod), YOffset + (<font class="source_int">0</font> * H) + (<font class="source_int">61.0</font>/7<font class="source_int">68</font>*YMod), (<font class="source_int">58.0</font>/1<font class="source_int">024</font>*XMod), (<font class="source_int">57.0</font>/7<font class="source_int">68</font>*YMod), <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam].Default.TeamSymbol);
+<a name="800"></a>    }
+<a name="801"></a>}
+<a name="802"></a>
+<a name="803"></a><font class="source_keyword">function</font> Notify(<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font> B, <font class="source_keyword">byte</font> E)
+<a name="804"></a>{
+<a name="805"></a>    <font class="source_keyword">switch</font> (E)
+<a name="806"></a>    {
+<a name="807"></a>        <font class="source_keyword">case</font> DE_DoubleClick:
+<a name="808"></a>        <font class="source_keyword">case</font> DE_Click:
+<a name="809"></a>            <font class="source_keyword">switch</font> (B)
+<a name="810"></a>            {
+<a name="811"></a>                <font class="source_keyword">case</font> SexButton:
+<a name="812"></a>                    SexPressed();
+<a name="813"></a>                    <font class="source_keyword">break</font>;
+<a name="814"></a>                <font class="source_keyword">case</font> TeamButton:
+<a name="815"></a>                    TeamPressed();
+<a name="816"></a>                    <font class="source_keyword">break</font>;
+<a name="817"></a>                <font class="source_keyword">case</font> FaceButton:
+<a name="818"></a>                    FacePressed();
+<a name="819"></a>                    <font class="source_keyword">break</font>;
+<a name="820"></a>                <font class="source_keyword">case</font> SkillButton:
+<a name="821"></a>                    SkillPressed();
+<a name="822"></a>                    <font class="source_keyword">break</font>;
+<a name="823"></a>                <font class="source_keyword">case</font> NextButton:
+<a name="824"></a>                    NextPressed();
+<a name="825"></a>                    <font class="source_keyword">break</font>;
+<a name="826"></a>                <font class="source_keyword">case</font> BackButton:
+<a name="827"></a>                    BackPressed();
+<a name="828"></a>                    <font class="source_keyword">break</font>;
+<a name="829"></a>                <font class="source_keyword">case</font> DescScrollup:
+<a name="830"></a>                    TeamDescArea.ScrollingOffset--;
+<a name="831"></a>                    <font class="source_keyword">if</font> (TeamDescArea.ScrollingOffset &lt; <font class="source_int">0</font>)
+<a name="832"></a>                        TeamDescArea.ScrollingOffset = <font class="source_int">0</font>;
+<a name="833"></a>                    <font class="source_keyword">break</font>;
+<a name="834"></a>                <font class="source_keyword">case</font> DescScrolldown:
+<a name="835"></a>                    TeamDescArea.ScrollingOffset++;
+<a name="836"></a>                    <font class="source_keyword">if</font> (TeamDescArea.ScrollingOffset &gt; <font class="source_int">10</font>)
+<a name="837"></a>                        TeamDescArea.ScrollingOffset = <font class="source_int">10</font>;
+<a name="838"></a>                    <font class="source_keyword">break</font>;
+<a name="839"></a>            }
+<a name="840"></a>            <font class="source_keyword">break</font>;
+<a name="841"></a>        <font class="source_keyword">case</font> DE_Change:
+<a name="842"></a>            <font class="source_keyword">switch</font> (B)
+<a name="843"></a>            {
+<a name="844"></a>                <font class="source_keyword">case</font> NameEdit:
+<a name="845"></a>                    NameChanged();
+<a name="846"></a>                    <font class="source_keyword">break</font>;
+<a name="847"></a>            }
+<a name="848"></a>            <font class="source_keyword">break</font>;
+<a name="849"></a>    }
+<a name="850"></a>}
+<a name="851"></a>
+<a name="852"></a><font class="source_keyword">function</font> NameChanged()
+<a name="853"></a>{
+<a name="854"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> N;
+<a name="855"></a>    <font class="source_keyword">if</font> (Initialized)
+<a name="856"></a>    {
+<a name="857"></a>        Initialized = <font class="source_keyword">False</font>;
+<a name="858"></a>        N = NameEdit.GetValue();
+<a name="859"></a>        ReplaceText(N, <font class="source_string">" "</font>, <font class="source_string">"_"</font>);
+<a name="860"></a>        NameEdit.SetValue(N);
+<a name="861"></a>        Initialized = <font class="source_keyword">True</font>;
+<a name="862"></a>
+<a name="863"></a>        GetPlayerOwner().ChangeName(NameEdit.GetValue());
+<a name="864"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Name"</font>, NameEdit.GetValue(), <font class="source_keyword">True</font>);
+<a name="865"></a>    }
+<a name="866"></a>}
+<a name="867"></a>
+<a name="868"></a><font class="source_keyword">function</font> SexPressed()
+<a name="869"></a>{
+<a name="870"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> CurrentSex;
+<a name="871"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> MeshName;
+<a name="872"></a>
+<a name="873"></a>    <font class="source_keyword">if</font> (SexButton.Text ~= MaleText)
+<a name="874"></a>    {
+<a name="875"></a>        PreferredSex = <font class="source_int">0</font>;
+<a name="876"></a>        LadderObj.Sex = <font class="source_string">"M"</font>;
+<a name="877"></a>        <font class="source_keyword">if</font> (FemaleClass == <font class="source_keyword">None</font>)
+<a name="878"></a>            <font class="source_keyword">return</font>;
+<a name="879"></a>
+<a name="880"></a>        SexButton.Text = FemaleText;
+<a name="881"></a>
+<a name="882"></a>        IterateFaces(FemaleSkin, GetPlayerOwner().GetItemName(<font class="source_keyword">string</font>(FemaleClass.Default.<font class="source_type">Mesh</font>)));
+<a name="883"></a>
+<a name="884"></a>        <font class="source_comment">// Make player female.
+</font><a name="885"></a>        MeshName = FemaleClass.Default.SelectionMesh;
+<a name="886"></a>        MeshWindow.SetMeshString(MeshName);
+<a name="887"></a>        FemaleClass.<font class="source_keyword2">static</font>.SetMultiSkin(MeshWindow.<font class="source_type"><a href="..\umenu\meshactor.html" class="source">MeshActor</a></font>, FemaleSkin, Faces[PreferredFace], <font class="source_int">255</font>);
+<a name="888"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Class"</font>, <font class="source_string">"Botpack."</font>$<font class="source_keyword">string</font>(FemaleClass.<font class="source_keyword">Name</font>), <font class="source_keyword">True</font>);
+<a name="889"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Skin"</font>, FemaleSkin, <font class="source_keyword">True</font>);
+<a name="890"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Voice"</font>, FemaleClass.Default.VoiceType, <font class="source_keyword">True</font>);
+<a name="891"></a>        CurrentSex = <font class="source_int">1</font>;
+<a name="892"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Face"</font>, Faces[PreferredFace], <font class="source_keyword">True</font>);
+<a name="893"></a>
+<a name="894"></a>        FaceButton.Text = FaceDescs[PreferredFace];
+<a name="895"></a>
+<a name="896"></a>        LadderObj.Sex = <font class="source_string">"F"</font>;
+<a name="897"></a>    } <font class="source_keyword">else</font> {
+<a name="898"></a>        PreferredSex = <font class="source_int">1</font>;
+<a name="899"></a>        LadderObj.Sex = <font class="source_string">"F"</font>;
+<a name="900"></a>        <font class="source_keyword">if</font> (MaleClass == <font class="source_keyword">None</font>)
+<a name="901"></a>            <font class="source_keyword">return</font>;
+<a name="902"></a>
+<a name="903"></a>        SexButton.Text = MaleText;
+<a name="904"></a>
+<a name="905"></a>        IterateFaces(MaleSkin, GetPlayerOwner().GetItemName(<font class="source_keyword">string</font>(MaleClass.Default.<font class="source_type">Mesh</font>)));
+<a name="906"></a>
+<a name="907"></a>        <font class="source_comment">// Make player male.
+</font><a name="908"></a>        MeshName = MaleClass.Default.SelectionMesh;
+<a name="909"></a>        MeshWindow.SetMeshString(MeshName);
+<a name="910"></a>        MaleClass.<font class="source_keyword2">static</font>.SetMultiSkin(MeshWindow.<font class="source_type"><a href="..\umenu\meshactor.html" class="source">MeshActor</a></font>, MaleSkin, Faces[PreferredFace], <font class="source_int">255</font>);
+<a name="911"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Class"</font>, <font class="source_string">"Botpack."</font>$<font class="source_keyword">string</font>(MaleClass.<font class="source_keyword">Name</font>), <font class="source_keyword">True</font>);
+<a name="912"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Skin"</font>, MaleSkin, <font class="source_keyword">True</font>);
+<a name="913"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Voice"</font>, MaleClass.Default.VoiceType, <font class="source_keyword">True</font>);
+<a name="914"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Face"</font>, Faces[PreferredFace], <font class="source_keyword">True</font>);
+<a name="915"></a>        CurrentSex = <font class="source_int">0</font>;
+<a name="916"></a>
+<a name="917"></a>        FaceButton.Text = FaceDescs[PreferredFace];
+<a name="918"></a>
+<a name="919"></a>        LadderObj.Sex = <font class="source_string">"M"</font>;
+<a name="920"></a>    }
+<a name="921"></a>    PreferredSex = CurrentSex;
+<a name="922"></a>    SaveConfig();
+<a name="923"></a>}
+<a name="924"></a>
+<a name="925"></a><font class="source_keyword">function</font> FacePressed()
+<a name="926"></a>{
+<a name="927"></a>    PreferredFace++;
+<a name="928"></a>    <font class="source_keyword">if</font> (Faces[PreferredFace] == <font class="source_string">""</font>)
+<a name="929"></a>        PreferredFace = <font class="source_int">0</font>;
+<a name="930"></a>    FaceButton.Text = FaceDescs[PreferredFace];
+<a name="931"></a>    <font class="source_keyword">if</font> (SexButton.Text ~= MaleText)
+<a name="932"></a>    {
+<a name="933"></a>        MaleClass.<font class="source_keyword2">static</font>.SetMultiSkin(MeshWindow.<font class="source_type"><a href="..\umenu\meshactor.html" class="source">MeshActor</a></font>, MaleSkin, Faces[PreferredFace], <font class="source_int">255</font>);
+<a name="934"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Face"</font>, Faces[PreferredFace], <font class="source_keyword">True</font>);
+<a name="935"></a>    } <font class="source_keyword">else</font> {
+<a name="936"></a>        FemaleClass.<font class="source_keyword2">static</font>.SetMultiSkin(MeshWindow.<font class="source_type"><a href="..\umenu\meshactor.html" class="source">MeshActor</a></font>, FemaleSkin, Faces[PreferredFace], <font class="source_int">255</font>);
+<a name="937"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Face"</font>, Faces[PreferredFace], <font class="source_keyword">True</font>);
+<a name="938"></a>    }
+<a name="939"></a>
+<a name="940"></a>    LadderObj.Face = PreferredFace;
+<a name="941"></a>    SaveConfig();
+<a name="942"></a>}
+<a name="943"></a>
+<a name="944"></a><font class="source_keyword">function</font> TeamPressed()
+<a name="945"></a>{
+<a name="946"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> MeshName;
+<a name="947"></a>
+<a name="948"></a>    <font class="source_keyword">if</font> (!<font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetStubClass().<font class="source_keyword2">Static</font>.IsDemo())
+<a name="949"></a>    {
+<a name="950"></a>        PreferredTeam++;
+<a name="951"></a>        <font class="source_keyword">if</font> (PreferredTeam == <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.NumTeams)
+<a name="952"></a>            PreferredTeam = <font class="source_int">0</font>;
+<a name="953"></a>    }
+<a name="954"></a>    TeamButton.Text = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam].Default.TeamName;
+<a name="955"></a>    LadderObj.Team = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam];
+<a name="956"></a>
+<a name="957"></a>    <font class="source_comment">// Update mesh
+</font><a name="958"></a>    MaleClass = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam].Default.MaleClass;
+<a name="959"></a>    MaleSkin = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam].Default.MaleSkin;
+<a name="960"></a>    FemaleClass = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam].Default.FemaleClass;
+<a name="961"></a>    FemaleSkin = <font class="source_keyword">class</font><font class="source_name">'Ladder'</font>.Default.LadderTeams[PreferredTeam].Default.FemaleSkin;
+<a name="962"></a>
+<a name="963"></a>    <font class="source_keyword">if</font> ((MaleClass == <font class="source_keyword">None</font>) && (SexButton.Text ~= MaleText))
+<a name="964"></a>        TeamPressed();
+<a name="965"></a>    <font class="source_keyword">if</font> ((FemaleClass == <font class="source_keyword">None</font>) && (SexButton.Text ~= FemaleText))
+<a name="966"></a>        TeamPressed();
+<a name="967"></a>
+<a name="968"></a>    <font class="source_keyword">if</font> (SexButton.Text ~= MaleText)
+<a name="969"></a>    {
+<a name="970"></a>        IterateFaces(MaleSkin, GetPlayerOwner().GetItemName(<font class="source_keyword">string</font>(MaleClass.Default.<font class="source_type">Mesh</font>)));
+<a name="971"></a>
+<a name="972"></a>        PreferredFace = <font class="source_int">0</font>;
+<a name="973"></a>
+<a name="974"></a>        MeshName = MaleClass.Default.SelectionMesh;
+<a name="975"></a>        MeshWindow.SetMeshString(MeshName);
+<a name="976"></a>        MaleClass.<font class="source_keyword2">static</font>.SetMultiSkin(MeshWindow.<font class="source_type"><a href="..\umenu\meshactor.html" class="source">MeshActor</a></font>, MaleSkin, Faces[PreferredFace], <font class="source_int">255</font>);
+<a name="977"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Class"</font>, <font class="source_keyword">string</font>(MaleClass), <font class="source_keyword">True</font>);
+<a name="978"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Voice"</font>, MaleClass.Default.VoiceType, <font class="source_keyword">True</font>);
+<a name="979"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Skin"</font>, MaleSkin, <font class="source_keyword">True</font>);
+<a name="980"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Face"</font>, Faces[PreferredFace], <font class="source_keyword">True</font>);
+<a name="981"></a>
+<a name="982"></a>        FaceButton.Text = FaceDescs[PreferredFace];
+<a name="983"></a>        SexButton.Text = MaleText;
+<a name="984"></a>        PreferredSex = <font class="source_int">0</font>;
+<a name="985"></a>        LadderObj.Sex = <font class="source_string">"M"</font>;
+<a name="986"></a>    } <font class="source_keyword">else</font> {
+<a name="987"></a>        IterateFaces(FemaleSkin, GetPlayerOwner().GetItemName(<font class="source_keyword">string</font>(FemaleClass.Default.<font class="source_type">Mesh</font>)));
+<a name="988"></a>
+<a name="989"></a>        PreferredFace = <font class="source_int">0</font>;
+<a name="990"></a>
+<a name="991"></a>        MeshName = FemaleClass.Default.SelectionMesh;
+<a name="992"></a>        MeshWindow.SetMeshString(MeshName);
+<a name="993"></a>        FemaleClass.<font class="source_keyword2">static</font>.SetMultiSkin(MeshWindow.<font class="source_type"><a href="..\umenu\meshactor.html" class="source">MeshActor</a></font>, FemaleSkin, Faces[PreferredFace], <font class="source_int">255</font>);
+<a name="994"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Class"</font>, <font class="source_keyword">string</font>(FemaleClass), <font class="source_keyword">True</font>);
+<a name="995"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Voice"</font>, FemaleClass.Default.VoiceType, <font class="source_keyword">True</font>);
+<a name="996"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Skin"</font>, FemaleSkin, <font class="source_keyword">True</font>);
+<a name="997"></a>        GetPlayerOwner().UpdateURL(<font class="source_string">"Face"</font>, Faces[PreferredFace], <font class="source_keyword">True</font>);
+<a name="998"></a>
+<a name="999"></a>        FaceButton.Text = FaceDescs[PreferredFace];
+<a name="1000"></a>        SexButton.Text = FemaleText;
+<a name="1001"></a>        PreferredSex = <font class="source_int">1</font>;
+<a name="1002"></a>        LadderObj.Sex = <font class="source_string">"F"</font>;
+<a name="1003"></a>    }
+<a name="1004"></a>
+<a name="1005"></a>    TeamDescArea.Clear();
+<a name="1006"></a>    TeamDescArea.AddText(TeamNameString@LadderObj.Team.<font class="source_keyword2">Static</font>.GetTeamName());
+<a name="1007"></a>    TeamDescArea.AddText(<font class="source_string">" "</font>);
+<a name="1008"></a>    TeamDescArea.AddText(LadderObj.Team.<font class="source_keyword2">Static</font>.GetTeamBio());
+<a name="1009"></a>
+<a name="1010"></a>    SaveConfig();
+<a name="1011"></a>}
+<a name="1012"></a>
+<a name="1013"></a><font class="source_keyword">function</font> SkillPressed()
+<a name="1014"></a>{
+<a name="1015"></a>    CurrentSkill++;
+<a name="1016"></a>    <font class="source_keyword">if</font> (CurrentSkill == <font class="source_int">8</font>)
+<a name="1017"></a>        CurrentSkill = <font class="source_int">0</font>;
+<a name="1018"></a>    SkillButton.Text = SkillText[CurrentSkill];
+<a name="1019"></a>    LadderObj.TournamentDifficulty = CurrentSkill;
+<a name="1020"></a>    LadderObj.SkillText = SkillText[LadderObj.TournamentDifficulty];
+<a name="1021"></a>    PreferredSkill = CurrentSkill;
+<a name="1022"></a>    SaveConfig();
+<a name="1023"></a>}
+<a name="1024"></a>
+<a name="1025"></a><font class="source_keyword">function</font> BackPressed()
+<a name="1026"></a>{
+<a name="1027"></a>    Close();
+<a name="1028"></a>}
+<a name="1029"></a>
+<a name="1030"></a><font class="source_keyword">function</font> NextPressed()
+<a name="1031"></a>{
+<a name="1032"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="1033"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\utmenu\managerwindow.html" class="source">ManagerWindow</a></font> <font class="source_type"><a href="..\utmenu\managerwindow.html" class="source">ManagerWindow</a></font>;
+<a name="1034"></a>
+<a name="1035"></a>    <font class="source_keyword">if</font> (LadderObj.Sex ~= <font class="source_string">"F"</font>)
+<a name="1036"></a>    {
+<a name="1037"></a>        SexButton.Text = MaleText;
+<a name="1038"></a>    } <font class="source_keyword">else</font> {
+<a name="1039"></a>        SexButton.Text = FemaleText;
+<a name="1040"></a>    }
+<a name="1041"></a>    SexPressed();
+<a name="1042"></a>
+<a name="1043"></a>    <font class="source_comment">// Go to the ladder selection screen.
+</font><a name="1044"></a>    LadderObj.DMRank = <font class="source_int">0</font>;
+<a name="1045"></a>    LadderObj.DMPosition = -<font class="source_int">1</font>;
+<a name="1046"></a>    LadderObj.CTFRank = <font class="source_int">0</font>;
+<a name="1047"></a>    LadderObj.CTFPosition = -<font class="source_int">1</font>;
+<a name="1048"></a>    LadderObj.DOMRank = <font class="source_int">0</font>;
+<a name="1049"></a>    LadderObj.DOMPosition = -<font class="source_int">1</font>;
+<a name="1050"></a>    LadderObj.ASRank = <font class="source_int">0</font>;
+<a name="1051"></a>    LadderObj.ASPosition = -<font class="source_int">1</font>;
+<a name="1052"></a>    LadderObj.ChalRank = <font class="source_int">0</font>;
+<a name="1053"></a>    LadderObj.ChalPosition = <font class="source_int">0</font>;
+<a name="1054"></a>
+<a name="1055"></a>    LadderObj = <font class="source_keyword">None</font>;
+<a name="1056"></a>    <font class="source_keyword">Super</font>.Close();
+<a name="1057"></a>    <font class="source_type"><a href="..\utmenu\managerwindow.html" class="source">ManagerWindow</a></font> = <font class="source_type"><a href="..\utmenu\managerwindow.html" class="source">ManagerWindow</a></font>(Root.CreateWindow(<font class="source_keyword">class</font><font class="source_name">'ManagerWindow'</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">200</font>, <font class="source_int">200</font>, Root, <font class="source_keyword">True</font>));
+<a name="1058"></a>}
+<a name="1059"></a>
+<a name="1060"></a><font class="source_keyword">function</font> Close(<font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bByParent)
+<a name="1061"></a>{
+<a name="1062"></a>    LadderObj = <font class="source_keyword">None</font>;
+<a name="1063"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bNoDrawWorld = Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.ShowDesktop;
+<a name="1064"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bLocked = <font class="source_keyword">False</font>;
+<a name="1065"></a>    <font class="source_type"><a href="..\umenu\umenurootwindow.html" class="source">UMenuRootWindow</a></font>(Root).MenuBar.ShowWindow();
+<a name="1066"></a>
+<a name="1067"></a>    <font class="source_keyword">Super</font>.Close(bByParent);
+<a name="1068"></a>}
+<a name="1069"></a>
+<a name="1070"></a><font class="source_keyword">function</font> HideWindow()
+<a name="1071"></a>{
+<a name="1072"></a>    Root.<font class="source_type"><a href="..\engine\console.html" class="source">Console</a></font>.bBlackOut = <font class="source_keyword">False</font>;
+<a name="1073"></a>
+<a name="1074"></a>    <font class="source_keyword">Super</font>.HideWindow();
+<a name="1075"></a>}
+<a name="1076"></a>
+<a name="1077"></a><font class="source_keyword">function</font> IterateFaces(<font class="source_keyword">string</font> InSkinName, <font class="source_keyword">string</font> MeshName)
+<a name="1078"></a>{
+<a name="1079"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> SkinName, SkinDesc, TestName, Temp, FaceName;
+<a name="1080"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bNewFormat;
+<a name="1081"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, Pos;
+<a name="1082"></a>
+<a name="1083"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">16</font>; i++)
+<a name="1084"></a>    {
+<a name="1085"></a>        FaceDescs[i] = <font class="source_string">""</font>;
+<a name="1086"></a>        Faces[i] = <font class="source_string">""</font>;
+<a name="1087"></a>    }
+<a name="1088"></a>
+<a name="1089"></a>    i = <font class="source_int">0</font>;
+<a name="1090"></a>
+<a name="1091"></a>    SkinName = <font class="source_string">"None"</font>;
+<a name="1092"></a>    TestName = <font class="source_string">""</font>;
+<a name="1093"></a>    <font class="source_keyword">while</font> ( <font class="source_keyword">True</font> )
+<a name="1094"></a>    {
+<a name="1095"></a>        GetPlayerOwner().GetNextSkin(MeshName, SkinName, <font class="source_int">1</font>, SkinName, SkinDesc);
+<a name="1096"></a>
+<a name="1097"></a>        <font class="source_keyword">if</font>( SkinName == TestName )
+<a name="1098"></a>            <font class="source_keyword">break</font>;
+<a name="1099"></a>
+<a name="1100"></a>        <font class="source_keyword">if</font>( TestName == <font class="source_string">""</font> )
+<a name="1101"></a>            TestName = SkinName;
+<a name="1102"></a>
+<a name="1103"></a>        <font class="source_comment">// Multiskin format
+</font><a name="1104"></a>        <font class="source_keyword">if</font>( SkinDesc != <font class="source_string">""</font>)
+<a name="1105"></a>        {           
+<a name="1106"></a>            Temp = GetPlayerOwner().GetItemName(SkinName);
+<a name="1107"></a>            <font class="source_keyword">if</font>(Mid(Temp, <font class="source_int">5</font>) != <font class="source_string">""</font> && Left(Temp, <font class="source_int">4</font>) == GetPlayerOwner().GetItemName(InSkinName))
+<a name="1108"></a>            {
+<a name="1109"></a>                Pos = InStr(SkinName, <font class="source_string">"."</font>);
+<a name="1110"></a>                FaceDescs[i] = SkinDesc;
+<a name="1111"></a>                Faces[i++] = Left(SkinName, Pos+<font class="source_int">1</font>)$Mid(Temp, <font class="source_int">5</font>);
+<a name="1112"></a>            }
+<a name="1113"></a>        }
+<a name="1114"></a>    }
+<a name="1115"></a>}
+<a name="1116"></a>
+<a name="1117"></a><font class="source_keyword">defaultproperties</font>
+<a name="1118"></a>{
+<a name="1119"></a>    CCText=<font class="source_string">"   Character Creation"</font>
+<a name="1120"></a>    NameText=<font class="source_string">"Name"</font>
+<a name="1121"></a>    SexText=<font class="source_string">"Gender"</font>
+<a name="1122"></a>    TeamText=<font class="source_string">"Team"</font>
+<a name="1123"></a>    FaceText=<font class="source_string">"Face"</font>
+<a name="1124"></a>    SkillsText=<font class="source_string">"Skill"</font>
+<a name="1125"></a>    MaleText=<font class="source_string">"Male"</font>
+<a name="1126"></a>    FemaleText=<font class="source_string">"Female"</font>
+<a name="1127"></a>    SkillText(<font class="source_int">0</font>)=<font class="source_string">"Novice"</font>
+<a name="1128"></a>    SkillText(<font class="source_int">1</font>)=<font class="source_string">"Average"</font>
+<a name="1129"></a>    SkillText(<font class="source_int">2</font>)=<font class="source_string">"Experienced"</font>
+<a name="1130"></a>    SkillText(<font class="source_int">3</font>)=<font class="source_string">"Skilled"</font>
+<a name="1131"></a>    SkillText(<font class="source_int">4</font>)=<font class="source_string">"Adept"</font>
+<a name="1132"></a>    SkillText(<font class="source_int">5</font>)=<font class="source_string">"Masterful"</font>
+<a name="1133"></a>    SkillText(<font class="source_int">6</font>)=<font class="source_string">"Inhuman"</font>
+<a name="1134"></a>    SkillText(<font class="source_int">7</font>)=<font class="source_string">"Godlike"</font>
+<a name="1135"></a>    BGName1(<font class="source_int">0</font>)=<font class="source_string">"UTMenu.CC11"</font>
+<a name="1136"></a>    BGName1(<font class="source_int">1</font>)=<font class="source_string">"UTMenu.CC12"</font>
+<a name="1137"></a>    BGName1(<font class="source_int">2</font>)=<font class="source_string">"UTMenu.CC13"</font>
+<a name="1138"></a>    BGName1(<font class="source_int">3</font>)=<font class="source_string">"UTMenu.CC14"</font>
+<a name="1139"></a>    BGName2(<font class="source_int">0</font>)=<font class="source_string">"UTMenu.CC21"</font>
+<a name="1140"></a>    BGName2(<font class="source_int">1</font>)=<font class="source_string">"UTMenu.CC22"</font>
+<a name="1141"></a>    BGName2(<font class="source_int">2</font>)=<font class="source_string">"UTMenu.CC23"</font>
+<a name="1142"></a>    BGName2(<font class="source_int">3</font>)=<font class="source_string">"UTMenu.CC24"</font>
+<a name="1143"></a>    BGName3(<font class="source_int">0</font>)=<font class="source_string">"UTMenu.CC31"</font>
+<a name="1144"></a>    BGName3(<font class="source_int">1</font>)=<font class="source_string">"UTMenu.CC32"</font>
+<a name="1145"></a>    BGName3(<font class="source_int">2</font>)=<font class="source_string">"UTMenu.CC33"</font>
+<a name="1146"></a>    BGName3(<font class="source_int">3</font>)=<font class="source_string">"UTMenu.CC34"</font>
+<a name="1147"></a>    PreferredSex=<font class="source_int">0</font>
+<a name="1148"></a>    PreferredSkill=<font class="source_int">1</font>
+<a name="1149"></a>    PreferredTeam=<font class="source_int">0</font>
+<a name="1150"></a>    PreferredFace=<font class="source_int">0</font>
+<a name="1151"></a>    TeamNameString=<font class="source_string">"Team Name:"</font>
+<a name="1152"></a>}
+<a name="1153"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\newcharacterwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#NewCharacterWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="nameeditbox.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="newgameinterimobject.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:26.000 - Creation time: Wed 26/5/2004 10:48:27.562 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

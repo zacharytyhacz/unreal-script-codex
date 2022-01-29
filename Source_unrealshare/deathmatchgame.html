@@ -1,0 +1,1175 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealShare.DeathMatchGame</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\deathmatchgame.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#DeathMatchGame">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="deadmales.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="defaultammo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\deathmatchgame.html">DeathMatchGame</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// DeathMatchGame.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unrealshare\deathmatchgame.html" class="source">DeathMatchGame</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\unrealshare\unrealgameinfo.html" class="source">UnrealGameInfo</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font>() <font class="source_keyword2">globalconfig</font> <font class="source_keyword">int</font>  FragLimit; 
+<a name="7"></a><font class="source_keyword">var</font>() <font class="source_keyword2">globalconfig</font> <font class="source_keyword">int</font>  TimeLimit; <font class="source_comment">// time limit in minutes
+</font><a name="8"></a><font class="source_keyword">var</font>() <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bMultiPlayerBots;
+<a name="9"></a><font class="source_keyword">var</font>() <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bChangeLevels;
+<a name="10"></a><font class="source_keyword">var</font>() <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bHardCoreMode;
+<a name="11"></a><font class="source_keyword">var</font>() <font class="source_keyword2">globalconfig</font> <font class="source_keyword">bool</font> bMegaSpeed;
+<a name="12"></a>
+<a name="13"></a><font class="source_keyword">var</font>     <font class="source_keyword">bool</font>    bDontRestart;
+<a name="14"></a><font class="source_keyword">var</font>     <font class="source_keyword">bool</font>    bGameEnded;
+<a name="15"></a><font class="source_keyword">var</font>     <font class="source_keyword">bool</font>    bAlreadyChanged;
+<a name="16"></a><font class="source_keyword">var</font>   <font class="source_keyword">int</font> RemainingTime;
+<a name="17"></a>
+<a name="18"></a><font class="source_comment">// Bot related info
+</font><a name="19"></a><font class="source_keyword">var</font>   <font class="source_keyword">int</font>           NumBots;
+<a name="20"></a><font class="source_keyword">var</font>   <font class="source_keyword">int</font>           RemainingBots;
+<a name="21"></a><font class="source_keyword">var</font>() <font class="source_keyword2">globalconfig</font> <font class="source_keyword">int</font>  InitialBots;
+<a name="22"></a><font class="source_keyword">var</font>     <font class="source_type"><a href="..\unrealshare\botinfo.html" class="source">BotInfo</a></font>     BotConfig;
+<a name="23"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GlobalNameChange;
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> NoNameChange;
+<a name="25"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">16</font>];
+<a name="26"></a><font class="source_keyword">var</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\unrealshare\botinfo.html" class="source">BotInfo</a></font>&gt; BotConfigType;
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> GlobalNameChangeTrailer;
+<a name="28"></a>
+<a name="29"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="30"></a>{
+<a name="31"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NextPlayerClass;
+<a name="32"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="33"></a>
+<a name="34"></a>    BotConfig = spawn(BotConfigType);
+<a name="35"></a>    RemainingTime = <font class="source_int">60</font> * TimeLimit;
+<a name="36"></a>    <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.NetMode == NM_Standalone) || bMultiPlayerBots )
+<a name="37"></a>        RemainingBots = InitialBots;
+<a name="38"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="39"></a>
+<a name="40"></a>    <font class="source_comment">// load all player classes
+</font><a name="41"></a>    NextPlayerClass = GetNextInt(<font class="source_string">"UnrealiPlayer"</font>, <font class="source_int">0</font>); 
+<a name="42"></a>    <font class="source_keyword">while</font> ( NextPlayerClass != <font class="source_string">""</font> )
+<a name="43"></a>    {
+<a name="44"></a>        DynamicLoadObject(NextPlayerClass, <font class="source_keyword">class</font><font class="source_name">'Class'</font>);
+<a name="45"></a>        i++;
+<a name="46"></a>        NextPlayerClass = GetNextInt(<font class="source_string">"UnrealiPlayer"</font>, i); 
+<a name="47"></a>    }
+<a name="48"></a>}
+<a name="49"></a>
+<a name="50"></a><font class="source_keyword">function</font> <font class="source_keyword">int</font> GetIntOption( <font class="source_keyword">string</font> Options, <font class="source_keyword">string</font> ParseString, <font class="source_keyword">int</font> CurrentValue)
+<a name="51"></a>{
+<a name="52"></a>    <font class="source_keyword">if</font> ( !bTeamGame && (ParseString ~= <font class="source_string">"Team"</font>) )
+<a name="53"></a>        <font class="source_keyword">return</font> <font class="source_int">255</font>;
+<a name="54"></a>
+<a name="55"></a>    <font class="source_keyword">return</font> <font class="source_keyword">Super</font>.GetIntOption(Options, ParseString, CurrentValue);
+<a name="56"></a>}
+<a name="57"></a>
+<a name="58"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> IsRelevant(<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other) 
+<a name="59"></a>{
+<a name="60"></a>    <font class="source_keyword">if</font> ( bMegaSpeed && Other.IsA(<font class="source_name">'Pawn'</font>) && <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).bIsPlayer )
+<a name="61"></a>    {
+<a name="62"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).GroundSpeed *= <font class="source_int">1.5</font>;
+<a name="63"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).WaterSpeed *= <font class="source_int">1.5</font>;
+<a name="64"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).AirSpeed *= <font class="source_int">1.5</font>;
+<a name="65"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).Acceleration *= <font class="source_int">1.5</font>;
+<a name="66"></a>    }
+<a name="67"></a>    <font class="source_keyword">return</font> <font class="source_keyword">Super</font>.IsRelevant(Other);
+<a name="68"></a>}
+<a name="69"></a>
+<a name="70"></a><font class="source_keyword">function</font> LogGameParameters(<font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font> <font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>)
+<a name="71"></a>{
+<a name="72"></a>    <font class="source_keyword">if</font> (<font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font> == <font class="source_keyword">None</font>)
+<a name="73"></a>        <font class="source_keyword">return</font>;
+<a name="74"></a>    
+<a name="75"></a>    <font class="source_keyword">Super</font>.LogGameParameters(<font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>);
+<a name="76"></a>
+<a name="77"></a>    <font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>.LogEventString(<font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>.GetTimeStamp()$Chr(<font class="source_int">9</font>)$<font class="source_string">"game"</font>$Chr(<font class="source_int">9</font>)$<font class="source_string">"FragLimit"</font>$Chr(<font class="source_int">9</font>)$FragLimit);
+<a name="78"></a>    <font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>.LogEventString(<font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>.GetTimeStamp()$Chr(<font class="source_int">9</font>)$<font class="source_string">"game"</font>$Chr(<font class="source_int">9</font>)$<font class="source_string">"TimeLimit"</font>$Chr(<font class="source_int">9</font>)$TimeLimit);
+<a name="79"></a>    <font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>.LogEventString(<font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>.GetTimeStamp()$Chr(<font class="source_int">9</font>)$<font class="source_string">"game"</font>$Chr(<font class="source_int">9</font>)$<font class="source_string">"MultiPlayerBots"</font>$Chr(<font class="source_int">9</font>)$bMultiPlayerBots);
+<a name="80"></a>    <font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>.LogEventString(<font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>.GetTimeStamp()$Chr(<font class="source_int">9</font>)$<font class="source_string">"game"</font>$Chr(<font class="source_int">9</font>)$<font class="source_string">"HardCore"</font>$Chr(<font class="source_int">9</font>)$bHardCoreMode);
+<a name="81"></a>    <font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>.LogEventString(<font class="source_type"><a href="..\engine\statlog.html" class="source">StatLog</a></font>.GetTimeStamp()$Chr(<font class="source_int">9</font>)$<font class="source_string">"game"</font>$Chr(<font class="source_int">9</font>)$<font class="source_string">"MegaSpeed"</font>$Chr(<font class="source_int">9</font>)$bMegaSpeed);
+<a name="82"></a>}
+<a name="83"></a>
+<a name="84"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> PlayerJumpZScaling()
+<a name="85"></a>{
+<a name="86"></a>    <font class="source_keyword">if</font> ( bHardCoreMode )
+<a name="87"></a>        <font class="source_keyword">return</font> <font class="source_int">1.1</font>;
+<a name="88"></a>    <font class="source_keyword">else</font>
+<a name="89"></a>        <font class="source_keyword">return</font> <font class="source_int">1.0</font>;
+<a name="90"></a>}
+<a name="91"></a>
+<a name="92"></a><font class="source_comment">//
+</font><a name="93"></a><font class="source_comment">// Set gameplay speed.
+</font><a name="94"></a><font class="source_comment">//
+</font><a name="95"></a><font class="source_keyword">function</font> SetGameSpeed( <font class="source_keyword">Float</font> T )
+<a name="96"></a>{
+<a name="97"></a>    GameSpeed = FMax(T, <font class="source_int">0.1</font>);
+<a name="98"></a>    <font class="source_keyword">if</font> ( bHardCoreMode )
+<a name="99"></a>        <font class="source_type">Level</font>.TimeDilation = <font class="source_int">1.1</font> * GameSpeed;
+<a name="100"></a>    <font class="source_keyword">else</font>
+<a name="101"></a>        <font class="source_type">Level</font>.TimeDilation = GameSpeed;
+<a name="102"></a>}
+<a name="103"></a>
+<a name="104"></a><font class="source_keyword">event</font> InitGame( <font class="source_keyword">string</font> Options, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error )
+<a name="105"></a>{
+<a name="106"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> InOpt;
+<a name="107"></a>
+<a name="108"></a>    <font class="source_keyword">Super</font>.InitGame(Options, Error);
+<a name="109"></a>
+<a name="110"></a>    SetGameSpeed(GameSpeed);
+<a name="111"></a>    FragLimit = GetIntOption( Options, <font class="source_string">"FragLimit"</font>, FragLimit );
+<a name="112"></a>    TimeLimit = GetIntOption( Options, <font class="source_string">"TimeLimit"</font>, TimeLimit );
+<a name="113"></a>
+<a name="114"></a>    InOpt = ParseOption( Options, <font class="source_string">"CoopWeaponMode"</font>);
+<a name="115"></a>    <font class="source_keyword">if</font> ( InOpt != <font class="source_string">""</font> )
+<a name="116"></a>    {
+<a name="117"></a>        log(<font class="source_string">"CoopWeaponMode "</font>$<font class="source_keyword">bool</font>(InOpt));
+<a name="118"></a>        bCoopWeaponMode = <font class="source_keyword">bool</font>(InOpt);
+<a name="119"></a>    }
+<a name="120"></a>}
+<a name="121"></a>
+<a name="122"></a><font class="source_comment">//------------------------------------------------------------------------------
+</font><a name="123"></a><font class="source_comment">// Game Querying.
+</font><a name="124"></a>
+<a name="125"></a><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetRules()
+<a name="126"></a>{
+<a name="127"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> ResultSet;
+<a name="128"></a>    ResultSet = <font class="source_keyword">Super</font>.GetRules();
+<a name="129"></a>
+<a name="130"></a>    <font class="source_comment">// Timelimit.
+</font><a name="131"></a>    ResultSet = <font class="source_string">"\\timelimit\\"</font>$TimeLimit;
+<a name="132"></a>        
+<a name="133"></a>    <font class="source_comment">// Fraglimit
+</font><a name="134"></a>    ResultSet = ResultSet$<font class="source_string">"\\fraglimit\\"</font>$FragLimit;
+<a name="135"></a>        
+<a name="136"></a>    <font class="source_comment">// Bots in Multiplay?
+</font><a name="137"></a>    <font class="source_keyword">if</font>( bMultiplayerBots )
+<a name="138"></a>        Resultset = ResultSet$<font class="source_string">"\\MultiplayerBots\\"</font>$<font class="source_keyword">true</font>;
+<a name="139"></a>    <font class="source_keyword">else</font>
+<a name="140"></a>        Resultset = ResultSet$<font class="source_string">"\\MultiplayerBots\\"</font>$<font class="source_keyword">false</font>;
+<a name="141"></a>
+<a name="142"></a>    <font class="source_comment">// Change levels?
+</font><a name="143"></a>    <font class="source_keyword">if</font>( bChangeLevels )
+<a name="144"></a>        Resultset = ResultSet$<font class="source_string">"\\ChangeLevels\\"</font>$<font class="source_keyword">true</font>;
+<a name="145"></a>    <font class="source_keyword">else</font>
+<a name="146"></a>        Resultset = ResultSet$<font class="source_string">"\\ChangeLevels\\"</font>$<font class="source_keyword">false</font>;
+<a name="147"></a>
+<a name="148"></a>    <font class="source_keyword">return</font> ResultSet;
+<a name="149"></a>}
+<a name="150"></a>
+<a name="151"></a><font class="source_keyword">function</font> <font class="source_keyword">int</font> ReduceDamage(<font class="source_keyword">int</font> Damage, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> injured, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> instigatedBy)
+<a name="152"></a>{
+<a name="153"></a>    <font class="source_keyword">if</font> (injured.<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bNeutralZone)
+<a name="154"></a>        <font class="source_keyword">return</font> <font class="source_int">0</font>;
+<a name="155"></a>
+<a name="156"></a>    <font class="source_keyword">if</font> ( instigatedBy == <font class="source_keyword">None</font>)
+<a name="157"></a>        <font class="source_keyword">return</font> Damage;
+<a name="158"></a>
+<a name="159"></a>    <font class="source_keyword">if</font> ( bHardCoreMode )
+<a name="160"></a>        Damage *= <font class="source_int">1.5</font>;
+<a name="161"></a>
+<a name="162"></a>    <font class="source_comment">//skill level modification
+</font><a name="163"></a>    <font class="source_keyword">if</font> ( (instigatedBy.Skill &lt; <font class="source_int">1.5</font>) && instigatedBy.IsA(<font class="source_name">'Bots'</font>) && injured.IsA(<font class="source_name">'PlayerPawn'</font>) )
+<a name="164"></a>        Damage = Damage * (<font class="source_int">0.7</font> + <font class="source_int">0.15</font> * instigatedBy.skill);
+<a name="165"></a>
+<a name="166"></a>    <font class="source_keyword">return</font> (Damage * instigatedBy.DamageScaling);
+<a name="167"></a>}
+<a name="168"></a>
+<a name="169"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> PlaySpawnEffect(<font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> Inv)
+<a name="170"></a>{
+<a name="171"></a>    spawn( <font class="source_keyword">class</font> <font class="source_name">'ReSpawn'</font>,,, Inv.Location );
+<a name="172"></a>    <font class="source_keyword">return</font> <font class="source_int">0.3</font>;
+<a name="173"></a>}
+<a name="174"></a>
+<a name="175"></a><font class="source_keyword">function</font> RestartGame()
+<a name="176"></a>{
+<a name="177"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> NextMap;
+<a name="178"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\maplist.html" class="source">MapList</a></font> myList;
+<a name="179"></a>
+<a name="180"></a>    <font class="source_comment">// multipurpose don't restart variable
+</font><a name="181"></a>    <font class="source_keyword">if</font> ( bDontRestart )
+<a name="182"></a>        <font class="source_keyword">return</font>;
+<a name="183"></a>
+<a name="184"></a>    log(<font class="source_string">"Restart Game"</font>);
+<a name="185"></a>
+<a name="186"></a>    <font class="source_comment">// these server travels should all be relative to the current URL
+</font><a name="187"></a>    <font class="source_keyword">if</font> ( bChangeLevels && !bAlreadyChanged && (MapListType != <font class="source_keyword">None</font>) )
+<a name="188"></a>    {
+<a name="189"></a>        <font class="source_comment">// open a the nextmap actor for this game type and get the next map
+</font><a name="190"></a>        bAlreadyChanged = <font class="source_keyword">true</font>;
+<a name="191"></a>        myList = spawn(MapListType);
+<a name="192"></a>        NextMap = myList.GetNextMap();
+<a name="193"></a>        myList.Destroy();
+<a name="194"></a>        <font class="source_keyword">if</font> ( NextMap == <font class="source_string">""</font> )
+<a name="195"></a>            NextMap = GetMapName(MapPrefix, NextMap,<font class="source_int">1</font>);
+<a name="196"></a>        <font class="source_keyword">if</font> ( NextMap != <font class="source_string">""</font> )
+<a name="197"></a>        {
+<a name="198"></a>            log(<font class="source_string">"Changing to "</font>$NextMap);
+<a name="199"></a>            <font class="source_type">Level</font>.ServerTravel(NextMap, <font class="source_keyword">false</font>);
+<a name="200"></a>            <font class="source_keyword">return</font>;
+<a name="201"></a>        }
+<a name="202"></a>    }
+<a name="203"></a>
+<a name="204"></a>    <font class="source_type">Level</font>.ServerTravel(<font class="source_string">"?Restart"</font> , <font class="source_keyword">false</font>);
+<a name="205"></a>}
+<a name="206"></a>
+<a name="207"></a><font class="source_keyword">event</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font> Login
+<a name="208"></a>(
+<a name="209"></a>    <font class="source_keyword">string</font> Portal,
+<a name="210"></a>    <font class="source_keyword">string</font> Options,
+<a name="211"></a>    <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error,
+<a name="212"></a>    <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font>&gt; SpawnClass
+<a name="213"></a>)
+<a name="214"></a>{
+<a name="215"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">playerpawn</a></font> NewPlayer;
+<a name="216"></a>
+<a name="217"></a>    NewPlayer = <font class="source_keyword">Super</font>.Login(Portal, Options, Error, SpawnClass );
+<a name="218"></a>    <font class="source_keyword">if</font> ( NewPlayer != <font class="source_keyword">None</font> )
+<a name="219"></a>    {
+<a name="220"></a>        <font class="source_keyword">if</font> ( Left(NewPlayer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName, <font class="source_int">6</font>) == DefaultPlayerName )
+<a name="221"></a>            ChangeName( NewPlayer, (DefaultPlayerName$NumPlayers), <font class="source_keyword">false</font> );
+<a name="222"></a>        NewPlayer.bAutoActivate = <font class="source_keyword">true</font>;
+<a name="223"></a>    }
+<a name="224"></a>
+<a name="225"></a>    <font class="source_keyword">return</font> NewPlayer;
+<a name="226"></a>}
+<a name="227"></a>
+<a name="228"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> AddBot()
+<a name="229"></a>{
+<a name="230"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font> StartSpot;
+<a name="231"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\unrealshare\bots.html" class="source">bots</a></font> NewBot;
+<a name="232"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> BotN;
+<a name="233"></a>
+<a name="234"></a>    Difficulty = BotConfig.Difficulty;
+<a name="235"></a>    BotN = BotConfig.ChooseBotInfo();
+<a name="236"></a>    
+<a name="237"></a>    <font class="source_comment">// Find a start spot.
+</font><a name="238"></a>    StartSpot = FindPlayerStart(<font class="source_keyword">None</font>, <font class="source_int">255</font>);
+<a name="239"></a>    <font class="source_keyword">if</font>( StartSpot == <font class="source_keyword">None</font> )
+<a name="240"></a>    {
+<a name="241"></a>        log(<font class="source_string">"Could not find starting spot for Bot"</font>);
+<a name="242"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="243"></a>    }
+<a name="244"></a>
+<a name="245"></a>    <font class="source_comment">// Try to spawn the player.
+</font><a name="246"></a>    NewBot = Spawn(BotConfig.GetBotClass(BotN),,,StartSpot.Location,StartSpot.Rotation);
+<a name="247"></a>
+<a name="248"></a>    <font class="source_keyword">if</font> ( NewBot == <font class="source_keyword">None</font> )
+<a name="249"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="250"></a>
+<a name="251"></a>    <font class="source_keyword">if</font> ( (bHumansOnly || <font class="source_type">Level</font>.bHumansOnly) && !NewBot.bIsHuman )
+<a name="252"></a>    {
+<a name="253"></a>        NewBot.Destroy();
+<a name="254"></a>        log(<font class="source_string">"Failed to spawn bot"</font>);
+<a name="255"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="256"></a>    }
+<a name="257"></a>
+<a name="258"></a>    StartSpot.PlayTeleportEffect(NewBot, <font class="source_keyword">true</font>);
+<a name="259"></a>
+<a name="260"></a>    <font class="source_comment">// Init player's information.
+</font><a name="261"></a>    BotConfig.Individualize(NewBot, BotN, NumBots);
+<a name="262"></a>    NewBot.ViewRotation = StartSpot.Rotation;
+<a name="263"></a>
+<a name="264"></a>    <font class="source_comment">// broadcast a welcome message.
+</font><a name="265"></a>    BroadcastMessage( NewBot.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName$EnteredMessage, <font class="source_keyword">true</font> );
+<a name="266"></a>
+<a name="267"></a>    AddDefaultInventory( NewBot );
+<a name="268"></a>    NumBots++;
+<a name="269"></a>
+<a name="270"></a>    NewBot.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.bIsABot = <font class="source_keyword">True</font>;
+<a name="271"></a>
+<a name="272"></a>    <font class="source_comment">// Set the player's ID.
+</font><a name="273"></a>    NewBot.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerID = CurrentID++;
+<a name="274"></a>
+<a name="275"></a>    <font class="source_comment">// Log it.
+</font><a name="276"></a>    <font class="source_keyword">if</font> (LocalLog != <font class="source_keyword">None</font>)
+<a name="277"></a>        LocalLog.LogPlayerConnect(NewBot);
+<a name="278"></a>    <font class="source_keyword">if</font> (WorldLog != <font class="source_keyword">None</font>)
+<a name="279"></a>        WorldLog.LogPlayerConnect(NewBot);
+<a name="280"></a>
+<a name="281"></a>    <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="282"></a>}
+<a name="283"></a>
+<a name="284"></a><font class="source_keyword">function</font> Logout(<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Exiting)
+<a name="285"></a>{
+<a name="286"></a>    <font class="source_keyword">Super</font>.Logout(Exiting);
+<a name="287"></a>    <font class="source_keyword">if</font> ( Exiting.IsA(<font class="source_name">'Bots'</font>) )
+<a name="288"></a>        NumBots--;
+<a name="289"></a>}
+<a name="290"></a>    
+<a name="291"></a><font class="source_keyword">function</font> Timer()
+<a name="292"></a>{
+<a name="293"></a>    <font class="source_keyword">Super</font>.Timer();
+<a name="294"></a>
+<a name="295"></a>    <font class="source_keyword">if</font> ( (RemainingBots &gt; <font class="source_int">0</font>) && AddBot() )
+<a name="296"></a>        RemainingBots--;
+<a name="297"></a>
+<a name="298"></a>    <font class="source_keyword">if</font> ( bGameEnded )
+<a name="299"></a>    {
+<a name="300"></a>        RemainingTime--;
+<a name="301"></a>        <font class="source_keyword">if</font> ( RemainingTime &lt; -<font class="source_int">7</font> )
+<a name="302"></a>            RestartGame();
+<a name="303"></a>    }
+<a name="304"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( TimeLimit &gt; <font class="source_int">0</font> )
+<a name="305"></a>    {
+<a name="306"></a>        RemainingTime--;
+<a name="307"></a>        <font class="source_keyword">switch</font> (RemainingTime)
+<a name="308"></a>        {
+<a name="309"></a>            <font class="source_keyword">case</font> <font class="source_int">300</font>:
+<a name="310"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">0</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="311"></a>                <font class="source_keyword">break</font>;
+<a name="312"></a>            <font class="source_keyword">case</font> <font class="source_int">240</font>:
+<a name="313"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">1</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="314"></a>                <font class="source_keyword">break</font>;
+<a name="315"></a>            <font class="source_keyword">case</font> <font class="source_int">180</font>:
+<a name="316"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">2</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="317"></a>                <font class="source_keyword">break</font>;
+<a name="318"></a>            <font class="source_keyword">case</font> <font class="source_int">120</font>:
+<a name="319"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">3</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="320"></a>                <font class="source_keyword">break</font>;
+<a name="321"></a>            <font class="source_keyword">case</font> <font class="source_int">60</font>:
+<a name="322"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">4</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="323"></a>                <font class="source_keyword">break</font>;
+<a name="324"></a>            <font class="source_keyword">case</font> <font class="source_int">30</font>:
+<a name="325"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">5</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="326"></a>                <font class="source_keyword">break</font>;
+<a name="327"></a>            <font class="source_keyword">case</font> <font class="source_int">10</font>:
+<a name="328"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">6</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="329"></a>                <font class="source_keyword">break</font>;
+<a name="330"></a>            <font class="source_keyword">case</font> <font class="source_int">5</font>:
+<a name="331"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">7</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="332"></a>                <font class="source_keyword">break</font>;
+<a name="333"></a>            <font class="source_keyword">case</font> <font class="source_int">4</font>:
+<a name="334"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">8</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="335"></a>                <font class="source_keyword">break</font>;
+<a name="336"></a>            <font class="source_keyword">case</font> <font class="source_int">3</font>:
+<a name="337"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">9</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="338"></a>                <font class="source_keyword">break</font>;
+<a name="339"></a>            <font class="source_keyword">case</font> <font class="source_int">2</font>:
+<a name="340"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">10</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="341"></a>                <font class="source_keyword">break</font>;
+<a name="342"></a>            <font class="source_keyword">case</font> <font class="source_int">1</font>:
+<a name="343"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">11</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="344"></a>                <font class="source_keyword">break</font>;
+<a name="345"></a>            <font class="source_keyword">case</font> <font class="source_int">0</font>:
+<a name="346"></a>                BroadcastMessage(<font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>[<font class="source_int">12</font>], <font class="source_keyword">True</font>, <font class="source_name">'CriticalEvent'</font>);
+<a name="347"></a>                <font class="source_keyword">break</font>;
+<a name="348"></a>        }
+<a name="349"></a>        <font class="source_keyword">if</font> ( RemainingTime &lt;= <font class="source_int">0</font> )
+<a name="350"></a>            <font class="source_type"><a href="..\unreali\endgame.html" class="source">EndGame</a></font>(<font class="source_string">"timelimit"</font>);
+<a name="351"></a>    }
+<a name="352"></a>}
+<a name="353"></a>
+<a name="354"></a><font class="source_comment">/* FindPlayerStart()
+<a name="355"></a>returns the 'best' player start for this player to start from.
+<a name="356"></a>Re-implement for each game type
+<a name="357"></a>*/</font>
+<a name="358"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font> FindPlayerStart( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> <font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font>, <font class="source_keyword2">optional</font> <font class="source_keyword">byte</font> InTeam, <font class="source_keyword2">optional</font> <font class="source_keyword">string</font> incomingName )
+<a name="359"></a>{
+<a name="360"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\playerstart.html" class="source">PlayerStart</a></font> Dest, Candidate[<font class="source_int">4</font>], Best;
+<a name="361"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> Score[<font class="source_int">4</font>], BestScore, NextDist;
+<a name="362"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> OtherPlayer;
+<a name="363"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, num;
+<a name="364"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\teleporter.html" class="source">Teleporter</a></font> Tel;
+<a name="365"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font> N;
+<a name="366"></a>
+<a name="367"></a>    <font class="source_keyword">if</font>( incomingName!=<font class="source_string">""</font> )
+<a name="368"></a>        <font class="source_keyword">foreach</font> AllActors( <font class="source_keyword">class</font> <font class="source_name">'Teleporter'</font>, Tel )
+<a name="369"></a>            <font class="source_keyword">if</font>( <font class="source_keyword">string</font>(Tel.Tag)~=incomingName )
+<a name="370"></a>                <font class="source_keyword">return</font> Tel;
+<a name="371"></a>
+<a name="372"></a>    num = <font class="source_int">0</font>;
+<a name="373"></a>    <font class="source_comment">//choose candidates	
+</font><a name="374"></a>    N = <font class="source_type">Level</font>.NavigationPointList;
+<a name="375"></a>    <font class="source_keyword">While</font> ( N != <font class="source_keyword">None</font> )
+<a name="376"></a>    {
+<a name="377"></a>        <font class="source_keyword">if</font> ( N.IsA(<font class="source_name">'PlayerStart'</font>) && !N.<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone.bWaterZone )
+<a name="378"></a>        {
+<a name="379"></a>            <font class="source_keyword">if</font> (num&lt;<font class="source_int">4</font>)
+<a name="380"></a>                Candidate[num] = <font class="source_type"><a href="..\engine\playerstart.html" class="source">PlayerStart</a></font>(N);
+<a name="381"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Rand(num) &lt; <font class="source_int">4</font>)
+<a name="382"></a>                Candidate[Rand(<font class="source_int">4</font>)] = <font class="source_type"><a href="..\engine\playerstart.html" class="source">PlayerStart</a></font>(N);
+<a name="383"></a>            num++;
+<a name="384"></a>        }
+<a name="385"></a>        N = N.nextNavigationPoint;
+<a name="386"></a>    }
+<a name="387"></a>
+<a name="388"></a>    <font class="source_keyword">if</font> (num == <font class="source_int">0</font> )
+<a name="389"></a>        <font class="source_keyword">foreach</font> AllActors( <font class="source_keyword">class</font> <font class="source_name">'PlayerStart'</font>, Dest )
+<a name="390"></a>        {
+<a name="391"></a>            <font class="source_keyword">if</font> (num&lt;<font class="source_int">4</font>)
+<a name="392"></a>                Candidate[num] = Dest;
+<a name="393"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> (Rand(num) &lt; <font class="source_int">4</font>)
+<a name="394"></a>                Candidate[Rand(<font class="source_int">4</font>)] = Dest;
+<a name="395"></a>            num++;
+<a name="396"></a>        }
+<a name="397"></a>
+<a name="398"></a>    <font class="source_keyword">if</font> (num&gt;<font class="source_int">4</font>) num = <font class="source_int">4</font>;
+<a name="399"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> (num == <font class="source_int">0</font>)
+<a name="400"></a>        <font class="source_keyword">return</font> <font class="source_keyword">None</font>;
+<a name="401"></a>        
+<a name="402"></a>    <font class="source_comment">//assess candidates
+</font><a name="403"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>;i&lt;num;i++)
+<a name="404"></a>        Score[i] = <font class="source_int">4000</font> * FRand(); <font class="source_comment">//randomize
+</font><a name="405"></a>        
+<a name="406"></a>    <font class="source_keyword">for</font> ( OtherPlayer=<font class="source_type">Level</font>.PawnList; OtherPlayer!=<font class="source_keyword">None</font>; OtherPlayer=OtherPlayer.NextPawn)  
+<a name="407"></a>        <font class="source_keyword">if</font> ( OtherPlayer.bIsPlayer && (OtherPlayer.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &gt; <font class="source_int">0</font>) )
+<a name="408"></a>            <font class="source_keyword">for</font> (i=<font class="source_int">0</font>;i&lt;num;i++)
+<a name="409"></a>                <font class="source_keyword">if</font> ( OtherPlayer.<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone == Candidate[i].<font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>.Zone )
+<a name="410"></a>                {
+<a name="411"></a>                    NextDist = VSize(OtherPlayer.Location - Candidate[i].Location);
+<a name="412"></a>                    <font class="source_keyword">if</font> (NextDist &lt; OtherPlayer.CollisionRadius + OtherPlayer.CollisionHeight)
+<a name="413"></a>                        Score[i] -= <font class="source_int">1000000.0</font>;
+<a name="414"></a>                    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (NextDist &lt; <font class="source_int">2000</font>) && OtherPlayer.LineOfSightTo(Candidate[i]) )
+<a name="415"></a>                        Score[i] -= <font class="source_int">10000.0</font>;
+<a name="416"></a>                }
+<a name="417"></a>    
+<a name="418"></a>    BestScore = Score[<font class="source_int">0</font>];
+<a name="419"></a>    Best = Candidate[<font class="source_int">0</font>];
+<a name="420"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">1</font>;i&lt;num;i++)
+<a name="421"></a>        <font class="source_keyword">if</font> (Score[i] &gt; BestScore)
+<a name="422"></a>        {
+<a name="423"></a>            BestScore = Score[i];
+<a name="424"></a>            Best = Candidate[i];
+<a name="425"></a>        }
+<a name="426"></a>
+<a name="427"></a>    <font class="source_keyword">return</font> Best;
+<a name="428"></a>}
+<a name="429"></a>
+<a name="430"></a><font class="source_comment">/* AcceptInventory()
+<a name="431"></a>Examine the passed player's inventory, and accept or discard each item
+<a name="432"></a>* AcceptInventory needs to gracefully handle the case of some inventory
+<a name="433"></a>being accepted but other inventory not being accepted (such as the default
+<a name="434"></a>weapon).  There are several things that can go wrong: A weapon's
+<a name="435"></a>AmmoType not being accepted but the weapon being accepted -- the weapon
+<a name="436"></a>should be killed off. Or the player's selected inventory item, active
+<a name="437"></a>weapon, etc. not being accepted, leaving the player weaponless or leaving
+<a name="438"></a>the HUD inventory rendering messed up (AcceptInventory should pick another
+<a name="439"></a>applicable weapon/item as current).
+<a name="440"></a>*/</font>
+<a name="441"></a><font class="source_keyword">function</font> AcceptInventory(<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>)
+<a name="442"></a>{
+<a name="443"></a>    <font class="source_comment">//deathmatch accepts no inventory
+</font><a name="444"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> Inv;
+<a name="445"></a>    <font class="source_keyword">for</font>( Inv=<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>.<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>; Inv!=<font class="source_keyword">None</font>; Inv=Inv.<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> )
+<a name="446"></a>        Inv.Destroy();
+<a name="447"></a>    <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> = <font class="source_keyword">None</font>;
+<a name="448"></a>    <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>.SelectedItem = <font class="source_keyword">None</font>;
+<a name="449"></a>    AddDefaultInventory( <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> );
+<a name="450"></a>}
+<a name="451"></a>
+<a name="452"></a><font class="source_keyword">function</font> ChangeName( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S, <font class="source_keyword">bool</font> bNameChange )
+<a name="453"></a>{
+<a name="454"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> APlayer;
+<a name="455"></a>
+<a name="456"></a>    <font class="source_keyword">if</font> ( S == <font class="source_string">""</font> )
+<a name="457"></a>        <font class="source_keyword">return</font>;
+<a name="458"></a>
+<a name="459"></a>    <font class="source_keyword">if</font> (Other.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName~=S)
+<a name="460"></a>        <font class="source_keyword">return</font>;
+<a name="461"></a>    
+<a name="462"></a>    APlayer = <font class="source_type">Level</font>.PawnList;
+<a name="463"></a>    
+<a name="464"></a>    <font class="source_keyword">While</font> ( APlayer != <font class="source_keyword">None</font> )
+<a name="465"></a>    {   
+<a name="466"></a>        <font class="source_keyword">if</font> ( APlayer.bIsPlayer && (APlayer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName~=S) )
+<a name="467"></a>        {
+<a name="468"></a>            Other.ClientMessage(S$NoNameChange);
+<a name="469"></a>            <font class="source_keyword">return</font>;
+<a name="470"></a>        }
+<a name="471"></a>        APlayer = APlayer.NextPawn;
+<a name="472"></a>    }
+<a name="473"></a>
+<a name="474"></a>    <font class="source_keyword">if</font> (bNameChange)
+<a name="475"></a>        BroadcastMessage(Other.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName$GlobalNameChange$S$GlobalNameChangeTrailer, <font class="source_keyword">false</font>);
+<a name="476"></a>            
+<a name="477"></a>    Other.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.PlayerName = S;
+<a name="478"></a>
+<a name="479"></a>    <font class="source_keyword">if</font> (LocalLog != <font class="source_keyword">None</font>)
+<a name="480"></a>        LocalLog.LogNameChange(Other);
+<a name="481"></a>    <font class="source_keyword">if</font> (WorldLog != <font class="source_keyword">None</font>)
+<a name="482"></a>        WorldLog.LogNameChange(Other);
+<a name="483"></a>}
+<a name="484"></a>
+<a name="485"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ShouldRespawn(<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other)
+<a name="486"></a>{
+<a name="487"></a>    <font class="source_keyword">return</font> ( (<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>(Other) != <font class="source_keyword">None</font>) && (<font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>(Other).ReSpawnTime!=<font class="source_int">0.0</font>) );
+<a name="488"></a>}
+<a name="489"></a>
+<a name="490"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CanSpectate( <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Viewer, <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> ViewTarget )
+<a name="491"></a>{
+<a name="492"></a>    <font class="source_keyword">return</font> ( (<font class="source_type">Level</font>.NetMode == NM_Standalone) || (<font class="source_type"><a href="..\engine\spectator.html" class="source">Spectator</a></font>(Viewer) != <font class="source_keyword">None</font>) );
+<a name="493"></a>}
+<a name="494"></a>
+<a name="495"></a><font class="source_comment">// Monitor killed messages for fraglimit
+</font><a name="496"></a><font class="source_keyword">function</font> Killed(<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> killer, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Other, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>)
+<a name="497"></a>{
+<a name="498"></a>    <font class="source_keyword">Super</font>.Killed(killer, Other, <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>);
+<a name="499"></a>    <font class="source_keyword">if</font> ( (killer == <font class="source_keyword">None</font>) || (Other == <font class="source_keyword">None</font>) )
+<a name="500"></a>        <font class="source_keyword">return</font>;
+<a name="501"></a>    <font class="source_keyword">if</font> ( !bTeamGame && (FragLimit &gt; <font class="source_int">0</font>) && (killer.<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.Score &gt;= FragLimit) )
+<a name="502"></a>        <font class="source_type"><a href="..\unreali\endgame.html" class="source">EndGame</a></font>(<font class="source_string">"fraglimit"</font>);
+<a name="503"></a>
+<a name="504"></a>    <font class="source_keyword">if</font> ( BotConfig.bAdjustSkill && (killer.IsA(<font class="source_name">'PlayerPawn'</font>) || Other.IsA(<font class="source_name">'PlayerPawn'</font>)) )
+<a name="505"></a>    {
+<a name="506"></a>        <font class="source_keyword">if</font> ( killer.IsA(<font class="source_name">'Bots'</font>) )
+<a name="507"></a>            <font class="source_type"><a href="..\unrealshare\bots.html" class="source">Bots</a></font>(killer).AdjustSkill(<font class="source_keyword">true</font>);
+<a name="508"></a>        <font class="source_keyword">if</font> ( Other.IsA(<font class="source_name">'Bots'</font>) )
+<a name="509"></a>            <font class="source_type"><a href="..\unrealshare\bots.html" class="source">Bots</a></font>(Other).AdjustSkill(<font class="source_keyword">false</font>);
+<a name="510"></a>    }
+<a name="511"></a>}   
+<a name="512"></a>
+<a name="513"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\unreali\endgame.html" class="source">EndGame</a></font>( <font class="source_keyword">string</font> Reason )
+<a name="514"></a>{
+<a name="515"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> A;
+<a name="516"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> aPawn;
+<a name="517"></a>
+<a name="518"></a>    <font class="source_keyword">Super</font>.<font class="source_type"><a href="..\unreali\endgame.html" class="source">EndGame</a></font>(Reason);
+<a name="519"></a>
+<a name="520"></a>    bGameEnded = <font class="source_keyword">true</font>;
+<a name="521"></a>    aPawn = <font class="source_type">Level</font>.PawnList;
+<a name="522"></a>    RemainingTime = -<font class="source_int">1</font>; <font class="source_comment">// use timer to force restart
+</font><a name="523"></a>}
+<a name="524"></a>
+<a name="525"></a><font class="source_keyword">defaultproperties</font>
+<a name="526"></a>{
+<a name="527"></a>     bDeathMatch=<font class="source_keyword">true</font>
+<a name="528"></a>     bMultiPlayerBots=<font class="source_keyword">False</font>
+<a name="529"></a>     bChangeLevels=<font class="source_keyword">True</font>
+<a name="530"></a>     InitialBots=<font class="source_int">4</font>
+<a name="531"></a>     GlobalNameChange=<font class="source_string">" changed name to "</font>
+<a name="532"></a>     GlobalNameChangeTrailer=<font class="source_string">""</font>;
+<a name="533"></a>     NoNameChange=<font class="source_string">" is already in use"</font>
+<a name="534"></a>     BotConfigType=<font class="source_keyword">Class</font><font class="source_name">'UnrealShare.BotInfo'</font>
+<a name="535"></a>     bNoMonsters=<font class="source_keyword">True</font>
+<a name="536"></a>     bRestartLevel=<font class="source_keyword">False</font>
+<a name="537"></a>     bPauseable=<font class="source_keyword">False</font>
+<a name="538"></a>     bHardCoreMode=<font class="source_keyword">True</font>
+<a name="539"></a>     AutoAim=<font class="source_int">1.000000</font>
+<a name="540"></a>     ScoreBoardType=<font class="source_keyword">Class</font><font class="source_name">'UnrealShare.UnrealScoreBoard'</font>
+<a name="541"></a>     GameMenuType=<font class="source_keyword">Class</font><font class="source_name">'UnrealShare.UnrealDMGameOptionsMenu'</font>
+<a name="542"></a>     MapListType=<font class="source_keyword">Class</font><font class="source_name">'UnrealShare.DMmaplist'</font>
+<a name="543"></a>     MapPrefix=<font class="source_string">"DM"</font>
+<a name="544"></a>     BeaconName=<font class="source_string">"DM"</font>
+<a name="545"></a>     GameName=<font class="source_string">"DeathMatch"</font>
+<a name="546"></a>     MaxPlayers=<font class="source_int">10</font>
+<a name="547"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">0</font>)=<font class="source_string">"5 minutes left in the game!"</font>
+<a name="548"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">1</font>)=<font class="source_string">"4 minutes left in the game!"</font>
+<a name="549"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">2</font>)=<font class="source_string">"3 minutes left in the game!"</font>
+<a name="550"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">3</font>)=<font class="source_string">"2 minutes left in the game!"</font>
+<a name="551"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">4</font>)=<font class="source_string">"1 minute left in the game!"</font>
+<a name="552"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">5</font>)=<font class="source_string">"30 seconds left!"</font>
+<a name="553"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">6</font>)=<font class="source_string">"10 seconds left!"</font>
+<a name="554"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">7</font>)=<font class="source_string">"5 seconds and counting..."</font>
+<a name="555"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">8</font>)=<font class="source_string">"4..."</font>
+<a name="556"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">9</font>)=<font class="source_string">"3..."</font>
+<a name="557"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">10</font>)=<font class="source_string">"2..."</font>
+<a name="558"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">11</font>)=<font class="source_string">"1..."</font>
+<a name="559"></a>     <font class="source_type"><a href="..\botpack\timemessage.html" class="source">TimeMessage</a></font>(<font class="source_int">12</font>)=<font class="source_string">"Time Up!"</font>
+<a name="560"></a>}
+<a name="561"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\deathmatchgame.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#DeathMatchGame">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="deadmales.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="defaultammo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:26:06.000 - Creation time: Wed 26/5/2004 10:48:13.765 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,407 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Botpack.CTFGame</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\ctfgame.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#CTFGame">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ctfflag.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ctfmaplist.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="botpack-overview.html">Botpack</a>.CTFGame</h1>
+<b>Extends:</b> <a href="teamgameplus.html">TeamGamePlus</a><br>
+<b>Modifiers:</b> config <br>
+<a href="..\Source_botpack\ctfgame.html"><b>Source code</b></a>
+
+<p>
+CTFGame.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\info.html">Info</a>
+        |   
+        +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\gameinfo.html">GameInfo</a>
+            |   
+            +-- <a href="botpack-overview.html">Botpack</a>.<a href="tournamentgameinfo.html">TournamentGameInfo</a>
+                |   
+                +-- <a href="botpack-overview.html">Botpack</a>.<a href="deathmatchplus.html">DeathMatchPlus</a>
+                    |   
+                    +-- <a href="botpack-overview.html">Botpack</a>.<a href="teamgameplus.html">TeamGamePlus</a>
+                        |   
+                        +-- <a href="botpack-overview.html">Botpack</a>.<a href="ctfgame.html">CTFGame</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="trainingctf.html">TrainingCTF</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_CaptureSound[4]" name="CaptureSound[4]">CaptureSound[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LastGotFlag" name="LastGotFlag">LastGotFlag</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LastSeeFlagCarrier" name="LastSeeFlagCarrier">LastSeeFlagCarrier</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_ReturnSound" name="ReturnSound">ReturnSound</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="botpack-overview.html">Botpack</a>.<a href="teamgameplus.html">TeamGamePlus</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="teamgameplus.html#bBalanceTeams">bBalanceTeams</a>, <a href="teamgameplus.html#bBalancing">bBalancing</a>, <a href="teamgameplus.html#bNoTeamChanges">bNoTeamChanges</a>, <a href="teamgameplus.html#bPlayersBalanceTeams">bPlayersBalanceTeams</a>, <a href="teamgameplus.html#bScoreTeamKills">bScoreTeamKills</a>, <a href="teamgameplus.html#bSpawnInTeamArea">bSpawnInTeamArea</a>, <a href="teamgameplus.html#CurrentOrders[4]">CurrentOrders[4]</a>, <a href="teamgameplus.html#FriendlyFireScale">FriendlyFireScale</a>, <a href="teamgameplus.html#GoalTeamScore">GoalTeamScore</a>, <a href="teamgameplus.html#MaxAllowedTeams">MaxAllowedTeams</a>, <a href="teamgameplus.html#MaxTeams">MaxTeams</a>, <a href="teamgameplus.html#MaxTeamSize">MaxTeamSize</a>, <a href="teamgameplus.html#NextBotTeam">NextBotTeam</a>, <a href="teamgameplus.html#NumSupportingPlayer">NumSupportingPlayer</a>, <a href="teamgameplus.html#PlayerTeamNum">PlayerTeamNum</a>, <a href="teamgameplus.html#StartUpTeamMessage">StartUpTeamMessage</a>, <a href="teamgameplus.html#StartupTeamTralier">StartupTeamTralier</a>, <a href="teamgameplus.html#TeamChangeMessage">TeamChangeMessage</a>, <a href="teamgameplus.html#TeamColor[4]">TeamColor[4]</a>, <a href="teamgameplus.html#TeamPrefix">TeamPrefix</a>, <a href="teamgameplus.html#Teams[4]">Teams[4]</a>, <a href="teamgameplus.html#TEAM_Blue">TEAM_Blue</a>, <a href="teamgameplus.html#TEAM_Gold">TEAM_Gold</a>, <a href="teamgameplus.html#TEAM_Green">TEAM_Green</a>, <a href="teamgameplus.html#TEAM_Red">TEAM_Red</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="botpack-overview.html">Botpack</a>.<a href="deathmatchplus.html">DeathMatchPlus</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="deathmatchplus.html#AirControl">AirControl</a>, <a href="deathmatchplus.html#AvgOpponentRating">AvgOpponentRating</a>, <a href="deathmatchplus.html#bAlreadyChanged">bAlreadyChanged</a>, <a href="deathmatchplus.html#bAltScoring">bAltScoring</a>, <a href="deathmatchplus.html#bAlwaysForceRespawn">bAlwaysForceRespawn</a>, <a href="deathmatchplus.html#bChallengeMode">bChallengeMode</a>, <a href="deathmatchplus.html#bChangeLevels">bChangeLevels</a>, <a href="deathmatchplus.html#bDontRestart">bDontRestart</a>, <a href="deathmatchplus.html#bFirstBlood">bFirstBlood</a>, <a href="deathmatchplus.html#bForceRespawn">bForceRespawn</a>, <a href="deathmatchplus.html#bFulfilledSpecial">bFulfilledSpecial</a>, <a href="deathmatchplus.html#bHardCoreMode">bHardCoreMode</a>, <a href="deathmatchplus.html#bJumpMatch">bJumpMatch</a>, <a href="deathmatchplus.html#bMegaSpeed">bMegaSpeed</a>, <a href="deathmatchplus.html#bMultiWeaponStay">bMultiWeaponStay</a>, <a href="deathmatchplus.html#bNetReady">bNetReady</a>, <a href="deathmatchplus.html#bNoviceMode">bNoviceMode</a>, <a href="deathmatchplus.html#BotConfig">BotConfig</a>, <a href="deathmatchplus.html#BotConfigType">BotConfigType</a>, <a href="deathmatchplus.html#bRatedTranslocator">bRatedTranslocator</a>, <a href="deathmatchplus.html#bRequireReady">bRequireReady</a>, <a href="deathmatchplus.html#bStartMatch">bStartMatch</a>, <a href="deathmatchplus.html#bThreePlus">bThreePlus</a>, <a href="deathmatchplus.html#bTournament">bTournament</a>, <a href="deathmatchplus.html#bTutorialGame">bTutorialGame</a>, <a href="deathmatchplus.html#bUseTranslocator">bUseTranslocator</a>, <a href="deathmatchplus.html#CountDown">CountDown</a>, <a href="deathmatchplus.html#CountDownMessage">CountDownMessage</a>, <a href="deathmatchplus.html#ElapsedTime">ElapsedTime</a>, <a href="deathmatchplus.html#EndTime">EndTime</a>, <a href="deathmatchplus.html#FragLimit">FragLimit</a>, <a href="deathmatchplus.html#GameEndedMessage">GameEndedMessage</a>, <a href="deathmatchplus.html#gamegoal">gamegoal</a>, <a href="deathmatchplus.html#IDnum">IDnum</a>, <a href="deathmatchplus.html#InitialBots">InitialBots</a>, <a href="deathmatchplus.html#LadderTypeIndex">LadderTypeIndex</a>, <a href="deathmatchplus.html#LastStartSpot">LastStartSpot</a>, <a href="deathmatchplus.html#LastTauntTime">LastTauntTime</a>, <a href="deathmatchplus.html#LastTaunt[4]">LastTaunt[4]</a>, <a href="deathmatchplus.html#LoseCount">LoseCount</a>, <a href="deathmatchplus.html#MaxCommanders">MaxCommanders</a>, <a href="deathmatchplus.html#MinPlayers">MinPlayers</a>, <a href="deathmatchplus.html#NetWait">NetWait</a>, <a href="deathmatchplus.html#NoNameChange">NoNameChange</a>, <a href="deathmatchplus.html#NotReadyMessage">NotReadyMessage</a>, <a href="deathmatchplus.html#NumBots">NumBots</a>, <a href="deathmatchplus.html#NumCommanders">NumCommanders</a>, <a href="deathmatchplus.html#NumOpp">NumOpp</a>, <a href="deathmatchplus.html#OvertimeMessage">OvertimeMessage</a>, <a href="deathmatchplus.html#PlayerRating">PlayerRating</a>, <a href="deathmatchplus.html#RatedGameLadderObj">RatedGameLadderObj</a>, <a href="deathmatchplus.html#RatedMatchConfig">RatedMatchConfig</a>, <a href="deathmatchplus.html#RatedPlayer">RatedPlayer</a>, <a href="deathmatchplus.html#ReadyMessage">ReadyMessage</a>, <a href="deathmatchplus.html#RemainingBots">RemainingBots</a>, <a href="deathmatchplus.html#RemainingTime">RemainingTime</a>, <a href="deathmatchplus.html#RestartWait">RestartWait</a>, <a href="deathmatchplus.html#SingleWaitingMessage">SingleWaitingMessage</a>, <a href="deathmatchplus.html#StartCount">StartCount</a>, <a href="deathmatchplus.html#StartMessage">StartMessage</a>, <a href="deathmatchplus.html#StartUpMessage">StartUpMessage</a>, <a href="deathmatchplus.html#TimeLimit">TimeLimit</a>, <a href="deathmatchplus.html#TourneyMessage">TourneyMessage</a>, <a href="deathmatchplus.html#WaitingMessage1">WaitingMessage1</a>, <a href="deathmatchplus.html#WaitingMessage2">WaitingMessage2</a>, <a href="deathmatchplus.html#WinCount">WinCount</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_AllowTranslocation+" name="AllowTranslocation">AllowTranslocation</a> (<a href="..\engine\pawn.html">Pawn</a> Other, <a href="..\core\object.html#Vector">vector</a> Dest)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>byte&nbsp;</td><td><a href="#_AssessBotAttitude+" name="AssessBotAttitude">AssessBotAttitude</a> (<a href="bot.html">Bot</a> aBot, <a href="..\engine\pawn.html">Pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_CalcEndStats+" name="CalcEndStats">CalcEndStats</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_CanTranslocate+" name="CanTranslocate">CanTranslocate</a> (<a href="bot.html">Bot</a> aBot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_CheckForTranslocators+" name="CheckForTranslocators">CheckForTranslocators</a> (<a href="bot.html">Bot</a> aBot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_CheckThisTranslocator+" name="CheckThisTranslocator">CheckThisTranslocator</a> (<a href="bot.html">Bot</a> aBot, <a href="translocatortarget.html">TranslocatorTarget</a> T)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_FindPathToBase+" name="FindPathToBase">FindPathToBase</a> (<a href="bot.html">Bot</a> aBot, <a href="flagbase.html">FlagBase</a> aBase)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_FindSpecialAttractionFor+" name="FindSpecialAttractionFor">FindSpecialAttractionFor</a> (<a href="bot.html">Bot</a> aBot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GameThreatAdd+" name="GameThreatAdd">GameThreatAdd</a> (<a href="bot.html">Bot</a> aBot, <a href="..\engine\pawn.html">Pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_InitGame+" name="InitGame">InitGame</a> (string Options, out string Error)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Killed+" name="Killed">Killed</a> (<a href="..\engine\pawn.html">pawn</a> Killer, <a href="..\engine\pawn.html">pawn</a> Other, name damageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Logout+" name="Logout">Logout</a> (<a href="..\engine\pawn.html">pawn</a> Exiting)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PickAmbushSpotFor+" name="PickAmbushSpotFor">PickAmbushSpotFor</a> (<a href="bot.html">Bot</a> aBot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>byte&nbsp;</td><td><a href="#_PriorityObjective+" name="PriorityObjective">PriorityObjective</a> (<a href="bot.html">Bot</a> aBot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>int&nbsp;</td><td><a href="#_ReduceDamage+" name="ReduceDamage">ReduceDamage</a> (int Damage, name DamageType, <a href="..\engine\pawn.html">pawn</a> injured, <a href="..\engine\pawn.html">pawn</a> instigatedBy)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_RestartPlayer+" name="RestartPlayer">RestartPlayer</a> (<a href="..\engine\pawn.html">Pawn</a> aPlayer)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ScoreFlag+" name="ScoreFlag">ScoreFlag</a> (<a href="..\engine\pawn.html">Pawn</a> Scorer, <a href="ctfflag.html">CTFFlag</a> theFlag)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ScoreKill+" name="ScoreKill">ScoreKill</a> (<a href="..\engine\pawn.html">pawn</a> Killer, <a href="..\engine\pawn.html">pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetBotOrders+" name="SetBotOrders">SetBotOrders</a> (<a href="bot.html">Bot</a> NewBot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="..\engine\actor.html">Actor</a>&nbsp;</td><td><a href="#_SetDefenseFor+" name="SetDefenseFor">SetDefenseFor</a> (<a href="bot.html">Bot</a> aBot)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_SetEndCams+" name="SetEndCams">SetEndCams</a> (string Reason)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="botpack-overview.html">Botpack</a>.<a href="teamgameplus.html">TeamGamePlus</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="teamgameplus.html#AddBot">AddBot</a>, <a href="teamgameplus.html#AddToTeam">AddToTeam</a>, <a href="teamgameplus.html#AssessBotAttitude">AssessBotAttitude</a>, <a href="teamgameplus.html#CanSpectate">CanSpectate</a>, <a href="teamgameplus.html#ChangeTeam">ChangeTeam</a>, <a href="teamgameplus.html#CheckReady">CheckReady</a>, <a href="teamgameplus.html#ClearOrders">ClearOrders</a>, <a href="teamgameplus.html#FindPlayerStart">FindPlayerStart</a>, <a href="teamgameplus.html#FindSpecialAttractionFor">FindSpecialAttractionFor</a>, <a href="teamgameplus.html#FindTeamByName">FindTeamByName</a>, <a href="teamgameplus.html#GetRules">GetRules</a>, <a href="teamgameplus.html#GetTeam">GetTeam</a>, <a href="teamgameplus.html#HandleTieUp">HandleTieUp</a>, <a href="teamgameplus.html#InitGame">InitGame</a>, <a href="teamgameplus.html#InitGameReplicationInfo">InitGameReplicationInfo</a>, <a href="teamgameplus.html#InitRatedGame">InitRatedGame</a>, <a href="teamgameplus.html#IsOnTeam">IsOnTeam</a>, <a href="teamgameplus.html#LogGameParameters">LogGameParameters</a>, <a href="teamgameplus.html#Login">Login</a>, <a href="teamgameplus.html#Logout">Logout</a>, <a href="teamgameplus.html#PickAmbushSpotFor">PickAmbushSpotFor</a>, <a href="teamgameplus.html#PlayStartUpMessage">PlayStartUpMessage</a>, <a href="teamgameplus.html#PostBeginPlay">PostBeginPlay</a>, <a href="teamgameplus.html#PostLogin">PostLogin</a>, <a href="teamgameplus.html#PriorityObjective">PriorityObjective</a>, <a href="teamgameplus.html#ReBalance">ReBalance</a>, <a href="teamgameplus.html#ReduceDamage">ReduceDamage</a>, <a href="teamgameplus.html#ScoreKill">ScoreKill</a>, <a href="teamgameplus.html#SendBotToGoal">SendBotToGoal</a>, <a href="teamgameplus.html#SetAttractionStateFor">SetAttractionStateFor</a>, <a href="teamgameplus.html#SetBotOrders">SetBotOrders</a>, <a href="teamgameplus.html#SetDefenseFor">SetDefenseFor</a>, <a href="teamgameplus.html#SetEndCams">SetEndCams</a>, <a href="teamgameplus.html#SuccessfulGame">SuccessfulGame</a>, <a href="teamgameplus.html#WaitForPoint">WaitForPoint</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="botpack-overview.html">Botpack</a>.<a href="deathmatchplus.html">DeathMatchPlus</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="deathmatchplus.html#AcceptInventory">AcceptInventory</a>, <a href="deathmatchplus.html#AddBot">AddBot</a>, <a href="deathmatchplus.html#AddDefaultInventory">AddDefaultInventory</a>, <a href="deathmatchplus.html#AllowTranslocation">AllowTranslocation</a>, <a href="deathmatchplus.html#AssessBotAttitude">AssessBotAttitude</a>, <a href="deathmatchplus.html#CanSpectate">CanSpectate</a>, <a href="deathmatchplus.html#CanTranslocate">CanTranslocate</a>, <a href="deathmatchplus.html#ChangeName">ChangeName</a>, <a href="deathmatchplus.html#CheckReady">CheckReady</a>, <a href="deathmatchplus.html#CheckThisTranslocator">CheckThisTranslocator</a>, <a href="deathmatchplus.html#EndSpree">EndSpree</a>, <a href="deathmatchplus.html#FindPlayerStart">FindPlayerStart</a>, <a href="deathmatchplus.html#ForceAddBot">ForceAddBot</a>, <a href="deathmatchplus.html#GameThreatAdd">GameThreatAdd</a>, <a href="deathmatchplus.html#GetRules">GetRules</a>, <a href="deathmatchplus.html#GiveWeapon">GiveWeapon</a>, <a href="deathmatchplus.html#InitGame">InitGame</a>, <a href="deathmatchplus.html#InitGameReplicationInfo">InitGameReplicationInfo</a>, <a href="deathmatchplus.html#InitRatedGame">InitRatedGame</a>, <a href="deathmatchplus.html#Killed">Killed</a>, <a href="deathmatchplus.html#LogGameParameters">LogGameParameters</a>, <a href="deathmatchplus.html#Login">Login</a>, <a href="deathmatchplus.html#Logout">Logout</a>, <a href="deathmatchplus.html#ModifyBehaviour">ModifyBehaviour</a>, <a href="deathmatchplus.html#NeedPlayers">NeedPlayers</a>, <a href="deathmatchplus.html#NeverStakeOut">NeverStakeOut</a>, <a href="deathmatchplus.html#NotifySpree">NotifySpree</a>, <a href="deathmatchplus.html#OneOnOne">OneOnOne</a>, <a href="deathmatchplus.html#PickAmbushSpotFor">PickAmbushSpotFor</a>, <a href="deathmatchplus.html#PlayerJumpZScaling">PlayerJumpZScaling</a>, <a href="deathmatchplus.html#PlayStartUpMessage">PlayStartUpMessage</a>, <a href="deathmatchplus.html#PlayTeleportEffect">PlayTeleportEffect</a>, <a href="deathmatchplus.html#PlayWinMessage">PlayWinMessage</a>, <a href="deathmatchplus.html#PostBeginPlay">PostBeginPlay</a>, <a href="deathmatchplus.html#PostLogin">PostLogin</a>, <a href="deathmatchplus.html#PreCacheReferences">PreCacheReferences</a>, <a href="deathmatchplus.html#RateVs">RateVs</a>, <a href="deathmatchplus.html#ReduceDamage">ReduceDamage</a>, <a href="deathmatchplus.html#RestartGame">RestartGame</a>, <a href="deathmatchplus.html#RestartPlayer">RestartPlayer</a>, <a href="deathmatchplus.html#ScoreKill">ScoreKill</a>, <a href="deathmatchplus.html#SendStartMessage">SendStartMessage</a>, <a href="deathmatchplus.html#SetEndCams">SetEndCams</a>, <a href="deathmatchplus.html#SetGameSpeed">SetGameSpeed</a>, <a href="deathmatchplus.html#ShouldRespawn">ShouldRespawn</a>, <a href="deathmatchplus.html#Skip">Skip</a>, <a href="deathmatchplus.html#SkipAll">SkipAll</a>, <a href="deathmatchplus.html#SpawnBot">SpawnBot</a>, <a href="deathmatchplus.html#SpawnRatedBot">SpawnRatedBot</a>, <a href="deathmatchplus.html#SpawnWait">SpawnWait</a>, <a href="deathmatchplus.html#StartMatch">StartMatch</a>, <a href="deathmatchplus.html#SuccessfulGame">SuccessfulGame</a>, <a href="deathmatchplus.html#Timer">Timer</a>, <a href="deathmatchplus.html#TooManyBots">TooManyBots</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CaptureSound[4]" class="hidden"></a>CaptureSound[4] <a href="..\Source_botpack\ctfgame.html#12" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">sound</font> CaptureSound[<font class="source_int">4</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastGotFlag" class="hidden"></a>LastGotFlag <a href="..\Source_botpack\ctfgame.html#14" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastGotFlag;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastSeeFlagCarrier" class="hidden"></a>LastSeeFlagCarrier <a href="..\Source_botpack\ctfgame.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastSeeFlagCarrier;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReturnSound" class="hidden"></a>ReturnSound <a href="..\Source_botpack\ctfgame.html#13" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">sound</font> ReturnSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AllowTranslocation+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AllowTranslocation <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#620" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> AllowTranslocation (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Dest)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AssessBotAttitude+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AssessBotAttitude <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#238" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">byte</font> AssessBotAttitude (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CalcEndStats+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CalcEndStats <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#131" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> CalcEndStats ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CanTranslocate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CanTranslocate <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#629" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CanTranslocate (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CheckForTranslocators+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CheckForTranslocators <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#678" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CheckForTranslocators (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CheckThisTranslocator+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CheckThisTranslocator <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#690" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CheckThisTranslocator (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot, <font class="source_type"><a href="translocatortarget.html" class="source">TranslocatorTarget</a></font> T)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FindPathToBase+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FindPathToBase <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#212" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> FindPathToBase (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot, <font class="source_type"><a href="flagbase.html" class="source">FlagBase</a></font> aBase)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FindSpecialAttractionFor+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FindSpecialAttractionFor <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#249" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> FindSpecialAttractionFor (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GameThreatAdd+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GameThreatAdd <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#202" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GameThreatAdd (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InitGame+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> InitGame <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> InitGame (<font class="source_keyword">string</font> Options, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Error)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Killed+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Killed <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Killed (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Killer, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Other, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Logout+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Logout <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#17" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Logout (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Exiting)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PickAmbushSpotFor+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PickAmbushSpotFor <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#668" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PickAmbushSpotFor (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PriorityObjective+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PriorityObjective <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#648" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">byte</font> PriorityObjective (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ReduceDamage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ReduceDamage <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#637" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">int</font> ReduceDamage (<font class="source_keyword">int</font> Damage, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> injured, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> instigatedBy)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RestartPlayer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RestartPlayer <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#471" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> RestartPlayer (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> aPlayer)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ScoreFlag+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ScoreFlag <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#137" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ScoreFlag (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Scorer, <font class="source_type"><a href="ctfflag.html" class="source">CTFFlag</a></font> theFlag)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ScoreKill+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ScoreKill <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#64" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ScoreKill (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Killer, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetBotOrders+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetBotOrders <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#542" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetBotOrders (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> NewBot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetDefenseFor+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetDefenseFor <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#196" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> SetDefenseFor (<font class="source_type"><a href="bot.html" class="source">Bot</a></font> aBot)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetEndCams+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetEndCams <span class="function_state"></span> <a href="..\Source_botpack\ctfgame.html#83" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SetEndCams (<font class="source_keyword">string</font> Reason)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     CurrentOrders(<font class="source_int">0</font>)=Freelance
+     CurrentOrders(<font class="source_int">1</font>)=Freelance
+     CurrentOrders(<font class="source_int">2</font>)=Freelance
+     CurrentOrders(<font class="source_int">3</font>)=Freelance
+     bCoopWeaponMode=<font class="source_keyword">true</font>
+     ReturnSound=<font class="source_type">sound</font><font class="source_name">'ReturnSound'</font>
+     CaptureSound(<font class="source_int">0</font>)=<font class="source_type">sound</font><font class="source_name">'CaptureSound2'</font>
+     CaptureSound(<font class="source_int">1</font>)=<font class="source_type">sound</font><font class="source_name">'CaptureSound3'</font>
+     CaptureSound(<font class="source_int">2</font>)=<font class="source_type">sound</font><font class="source_name">'CaptureSound2'</font>
+     CaptureSound(<font class="source_int">3</font>)=<font class="source_type">sound</font><font class="source_name">'CaptureSound3'</font>
+     bNoMonsters=<font class="source_keyword">False</font>
+     bHumansOnly=<font class="source_keyword">True</font>
+     bUseTranslocator=<font class="source_keyword">True</font>
+     bRatedTranslocator=<font class="source_keyword">True</font>
+     bSpawnInTeamArea=<font class="source_keyword">True</font>
+     bNoMonsters=<font class="source_keyword">False</font>
+     bScoreTeamKills=<font class="source_keyword">false</font>
+     MaxTeams=<font class="source_int">2</font>
+     MaxAllowedTeams=<font class="source_int">2</font>
+     InitialBots=<font class="source_int">0</font>
+     BeaconName=<font class="source_string">"CTF"</font>
+     StartUpMessage=<font class="source_string">""</font>
+     GameName=<font class="source_string">"Capture the Flag"</font>
+     MapPrefix=<font class="source_string">"CTF"</font>
+     BotConfigType=<font class="source_keyword">Class</font><font class="source_name">'BotPack.ChallengeBotInfo'</font>
+     MapListType=<font class="source_keyword">Class</font><font class="source_name">'BotPack.CTFmaplist'</font>
+     HUDType=<font class="source_keyword">Class</font><font class="source_name">'BotPack.ChallengeCTFHUD'</font>
+     GameReplicationInfoClass=<font class="source_keyword">Class</font><font class="source_name">'BotPack.CTFReplicationInfo'</font>
+     ScoreBoardType=<font class="source_keyword">Class</font><font class="source_name">'BotPack.UnrealCTFScoreboard'</font>
+     LadderTypeIndex=<font class="source_int">2</font>
+     gamegoal=<font class="source_string">"captures wins the match!"</font>
+     GoalTeamScore=<font class="source_int">3</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="botpack-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_botpack\ctfgame.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#CTFGame">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="ctfflag.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ctfmaplist.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:46:45.781 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

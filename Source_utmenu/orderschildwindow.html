@@ -1,0 +1,567 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UTMenu.OrdersChildWindow</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\orderschildwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#OrdersChildWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="objectivebrowser.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="physicalchildwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\utmenu\utmenu-overview.html">UTMenu</a>.<a href="..\utmenu\orderschildwindow.html">OrdersChildWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\utmenu\orderschildwindow.html" class="source">OrdersChildWindow</a></font> <font class="source_keyword">expands</font> <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> OptionOffset;
+<a name="4"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> MinOptions;
+<a name="5"></a>
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> OtherOffset[<font class="source_int">32</font>];
+<a name="7"></a>
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> TargetPRI;
+<a name="9"></a>
+<a name="10"></a><font class="source_keyword">function</font> Created()
+<a name="11"></a>{
+<a name="12"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i, j;
+<a name="13"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> W, H;
+<a name="14"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XMod, YMod;
+<a name="15"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> TextColor;
+<a name="16"></a>    <font class="source_keyword">local</font> <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\challengevoicepack.html" class="source">ChallengeVoicePack</a></font>&gt; V;
+<a name="17"></a>
+<a name="18"></a>    V = <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\botpack\challengevoicepack.html" class="source">ChallengeVoicePack</a></font>&gt;(GetPlayerOwner().<font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font>.VoiceType);
+<a name="19"></a>
+<a name="20"></a>    W = Root.WinWidth / <font class="source_int">4</font>;
+<a name="21"></a>    H = W;
+<a name="22"></a>
+<a name="23"></a>    <font class="source_keyword">if</font>(W &gt; <font class="source_int">256</font> || H &gt; <font class="source_int">256</font>)
+<a name="24"></a>    {
+<a name="25"></a>        W = <font class="source_int">256</font>;
+<a name="26"></a>        H = <font class="source_int">256</font>;
+<a name="27"></a>    }
+<a name="28"></a>
+<a name="29"></a>    XMod = <font class="source_int">4</font>*W;
+<a name="30"></a>    YMod = <font class="source_int">3</font>*H;
+<a name="31"></a>
+<a name="32"></a>    CurrentType = <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>(ParentWindow).CurrentType;
+<a name="33"></a>
+<a name="34"></a>    j = <font class="source_int">0</font>;
+<a name="35"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;<font class="source_int">9</font>; i++)
+<a name="36"></a>    {
+<a name="37"></a>        <font class="source_keyword">if</font> (V.<font class="source_keyword2">Static</font>.GetOrderString(i, GetPlayerOwner().<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.GameName) != <font class="source_string">""</font>)
+<a name="38"></a>            OtherOffset[j++] = i;
+<a name="39"></a>    }
+<a name="40"></a>    NumOptions = j;
+<a name="41"></a>
+<a name="42"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="43"></a>
+<a name="44"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;NumOptions; i++)
+<a name="45"></a>        OptionButtons[i].Text = V.<font class="source_keyword2">Static</font>.GetOrderString(OtherOffset[i], GetPlayerOwner().<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.GameName);
+<a name="46"></a>
+<a name="47"></a>    TopButton.OverTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'OrdersTopArrow'</font>;
+<a name="48"></a>    TopButton.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'OrdersTopArrow'</font>;
+<a name="49"></a>    TopButton.DownTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'OrdersTopArrow'</font>;
+<a name="50"></a>    TopButton.WinLeft = <font class="source_int">0</font>;
+<a name="51"></a>    BottomButton.OverTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'OrdersBtmArrow'</font>;
+<a name="52"></a>    BottomButton.UpTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'OrdersBtmArrow'</font>;
+<a name="53"></a>    BottomButton.DownTexture = <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'OrdersBtmArrow'</font>;
+<a name="54"></a>    BottomButton.WinLeft = <font class="source_int">0</font>;
+<a name="55"></a>
+<a name="56"></a>    MinOptions = Min(<font class="source_int">8</font>,NumOptions);
+<a name="57"></a>
+<a name="58"></a>    WinTop = (<font class="source_int">196.0</font>/7<font class="source_int">68.0</font> * YMod) + (<font class="source_int">32.0</font>/7<font class="source_int">68.0</font> * YMod)*(CurrentType-<font class="source_int">1</font>);
+<a name="59"></a>    WinLeft = <font class="source_int">256.0</font>/1<font class="source_int">024.0</font> * XMod;
+<a name="60"></a>    WinWidth = <font class="source_int">256.0</font>/1<font class="source_int">024.0</font> * XMod;
+<a name="61"></a>    WinHeight = (<font class="source_int">32.0</font>/7<font class="source_int">68.0</font> * YMod)*(MinOptions+<font class="source_int">2</font>);
+<a name="62"></a>
+<a name="63"></a>    SetButtonTextures(<font class="source_int">0</font>, <font class="source_keyword">True</font>, <font class="source_keyword">False</font>);
+<a name="64"></a>}
+<a name="65"></a>
+<a name="66"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="67"></a>{
+<a name="68"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> W, H;
+<a name="69"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> XWidth, YHeight, XMod, YMod, XPos, YPos, YOffset, BottomTop, XL, YL;
+<a name="70"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> TextColor;
+<a name="71"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="72"></a>
+<a name="73"></a>    <font class="source_keyword">Super</font>(<font class="source_type"><a href="..\utmenu\notifywindow.html" class="source">NotifyWindow</a></font>).BeforePaint(C, X, Y);
+<a name="74"></a>
+<a name="75"></a>    W = Root.WinWidth / <font class="source_int">4</font>;
+<a name="76"></a>    H = W;
+<a name="77"></a>
+<a name="78"></a>    <font class="source_keyword">if</font>(W &gt; <font class="source_int">256</font> || H &gt; <font class="source_int">256</font>)
+<a name="79"></a>    {
+<a name="80"></a>        W = <font class="source_int">256</font>;
+<a name="81"></a>        H = <font class="source_int">256</font>;
+<a name="82"></a>    }
+<a name="83"></a>
+<a name="84"></a>    XMod = <font class="source_int">4</font>*W;
+<a name="85"></a>    YMod = <font class="source_int">3</font>*H;
+<a name="86"></a>
+<a name="87"></a>    XWidth = <font class="source_int">256.0</font>/1<font class="source_int">024.0</font> * XMod;
+<a name="88"></a>    YHeight = <font class="source_int">32.0</font>/7<font class="source_int">68.0</font> * YMod;
+<a name="89"></a>
+<a name="90"></a>    TopButton.SetSize(XWidth, YHeight);
+<a name="91"></a>    TopButton.WinTop = <font class="source_int">0</font>;
+<a name="92"></a>    TopButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="93"></a>    <font class="source_keyword">if</font> (OptionOffset &gt; <font class="source_int">0</font>)
+<a name="94"></a>        TopButton.bDisabled = <font class="source_keyword">False</font>;
+<a name="95"></a>    <font class="source_keyword">else</font>
+<a name="96"></a>        TopButton.bDisabled = <font class="source_keyword">True</font>;
+<a name="97"></a>
+<a name="98"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>; i&lt;OptionOffset; i++)
+<a name="99"></a>    {
+<a name="100"></a>        OptionButtons[i].HideWindow();
+<a name="101"></a>    }
+<a name="102"></a>    <font class="source_keyword">for</font>(i=OptionOffset; i&lt;MinOptions+OptionOffset; i++)
+<a name="103"></a>    {
+<a name="104"></a>        OptionButtons[i].ShowWindow();
+<a name="105"></a>        OptionButtons[i].SetSize(XWidth, YHeight);
+<a name="106"></a>        OptionButtons[i].WinLeft = <font class="source_int">0</font>;
+<a name="107"></a>        OptionButtons[i].WinTop = (<font class="source_int">32.0</font>/7<font class="source_int">68.0</font>*YMod)*(i+<font class="source_int">1</font>-OptionOffset);
+<a name="108"></a>    }
+<a name="109"></a>    <font class="source_keyword">for</font>(i=MinOptions+OptionOffset; i&lt;NumOptions; i++)
+<a name="110"></a>    {
+<a name="111"></a>        OptionButtons[i].HideWindow();
+<a name="112"></a>    }
+<a name="113"></a>
+<a name="114"></a>    BottomButton.SetSize(XWidth, YHeight);
+<a name="115"></a>    BottomButton.WinTop = (<font class="source_int">32.0</font>/7<font class="source_int">68.0</font>*YMod)*(MinOptions+<font class="source_int">1</font>);
+<a name="116"></a>    BottomButton.MyFont = <font class="source_keyword">class</font><font class="source_name">'UTLadderStub'</font>.<font class="source_keyword2">Static</font>.GetBigFont(Root);
+<a name="117"></a>    <font class="source_keyword">if</font> (NumOptions &gt; MinOptions+OptionOffset)
+<a name="118"></a>        BottomButton.bDisabled = <font class="source_keyword">False</font>;
+<a name="119"></a>    <font class="source_keyword">else</font>
+<a name="120"></a>        BottomButton.bDisabled = <font class="source_keyword">True</font>;
+<a name="121"></a>}
+<a name="122"></a>
+<a name="123"></a><font class="source_keyword">function</font> Paint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="124"></a>{
+<a name="125"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="126"></a>
+<a name="127"></a>    <font class="source_keyword">Super</font>.Paint(C, X, Y);
+<a name="128"></a>
+<a name="129"></a>    <font class="source_comment">// Text
+</font><a name="130"></a>    <font class="source_keyword">for</font>(i=<font class="source_int">0</font>; i&lt;NumOptions; i++)
+<a name="131"></a>    {
+<a name="132"></a>        OptionButtons[i].FadeFactor = FadeFactor/1<font class="source_int">00</font>;
+<a name="133"></a>    }
+<a name="134"></a>}
+<a name="135"></a>
+<a name="136"></a><font class="source_keyword">function</font> FadeOut()
+<a name="137"></a>{
+<a name="138"></a>    FadeFactor = <font class="source_int">100</font>;
+<a name="139"></a>    bFadeOut = <font class="source_keyword">True</font>;
+<a name="140"></a>    <font class="source_keyword">if</font> (SpeechChild != <font class="source_keyword">None</font>)
+<a name="141"></a>        SpeechChild.FadeOut();
+<a name="142"></a>    SpeechChild = <font class="source_keyword">None</font>;
+<a name="143"></a>    CurrentKey = -<font class="source_int">1</font>;
+<a name="144"></a>}
+<a name="145"></a>
+<a name="146"></a><font class="source_keyword">event</font> <font class="source_keyword">bool</font> KeyEvent( <font class="source_keyword">byte</font> Key, <font class="source_keyword">byte</font> Action, <font class="source_keyword">FLOAT</font> Delta )
+<a name="147"></a>{
+<a name="148"></a>    <font class="source_keyword">local</font> <font class="source_keyword">byte</font> B;
+<a name="149"></a>    
+<a name="150"></a>    <font class="source_keyword">if</font> ( CurrentKey == Key )
+<a name="151"></a>    {
+<a name="152"></a>        <font class="source_keyword">if</font> ( Action == <font class="source_int">3</font> ) <font class="source_comment">// IST_Release
+</font><a name="153"></a>            CurrentKey = -<font class="source_int">1</font>;
+<a name="154"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="155"></a>    }
+<a name="156"></a>
+<a name="157"></a>    <font class="source_keyword">if</font> ( SpeechChild != <font class="source_keyword">None</font> )
+<a name="158"></a>        <font class="source_keyword">return</font> SpeechChild.KeyEvent(Key, Action, Delta);
+<a name="159"></a>
+<a name="160"></a>    <font class="source_keyword">if</font> ( Key == <font class="source_int">38</font> )
+<a name="161"></a>    {
+<a name="162"></a>        CurrentKey = Key;
+<a name="163"></a>        Notify( TopButton, DE_Click );
+<a name="164"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="165"></a>    }
+<a name="166"></a>
+<a name="167"></a>    <font class="source_keyword">if</font> ( Key == <font class="source_int">40</font> )
+<a name="168"></a>    {
+<a name="169"></a>        CurrentKey = Key;
+<a name="170"></a>        Notify( BottomButton, DE_Click );
+<a name="171"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="172"></a>    }
+<a name="173"></a>        
+<a name="174"></a>    B = Key - <font class="source_int">48</font>;
+<a name="175"></a>    <font class="source_keyword">if</font> ( B == <font class="source_int">0</font> )
+<a name="176"></a>        B = <font class="source_int">9</font>;
+<a name="177"></a>    <font class="source_keyword">else</font>
+<a name="178"></a>        B -= <font class="source_int">1</font>;
+<a name="179"></a>    <font class="source_keyword">if</font> ( (B&gt;=<font class="source_int">0</font>) && (B&lt;<font class="source_int">10</font>) )
+<a name="180"></a>    {
+<a name="181"></a>        CurrentKey = Key;
+<a name="182"></a>        Notify( OptionButtons[B + OptionOffset], DE_Click );
+<a name="183"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="184"></a>    }
+<a name="185"></a>
+<a name="186"></a>    <font class="source_keyword">return</font> <font class="source_keyword">false</font>;       
+<a name="187"></a>}
+<a name="188"></a>
+<a name="189"></a><font class="source_keyword">function</font> Notify(<font class="source_type"><a href="..\uwindow\uwindowwindow.html" class="source">UWindowWindow</a></font> B, <font class="source_keyword">byte</font> E)
+<a name="190"></a>{
+<a name="191"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="192"></a>
+<a name="193"></a>    <font class="source_keyword">switch</font> (E)
+<a name="194"></a>    {
+<a name="195"></a>        <font class="source_keyword">case</font> DE_DoubleClick:
+<a name="196"></a>        <font class="source_keyword">case</font> DE_Click:
+<a name="197"></a>            GetPlayerOwner().PlaySound(<font class="source_type">sound</font><font class="source_name">'SpeechWindowClick'</font>, SLOT_Interact);
+<a name="198"></a>            <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt;NumOptions; i++)
+<a name="199"></a>            {
+<a name="200"></a>                <font class="source_keyword">if</font> (B == OptionButtons[i])
+<a name="201"></a>                {
+<a name="202"></a>                    <font class="source_keyword">if</font> (!GetPlayerOwner().<font class="source_type"><a href="..\engine\gamereplicationinfo.html" class="source">GameReplicationInfo</a></font>.bTeamGame)
+<a name="203"></a>                    {
+<a name="204"></a>                        Root.GetPlayerOwner().Speech(<font class="source_int">2</font>, OtherOffset[i], <font class="source_int">0</font>);
+<a name="205"></a>                        <font class="source_keyword">return</font>;
+<a name="206"></a>                    } <font class="source_keyword">else</font> <font class="source_keyword">if</font> ((TargetPRI != <font class="source_keyword">None</font>) && (CurrentType == <font class="source_int">6</font>)) {
+<a name="207"></a>                        Root.GetPlayerOwner().Speech(<font class="source_int">2</font>, OtherOffset[i], TargetPRI.TeamID);
+<a name="208"></a>                        <font class="source_keyword">return</font>;
+<a name="209"></a>                    } <font class="source_keyword">else</font> {
+<a name="210"></a>                        <font class="source_keyword">if</font> (i == <font class="source_int">0</font>)
+<a name="211"></a>                            SetButtonTextures(<font class="source_int">0</font>, <font class="source_keyword">True</font>, <font class="source_keyword">True</font>);
+<a name="212"></a>                        <font class="source_keyword">else</font> {
+<a name="213"></a>                            SetButtonTextures(<font class="source_int">0</font>, <font class="source_keyword">True</font>, <font class="source_keyword">False</font>);
+<a name="214"></a>                            SetButtonTextures(i, <font class="source_keyword">False</font>, <font class="source_keyword">True</font>, <font class="source_keyword">True</font>);
+<a name="215"></a>                        }
+<a name="216"></a>                        HideChildren();
+<a name="217"></a>                        SpeechChild = <font class="source_type"><a href="..\utmenu\speechwindow.html" class="source">SpeechWindow</a></font>(ParentWindow.CreateWindow(<font class="source_keyword">class</font><font class="source_name">'TargetChildWindow'</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">100</font>, <font class="source_int">100</font>));
+<a name="218"></a>                        SpeechChild.CurrentType = i+<font class="source_int">2</font>;
+<a name="219"></a>                        <font class="source_type"><a href="..\utmenu\targetchildwindow.html" class="source">TargetChildWindow</a></font>(SpeechChild).Message = OtherOffset[i];
+<a name="220"></a>                        SpeechChild.FadeIn();
+<a name="221"></a>                    }
+<a name="222"></a>                }
+<a name="223"></a>            }
+<a name="224"></a>            <font class="source_keyword">if</font> (B == TopButton)
+<a name="225"></a>            {
+<a name="226"></a>                <font class="source_keyword">if</font> (NumOptions &gt; <font class="source_int">8</font>)
+<a name="227"></a>                {
+<a name="228"></a>                    <font class="source_keyword">if</font> (OptionOffset &gt; <font class="source_int">0</font>)
+<a name="229"></a>                        OptionOffset--;
+<a name="230"></a>                }
+<a name="231"></a>            }
+<a name="232"></a>            <font class="source_keyword">if</font> (B == BottomButton)
+<a name="233"></a>            {
+<a name="234"></a>                <font class="source_keyword">if</font> (NumOptions &gt; <font class="source_int">8</font>)
+<a name="235"></a>                {
+<a name="236"></a>                    <font class="source_keyword">if</font> (NumOptions - OptionOffset &gt; <font class="source_int">8</font>)
+<a name="237"></a>                        OptionOffset++;
+<a name="238"></a>                }
+<a name="239"></a>            }
+<a name="240"></a>            <font class="source_keyword">break</font>;
+<a name="241"></a>    }
+<a name="242"></a>}
+<a name="243"></a>
+<a name="244"></a><font class="source_keyword">function</font> HideWindow()
+<a name="245"></a>{
+<a name="246"></a>    <font class="source_keyword">Super</font>.HideWindow();
+<a name="247"></a>
+<a name="248"></a>    <font class="source_keyword">if</font> (SpeechChild != <font class="source_keyword">None</font>)
+<a name="249"></a>        SpeechChild.HideWindow();
+<a name="250"></a>}
+<a name="251"></a>
+<a name="252"></a><font class="source_keyword">defaultproperties</font>
+<a name="253"></a>{
+<a name="254"></a>    WindowTitle=<font class="source_string">""</font>
+<a name="255"></a>    TopTexture=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'OrdersTop2'</font>
+<a name="256"></a>}
+<a name="257"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\utmenu\utmenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\utmenu\orderschildwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#OrdersChildWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="objectivebrowser.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="physicalchildwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:28.000 - Creation time: Wed 26/5/2004 10:48:28.359 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

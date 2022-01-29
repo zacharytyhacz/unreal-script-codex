@@ -1,0 +1,287 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UnrealShare.UnrealMenu</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\unrealmenu.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UnrealMenu">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="unrealmainmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="unrealmeshmenu.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\unrealmenu.html">UnrealMenu</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// UnrealMenu
+</font><a name="3"></a><font class="source_comment">//
+</font><a name="4"></a><font class="source_comment">// Master class of all UnrealI menus.  Contains nonstyle specific utilities
+</font><a name="5"></a><font class="source_comment">// for all menu types (Info/Long/Short).
+</font><a name="6"></a><font class="source_comment">//=============================================================================
+</font><a name="7"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\unrealshare\unrealmenu.html" class="source">UnrealMenu</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\menu.html" class="source">Menu</a></font>;
+<a name="8"></a>
+<a name="9"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=IconSkull FILE=TEXTURES\HUD\i_skull.PCX GROUP="Icons" MIPS=OFF
+</font><a name="10"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=TranslatorHUD3 FILE=models\TRANHUD3.PCX GROUP="Icons" FLAGS=2 MIPS=OFF
+</font><a name="11"></a>
+<a name="12"></a><font class="source_macro">#exec Font Import File=Textures\TinyFont.pcx Name=TinyFont
+</font><a name="13"></a><font class="source_macro">#exec Font Import File=Textures\TinyFon3.pcx Name=TinyWhiteFont
+</font><a name="14"></a><font class="source_macro">#exec Font Import File=Textures\TinyFon2.pcx Name=TinyRedFont
+</font><a name="15"></a>
+<a name="16"></a><font class="source_macro">#exec Texture Import File=Textures\dot.pcx Name=Dot MIPS=OFF
+</font><a name="17"></a><font class="source_macro">#exec Texture Import File=Textures\Slide1.pcx Name=Slide1 MIPS=OFF
+</font><a name="18"></a><font class="source_macro">#exec Texture Import File=Textures\Slide2.pcx Name=Slide2 MIPS=OFF
+</font><a name="19"></a><font class="source_macro">#exec Texture Import File=Textures\Slide3.pcx Name=Slide3 MIPS=OFF
+</font><a name="20"></a><font class="source_macro">#exec Texture Import File=Textures\Slide4.pcx Name=Slide4 MIPS=OFF
+</font><a name="21"></a><font class="source_macro">#exec Texture Import File=Textures\ex.pcx Name=ex MIPS=OFF
+</font><a name="22"></a><font class="source_macro">#exec Texture Import File=Textures\check.pcx Name=Check MIPS=OFF
+</font><a name="23"></a>
+<a name="24"></a><font class="source_macro">#exec OBJ LOAD FILE=textures\menugr.utx PACKAGE=UNREALSHARE.MenuGfx
+</font><a name="25"></a>
+<a name="26"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Menu\Select4.WAV" NAME="Select4" GROUP="Menu"
+</font><a name="27"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Menu\updown3.WAV" NAME="Updown3" GROUP="Menu"
+</font><a name="28"></a><font class="source_macro">#exec AUDIO IMPORT FILE="Sounds\Menu\side1b.WAV" NAME="side1b" GROUP="Menu"
+</font><a name="29"></a>
+<a name="30"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PlaySelectSound()
+<a name="31"></a>{
+<a name="32"></a>    PlayerOwner.PlaySound(<font class="source_type">sound</font><font class="source_name">'updown3'</font>);
+<a name="33"></a>}
+<a name="34"></a>
+<a name="35"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PlayModifySound()
+<a name="36"></a>{
+<a name="37"></a>    PlayerOwner.PlaySound(<font class="source_type">sound</font><font class="source_name">'Select4'</font>,,<font class="source_int">2.0</font>);
+<a name="38"></a>}
+<a name="39"></a>
+<a name="40"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PlayEnterSound() 
+<a name="41"></a>{
+<a name="42"></a>    PlayerOwner.PlaySound(<font class="source_type">sound</font><font class="source_name">'Select4'</font>,,<font class="source_int">2.0</font>);
+<a name="43"></a>}
+<a name="44"></a>
+<a name="45"></a><font class="source_keyword">function</font> DrawTitle(<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>)
+<a name="46"></a>{
+<a name="47"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY &lt; <font class="source_int">300</font> )
+<a name="48"></a>    {
+<a name="49"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.BigFont;
+<a name="50"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(Max(<font class="source_int">8</font>, <font class="source_int">0.5</font> * <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX - <font class="source_int">4</font> * Len(MenuTitle)), <font class="source_int">4</font> );
+<a name="51"></a>    }
+<a name="52"></a>    <font class="source_keyword">else</font>
+<a name="53"></a>    {
+<a name="54"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.LargeFont;
+<a name="55"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(Max(<font class="source_int">8</font>, <font class="source_int">0.5</font> * <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX - <font class="source_int">8</font> * Len(MenuTitle)), <font class="source_int">4</font> );
+<a name="56"></a>    }
+<a name="57"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(MenuTitle, <font class="source_keyword">False</font>);
+<a name="58"></a>}
+<a name="59"></a>
+<a name="60"></a><font class="source_keyword">function</font> DrawList(<font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">bool</font> bLargeFont, <font class="source_keyword">int</font> Spacing, <font class="source_keyword">int</font> StartX, <font class="source_keyword">int</font> StartY)
+<a name="61"></a>{
+<a name="62"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="63"></a>
+<a name="64"></a>    <font class="source_keyword">if</font> ( bLargeFont )
+<a name="65"></a>    {
+<a name="66"></a>        <font class="source_keyword">if</font> ( Spacing &lt; <font class="source_int">30</font> )
+<a name="67"></a>        {
+<a name="68"></a>            StartX += <font class="source_int">0.5</font> * ( <font class="source_int">0.5</font> * <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX - StartX);
+<a name="69"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.BigFont;
+<a name="70"></a>        }
+<a name="71"></a>        <font class="source_keyword">else</font>
+<a name="72"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.LargeFont;
+<a name="73"></a>    }
+<a name="74"></a>    <font class="source_keyword">else</font>
+<a name="75"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.<font class="source_type">Font</font> = <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.MedFont;
+<a name="76"></a>
+<a name="77"></a>    <font class="source_keyword">for</font> (i=<font class="source_int">0</font>; i&lt; (MenuLength); i++ )
+<a name="78"></a>    {
+<a name="79"></a>        SetFontBrightness(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, (i == Selection - <font class="source_int">1</font>) );
+<a name="80"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(StartX, StartY + Spacing * i);
+<a name="81"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawText(MenuList[i + <font class="source_int">1</font>], <font class="source_keyword">false</font>);
+<a name="82"></a>    }
+<a name="83"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawColor = <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.Default.DrawColor;
+<a name="84"></a>}
+<a name="85"></a>
+<a name="86"></a><font class="source_keyword">function</font> DrawSlider( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>, <font class="source_keyword">int</font> StartX, <font class="source_keyword">int</font> StartY, <font class="source_keyword">int</font> Value, <font class="source_keyword">int</font> sMin, <font class="source_keyword">int</font> StepSize )
+<a name="87"></a>{
+<a name="88"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bFoundValue;
+<a name="89"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="90"></a>
+<a name="91"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos( StartX, StartY );
+<a name="92"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawIcon(<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Slide1'</font>,<font class="source_int">1.0</font>);   
+<a name="93"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.Style = <font class="source_int">2</font>;
+<a name="94"></a>    bFoundValue = <font class="source_keyword">false</font>;
+<a name="95"></a>    <font class="source_keyword">For</font> ( i=<font class="source_int">1</font>; i&lt;<font class="source_int">8</font>; i++ )
+<a name="96"></a>    {
+<a name="97"></a>        <font class="source_keyword">if</font> ( !bFoundValue && ( StepSize * i + sMin &gt; Value) )
+<a name="98"></a>        {
+<a name="99"></a>            bFoundValue = <font class="source_keyword">true</font>; 
+<a name="100"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawIcon(<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Slide2'</font>,<font class="source_int">1.0</font>);
+<a name="101"></a>        }
+<a name="102"></a>        <font class="source_keyword">else</font>
+<a name="103"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawIcon(<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Slide4'</font>,<font class="source_int">1.0</font>);
+<a name="104"></a>    }
+<a name="105"></a>    <font class="source_keyword">if</font> ( bFoundValue )
+<a name="106"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawIcon(<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Slide4'</font>,<font class="source_int">1.0</font>);
+<a name="107"></a>    <font class="source_keyword">else</font>
+<a name="108"></a>        <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawIcon(<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Slide2'</font>,<font class="source_int">1.0</font>);
+<a name="109"></a>
+<a name="110"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawIcon(<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Slide3'</font>,<font class="source_int">1.0</font>);                           
+<a name="111"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.Style = <font class="source_int">1</font>;   
+<a name="112"></a>}
+<a name="113"></a>
+<a name="114"></a><font class="source_keyword">defaultproperties</font>
+<a name="115"></a>{
+<a name="116"></a>}
+<a name="117"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\unrealshare\unrealshare-overview.html">Package</a></td>
+	<td class="header"><a href="..\unrealshare\unrealmenu.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UnrealMenu">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="unrealmainmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="unrealmeshmenu.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:27:08.000 - Creation time: Wed 26/5/2004 10:48:56.593 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

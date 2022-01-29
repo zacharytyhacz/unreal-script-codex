@@ -1,0 +1,948 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - UnrealI.Mercenary</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="unreali-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_unreali\mercenary.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Mercenary">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="merccarcass.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="mercenaryelite.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="unreali-overview.html">UnrealI</a>.Mercenary</h1>
+<b>Extends:</b> <a href="..\unrealshare\scriptedpawn.html">ScriptedPawn</a><br>
+<b>Modifiers:</b> <br>
+<a href="..\Source_unreali\mercenary.html"><b>Source code</b></a>
+
+<p>
+Mercenary
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\pawn.html">Pawn</a>
+        |   
+        +-- <a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\scriptedpawn.html">ScriptedPawn</a>
+            |   
+            +-- <a href="unreali-overview.html">UnrealI</a>.<a href="mercenary.html">Mercenary</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="mercenaryelite.html">MercenaryElite</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bAlertedTeam" name="bAlertedTeam">bAlertedTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bButtonPusher" name="bButtonPusher">bButtonPusher</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCanFireWhileInvulnerable" name="bCanFireWhileInvulnerable">bCanFireWhileInvulnerable</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bHasInvulnerableShield" name="bHasInvulnerableShield">bHasInvulnerableShield</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIsInvulnerable" name="bIsInvulnerable">bIsInvulnerable</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bPatroling" name="bPatroling">bPatroling</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSquatter" name="bSquatter">bSquatter</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTalker" name="bTalker">bTalker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_invulnerableCharge" name="invulnerableCharge">invulnerableCharge</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_invulnerableTime" name="invulnerableTime">invulnerableTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_OrdersGiven" name="OrdersGiven">OrdersGiven</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_phrase" name="phrase">phrase</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_phrasesyllable" name="phrasesyllable">phrasesyllable</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_PunchDamage" name="PunchDamage">PunchDamage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_sprayoffset" name="sprayoffset">sprayoffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_voicePitch" name="voicePitch">voicePitch</a></td></tr>
+<tr><th colspan="2" class="small">Sounds</th></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_breath" name="breath">breath</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_CheckWeapon" name="CheckWeapon">CheckWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_Flip" name="Flip">Flip</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_footstep1" name="footstep1">footstep1</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_Punch" name="Punch">Punch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_PunchHit" name="PunchHit">PunchHit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_syllable1" name="syllable1">syllable1</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_syllable2" name="syllable2">syllable2</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_syllable3" name="syllable3">syllable3</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_syllable4" name="syllable4">syllable4</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_syllable5" name="syllable5">syllable5</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_syllable6" name="syllable6">syllable6</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_WeaponSpray" name="WeaponSpray">WeaponSpray</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\scriptedpawn.html">ScriptedPawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\unrealshare\scriptedpawn.html#Acquire">Acquire</a>, <a href="..\unrealshare\scriptedpawn.html#Aggressiveness">Aggressiveness</a>, <a href="..\unrealshare\scriptedpawn.html#bCanBePissed">bCanBePissed</a>, <a href="..\unrealshare\scriptedpawn.html#bCanDuck">bCanDuck</a>, <a href="..\unrealshare\scriptedpawn.html#bCanFire">bCanFire</a>, <a href="..\unrealshare\scriptedpawn.html#bCanSpeak">bCanSpeak</a>, <a href="..\unrealshare\scriptedpawn.html#bChangeDir">bChangeDir</a>, <a href="..\unrealshare\scriptedpawn.html#bClearShot">bClearShot</a>, <a href="..\unrealshare\scriptedpawn.html#bCrouching">bCrouching</a>, <a href="..\unrealshare\scriptedpawn.html#bDelayedPatrol">bDelayedPatrol</a>, <a href="..\unrealshare\scriptedpawn.html#bFiringPaused">bFiringPaused</a>, <a href="..\unrealshare\scriptedpawn.html#bFirstHatePlayer">bFirstHatePlayer</a>, <a href="..\unrealshare\scriptedpawn.html#bFirstShot">bFirstShot</a>, <a href="..\unrealshare\scriptedpawn.html#bFrustrated">bFrustrated</a>, <a href="..\unrealshare\scriptedpawn.html#bGreenBlood">bGreenBlood</a>, <a href="..\unrealshare\scriptedpawn.html#bHasRangedAttack">bHasRangedAttack</a>, <a href="..\unrealshare\scriptedpawn.html#bHateWhenTriggered">bHateWhenTriggered</a>, <a href="..\unrealshare\scriptedpawn.html#bIgnoreFriends">bIgnoreFriends</a>, <a href="..\unrealshare\scriptedpawn.html#bInitialFear">bInitialFear</a>, <a href="..\unrealshare\scriptedpawn.html#bIsBoss">bIsBoss</a>, <a href="..\unrealshare\scriptedpawn.html#bIsSpeaking">bIsSpeaking</a>, <a href="..\unrealshare\scriptedpawn.html#bIsWuss">bIsWuss</a>, <a href="..\unrealshare\scriptedpawn.html#bLeadTarget">bLeadTarget</a>, <a href="..\unrealshare\scriptedpawn.html#bMoraleBoosted">bMoraleBoosted</a>, <a href="..\unrealshare\scriptedpawn.html#bMovingRangedAttack">bMovingRangedAttack</a>, <a href="..\unrealshare\scriptedpawn.html#bNoWait">bNoWait</a>, <a href="..\unrealshare\scriptedpawn.html#bQuiet">bQuiet</a>, <a href="..\unrealshare\scriptedpawn.html#bReadyToAttack">bReadyToAttack</a>, <a href="..\unrealshare\scriptedpawn.html#bSpecialGoal">bSpecialGoal</a>, <a href="..\unrealshare\scriptedpawn.html#bSpecialPausing">bSpecialPausing</a>, <a href="..\unrealshare\scriptedpawn.html#bStrafeDir">bStrafeDir</a>, <a href="..\unrealshare\scriptedpawn.html#bTeamLeader">bTeamLeader</a>, <a href="..\unrealshare\scriptedpawn.html#bTeamSpeaking">bTeamSpeaking</a>, <a href="..\unrealshare\scriptedpawn.html#bWarnTarget">bWarnTarget</a>, <a href="..\unrealshare\scriptedpawn.html#CarcassType">CarcassType</a>, <a href="..\unrealshare\scriptedpawn.html#Fear">Fear</a>, <a href="..\unrealshare\scriptedpawn.html#FirstHatePlayerEvent">FirstHatePlayerEvent</a>, <a href="..\unrealshare\scriptedpawn.html#Hated">Hated</a>, <a href="..\unrealshare\scriptedpawn.html#HidingSpot">HidingSpot</a>, <a href="..\unrealshare\scriptedpawn.html#HuntStartTime">HuntStartTime</a>, <a href="..\unrealshare\scriptedpawn.html#LastPainAnim">LastPainAnim</a>, <a href="..\unrealshare\scriptedpawn.html#LastPainTime">LastPainTime</a>, <a href="..\unrealshare\scriptedpawn.html#NextAnim">NextAnim</a>, <a href="..\unrealshare\scriptedpawn.html#numHuntPaths">numHuntPaths</a>, <a href="..\unrealshare\scriptedpawn.html#OldEnemy">OldEnemy</a>, <a href="..\unrealshare\scriptedpawn.html#OrderObject">OrderObject</a>, <a href="..\unrealshare\scriptedpawn.html#Orders">Orders</a>, <a href="..\unrealshare\scriptedpawn.html#OrderTag">OrderTag</a>, <a href="..\unrealshare\scriptedpawn.html#ProjectileSpeed">ProjectileSpeed</a>, <a href="..\unrealshare\scriptedpawn.html#RangedProjectile">RangedProjectile</a>, <a href="..\unrealshare\scriptedpawn.html#ReFireRate">ReFireRate</a>, <a href="..\unrealshare\scriptedpawn.html#Roam">Roam</a>, <a href="..\unrealshare\scriptedpawn.html#RoamStartTime">RoamStartTime</a>, <a href="..\unrealshare\scriptedpawn.html#Team">Team</a>, <a href="..\unrealshare\scriptedpawn.html#TeamID">TeamID</a>, <a href="..\unrealshare\scriptedpawn.html#TeamLeader">TeamLeader</a>, <a href="..\unrealshare\scriptedpawn.html#TeamTag">TeamTag</a>, <a href="..\unrealshare\scriptedpawn.html#Threaten">Threaten</a>, <a href="..\unrealshare\scriptedpawn.html#TimeBetweenAttacks">TimeBetweenAttacks</a>, <a href="..\unrealshare\scriptedpawn.html#WalkingSpeed">WalkingSpeed</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\pawn.html">Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\pawn.html#AccelRate">AccelRate</a>, <a href="..\engine\pawn.html#AirControl">AirControl</a>, <a href="..\engine\pawn.html#AirSpeed">AirSpeed</a>, <a href="..\engine\pawn.html#AlarmTag">AlarmTag</a>, <a href="..\engine\pawn.html#Alertness">Alertness</a>, <a href="..\engine\pawn.html#AttitudeToPlayer">AttitudeToPlayer</a>, <a href="..\engine\pawn.html#AvgPhysicsTime">AvgPhysicsTime</a>, <a href="..\engine\pawn.html#bAdvancedTactics">bAdvancedTactics</a>, <a href="..\engine\pawn.html#bAltFire">bAltFire</a>, <a href="..\engine\pawn.html#BaseEyeHeight">BaseEyeHeight</a>, <a href="..\engine\pawn.html#bAutoActivate">bAutoActivate</a>, <a href="..\engine\pawn.html#bAvoidLedges">bAvoidLedges</a>, <a href="..\engine\pawn.html#bBehindView">bBehindView</a>, <a href="..\engine\pawn.html#bCanDoSpecial">bCanDoSpecial</a>, <a href="..\engine\pawn.html#bCanFly">bCanFly</a>, <a href="..\engine\pawn.html#bCanJump">bCanJump</a>, <a href="..\engine\pawn.html#bCanOpenDoors">bCanOpenDoors</a>, <a href="..\engine\pawn.html#bCanStrafe">bCanStrafe</a>, <a href="..\engine\pawn.html#bCanSwim">bCanSwim</a>, <a href="..\engine\pawn.html#bCanWalk">bCanWalk</a>, <a href="..\engine\pawn.html#bCountJumps">bCountJumps</a>, <a href="..\engine\pawn.html#bDrowning">bDrowning</a>, <a href="..\engine\pawn.html#bDuck">bDuck</a>, <a href="..\engine\pawn.html#bExtra0">bExtra0</a>, <a href="..\engine\pawn.html#bExtra1">bExtra1</a>, <a href="..\engine\pawn.html#bExtra2">bExtra2</a>, <a href="..\engine\pawn.html#bExtra3">bExtra3</a>, <a href="..\engine\pawn.html#bFire">bFire</a>, <a href="..\engine\pawn.html#bFixedStart">bFixedStart</a>, <a href="..\engine\pawn.html#bFreeLook">bFreeLook</a>, <a href="..\engine\pawn.html#bFromWall">bFromWall</a>, <a href="..\engine\pawn.html#bHitSlopedWall">bHitSlopedWall</a>, <a href="..\engine\pawn.html#bHunting">bHunting</a>, <a href="..\engine\pawn.html#bIsFemale">bIsFemale</a>, <a href="..\engine\pawn.html#bIsHuman">bIsHuman</a>, <a href="..\engine\pawn.html#bIsMultiSkinned">bIsMultiSkinned</a>, <a href="..\engine\pawn.html#bIsPlayer">bIsPlayer</a>, <a href="..\engine\pawn.html#bIsWalking">bIsWalking</a>, <a href="..\engine\pawn.html#bJumpOffPawn">bJumpOffPawn</a>, <a href="..\engine\pawn.html#bJustLanded">bJustLanded</a>, <a href="..\engine\pawn.html#bLook">bLook</a>, <a href="..\engine\pawn.html#bLOSflag">bLOSflag</a>, <a href="..\engine\pawn.html#bNeverSwitchOnPickup">bNeverSwitchOnPickup</a>, <a href="..\engine\pawn.html#bReducedSpeed">bReducedSpeed</a>, <a href="..\engine\pawn.html#bRun">bRun</a>, <a href="..\engine\pawn.html#bShootSpecial">bShootSpecial</a>, <a href="..\engine\pawn.html#bSnapLevel">bSnapLevel</a>, <a href="..\engine\pawn.html#bStopAtLedges">bStopAtLedges</a>, <a href="..\engine\pawn.html#bStrafe">bStrafe</a>, <a href="..\engine\pawn.html#bUpAndOut">bUpAndOut</a>, <a href="..\engine\pawn.html#bUpdatingDisplay">bUpdatingDisplay</a>, <a href="..\engine\pawn.html#bViewTarget">bViewTarget</a>, <a href="..\engine\pawn.html#bWarping">bWarping</a>, <a href="..\engine\pawn.html#bZoom">bZoom</a>, <a href="..\engine\pawn.html#carriedDecoration">carriedDecoration</a>, <a href="..\engine\pawn.html#CombatStyle">CombatStyle</a>, <a href="..\engine\pawn.html#DamageScaling">DamageScaling</a>, <a href="..\engine\pawn.html#DesiredSpeed">DesiredSpeed</a>, <a href="..\engine\pawn.html#Destination">Destination</a>, <a href="..\engine\pawn.html#Die">Die</a>, <a href="..\engine\pawn.html#DieCount">DieCount</a>, <a href="..\engine\pawn.html#DropWhenKilled">DropWhenKilled</a>, <a href="..\engine\pawn.html#Enemy">Enemy</a>, <a href="..\engine\pawn.html#EyeHeight">EyeHeight</a>, <a href="..\engine\pawn.html#FaceTarget">FaceTarget</a>, <a href="..\engine\pawn.html#Floor">Floor</a>, <a href="..\engine\pawn.html#Focus">Focus</a>, <a href="..\engine\pawn.html#FootRegion">FootRegion</a>, <a href="..\engine\pawn.html#FovAngle">FovAngle</a>, <a href="..\engine\pawn.html#GroundSpeed">GroundSpeed</a>, <a href="..\engine\pawn.html#HeadRegion">HeadRegion</a>, <a href="..\engine\pawn.html#Health">Health</a>, <a href="..\engine\pawn.html#HearingThreshold">HearingThreshold</a>, <a href="..\engine\pawn.html#HitSound1">HitSound1</a>, <a href="..\engine\pawn.html#HitSound2">HitSound2</a>, <a href="..\engine\pawn.html#home">home</a>, <a href="..\engine\pawn.html#Intelligence">Intelligence</a>, <a href="..\engine\pawn.html#ItemCount">ItemCount</a>, <a href="..\engine\pawn.html#JumpZ">JumpZ</a>, <a href="..\engine\pawn.html#KillCount">KillCount</a>, <a href="..\engine\pawn.html#Land">Land</a>, <a href="..\engine\pawn.html#LastPainSound">LastPainSound</a>, <a href="..\engine\pawn.html#LastSeeingPos">LastSeeingPos</a>, <a href="..\engine\pawn.html#LastSeenPos">LastSeenPos</a>, <a href="..\engine\pawn.html#LastSeenTime">LastSeenTime</a>, <a href="..\engine\pawn.html#MaxDesiredSpeed">MaxDesiredSpeed</a>, <a href="..\engine\pawn.html#MaxStepHeight">MaxStepHeight</a>, <a href="..\engine\pawn.html#MeleeRange">MeleeRange</a>, <a href="..\engine\pawn.html#MenuName">MenuName</a>, <a href="..\engine\pawn.html#MinHitWall">MinHitWall</a>, <a href="..\engine\pawn.html#MoveTarget">MoveTarget</a>, <a href="..\engine\pawn.html#MoveTimer">MoveTimer</a>, <a href="..\engine\pawn.html#NameArticle">NameArticle</a>, <a href="..\engine\pawn.html#NextLabel">NextLabel</a>, <a href="..\engine\pawn.html#nextPawn">nextPawn</a>, <a href="..\engine\pawn.html#NextState">NextState</a>, <a href="..\engine\pawn.html#noise1loudness">noise1loudness</a>, <a href="..\engine\pawn.html#noise1other">noise1other</a>, <a href="..\engine\pawn.html#noise1spot">noise1spot</a>, <a href="..\engine\pawn.html#noise1time">noise1time</a>, <a href="..\engine\pawn.html#noise2loudness">noise2loudness</a>, <a href="..\engine\pawn.html#noise2other">noise2other</a>, <a href="..\engine\pawn.html#noise2spot">noise2spot</a>, <a href="..\engine\pawn.html#noise2time">noise2time</a>, <a href="..\engine\pawn.html#OldMessageTime">OldMessageTime</a>, <a href="..\engine\pawn.html#OrthoZoom">OrthoZoom</a>, <a href="..\engine\pawn.html#PainTime">PainTime</a>, <a href="..\engine\pawn.html#PendingWeapon">PendingWeapon</a>, <a href="..\engine\pawn.html#PeripheralVision">PeripheralVision</a>, <a href="..\engine\pawn.html#PlayerReplicationInfo">PlayerReplicationInfo</a>, <a href="..\engine\pawn.html#PlayerReplicationInfoClass">PlayerReplicationInfoClass</a>, <a href="..\engine\pawn.html#PlayerReStartState">PlayerReStartState</a>, <a href="..\engine\pawn.html#ReducedDamagePct">ReducedDamagePct</a>, <a href="..\engine\pawn.html#ReducedDamageType">ReducedDamageType</a>, <a href="..\engine\pawn.html#RouteCache[16]">RouteCache[16]</a>, <a href="..\engine\pawn.html#SecretCount">SecretCount</a>, <a href="..\engine\pawn.html#SelectedItem">SelectedItem</a>, <a href="..\engine\pawn.html#SelectionMesh">SelectionMesh</a>, <a href="..\engine\pawn.html#Shadow">Shadow</a>, <a href="..\engine\pawn.html#SharedAlarmTag">SharedAlarmTag</a>, <a href="..\engine\pawn.html#SightCounter">SightCounter</a>, <a href="..\engine\pawn.html#SightRadius">SightRadius</a>, <a href="..\engine\pawn.html#Skill">Skill</a>, <a href="..\engine\pawn.html#SoundDampening">SoundDampening</a>, <a href="..\engine\pawn.html#SpecialGoal">SpecialGoal</a>, <a href="..\engine\pawn.html#SpecialMesh">SpecialMesh</a>, <a href="..\engine\pawn.html#SpecialPause">SpecialPause</a>, <a href="..\engine\pawn.html#SpeechTime">SpeechTime</a>, <a href="..\engine\pawn.html#SplashTime">SplashTime</a>, <a href="..\engine\pawn.html#Spree">Spree</a>, <a href="..\engine\pawn.html#Stimulus">Stimulus</a>, <a href="..\engine\pawn.html#UnderWaterTime">UnderWaterTime</a>, <a href="..\engine\pawn.html#ViewRotation">ViewRotation</a>, <a href="..\engine\pawn.html#Visibility">Visibility</a>, <a href="..\engine\pawn.html#VoicePitch">VoicePitch</a>, <a href="..\engine\pawn.html#VoiceType">VoiceType</a>, <a href="..\engine\pawn.html#WalkBob">WalkBob</a>, <a href="..\engine\pawn.html#WaterSpeed">WaterSpeed</a>, <a href="..\engine\pawn.html#WaterStep">WaterStep</a>, <a href="..\engine\pawn.html#Weapon">Weapon</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\pawn.html">Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\pawn.html#EAttitude">EAttitude</a>, <a href="..\engine\pawn.html#EIntelligence">EIntelligence</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_AnimEnd+Invulnerable" name="AnimEnd">AnimEnd</a> ()<br /><span class="function_state">Invulnerable</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="..\engine\pawn.html#EAttitude">eAttitude</a>&nbsp;</td><td><a href="#_AttitudeToCreature+" name="AttitudeToCreature">AttitudeToCreature</a> (<a href="..\engine\pawn.html">Pawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BecomeInvulnerable+" name="BecomeInvulnerable">BecomeInvulnerable</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BecomeNormal+" name="BecomeNormal">BecomeNormal</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+RangedAttack" name="BeginState">BeginState</a> ()<br /><span class="function_state">RangedAttack</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_CanFireAtEnemy+" name="CanFireAtEnemy">CanFireAtEnemy</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ChooseLeaderAttack+" name="ChooseLeaderAttack">ChooseLeaderAttack</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EnemyNotVisible+SpeakOrders" name="EnemyNotVisible">EnemyNotVisible</a> ()<br /><span class="function_state">SpeakOrders</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_FootZoneChange+" name="FootZoneChange">FootZoneChange</a> (<a href="..\engine\zoneinfo.html">ZoneInfo</a> newFootZone)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_HeadZoneChange+" name="HeadZoneChange">HeadZoneChange</a> (<a href="..\engine\zoneinfo.html">ZoneInfo</a> newHeadZone)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_HitDamageTarget+" name="HitDamageTarget">HitDamageTarget</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Killed+SpeakOrders" name="Killed">Killed</a> (<a href="..\engine\pawn.html">pawn</a> Killer, <a href="..\engine\pawn.html">pawn</a> Other, name damageType)<br /><span class="function_state">SpeakOrders</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PainTimer+" name="PainTimer">PainTimer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayBigDeath+" name="PlayBigDeath">PlayBigDeath</a> (name DamageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayChallenge+" name="PlayChallenge">PlayChallenge</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayDive+" name="PlayDive">PlayDive</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayGutDeath+" name="PlayGutDeath">PlayGutDeath</a> (name DamageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayHeadDeath+" name="PlayHeadDeath">PlayHeadDeath</a> (name DamageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayInAir+" name="PlayInAir">PlayInAir</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayLanded+" name="PlayLanded">PlayLanded</a> (float impactVel)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayLeftDeath+" name="PlayLeftDeath">PlayLeftDeath</a> (name DamageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayMeleeAttack+" name="PlayMeleeAttack">PlayMeleeAttack</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayMovingAttack+" name="PlayMovingAttack">PlayMovingAttack</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayOutOfWater+" name="PlayOutOfWater">PlayOutOfWater</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayPatrolStop+" name="PlayPatrolStop">PlayPatrolStop</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayRangedAttack+" name="PlayRangedAttack">PlayRangedAttack</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayRightDeath+" name="PlayRightDeath">PlayRightDeath</a> (name DamageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayRunning+" name="PlayRunning">PlayRunning</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlaySwimming+" name="PlaySwimming">PlaySwimming</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayThreatening+" name="PlayThreatening">PlayThreatening</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayTurning+" name="PlayTurning">PlayTurning</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayVictoryDance+" name="PlayVictoryDance">PlayVictoryDance</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayWaiting+" name="PlayWaiting">PlayWaiting</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayWaitingAmbush+" name="PlayWaitingAmbush">PlayWaitingAmbush</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PlayWalking+" name="PlayWalking">PlayWalking</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PreBeginPlay+" name="PreBeginPlay">PreBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetMovementPhysics+" name="SetMovementPhysics">SetMovementPhysics</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SpawnRocket+" name="SpawnRocket">SpawnRocket</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Speak+" name="Speak">Speak</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SpeakOrderTo+" name="SpeakOrderTo">SpeakOrderTo</a> (<a href="..\unrealshare\scriptedpawn.html">ScriptedPawn</a> TeamMember)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SpeakTo+" name="SpeakTo">SpeakTo</a> (<a href="..\unrealshare\scriptedpawn.html">ScriptedPawn</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SpeechTimer+" name="SpeechTimer">SpeechTimer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SprayTarget+" name="SprayTarget">SprayTarget</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Step+" name="Step">Step</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TakeDamage+" name="TakeDamage">TakeDamage</a> (int Damage, <a href="..\engine\pawn.html">Pawn</a> instigatedBy, <a href="..\core\object.html#Vector">Vector</a> hitlocation, <a href="..\core\object.html#Vector">Vector</a> momentum, name damageType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TakeDamage+SpeakOrders" name="TakeDamage">TakeDamage</a> (int Damage, <a href="..\engine\pawn.html">Pawn</a> instigatedBy, <a href="..\core\object.html#Vector">Vector</a> hitlocation, <a href="..\core\object.html#Vector">Vector</a> momentum, name damageType)<br /><span class="function_state">SpeakOrders</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TryToDuck+" name="TryToDuck">TryToDuck</a> (<a href="..\core\object.html#Vector">vector</a> duckDir, bool bReversed)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TryToDuck+Invulnerable" name="TryToDuck">TryToDuck</a> (<a href="..\core\object.html#Vector">vector</a> duckDir, bool bReversed)<br /><span class="function_state">Invulnerable</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TryToDuck+RangedAttack" name="TryToDuck">TryToDuck</a> (<a href="..\core\object.html#Vector">vector</a> duckDir, bool bReversed)<br /><span class="function_state">RangedAttack</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TweenToFalling+" name="TweenToFalling">TweenToFalling</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TweenToFighter+" name="TweenToFighter">TweenToFighter</a> (float tweentime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TweenToPatrolStop+" name="TweenToPatrolStop">TweenToPatrolStop</a> (float tweentime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TweenToRunning+" name="TweenToRunning">TweenToRunning</a> (float tweentime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TweenToSwimming+" name="TweenToSwimming">TweenToSwimming</a> (float tweentime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TweenToWaiting+" name="TweenToWaiting">TweenToWaiting</a> (float tweentime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TweenToWalking+" name="TweenToWalking">TweenToWalking</a> (float tweentime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_WalkStep+" name="WalkStep">WalkStep</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_WarnTarget+" name="WarnTarget">WarnTarget</a> (<a href="..\engine\pawn.html">Pawn</a> shooter, float projSpeed, <a href="..\core\object.html#Vector">vector</a> FireDir)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ZoneChange+" name="ZoneChange">ZoneChange</a> (<a href="..\engine\zoneinfo.html">ZoneInfo</a> newZone)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\unrealshare\unrealshare-overview.html">UnrealShare</a>.<a href="..\unrealshare\scriptedpawn.html">ScriptedPawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\unrealshare\scriptedpawn.html#AdjustAim">AdjustAim</a>, <a href="..\unrealshare\scriptedpawn.html#adjustJump">adjustJump</a>, <a href="..\unrealshare\scriptedpawn.html#AdjustToss">AdjustToss</a>, <a href="..\unrealshare\scriptedpawn.html#AlarmDone">AlarmDone</a>, <a href="..\unrealshare\scriptedpawn.html#AnimEnd">AnimEnd</a>, <a href="..\unrealshare\scriptedpawn.html#AnnoyedBy">AnnoyedBy</a>, <a href="..\unrealshare\scriptedpawn.html#AttitudeTo">AttitudeTo</a>, <a href="..\unrealshare\scriptedpawn.html#AttitudeToCreature">AttitudeToCreature</a>, <a href="..\unrealshare\scriptedpawn.html#AttitudeWithFear">AttitudeWithFear</a>, <a href="..\unrealshare\scriptedpawn.html#BeginState">BeginState</a>, <a href="..\unrealshare\scriptedpawn.html#Bump">Bump</a>, <a href="..\unrealshare\scriptedpawn.html#CanFireAtEnemy">CanFireAtEnemy</a>, <a href="..\unrealshare\scriptedpawn.html#CanStakeOut">CanStakeOut</a>, <a href="..\unrealshare\scriptedpawn.html#ChangeDestination">ChangeDestination</a>, <a href="..\unrealshare\scriptedpawn.html#ChooseAttackMode">ChooseAttackMode</a>, <a href="..\unrealshare\scriptedpawn.html#ChooseLeaderAttack">ChooseLeaderAttack</a>, <a href="..\unrealshare\scriptedpawn.html#ChooseTeamAttackFor">ChooseTeamAttackFor</a>, <a href="..\unrealshare\scriptedpawn.html#damageAttitudeTo">damageAttitudeTo</a>, <a href="..\unrealshare\scriptedpawn.html#EndState">EndState</a>, <a href="..\unrealshare\scriptedpawn.html#EnemyAcquired">EnemyAcquired</a>, <a href="..\unrealshare\scriptedpawn.html#EnemyNotVisible">EnemyNotVisible</a>, <a href="..\unrealshare\scriptedpawn.html#Falling">Falling</a>, <a href="..\unrealshare\scriptedpawn.html#FearThisSpot">FearThisSpot</a>, <a href="..\unrealshare\scriptedpawn.html#FindAlarm">FindAlarm</a>, <a href="..\unrealshare\scriptedpawn.html#FindAmbush">FindAmbush</a>, <a href="..\unrealshare\scriptedpawn.html#FindBestPathToward">FindBestPathToward</a>, <a href="..\unrealshare\scriptedpawn.html#FindNextPatrol">FindNextPatrol</a>, <a href="..\unrealshare\scriptedpawn.html#FindShootTarget">FindShootTarget</a>, <a href="..\unrealshare\scriptedpawn.html#FindViewSpot">FindViewSpot</a>, <a href="..\unrealshare\scriptedpawn.html#FireProjectile">FireProjectile</a>, <a href="..\unrealshare\scriptedpawn.html#FireWeapon">FireWeapon</a>, <a href="..\unrealshare\scriptedpawn.html#Gibbed">Gibbed</a>, <a href="..\unrealshare\scriptedpawn.html#GiveUpTactical">GiveUpTactical</a>, <a href="..\unrealshare\scriptedpawn.html#HearNoise">HearNoise</a>, <a href="..\unrealshare\scriptedpawn.html#HitWall">HitWall</a>, <a href="..\unrealshare\scriptedpawn.html#InitAmbushLoc">InitAmbushLoc</a>, <a href="..\unrealshare\scriptedpawn.html#InitPatrolLoc">InitPatrolLoc</a>, <a href="..\unrealshare\scriptedpawn.html#JumpOffPawn">JumpOffPawn</a>, <a href="..\unrealshare\scriptedpawn.html#JumpOutOfWater">JumpOutOfWater</a>, <a href="..\unrealshare\scriptedpawn.html#KeepAttacking">KeepAttacking</a>, <a href="..\unrealshare\scriptedpawn.html#Killed">Killed</a>, <a href="..\unrealshare\scriptedpawn.html#Landed">Landed</a>, <a href="..\unrealshare\scriptedpawn.html#LongFall">LongFall</a>, <a href="..\unrealshare\scriptedpawn.html#MayFall">MayFall</a>, <a href="..\unrealshare\scriptedpawn.html#MeleeDamageTarget">MeleeDamageTarget</a>, <a href="..\unrealshare\scriptedpawn.html#NearWall">NearWall</a>, <a href="..\unrealshare\scriptedpawn.html#NeedToTurn">NeedToTurn</a>, <a href="..\unrealshare\scriptedpawn.html#PickDestination">PickDestination</a>, <a href="..\unrealshare\scriptedpawn.html#PickGuardDestination">PickGuardDestination</a>, <a href="..\unrealshare\scriptedpawn.html#PickNextSpot">PickNextSpot</a>, <a href="..\unrealshare\scriptedpawn.html#PickThreatenDestination">PickThreatenDestination</a>, <a href="..\unrealshare\scriptedpawn.html#PlayAcquisitionSound">PlayAcquisitionSound</a>, <a href="..\unrealshare\scriptedpawn.html#PlayChallenge">PlayChallenge</a>, <a href="..\unrealshare\scriptedpawn.html#PlayCombatMove">PlayCombatMove</a>, <a href="..\unrealshare\scriptedpawn.html#PlayDeathHit">PlayDeathHit</a>, <a href="..\unrealshare\scriptedpawn.html#PlayFearSound">PlayFearSound</a>, <a href="..\unrealshare\scriptedpawn.html#PlayFiring">PlayFiring</a>, <a href="..\unrealshare\scriptedpawn.html#PlayGutHit">PlayGutHit</a>, <a href="..\unrealshare\scriptedpawn.html#PlayHeadHit">PlayHeadHit</a>, <a href="..\unrealshare\scriptedpawn.html#PlayHit">PlayHit</a>, <a href="..\unrealshare\scriptedpawn.html#PlayHitAnim">PlayHitAnim</a>, <a href="..\unrealshare\scriptedpawn.html#PlayLeftHit">PlayLeftHit</a>, <a href="..\unrealshare\scriptedpawn.html#PlayMeleeAttack">PlayMeleeAttack</a>, <a href="..\unrealshare\scriptedpawn.html#PlayRangedAttack">PlayRangedAttack</a>, <a href="..\unrealshare\scriptedpawn.html#PlayRightHit">PlayRightHit</a>, <a href="..\unrealshare\scriptedpawn.html#PlayRoamingSound">PlayRoamingSound</a>, <a href="..\unrealshare\scriptedpawn.html#PlayThreateningSound">PlayThreateningSound</a>, <a href="..\unrealshare\scriptedpawn.html#PlayWaitAround">PlayWaitAround</a>, <a href="..\unrealshare\scriptedpawn.html#PreBeginPlay">PreBeginPlay</a>, <a href="..\unrealshare\scriptedpawn.html#ReachedHome">ReachedHome</a>, <a href="..\unrealshare\scriptedpawn.html#RelativeStrength">RelativeStrength</a>, <a href="..\unrealshare\scriptedpawn.html#SeePlayer">SeePlayer</a>, <a href="..\unrealshare\scriptedpawn.html#SetAlarm">SetAlarm</a>, <a href="..\unrealshare\scriptedpawn.html#SetAlertness">SetAlertness</a>, <a href="..\unrealshare\scriptedpawn.html#SetEnemy">SetEnemy</a>, <a href="..\unrealshare\scriptedpawn.html#SetFall">SetFall</a>, <a href="..\unrealshare\scriptedpawn.html#SetHome">SetHome</a>, <a href="..\unrealshare\scriptedpawn.html#SetMovementPhysics">SetMovementPhysics</a>, <a href="..\unrealshare\scriptedpawn.html#SetTeam">SetTeam</a>, <a href="..\unrealshare\scriptedpawn.html#SpawnCarcass">SpawnCarcass</a>, <a href="..\unrealshare\scriptedpawn.html#SpawnGibbedCarcass">SpawnGibbedCarcass</a>, <a href="..\unrealshare\scriptedpawn.html#Speak">Speak</a>, <a href="..\unrealshare\scriptedpawn.html#SpeakOrderTo">SpeakOrderTo</a>, <a href="..\unrealshare\scriptedpawn.html#SpeakTo">SpeakTo</a>, <a href="..\unrealshare\scriptedpawn.html#StartRoaming">StartRoaming</a>, <a href="..\unrealshare\scriptedpawn.html#StopFiring">StopFiring</a>, <a href="..\unrealshare\scriptedpawn.html#StopWaiting">StopWaiting</a>, <a href="..\unrealshare\scriptedpawn.html#StrafeAdjust">StrafeAdjust</a>, <a href="..\unrealshare\scriptedpawn.html#StrafeFromDamage">StrafeFromDamage</a>, <a href="..\unrealshare\scriptedpawn.html#TakeDamage">TakeDamage</a>, <a href="..\unrealshare\scriptedpawn.html#TestDirection">TestDirection</a>, <a href="..\unrealshare\scriptedpawn.html#Timer">Timer</a>, <a href="..\unrealshare\scriptedpawn.html#Touch">Touch</a>, <a href="..\unrealshare\scriptedpawn.html#Trigger">Trigger</a>, <a href="..\unrealshare\scriptedpawn.html#TriggerFirstHate">TriggerFirstHate</a>, <a href="..\unrealshare\scriptedpawn.html#TryToCrouch">TryToCrouch</a>, <a href="..\unrealshare\scriptedpawn.html#TryToDuck">TryToDuck</a>, <a href="..\unrealshare\scriptedpawn.html#ValidRecovery">ValidRecovery</a>, <a href="..\unrealshare\scriptedpawn.html#WarnTarget">WarnTarget</a>, <a href="..\unrealshare\scriptedpawn.html#WhatToDoNext">WhatToDoNext</a>, <a href="..\unrealshare\scriptedpawn.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\pawn.html">Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\pawn.html#actorReachable">actorReachable</a>, <a href="..\engine\pawn.html#AddInventory">AddInventory</a>, <a href="..\engine\pawn.html#AddPawn">AddPawn</a>, <a href="..\engine\pawn.html#AddVelocity">AddVelocity</a>, <a href="..\engine\pawn.html#AdjustAim">AdjustAim</a>, <a href="..\engine\pawn.html#AdjustDesireFor">AdjustDesireFor</a>, <a href="..\engine\pawn.html#AdjustHitLocation">AdjustHitLocation</a>, <a href="..\engine\pawn.html#AdjustToss">AdjustToss</a>, <a href="..\engine\pawn.html#AlterDestination">AlterDestination</a>, <a href="..\engine\pawn.html#BaseChange">BaseChange</a>, <a href="..\engine\pawn.html#BecomeViewTarget">BecomeViewTarget</a>, <a href="..\engine\pawn.html#BeginState">BeginState</a>, <a href="..\engine\pawn.html#BotVoiceMessage">BotVoiceMessage</a>, <a href="..\engine\pawn.html#CanSee">CanSee</a>, <a href="..\engine\pawn.html#ChangedWeapon">ChangedWeapon</a>, <a href="..\engine\pawn.html#CheckFutureSight">CheckFutureSight</a>, <a href="..\engine\pawn.html#CheckValidSkinPackage">CheckValidSkinPackage</a>, <a href="..\engine\pawn.html#CheckWaterJump">CheckWaterJump</a>, <a href="..\engine\pawn.html#ClearPaths">ClearPaths</a>, <a href="..\engine\pawn.html#ClientDying">ClientDying</a>, <a href="..\engine\pawn.html#ClientGameEnded">ClientGameEnded</a>, <a href="..\engine\pawn.html#ClientHearSound">ClientHearSound</a>, <a href="..\engine\pawn.html#ClientMessage">ClientMessage</a>, <a href="..\engine\pawn.html#ClientPutDown">ClientPutDown</a>, <a href="..\engine\pawn.html#ClientReStart">ClientReStart</a>, <a href="..\engine\pawn.html#ClientSetLocation">ClientSetLocation</a>, <a href="..\engine\pawn.html#ClientSetRotation">ClientSetRotation</a>, <a href="..\engine\pawn.html#ClientVoiceMessage">ClientVoiceMessage</a>, <a href="..\engine\pawn.html#damageAttitudeTo">damageAttitudeTo</a>, <a href="..\engine\pawn.html#DeleteInventory">DeleteInventory</a>, <a href="..\engine\pawn.html#Destroyed">Destroyed</a>, <a href="..\engine\pawn.html#Died">Died</a>, <a href="..\engine\pawn.html#DropDecoration">DropDecoration</a>, <a href="..\engine\pawn.html#EAdjustJump">EAdjustJump</a>, <a href="..\engine\pawn.html#EncroachedBy">EncroachedBy</a>, <a href="..\engine\pawn.html#EncroachingOn">EncroachingOn</a>, <a href="..\engine\pawn.html#EnemyNotVisible">EnemyNotVisible</a>, <a href="..\engine\pawn.html#Falling">Falling</a>, <a href="..\engine\pawn.html#FearThisSpot">FearThisSpot</a>, <a href="..\engine\pawn.html#FellOutOfWorld">FellOutOfWorld</a>, <a href="..\engine\pawn.html#FindBestInventoryPath">FindBestInventoryPath</a>, <a href="..\engine\pawn.html#FindInventoryType">FindInventoryType</a>, <a href="..\engine\pawn.html#FindPathTo">FindPathTo</a>, <a href="..\engine\pawn.html#FindPathToward">FindPathToward</a>, <a href="..\engine\pawn.html#FindRandomDest">FindRandomDest</a>, <a href="..\engine\pawn.html#FindStairRotation">FindStairRotation</a>, <a href="..\engine\pawn.html#FireWeapon">FireWeapon</a>, <a href="..\engine\pawn.html#FootZoneChange">FootZoneChange</a>, <a href="..\engine\pawn.html#Gasp">Gasp</a>, <a href="..\engine\pawn.html#GetHumanName">GetHumanName</a>, <a href="..\engine\pawn.html#GetMultiSkin">GetMultiSkin</a>, <a href="..\engine\pawn.html#GetRating">GetRating</a>, <a href="..\engine\pawn.html#Gibbed">Gibbed</a>, <a href="..\engine\pawn.html#gibbedBy">gibbedBy</a>, <a href="..\engine\pawn.html#GrabDecoration">GrabDecoration</a>, <a href="..\engine\pawn.html#HandleHelpMessageFrom">HandleHelpMessageFrom</a>, <a href="..\engine\pawn.html#HeadZoneChange">HeadZoneChange</a>, <a href="..\engine\pawn.html#HearNoise">HearNoise</a>, <a href="..\engine\pawn.html#HidePlayer">HidePlayer</a>, <a href="..\engine\pawn.html#InitPlayerReplicationInfo">InitPlayerReplicationInfo</a>, <a href="..\engine\pawn.html#JumpOffPawn">JumpOffPawn</a>, <a href="..\engine\pawn.html#Killed">Killed</a>, <a href="..\engine\pawn.html#KillMessage">KillMessage</a>, <a href="..\engine\pawn.html#Landed">Landed</a>, <a href="..\engine\pawn.html#LineOfSightTo">LineOfSightTo</a>, <a href="..\engine\pawn.html#LongFall">LongFall</a>, <a href="..\engine\pawn.html#MayFall">MayFall</a>, <a href="..\engine\pawn.html#MoveTo">MoveTo</a>, <a href="..\engine\pawn.html#MoveToward">MoveToward</a>, <a href="..\engine\pawn.html#NextItem">NextItem</a>, <a href="..\engine\pawn.html#PainTimer">PainTimer</a>, <a href="..\engine\pawn.html#PickAnyTarget">PickAnyTarget</a>, <a href="..\engine\pawn.html#PickTarget">PickTarget</a>, <a href="..\engine\pawn.html#PickWallAdjust">PickWallAdjust</a>, <a href="..\engine\pawn.html#PlayBigDeath">PlayBigDeath</a>, <a href="..\engine\pawn.html#PlayCrawling">PlayCrawling</a>, <a href="..\engine\pawn.html#PlayDeathHit">PlayDeathHit</a>, <a href="..\engine\pawn.html#PlayDive">PlayDive</a>, <a href="..\engine\pawn.html#PlayDuck">PlayDuck</a>, <a href="..\engine\pawn.html#PlayDying">PlayDying</a>, <a href="..\engine\pawn.html#PlayerTimeOut">PlayerTimeOut</a>, <a href="..\engine\pawn.html#PlayFiring">PlayFiring</a>, <a href="..\engine\pawn.html#PlayGutDeath">PlayGutDeath</a>, <a href="..\engine\pawn.html#PlayGutHit">PlayGutHit</a>, <a href="..\engine\pawn.html#PlayHeadDeath">PlayHeadDeath</a>, <a href="..\engine\pawn.html#PlayHeadHit">PlayHeadHit</a>, <a href="..\engine\pawn.html#PlayHit">PlayHit</a>, <a href="..\engine\pawn.html#PlayInAir">PlayInAir</a>, <a href="..\engine\pawn.html#PlayLanded">PlayLanded</a>, <a href="..\engine\pawn.html#PlayLeftDeath">PlayLeftDeath</a>, <a href="..\engine\pawn.html#PlayLeftHit">PlayLeftHit</a>, <a href="..\engine\pawn.html#PlayMovingAttack">PlayMovingAttack</a>, <a href="..\engine\pawn.html#PlayOutOfWater">PlayOutOfWater</a>, <a href="..\engine\pawn.html#PlayPatrolStop">PlayPatrolStop</a>, <a href="..\engine\pawn.html#PlayRecoil">PlayRecoil</a>, <a href="..\engine\pawn.html#PlayRightDeath">PlayRightDeath</a>, <a href="..\engine\pawn.html#PlayRightHit">PlayRightHit</a>, <a href="..\engine\pawn.html#PlayRunning">PlayRunning</a>, <a href="..\engine\pawn.html#PlayTakeHit">PlayTakeHit</a>, <a href="..\engine\pawn.html#PlayTakeHitSound">PlayTakeHitSound</a>, <a href="..\engine\pawn.html#PlayThreatening">PlayThreatening</a>, <a href="..\engine\pawn.html#PlayTurning">PlayTurning</a>, <a href="..\engine\pawn.html#PlayVictoryDance">PlayVictoryDance</a>, <a href="..\engine\pawn.html#PlayWaiting">PlayWaiting</a>, <a href="..\engine\pawn.html#PlayWaitingAmbush">PlayWaitingAmbush</a>, <a href="..\engine\pawn.html#PlayWalking">PlayWalking</a>, <a href="..\engine\pawn.html#PlayWeaponSwitch">PlayWeaponSwitch</a>, <a href="..\engine\pawn.html#pointReachable">pointReachable</a>, <a href="..\engine\pawn.html#PostBeginPlay">PostBeginPlay</a>, <a href="..\engine\pawn.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="..\engine\pawn.html#PreBeginPlay">PreBeginPlay</a>, <a href="..\engine\pawn.html#PreSetMovement">PreSetMovement</a>, <a href="..\engine\pawn.html#ReceiveLocalizedMessage">ReceiveLocalizedMessage</a>, <a href="..\engine\pawn.html#RemovePawn">RemovePawn</a>, <a href="..\engine\pawn.html#RenderOverlays">RenderOverlays</a>, <a href="..\engine\pawn.html#RestartPlayer">RestartPlayer</a>, <a href="..\engine\pawn.html#SeePlayer">SeePlayer</a>, <a href="..\engine\pawn.html#SendGlobalMessage">SendGlobalMessage</a>, <a href="..\engine\pawn.html#SendTeamMessage">SendTeamMessage</a>, <a href="..\engine\pawn.html#SendVoiceMessage">SendVoiceMessage</a>, <a href="..\engine\pawn.html#SetDefaultDisplayProperties">SetDefaultDisplayProperties</a>, <a href="..\engine\pawn.html#SetDisplayProperties">SetDisplayProperties</a>, <a href="..\engine\pawn.html#SetMesh">SetMesh</a>, <a href="..\engine\pawn.html#SetMovementPhysics">SetMovementPhysics</a>, <a href="..\engine\pawn.html#SetMultiSkin">SetMultiSkin</a>, <a href="..\engine\pawn.html#SetSkinElement">SetSkinElement</a>, <a href="..\engine\pawn.html#ShakeView">ShakeView</a>, <a href="..\engine\pawn.html#SpawnCarcass">SpawnCarcass</a>, <a href="..\engine\pawn.html#SpawnGibbedCarcass">SpawnGibbedCarcass</a>, <a href="..\engine\pawn.html#SpecialFire">SpecialFire</a>, <a href="..\engine\pawn.html#SpeechTimer">SpeechTimer</a>, <a href="..\engine\pawn.html#StopFiring">StopFiring</a>, <a href="..\engine\pawn.html#StopWaiting">StopWaiting</a>, <a href="..\engine\pawn.html#StrafeFacing">StrafeFacing</a>, <a href="..\engine\pawn.html#StrafeTo">StrafeTo</a>, <a href="..\engine\pawn.html#SwitchToBestWeapon">SwitchToBestWeapon</a>, <a href="..\engine\pawn.html#TakeDamage">TakeDamage</a>, <a href="..\engine\pawn.html#TakeFallingDamage">TakeFallingDamage</a>, <a href="..\engine\pawn.html#TeamBroadcast">TeamBroadcast</a>, <a href="..\engine\pawn.html#TeamMessage">TeamMessage</a>, <a href="..\engine\pawn.html#Timer">Timer</a>, <a href="..\engine\pawn.html#TossWeapon">TossWeapon</a>, <a href="..\engine\pawn.html#TraceShot">TraceShot</a>, <a href="..\engine\pawn.html#TurnTo">TurnTo</a>, <a href="..\engine\pawn.html#TurnToward">TurnToward</a>, <a href="..\engine\pawn.html#TweenToFalling">TweenToFalling</a>, <a href="..\engine\pawn.html#TweenToFighter">TweenToFighter</a>, <a href="..\engine\pawn.html#TweenToPatrolStop">TweenToPatrolStop</a>, <a href="..\engine\pawn.html#TweenToRunning">TweenToRunning</a>, <a href="..\engine\pawn.html#TweenToSwimming">TweenToSwimming</a>, <a href="..\engine\pawn.html#TweenToWaiting">TweenToWaiting</a>, <a href="..\engine\pawn.html#TweenToWalking">TweenToWalking</a>, <a href="..\engine\pawn.html#UnderLift">UnderLift</a>, <a href="..\engine\pawn.html#UpdateEyeHeight">UpdateEyeHeight</a>, <a href="..\engine\pawn.html#UpdateTactics">UpdateTactics</a>, <a href="..\engine\pawn.html#WaitForLanding">WaitForLanding</a>, <a href="..\engine\pawn.html#WalkTexture">WalkTexture</a>, <a href="..\engine\pawn.html#WarnTarget">WarnTarget</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Invulnerable <a href="..\Source_unreali\mercenary.html#954" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Invulnerable <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AnimEnd+Invulnerable">AnimEnd</a>, <a href="#_TryToDuck+Invulnerable">TryToDuck</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>RangedAttack <a href="..\Source_unreali\mercenary.html#988" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> RangedAttack <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+RangedAttack">BeginState</a>, <a href="#_TryToDuck+RangedAttack">TryToDuck</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>SpeakOrders <a href="..\Source_unreali\mercenary.html#895" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> SpeakOrders <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_EnemyNotVisible+SpeakOrders">EnemyNotVisible</a>, <a href="#_Killed+SpeakOrders">Killed</a>, <a href="#_TakeDamage+SpeakOrders">TakeDamage</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bAlertedTeam" class="hidden"></a>bAlertedTeam <a href="..\Source_unreali\mercenary.html#127" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bAlertedTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bButtonPusher" class="hidden"></a>bButtonPusher <a href="..\Source_unreali\mercenary.html#120" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bButtonPusher;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bCanFireWhileInvulnerable" class="hidden"></a>bCanFireWhileInvulnerable <a href="..\Source_unreali\mercenary.html#125" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bCanFireWhileInvulnerable;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bHasInvulnerableShield" class="hidden"></a>bHasInvulnerableShield <a href="..\Source_unreali\mercenary.html#124" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bHasInvulnerableShield;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bIsInvulnerable" class="hidden"></a>bIsInvulnerable <a href="..\Source_unreali\mercenary.html#126" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bIsInvulnerable;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bPatroling" class="hidden"></a>bPatroling <a href="..\Source_unreali\mercenary.html#123" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPatroling;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bSquatter" class="hidden"></a>bSquatter <a href="..\Source_unreali\mercenary.html#122" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSquatter;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTalker" class="hidden"></a>bTalker <a href="..\Source_unreali\mercenary.html#121" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTalker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_invulnerableCharge" class="hidden"></a>invulnerableCharge <a href="..\Source_unreali\mercenary.html#147" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> invulnerableCharge;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_invulnerableTime" class="hidden"></a>invulnerableTime <a href="..\Source_unreali\mercenary.html#146" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> invulnerableTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_OrdersGiven" class="hidden"></a>OrdersGiven <a href="..\Source_unreali\mercenary.html#119" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">byte</font> OrdersGiven;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_phrase" class="hidden"></a>phrase <a href="..\Source_unreali\mercenary.html#142" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">name</font> phrase;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_phrasesyllable" class="hidden"></a>phrasesyllable <a href="..\Source_unreali\mercenary.html#143" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">byte</font> phrasesyllable;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PunchDamage" class="hidden"></a>PunchDamage <a href="..\Source_unreali\mercenary.html#118" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">byte</font> PunchDamage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_sprayoffset" class="hidden"></a>sprayoffset <a href="..\Source_unreali\mercenary.html#145" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> sprayoffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_voicePitch" class="hidden"></a>voicePitch <a href="..\Source_unreali\mercenary.html#144" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> voicePitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Sounds</h3>
+<h4><a name="_breath" class="hidden"></a>breath <a href="..\Source_unreali\mercenary.html#140" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> breath;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CheckWeapon" class="hidden"></a>CheckWeapon <a href="..\Source_unreali\mercenary.html#132" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> CheckWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Flip" class="hidden"></a>Flip <a href="..\Source_unreali\mercenary.html#131" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> Flip;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_footstep1" class="hidden"></a>footstep1 <a href="..\Source_unreali\mercenary.html#141" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> footstep1;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Punch" class="hidden"></a>Punch <a href="..\Source_unreali\mercenary.html#129" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> Punch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PunchHit" class="hidden"></a>PunchHit <a href="..\Source_unreali\mercenary.html#130" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> PunchHit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_syllable1" class="hidden"></a>syllable1 <a href="..\Source_unreali\mercenary.html#134" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable1;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_syllable2" class="hidden"></a>syllable2 <a href="..\Source_unreali\mercenary.html#135" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable2;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_syllable3" class="hidden"></a>syllable3 <a href="..\Source_unreali\mercenary.html#136" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable3;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_syllable4" class="hidden"></a>syllable4 <a href="..\Source_unreali\mercenary.html#137" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable4;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_syllable5" class="hidden"></a>syllable5 <a href="..\Source_unreali\mercenary.html#138" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable5;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_syllable6" class="hidden"></a>syllable6 <a href="..\Source_unreali\mercenary.html#139" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> syllable6;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WeaponSpray" class="hidden"></a>WeaponSpray <a href="..\Source_unreali\mercenary.html#133" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Sounds) <font class="source_type">sound</font> WeaponSpray;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AnimEnd+Invulnerable" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AnimEnd <span class="function_state">Invulnerable</span> <a href="..\Source_unreali\mercenary.html#962" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> AnimEnd ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_AttitudeToCreature+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> AttitudeToCreature <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#277" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\pawn.html#EAttitude" class="source">eAttitude</a></font> AttitudeToCreature (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BecomeInvulnerable+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BecomeInvulnerable <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#209" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BecomeInvulnerable ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BecomeNormal+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BecomeNormal <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#223" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BecomeNormal ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+RangedAttack" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">RangedAttack</span> <a href="..\Source_unreali\mercenary.html#998" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_CanFireAtEnemy+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> CanFireAtEnemy <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#760" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> CanFireAtEnemy ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ChooseLeaderAttack+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ChooseLeaderAttack <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#878" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ChooseLeaderAttack ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EnemyNotVisible+SpeakOrders" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EnemyNotVisible <span class="function_state">SpeakOrders</span> <a href="..\Source_unreali\mercenary.html#921" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EnemyNotVisible ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FootZoneChange+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> FootZoneChange <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#176" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> FootZoneChange (<font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> newFootZone)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HeadZoneChange+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> HeadZoneChange <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#186" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> HeadZoneChange (<font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> newHeadZone)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HitDamageTarget+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> HitDamageTarget <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#835" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> HitDamageTarget ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Killed+SpeakOrders" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Killed <span class="function_state">SpeakOrders</span> <a href="..\Source_unreali\mercenary.html#900" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Killed (<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Killer, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Other, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PainTimer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PainTimer <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#235" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PainTimer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayBigDeath+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayBigDeath <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#688" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayBigDeath (<font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayChallenge+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayChallenge <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#464" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayChallenge ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayDive+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayDive <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#484" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayDive ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayGutDeath+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayGutDeath <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#729" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayGutDeath (<font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayHeadDeath+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayHeadDeath <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#694" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayHeadDeath (<font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayInAir+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayInAir <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#598" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayInAir ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayLanded+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayLanded <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#608" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayLanded (<font class="source_keyword">float</font> impactVel)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayLeftDeath+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayLeftDeath <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#717" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayLeftDeath (<font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayMeleeAttack+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayMeleeAttack <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#746" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayMeleeAttack ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayMovingAttack+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayMovingAttack <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#613" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayMovingAttack ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayOutOfWater+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayOutOfWater <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#603" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayOutOfWater ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayPatrolStop+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayPatrolStop <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#453" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayPatrolStop ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayRangedAttack+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayRangedAttack <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#841" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayRangedAttack ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayRightDeath+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayRightDeath <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#723" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayRightDeath (<font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayRunning+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayRunning <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#551" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayRunning ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlaySwimming+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlaySwimming <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#587" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlaySwimming ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayThreatening+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayThreatening <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#650" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayThreatening ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayTurning+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayTurning <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#678" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayTurning ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayVictoryDance+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayVictoryDance <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#735" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayVictoryDance ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayWaiting+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayWaiting <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#360" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayWaiting ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayWaitingAmbush+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayWaitingAmbush <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#459" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayWaitingAmbush ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PlayWalking+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PlayWalking <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#570" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PlayWalking ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PreBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PreBeginPlay <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#152" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PreBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetMovementPhysics+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetMovementPhysics <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#196" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetMovementPhysics ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpawnRocket+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SpawnRocket <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#789" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SpawnRocket ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Speak+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Speak <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#323" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Speak ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpeakOrderTo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SpeakOrderTo <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#301" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SpeakOrderTo (<font class="source_type"><a href="..\unrealshare\scriptedpawn.html" class="source">ScriptedPawn</a></font> TeamMember)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpeakTo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SpeakTo <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#314" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SpeakTo (<font class="source_type"><a href="..\unrealshare\scriptedpawn.html" class="source">ScriptedPawn</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SpeechTimer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SpeechTimer <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#288" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SpeechTimer ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SprayTarget+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SprayTarget <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#794" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SprayTarget ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Step+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Step <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#350" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Step ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TakeDamage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TakeDamage <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#263" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TakeDamage (<font class="source_keyword">int</font> Damage, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> instigatedBy, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> hitlocation, 
+                        <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> momentum, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TakeDamage+SpeakOrders" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TakeDamage <span class="function_state">SpeakOrders</span> <a href="..\Source_unreali\mercenary.html#907" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TakeDamage (<font class="source_keyword">int</font> Damage, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> instigatedBy, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> hitlocation, 
+                            <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> momentum, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">damageType</a></font>)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TryToDuck+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TryToDuck <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#204" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TryToDuck (<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> duckDir, <font class="source_keyword">bool</font> bReversed)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TryToDuck+Invulnerable" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TryToDuck <span class="function_state">Invulnerable</span> <a href="..\Source_unreali\mercenary.html#958" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TryToDuck (<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> duckDir, <font class="source_keyword">bool</font> bReversed)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TryToDuck+RangedAttack" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TryToDuck <span class="function_state">RangedAttack</span> <a href="..\Source_unreali\mercenary.html#992" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TryToDuck (<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> duckDir, <font class="source_keyword">bool</font> bReversed)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TweenToFalling+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TweenToFalling <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#593" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TweenToFalling ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TweenToFighter+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TweenToFighter <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#489" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TweenToFighter (<font class="source_keyword">float</font> tweentime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TweenToPatrolStop+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TweenToPatrolStop <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#541" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TweenToPatrolStop (<font class="source_keyword">float</font> tweentime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TweenToRunning+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TweenToRunning <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#502" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TweenToRunning (<font class="source_keyword">float</font> tweentime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TweenToSwimming+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TweenToSwimming <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#581" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TweenToSwimming (<font class="source_keyword">float</font> tweentime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TweenToWaiting+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TweenToWaiting <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#526" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TweenToWaiting (<font class="source_keyword">float</font> tweentime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TweenToWalking+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TweenToWalking <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#516" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TweenToWalking (<font class="source_keyword">float</font> tweentime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WalkStep+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> WalkStep <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#355" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> WalkStep ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_WarnTarget+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> WarnTarget <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#257" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> WarnTarget (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> shooter, <font class="source_keyword">float</font> projSpeed, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> FireDir)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ZoneChange+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ZoneChange <span class="function_state"></span> <a href="..\Source_unreali\mercenary.html#164" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ZoneChange (<font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> newZone)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     PunchDamage=<font class="source_int">20</font>
+     RangedProjectile=<font class="source_type"><a href="mercrocket.html" class="source">MercRocket</a></font>
+     Punch=swat1mr
+     PunchHit=hit1mr
+     Flip=flip1mr
+     CheckWeapon=weapon1mr
+     WeaponSpray=spray1mr
+     syllable1=syl1mr
+     syllable2=syl2mr
+     syllable3=syl3mr
+     syllable4=syl4mr
+     syllable5=syl5mr
+     syllable6=syl6mr
+     footstep1=walk2mr
+     bCanFireWhileInvulnerable=<font class="source_keyword">false</font>
+     bHasInvulnerableShield=<font class="source_keyword">true</font>
+     CarcassType=<font class="source_type"><a href="merccarcass.html" class="source">MercCarcass</a></font>
+     InvulnerableCharge=+<font class="source_int">00009.000000</font>
+     Aggressiveness=+<font class="source_int">00000.500000</font>
+     ReFireRate=+<font class="source_int">00000.500000</font>
+     bHasRangedAttack=<font class="source_keyword">True</font>
+     bMovingRangedAttack=<font class="source_keyword">True</font>
+     Acquire=chlng2mr
+     Fear=chlng3mr
+     Roam=nearbymr
+     Threaten=chlng3mr
+     <font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font>=<font class="source_int">180</font>
+     UnderWaterTime=-<font class="source_int">00001.000000</font>
+     bCanStrafe=<font class="source_keyword">True</font>
+     bGreenBlood=<font class="source_keyword">True</font>
+     MeleeRange=+<font class="source_int">00050.000000</font>
+     Intelligence=BRAINS_HUMAN
+     GroundSpeed=+<font class="source_int">00280.000000</font>
+     AirSpeed=+<font class="source_int">00300.000000</font>
+     AccelRate=+<font class="source_int">00800.000000</font>
+     MaxStepHeight=+<font class="source_int">00025.000000</font>
+     HitSound1=injur2mr
+     HitSound2=injur3mr
+     Land=land1mr
+     Die=death1mr
+     CombatStyle=+<font class="source_int">00000.500000</font>
+     DrawType=DT_Mesh
+     <font class="source_type">Mesh</font>=Merc
+     <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>=Silver
+     bMeshCurvy=<font class="source_keyword">False</font>
+     <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font>=amb1mr
+     CollisionRadius=+<font class="source_int">00035.000000</font>
+     CollisionHeight=+<font class="source_int">00048.000000</font>
+     Mass=+<font class="source_int">00150.000000</font>
+     Buoyancy=+<font class="source_int">00150.000000</font>
+     RotationRate=(Pitch=<font class="source_int">3072</font>,Yaw=<font class="source_int">65000</font>,Roll=<font class="source_int">0</font>)
+     LightEffect=LE_NonIncidence
+     LightBrightness=<font class="source_int">255</font>
+     LightHue=<font class="source_int">170</font>
+     LightRadius=<font class="source_int">12</font>
+     LightSaturation=<font class="source_int">96</font>
+     TransientSoundVolume=+<font class="source_int">00002.000000</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="unreali-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_unreali\mercenary.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Mercenary">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="merccarcass.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="mercenaryelite.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:04.765 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

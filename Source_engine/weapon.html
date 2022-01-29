@@ -1,0 +1,1923 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Engine.Weapon</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\weapon.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Weapon">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="waybeacon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="zoneinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\weapon.html">Weapon</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+00562<br>
+00563<br>
+00564<br>
+00565<br>
+00566<br>
+00567<br>
+00568<br>
+00569<br>
+00570<br>
+00571<br>
+00572<br>
+00573<br>
+00574<br>
+00575<br>
+00576<br>
+00577<br>
+00578<br>
+00579<br>
+00580<br>
+00581<br>
+00582<br>
+00583<br>
+00584<br>
+00585<br>
+00586<br>
+00587<br>
+00588<br>
+00589<br>
+00590<br>
+00591<br>
+00592<br>
+00593<br>
+00594<br>
+00595<br>
+00596<br>
+00597<br>
+00598<br>
+00599<br>
+00600<br>
+00601<br>
+00602<br>
+00603<br>
+00604<br>
+00605<br>
+00606<br>
+00607<br>
+00608<br>
+00609<br>
+00610<br>
+00611<br>
+00612<br>
+00613<br>
+00614<br>
+00615<br>
+00616<br>
+00617<br>
+00618<br>
+00619<br>
+00620<br>
+00621<br>
+00622<br>
+00623<br>
+00624<br>
+00625<br>
+00626<br>
+00627<br>
+00628<br>
+00629<br>
+00630<br>
+00631<br>
+00632<br>
+00633<br>
+00634<br>
+00635<br>
+00636<br>
+00637<br>
+00638<br>
+00639<br>
+00640<br>
+00641<br>
+00642<br>
+00643<br>
+00644<br>
+00645<br>
+00646<br>
+00647<br>
+00648<br>
+00649<br>
+00650<br>
+00651<br>
+00652<br>
+00653<br>
+00654<br>
+00655<br>
+00656<br>
+00657<br>
+00658<br>
+00659<br>
+00660<br>
+00661<br>
+00662<br>
+00663<br>
+00664<br>
+00665<br>
+00666<br>
+00667<br>
+00668<br>
+00669<br>
+00670<br>
+00671<br>
+00672<br>
+00673<br>
+00674<br>
+00675<br>
+00676<br>
+00677<br>
+00678<br>
+00679<br>
+00680<br>
+00681<br>
+00682<br>
+00683<br>
+00684<br>
+00685<br>
+00686<br>
+00687<br>
+00688<br>
+00689<br>
+00690<br>
+00691<br>
+00692<br>
+00693<br>
+00694<br>
+00695<br>
+00696<br>
+00697<br>
+00698<br>
+00699<br>
+00700<br>
+00701<br>
+00702<br>
+00703<br>
+00704<br>
+00705<br>
+00706<br>
+00707<br>
+00708<br>
+00709<br>
+00710<br>
+00711<br>
+00712<br>
+00713<br>
+00714<br>
+00715<br>
+00716<br>
+00717<br>
+00718<br>
+00719<br>
+00720<br>
+00721<br>
+00722<br>
+00723<br>
+00724<br>
+00725<br>
+00726<br>
+00727<br>
+00728<br>
+00729<br>
+00730<br>
+00731<br>
+00732<br>
+00733<br>
+00734<br>
+00735<br>
+00736<br>
+00737<br>
+00738<br>
+00739<br>
+00740<br>
+00741<br>
+00742<br>
+00743<br>
+00744<br>
+00745<br>
+00746<br>
+00747<br>
+00748<br>
+00749<br>
+00750<br>
+00751<br>
+00752<br>
+00753<br>
+00754<br>
+00755<br>
+00756<br>
+00757<br>
+00758<br>
+00759<br>
+00760<br>
+00761<br>
+00762<br>
+00763<br>
+00764<br>
+00765<br>
+00766<br>
+00767<br>
+00768<br>
+00769<br>
+00770<br>
+00771<br>
+00772<br>
+00773<br>
+00774<br>
+00775<br>
+00776<br>
+00777<br>
+00778<br>
+00779<br>
+00780<br>
+00781<br>
+00782<br>
+00783<br>
+00784<br>
+00785<br>
+00786<br>
+00787<br>
+00788<br>
+00789<br>
+00790<br>
+00791<br>
+00792<br>
+00793<br>
+00794<br>
+00795<br>
+00796<br>
+00797<br>
+00798<br>
+00799<br>
+00800<br>
+00801<br>
+00802<br>
+00803<br>
+00804<br>
+00805<br>
+00806<br>
+00807<br>
+00808<br>
+00809<br>
+00810<br>
+00811<br>
+00812<br>
+00813<br>
+00814<br>
+00815<br>
+00816<br>
+00817<br>
+00818<br>
+00819<br>
+00820<br>
+00821<br>
+00822<br>
+00823<br>
+00824<br>
+00825<br>
+00826<br>
+00827<br>
+00828<br>
+00829<br>
+00830<br>
+00831<br>
+00832<br>
+00833<br>
+00834<br>
+00835<br>
+00836<br>
+00837<br>
+00838<br>
+00839<br>
+00840<br>
+00841<br>
+00842<br>
+00843<br>
+00844<br>
+00845<br>
+00846<br>
+00847<br>
+00848<br>
+00849<br>
+00850<br>
+00851<br>
+00852<br>
+00853<br>
+00854<br>
+00855<br>
+00856<br>
+00857<br>
+00858<br>
+00859<br>
+00860<br>
+00861<br>
+00862<br>
+00863<br>
+00864<br>
+00865<br>
+00866<br>
+00867<br>
+00868<br>
+00869<br>
+00870<br>
+00871<br>
+00872<br>
+00873<br>
+00874<br>
+00875<br>
+00876<br>
+00877<br>
+00878<br>
+00879<br>
+00880<br>
+00881<br>
+00882<br>
+00883<br>
+00884<br>
+00885<br>
+00886<br>
+00887<br>
+00888<br>
+00889<br>
+00890<br>
+00891<br>
+00892<br>
+00893<br>
+00894<br>
+00895<br>
+00896<br>
+00897<br>
+00898<br>
+00899<br>
+00900<br>
+00901<br>
+00902<br>
+00903<br>
+00904<br>
+00905<br>
+00906<br>
+00907<br>
+00908<br>
+00909<br>
+00910<br>
+00911<br>
+00912<br>
+00913<br>
+00914<br>
+00915<br>
+00916<br>
+00917<br>
+00918<br>
+00919<br>
+00920<br>
+00921<br>
+00922<br>
+00923<br>
+00924<br>
+00925<br>
+00926<br>
+00927<br>
+00928<br>
+00929<br>
+00930<br>
+00931<br>
+00932<br>
+00933<br>
+00934<br>
+00935<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// Parent class of all weapons.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>
+<a name="5"></a>    <font class="source_keyword2">abstract</font>
+<a name="6"></a>    <font class="source_keyword2">native</font>
+<a name="7"></a>    <font class="source_keyword2">nativereplication</font>;
+<a name="8"></a>
+<a name="9"></a><font class="source_macro">#exec Texture Import File=Textures\Weapon.pcx Name=S_Weapon Mips=Off Flags=2
+</font><a name="10"></a>
+<a name="11"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="12"></a><font class="source_comment">// Weapon ammo/firing information:
+</font><a name="13"></a><font class="source_comment">// Two-element arrays here are defined for normal fire (0) and alt fire (1).
+</font><a name="14"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font>   MaxTargetRange;    <font class="source_comment">// Maximum distance to target.
+</font><a name="15"></a><font class="source_keyword">var</font>() <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\ammo.html" class="source">ammo</a></font>&gt; AmmoName;          <font class="source_comment">// Type of ammo used.
+</font><a name="16"></a><font class="source_keyword">var</font>() <font class="source_keyword">byte</font>    ReloadCount;       <font class="source_comment">// Amount of ammo depletion before reloading. 0 if no reloading is done.
+</font><a name="17"></a><font class="source_keyword">var</font>() <font class="source_keyword">int</font>     PickupAmmoCount;   <font class="source_comment">// Amount of ammo initially in pick-up item.
+</font><a name="18"></a><font class="source_keyword">var</font> travel <font class="source_type"><a href="..\engine\ammo.html" class="source">ammo</a></font> AmmoType;        <font class="source_comment">// Inventory Ammo being used.
+</font><a name="19"></a><font class="source_keyword">var</font>   <font class="source_keyword">bool</font>    bPointing;         <font class="source_comment">// Indicates weapon is being pointed
+</font><a name="20"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>    bInstantHit;       <font class="source_comment">// If true, instant hit rather than projectile firing weapon
+</font><a name="21"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>    bAltInstantHit;    <font class="source_comment">// If true, instant hit rather than projectile firing weapon for AltFire
+</font><a name="22"></a><font class="source_keyword">var</font>(WeaponAI) <font class="source_keyword">bool</font>    bWarnTarget;       <font class="source_comment">// When firing projectile, warn the target
+</font><a name="23"></a><font class="source_keyword">var</font>(WeaponAI) <font class="source_keyword">bool</font>    bAltWarnTarget;    <font class="source_comment">// When firing alternate projectile, warn the target
+</font><a name="24"></a><font class="source_keyword">var</font>   <font class="source_keyword">bool</font>    bWeaponUp;         <font class="source_comment">// Used in Active State
+</font><a name="25"></a><font class="source_keyword">var</font>   <font class="source_keyword">bool</font>    bChangeWeapon;     <font class="source_comment">// Used in Active State
+</font><a name="26"></a><font class="source_keyword">var</font>   <font class="source_keyword">bool</font>    bLockedOn;
+<a name="27"></a><font class="source_keyword">var</font>(WeaponAI) <font class="source_keyword">bool</font>    bSplashDamage;     <font class="source_comment">// used by bot AI
+</font><a name="28"></a><font class="source_keyword">var</font>()         <font class="source_keyword">bool</font>    bCanThrow;    <font class="source_comment">//if true, player can toss this weapon out
+</font><a name="29"></a><font class="source_keyword">var</font>(WeaponAI) <font class="source_keyword">bool</font>    bRecommendSplashDamage; <font class="source_comment">//if true, bot preferentially tries to use splash damage
+</font><a name="30"></a>                                              <font class="source_comment">// rather than direct hits
+</font><a name="31"></a><font class="source_keyword">var</font>(WeaponAI) <font class="source_keyword">bool</font>    bRecommendAltSplashDamage; <font class="source_comment">//if true, bot preferentially tries to use splash damage
+</font><a name="32"></a>                                              <font class="source_comment">// rather than direct hits
+</font><a name="33"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>    bWeaponStay;
+<a name="34"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>    bOwnsCrosshair;   <font class="source_comment">// this weapon is responsible for drawing its own crosshair (in its postrender function)
+</font><a name="35"></a><font class="source_keyword">var</font>   <font class="source_keyword">bool</font>    bHideWeapon;      <font class="source_comment">// if true, weapon is not rendered
+</font><a name="36"></a><font class="source_keyword">var</font>(WeaponAI) <font class="source_keyword">bool</font>    bMeleeWeapon; <font class="source_comment">//Weapon is only a melee weapon
+</font><a name="37"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>    bRapidFire;       <font class="source_comment">// used by human animations in determining firing animation (for still firing)
+</font><a name="38"></a><font class="source_keyword">var</font>   <font class="source_keyword">bool</font>    bSpecialIcon;
+<a name="39"></a>
+<a name="40"></a><font class="source_keyword">var</font>() <font class="source_keyword">float</font>   FiringSpeed;      <font class="source_comment">// used by human animations in determining firing speed
+</font><a name="41"></a>
+<a name="42"></a><font class="source_keyword">var</font>()   <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>  FireOffset;      <font class="source_comment">// Offset from drawing location for projectile/trace start
+</font><a name="43"></a><font class="source_keyword">var</font>()   <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\projectile.html" class="source">projectile</a></font>&gt; ProjectileClass;
+<a name="44"></a><font class="source_keyword">var</font>()   <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\projectile.html" class="source">projectile</a></font>&gt; AltProjectileClass;
+<a name="45"></a><font class="source_keyword">var</font>()   <font class="source_keyword">name</font> MyDamageType;
+<a name="46"></a><font class="source_keyword">var</font>()   <font class="source_keyword">name</font> AltDamageType;
+<a name="47"></a><font class="source_keyword">var</font>     <font class="source_keyword">float</font>   ProjectileSpeed;
+<a name="48"></a><font class="source_keyword">var</font>     <font class="source_keyword">float</font>   AltProjectileSpeed;
+<a name="49"></a><font class="source_keyword">var</font>     <font class="source_keyword">float</font>   AimError;       <font class="source_comment">// Aim Error for bots (note this value doubled if instant hit weapon)
+</font><a name="50"></a><font class="source_keyword">var</font>()   <font class="source_keyword">float</font>   ShakeMag;
+<a name="51"></a><font class="source_keyword">var</font>()   <font class="source_keyword">float</font>   ShakeTime;
+<a name="52"></a><font class="source_keyword">var</font>()   <font class="source_keyword">float</font>   ShakeVert;
+<a name="53"></a><font class="source_keyword">var</font>(WeaponAI)   <font class="source_keyword">float</font>   AIRating;
+<a name="54"></a><font class="source_keyword">var</font>(WeaponAI)   <font class="source_keyword">float</font>   RefireRate;
+<a name="55"></a><font class="source_keyword">var</font>(WeaponAI)   <font class="source_keyword">float</font>   AltRefireRate;
+<a name="56"></a>
+<a name="57"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="58"></a><font class="source_comment">// Sound Assignments
+</font><a name="59"></a><font class="source_keyword">var</font>() <font class="source_type">sound</font>     FireSound;
+<a name="60"></a><font class="source_keyword">var</font>() <font class="source_type">sound</font>     AltFireSound;
+<a name="61"></a><font class="source_keyword">var</font>() <font class="source_type">sound</font>     CockingSound;
+<a name="62"></a><font class="source_keyword">var</font>() <font class="source_type">sound</font>     SelectSound;
+<a name="63"></a><font class="source_keyword">var</font>() <font class="source_type">sound</font>     Misc1Sound;
+<a name="64"></a><font class="source_keyword">var</font>() <font class="source_type">sound</font>     Misc2Sound;
+<a name="65"></a><font class="source_keyword">var</font>() <font class="source_type">sound</font>     Misc3Sound;
+<a name="66"></a>
+<a name="67"></a><font class="source_keyword">var</font>() <font class="source_keyword2">Localized</font> <font class="source_keyword">string</font> MessageNoAmmo;
+<a name="68"></a><font class="source_keyword">var</font>() <font class="source_keyword2">Localized</font> <font class="source_keyword">string</font> DeathMessage;
+<a name="69"></a><font class="source_keyword">var</font>() <font class="source_type"><a href="..\core\object.html#Color" class="source">Color</a></font> NameColor;  <font class="source_comment">// used when drawing name on HUD
+</font><a name="70"></a>
+<a name="71"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">Rotator</a></font> AdjustedAim;
+<a name="72"></a>
+<a name="73"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="74"></a><font class="source_comment">// Muzzle Flash
+</font><a name="75"></a><font class="source_comment">// weapon is responsible for setting and clearing bMuzzleFlash whenever it wants the
+</font><a name="76"></a><font class="source_comment">// MFTexture drawn on the canvas (see RenderOverlays() )
+</font><a name="77"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSetFlashTime;
+<a name="78"></a><font class="source_keyword">var</font>(MuzzleFlash) <font class="source_keyword">bool</font> bDrawMuzzleFlash;
+<a name="79"></a><font class="source_keyword">var</font> <font class="source_keyword">byte</font> bMuzzleFlash;
+<a name="80"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> FlashTime;
+<a name="81"></a><font class="source_keyword">var</font>(MuzzleFlash) <font class="source_keyword">float</font> MuzzleScale, FlashY, FlashO, FlashC, FlashLength;
+<a name="82"></a><font class="source_keyword">var</font>(MuzzleFlash) <font class="source_keyword">int</font> FlashS;    <font class="source_comment">// size of (square) texture/2
+</font><a name="83"></a><font class="source_keyword">var</font>(MuzzleFlash) <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> MFTexture;
+<a name="84"></a><font class="source_keyword">var</font>(MuzzleFlash) <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> MuzzleFlare;
+<a name="85"></a><font class="source_keyword">var</font>(MuzzleFlash) <font class="source_keyword">float</font> FlareOffset; 
+<a name="86"></a>
+<a name="87"></a><font class="source_comment">// Network replication
+</font><a name="88"></a><font class="source_comment">//
+</font><a name="89"></a><font class="source_keyword">replication</font>
+<a name="90"></a>{
+<a name="91"></a>    <font class="source_comment">// Things the server should send to the client.
+</font><a name="92"></a>    <font class="source_keyword">reliable</font> <font class="source_keyword">if</font>( bNetOwner && (Role==ROLE_Authority) )
+<a name="93"></a>        AmmoType, bLockedOn, bHideWeapon;
+<a name="94"></a>}
+<a name="95"></a>
+<a name="96"></a><font class="source_comment">//=============================================================================
+</font><a name="97"></a><font class="source_comment">// Inventory travelling across servers.
+</font><a name="98"></a>
+<a name="99"></a><font class="source_keyword">event</font> TravelPostAccept()
+<a name="100"></a>{
+<a name="101"></a>    <font class="source_keyword">Super</font>.TravelPostAccept();
+<a name="102"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner) == <font class="source_keyword">None</font> )
+<a name="103"></a>        <font class="source_keyword">return</font>;
+<a name="104"></a>    <font class="source_keyword">if</font> ( AmmoName != <font class="source_keyword">None</font> )
+<a name="105"></a>    {
+<a name="106"></a>        AmmoType = <font class="source_type"><a href="..\engine\ammo.html" class="source">Ammo</a></font>(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).FindInventoryType(AmmoName));
+<a name="107"></a>        <font class="source_keyword">if</font> ( AmmoType == <font class="source_keyword">None</font> )
+<a name="108"></a>        {       
+<a name="109"></a>            AmmoType = Spawn(AmmoName); <font class="source_comment">// Create ammo type required		
+</font><a name="110"></a>            <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).AddInventory(AmmoType);     <font class="source_comment">// and add to player's inventory
+</font><a name="111"></a>            AmmoType.BecomeItem();
+<a name="112"></a>            AmmoType.AmmoAmount = PickUpAmmoCount; 
+<a name="113"></a>            AmmoType.GotoState(<font class="source_name">'Idle2'</font>);
+<a name="114"></a>        }
+<a name="115"></a>    }
+<a name="116"></a>    <font class="source_keyword">if</font> ( self == <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> )
+<a name="117"></a>        BringUp();
+<a name="118"></a>    <font class="source_keyword">else</font> GoToState(<font class="source_name">'Idle2'</font>);
+<a name="119"></a>}
+<a name="120"></a>
+<a name="121"></a><font class="source_keyword">function</font> Destroyed()
+<a name="122"></a>{
+<a name="123"></a>    <font class="source_keyword">Super</font>.Destroyed();
+<a name="124"></a>    <font class="source_keyword">if</font>( (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner)!=<font class="source_keyword">None</font>) && (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> == self) )
+<a name="125"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> = <font class="source_keyword">None</font>;
+<a name="126"></a>}
+<a name="127"></a>
+<a name="128"></a><font class="source_comment">//=============================================================================
+</font><a name="129"></a><font class="source_comment">// Weapon rendering
+</font><a name="130"></a><font class="source_comment">// Draw first person view of inventory
+</font><a name="131"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">event</font> RenderOverlays( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> )
+<a name="132"></a>{
+<a name="133"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> NewRot;
+<a name="134"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bPlayerOwner;
+<a name="135"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> Hand;
+<a name="136"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font> PlayerOwner;
+<a name="137"></a>
+<a name="138"></a>    <font class="source_keyword">if</font> ( bHideWeapon || (Owner == <font class="source_keyword">None</font>) )
+<a name="139"></a>        <font class="source_keyword">return</font>;
+<a name="140"></a>
+<a name="141"></a>    PlayerOwner = <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner);
+<a name="142"></a>
+<a name="143"></a>    <font class="source_keyword">if</font> ( PlayerOwner != <font class="source_keyword">None</font> )
+<a name="144"></a>    {
+<a name="145"></a>        <font class="source_keyword">if</font> ( PlayerOwner.DesiredFOV != PlayerOwner.DefaultFOV )
+<a name="146"></a>            <font class="source_keyword">return</font>;
+<a name="147"></a>        bPlayerOwner = <font class="source_keyword">true</font>;
+<a name="148"></a>        Hand = PlayerOwner.Handedness;
+<a name="149"></a>
+<a name="150"></a>        <font class="source_keyword">if</font> (  (<font class="source_type">Level</font>.NetMode == NM_Client) && (Hand == <font class="source_int">2</font>) )
+<a name="151"></a>        {
+<a name="152"></a>            bHideWeapon = <font class="source_keyword">true</font>;
+<a name="153"></a>            <font class="source_keyword">return</font>;
+<a name="154"></a>        }
+<a name="155"></a>    }
+<a name="156"></a>
+<a name="157"></a>    <font class="source_keyword">if</font> ( !bPlayerOwner || (PlayerOwner.<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font> == <font class="source_keyword">None</font>) )
+<a name="158"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).WalkBob = vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>);
+<a name="159"></a>
+<a name="160"></a>    <font class="source_keyword">if</font> ( (bMuzzleFlash &gt; <font class="source_int">0</font>) && bDrawMuzzleFlash && <font class="source_type">Level</font>.bHighDetailMode && (MFTexture != <font class="source_keyword">None</font>) )
+<a name="161"></a>    {
+<a name="162"></a>        MuzzleScale = Default.MuzzleScale * <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX/6<font class="source_int">40.0</font>;
+<a name="163"></a>        <font class="source_keyword">if</font> ( !bSetFlashTime )
+<a name="164"></a>        {
+<a name="165"></a>            bSetFlashTime = <font class="source_keyword">true</font>;
+<a name="166"></a>            FlashTime = <font class="source_type">Level</font>.TimeSeconds + FlashLength;
+<a name="167"></a>        }
+<a name="168"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( FlashTime &lt; <font class="source_type">Level</font>.TimeSeconds )
+<a name="169"></a>            bMuzzleFlash = <font class="source_int">0</font>;
+<a name="170"></a>        <font class="source_keyword">if</font> ( bMuzzleFlash &gt; <font class="source_int">0</font> )
+<a name="171"></a>        {
+<a name="172"></a>            <font class="source_keyword">if</font> ( Hand == <font class="source_int">0</font> )
+<a name="173"></a>                <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX/2 - <font class="source_int">0.5</font> * MuzzleScale * FlashS + <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX * (-<font class="source_int">0.2</font> * Default.FireOffset.Y * FlashO), <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY/2 - <font class="source_int">0.5</font> * MuzzleScale * FlashS + <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY * (FlashY + FlashC));
+<a name="174"></a>            <font class="source_keyword">else</font>
+<a name="175"></a>                <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.SetPos(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX/2 - <font class="source_int">0.5</font> * MuzzleScale * FlashS + <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipX * (Hand * Default.FireOffset.Y * FlashO), <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY/2 - <font class="source_int">0.5</font> * MuzzleScale * FlashS + <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.ClipY * FlashY);
+<a name="176"></a>
+<a name="177"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.Style = <font class="source_int">3</font>;
+<a name="178"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawIcon(MFTexture, MuzzleScale);
+<a name="179"></a>            <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.Style = <font class="source_int">1</font>;
+<a name="180"></a>        }
+<a name="181"></a>    }
+<a name="182"></a>    <font class="source_keyword">else</font>
+<a name="183"></a>        bSetFlashTime = <font class="source_keyword">false</font>;
+<a name="184"></a>
+<a name="185"></a>    SetLocation( Owner.Location + CalcDrawOffset() );
+<a name="186"></a>    NewRot = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).ViewRotation;
+<a name="187"></a>
+<a name="188"></a>    <font class="source_keyword">if</font> ( Hand == <font class="source_int">0</font> )
+<a name="189"></a>        newRot.Roll = -<font class="source_int">2</font> * Default.Rotation.Roll;
+<a name="190"></a>    <font class="source_keyword">else</font>
+<a name="191"></a>        newRot.Roll = Default.Rotation.Roll * Hand;
+<a name="192"></a>
+<a name="193"></a>    setRotation(newRot);
+<a name="194"></a>    <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font>.DrawActor(self, <font class="source_keyword">false</font>);
+<a name="195"></a>}
+<a name="196"></a>
+<a name="197"></a><font class="source_comment">//-------------------------------------------------------
+</font><a name="198"></a><font class="source_comment">// AI related functions
+</font><a name="199"></a>
+<a name="200"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="201"></a>{
+<a name="202"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="203"></a>    SetWeaponStay();
+<a name="204"></a>    MaxDesireability = <font class="source_int">1.2</font> * AIRating;
+<a name="205"></a>    <font class="source_keyword">if</font> ( ProjectileClass != <font class="source_keyword">None</font> )
+<a name="206"></a>    {
+<a name="207"></a>        ProjectileSpeed = ProjectileClass.Default.Speed;
+<a name="208"></a>        MyDamageType = ProjectileClass.Default.MyDamageType;
+<a name="209"></a>    }
+<a name="210"></a>    <font class="source_keyword">if</font> ( AltProjectileClass != <font class="source_keyword">None</font> )
+<a name="211"></a>    {
+<a name="212"></a>        AltProjectileSpeed = AltProjectileClass.Default.Speed;
+<a name="213"></a>        AltDamageType = AltProjectileClass.Default.MyDamageType;
+<a name="214"></a>    }
+<a name="215"></a>}
+<a name="216"></a>
+<a name="217"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> SplashJump()
+<a name="218"></a>{
+<a name="219"></a>    <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="220"></a>}
+<a name="221"></a>
+<a name="222"></a><font class="source_keyword">function</font> SetWeaponStay()
+<a name="223"></a>{
+<a name="224"></a>    bWeaponStay = bWeaponStay || <font class="source_type">Level</font>.Game.bCoopWeaponMode;
+<a name="225"></a>}
+<a name="226"></a>
+<a name="227"></a><font class="source_comment">// tell the bot how much it wants this weapon
+</font><a name="228"></a><font class="source_comment">// called when the bot is trying to decide which inventory item to go after next
+</font><a name="229"></a><font class="source_keyword">event</font> <font class="source_keyword">float</font> BotDesireability(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> <font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>)
+<a name="230"></a>{
+<a name="231"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> AlreadyHas;
+<a name="232"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> desire;
+<a name="233"></a>
+<a name="234"></a>    <font class="source_comment">// bots adjust their desire for their favorite weapons
+</font><a name="235"></a>    desire = MaxDesireability + <font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>.AdjustDesireFor(self);
+<a name="236"></a>
+<a name="237"></a>    <font class="source_comment">// see if bot already has a weapon of this type
+</font><a name="238"></a>    AlreadyHas = <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>(<font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>.FindInventoryType(<font class="source_keyword">class</font>)); 
+<a name="239"></a>    <font class="source_keyword">if</font> ( AlreadyHas != <font class="source_keyword">None</font> )
+<a name="240"></a>    {
+<a name="241"></a>        <font class="source_keyword">if</font> ( (RespawnTime &lt; <font class="source_int">10</font>) 
+<a name="242"></a>            && ( bHidden || (AlreadyHas.AmmoType == <font class="source_keyword">None</font>) 
+<a name="243"></a>                || (AlreadyHas.AmmoType.AmmoAmount &lt; AlreadyHas.AmmoType.MaxAmmo)) )
+<a name="244"></a>            <font class="source_keyword">return</font> <font class="source_int">0</font>;
+<a name="245"></a>
+<a name="246"></a>        <font class="source_comment">// can't pick it up if weapon stay is on
+</font><a name="247"></a>        <font class="source_keyword">if</font> ( (!bHeldItem || bTossedOut) && bWeaponStay )
+<a name="248"></a>            <font class="source_keyword">return</font> <font class="source_int">0</font>;
+<a name="249"></a>        <font class="source_keyword">if</font> ( AlreadyHas.AmmoType == <font class="source_keyword">None</font> )
+<a name="250"></a>            <font class="source_keyword">return</font> <font class="source_int">0.25</font> * desire;
+<a name="251"></a>
+<a name="252"></a>        <font class="source_comment">// bot wants this weapon for the ammo it holds
+</font><a name="253"></a>        <font class="source_keyword">if</font> ( AlreadyHas.AmmoType.AmmoAmount &gt; <font class="source_int">0</font> )
+<a name="254"></a>            <font class="source_keyword">return</font> FMax( <font class="source_int">0.25</font> * desire, 
+<a name="255"></a>                    AlreadyHas.AmmoType.MaxDesireability
+<a name="256"></a>                     * FMin(<font class="source_int">1</font>, <font class="source_int">0.15</font> * AlreadyHas.AmmoType.MaxAmmo/AlreadyHas.AmmoType.AmmoAmount) ); 
+<a name="257"></a>        <font class="source_keyword">else</font>
+<a name="258"></a>            <font class="source_keyword">return</font> <font class="source_int">0.05</font>;
+<a name="259"></a>    }
+<a name="260"></a>    
+<a name="261"></a>    <font class="source_comment">// incentivize bot to get this weapon if it doesn't have a good weapon already
+</font><a name="262"></a>    <font class="source_keyword">if</font> ( (<font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> == <font class="source_keyword">None</font>) || (<font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>.AIRating &lt;= <font class="source_int">0.4</font>) )
+<a name="263"></a>        <font class="source_keyword">return</font> <font class="source_int">2</font>*desire;
+<a name="264"></a>
+<a name="265"></a>    <font class="source_keyword">return</font> desire;
+<a name="266"></a>}
+<a name="267"></a>
+<a name="268"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> RateSelf( <font class="source_keyword2">out</font> <font class="source_keyword">int</font> bUseAltMode )
+<a name="269"></a>{
+<a name="270"></a>    <font class="source_keyword">if</font> ( (AmmoType != <font class="source_keyword">None</font>) && (AmmoType.AmmoAmount &lt;=<font class="source_int">0</font>) )
+<a name="271"></a>        <font class="source_keyword">return</font> -<font class="source_int">2</font>;
+<a name="272"></a>    bUseAltMode = <font class="source_keyword">int</font>(FRand() &lt; <font class="source_int">0.4</font>);
+<a name="273"></a>    <font class="source_keyword">return</font> (AIRating + FRand() * <font class="source_int">0.05</font>);
+<a name="274"></a>}
+<a name="275"></a>
+<a name="276"></a><font class="source_comment">// return delta to combat style
+</font><a name="277"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> SuggestAttackStyle()
+<a name="278"></a>{
+<a name="279"></a>    <font class="source_keyword">return</font> <font class="source_int">0.0</font>;
+<a name="280"></a>}
+<a name="281"></a>
+<a name="282"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> SuggestDefenseStyle()
+<a name="283"></a>{
+<a name="284"></a>    <font class="source_keyword">return</font> <font class="source_int">0.0</font>;
+<a name="285"></a>}
+<a name="286"></a>
+<a name="287"></a><font class="source_comment">//-------------------------------------------------------
+</font><a name="288"></a>
+<a name="289"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PreRender( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> );
+<a name="290"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PostRender( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> );
+<a name="291"></a>
+<a name="292"></a><font class="source_keyword">function</font> ClientWeaponEvent(<font class="source_keyword">name</font> EventType);
+<a name="293"></a>
+<a name="294"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> HandlePickupQuery( <font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> Item )
+<a name="295"></a>{
+<a name="296"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> OldAmmo;
+<a name="297"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="298"></a>
+<a name="299"></a>    <font class="source_keyword">if</font> (Item.<font class="source_keyword">Class</font> == <font class="source_keyword">Class</font>)
+<a name="300"></a>    {
+<a name="301"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>(item).bWeaponStay && (!<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>(item).bHeldItem || <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>(item).bTossedOut) )
+<a name="302"></a>            <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="303"></a>        P = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner);
+<a name="304"></a>        <font class="source_keyword">if</font> ( AmmoType != <font class="source_keyword">None</font> )
+<a name="305"></a>        {
+<a name="306"></a>            OldAmmo = AmmoType.AmmoAmount;
+<a name="307"></a>            <font class="source_keyword">if</font> ( AmmoType.AddAmmo(<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>(Item).PickupAmmoCount) && (OldAmmo == <font class="source_int">0</font>) 
+<a name="308"></a>                && (P.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>.<font class="source_keyword">class</font> != item.<font class="source_keyword">class</font>) && !P.bNeverSwitchOnPickup )
+<a name="309"></a>                    WeaponSet(P);
+<a name="310"></a>        }
+<a name="311"></a>        <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.LocalLog != <font class="source_keyword">None</font>)
+<a name="312"></a>            <font class="source_type">Level</font>.Game.LocalLog.LogPickup(Item, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner));
+<a name="313"></a>        <font class="source_keyword">if</font> (<font class="source_type">Level</font>.Game.WorldLog != <font class="source_keyword">None</font>)
+<a name="314"></a>            <font class="source_type">Level</font>.Game.WorldLog.LogPickup(Item, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner));
+<a name="315"></a>        <font class="source_keyword">if</font> (Item.PickupMessageClass == <font class="source_keyword">None</font>)
+<a name="316"></a>            P.ClientMessage(Item.PickupMessage, <font class="source_name">'Pickup'</font>);
+<a name="317"></a>        <font class="source_keyword">else</font>
+<a name="318"></a>            P.ReceiveLocalizedMessage( Item.PickupMessageClass, <font class="source_int">0</font>, <font class="source_keyword">None</font>, <font class="source_keyword">None</font>, item.<font class="source_keyword">Class</font> );
+<a name="319"></a>        Item.PlaySound(Item.PickupSound);
+<a name="320"></a>        Item.SetRespawn();   
+<a name="321"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="322"></a>    }
+<a name="323"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> == <font class="source_keyword">None</font> )
+<a name="324"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="325"></a>
+<a name="326"></a>    <font class="source_keyword">return</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>.HandlePickupQuery(Item);
+<a name="327"></a>}
+<a name="328"></a>
+<a name="329"></a><font class="source_comment">// set which hand is holding weapon
+</font><a name="330"></a><font class="source_keyword">function</font> setHand(<font class="source_keyword">float</font> Hand)
+<a name="331"></a>{
+<a name="332"></a>    <font class="source_keyword">if</font> ( Hand == <font class="source_int">2</font> )
+<a name="333"></a>    {
+<a name="334"></a>        PlayerViewOffset.Y = <font class="source_int">0</font>;
+<a name="335"></a>        FireOffset.Y = <font class="source_int">0</font>;
+<a name="336"></a>        bHideWeapon = <font class="source_keyword">true</font>;
+<a name="337"></a>        <font class="source_keyword">return</font>;
+<a name="338"></a>    }
+<a name="339"></a>    <font class="source_keyword">else</font>
+<a name="340"></a>        bHideWeapon = <font class="source_keyword">false</font>;
+<a name="341"></a>
+<a name="342"></a>    <font class="source_keyword">if</font> ( Hand == <font class="source_int">0</font> )
+<a name="343"></a>    {
+<a name="344"></a>        PlayerViewOffset.X = Default.PlayerViewOffset.X * <font class="source_int">0.88</font>;
+<a name="345"></a>        PlayerViewOffset.Y = -<font class="source_int">0.2</font> * Default.PlayerViewOffset.Y;
+<a name="346"></a>        PlayerViewOffset.Z = Default.PlayerViewOffset.Z * <font class="source_int">1.12</font>;
+<a name="347"></a>    }
+<a name="348"></a>    <font class="source_keyword">else</font>
+<a name="349"></a>    {
+<a name="350"></a>        PlayerViewOffset.X = Default.PlayerViewOffset.X;
+<a name="351"></a>        PlayerViewOffset.Y = Default.PlayerViewOffset.Y * Hand;
+<a name="352"></a>        PlayerViewOffset.Z = Default.PlayerViewOffset.Z;
+<a name="353"></a>    }
+<a name="354"></a>    PlayerViewOffset *= <font class="source_int">100</font>; <font class="source_comment">//scale since network passes vector components as ints
+</font><a name="355"></a>    FireOffset.Y = Default.FireOffset.Y * Hand;
+<a name="356"></a>}
+<a name="357"></a>
+<a name="358"></a><font class="source_comment">//
+</font><a name="359"></a><font class="source_comment">// Change weapon to that specificed by F matching inventory weapon's Inventory Group.
+</font><a name="360"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> WeaponChange( <font class="source_keyword">byte</font> F )
+<a name="361"></a>{   
+<a name="362"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> newWeapon;
+<a name="363"></a>     
+<a name="364"></a>    <font class="source_keyword">if</font> ( InventoryGroup == F )
+<a name="365"></a>    {
+<a name="366"></a>        <font class="source_keyword">if</font> ( (AmmoType != <font class="source_keyword">None</font>) && (AmmoType.AmmoAmount &lt;= <font class="source_int">0</font>) )
+<a name="367"></a>        {
+<a name="368"></a>            <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> == <font class="source_keyword">None</font> )
+<a name="369"></a>                newWeapon = <font class="source_keyword">None</font>;
+<a name="370"></a>            <font class="source_keyword">else</font>
+<a name="371"></a>                newWeapon = <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>.WeaponChange(F);
+<a name="372"></a>            <font class="source_keyword">if</font> ( newWeapon == <font class="source_keyword">None</font> )
+<a name="373"></a>                <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).ClientMessage( ItemName$MessageNoAmmo );        
+<a name="374"></a>            <font class="source_keyword">return</font> newWeapon;
+<a name="375"></a>        }       
+<a name="376"></a>        <font class="source_keyword">else</font> 
+<a name="377"></a>            <font class="source_keyword">return</font> self;
+<a name="378"></a>    }
+<a name="379"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> == <font class="source_keyword">None</font> )
+<a name="380"></a>        <font class="source_keyword">return</font> <font class="source_keyword">None</font>;
+<a name="381"></a>    <font class="source_keyword">else</font>
+<a name="382"></a>        <font class="source_keyword">return</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>.WeaponChange(F);
+<a name="383"></a>}
+<a name="384"></a>
+<a name="385"></a><font class="source_comment">// Either give this inventory to player Other, or spawn a copy
+</font><a name="386"></a><font class="source_comment">// and give it to the player Other, setting up original to be respawned.
+</font><a name="387"></a><font class="source_comment">// Also add Ammo to Other's inventory if it doesn't already exist
+</font><a name="388"></a><font class="source_comment">//
+</font><a name="389"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> SpawnCopy( <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Other )
+<a name="390"></a>{
+<a name="391"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> Copy;
+<a name="392"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> newWeapon;
+<a name="393"></a>
+<a name="394"></a>    <font class="source_keyword">if</font>( <font class="source_type">Level</font>.Game.ShouldRespawn(self) )
+<a name="395"></a>    {
+<a name="396"></a>        Copy = spawn(<font class="source_keyword">Class</font>,Other,,,rot(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">0</font>));
+<a name="397"></a>        Copy.Tag           = Tag;
+<a name="398"></a>        Copy.<font class="source_keyword">Event</font>         = <font class="source_keyword">Event</font>;
+<a name="399"></a>        <font class="source_keyword">if</font> ( !bWeaponStay )
+<a name="400"></a>            GotoState(<font class="source_name">'Sleeping'</font>);
+<a name="401"></a>    }
+<a name="402"></a>    <font class="source_keyword">else</font>
+<a name="403"></a>        Copy = self;
+<a name="404"></a>
+<a name="405"></a>    Copy.RespawnTime = <font class="source_int">0.0</font>;
+<a name="406"></a>    Copy.bHeldItem = <font class="source_keyword">true</font>;
+<a name="407"></a>    Copy.bTossedOut = <font class="source_keyword">false</font>;
+<a name="408"></a>    Copy.GiveTo( Other );
+<a name="409"></a>    newWeapon = <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>(Copy);
+<a name="410"></a>    newWeapon.Instigator = Other;
+<a name="411"></a>    newWeapon.GiveAmmo(Other);
+<a name="412"></a>    newWeapon.SetSwitchPriority(Other);
+<a name="413"></a>    <font class="source_keyword">if</font> ( !Other.bNeverSwitchOnPickup )
+<a name="414"></a>        newWeapon.WeaponSet(Other);
+<a name="415"></a>    newWeapon.AmbientGlow = <font class="source_int">0</font>;
+<a name="416"></a>    <font class="source_keyword">return</font> newWeapon;
+<a name="417"></a>}
+<a name="418"></a>
+<a name="419"></a><font class="source_keyword">function</font> SetSwitchPriority(<font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> Other)
+<a name="420"></a>{
+<a name="421"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="422"></a>    <font class="source_keyword">local</font> <font class="source_keyword">name</font> temp, carried;
+<a name="423"></a>
+<a name="424"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other) != <font class="source_keyword">None</font> )
+<a name="425"></a>    {
+<a name="426"></a>        <font class="source_keyword">for</font> ( i=<font class="source_int">0</font>; i&lt;ArrayCount(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other).WeaponPriority); i++)
+<a name="427"></a>            <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other).WeaponPriority[i] == <font class="source_keyword">class</font>.<font class="source_keyword">name</font> )
+<a name="428"></a>            {
+<a name="429"></a>                AutoSwitchPriority = i;
+<a name="430"></a>                <font class="source_keyword">return</font>;
+<a name="431"></a>            }
+<a name="432"></a>        <font class="source_comment">// else, register this weapon
+</font><a name="433"></a>        carried = <font class="source_keyword">class</font>.<font class="source_keyword">name</font>;
+<a name="434"></a>        <font class="source_keyword">for</font> ( i=AutoSwitchPriority; i&lt;ArrayCount(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other).WeaponPriority); i++ )
+<a name="435"></a>        {
+<a name="436"></a>            <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other).WeaponPriority[i] == <font class="source_name">''</font> )
+<a name="437"></a>            {
+<a name="438"></a>                <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other).WeaponPriority[i] = carried;
+<a name="439"></a>                <font class="source_keyword">return</font>;
+<a name="440"></a>            }
+<a name="441"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( i&lt;ArrayCount(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other).WeaponPriority)-<font class="source_int">1</font> )
+<a name="442"></a>            {
+<a name="443"></a>                temp = <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other).WeaponPriority[i];
+<a name="444"></a>                <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other).WeaponPriority[i] = carried;
+<a name="445"></a>                carried = temp;
+<a name="446"></a>            }
+<a name="447"></a>        }
+<a name="448"></a>    }       
+<a name="449"></a>}
+<a name="450"></a>
+<a name="451"></a><font class="source_keyword">function</font> GiveAmmo( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other )
+<a name="452"></a>{
+<a name="453"></a>    <font class="source_keyword">if</font> ( AmmoName == <font class="source_keyword">None</font> )
+<a name="454"></a>        <font class="source_keyword">return</font>;
+<a name="455"></a>    AmmoType = <font class="source_type"><a href="..\engine\ammo.html" class="source">Ammo</a></font>(Other.FindInventoryType(AmmoName));
+<a name="456"></a>    <font class="source_keyword">if</font> ( AmmoType != <font class="source_keyword">None</font> )
+<a name="457"></a>        AmmoType.AddAmmo(PickUpAmmoCount);
+<a name="458"></a>    <font class="source_keyword">else</font>
+<a name="459"></a>    {
+<a name="460"></a>        AmmoType = Spawn(AmmoName); <font class="source_comment">// Create ammo type required		
+</font><a name="461"></a>        Other.AddInventory(AmmoType);       <font class="source_comment">// and add to player's inventory
+</font><a name="462"></a>        AmmoType.BecomeItem();
+<a name="463"></a>        AmmoType.AmmoAmount = PickUpAmmoCount; 
+<a name="464"></a>        AmmoType.GotoState(<font class="source_name">'Idle2'</font>);
+<a name="465"></a>    }
+<a name="466"></a>}   
+<a name="467"></a>
+<a name="468"></a><font class="source_comment">// Return the switch priority of the weapon (normally AutoSwitchPriority, but may be
+</font><a name="469"></a><font class="source_comment">// modified by environment (or by other factors for bots)
+</font><a name="470"></a><font class="source_keyword">function</font> <font class="source_keyword">float</font> SwitchPriority() 
+<a name="471"></a>{
+<a name="472"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> temp;
+<a name="473"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> bTemp;
+<a name="474"></a>
+<a name="475"></a>    <font class="source_keyword">if</font> ( !Owner.IsA(<font class="source_name">'PlayerPawn'</font>) )
+<a name="476"></a>        <font class="source_keyword">return</font> RateSelf(bTemp);
+<a name="477"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (AmmoType != <font class="source_keyword">None</font>) && (AmmoType.AmmoAmount&lt;=<font class="source_int">0</font>) )
+<a name="478"></a>    {
+<a name="479"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> == self )
+<a name="480"></a>            <font class="source_keyword">return</font> -<font class="source_int">0.5</font>;
+<a name="481"></a>        <font class="source_keyword">else</font>
+<a name="482"></a>            <font class="source_keyword">return</font> -<font class="source_int">1</font>;
+<a name="483"></a>    }
+<a name="484"></a>    <font class="source_keyword">else</font> 
+<a name="485"></a>        <font class="source_keyword">return</font> AutoSwitchPriority;
+<a name="486"></a>}
+<a name="487"></a>
+<a name="488"></a><font class="source_comment">// Compare self to current weapon.  If better than current weapon, then switch
+</font><a name="489"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> WeaponSet(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)
+<a name="490"></a>{
+<a name="491"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bSwitch,bHaveAmmo;
+<a name="492"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font> Inv;
+<a name="493"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\weapon.html" class="source">weapon</a></font> W;
+<a name="494"></a>    
+<a name="495"></a>    <font class="source_keyword">if</font> ( Other.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> == self)
+<a name="496"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="497"></a>
+<a name="498"></a>    <font class="source_keyword">if</font> ( Other.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> == <font class="source_keyword">None</font> )
+<a name="499"></a>    {
+<a name="500"></a>        Other.PendingWeapon = self;
+<a name="501"></a>        Other.ChangedWeapon();
+<a name="502"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>;    
+<a name="503"></a>    }
+<a name="504"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Other.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>.SwitchPriority() &lt; SwitchPriority() ) 
+<a name="505"></a>    {
+<a name="506"></a>        W = Other.PendingWeapon;
+<a name="507"></a>        Other.PendingWeapon = self;
+<a name="508"></a>        GotoState(<font class="source_name">''</font>);
+<a name="509"></a>
+<a name="510"></a>        <font class="source_keyword">if</font> ( Other.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>.PutDown() )
+<a name="511"></a>            <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="512"></a>        Other.PendingWeapon = W;
+<a name="513"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="514"></a>    }
+<a name="515"></a>    <font class="source_keyword">else</font> 
+<a name="516"></a>    {
+<a name="517"></a>        GoToState(<font class="source_name">''</font>);
+<a name="518"></a>        <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="519"></a>    }
+<a name="520"></a>}
+<a name="521"></a>
+<a name="522"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> RecommendWeapon( <font class="source_keyword2">out</font> <font class="source_keyword">float</font> rating, <font class="source_keyword2">out</font> <font class="source_keyword">int</font> bUseAltMode )
+<a name="523"></a>{
+<a name="524"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> Recommended;
+<a name="525"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> oldRating, oldFiring;
+<a name="526"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> oldMode;
+<a name="527"></a>
+<a name="528"></a>    <font class="source_keyword">if</font> ( Owner.IsA(<font class="source_name">'PlayerPawn'</font>) )
+<a name="529"></a>        rating = SwitchPriority();
+<a name="530"></a>    <font class="source_keyword">else</font>
+<a name="531"></a>    {
+<a name="532"></a>        rating = RateSelf(bUseAltMode);
+<a name="533"></a>        <font class="source_keyword">if</font> ( (self == <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>) && (<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).Enemy != <font class="source_keyword">None</font>) 
+<a name="534"></a>            && ((AmmoType == <font class="source_keyword">None</font>) || (AmmoType.AmmoAmount &gt; <font class="source_int">0</font>)) )
+<a name="535"></a>            rating += <font class="source_int">0.21</font>; <font class="source_comment">// tend to stick with same weapon
+</font><a name="536"></a>    }
+<a name="537"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font> != <font class="source_keyword">None</font> )
+<a name="538"></a>    {
+<a name="539"></a>        Recommended = <font class="source_type"><a href="..\engine\inventory.html" class="source">inventory</a></font>.RecommendWeapon(oldRating, oldMode);
+<a name="540"></a>        <font class="source_keyword">if</font> ( (Recommended != <font class="source_keyword">None</font>) && (oldRating &gt; rating) )
+<a name="541"></a>        {
+<a name="542"></a>            rating = oldRating;
+<a name="543"></a>            bUseAltMode = oldMode;
+<a name="544"></a>            <font class="source_keyword">return</font> Recommended;
+<a name="545"></a>        }
+<a name="546"></a>    }
+<a name="547"></a>    <font class="source_keyword">return</font> self;
+<a name="548"></a>}
+<a name="549"></a>
+<a name="550"></a><font class="source_comment">// Toss this weapon out
+</font><a name="551"></a><font class="source_keyword">function</font> DropFrom(<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> StartLocation)
+<a name="552"></a>{
+<a name="553"></a>    <font class="source_keyword">if</font> ( !SetLocation(StartLocation) )
+<a name="554"></a>        <font class="source_keyword">return</font>; 
+<a name="555"></a>    AIRating = Default.AIRating;
+<a name="556"></a>    bMuzzleFlash = <font class="source_int">0</font>;
+<a name="557"></a>    <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font> = <font class="source_keyword">None</font>;
+<a name="558"></a>    <font class="source_keyword">if</font> ( AmmoType != <font class="source_keyword">None</font> )
+<a name="559"></a>    {
+<a name="560"></a>        PickupAmmoCount = AmmoType.AmmoAmount;
+<a name="561"></a>        AmmoType.AmmoAmount = <font class="source_int">0</font>;
+<a name="562"></a>    }
+<a name="563"></a>    <font class="source_keyword">Super</font>.DropFrom(StartLocation);
+<a name="564"></a>}
+<a name="565"></a>
+<a name="566"></a><font class="source_comment">// Become a pickup
+</font><a name="567"></a><font class="source_keyword">function</font> BecomePickup()
+<a name="568"></a>{
+<a name="569"></a>    <font class="source_keyword">Super</font>.BecomePickup();
+<a name="570"></a>    SetDisplayProperties(Default.Style, Default.<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>, Default.bUnlit, Default.bMeshEnviromap );
+<a name="571"></a>}
+<a name="572"></a>
+<a name="573"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> TweenToStill();
+<a name="574"></a>
+<a name="575"></a><font class="source_comment">//**************************************************************************************
+</font><a name="576"></a><font class="source_comment">//
+</font><a name="577"></a><font class="source_comment">// Firing functions and states
+</font><a name="578"></a><font class="source_comment">//
+</font><a name="579"></a>
+<a name="580"></a><font class="source_keyword">function</font> CheckVisibility()
+<a name="581"></a>{
+<a name="582"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> PawnOwner;
+<a name="583"></a>
+<a name="584"></a>    PawnOwner = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner);
+<a name="585"></a>    <font class="source_keyword">if</font>( Owner.bHidden && (PawnOwner.<font class="source_type"><a href="..\unrealshare\health.html" class="source">Health</a></font> &gt; <font class="source_int">0</font>) && (PawnOwner.Visibility &lt; PawnOwner.Default.Visibility) )
+<a name="586"></a>    {
+<a name="587"></a>        Owner.bHidden = <font class="source_keyword">false</font>;
+<a name="588"></a>        PawnOwner.Visibility = PawnOwner.Default.Visibility;
+<a name="589"></a>    }
+<a name="590"></a>}
+<a name="591"></a>
+<a name="592"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientFire( <font class="source_keyword">float</font> Value )
+<a name="593"></a>{
+<a name="594"></a>    <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="595"></a>}
+<a name="596"></a>
+<a name="597"></a><font class="source_keyword">function</font> ForceFire();
+<a name="598"></a><font class="source_keyword">function</font> ForceAltFire();
+<a name="599"></a>
+<a name="600"></a><font class="source_keyword">function</font> Fire( <font class="source_keyword">float</font> Value )
+<a name="601"></a>{
+<a name="602"></a>    <font class="source_keyword">if</font> (AmmoType.UseAmmo(<font class="source_int">1</font>))
+<a name="603"></a>    {
+<a name="604"></a>        GotoState(<font class="source_name">'NormalFire'</font>);
+<a name="605"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner) != <font class="source_keyword">None</font> )
+<a name="606"></a>            <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner).ShakeView(ShakeTime, ShakeMag, ShakeVert);
+<a name="607"></a>        bPointing=<font class="source_keyword">True</font>;
+<a name="608"></a>        PlayFiring();
+<a name="609"></a>        <font class="source_keyword">if</font> ( !bRapidFire && (FiringSpeed &gt; <font class="source_int">0</font>) )
+<a name="610"></a>            <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).PlayRecoil(FiringSpeed);
+<a name="611"></a>        <font class="source_keyword">if</font> ( bInstantHit )
+<a name="612"></a>            TraceFire(<font class="source_int">0.0</font>);
+<a name="613"></a>        <font class="source_keyword">else</font>
+<a name="614"></a>            ProjectileFire(ProjectileClass, ProjectileSpeed, bWarnTarget);
+<a name="615"></a>        <font class="source_keyword">if</font> ( Owner.bHidden )
+<a name="616"></a>            CheckVisibility();
+<a name="617"></a>    }
+<a name="618"></a>}
+<a name="619"></a>
+<a name="620"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> ClientAltFire( <font class="source_keyword">float</font> Value )
+<a name="621"></a>{
+<a name="622"></a>    <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="623"></a>}
+<a name="624"></a>
+<a name="625"></a><font class="source_keyword">function</font> AltFire( <font class="source_keyword">float</font> Value )
+<a name="626"></a>{
+<a name="627"></a>    <font class="source_keyword">if</font> (AmmoType.UseAmmo(<font class="source_int">1</font>))
+<a name="628"></a>    {
+<a name="629"></a>        GotoState(<font class="source_name">'AltFiring'</font>);
+<a name="630"></a>        <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner) != <font class="source_keyword">None</font> )
+<a name="631"></a>            <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner).ShakeView(ShakeTime, ShakeMag, ShakeVert);
+<a name="632"></a>        bPointing=<font class="source_keyword">True</font>;
+<a name="633"></a>        PlayAltFiring();
+<a name="634"></a>        <font class="source_keyword">if</font> ( !bRapidFire && (FiringSpeed &gt; <font class="source_int">0</font>) )
+<a name="635"></a>            <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).PlayRecoil(FiringSpeed);
+<a name="636"></a>        <font class="source_keyword">if</font> ( bAltInstantHit )
+<a name="637"></a>            TraceFire(<font class="source_int">0.0</font>);
+<a name="638"></a>        <font class="source_keyword">else</font>
+<a name="639"></a>            ProjectileFire(AltProjectileClass, AltProjectileSpeed, bAltWarnTarget);
+<a name="640"></a>        <font class="source_keyword">if</font> ( Owner.bHidden )
+<a name="641"></a>            CheckVisibility();
+<a name="642"></a>    }
+<a name="643"></a>}
+<a name="644"></a>
+<a name="645"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PlayFiring()
+<a name="646"></a>{
+<a name="647"></a>    <font class="source_comment">//Play firing animation and sound
+</font><a name="648"></a>}
+<a name="649"></a>
+<a name="650"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PlayAltFiring()
+<a name="651"></a>{
+<a name="652"></a>    <font class="source_comment">//Play alt firing animation and sound
+</font><a name="653"></a>}
+<a name="654"></a>
+<a name="655"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\projectile.html" class="source">Projectile</a></font> ProjectileFire(<font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\projectile.html" class="source">projectile</a></font>&gt; ProjClass, <font class="source_keyword">float</font> ProjSpeed, <font class="source_keyword">bool</font> bWarn)
+<a name="656"></a>{
+<a name="657"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> Start, X,Y,Z;
+<a name="658"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> PawnOwner;
+<a name="659"></a>
+<a name="660"></a>    PawnOwner = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner);
+<a name="661"></a>    Owner.MakeNoise(PawnOwner.SoundDampening);
+<a name="662"></a>    GetAxes(PawnOwner.ViewRotation,X,Y,Z);
+<a name="663"></a>    Start = Owner.Location + CalcDrawOffset() + FireOffset.X * X + FireOffset.Y * Y + FireOffset.Z * Z; 
+<a name="664"></a>    AdjustedAim = PawnOwner.AdjustAim(ProjSpeed, Start, AimError, <font class="source_keyword">True</font>, bWarn); 
+<a name="665"></a>    <font class="source_keyword">return</font> Spawn(ProjClass,,, Start,AdjustedAim);   
+<a name="666"></a>}
+<a name="667"></a>
+<a name="668"></a><font class="source_keyword">function</font> TraceFire( <font class="source_keyword">float</font> Accuracy )
+<a name="669"></a>{
+<a name="670"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation, HitNormal, StartTrace, EndTrace, X,Y,Z;
+<a name="671"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other;
+<a name="672"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> PawnOwner;
+<a name="673"></a>
+<a name="674"></a>    PawnOwner = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner);
+<a name="675"></a>
+<a name="676"></a>    Owner.MakeNoise(PawnOwner.SoundDampening);
+<a name="677"></a>    GetAxes(PawnOwner.ViewRotation,X,Y,Z);
+<a name="678"></a>    StartTrace = Owner.Location + CalcDrawOffset() + FireOffset.X * X + FireOffset.Y * Y + FireOffset.Z * Z; 
+<a name="679"></a>    AdjustedAim = PawnOwner.AdjustAim(<font class="source_int">1000000</font>, StartTrace, <font class="source_int">2</font>*AimError, <font class="source_keyword">False</font>, <font class="source_keyword">False</font>);   
+<a name="680"></a>    EndTrace = StartTrace + Accuracy * (FRand() - <font class="source_int">0.5</font> )* Y * <font class="source_int">1000</font>
+<a name="681"></a>        + Accuracy * (FRand() - <font class="source_int">0.5</font> ) * Z * <font class="source_int">1000</font>;
+<a name="682"></a>    X = <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>(AdjustedAim);
+<a name="683"></a>    EndTrace += (<font class="source_int">10000</font> * X); 
+<a name="684"></a>    Other = PawnOwner.TraceShot(HitLocation,HitNormal,EndTrace,StartTrace);
+<a name="685"></a>    ProcessTraceHit(Other, HitLocation, HitNormal, X,Y,Z);
+<a name="686"></a>}
+<a name="687"></a>
+<a name="688"></a><font class="source_keyword">function</font> ProcessTraceHit(<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> HitLocation, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> HitNormal, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> X, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> Y, <font class="source_type"><a href="..\core\object.html#Vector" class="source">Vector</a></font> Z)
+<a name="689"></a>{
+<a name="690"></a>    <font class="source_comment">//Spawn appropriate effects at hit location, any weapon lights, and damage hit actor
+</font><a name="691"></a>}
+<a name="692"></a>
+<a name="693"></a><font class="source_comment">// Finish a firing sequence
+</font><a name="694"></a><font class="source_keyword">function</font> Finish()
+<a name="695"></a>{
+<a name="696"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> PawnOwner;
+<a name="697"></a>
+<a name="698"></a>    <font class="source_keyword">if</font> ( bChangeWeapon )
+<a name="699"></a>    {
+<a name="700"></a>        GotoState(<font class="source_name">'DownWeapon'</font>);
+<a name="701"></a>        <font class="source_keyword">return</font>;
+<a name="702"></a>    }
+<a name="703"></a>
+<a name="704"></a>    PawnOwner = <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner);
+<a name="705"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner) == <font class="source_keyword">None</font> )
+<a name="706"></a>    {
+<a name="707"></a>        <font class="source_keyword">if</font> ( (AmmoType != <font class="source_keyword">None</font>) && (AmmoType.AmmoAmount&lt;=<font class="source_int">0</font>) )
+<a name="708"></a>        {
+<a name="709"></a>            PawnOwner.StopFiring();
+<a name="710"></a>            PawnOwner.SwitchToBestWeapon();
+<a name="711"></a>            <font class="source_keyword">if</font> ( bChangeWeapon )
+<a name="712"></a>                GotoState(<font class="source_name">'DownWeapon'</font>);
+<a name="713"></a>        }
+<a name="714"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (PawnOwner.bFire != <font class="source_int">0</font>) && (FRand() &lt; RefireRate) )
+<a name="715"></a>            Global.Fire(<font class="source_int">0</font>);
+<a name="716"></a>        <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( (PawnOwner.bAltFire != <font class="source_int">0</font>) && (FRand() &lt; AltRefireRate) )
+<a name="717"></a>            Global.AltFire(<font class="source_int">0</font>);  
+<a name="718"></a>        <font class="source_keyword">else</font> 
+<a name="719"></a>        {
+<a name="720"></a>            PawnOwner.StopFiring();
+<a name="721"></a>            GotoState(<font class="source_name">'Idle'</font>);
+<a name="722"></a>        }
+<a name="723"></a>        <font class="source_keyword">return</font>;
+<a name="724"></a>    }
+<a name="725"></a>    <font class="source_keyword">if</font> ( ((AmmoType != <font class="source_keyword">None</font>) && (AmmoType.AmmoAmount&lt;=<font class="source_int">0</font>)) || (PawnOwner.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> != self) )
+<a name="726"></a>        GotoState(<font class="source_name">'Idle'</font>);
+<a name="727"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( PawnOwner.bFire!=<font class="source_int">0</font> )
+<a name="728"></a>        Global.Fire(<font class="source_int">0</font>);
+<a name="729"></a>    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( PawnOwner.bAltFire!=<font class="source_int">0</font> )
+<a name="730"></a>        Global.AltFire(<font class="source_int">0</font>);
+<a name="731"></a>    <font class="source_keyword">else</font> 
+<a name="732"></a>        GotoState(<font class="source_name">'Idle'</font>);
+<a name="733"></a>}
+<a name="734"></a>
+<a name="735"></a><font class="source_comment">///////////////////////////////////////////////////////
+</font><a name="736"></a><font class="source_keyword">state</font> NormalFire
+<a name="737"></a>{
+<a name="738"></a>    <font class="source_keyword">function</font> Fire(<font class="source_keyword">float</font> F) 
+<a name="739"></a>    {
+<a name="740"></a>    }
+<a name="741"></a>    <font class="source_keyword">function</font> AltFire(<font class="source_keyword">float</font> F) 
+<a name="742"></a>    {
+<a name="743"></a>    }
+<a name="744"></a>
+<a name="745"></a>Begin:
+<a name="746"></a>    FinishAnim();
+<a name="747"></a>    Finish();
+<a name="748"></a>}
+<a name="749"></a>
+<a name="750"></a><font class="source_comment">////////////////////////////////////////////////////////
+</font><a name="751"></a><font class="source_keyword">state</font> AltFiring
+<a name="752"></a>{
+<a name="753"></a>    <font class="source_keyword">function</font> Fire(<font class="source_keyword">float</font> F) 
+<a name="754"></a>    {
+<a name="755"></a>    }
+<a name="756"></a>
+<a name="757"></a>    <font class="source_keyword">function</font> AltFire(<font class="source_keyword">float</font> F) 
+<a name="758"></a>    {
+<a name="759"></a>    }
+<a name="760"></a>
+<a name="761"></a>Begin:
+<a name="762"></a>    FinishAnim();
+<a name="763"></a>    Finish();
+<a name="764"></a>}
+<a name="765"></a>
+<a name="766"></a><font class="source_comment">//**********************************************************************************
+</font><a name="767"></a><font class="source_comment">// Weapon is up, but not firing
+</font><a name="768"></a><font class="source_keyword">state</font> Idle
+<a name="769"></a>{
+<a name="770"></a>    <font class="source_keyword">function</font> AnimEnd()
+<a name="771"></a>    {
+<a name="772"></a>        PlayIdleAnim();
+<a name="773"></a>    }
+<a name="774"></a>
+<a name="775"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> PutDown()
+<a name="776"></a>    {
+<a name="777"></a>        GotoState(<font class="source_name">'DownWeapon'</font>);
+<a name="778"></a>        <font class="source_keyword">return</font> <font class="source_keyword">True</font>;
+<a name="779"></a>    }
+<a name="780"></a>
+<a name="781"></a>Begin:
+<a name="782"></a>    bPointing=<font class="source_keyword">False</font>;
+<a name="783"></a>    <font class="source_keyword">if</font> ( (AmmoType != <font class="source_keyword">None</font>) && (AmmoType.AmmoAmount&lt;=<font class="source_int">0</font>) ) 
+<a name="784"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).SwitchToBestWeapon();  <font class="source_comment">//Goto Weapon that has Ammo
+</font><a name="785"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).bFire!=<font class="source_int">0</font> ) Fire(<font class="source_int">0.0</font>);
+<a name="786"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).bAltFire!=<font class="source_int">0</font> ) AltFire(<font class="source_int">0.0</font>);    
+<a name="787"></a>    Disable(<font class="source_name">'AnimEnd'</font>);
+<a name="788"></a>    PlayIdleAnim();
+<a name="789"></a>}
+<a name="790"></a>
+<a name="791"></a><font class="source_comment">//
+</font><a name="792"></a><font class="source_comment">// Bring newly active weapon up
+</font><a name="793"></a><font class="source_comment">// Bring newly active weapon up
+</font><a name="794"></a><font class="source_keyword">state</font> Active
+<a name="795"></a>{
+<a name="796"></a>    <font class="source_keyword">function</font> Fire(<font class="source_keyword">float</font> F) 
+<a name="797"></a>    {
+<a name="798"></a>    }
+<a name="799"></a>
+<a name="800"></a>    <font class="source_keyword">function</font> AltFire(<font class="source_keyword">float</font> F) 
+<a name="801"></a>    {
+<a name="802"></a>    }
+<a name="803"></a>
+<a name="804"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> PutDown()
+<a name="805"></a>    {
+<a name="806"></a>        <font class="source_keyword">if</font> ( bWeaponUp || (AnimFrame &lt; <font class="source_int">0.75</font>) )
+<a name="807"></a>            GotoState(<font class="source_name">'DownWeapon'</font>);
+<a name="808"></a>        <font class="source_keyword">else</font>
+<a name="809"></a>            bChangeWeapon = <font class="source_keyword">true</font>;
+<a name="810"></a>        <font class="source_keyword">return</font> <font class="source_keyword">True</font>;
+<a name="811"></a>    }
+<a name="812"></a>
+<a name="813"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="814"></a>    {
+<a name="815"></a>        bChangeWeapon = <font class="source_keyword">false</font>;
+<a name="816"></a>    }
+<a name="817"></a>
+<a name="818"></a>Begin:
+<a name="819"></a>    FinishAnim();
+<a name="820"></a>    <font class="source_keyword">if</font> ( bChangeWeapon )
+<a name="821"></a>        GotoState(<font class="source_name">'DownWeapon'</font>);
+<a name="822"></a>    bWeaponUp = <font class="source_keyword">True</font>;
+<a name="823"></a>    PlayPostSelect();
+<a name="824"></a>    FinishAnim();
+<a name="825"></a>    Finish();
+<a name="826"></a>}
+<a name="827"></a>
+<a name="828"></a><font class="source_comment">//
+</font><a name="829"></a><font class="source_comment">// Putting down weapon in favor of a new one.
+</font><a name="830"></a><font class="source_comment">//
+</font><a name="831"></a><font class="source_keyword">State</font> DownWeapon
+<a name="832"></a>{
+<a name="833"></a><font class="source_keyword">ignores</font> Fire, AltFire;
+<a name="834"></a>
+<a name="835"></a>    <font class="source_keyword">function</font> <font class="source_keyword">bool</font> PutDown()
+<a name="836"></a>    {
+<a name="837"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).ClientPutDown(self, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).PendingWeapon);
+<a name="838"></a>        <font class="source_keyword">return</font> <font class="source_keyword">true</font>; <font class="source_comment">//just keep putting it down
+</font><a name="839"></a>    }
+<a name="840"></a>
+<a name="841"></a>    <font class="source_keyword">function</font> BeginState()
+<a name="842"></a>    {
+<a name="843"></a>        bChangeWeapon = <font class="source_keyword">false</font>;
+<a name="844"></a>        bMuzzleFlash = <font class="source_int">0</font>;
+<a name="845"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).ClientPutDown(self, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).PendingWeapon);
+<a name="846"></a>    }
+<a name="847"></a>
+<a name="848"></a>Begin:
+<a name="849"></a>    TweenDown();
+<a name="850"></a>    FinishAnim();
+<a name="851"></a>    <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).ChangedWeapon();
+<a name="852"></a>}
+<a name="853"></a>
+<a name="854"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> ClientPutDown(<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> NextWeapon);
+<a name="855"></a>
+<a name="856"></a><font class="source_keyword">function</font> BringUp()
+<a name="857"></a>{
+<a name="858"></a>    <font class="source_keyword">if</font> ( Owner.IsA(<font class="source_name">'PlayerPawn'</font>) )
+<a name="859"></a>    {
+<a name="860"></a>        SetHand(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner).Handedness);
+<a name="861"></a>        <font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Owner).EndZoom();
+<a name="862"></a>    }   
+<a name="863"></a>    bWeaponUp = <font class="source_keyword">false</font>;
+<a name="864"></a>    PlaySelect();
+<a name="865"></a>    GotoState(<font class="source_name">'Active'</font>);
+<a name="866"></a>}
+<a name="867"></a>
+<a name="868"></a><font class="source_keyword">function</font> RaiseUp(<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font> OldWeapon)
+<a name="869"></a>{
+<a name="870"></a>    BringUp();
+<a name="871"></a>}
+<a name="872"></a>
+<a name="873"></a><font class="source_keyword">function</font> <font class="source_keyword">bool</font> PutDown()
+<a name="874"></a>{
+<a name="875"></a>    bChangeWeapon = <font class="source_keyword">true</font>;
+<a name="876"></a>    <font class="source_keyword">return</font> <font class="source_keyword">true</font>; 
+<a name="877"></a>}
+<a name="878"></a>
+<a name="879"></a><font class="source_keyword">function</font> TweenDown()
+<a name="880"></a>{
+<a name="881"></a>    <font class="source_keyword">if</font> ( (AnimSequence != <font class="source_name">''</font>) && (GetAnimGroup(AnimSequence) == <font class="source_name">'Select'</font>) )
+<a name="882"></a>        TweenAnim( AnimSequence, AnimFrame * <font class="source_int">0.4</font> );
+<a name="883"></a>    <font class="source_keyword">else</font>
+<a name="884"></a>        PlayAnim(<font class="source_name">'Down'</font>, <font class="source_int">1.0</font>, <font class="source_int">0.05</font>);
+<a name="885"></a>}
+<a name="886"></a>
+<a name="887"></a><font class="source_keyword">function</font> TweenSelect()
+<a name="888"></a>{
+<a name="889"></a>    TweenAnim(<font class="source_name">'Select'</font>,<font class="source_int">0.001</font>);
+<a name="890"></a>}
+<a name="891"></a>
+<a name="892"></a><font class="source_keyword">function</font> PlaySelect()
+<a name="893"></a>{
+<a name="894"></a>    PlayAnim(<font class="source_name">'Select'</font>,<font class="source_int">1.0</font>,<font class="source_int">0.0</font>);
+<a name="895"></a>    Owner.PlaySound(SelectSound, SLOT_Misc, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Owner).SoundDampening);    
+<a name="896"></a>}
+<a name="897"></a>
+<a name="898"></a><font class="source_keyword">function</font> PlayPostSelect()
+<a name="899"></a>{
+<a name="900"></a>}
+<a name="901"></a>
+<a name="902"></a><font class="source_keyword">function</font> PlayIdleAnim()
+<a name="903"></a>{
+<a name="904"></a>}
+<a name="905"></a>
+<a name="906"></a><font class="source_keyword">defaultproperties</font>
+<a name="907"></a>{
+<a name="908"></a>     bCanThrow=<font class="source_keyword">true</font>
+<a name="909"></a>     DeathMessage=<font class="source_string">"%o was killed by %k's %w."</font>
+<a name="910"></a>     MaxTargetRange=<font class="source_int">4096.000000</font>
+<a name="911"></a>     ProjectileSpeed=<font class="source_int">1000.000000</font>
+<a name="912"></a>     AltProjectileSpeed=<font class="source_int">1000.000000</font>
+<a name="913"></a>     aimerror=<font class="source_int">550.000000</font>
+<a name="914"></a>     shakemag=<font class="source_int">300.000000</font>
+<a name="915"></a>     shaketime=<font class="source_int">0.100000</font>
+<a name="916"></a>     shakevert=<font class="source_int">5.000000</font>
+<a name="917"></a>     AIRating=<font class="source_int">0.100000</font>
+<a name="918"></a>     RefireRate=<font class="source_int">0.500000</font>
+<a name="919"></a>     AltRefireRate=<font class="source_int">0.500000</font>
+<a name="920"></a>     ItemName=<font class="source_string">"Weapon"</font>
+<a name="921"></a>     MessageNoAmmo=<font class="source_string">" has no ammo."</font>
+<a name="922"></a>     AutoSwitchPriority=<font class="source_int">1</font>
+<a name="923"></a>     InventoryGroup=<font class="source_int">1</font>
+<a name="924"></a>     PickupMessage=<font class="source_string">"You got a weapon"</font>
+<a name="925"></a>     RespawnTime=<font class="source_int">30.000000</font>
+<a name="926"></a>     PlayerViewOffset=(X=<font class="source_int">30.000000</font>,Z=-<font class="source_int">5.000000</font>)
+<a name="927"></a>     MaxDesireability=<font class="source_int">0.500000</font>
+<a name="928"></a>     <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Engine.S_Weapon'</font>
+<a name="929"></a>     bNoSmooth=<font class="source_keyword">True</font>
+<a name="930"></a>     MuzzleScale=<font class="source_int">4.0</font>
+<a name="931"></a>     FlashLength=+<font class="source_int">0.1</font>
+<a name="932"></a>     Icon=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'Engine.S_Weapon'</font>
+<a name="933"></a>     NameColor=(R=<font class="source_int">255</font>,G=<font class="source_int">255</font>,B=<font class="source_int">255</font>)
+<a name="934"></a>}
+<a name="935"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\weapon.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Weapon">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="waybeacon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="zoneinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:23:32.000 - Creation time: Wed 26/5/2004 10:49:07.515 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.UTBloodPool</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\utbloodpool.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTBloodPool">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utbanner.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utbloodpool2.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\utbloodpool.html">UTBloodPool</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\utbloodpool.html" class="source">UTBloodPool</a></font> <font class="source_keyword">expands</font> <font class="source_type"><a href="..\botpack\scorch.html" class="source">Scorch</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=BloodPool6 FILE=TEXTURES\DECALS\BSplat1-S.PCX LODSET=2
+</font><a name="4"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=BloodPool7 FILE=TEXTURES\DECALS\BSplat5-S.PCX LODSET=2
+</font><a name="5"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=BloodPool8 FILE=TEXTURES\DECALS\BSplat2-S.PCX LODSET=2
+</font><a name="6"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=BloodPool9 FILE=TEXTURES\DECALS\Spatter2.PCX LODSET=2
+</font><a name="7"></a>
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> Splats[<font class="source_int">5</font>];
+<a name="9"></a>
+<a name="10"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> BeginPlay()
+<a name="11"></a>{
+<a name="12"></a>    <font class="source_keyword">if</font> ( <font class="source_keyword">class</font><font class="source_name">'GameInfo'</font>.Default.bLowGore )
+<a name="13"></a>    {
+<a name="14"></a>        destroy();
+<a name="15"></a>        <font class="source_keyword">return</font>;
+<a name="16"></a>    }
+<a name="17"></a>    
+<a name="18"></a>    <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.bDropDetail )
+<a name="19"></a>        <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font> = splats[<font class="source_int">2</font> + Rand(<font class="source_int">3</font>)];
+<a name="20"></a>    <font class="source_keyword">else</font>
+<a name="21"></a>        <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font> = splats[Rand(<font class="source_int">5</font>)];;
+<a name="22"></a>}
+<a name="23"></a>
+<a name="24"></a><font class="source_keyword">defaultproperties</font>
+<a name="25"></a>{
+<a name="26"></a>    splats(<font class="source_int">0</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Botpack.BloodPool6'</font>
+<a name="27"></a>    splats(<font class="source_int">1</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Botpack.BloodPool8'</font>
+<a name="28"></a>    splats(<font class="source_int">2</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Botpack.BloodPool9'</font>
+<a name="29"></a>    splats(<font class="source_int">3</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Botpack.BloodPool7'</font>
+<a name="30"></a>    splats(<font class="source_int">4</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Botpack.BloodSplat4'</font>
+<a name="31"></a>    MultiDecalLevel=<font class="source_int">4</font>
+<a name="32"></a>    DrawScale=+<font class="source_int">0.75</font>
+<a name="33"></a>    <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>=<font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font><font class="source_name">'Botpack.BloodSplat1'</font>
+<a name="34"></a>    RemoteRole=ROLE_None
+<a name="35"></a>}
+<a name="36"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\utbloodpool.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UTBloodPool">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="utbanner.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="utbloodpool2.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:22:52.000 - Creation time: Wed 26/5/2004 10:48:57.687 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

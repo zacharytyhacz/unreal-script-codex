@@ -1,0 +1,1023 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - ParticleSystems.ParticleSprayer</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="particlesystems-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_particlesystems\particlesprayer.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#ParticleSprayer">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="myrdsprayerexp.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="particlesprayerri.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="particlesystems-overview.html">ParticleSystems</a>.ParticleSprayer</h1>
+<b>Extends:</b> <a href="..\engine\actor.html">Actor</a><br>
+<b>Modifiers:</b> native <br>
+<a href="..\Source_particlesystems\particlesprayer.html"><b>Source code</b></a>
+
+<p>
+ParticleSprayer.uc<br />
+<br />
+Description:<br />
+How to use this class:<br />
+<br />
++ Place in a level.<br />
++ Aim in the desired direction.<br />
++ Set properties as desired.<br />
+Todo:<br />
+<br />
++ Decide whether ParticleSprayers should have no replication, or if they<br />
+should be triggered, etc on the server-side, and have the variables<br />
+replicated to the clients.  Currently there is no replication.<br />
+If we ever want to do puzzles with it, it should probably run server-side<br />
+and replicate changes to the clients.<br />
+<br />
++ Add rotation interpolation.<br />
+<br />
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a>
+    |   
+    +-- <a href="particlesystems-overview.html">ParticleSystems</a>.<a href="particlesprayer.html">ParticleSprayer</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="appearsprayer.html">AppearSprayer</a>, <a href="blacksmoke01.html">BlackSmoke01</a>, <a href="decayspray.html">DecaySpray</a>, <a href="firework01.html">Firework01</a>, <a href="firework02.html">Firework02</a>, <a href="firework03.html">Firework03</a>, <a href="firework04.html">Firework04</a>, <a href="firework05.html">Firework05</a>, <a href="firework06.html">Firework06</a>, <a href="firework07.html">Firework07</a>, <a href="firework08.html">Firework08</a>, <a href="firework09.html">Firework09</a>, <a href="flame01.html">Flame01</a>, <a href="lampflame01.html">LampFlame01</a>, <a href="lavaspew.html">LavaSpew</a>, <a href="myrdsprayera.html">MyrdSprayerA</a>, <a href="myrdsprayerb.html">MyrdSprayerB</a>, <a href="myrdsprayerexp.html">MyrdSprayerExp</a>, <a href="respawnfire.html">RespawnFire</a>, <a href="smoke01.html">Smoke01</a>, <a href="smoke02.html">Smoke02</a>, <a href="smoke03.html">Smoke03</a>, <a href="watersplash.html">WaterSplash</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#MaxInt">MaxInt</a>, <a href="..\core\object.html#Pi">Pi</a>, <a href="..\core\object.html#RF_NotForClient">RF_NotForClient</a>, <a href="..\core\object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="..\core\object.html#RF_NotForServer">RF_NotForServer</a>, <a href="..\core\object.html#RF_Public">RF_Public</a>, <a href="..\core\object.html#RF_Transactional">RF_Transactional</a>, <a href="..\core\object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bDisableTick" name="bDisableTick">bDisableTick</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bGrouped" name="bGrouped">bGrouped</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInitiallyOn" name="bInitiallyOn">bInitiallyOn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bInterpolate" name="bInterpolate">bInterpolate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bIsWindResistant" name="bIsWindResistant">bIsWindResistant</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLinearFrequenciesChanged" name="bLinearFrequenciesChanged">bLinearFrequenciesChanged</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bLOSClip" name="bLOSClip">bLOSClip</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bOn" name="bOn">bOn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRotationGrouped" name="bRotationGrouped">bRotationGrouped</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DecalMinLifeSpan" name="DecalMinLifeSpan">DecalMinLifeSpan</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DecalTimer" name="DecalTimer">DecalTimer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\actor.html">Actor</a></td><td width="66%"><a href="#_FollowActor" name="FollowActor">FollowActor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_FollowOffset" name="FollowOffset">FollowOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_Gravity" name="Gravity">Gravity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_InternalTimer" name="InternalTimer">InternalTimer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MinVolume" name="MinVolume">MinVolume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_NumTemplates" name="NumTemplates">NumTemplates</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="particlesprayer.html#EDistribution">EDistribution</a></td><td width="66%"><a href="#_ParticleDistribution" name="ParticleDistribution">ParticleDistribution</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\engine\texture.html">Texture</a></td><td width="66%"><a href="#_Particles[16]" name="Particles[16]">Particles[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_PrimeCount" name="PrimeCount">PrimeCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_RelativeOffset" name="RelativeOffset">RelativeOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Rotator">rotator</a></td><td width="66%"><a href="#_RelativeRotation" name="RelativeRotation">RelativeRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="..\core\object.html#Vector">vector</a></td><td width="66%"><a href="#_RotationPoint" name="RotationPoint">RotationPoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Spread" name="Spread">Spread</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="particlesprayer.html#Particle">Particle</a></td><td width="66%"><a href="#_Templates[16]" name="Templates[16]">Templates[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TimerDuration" name="TimerDuration">TimerDuration</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Volume" name="Volume">Volume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_VolumeScalePct" name="VolumeScalePct">VolumeScalePct</a></td></tr>
+<tr><th colspan="2" class="small">Decals</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DecalMaxLifeSpan" name="DecalMaxLifeSpan">DecalMaxLifeSpan</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_DecalPercent" name="DecalPercent">DecalPercent</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="..\engine\decal.html">Decal</a>&gt;</td><td width="66%"><a href="#_DecalType" name="DecalType">DecalType</a></td></tr>
+<tr><th colspan="2" class="small">Display</th></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MaxAnimRate" name="MaxAnimRate">MaxAnimRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MinAnimRate" name="MinAnimRate">MinAnimRate</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\actor.html#Acceleration">Acceleration</a>, <a href="..\engine\actor.html#AmbientGlow">AmbientGlow</a>, <a href="..\engine\actor.html#AmbientSound">AmbientSound</a>, <a href="..\engine\actor.html#AnimFrame">AnimFrame</a>, <a href="..\engine\actor.html#AnimLast">AnimLast</a>, <a href="..\engine\actor.html#AnimMinRate">AnimMinRate</a>, <a href="..\engine\actor.html#AnimRate">AnimRate</a>, <a href="..\engine\actor.html#AnimSequence">AnimSequence</a>, <a href="..\engine\actor.html#AttachTag">AttachTag</a>, <a href="..\engine\actor.html#bActorShadows">bActorShadows</a>, <a href="..\engine\actor.html#bAlwaysRelevant">bAlwaysRelevant</a>, <a href="..\engine\actor.html#bAlwaysTick">bAlwaysTick</a>, <a href="..\engine\actor.html#bAnimByOwner">bAnimByOwner</a>, <a href="..\engine\actor.html#bAnimFinished">bAnimFinished</a>, <a href="..\engine\actor.html#bAnimLoop">bAnimLoop</a>, <a href="..\engine\actor.html#bAnimNotify">bAnimNotify</a>, <a href="..\engine\actor.html#Base">Base</a>, <a href="..\engine\actor.html#bAssimilated">bAssimilated</a>, <a href="..\engine\actor.html#bBlockActors">bBlockActors</a>, <a href="..\engine\actor.html#bBlockPlayers">bBlockPlayers</a>, <a href="..\engine\actor.html#bBounce">bBounce</a>, <a href="..\engine\actor.html#bCanTeleport">bCanTeleport</a>, <a href="..\engine\actor.html#bCarriedItem">bCarriedItem</a>, <a href="..\engine\actor.html#bClientAnim">bClientAnim</a>, <a href="..\engine\actor.html#bClientDemoNetFunc">bClientDemoNetFunc</a>, <a href="..\engine\actor.html#bClientDemoRecording">bClientDemoRecording</a>, <a href="..\engine\actor.html#bCollideActors">bCollideActors</a>, <a href="..\engine\actor.html#bCollideWhenPlacing">bCollideWhenPlacing</a>, <a href="..\engine\actor.html#bCollideWorld">bCollideWorld</a>, <a href="..\engine\actor.html#bCorona">bCorona</a>, <a href="..\engine\actor.html#bDeleteMe">bDeleteMe</a>, <a href="..\engine\actor.html#bDemoRecording">bDemoRecording</a>, <a href="..\engine\actor.html#bDifficulty0">bDifficulty0</a>, <a href="..\engine\actor.html#bDifficulty1">bDifficulty1</a>, <a href="..\engine\actor.html#bDifficulty2">bDifficulty2</a>, <a href="..\engine\actor.html#bDifficulty3">bDifficulty3</a>, <a href="..\engine\actor.html#bDirectional">bDirectional</a>, <a href="..\engine\actor.html#bDynamicLight">bDynamicLight</a>, <a href="..\engine\actor.html#bEdLocked">bEdLocked</a>, <a href="..\engine\actor.html#bEdShouldSnap">bEdShouldSnap</a>, <a href="..\engine\actor.html#bEdSnap">bEdSnap</a>, <a href="..\engine\actor.html#bFilterByVolume">bFilterByVolume</a>, <a href="..\engine\actor.html#bFixedRotationDir">bFixedRotationDir</a>, <a href="..\engine\actor.html#bForcePhysicsUpdate">bForcePhysicsUpdate</a>, <a href="..\engine\actor.html#bForceStasis">bForceStasis</a>, <a href="..\engine\actor.html#bGameRelevant">bGameRelevant</a>, <a href="..\engine\actor.html#bHidden">bHidden</a>, <a href="..\engine\actor.html#bHiddenEd">bHiddenEd</a>, <a href="..\engine\actor.html#bHighDetail">bHighDetail</a>, <a href="..\engine\actor.html#bHighlighted">bHighlighted</a>, <a href="..\engine\actor.html#bHurtEntry">bHurtEntry</a>, <a href="..\engine\actor.html#bInterpolating">bInterpolating</a>, <a href="..\engine\actor.html#bIsItemGoal">bIsItemGoal</a>, <a href="..\engine\actor.html#bIsKillGoal">bIsKillGoal</a>, <a href="..\engine\actor.html#bIsMover">bIsMover</a>, <a href="..\engine\actor.html#bIsPawn">bIsPawn</a>, <a href="..\engine\actor.html#bIsSecretGoal">bIsSecretGoal</a>, <a href="..\engine\actor.html#bJustTeleported">bJustTeleported</a>, <a href="..\engine\actor.html#bLensFlare">bLensFlare</a>, <a href="..\engine\actor.html#bLightChanged">bLightChanged</a>, <a href="..\engine\actor.html#bMemorized">bMemorized</a>, <a href="..\engine\actor.html#bMeshCurvy">bMeshCurvy</a>, <a href="..\engine\actor.html#bMeshEnviroMap">bMeshEnviroMap</a>, <a href="..\engine\actor.html#bMovable">bMovable</a>, <a href="..\engine\actor.html#bNet">bNet</a>, <a href="..\engine\actor.html#bNetFeel">bNetFeel</a>, <a href="..\engine\actor.html#bNetHear">bNetHear</a>, <a href="..\engine\actor.html#bNetInitial">bNetInitial</a>, <a href="..\engine\actor.html#bNetOptional">bNetOptional</a>, <a href="..\engine\actor.html#bNetOwner">bNetOwner</a>, <a href="..\engine\actor.html#bNetRelevant">bNetRelevant</a>, <a href="..\engine\actor.html#bNetSee">bNetSee</a>, <a href="..\engine\actor.html#bNetSpecial">bNetSpecial</a>, <a href="..\engine\actor.html#bNetTemporary">bNetTemporary</a>, <a href="..\engine\actor.html#bNoDelete">bNoDelete</a>, <a href="..\engine\actor.html#bNoSmooth">bNoSmooth</a>, <a href="..\engine\actor.html#bOnlyOwnerSee">bOnlyOwnerSee</a>, <a href="..\engine\actor.html#bOwnerNoSee">bOwnerNoSee</a>, <a href="..\engine\actor.html#bParticles">bParticles</a>, <a href="..\engine\actor.html#bProjTarget">bProjTarget</a>, <a href="..\engine\actor.html#bRandomFrame">bRandomFrame</a>, <a href="..\engine\actor.html#bReplicateInstigator">bReplicateInstigator</a>, <a href="..\engine\actor.html#bRotateToDesired">bRotateToDesired</a>, <a href="..\engine\actor.html#Brush">Brush</a>, <a href="..\engine\actor.html#bScriptInitialized">bScriptInitialized</a>, <a href="..\engine\actor.html#bSelected">bSelected</a>, <a href="..\engine\actor.html#bShadowCast">bShadowCast</a>, <a href="..\engine\actor.html#bSimFall">bSimFall</a>, <a href="..\engine\actor.html#bSimulatedPawn">bSimulatedPawn</a>, <a href="..\engine\actor.html#bSinglePlayer">bSinglePlayer</a>, <a href="..\engine\actor.html#bSpecialLit">bSpecialLit</a>, <a href="..\engine\actor.html#bStasis">bStasis</a>, <a href="..\engine\actor.html#bStatic">bStatic</a>, <a href="..\engine\actor.html#bTempEditor">bTempEditor</a>, <a href="..\engine\actor.html#bTicked">bTicked</a>, <a href="..\engine\actor.html#bTimerLoop">bTimerLoop</a>, <a href="..\engine\actor.html#bTrailerPrePivot">bTrailerPrePivot</a>, <a href="..\engine\actor.html#bTrailerSameRotation">bTrailerSameRotation</a>, <a href="..\engine\actor.html#bTravel">bTravel</a>, <a href="..\engine\actor.html#bUnlit">bUnlit</a>, <a href="..\engine\actor.html#Buoyancy">Buoyancy</a>, <a href="..\engine\actor.html#CollisionHeight">CollisionHeight</a>, <a href="..\engine\actor.html#CollisionRadius">CollisionRadius</a>, <a href="..\engine\actor.html#CollisionTag">CollisionTag</a>, <a href="..\engine\actor.html#ColLocation">ColLocation</a>, <a href="..\engine\actor.html#Deleted">Deleted</a>, <a href="..\engine\actor.html#DesiredRotation">DesiredRotation</a>, <a href="..\engine\actor.html#DodgeDir">DodgeDir</a>, <a href="..\engine\actor.html#DrawScale">DrawScale</a>, <a href="..\engine\actor.html#DrawType">DrawType</a>, <a href="..\engine\actor.html#Event">Event</a>, <a href="..\engine\actor.html#ExtraTag">ExtraTag</a>, <a href="..\engine\actor.html#Fatness">Fatness</a>, <a href="..\engine\actor.html#Group">Group</a>, <a href="..\engine\actor.html#HitActor">HitActor</a>, <a href="..\engine\actor.html#InitialState">InitialState</a>, <a href="..\engine\actor.html#Instigator">Instigator</a>, <a href="..\engine\actor.html#Inventory">Inventory</a>, <a href="..\engine\actor.html#LatentActor">LatentActor</a>, <a href="..\engine\actor.html#LatentByte">LatentByte</a>, <a href="..\engine\actor.html#LatentFloat">LatentFloat</a>, <a href="..\engine\actor.html#LatentInt">LatentInt</a>, <a href="..\engine\actor.html#Level">Level</a>, <a href="..\engine\actor.html#LifeSpan">LifeSpan</a>, <a href="..\engine\actor.html#LightBrightness">LightBrightness</a>, <a href="..\engine\actor.html#LightCone">LightCone</a>, <a href="..\engine\actor.html#LightEffect">LightEffect</a>, <a href="..\engine\actor.html#LightHue">LightHue</a>, <a href="..\engine\actor.html#LightingTag">LightingTag</a>, <a href="..\engine\actor.html#LightPeriod">LightPeriod</a>, <a href="..\engine\actor.html#LightPhase">LightPhase</a>, <a href="..\engine\actor.html#LightRadius">LightRadius</a>, <a href="..\engine\actor.html#LightSaturation">LightSaturation</a>, <a href="..\engine\actor.html#LightType">LightType</a>, <a href="..\engine\actor.html#Location">Location</a>, <a href="..\engine\actor.html#LODBias">LODBias</a>, <a href="..\engine\actor.html#Mass">Mass</a>, <a href="..\engine\actor.html#Mesh">Mesh</a>, <a href="..\engine\actor.html#MiscNumber">MiscNumber</a>, <a href="..\engine\actor.html#MultiSkins[8]">MultiSkins[8]</a>, <a href="..\engine\actor.html#NetPriority">NetPriority</a>, <a href="..\engine\actor.html#NetTag">NetTag</a>, <a href="..\engine\actor.html#NetUpdateFrequency">NetUpdateFrequency</a>, <a href="..\engine\actor.html#OddsOfAppearing">OddsOfAppearing</a>, <a href="..\engine\actor.html#OldAnimRate">OldAnimRate</a>, <a href="..\engine\actor.html#OldLocation">OldLocation</a>, <a href="..\engine\actor.html#OtherTag">OtherTag</a>, <a href="..\engine\actor.html#Owner">Owner</a>, <a href="..\engine\actor.html#PendingTouch">PendingTouch</a>, <a href="..\engine\actor.html#PhysAlpha">PhysAlpha</a>, <a href="..\engine\actor.html#Physics">Physics</a>, <a href="..\engine\actor.html#PhysRate">PhysRate</a>, <a href="..\engine\actor.html#PrePivot">PrePivot</a>, <a href="..\engine\actor.html#Region">Region</a>, <a href="..\engine\actor.html#RemoteRole">RemoteRole</a>, <a href="..\engine\actor.html#RenderInterface">RenderInterface</a>, <a href="..\engine\actor.html#RenderIteratorClass">RenderIteratorClass</a>, <a href="..\engine\actor.html#Role">Role</a>, <a href="..\engine\actor.html#Rotation">Rotation</a>, <a href="..\engine\actor.html#RotationRate">RotationRate</a>, <a href="..\engine\actor.html#ScaleGlow">ScaleGlow</a>, <a href="..\engine\actor.html#SimAnim">SimAnim</a>, <a href="..\engine\actor.html#SkelAnim">SkelAnim</a>, <a href="..\engine\actor.html#Skin">Skin</a>, <a href="..\engine\actor.html#SoundPitch">SoundPitch</a>, <a href="..\engine\actor.html#SoundRadius">SoundRadius</a>, <a href="..\engine\actor.html#SoundVolume">SoundVolume</a>, <a href="..\engine\actor.html#SpecialTag">SpecialTag</a>, <a href="..\engine\actor.html#Sprite">Sprite</a>, <a href="..\engine\actor.html#SpriteProjForward">SpriteProjForward</a>, <a href="..\engine\actor.html#StandingCount">StandingCount</a>, <a href="..\engine\actor.html#Style">Style</a>, <a href="..\engine\actor.html#Tag">Tag</a>, <a href="..\engine\actor.html#Target">Target</a>, <a href="..\engine\actor.html#Texture">Texture</a>, <a href="..\engine\actor.html#TimerCounter">TimerCounter</a>, <a href="..\engine\actor.html#TimerRate">TimerRate</a>, <a href="..\engine\actor.html#Touching[4]">Touching[4]</a>, <a href="..\engine\actor.html#TransientSoundRadius">TransientSoundRadius</a>, <a href="..\engine\actor.html#TransientSoundVolume">TransientSoundVolume</a>, <a href="..\engine\actor.html#TweenRate">TweenRate</a>, <a href="..\engine\actor.html#Velocity">Velocity</a>, <a href="..\engine\actor.html#VisibilityHeight">VisibilityHeight</a>, <a href="..\engine\actor.html#VisibilityRadius">VisibilityRadius</a>, <a href="..\engine\actor.html#VolumeBrightness">VolumeBrightness</a>, <a href="..\engine\actor.html#VolumeFog">VolumeFog</a>, <a href="..\engine\actor.html#VolumeRadius">VolumeRadius</a>, <a href="..\engine\actor.html#XLevel">XLevel</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#Class">Class</a>, <a href="..\core\object.html#Name">Name</a>, <a href="..\core\object.html#ObjectFlags">ObjectFlags</a>, <a href="..\core\object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="..\core\object.html#Outer">Outer</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EDistribution" name="EDistribution">EDistribution</a><br /><span class="small">DIST_Random,
+DIST_Linear</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\actor.html#EDodgeDir">EDodgeDir</a>, <a href="..\engine\actor.html#EDrawType">EDrawType</a>, <a href="..\engine\actor.html#EInputAction">EInputAction</a>, <a href="..\engine\actor.html#EInputKey">EInputKey</a>, <a href="..\engine\actor.html#ELightEffect">ELightEffect</a>, <a href="..\engine\actor.html#ELightType">ELightType</a>, <a href="..\engine\actor.html#EMusicTransition">EMusicTransition</a>, <a href="..\engine\actor.html#ENetRole">ENetRole</a>, <a href="..\engine\actor.html#EPhysics">EPhysics</a>, <a href="..\engine\actor.html#ERenderStyle">ERenderStyle</a>, <a href="..\engine\actor.html#ESoundSlot">ESoundSlot</a>, <a href="..\engine\actor.html#ETravelType">ETravelType</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_Particle" name="Particle">Particle</a><br /><span class="small">LifeSpan, Weight, MaxInitialVelocity, MinInitialVelocity, MaxDrawScale, MinDrawScale, MaxScaleGlow, MinScaleGlow, GrowPhase, MaxGrowRate, MinGrowRate, FadePhase, MaxFadeRate, MinFadeRate, Frequency, CumulativeFreq, MaxInitialRotation, MinInitialRotation, MaxRotationRate, MinRotationRate</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\actor.html#PointRegion">PointRegion</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#BoundingBox">BoundingBox</a>, <a href="..\core\object.html#BoundingVolume">BoundingVolume</a>, <a href="..\core\object.html#Color">Color</a>, <a href="..\core\object.html#Coords">Coords</a>, <a href="..\core\object.html#Guid">Guid</a>, <a href="..\core\object.html#Plane">Plane</a>, <a href="..\core\object.html#Rotator">Rotator</a>, <a href="..\core\object.html#Scale">Scale</a>, <a href="..\core\object.html#Vector">Vector</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>byte&nbsp;</td><td><a href="#_GetDefaultParticleFadePhase+" name="GetDefaultParticleFadePhase">GetDefaultParticleFadePhase</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>byte&nbsp;</td><td><a href="#_GetDefaultParticleGrowPhase+" name="GetDefaultParticleGrowPhase">GetDefaultParticleGrowPhase</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleLifeSpan+" name="GetDefaultParticleLifeSpan">GetDefaultParticleLifeSpan</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleMaxDrawScale+" name="GetDefaultParticleMaxDrawScale">GetDefaultParticleMaxDrawScale</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleMaxFadeRate+" name="GetDefaultParticleMaxFadeRate">GetDefaultParticleMaxFadeRate</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleMaxGrowRate+" name="GetDefaultParticleMaxGrowRate">GetDefaultParticleMaxGrowRate</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleMaxInitialVelocity+" name="GetDefaultParticleMaxInitialVelocity">GetDefaultParticleMaxInitialVelocity</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleMaxScaleGlow+" name="GetDefaultParticleMaxScaleGlow">GetDefaultParticleMaxScaleGlow</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleMinDrawScale+" name="GetDefaultParticleMinDrawScale">GetDefaultParticleMinDrawScale</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleMinFadeRate+" name="GetDefaultParticleMinFadeRate">GetDefaultParticleMinFadeRate</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleMinGrowRate+" name="GetDefaultParticleMinGrowRate">GetDefaultParticleMinGrowRate</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleMinInitialVelocity+" name="GetDefaultParticleMinInitialVelocity">GetDefaultParticleMinInitialVelocity</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleMinScaleGlow+" name="GetDefaultParticleMinScaleGlow">GetDefaultParticleMinScaleGlow</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetDefaultParticleWeight+" name="GetDefaultParticleWeight">GetDefaultParticleWeight</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>byte&nbsp;</td><td><a href="#_GetParticleFadePhase+" name="GetParticleFadePhase">GetParticleFadePhase</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>byte&nbsp;</td><td><a href="#_GetParticleGrowPhase+" name="GetParticleGrowPhase">GetParticleGrowPhase</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleLifeSpan+" name="GetParticleLifeSpan">GetParticleLifeSpan</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleMaxDrawScale+" name="GetParticleMaxDrawScale">GetParticleMaxDrawScale</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleMaxFadeRate+" name="GetParticleMaxFadeRate">GetParticleMaxFadeRate</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleMaxGrowRate+" name="GetParticleMaxGrowRate">GetParticleMaxGrowRate</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleMaxInitialVelocity+" name="GetParticleMaxInitialVelocity">GetParticleMaxInitialVelocity</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleMaxScaleGlow+" name="GetParticleMaxScaleGlow">GetParticleMaxScaleGlow</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleMinDrawScale+" name="GetParticleMinDrawScale">GetParticleMinDrawScale</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleMinFadeRate+" name="GetParticleMinFadeRate">GetParticleMinFadeRate</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleMinGrowRate+" name="GetParticleMinGrowRate">GetParticleMinGrowRate</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleMinInitialVelocity+" name="GetParticleMinInitialVelocity">GetParticleMinInitialVelocity</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleMinScaleGlow+" name="GetParticleMinScaleGlow">GetParticleMinScaleGlow</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetParticleWeight+" name="GetParticleWeight">GetParticleWeight</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PreBeginPlay+" name="PreBeginPlay">PreBeginPlay</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_RotateParticles+" name="RotateParticles">RotateParticles</a> (<a href="..\core\object.html#Rotator">rotator</a> Delta, optional <a href="..\core\object.html#Vector">vector</a> Origin)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetFollowActor+" name="SetFollowActor">SetFollowActor</a> (<a href="..\engine\actor.html">Actor</a> Other)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleFadePhase+" name="SetParticleFadePhase">SetParticleFadePhase</a> (byte  FadePhase, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleGrowPhase+" name="SetParticleGrowPhase">SetParticleGrowPhase</a> (byte  GrowPhase, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleLifeSpan+" name="SetParticleLifeSpan">SetParticleLifeSpan</a> (float LifeSpan, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleMaxDrawScale+" name="SetParticleMaxDrawScale">SetParticleMaxDrawScale</a> (float MaxDrawScale, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleMaxFadeRate+" name="SetParticleMaxFadeRate">SetParticleMaxFadeRate</a> (float MaxFadeRate, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleMaxGrowRate+" name="SetParticleMaxGrowRate">SetParticleMaxGrowRate</a> (float MaxGrowRate, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleMaxInitialVelocity+" name="SetParticleMaxInitialVelocity">SetParticleMaxInitialVelocity</a> (float MaxInitialVelocity, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleMaxScaleGlow+" name="SetParticleMaxScaleGlow">SetParticleMaxScaleGlow</a> (float MaxScaleGlow, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleMinDrawScale+" name="SetParticleMinDrawScale">SetParticleMinDrawScale</a> (float MinDrawScale, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleMinFadeRate+" name="SetParticleMinFadeRate">SetParticleMinFadeRate</a> (float MinFadeRate, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleMinGrowRate+" name="SetParticleMinGrowRate">SetParticleMinGrowRate</a> (float MinGrowRate, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleMinInitialVelocity+" name="SetParticleMinInitialVelocity">SetParticleMinInitialVelocity</a> (float MinInitialVelocity, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleMinScaleGlow+" name="SetParticleMinScaleGlow">SetParticleMinScaleGlow</a> (float MinScaleGlow, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetParticleWeight+" name="SetParticleWeight">SetParticleWeight</a> (float Weight, int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ShiftParticles+" name="ShiftParticles">ShiftParticles</a> (<a href="..\core\object.html#Vector">vector</a> Delta)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Tick+" name="Tick">Tick</a> (float DeltaTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Trigger+TriggerControl" name="Trigger">Trigger</a> (<a href="..\engine\actor.html">Actor</a> Other, <a href="..\engine\pawn.html">Pawn</a> EventInstigator)<br /><span class="function_state">TriggerControl</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Trigger+TriggerTimed" name="Trigger">Trigger</a> (<a href="..\engine\actor.html">Actor</a> Other, <a href="..\engine\pawn.html">Pawn</a> EventInstigator)<br /><span class="function_state">TriggerTimed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Trigger+TriggerToggle" name="Trigger">Trigger</a> (<a href="..\engine\actor.html">Actor</a> Other, <a href="..\engine\pawn.html">Pawn</a> EventInstigator)<br /><span class="function_state">TriggerToggle</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_UnTrigger+TriggerControl" name="UnTrigger">UnTrigger</a> (<a href="..\engine\actor.html">Actor</a> Other, <a href="..\engine\pawn.html">Pawn</a> EventInstigator)<br /><span class="function_state">TriggerControl</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\engine\actor.html#*">*</a>, <a href="..\engine\actor.html#+">+</a>, <a href="..\engine\actor.html#-">-</a>, <a href="..\engine\actor.html#AllActors">AllActors</a>, <a href="..\engine\actor.html#AnimEnd">AnimEnd</a>, <a href="..\engine\actor.html#Attach">Attach</a>, <a href="..\engine\actor.html#AutonomousPhysics">AutonomousPhysics</a>, <a href="..\engine\actor.html#BaseChange">BaseChange</a>, <a href="..\engine\actor.html#BasedActors">BasedActors</a>, <a href="..\engine\actor.html#BecomeViewTarget">BecomeViewTarget</a>, <a href="..\engine\actor.html#BeginEvent">BeginEvent</a>, <a href="..\engine\actor.html#BeginPlay">BeginPlay</a>, <a href="..\engine\actor.html#BroadcastLocalizedMessage">BroadcastLocalizedMessage</a>, <a href="..\engine\actor.html#BroadcastMessage">BroadcastMessage</a>, <a href="..\engine\actor.html#Bump">Bump</a>, <a href="..\engine\actor.html#ChildActors">ChildActors</a>, <a href="..\engine\actor.html#ConsoleCommand">ConsoleCommand</a>, <a href="..\engine\actor.html#DemoPlaySound">DemoPlaySound</a>, <a href="..\engine\actor.html#Destroy">Destroy</a>, <a href="..\engine\actor.html#Destroyed">Destroyed</a>, <a href="..\engine\actor.html#Detach">Detach</a>, <a href="..\engine\actor.html#EncroachedBy">EncroachedBy</a>, <a href="..\engine\actor.html#EncroachingOn">EncroachingOn</a>, <a href="..\engine\actor.html#EndedRotation">EndedRotation</a>, <a href="..\engine\actor.html#EndEvent">EndEvent</a>, <a href="..\engine\actor.html#Error">Error</a>, <a href="..\engine\actor.html#Expired">Expired</a>, <a href="..\engine\actor.html#Falling">Falling</a>, <a href="..\engine\actor.html#FastTrace">FastTrace</a>, <a href="..\engine\actor.html#FellOutOfWorld">FellOutOfWorld</a>, <a href="..\engine\actor.html#FinishAnim">FinishAnim</a>, <a href="..\engine\actor.html#FinishInterpolation">FinishInterpolation</a>, <a href="..\engine\actor.html#GainedChild">GainedChild</a>, <a href="..\engine\actor.html#GetAnimGroup">GetAnimGroup</a>, <a href="..\engine\actor.html#GetCacheEntry">GetCacheEntry</a>, <a href="..\engine\actor.html#GetHumanName">GetHumanName</a>, <a href="..\engine\actor.html#GetItemName">GetItemName</a>, <a href="..\engine\actor.html#GetMapName">GetMapName</a>, <a href="..\engine\actor.html#GetNextInt">GetNextInt</a>, <a href="..\engine\actor.html#GetNextIntDesc">GetNextIntDesc</a>, <a href="..\engine\actor.html#GetNextSkin">GetNextSkin</a>, <a href="..\engine\actor.html#GetSoundDuration">GetSoundDuration</a>, <a href="..\engine\actor.html#GetURLMap">GetURLMap</a>, <a href="..\engine\actor.html#HasAnim">HasAnim</a>, <a href="..\engine\actor.html#HitWall">HitWall</a>, <a href="..\engine\actor.html#HurtRadius">HurtRadius</a>, <a href="..\engine\actor.html#InterpolateEnd">InterpolateEnd</a>, <a href="..\engine\actor.html#IsAnimating">IsAnimating</a>, <a href="..\engine\actor.html#KillCredit">KillCredit</a>, <a href="..\engine\actor.html#KilledBy">KilledBy</a>, <a href="..\engine\actor.html#Landed">Landed</a>, <a href="..\engine\actor.html#LinkSkelAnim">LinkSkelAnim</a>, <a href="..\engine\actor.html#LoopAnim">LoopAnim</a>, <a href="..\engine\actor.html#LostChild">LostChild</a>, <a href="..\engine\actor.html#MakeNoise">MakeNoise</a>, <a href="..\engine\actor.html#Move">Move</a>, <a href="..\engine\actor.html#MoveCacheEntry">MoveCacheEntry</a>, <a href="..\engine\actor.html#MoveSmooth">MoveSmooth</a>, <a href="..\engine\actor.html#PlayAnim">PlayAnim</a>, <a href="..\engine\actor.html#PlayerCanSeeMe">PlayerCanSeeMe</a>, <a href="..\engine\actor.html#PlayOwnedSound">PlayOwnedSound</a>, <a href="..\engine\actor.html#PlaySound">PlaySound</a>, <a href="..\engine\actor.html#PostBeginPlay">PostBeginPlay</a>, <a href="..\engine\actor.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="..\engine\actor.html#PostTeleport">PostTeleport</a>, <a href="..\engine\actor.html#PostTouch">PostTouch</a>, <a href="..\engine\actor.html#PreBeginPlay">PreBeginPlay</a>, <a href="..\engine\actor.html#PreTeleport">PreTeleport</a>, <a href="..\engine\actor.html#RadiusActors">RadiusActors</a>, <a href="..\engine\actor.html#RenderOverlays">RenderOverlays</a>, <a href="..\engine\actor.html#RenderTexture">RenderTexture</a>, <a href="..\engine\actor.html#SetBase">SetBase</a>, <a href="..\engine\actor.html#SetCollision">SetCollision</a>, <a href="..\engine\actor.html#SetCollisionSize">SetCollisionSize</a>, <a href="..\engine\actor.html#SetDefaultDisplayProperties">SetDefaultDisplayProperties</a>, <a href="..\engine\actor.html#SetDisplayProperties">SetDisplayProperties</a>, <a href="..\engine\actor.html#SetInitialState">SetInitialState</a>, <a href="..\engine\actor.html#SetLocation">SetLocation</a>, <a href="..\engine\actor.html#SetOwner">SetOwner</a>, <a href="..\engine\actor.html#SetPhysics">SetPhysics</a>, <a href="..\engine\actor.html#SetRotation">SetRotation</a>, <a href="..\engine\actor.html#SetTimer">SetTimer</a>, <a href="..\engine\actor.html#Sleep">Sleep</a>, <a href="..\engine\actor.html#Spawn">Spawn</a>, <a href="..\engine\actor.html#Spawned">Spawned</a>, <a href="..\engine\actor.html#SpecialHandling">SpecialHandling</a>, <a href="..\engine\actor.html#TakeDamage">TakeDamage</a>, <a href="..\engine\actor.html#Tick">Tick</a>, <a href="..\engine\actor.html#Timer">Timer</a>, <a href="..\engine\actor.html#Touch">Touch</a>, <a href="..\engine\actor.html#TouchingActors">TouchingActors</a>, <a href="..\engine\actor.html#Trace">Trace</a>, <a href="..\engine\actor.html#TraceActors">TraceActors</a>, <a href="..\engine\actor.html#TravelPostAccept">TravelPostAccept</a>, <a href="..\engine\actor.html#TravelPreAccept">TravelPreAccept</a>, <a href="..\engine\actor.html#Trigger">Trigger</a>, <a href="..\engine\actor.html#TweenAnim">TweenAnim</a>, <a href="..\engine\actor.html#UnTouch">UnTouch</a>, <a href="..\engine\actor.html#UnTrigger">UnTrigger</a>, <a href="..\engine\actor.html#VisibleActors">VisibleActors</a>, <a href="..\engine\actor.html#VisibleCollidingActors">VisibleCollidingActors</a>, <a href="..\engine\actor.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#!">!</a>, <a href="..\core\object.html#!=">!=</a>, <a href="..\core\object.html#$">$</a>, <a href="..\core\object.html#">%</a>, <a href="..\core\object.html#&">&</a>, <a href="..\core\object.html#&&">&&</a>, <a href="..\core\object.html#*">*</a>, <a href="..\core\object.html#**">**</a>, <a href="..\core\object.html#*=">*=</a>, <a href="..\core\object.html#+">+</a>, <a href="..\core\object.html#++">++</a>, <a href="..\core\object.html#+=">+=</a>, <a href="..\core\object.html#-">-</a>, <a href="..\core\object.html#-=">-=</a>, <a href="..\core\object.html#/">/ </a>, <a href="..\core\object.html#/=">/=</a>, <a href="..\core\object.html#&lt;">&lt;</a>, <a href="..\core\object.html#&lt;&lt;">&lt;&lt;</a>, <a href="..\core\object.html#&lt;=">&lt;=</a>, <a href="..\core\object.html#==">==</a>, <a href="..\core\object.html#&gt;">&gt;</a>, <a href="..\core\object.html#&gt;=">&gt;=</a>, <a href="..\core\object.html#&gt;&gt;">&gt;&gt;</a>, <a href="..\core\object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="..\core\object.html#@">@</a>, <a href="..\core\object.html#Abs">Abs</a>, <a href="..\core\object.html#Asc">Asc</a>, <a href="..\core\object.html#Atan">Atan</a>, <a href="..\core\object.html#BeginState">BeginState</a>, <a href="..\core\object.html#Caps">Caps</a>, <a href="..\core\object.html#Chr">Chr</a>, <a href="..\core\object.html#Clamp">Clamp</a>, <a href="..\core\object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="..\core\object.html#Cos">Cos</a>, <a href="..\core\object.html#Cross">Cross</a>, <a href="..\core\object.html#Disable">Disable</a>, <a href="..\core\object.html#Dot">Dot</a>, <a href="..\core\object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="..\core\object.html#Enable">Enable</a>, <a href="..\core\object.html#EndState">EndState</a>, <a href="..\core\object.html#Exp">Exp</a>, <a href="..\core\object.html#FClamp">FClamp</a>, <a href="..\core\object.html#FMax">FMax</a>, <a href="..\core\object.html#FMin">FMin</a>, <a href="..\core\object.html#FRand">FRand</a>, <a href="..\core\object.html#GetAxes">GetAxes</a>, <a href="..\core\object.html#GetEnum">GetEnum</a>, <a href="..\core\object.html#GetPropertyText">GetPropertyText</a>, <a href="..\core\object.html#GetStateName">GetStateName</a>, <a href="..\core\object.html#GetUnAxes">GetUnAxes</a>, <a href="..\core\object.html#GotoState">GotoState</a>, <a href="..\core\object.html#InStr">InStr</a>, <a href="..\core\object.html#Invert">Invert</a>, <a href="..\core\object.html#IsA">IsA</a>, <a href="..\core\object.html#IsInState">IsInState</a>, <a href="..\core\object.html#Left">Left</a>, <a href="..\core\object.html#Len">Len</a>, <a href="..\core\object.html#Lerp">Lerp</a>, <a href="..\core\object.html#Localize">Localize</a>, <a href="..\core\object.html#Log">Log</a>, <a href="..\core\object.html#Loge">Loge</a>, <a href="..\core\object.html#Max">Max</a>, <a href="..\core\object.html#Mid">Mid</a>, <a href="..\core\object.html#Min">Min</a>, <a href="..\core\object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="..\core\object.html#Normal">Normal</a>, <a href="..\core\object.html#Normalize">Normalize</a>, <a href="..\core\object.html#OrthoRotation">OrthoRotation</a>, <a href="..\core\object.html#Rand">Rand</a>, <a href="..\core\object.html#RandRange">RandRange</a>, <a href="..\core\object.html#ResetConfig">ResetConfig</a>, <a href="..\core\object.html#Right">Right</a>, <a href="..\core\object.html#RotRand">RotRand</a>, <a href="..\core\object.html#SaveConfig">SaveConfig</a>, <a href="..\core\object.html#SetPropertyText">SetPropertyText</a>, <a href="..\core\object.html#Sin">Sin</a>, <a href="..\core\object.html#Smerp">Smerp</a>, <a href="..\core\object.html#Sqrt">Sqrt</a>, <a href="..\core\object.html#Square">Square</a>, <a href="..\core\object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="..\core\object.html#Tan">Tan</a>, <a href="..\core\object.html#VRand">VRand</a>, <a href="..\core\object.html#VSize">VSize</a>, <a href="..\core\object.html#Warn">Warn</a>, <a href="..\core\object.html#^">^</a>, <a href="..\core\object.html#^^">^^</a>, <a href="..\core\object.html#|">|</a>, <a href="..\core\object.html#||">||</a>, <a href="..\core\object.html#~">~</a>, <a href="..\core\object.html#~=">~=</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>TriggerControl <a href="..\Source_particlesystems\particlesprayer.html#259" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> TriggerControl <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Trigger+TriggerControl">Trigger</a>, <a href="#_UnTrigger+TriggerControl">UnTrigger</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>TriggerTimed <a href="..\Source_particlesystems\particlesprayer.html#276" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> TriggerTimed <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Trigger+TriggerTimed">Trigger</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>TriggerToggle <a href="..\Source_particlesystems\particlesprayer.html#247" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> TriggerToggle <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Trigger+TriggerToggle">Trigger</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bDisableTick" class="hidden"></a>bDisableTick <a href="..\Source_particlesystems\particlesprayer.html#157" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bDisableTick;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bGrouped" class="hidden"></a>bGrouped <a href="..\Source_particlesystems\particlesprayer.html#149" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bGrouped;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bInitiallyOn" class="hidden"></a>bInitiallyOn <a href="..\Source_particlesystems\particlesprayer.html#112" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bInitiallyOn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bInterpolate" class="hidden"></a>bInterpolate <a href="..\Source_particlesystems\particlesprayer.html#146" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bInterpolate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bIsWindResistant" class="hidden"></a>bIsWindResistant <a href="..\Source_particlesystems\particlesprayer.html#154" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bIsWindResistant;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bLinearFrequenciesChanged" class="hidden"></a>bLinearFrequenciesChanged <a href="..\Source_particlesystems\particlesprayer.html#89" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bLinearFrequenciesChanged;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bLOSClip" class="hidden"></a>bLOSClip <a href="..\Source_particlesystems\particlesprayer.html#134" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bLOSClip;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bOn" class="hidden"></a>bOn <a href="..\Source_particlesystems\particlesprayer.html#115" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bOn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bRotationGrouped" class="hidden"></a>bRotationGrouped <a href="..\Source_particlesystems\particlesprayer.html#150" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bRotationGrouped;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DecalMinLifeSpan" class="hidden"></a>DecalMinLifeSpan <a href="..\Source_particlesystems\particlesprayer.html#142" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> DecalMinLifeSpan;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DecalTimer" class="hidden"></a>DecalTimer <a href="..\Source_particlesystems\particlesprayer.html#143" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> DecalTimer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FollowActor" class="hidden"></a>FollowActor <a href="..\Source_particlesystems\particlesprayer.html#118" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> FollowActor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FollowOffset" class="hidden"></a>FollowOffset <a href="..\Source_particlesystems\particlesprayer.html#122" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> FollowOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Gravity" class="hidden"></a>Gravity <a href="..\Source_particlesystems\particlesprayer.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Gravity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_InternalTimer" class="hidden"></a>InternalTimer <a href="..\Source_particlesystems\particlesprayer.html#109" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> InternalTimer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinVolume" class="hidden"></a>MinVolume <a href="..\Source_particlesystems\particlesprayer.html#137" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MinVolume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NumTemplates" class="hidden"></a>NumTemplates <a href="..\Source_particlesystems\particlesprayer.html#80" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">byte</font> NumTemplates;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ParticleDistribution" class="hidden"></a>ParticleDistribution <a href="..\Source_particlesystems\particlesprayer.html#95" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="particlesprayer.html#EDistribution" class="source">EDistribution</a></font> ParticleDistribution;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Particles[16]" class="hidden"></a>Particles[16] <a href="..\Source_particlesystems\particlesprayer.html#93" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font> Particles[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PrimeCount" class="hidden"></a>PrimeCount <a href="..\Source_particlesystems\particlesprayer.html#103" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> PrimeCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RelativeOffset" class="hidden"></a>RelativeOffset <a href="..\Source_particlesystems\particlesprayer.html#127" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> RelativeOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RelativeRotation" class="hidden"></a>RelativeRotation <a href="..\Source_particlesystems\particlesprayer.html#128" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> RelativeRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RotationPoint" class="hidden"></a>RotationPoint <a href="..\Source_particlesystems\particlesprayer.html#151" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> RotationPoint;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Spread" class="hidden"></a>Spread <a href="..\Source_particlesystems\particlesprayer.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> Spread;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Templates[16]" class="hidden"></a>Templates[16] <a href="..\Source_particlesystems\particlesprayer.html#83" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="particlesprayer.html#Particle" class="source">Particle</a></font> Templates[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimerDuration" class="hidden"></a>TimerDuration <a href="..\Source_particlesystems\particlesprayer.html#106" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> TimerDuration;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Volume" class="hidden"></a>Volume <a href="..\Source_particlesystems\particlesprayer.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> Volume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_VolumeScalePct" class="hidden"></a>VolumeScalePct <a href="..\Source_particlesystems\particlesprayer.html#131" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> VolumeScalePct;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Decals</h3>
+<h4><a name="_DecalMaxLifeSpan" class="hidden"></a>DecalMaxLifeSpan <a href="..\Source_particlesystems\particlesprayer.html#142" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Decals) <font class="source_keyword">float</font> DecalMaxLifeSpan;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DecalPercent" class="hidden"></a>DecalPercent <a href="..\Source_particlesystems\particlesprayer.html#141" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Decals) <font class="source_keyword">float</font> DecalPercent;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DecalType" class="hidden"></a>DecalType <a href="..\Source_particlesystems\particlesprayer.html#140" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Decals) <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\decal.html" class="source">Decal</a></font>&gt; DecalType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h3 class="vartag">Display</h3>
+<h4><a name="_MaxAnimRate" class="hidden"></a>MaxAnimRate <a href="..\Source_particlesystems\particlesprayer.html#73" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Display) <font class="source_keyword">float</font> MaxAnimRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinAnimRate" class="hidden"></a>MinAnimRate <a href="..\Source_particlesystems\particlesprayer.html#74" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font>(Display) <font class="source_keyword">float</font> MinAnimRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EDistribution" class="hidden"></a>EDistribution <a href="..\Source_particlesystems\particlesprayer.html#95" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="particlesprayer.html#EDistribution" class="source">EDistribution</a></font><br />
+{<blockquote>DIST_Random,
+DIST_Linear</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Particle" class="hidden"></a>Particle <a href="..\Source_particlesystems\particlesprayer.html#40" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">struct</font> <font class="source_type"><a href="particlesprayer.html#Particle" class="source">Particle</a></font><br />
+{<blockquote><font class="source_keyword">var</font> <font class="source_keyword">float</font> CumulativeFreq;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">byte</font> FadePhase;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> Frequency;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">byte</font> GrowPhase;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> LifeSpan;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> MaxDrawScale;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> MaxFadeRate;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> MaxGrowRate;<br />
+<font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> MaxInitialRotation;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> MaxInitialVelocity;<br />
+<font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> MaxRotationRate;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> MaxScaleGlow;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> MinDrawScale;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> MinFadeRate;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> MinGrowRate;<br />
+<font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> MinInitialRotation;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> MinInitialVelocity;<br />
+<font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> MinRotationRate;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> MinScaleGlow;<br />
+<font class="source_keyword">var</font> <font class="source_keyword">float</font> Weight;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_GetDefaultParticleFadePhase+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleFadePhase <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#394" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">byte</font> GetDefaultParticleFadePhase (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleGrowPhase+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleGrowPhase <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#391" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">byte</font> GetDefaultParticleGrowPhase (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleLifeSpan+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleLifeSpan <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#383" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleLifeSpan (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleMaxDrawScale+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleMaxDrawScale <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#387" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMaxDrawScale (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleMaxFadeRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleMaxFadeRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#395" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMaxFadeRate (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleMaxGrowRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleMaxGrowRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#392" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMaxGrowRate (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleMaxInitialVelocity+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleMaxInitialVelocity <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#385" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMaxInitialVelocity (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleMaxScaleGlow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleMaxScaleGlow <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#389" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMaxScaleGlow (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleMinDrawScale+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleMinDrawScale <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#388" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMinDrawScale (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleMinFadeRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleMinFadeRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#396" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMinFadeRate (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleMinGrowRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleMinGrowRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#393" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMinGrowRate (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleMinInitialVelocity+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleMinInitialVelocity <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#386" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMinInitialVelocity (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleMinScaleGlow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleMinScaleGlow <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#390" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleMinScaleGlow (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetDefaultParticleWeight+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetDefaultParticleWeight <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#384" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetDefaultParticleWeight (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleFadePhase+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleFadePhase <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#379" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">byte</font> GetParticleFadePhase (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleGrowPhase+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleGrowPhase <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#376" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">byte</font> GetParticleGrowPhase (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleLifeSpan+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleLifeSpan <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#368" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleLifeSpan (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleMaxDrawScale+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleMaxDrawScale <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#372" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMaxDrawScale (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleMaxFadeRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleMaxFadeRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#380" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMaxFadeRate (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleMaxGrowRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleMaxGrowRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#377" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMaxGrowRate (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleMaxInitialVelocity+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleMaxInitialVelocity <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#370" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMaxInitialVelocity (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleMaxScaleGlow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleMaxScaleGlow <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#374" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMaxScaleGlow (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleMinDrawScale+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleMinDrawScale <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#373" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMinDrawScale (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleMinFadeRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleMinFadeRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#381" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMinFadeRate (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleMinGrowRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleMinGrowRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#378" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMinGrowRate (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleMinInitialVelocity+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleMinInitialVelocity <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#371" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMinInitialVelocity (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleMinScaleGlow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleMinScaleGlow <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#375" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleMinScaleGlow (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetParticleWeight+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetParticleWeight <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#369" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetParticleWeight (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PreBeginPlay+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PreBeginPlay <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#222" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PreBeginPlay ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_RotateParticles+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> RotateParticles <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#219" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> RotateParticles (<font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> Delta, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Origin)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetFollowActor+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetFollowActor <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#339" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetFollowActor (<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleFadePhase+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleFadePhase <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#364" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleFadePhase (<font class="source_keyword">byte</font>  FadePhase,         <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleGrowPhase+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleGrowPhase <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#361" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleGrowPhase (<font class="source_keyword">byte</font>  GrowPhase,         <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleLifeSpan+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleLifeSpan <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#353" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleLifeSpan (<font class="source_keyword">float</font> LifeSpan,           <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleMaxDrawScale+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleMaxDrawScale <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#357" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleMaxDrawScale (<font class="source_keyword">float</font> MaxDrawScale,       <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleMaxFadeRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleMaxFadeRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#365" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleMaxFadeRate (<font class="source_keyword">float</font> MaxFadeRate,     <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleMaxGrowRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleMaxGrowRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#362" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleMaxGrowRate (<font class="source_keyword">float</font> MaxGrowRate,     <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleMaxInitialVelocity+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleMaxInitialVelocity <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#355" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleMaxInitialVelocity (<font class="source_keyword">float</font> MaxInitialVelocity,   <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleMaxScaleGlow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleMaxScaleGlow <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#359" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleMaxScaleGlow (<font class="source_keyword">float</font> MaxScaleGlow,       <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleMinDrawScale+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleMinDrawScale <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#358" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleMinDrawScale (<font class="source_keyword">float</font> MinDrawScale,       <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleMinFadeRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleMinFadeRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#366" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleMinFadeRate (<font class="source_keyword">float</font> MinFadeRate,     <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleMinGrowRate+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleMinGrowRate <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#363" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleMinGrowRate (<font class="source_keyword">float</font> MinGrowRate,     <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleMinInitialVelocity+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleMinInitialVelocity <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#356" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleMinInitialVelocity (<font class="source_keyword">float</font> MinInitialVelocity,   <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleMinScaleGlow+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleMinScaleGlow <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#360" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleMinScaleGlow (<font class="source_keyword">float</font> MinScaleGlow,       <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetParticleWeight+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetParticleWeight <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#354" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetParticleWeight (<font class="source_keyword">float</font> Weight,               <font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ShiftParticles+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ShiftParticles <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#213" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ShiftParticles (<font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Tick <span class="function_state"></span> <a href="..\Source_particlesystems\particlesprayer.html#294" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Tick (<font class="source_keyword">float</font> DeltaTime)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Trigger+TriggerControl" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Trigger <span class="function_state">TriggerControl</span> <a href="..\Source_particlesystems\particlesprayer.html#261" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font> (<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> EventInstigator)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Trigger+TriggerTimed" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Trigger <span class="function_state">TriggerTimed</span> <a href="..\Source_particlesystems\particlesprayer.html#278" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font> (<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> EventInstigator)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Trigger+TriggerToggle" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Trigger <span class="function_state">TriggerToggle</span> <a href="..\Source_particlesystems\particlesprayer.html#249" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font> (<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> EventInstigator)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_UnTrigger+TriggerControl" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> UnTrigger <span class="function_state">TriggerControl</span> <a href="..\Source_particlesystems\particlesprayer.html#266" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> UnTrigger (<font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> EventInstigator)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+     Spread=<font class="source_int">45.000000</font>
+     Volume=<font class="source_int">10.000000</font>
+     Templates(<font class="source_int">0</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">1</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">2</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">3</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">4</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">5</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">6</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">7</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">8</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">9</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">10</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">11</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">12</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">13</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">14</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     Templates(<font class="source_int">15</font>)=(LifeSpan=<font class="source_int">1.000000</font>,Weight=<font class="source_int">1.000000</font>,MaxDrawScale=<font class="source_int">1.000000</font>,MinDrawScale=<font class="source_int">1.000000</font>,MaxScaleGlow=<font class="source_int">1.000000</font>,MinScaleGlow=<font class="source_int">1.000000</font>)
+     bInitiallyOn=<font class="source_keyword">True</font>
+     VisibilityRadius=<font class="source_int">1600.000000</font>
+     VisibilityHeight=<font class="source_int">1600.000000</font>
+     VolumeScalePct=<font class="source_int">0.500000</font>
+     DecalPercent=<font class="source_int">0.100000</font>
+     bLinearFrequenciesChanged=<font class="source_keyword">True</font>
+     bStatic=<font class="source_keyword">True</font>
+     bDirectional=<font class="source_keyword">True</font>
+     RemoteRole=ROLE_None
+     Rotation=(Pitch=<font class="source_int">16384</font>)
+     Style=STY_Translucent
+     SpriteProjForward=<font class="source_int">0.000000</font>
+     <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'ParticleSystems.Icons.S_ParticleSprayer'</font>
+     bGameRelevant=<font class="source_keyword">True</font>
+     RenderIteratorClass=<font class="source_keyword">Class</font><font class="source_name">'ParticleSystems.ParticleSprayerRI'</font>
+     bDisableTick=<font class="source_keyword">True</font>
+     bFilterByVolume=<font class="source_keyword">False</font>
+}
+</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="particlesystems-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_particlesystems\particlesprayer.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#ParticleSprayer">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="myrdsprayerexp.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="particlesprayerri.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:47:08.671 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

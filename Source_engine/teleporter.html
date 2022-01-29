@@ -1,0 +1,639 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Engine.Teleporter</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\teleporter.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Teleporter">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="statlogfile.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="testinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\teleporter.html">Teleporter</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">///=============================================================================
+</font><a name="2"></a><font class="source_comment">// Teleports actors either between different teleporters within a level
+</font><a name="3"></a><font class="source_comment">// or to matching teleporters on other levels, or to general Internet URLs.
+</font><a name="4"></a><font class="source_comment">//=============================================================================
+</font><a name="5"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\engine\teleporter.html" class="source">Teleporter</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\engine\navigationpoint.html" class="source">NavigationPoint</a></font>
+<a name="6"></a>    <font class="source_keyword2">native</font>;
+<a name="7"></a>
+<a name="8"></a><font class="source_macro">#exec Texture Import File=Textures\Teleport.pcx Name=S_Teleport Mips=Off Flags=2
+</font><a name="9"></a>
+<a name="10"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="11"></a><font class="source_comment">// Teleporter URL can be one of the following forms:
+</font><a name="12"></a><font class="source_comment">//
+</font><a name="13"></a><font class="source_comment">// TeleporterName
+</font><a name="14"></a><font class="source_comment">//		Teleports to a named teleporter in this level.
+</font><a name="15"></a><font class="source_comment">//		if none, acts only as a teleporter destination
+</font><a name="16"></a><font class="source_comment">//
+</font><a name="17"></a><font class="source_comment">// LevelName/TeleporterName
+</font><a name="18"></a><font class="source_comment">//     Teleports to a different level on this server.
+</font><a name="19"></a><font class="source_comment">//
+</font><a name="20"></a><font class="source_comment">// Unreal://Server.domain.com/LevelName/TeleporterName
+</font><a name="21"></a><font class="source_comment">//     Teleports to a different server on the net.
+</font><a name="22"></a><font class="source_comment">//
+</font><a name="23"></a><font class="source_keyword">var</font>() <font class="source_keyword">string</font> URL;
+<a name="24"></a>
+<a name="25"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="26"></a><font class="source_comment">// Product the user must have installed in order to enter the teleporter.
+</font><a name="27"></a><font class="source_keyword">var</font>() <font class="source_keyword">name</font> ProductRequired;
+<a name="28"></a>
+<a name="29"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="30"></a><font class="source_comment">// Teleporter destination flags.
+</font><a name="31"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>    bChangesVelocity; <font class="source_comment">// Set velocity to TargetVelocity.
+</font><a name="32"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>    bChangesYaw;      <font class="source_comment">// Sets yaw to teleporter's Rotation.Yaw
+</font><a name="33"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>    bReversesX;       <font class="source_comment">// Reverses X-component of velocity.
+</font><a name="34"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>    bReversesY;       <font class="source_comment">// Reverses Y-component of velocity.
+</font><a name="35"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>    bReversesZ;       <font class="source_comment">// Reverses Z-component of velocity.
+</font><a name="36"></a>
+<a name="37"></a><font class="source_comment">// Teleporter flags
+</font><a name="38"></a><font class="source_keyword">var</font>() <font class="source_keyword">bool</font>    bEnabled;         <font class="source_comment">// Teleporter is turned on;
+</font><a name="39"></a>
+<a name="40"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="41"></a><font class="source_comment">// Teleporter destination directions.
+</font><a name="42"></a><font class="source_keyword">var</font>() <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>  TargetVelocity;   <font class="source_comment">// If bChangesVelocity, set target's velocity to this.
+</font><a name="43"></a>
+<a name="44"></a><font class="source_comment">// AI related
+</font><a name="45"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> TriggerActor;     <font class="source_comment">//used to tell AI how to trigger me
+</font><a name="46"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> TriggerActor2;
+<a name="47"></a>
+<a name="48"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastFired;
+<a name="49"></a>
+<a name="50"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="51"></a><font class="source_comment">// Teleporter destination functions.
+</font><a name="52"></a>
+<a name="53"></a><font class="source_keyword">replication</font>
+<a name="54"></a>{
+<a name="55"></a>    <font class="source_keyword">reliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="56"></a>        bEnabled, URL;
+<a name="57"></a>    <font class="source_keyword">reliable</font> <font class="source_keyword">if</font> ( bNetInitial && (Role == ROLE_Authority) )
+<a name="58"></a>        bChangesVelocity, bChangesYaw, bReversesX, bReversesY, bReversesZ, TargetVelocity; 
+<a name="59"></a>}
+<a name="60"></a>
+<a name="61"></a><font class="source_keyword">function</font> PostBeginPlay()
+<a name="62"></a>{
+<a name="63"></a>    <font class="source_keyword">if</font> (URL ~= <font class="source_string">""</font>)
+<a name="64"></a>        SetCollision(<font class="source_keyword">false</font>, <font class="source_keyword">false</font>, <font class="source_keyword">false</font>); <font class="source_comment">//destination only
+</font><a name="65"></a>        
+<a name="66"></a>    <font class="source_keyword">if</font> ( !bEnabled )
+<a name="67"></a>        FindTriggerActor();
+<a name="68"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="69"></a>}
+<a name="70"></a>
+<a name="71"></a><font class="source_keyword">function</font> FindTriggerActor()
+<a name="72"></a>{
+<a name="73"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> A;
+<a name="74"></a>
+<a name="75"></a>    TriggerActor = <font class="source_keyword">None</font>;
+<a name="76"></a>    TriggerActor2 = <font class="source_keyword">None</font>;
+<a name="77"></a>    <font class="source_keyword">ForEach</font> AllActors(<font class="source_keyword">class</font> <font class="source_name">'Actor'</font>, A)
+<a name="78"></a>        <font class="source_keyword">if</font> ( A.<font class="source_keyword">Event</font> == Tag)
+<a name="79"></a>        {
+<a name="80"></a>            <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\counter.html" class="source">Counter</a></font>(A) != <font class="source_keyword">None</font> )
+<a name="81"></a>                <font class="source_keyword">return</font>; <font class="source_comment">//FIXME - handle counters
+</font><a name="82"></a>            <font class="source_keyword">if</font> (TriggerActor == <font class="source_keyword">None</font>)
+<a name="83"></a>                TriggerActor = A;
+<a name="84"></a>            <font class="source_keyword">else</font>
+<a name="85"></a>            {
+<a name="86"></a>                TriggerActor2 = A;
+<a name="87"></a>                <font class="source_keyword">return</font>;
+<a name="88"></a>            }
+<a name="89"></a>        }
+<a name="90"></a>}
+<a name="91"></a>
+<a name="92"></a><font class="source_comment">// Accept an actor that has teleported in.
+</font><a name="93"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> Accept( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Incoming, <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Source )
+<a name="94"></a>{
+<a name="95"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> newRot, oldRot;
+<a name="96"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> oldYaw;
+<a name="97"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> mag;
+<a name="98"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> oldDir;
+<a name="99"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> P;
+<a name="100"></a>
+<a name="101"></a>    <font class="source_comment">// Move the actor here.
+</font><a name="102"></a>    Disable(<font class="source_name">'Touch'</font>);
+<a name="103"></a>    <font class="source_comment">//log("Move Actor here "$tag);
+</font><a name="104"></a>    newRot = Incoming.Rotation;
+<a name="105"></a>    <font class="source_keyword">if</font> (bChangesYaw)
+<a name="106"></a>    {
+<a name="107"></a>        oldRot = Incoming.Rotation;
+<a name="108"></a>        newRot.Yaw = Rotation.Yaw;
+<a name="109"></a>        <font class="source_keyword">if</font> ( Source != <font class="source_keyword">None</font> )
+<a name="110"></a>            newRot.Yaw += (<font class="source_int">32768</font> + Incoming.Rotation.Yaw - Source.Rotation.Yaw);
+<a name="111"></a>    }
+<a name="112"></a>
+<a name="113"></a>    <font class="source_keyword">if</font> ( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Incoming) != <font class="source_keyword">None</font> )
+<a name="114"></a>    {
+<a name="115"></a>        <font class="source_comment">//tell enemies about teleport
+</font><a name="116"></a>        <font class="source_keyword">if</font> ( Role == ROLE_Authority )
+<a name="117"></a>        {
+<a name="118"></a>            P = <font class="source_type">Level</font>.PawnList;
+<a name="119"></a>            <font class="source_keyword">While</font> ( P != <font class="source_keyword">None</font> )
+<a name="120"></a>            {
+<a name="121"></a>                <font class="source_keyword">if</font> (P.Enemy == Incoming)
+<a name="122"></a>                    P.LastSeenPos = Incoming.Location; 
+<a name="123"></a>                P = P.nextPawn;
+<a name="124"></a>            }
+<a name="125"></a>        }
+<a name="126"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Incoming).SetLocation(Location);
+<a name="127"></a>        <font class="source_keyword">if</font> ( (Role == ROLE_Authority) 
+<a name="128"></a>            || (<font class="source_type">Level</font>.TimeSeconds - LastFired &gt; <font class="source_int">0.5</font>) )
+<a name="129"></a>        {
+<a name="130"></a>            <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Incoming).SetRotation(newRot);
+<a name="131"></a>            <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Incoming).ViewRotation = newRot;
+<a name="132"></a>            LastFired = <font class="source_type">Level</font>.TimeSeconds;
+<a name="133"></a>        }
+<a name="134"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Incoming).MoveTimer = -<font class="source_int">1.0</font>;
+<a name="135"></a>        <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Incoming).MoveTarget = self;
+<a name="136"></a>        PlayTeleportEffect( Incoming, <font class="source_keyword">false</font>);
+<a name="137"></a>    }
+<a name="138"></a>    <font class="source_keyword">else</font>
+<a name="139"></a>    {
+<a name="140"></a>        <font class="source_keyword">if</font> ( !Incoming.SetLocation(Location) )
+<a name="141"></a>        {
+<a name="142"></a>            Enable(<font class="source_name">'Touch'</font>);
+<a name="143"></a>            <font class="source_keyword">return</font> <font class="source_keyword">false</font>;
+<a name="144"></a>        }
+<a name="145"></a>        <font class="source_keyword">if</font> ( bChangesYaw )
+<a name="146"></a>            Incoming.SetRotation(newRot);
+<a name="147"></a>    }
+<a name="148"></a>
+<a name="149"></a>    Enable(<font class="source_name">'Touch'</font>);
+<a name="150"></a>
+<a name="151"></a>    
+<a name="152"></a>    <font class="source_keyword">if</font> (bChangesVelocity)
+<a name="153"></a>        Incoming.Velocity = TargetVelocity;
+<a name="154"></a>    <font class="source_keyword">else</font>
+<a name="155"></a>    {
+<a name="156"></a>        <font class="source_keyword">if</font> ( bChangesYaw )
+<a name="157"></a>        {
+<a name="158"></a>            <font class="source_keyword">if</font> ( Incoming.Physics == PHYS_Walking )
+<a name="159"></a>                OldRot.Pitch = <font class="source_int">0</font>;
+<a name="160"></a>            oldDir = <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>(OldRot);
+<a name="161"></a>            mag = Incoming.Velocity Dot oldDir;     
+<a name="162"></a>            Incoming.Velocity = Incoming.Velocity - mag * oldDir + mag * <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>(Incoming.Rotation);
+<a name="163"></a>        } 
+<a name="164"></a>        <font class="source_keyword">if</font> ( bReversesX )
+<a name="165"></a>            Incoming.Velocity.X *= -<font class="source_int">1.0</font>;
+<a name="166"></a>        <font class="source_keyword">if</font> ( bReversesY )
+<a name="167"></a>            Incoming.Velocity.Y *= -<font class="source_int">1.0</font>;
+<a name="168"></a>        <font class="source_keyword">if</font> ( bReversesZ )
+<a name="169"></a>            Incoming.Velocity.Z *= -<font class="source_int">1.0</font>;
+<a name="170"></a>    }   
+<a name="171"></a>
+<a name="172"></a>    <font class="source_comment">// Play teleport-in effect.
+</font><a name="173"></a>
+<a name="174"></a>    <font class="source_keyword">return</font> <font class="source_keyword">true</font>;
+<a name="175"></a>}
+<a name="176"></a>    
+<a name="177"></a><font class="source_keyword">function</font> PlayTeleportEffect(<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Incoming, <font class="source_keyword">bool</font> bOut)
+<a name="178"></a>{
+<a name="179"></a>    <font class="source_keyword">if</font> ( Incoming.IsA(<font class="source_name">'Pawn'</font>) )
+<a name="180"></a>    {
+<a name="181"></a>        Incoming.MakeNoise(<font class="source_int">1.0</font>);
+<a name="182"></a>        <font class="source_type">Level</font>.Game.PlayTeleportEffect(Incoming, bOut, <font class="source_keyword">true</font>);
+<a name="183"></a>    }
+<a name="184"></a>}
+<a name="185"></a>
+<a name="186"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="187"></a><font class="source_comment">// Teleporter functions.
+</font><a name="188"></a>
+<a name="189"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font>( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> EventInstigator )
+<a name="190"></a>{
+<a name="191"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="192"></a>
+<a name="193"></a>    bEnabled = !bEnabled;
+<a name="194"></a>    <font class="source_keyword">if</font> ( bEnabled ) <font class="source_comment">//teleport any pawns already in my radius
+</font><a name="195"></a>        <font class="source_keyword">for</font> (i=<font class="source_int">0</font>;i&lt;<font class="source_int">4</font>;i++)
+<a name="196"></a>            <font class="source_keyword">if</font> ( Touching[i] != <font class="source_keyword">None</font> )
+<a name="197"></a>                Touch(Touching[i]);
+<a name="198"></a>}
+<a name="199"></a>
+<a name="200"></a><font class="source_comment">// Teleporter was touched by an actor.
+</font><a name="201"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> Touch( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other )
+<a name="202"></a>{
+<a name="203"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\teleporter.html" class="source">Teleporter</a></font> Dest;
+<a name="204"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="205"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> A;
+<a name="206"></a>    
+<a name="207"></a>    <font class="source_keyword">if</font> ( !bEnabled )
+<a name="208"></a>        <font class="source_keyword">return</font>;
+<a name="209"></a>
+<a name="210"></a>    <font class="source_keyword">if</font>( Other.bCanTeleport && Other.PreTeleport(Self)==<font class="source_keyword">false</font> )
+<a name="211"></a>    {
+<a name="212"></a>        <font class="source_keyword">if</font>( (InStr( URL, <font class="source_string">"/"</font> ) &gt;= <font class="source_int">0</font>) || (InStr( URL, <font class="source_string">"#"</font> ) &gt;= <font class="source_int">0</font>) )
+<a name="213"></a>        {
+<a name="214"></a>            <font class="source_comment">// Teleport to a level on the net.
+</font><a name="215"></a>            <font class="source_keyword">if</font>( (Role == ROLE_Authority) && (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other) != <font class="source_keyword">None</font>) )
+<a name="216"></a>                <font class="source_type">Level</font>.Game.SendPlayer(<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Other), URL);
+<a name="217"></a>        }
+<a name="218"></a>        <font class="source_keyword">else</font>
+<a name="219"></a>        {
+<a name="220"></a>            <font class="source_comment">// Teleport to a random teleporter in this local level, if more than one pick random.
+</font><a name="221"></a>
+<a name="222"></a>            <font class="source_keyword">foreach</font> AllActors( <font class="source_keyword">class</font> <font class="source_name">'Teleporter'</font>, Dest )
+<a name="223"></a>                <font class="source_keyword">if</font>( <font class="source_keyword">string</font>(Dest.tag)~=URL && Dest!=Self )
+<a name="224"></a>                    i++;
+<a name="225"></a>            i = rand(i);
+<a name="226"></a>            <font class="source_keyword">foreach</font> AllActors( <font class="source_keyword">class</font> <font class="source_name">'Teleporter'</font>, Dest )
+<a name="227"></a>                <font class="source_keyword">if</font>( <font class="source_keyword">string</font>(Dest.tag)~=URL && Dest!=Self && i-- == <font class="source_int">0</font> )
+<a name="228"></a>                    <font class="source_keyword">break</font>;
+<a name="229"></a>            <font class="source_keyword">if</font>( Dest != <font class="source_keyword">None</font> )
+<a name="230"></a>            {
+<a name="231"></a>                <font class="source_comment">// Teleport the actor into the other teleporter.
+</font><a name="232"></a>                <font class="source_keyword">if</font> ( Other.IsA(<font class="source_name">'Pawn'</font>) )
+<a name="233"></a>                    PlayTeleportEffect( <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other), <font class="source_keyword">false</font>);
+<a name="234"></a>                Dest.Accept( Other, self );
+<a name="235"></a>                <font class="source_keyword">if</font>( (<font class="source_keyword">Event</font> != <font class="source_name">''</font>) && (Other.IsA(<font class="source_name">'Pawn'</font>)) )
+<a name="236"></a>                    <font class="source_keyword">foreach</font> AllActors( <font class="source_keyword">class</font> <font class="source_name">'Actor'</font>, A, <font class="source_keyword">Event</font> )
+<a name="237"></a>                        A.<font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font>( Other, Other.Instigator );
+<a name="238"></a>            }
+<a name="239"></a>            <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Role == ROLE_Authority )
+<a name="240"></a>                <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>(Other).ClientMessage( <font class="source_string">"Teleport destination for "</font>$self$<font class="source_string">" not found!"</font> );
+<a name="241"></a>        }
+<a name="242"></a>    }
+<a name="243"></a>}
+<a name="244"></a>
+<a name="245"></a><font class="source_comment">/* SpecialHandling is called by the navigation code when the next path has been found.  
+<a name="246"></a>It gives that path an opportunity to modify the result based on any special considerations
+<a name="247"></a>*/</font>
+<a name="248"></a>
+<a name="249"></a><font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> SpecialHandling(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other)
+<a name="250"></a>{
+<a name="251"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> i;
+<a name="252"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Dist2D;
+<a name="253"></a>    <font class="source_keyword">if</font> ( bEnabled && (Other.RouteCache[<font class="source_int">1</font>] != <font class="source_keyword">None</font>)
+<a name="254"></a>        && Other.RouteCache[<font class="source_int">1</font>].IsA(<font class="source_name">'Teleporter'</font>) && (<font class="source_keyword">string</font>(Other.RouteCache[<font class="source_int">1</font>].tag)~=URL) )
+<a name="255"></a>    {
+<a name="256"></a>        <font class="source_keyword">if</font> ( Abs(Location.Z - Other.Location.Z) &lt; CollisionHeight + Other.CollisionHeight )
+<a name="257"></a>        {
+<a name="258"></a>            Dist2D = Location - Other.Location;
+<a name="259"></a>            Dist2D.Z = <font class="source_int">0</font>;
+<a name="260"></a>            <font class="source_keyword">if</font> ( VSize(Dist2D) &lt; CollisionRadius + Other.CollisionRadius )
+<a name="261"></a>                Touch(Other);
+<a name="262"></a>        }   
+<a name="263"></a>        <font class="source_keyword">return</font> self;
+<a name="264"></a>    }
+<a name="265"></a>
+<a name="266"></a>    <font class="source_keyword">if</font> (TriggerActor == <font class="source_keyword">None</font>)
+<a name="267"></a>    {
+<a name="268"></a>        FindTriggerActor();
+<a name="269"></a>        <font class="source_keyword">if</font> (TriggerActor == <font class="source_keyword">None</font>)
+<a name="270"></a>            <font class="source_keyword">return</font> <font class="source_keyword">None</font>;
+<a name="271"></a>    }
+<a name="272"></a>
+<a name="273"></a>    <font class="source_keyword">if</font> ( (TriggerActor2 != <font class="source_keyword">None</font>) 
+<a name="274"></a>        && (VSize(TriggerActor2.Location - Other.Location) &lt; VSize(TriggerActor.Location - Other.Location)) )
+<a name="275"></a>        <font class="source_keyword">return</font> TriggerActor2;
+<a name="276"></a>                    
+<a name="277"></a>    <font class="source_keyword">return</font> TriggerActor;            
+<a name="278"></a>}   
+<a name="279"></a>    
+<a name="280"></a>
+<a name="281"></a><font class="source_keyword">defaultproperties</font>
+<a name="282"></a>{
+<a name="283"></a>     RemoteRole=ROLE_SimulatedProxy
+<a name="284"></a>     bChangesYaw=<font class="source_keyword">true</font>
+<a name="285"></a>     bEnabled=<font class="source_keyword">True</font>
+<a name="286"></a>     bDirectional=<font class="source_keyword">True</font>
+<a name="287"></a>     SoundVolume=<font class="source_int">128</font>
+<a name="288"></a>     CollisionRadius=+<font class="source_int">00018.000000</font>
+<a name="289"></a>     CollisionHeight=+<font class="source_int">00040.000000</font>
+<a name="290"></a>     bCollideActors=<font class="source_keyword">True</font>
+<a name="291"></a>     <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>=S_Teleport
+<a name="292"></a>}
+<a name="293"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\teleporter.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Teleporter">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="statlogfile.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="testinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:23:28.000 - Creation time: Wed 26/5/2004 10:48:42.984 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

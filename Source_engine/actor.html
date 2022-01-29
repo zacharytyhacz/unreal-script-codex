@@ -1,0 +1,2175 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Engine.Actor</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\actor.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Actor">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="zonetrigger.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ambientsound.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\engine\engine-overview.html">Engine</a>.<a href="..\engine\actor.html">Actor</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+00562<br>
+00563<br>
+00564<br>
+00565<br>
+00566<br>
+00567<br>
+00568<br>
+00569<br>
+00570<br>
+00571<br>
+00572<br>
+00573<br>
+00574<br>
+00575<br>
+00576<br>
+00577<br>
+00578<br>
+00579<br>
+00580<br>
+00581<br>
+00582<br>
+00583<br>
+00584<br>
+00585<br>
+00586<br>
+00587<br>
+00588<br>
+00589<br>
+00590<br>
+00591<br>
+00592<br>
+00593<br>
+00594<br>
+00595<br>
+00596<br>
+00597<br>
+00598<br>
+00599<br>
+00600<br>
+00601<br>
+00602<br>
+00603<br>
+00604<br>
+00605<br>
+00606<br>
+00607<br>
+00608<br>
+00609<br>
+00610<br>
+00611<br>
+00612<br>
+00613<br>
+00614<br>
+00615<br>
+00616<br>
+00617<br>
+00618<br>
+00619<br>
+00620<br>
+00621<br>
+00622<br>
+00623<br>
+00624<br>
+00625<br>
+00626<br>
+00627<br>
+00628<br>
+00629<br>
+00630<br>
+00631<br>
+00632<br>
+00633<br>
+00634<br>
+00635<br>
+00636<br>
+00637<br>
+00638<br>
+00639<br>
+00640<br>
+00641<br>
+00642<br>
+00643<br>
+00644<br>
+00645<br>
+00646<br>
+00647<br>
+00648<br>
+00649<br>
+00650<br>
+00651<br>
+00652<br>
+00653<br>
+00654<br>
+00655<br>
+00656<br>
+00657<br>
+00658<br>
+00659<br>
+00660<br>
+00661<br>
+00662<br>
+00663<br>
+00664<br>
+00665<br>
+00666<br>
+00667<br>
+00668<br>
+00669<br>
+00670<br>
+00671<br>
+00672<br>
+00673<br>
+00674<br>
+00675<br>
+00676<br>
+00677<br>
+00678<br>
+00679<br>
+00680<br>
+00681<br>
+00682<br>
+00683<br>
+00684<br>
+00685<br>
+00686<br>
+00687<br>
+00688<br>
+00689<br>
+00690<br>
+00691<br>
+00692<br>
+00693<br>
+00694<br>
+00695<br>
+00696<br>
+00697<br>
+00698<br>
+00699<br>
+00700<br>
+00701<br>
+00702<br>
+00703<br>
+00704<br>
+00705<br>
+00706<br>
+00707<br>
+00708<br>
+00709<br>
+00710<br>
+00711<br>
+00712<br>
+00713<br>
+00714<br>
+00715<br>
+00716<br>
+00717<br>
+00718<br>
+00719<br>
+00720<br>
+00721<br>
+00722<br>
+00723<br>
+00724<br>
+00725<br>
+00726<br>
+00727<br>
+00728<br>
+00729<br>
+00730<br>
+00731<br>
+00732<br>
+00733<br>
+00734<br>
+00735<br>
+00736<br>
+00737<br>
+00738<br>
+00739<br>
+00740<br>
+00741<br>
+00742<br>
+00743<br>
+00744<br>
+00745<br>
+00746<br>
+00747<br>
+00748<br>
+00749<br>
+00750<br>
+00751<br>
+00752<br>
+00753<br>
+00754<br>
+00755<br>
+00756<br>
+00757<br>
+00758<br>
+00759<br>
+00760<br>
+00761<br>
+00762<br>
+00763<br>
+00764<br>
+00765<br>
+00766<br>
+00767<br>
+00768<br>
+00769<br>
+00770<br>
+00771<br>
+00772<br>
+00773<br>
+00774<br>
+00775<br>
+00776<br>
+00777<br>
+00778<br>
+00779<br>
+00780<br>
+00781<br>
+00782<br>
+00783<br>
+00784<br>
+00785<br>
+00786<br>
+00787<br>
+00788<br>
+00789<br>
+00790<br>
+00791<br>
+00792<br>
+00793<br>
+00794<br>
+00795<br>
+00796<br>
+00797<br>
+00798<br>
+00799<br>
+00800<br>
+00801<br>
+00802<br>
+00803<br>
+00804<br>
+00805<br>
+00806<br>
+00807<br>
+00808<br>
+00809<br>
+00810<br>
+00811<br>
+00812<br>
+00813<br>
+00814<br>
+00815<br>
+00816<br>
+00817<br>
+00818<br>
+00819<br>
+00820<br>
+00821<br>
+00822<br>
+00823<br>
+00824<br>
+00825<br>
+00826<br>
+00827<br>
+00828<br>
+00829<br>
+00830<br>
+00831<br>
+00832<br>
+00833<br>
+00834<br>
+00835<br>
+00836<br>
+00837<br>
+00838<br>
+00839<br>
+00840<br>
+00841<br>
+00842<br>
+00843<br>
+00844<br>
+00845<br>
+00846<br>
+00847<br>
+00848<br>
+00849<br>
+00850<br>
+00851<br>
+00852<br>
+00853<br>
+00854<br>
+00855<br>
+00856<br>
+00857<br>
+00858<br>
+00859<br>
+00860<br>
+00861<br>
+00862<br>
+00863<br>
+00864<br>
+00865<br>
+00866<br>
+00867<br>
+00868<br>
+00869<br>
+00870<br>
+00871<br>
+00872<br>
+00873<br>
+00874<br>
+00875<br>
+00876<br>
+00877<br>
+00878<br>
+00879<br>
+00880<br>
+00881<br>
+00882<br>
+00883<br>
+00884<br>
+00885<br>
+00886<br>
+00887<br>
+00888<br>
+00889<br>
+00890<br>
+00891<br>
+00892<br>
+00893<br>
+00894<br>
+00895<br>
+00896<br>
+00897<br>
+00898<br>
+00899<br>
+00900<br>
+00901<br>
+00902<br>
+00903<br>
+00904<br>
+00905<br>
+00906<br>
+00907<br>
+00908<br>
+00909<br>
+00910<br>
+00911<br>
+00912<br>
+00913<br>
+00914<br>
+00915<br>
+00916<br>
+00917<br>
+00918<br>
+00919<br>
+00920<br>
+00921<br>
+00922<br>
+00923<br>
+00924<br>
+00925<br>
+00926<br>
+00927<br>
+00928<br>
+00929<br>
+00930<br>
+00931<br>
+00932<br>
+00933<br>
+00934<br>
+00935<br>
+00936<br>
+00937<br>
+00938<br>
+00939<br>
+00940<br>
+00941<br>
+00942<br>
+00943<br>
+00944<br>
+00945<br>
+00946<br>
+00947<br>
+00948<br>
+00949<br>
+00950<br>
+00951<br>
+00952<br>
+00953<br>
+00954<br>
+00955<br>
+00956<br>
+00957<br>
+00958<br>
+00959<br>
+00960<br>
+00961<br>
+00962<br>
+00963<br>
+00964<br>
+00965<br>
+00966<br>
+00967<br>
+00968<br>
+00969<br>
+00970<br>
+00971<br>
+00972<br>
+00973<br>
+00974<br>
+00975<br>
+00976<br>
+00977<br>
+00978<br>
+00979<br>
+00980<br>
+00981<br>
+00982<br>
+00983<br>
+00984<br>
+00985<br>
+00986<br>
+00987<br>
+00988<br>
+00989<br>
+00990<br>
+00991<br>
+00992<br>
+00993<br>
+00994<br>
+00995<br>
+00996<br>
+00997<br>
+00998<br>
+00999<br>
+01000<br>
+01001<br>
+01002<br>
+01003<br>
+01004<br>
+01005<br>
+01006<br>
+01007<br>
+01008<br>
+01009<br>
+01010<br>
+01011<br>
+01012<br>
+01013<br>
+01014<br>
+01015<br>
+01016<br>
+01017<br>
+01018<br>
+01019<br>
+01020<br>
+01021<br>
+01022<br>
+01023<br>
+01024<br>
+01025<br>
+01026<br>
+01027<br>
+01028<br>
+01029<br>
+01030<br>
+01031<br>
+01032<br>
+01033<br>
+01034<br>
+01035<br>
+01036<br>
+01037<br>
+01038<br>
+01039<br>
+01040<br>
+01041<br>
+01042<br>
+01043<br>
+01044<br>
+01045<br>
+01046<br>
+01047<br>
+01048<br>
+01049<br>
+01050<br>
+01051<br>
+01052<br>
+01053<br>
+01054<br>
+01055<br>
+01056<br>
+01057<br>
+01058<br>
+01059<br>
+01060<br>
+01061<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// Actor: The base class of all actors.
+</font><a name="3"></a><font class="source_comment">// This is a built-in Unreal class and it shouldn't be modified.
+</font><a name="4"></a><font class="source_comment">//=============================================================================
+</font><a name="5"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\core\object.html" class="source">Object</a></font>
+<a name="6"></a>    <font class="source_keyword2">abstract</font>
+<a name="7"></a>    <font class="source_keyword2">native</font>
+<a name="8"></a>    <font class="source_keyword2">nativereplication</font>;
+<a name="9"></a>
+<a name="10"></a><font class="source_comment">// Imported data (during full rebuild).
+</font><a name="11"></a><font class="source_macro">#exec Texture Import File=Textures\S_Actor.pcx Name=S_Actor Mips=Off Flags=2
+</font><a name="12"></a>
+<a name="13"></a><font class="source_comment">// Flags.
+</font><a name="14"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">const</font> <font class="source_keyword">bool</font>  bStatic;       <font class="source_comment">// Does not move or change over time.
+</font><a name="15"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bHidden;       <font class="source_comment">// Is hidden during gameplay.
+</font><a name="16"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">const</font> <font class="source_keyword">bool</font>  bNoDelete;     <font class="source_comment">// Cannot be deleted during play.
+</font><a name="17"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                  bAnimFinished; <font class="source_comment">// Unlooped animation sequence has finished.
+</font><a name="18"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                  bAnimLoop;     <font class="source_comment">// Whether animation is looping.
+</font><a name="19"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                  bAnimNotify;   <font class="source_comment">// Whether a notify is applied to the current sequence.
+</font><a name="20"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                  bAnimByOwner;  <font class="source_comment">// Animation dictated by owner.
+</font><a name="21"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font>            bDeleteMe;     <font class="source_comment">// About to be deleted.
+</font><a name="22"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font>  bAssimilated;  <font class="source_comment">// Actor dynamics are assimilated in world geometry.
+</font><a name="23"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font>  bTicked;       <font class="source_comment">// Actor has been updated.
+</font><a name="24"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">bool</font>        bLightChanged; <font class="source_comment">// Recalculate this light's lighting now.
+</font><a name="25"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                  bDynamicLight; <font class="source_comment">// Temporarily treat this as a dynamic light.
+</font><a name="26"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                  bTimerLoop;    <font class="source_comment">// Timer loops (else is one-shot).
+</font><a name="27"></a>
+<a name="28"></a><font class="source_comment">// Other flags.
+</font><a name="29"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bCanTeleport;  <font class="source_comment">// This actor can be teleported.
+</font><a name="30"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>      bOwnerNoSee;     <font class="source_comment">// Everything but the owner can see this actor.
+</font><a name="31"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>      bOnlyOwnerSee;   <font class="source_comment">// Only owner can see this actor.
+</font><a name="32"></a><font class="source_keyword">var</font> <font class="source_keyword">Const</font>     <font class="source_keyword">bool</font>      bIsMover;        <font class="source_comment">// Is a mover.
+</font><a name="33"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>      bAlwaysRelevant; <font class="source_comment">// Always relevant for network.
+</font><a name="34"></a><font class="source_keyword">var</font> <font class="source_keyword">Const</font>     <font class="source_keyword">bool</font>      bAlwaysTick;     <font class="source_comment">// Update even when players-only.
+</font><a name="35"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bHighDetail;   <font class="source_comment">// Only show up on high-detail.
+</font><a name="36"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bStasis;       <font class="source_comment">// In StandAlone games, turn off if not in a recently rendered zone turned off if  bCanStasis  and physics = PHYS_None or PHYS_Rotating.
+</font><a name="37"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bForceStasis;  <font class="source_comment">// Force stasis when not recently rendered, even if physics not none or rotating.
+</font><a name="38"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font>     <font class="source_keyword">bool</font>        bIsPawn;       <font class="source_comment">// True only for pawns.
+</font><a name="39"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">const</font> <font class="source_keyword">bool</font>  bNetTemporary; <font class="source_comment">// Tear-off simulation in network play.
+</font><a name="40"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">const</font> <font class="source_keyword">bool</font>  bNetOptional;  <font class="source_comment">// Actor should only be replicated if bandwidth available.
+</font><a name="41"></a><font class="source_keyword">var</font>           <font class="source_keyword">bool</font>        bReplicateInstigator; <font class="source_comment">// Replicate instigator to client (used by bNetTemporary projectiles).
+</font><a name="42"></a><font class="source_keyword">var</font>           <font class="source_keyword">bool</font>        bTrailerSameRotation; <font class="source_comment">// If PHYS_Trailer and true, have same rotation as owner.
+</font><a name="43"></a><font class="source_keyword">var</font>           <font class="source_keyword">bool</font>        bTrailerPrePivot; <font class="source_comment">// If PHYS_Trailer and true, offset from owner by PrePivot.
+</font><a name="44"></a><font class="source_keyword">var</font>           <font class="source_keyword">bool</font>        bClientAnim;
+<a name="45"></a><font class="source_keyword">var</font>           <font class="source_keyword">bool</font>        bSimFall;         <font class="source_comment">// dumb proxy should simulate fall
+</font><a name="46"></a>
+<a name="47"></a><font class="source_comment">// Priority Parameters
+</font><a name="48"></a><font class="source_comment">// Actor's current physics mode.
+</font><a name="49"></a><font class="source_keyword">var</font>(Movement) <font class="source_keyword">const</font> <font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\actor.html#EPhysics" class="source">EPhysics</a></font>
+<a name="50"></a>{
+<a name="51"></a>    PHYS_None,
+<a name="52"></a>    PHYS_Walking,
+<a name="53"></a>    PHYS_Falling,
+<a name="54"></a>    PHYS_Swimming,
+<a name="55"></a>    PHYS_Flying,
+<a name="56"></a>    PHYS_Rotating,
+<a name="57"></a>    PHYS_Projectile,
+<a name="58"></a>    PHYS_Rolling,
+<a name="59"></a>    PHYS_Interpolating,
+<a name="60"></a>    PHYS_MovingBrush,
+<a name="61"></a>    PHYS_Spider,
+<a name="62"></a>    PHYS_Trailer
+<a name="63"></a>} Physics;
+<a name="64"></a>
+<a name="65"></a><font class="source_comment">// Net variables.
+</font><a name="66"></a><font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\actor.html#ENetRole" class="source">ENetRole</a></font>
+<a name="67"></a>{
+<a name="68"></a>    ROLE_None,              <font class="source_comment">// No role at all.
+</font><a name="69"></a>    ROLE_DumbProxy,         <font class="source_comment">// Dumb proxy of this actor.
+</font><a name="70"></a>    ROLE_SimulatedProxy,    <font class="source_comment">// Locally simulated proxy of this actor.
+</font><a name="71"></a>    ROLE_AutonomousProxy,   <font class="source_comment">// Locally autonomous proxy of this actor.
+</font><a name="72"></a>    ROLE_Authority,         <font class="source_comment">// Authoritative control over the actor.
+</font><a name="73"></a>};
+<a name="74"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\actor.html#ENetRole" class="source">ENetRole</a></font> Role;
+<a name="75"></a><font class="source_keyword">var</font>(Networking) <font class="source_type"><a href="..\engine\actor.html#ENetRole" class="source">ENetRole</a></font> RemoteRole;
+<a name="76"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> NetTag;
+<a name="77"></a>
+<a name="78"></a><font class="source_comment">// Owner.
+</font><a name="79"></a><font class="source_keyword">var</font>         <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>   Owner;         <font class="source_comment">// Owner actor.
+</font><a name="80"></a><font class="source_keyword">var</font>(<font class="source_type"><a href="..\core\object.html" class="source">Object</a></font>) <font class="source_keyword">name</font> InitialState;
+<a name="81"></a><font class="source_keyword">var</font>(<font class="source_type"><a href="..\core\object.html" class="source">Object</a></font>) <font class="source_keyword">name</font> Group;
+<a name="82"></a>
+<a name="83"></a><font class="source_comment">// Execution and timer variables.
+</font><a name="84"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font>                 TimerRate;     <font class="source_comment">// Timer event, 0=no timer.
+</font><a name="85"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">float</font>           TimerCounter;  <font class="source_comment">// Counts up until it reaches TimerRate.
+</font><a name="86"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">float</font>       LifeSpan;      <font class="source_comment">// How old the object lives before dying, 0=forever.
+</font><a name="87"></a>
+<a name="88"></a><font class="source_comment">// Animation variables.
+</font><a name="89"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">name</font>         AnimSequence;  <font class="source_comment">// Animation sequence we're playing.
+</font><a name="90"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">float</font>        AnimFrame;     <font class="source_comment">// Current animation frame, 0.0 to 1.0.
+</font><a name="91"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">float</font>        AnimRate;      <font class="source_comment">// Animation rate in frames per second, 0=none, negative=velocity scaled.
+</font><a name="92"></a><font class="source_keyword">var</font>          <font class="source_keyword">float</font>        TweenRate;     <font class="source_comment">// Tween-into rate.
+</font><a name="93"></a><font class="source_keyword">var</font>          <font class="source_type">Animation</font>    SkelAnim;
+<a name="94"></a>
+<a name="95"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">float</font>        LODBias;
+<a name="96"></a>
+<a name="97"></a>
+<a name="98"></a>
+<a name="99"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="100"></a><font class="source_comment">// Structures.
+</font><a name="101"></a>
+<a name="102"></a><font class="source_comment">// Identifies a unique convex volume in the world.
+</font><a name="103"></a><font class="source_keyword">struct</font> <font class="source_type"><a href="..\engine\actor.html#PointRegion" class="source">PointRegion</a></font>
+<a name="104"></a>{
+<a name="105"></a>    <font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\zoneinfo.html" class="source">zoneinfo</a></font> Zone;       <font class="source_comment">// Zone.
+</font><a name="106"></a>    <font class="source_keyword">var</font> <font class="source_keyword">int</font>      iLeaf;      <font class="source_comment">// Bsp leaf.
+</font><a name="107"></a>    <font class="source_keyword">var</font> <font class="source_keyword">byte</font>     ZoneNumber; <font class="source_comment">// Zone number.
+</font><a name="108"></a>};
+<a name="109"></a>
+<a name="110"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="111"></a><font class="source_comment">// Major actor properties.
+</font><a name="112"></a>
+<a name="113"></a><font class="source_comment">// Scriptable.
+</font><a name="114"></a><font class="source_keyword">var</font>       <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\levelinfo.html" class="source">LevelInfo</a></font> <font class="source_type">Level</font>;         <font class="source_comment">// Level this actor is on.
+</font><a name="115"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">const</font> <font class="source_type">Level</font> XLevel;        <font class="source_comment">// Level object.
+</font><a name="116"></a><font class="source_keyword">var</font>(Events) <font class="source_keyword">name</font>          Tag;           <font class="source_comment">// Actor's tag name.
+</font><a name="117"></a><font class="source_keyword">var</font>(Events) <font class="source_keyword">name</font>          <font class="source_keyword">Event</font>;         <font class="source_comment">// The event this actor causes.
+</font><a name="118"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>                 Target;        <font class="source_comment">// Actor we're aiming at (other uses as well).
+</font><a name="119"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font>                  Instigator;    <font class="source_comment">// Pawn responsible for damage.
+</font><a name="120"></a><font class="source_keyword">var</font>(<font class="source_type">Sound</font>) <font class="source_type">sound</font>        <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font>;    <font class="source_comment">// Ambient sound effect.
+</font><a name="121"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>             <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>;     <font class="source_comment">// Inventory chain.
+</font><a name="122"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>           Base;          <font class="source_comment">// Moving brush actor we're standing on.
+</font><a name="123"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\actor.html#PointRegion" class="source">PointRegion</a></font>     <font class="source_type"><a href="..\uwindow\uwindowbase.html#Region" class="source">Region</a></font>;        <font class="source_comment">// Region this actor is in.
+</font><a name="124"></a><font class="source_keyword">var</font>(Movement)   <font class="source_keyword">name</font>      AttachTag;
+<a name="125"></a>
+<a name="126"></a><font class="source_comment">// Internal.
+</font><a name="127"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">byte</font>            StandingCount; <font class="source_comment">// Count of actors standing on this actor.
+</font><a name="128"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">byte</font>            MiscNumber;    <font class="source_comment">// Internal use.
+</font><a name="129"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">byte</font>            LatentByte;    <font class="source_comment">// Internal latent function use.
+</font><a name="130"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font>             LatentInt;     <font class="source_comment">// Internal latent function use.
+</font><a name="131"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">float</font>           LatentFloat;   <font class="source_comment">// Internal latent function use.
+</font><a name="132"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>           LatentActor;   <font class="source_comment">// Internal latent function use.
+</font><a name="133"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>           Touching[<font class="source_int">4</font>];   <font class="source_comment">// List of touching actors.
+</font><a name="134"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>           Deleted;       <font class="source_comment">// Next actor in just-deleted chain.
+</font><a name="135"></a>
+<a name="136"></a><font class="source_comment">// Internal tags.
+</font><a name="137"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword2">transient</font> <font class="source_keyword">int</font> CollisionTag, LightingTag, OtherTag, ExtraTag, SpecialTag;
+<a name="138"></a>
+<a name="139"></a><font class="source_comment">// The actor's position and rotation.
+</font><a name="140"></a><font class="source_keyword">var</font>(Movement) <font class="source_keyword">const</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Location;     <font class="source_comment">// Actor's location; use Move to set.
+</font><a name="141"></a><font class="source_keyword">var</font>(Movement) <font class="source_keyword">const</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> Rotation;    <font class="source_comment">// Rotation.
+</font><a name="142"></a><font class="source_keyword">var</font>       <font class="source_keyword">const</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>    OldLocation;   <font class="source_comment">// Actor's old location one tick ago.
+</font><a name="143"></a><font class="source_keyword">var</font>       <font class="source_keyword">const</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>    ColLocation;   <font class="source_comment">// Actor's old location one move ago.
+</font><a name="144"></a><font class="source_keyword">var</font>(Movement) <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>      Velocity;      <font class="source_comment">// Velocity.
+</font><a name="145"></a><font class="source_keyword">var</font>       <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>          Acceleration;  <font class="source_comment">// Acceleration.
+</font><a name="146"></a><font class="source_keyword">var</font>(Filter) <font class="source_keyword">float</font>         OddsOfAppearing; <font class="source_comment">// 0-1 - chance actor will appear in relevant game modes.
+</font><a name="147"></a>
+<a name="148"></a><font class="source_comment">//Editing flags
+</font><a name="149"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bHiddenEd;     <font class="source_comment">// Is hidden during editing.
+</font><a name="150"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bDirectional;  <font class="source_comment">// Actor shows direction arrow during editing.
+</font><a name="151"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font>            bSelected;     <font class="source_comment">// Selected in UnrealEd.
+</font><a name="152"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font>            bMemorized;    <font class="source_comment">// Remembered in UnrealEd.
+</font><a name="153"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font>            bHighlighted;  <font class="source_comment">// Highlighted in UnrealEd.
+</font><a name="154"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                  bEdLocked;     <font class="source_comment">// Locked in editor (no movement or rotation).
+</font><a name="155"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bEdShouldSnap; <font class="source_comment">// Snap to grid in editor.
+</font><a name="156"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">bool</font>        bEdSnap;       <font class="source_comment">// Should snap to grid in UnrealEd.
+</font><a name="157"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font>  bTempEditor;   <font class="source_comment">// Internal UnrealEd.
+</font><a name="158"></a>
+<a name="159"></a><font class="source_comment">// What kind of gameplay scenarios to appear in.
+</font><a name="160"></a><font class="source_keyword">var</font>(Filter) <font class="source_keyword">bool</font>          bDifficulty0;  <font class="source_comment">// Appear in difficulty 0.
+</font><a name="161"></a><font class="source_keyword">var</font>(Filter) <font class="source_keyword">bool</font>          bDifficulty1;  <font class="source_comment">// Appear in difficulty 1.
+</font><a name="162"></a><font class="source_keyword">var</font>(Filter) <font class="source_keyword">bool</font>          bDifficulty2;  <font class="source_comment">// Appear in difficulty 2.
+</font><a name="163"></a><font class="source_keyword">var</font>(Filter) <font class="source_keyword">bool</font>          bDifficulty3;  <font class="source_comment">// Appear in difficulty 3.
+</font><a name="164"></a><font class="source_keyword">var</font>(Filter) <font class="source_keyword">bool</font>          bSinglePlayer; <font class="source_comment">// Appear in single player.
+</font><a name="165"></a><font class="source_keyword">var</font>(Filter) <font class="source_keyword">bool</font>          bNet;          <font class="source_comment">// Appear in regular network play.
+</font><a name="166"></a><font class="source_keyword">var</font>(Filter) <font class="source_keyword">bool</font>          bNetSpecial;   <font class="source_comment">// Appear in special network play mode.
+</font><a name="167"></a>
+<a name="168"></a><font class="source_comment">// set to prevent re-initializing of actors spawned during level startup
+</font><a name="169"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font>                  bScriptInitialized;
+<a name="170"></a>
+<a name="171"></a><font class="source_comment">// Editor support.
+</font><a name="172"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>                 HitActor;     <font class="source_comment">// Actor to return instead of this one, if hit.
+</font><a name="173"></a>
+<a name="174"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="175"></a><font class="source_comment">// Display properties.
+</font><a name="176"></a>
+<a name="177"></a><font class="source_comment">// Drawing effect.
+</font><a name="178"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\actor.html#EDrawType" class="source">EDrawType</a></font>
+<a name="179"></a>{
+<a name="180"></a>    DT_None,
+<a name="181"></a>    DT_Sprite,
+<a name="182"></a>    DT_Mesh,
+<a name="183"></a>    DT_Brush,
+<a name="184"></a>    DT_RopeSprite,
+<a name="185"></a>    DT_VerticalSprite,
+<a name="186"></a>    DT_Terraform,
+<a name="187"></a>    DT_SpriteAnimOnce,
+<a name="188"></a>} DrawType;
+<a name="189"></a>
+<a name="190"></a><font class="source_comment">// Style for rendering sprites, meshes.
+</font><a name="191"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\actor.html#ERenderStyle" class="source">ERenderStyle</a></font>
+<a name="192"></a>{
+<a name="193"></a>    STY_None,
+<a name="194"></a>    STY_Normal,
+<a name="195"></a>    STY_Masked,
+<a name="196"></a>    STY_Translucent,
+<a name="197"></a>    STY_Modulated,
+<a name="198"></a>} Style;
+<a name="199"></a>
+<a name="200"></a><font class="source_comment">// Other display properties.
+</font><a name="201"></a><font class="source_keyword">var</font>(Display) <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font>    Sprite;          <font class="source_comment">// Sprite texture if DrawType=DT_Sprite.
+</font><a name="202"></a><font class="source_keyword">var</font>(Display) <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font>    <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>;         <font class="source_comment">// Misc texture.
+</font><a name="203"></a><font class="source_keyword">var</font>(Display) <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font>    Skin;            <font class="source_comment">// Special skin or enviro map texture.
+</font><a name="204"></a><font class="source_keyword">var</font>(Display) <font class="source_type">mesh</font>       <font class="source_type">Mesh</font>;            <font class="source_comment">// Mesh if DrawType=DT_Mesh.
+</font><a name="205"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword2">export</font> <font class="source_type">model</font>  <font class="source_type"><a href="..\engine\brush.html" class="source">Brush</a></font>;           <font class="source_comment">// Brush if DrawType=DT_Brush.
+</font><a name="206"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">float</font>      DrawScale;       <font class="source_comment">// Scaling factor, 1.0=normal size.
+</font><a name="207"></a><font class="source_keyword">var</font>          <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>     PrePivot;        <font class="source_comment">// Offset from box center for drawing.
+</font><a name="208"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">float</font>      ScaleGlow;       <font class="source_comment">// Multiplies lighting.
+</font><a name="209"></a><font class="source_keyword">var</font>(Display)  <font class="source_keyword">float</font>     VisibilityRadius;<font class="source_comment">// Actor is drawn if viewer is within its visibility
+</font><a name="210"></a><font class="source_keyword">var</font>(Display)  <font class="source_keyword">float</font>     VisibilityHeight;<font class="source_comment">// cylinder.  Zero=infinite visibility.
+</font><a name="211"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">byte</font>       AmbientGlow;     <font class="source_comment">// Ambient brightness, or 255=pulsing.
+</font><a name="212"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">byte</font>       Fatness;         <font class="source_comment">// Fatness (mesh distortion).
+</font><a name="213"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">float</font>      SpriteProjForward;<font class="source_comment">// Distance forward to draw sprite from actual location.
+</font><a name="214"></a>
+<a name="215"></a><font class="source_comment">// Display.
+</font><a name="216"></a><font class="source_keyword">var</font>(Display)  <font class="source_keyword">bool</font>      bUnlit;          <font class="source_comment">// Lights don't affect actor.
+</font><a name="217"></a><font class="source_keyword">var</font>(Display)  <font class="source_keyword">bool</font>      bNoSmooth;       <font class="source_comment">// Don't smooth actor's texture.
+</font><a name="218"></a><font class="source_keyword">var</font>(Display)  <font class="source_keyword">bool</font>      bParticles;      <font class="source_comment">// Mesh is a particle system.
+</font><a name="219"></a><font class="source_keyword">var</font>(Display)  <font class="source_keyword">bool</font>      bRandomFrame;    <font class="source_comment">// Particles use a random texture from among the default texture and the multiskins textures
+</font><a name="220"></a><font class="source_keyword">var</font>(Display)  <font class="source_keyword">bool</font>      bMeshEnviroMap;  <font class="source_comment">// Environment-map the mesh.
+</font><a name="221"></a><font class="source_keyword">var</font>(Display)  <font class="source_keyword">bool</font>      bMeshCurvy;      <font class="source_comment">// Curvy mesh.
+</font><a name="222"></a><font class="source_keyword">var</font>(Display)  <font class="source_keyword">bool</font>      bFilterByVolume; <font class="source_comment">// Filter this sprite by its Visibility volume.
+</font><a name="223"></a>
+<a name="224"></a><font class="source_comment">// Not yet implemented.
+</font><a name="225"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">bool</font>       bShadowCast;     <font class="source_comment">// Casts shadows.
+</font><a name="226"></a>
+<a name="227"></a><font class="source_comment">// Advanced.
+</font><a name="228"></a><font class="source_keyword">var</font>           <font class="source_keyword">bool</font>      bHurtEntry;      <font class="source_comment">// keep HurtRadius from being reentrant
+</font><a name="229"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>      bGameRelevant;   <font class="source_comment">// Always relevant for game
+</font><a name="230"></a><font class="source_keyword">var</font>           <font class="source_keyword">bool</font>      bCarriedItem;    <font class="source_comment">// being carried, and not responsible for displaying self, so don't replicated location and rotation
+</font><a name="231"></a><font class="source_keyword">var</font>           <font class="source_keyword">bool</font>      bForcePhysicsUpdate; <font class="source_comment">// force a physics update for simulated pawns
+</font><a name="232"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bIsSecretGoal; <font class="source_comment">// This actor counts in the "secret" total.
+</font><a name="233"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bIsKillGoal;   <font class="source_comment">// This actor counts in the "death" toll.
+</font><a name="234"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bIsItemGoal;   <font class="source_comment">// This actor counts in the "item" count.
+</font><a name="235"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bCollideWhenPlacing; <font class="source_comment">// This actor collides with the world when placing.
+</font><a name="236"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bTravel;       <font class="source_comment">// Actor is capable of travelling among servers.
+</font><a name="237"></a><font class="source_keyword">var</font>(Advanced) <font class="source_keyword">bool</font>        bMovable;      <font class="source_comment">// Actor is capable of travelling among servers.
+</font><a name="238"></a>
+<a name="239"></a>
+<a name="240"></a><font class="source_comment">// Multiple skin support.
+</font><a name="241"></a><font class="source_keyword">var</font>(Display) <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> MultiSkins[<font class="source_int">8</font>];
+<a name="242"></a>
+<a name="243"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="244"></a><font class="source_comment">// Sound.
+</font><a name="245"></a>
+<a name="246"></a><font class="source_comment">// Ambient sound.
+</font><a name="247"></a><font class="source_keyword">var</font>(<font class="source_type">Sound</font>) <font class="source_keyword">byte</font>         SoundRadius;     <font class="source_comment">// Radius of ambient sound.
+</font><a name="248"></a><font class="source_keyword">var</font>(<font class="source_type">Sound</font>) <font class="source_keyword">byte</font>         SoundVolume;     <font class="source_comment">// Volume of amient sound.
+</font><a name="249"></a><font class="source_keyword">var</font>(<font class="source_type">Sound</font>) <font class="source_keyword">byte</font>         SoundPitch;      <font class="source_comment">// Sound pitch shift, 64.0=none.
+</font><a name="250"></a>
+<a name="251"></a><font class="source_comment">// Regular sounds.
+</font><a name="252"></a><font class="source_keyword">var</font>(<font class="source_type">Sound</font>) <font class="source_keyword">float</font> TransientSoundVolume;
+<a name="253"></a><font class="source_keyword">var</font>(<font class="source_type">Sound</font>) <font class="source_keyword">float</font> TransientSoundRadius;
+<a name="254"></a>
+<a name="255"></a><font class="source_comment">// Sound slots for actors.
+</font><a name="256"></a><font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\actor.html#ESoundSlot" class="source">ESoundSlot</a></font>
+<a name="257"></a>{
+<a name="258"></a>    SLOT_None,
+<a name="259"></a>    SLOT_Misc,
+<a name="260"></a>    SLOT_Pain,
+<a name="261"></a>    SLOT_Interact,
+<a name="262"></a>    SLOT_Ambient,
+<a name="263"></a>    SLOT_Talk,
+<a name="264"></a>    SLOT_Interface,
+<a name="265"></a>};
+<a name="266"></a>
+<a name="267"></a><font class="source_comment">// Music transitions.
+</font><a name="268"></a><font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\actor.html#EMusicTransition" class="source">EMusicTransition</a></font>
+<a name="269"></a>{
+<a name="270"></a>    MTRAN_None,
+<a name="271"></a>    MTRAN_Instant,
+<a name="272"></a>    MTRAN_Segue,
+<a name="273"></a>    MTRAN_Fade,
+<a name="274"></a>    MTRAN_FastFade,
+<a name="275"></a>    MTRAN_SlowFade,
+<a name="276"></a>};
+<a name="277"></a>
+<a name="278"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="279"></a><font class="source_comment">// Collision.
+</font><a name="280"></a>
+<a name="281"></a><font class="source_comment">// Collision size.
+</font><a name="282"></a><font class="source_keyword">var</font>(Collision) <font class="source_keyword">const</font> <font class="source_keyword">float</font> CollisionRadius; <font class="source_comment">// Radius of collision cyllinder.
+</font><a name="283"></a><font class="source_keyword">var</font>(Collision) <font class="source_keyword">const</font> <font class="source_keyword">float</font> CollisionHeight; <font class="source_comment">// Half-height cyllinder.
+</font><a name="284"></a>
+<a name="285"></a><font class="source_comment">// Collision flags.
+</font><a name="286"></a><font class="source_keyword">var</font>(Collision) <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bCollideActors;   <font class="source_comment">// Collides with other actors.
+</font><a name="287"></a><font class="source_keyword">var</font>(Collision) <font class="source_keyword">bool</font>       bCollideWorld;    <font class="source_comment">// Collides with the world.
+</font><a name="288"></a><font class="source_keyword">var</font>(Collision) <font class="source_keyword">bool</font>       bBlockActors;     <font class="source_comment">// Blocks other nonplayer actors.
+</font><a name="289"></a><font class="source_keyword">var</font>(Collision) <font class="source_keyword">bool</font>       bBlockPlayers;    <font class="source_comment">// Blocks other player actors.
+</font><a name="290"></a><font class="source_keyword">var</font>(Collision) <font class="source_keyword">bool</font>       bProjTarget;      <font class="source_comment">// Projectiles should potentially target this actor.
+</font><a name="291"></a>
+<a name="292"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="293"></a><font class="source_comment">// Lighting.
+</font><a name="294"></a>
+<a name="295"></a><font class="source_comment">// Light modulation.
+</font><a name="296"></a><font class="source_keyword">var</font>(Lighting) <font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\actor.html#ELightType" class="source">ELightType</a></font>
+<a name="297"></a>{
+<a name="298"></a>    LT_None,
+<a name="299"></a>    LT_Steady,
+<a name="300"></a>    LT_Pulse,
+<a name="301"></a>    LT_Blink,
+<a name="302"></a>    LT_Flicker,
+<a name="303"></a>    LT_Strobe,
+<a name="304"></a>    LT_BackdropLight,
+<a name="305"></a>    LT_SubtlePulse,
+<a name="306"></a>    LT_TexturePaletteOnce,
+<a name="307"></a>    LT_TexturePaletteLoop
+<a name="308"></a>} LightType;
+<a name="309"></a>
+<a name="310"></a><font class="source_comment">// Spatial light effect to use.
+</font><a name="311"></a><font class="source_keyword">var</font>(Lighting) <font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\actor.html#ELightEffect" class="source">ELightEffect</a></font>
+<a name="312"></a>{
+<a name="313"></a>    LE_None,
+<a name="314"></a>    LE_TorchWaver,
+<a name="315"></a>    LE_FireWaver,
+<a name="316"></a>    LE_WateryShimmer,
+<a name="317"></a>    LE_Searchlight,
+<a name="318"></a>    LE_SlowWave,
+<a name="319"></a>    LE_FastWave,
+<a name="320"></a>    LE_CloudCast,
+<a name="321"></a>    LE_StaticSpot,
+<a name="322"></a>    LE_Shock,
+<a name="323"></a>    LE_Disco,
+<a name="324"></a>    LE_Warp,
+<a name="325"></a>    LE_Spotlight,
+<a name="326"></a>    LE_NonIncidence,
+<a name="327"></a>    LE_Shell,
+<a name="328"></a>    LE_OmniBumpMap,
+<a name="329"></a>    LE_Interference,
+<a name="330"></a>    LE_Cylinder,
+<a name="331"></a>    LE_Rotor,
+<a name="332"></a>    LE_Unused
+<a name="333"></a>} LightEffect;
+<a name="334"></a>
+<a name="335"></a><font class="source_comment">// Lighting info.
+</font><a name="336"></a><font class="source_keyword">var</font>(LightColor) <font class="source_keyword">byte</font>
+<a name="337"></a>    LightBrightness,
+<a name="338"></a>    LightHue,
+<a name="339"></a>    LightSaturation;
+<a name="340"></a>
+<a name="341"></a><font class="source_comment">// Light properties.
+</font><a name="342"></a><font class="source_keyword">var</font>(Lighting) <font class="source_keyword">byte</font>
+<a name="343"></a>    LightRadius,
+<a name="344"></a>    LightPeriod,
+<a name="345"></a>    LightPhase,
+<a name="346"></a>    <font class="source_type"><a href="..\botpack\lightcone.html" class="source">LightCone</a></font>,
+<a name="347"></a>    VolumeBrightness,
+<a name="348"></a>    VolumeRadius,
+<a name="349"></a>    VolumeFog;
+<a name="350"></a>
+<a name="351"></a><font class="source_comment">// Lighting.
+</font><a name="352"></a><font class="source_keyword">var</font>(Lighting) <font class="source_keyword">bool</font>       bSpecialLit;    <font class="source_comment">// Only affects special-lit surfaces.
+</font><a name="353"></a><font class="source_keyword">var</font>(Lighting) <font class="source_keyword">bool</font>       bActorShadows;  <font class="source_comment">// Light casts actor shadows.
+</font><a name="354"></a><font class="source_keyword">var</font>(Lighting) <font class="source_keyword">bool</font>       bCorona;        <font class="source_comment">// Light uses Skin as a corona.
+</font><a name="355"></a><font class="source_keyword">var</font>(Lighting) <font class="source_keyword">bool</font>       bLensFlare;     <font class="source_comment">// Whether to use zone lens flare.
+</font><a name="356"></a>
+<a name="357"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="358"></a><font class="source_comment">// Physics.
+</font><a name="359"></a>
+<a name="360"></a><font class="source_comment">// Options.
+</font><a name="361"></a><font class="source_keyword">var</font>(Movement) <font class="source_keyword">bool</font>        bBounce;           <font class="source_comment">// Bounces when hits ground fast.
+</font><a name="362"></a><font class="source_keyword">var</font>(Movement) <font class="source_keyword">bool</font>        bFixedRotationDir; <font class="source_comment">// Fixed direction of rotation.
+</font><a name="363"></a><font class="source_keyword">var</font>(Movement) <font class="source_keyword">bool</font>        bRotateToDesired;  <font class="source_comment">// Rotate to DesiredRotation.
+</font><a name="364"></a><font class="source_keyword">var</font>           <font class="source_keyword">bool</font>        bInterpolating;    <font class="source_comment">// Performing interpolating.
+</font><a name="365"></a><font class="source_keyword">var</font>           <font class="source_keyword">const</font> <font class="source_keyword">bool</font>  bJustTeleported;   <font class="source_comment">// Used by engine physics - not valid for scripts.
+</font><a name="366"></a>
+<a name="367"></a><font class="source_comment">// Dodge move direction.
+</font><a name="368"></a><font class="source_keyword">var</font> <font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\actor.html#EDodgeDir" class="source">EDodgeDir</a></font>
+<a name="369"></a>{
+<a name="370"></a>    DODGE_None,
+<a name="371"></a>    DODGE_Left,
+<a name="372"></a>    DODGE_Right,
+<a name="373"></a>    DODGE_Forward,
+<a name="374"></a>    DODGE_Back,
+<a name="375"></a>    DODGE_Active,
+<a name="376"></a>    DODGE_Done
+<a name="377"></a>} DodgeDir;
+<a name="378"></a>
+<a name="379"></a><font class="source_comment">// Physics properties.
+</font><a name="380"></a><font class="source_keyword">var</font>(Movement) <font class="source_keyword">float</font>       Mass;            <font class="source_comment">// Mass of this actor.
+</font><a name="381"></a><font class="source_keyword">var</font>(Movement) <font class="source_keyword">float</font>       Buoyancy;        <font class="source_comment">// Water buoyancy.
+</font><a name="382"></a><font class="source_keyword">var</font>(Movement) <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font>     RotationRate;    <font class="source_comment">// Change in rotation per second.
+</font><a name="383"></a><font class="source_keyword">var</font>(Movement) <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font>     DesiredRotation; <font class="source_comment">// Physics will rotate pawn to this if bRotateToDesired.
+</font><a name="384"></a><font class="source_keyword">var</font>           <font class="source_keyword">float</font>       PhysAlpha;       <font class="source_comment">// Interpolating position, 0.0-1.0.
+</font><a name="385"></a><font class="source_keyword">var</font>           <font class="source_keyword">float</font>       PhysRate;        <font class="source_comment">// Interpolation rate per second.
+</font><a name="386"></a><font class="source_keyword">var</font>           <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>       PendingTouch;     <font class="source_comment">// Actor touched during move which wants to add an effect after the movement completes 
+</font><a name="387"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="388"></a><font class="source_comment">// Animation.
+</font><a name="389"></a>
+<a name="390"></a><font class="source_comment">// Animation control.
+</font><a name="391"></a><font class="source_keyword">var</font>          <font class="source_keyword">float</font>        AnimLast;        <font class="source_comment">// Last frame.
+</font><a name="392"></a><font class="source_keyword">var</font>          <font class="source_keyword">float</font>        AnimMinRate;     <font class="source_comment">// Minimum rate for velocity-scaled animation.
+</font><a name="393"></a><font class="source_keyword">var</font>          <font class="source_keyword">float</font>        OldAnimRate;     <font class="source_comment">// Animation rate of previous animation (= AnimRate until animation completes).
+</font><a name="394"></a><font class="source_keyword">var</font>          <font class="source_type"><a href="..\core\object.html#Plane" class="source">plane</a></font>        SimAnim;         <font class="source_comment">// replicated to simulated proxies.
+</font><a name="395"></a>
+<a name="396"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="397"></a><font class="source_comment">// Networking.
+</font><a name="398"></a>
+<a name="399"></a><font class="source_comment">// Network control.
+</font><a name="400"></a><font class="source_keyword">var</font>(Networking) <font class="source_keyword">float</font> NetPriority; <font class="source_comment">// Higher priorities means update it more frequently.
+</font><a name="401"></a><font class="source_keyword">var</font>(Networking) <font class="source_keyword">float</font> NetUpdateFrequency; <font class="source_comment">// How many seconds between net updates.
+</font><a name="402"></a>
+<a name="403"></a><font class="source_comment">// Symmetric network flags, valid during replication only.
+</font><a name="404"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bNetInitial;       <font class="source_comment">// Initial network update.
+</font><a name="405"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bNetOwner;         <font class="source_comment">// Player owns this actor.
+</font><a name="406"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bNetRelevant;      <font class="source_comment">// Actor is currently relevant. Only valid server side, only when replicating variables.
+</font><a name="407"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bNetSee;           <font class="source_comment">// Player sees it in network play.
+</font><a name="408"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bNetHear;          <font class="source_comment">// Player hears it in network play.
+</font><a name="409"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bNetFeel;          <font class="source_comment">// Player collides with/feels it in network play.
+</font><a name="410"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bSimulatedPawn;    <font class="source_comment">// True if Pawn and simulated proxy.
+</font><a name="411"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bDemoRecording;    <font class="source_comment">// True we are currently demo recording
+</font><a name="412"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bClientDemoRecording;<font class="source_comment">// True we are currently recording a client-side demo
+</font><a name="413"></a><font class="source_keyword">var</font> <font class="source_keyword">const</font> <font class="source_keyword">bool</font> bClientDemoNetFunc;<font class="source_comment">// True if we're client-side demo recording and this call originated from the remote.
+</font><a name="414"></a>
+<a name="415"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="416"></a><font class="source_comment">// Enums.
+</font><a name="417"></a>
+<a name="418"></a><font class="source_comment">// Travelling from server to server.
+</font><a name="419"></a><font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\actor.html#ETravelType" class="source">ETravelType</a></font>
+<a name="420"></a>{
+<a name="421"></a>    TRAVEL_Absolute,    <font class="source_comment">// Absolute URL.
+</font><a name="422"></a>    TRAVEL_Partial,     <font class="source_comment">// Partial (carry name, reset server).
+</font><a name="423"></a>    TRAVEL_Relative,    <font class="source_comment">// Relative URL.
+</font><a name="424"></a>};
+<a name="425"></a>
+<a name="426"></a><font class="source_comment">// Input system states.
+</font><a name="427"></a><font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\console.html#EInputAction" class="source">EInputAction</a></font>
+<a name="428"></a>{
+<a name="429"></a>    IST_None,    <font class="source_comment">// Not performing special input processing.
+</font><a name="430"></a>    IST_Press,   <font class="source_comment">// Handling a keypress or button press.
+</font><a name="431"></a>    IST_Hold,    <font class="source_comment">// Handling holding a key or button.
+</font><a name="432"></a>    IST_Release, <font class="source_comment">// Handling a key or button release.
+</font><a name="433"></a>    IST_Axis,    <font class="source_comment">// Handling analog axis movement.
+</font><a name="434"></a>};
+<a name="435"></a>
+<a name="436"></a><font class="source_comment">// Input keys.
+</font><a name="437"></a><font class="source_keyword">enum</font> <font class="source_type"><a href="..\engine\console.html#EInputKey" class="source">EInputKey</a></font>
+<a name="438"></a>{
+<a name="439"></a><font class="source_comment">/*00*/</font>  IK_None         ,IK_LeftMouse   ,IK_RightMouse  ,IK_Cancel      ,
+<a name="440"></a><font class="source_comment">/*04*/</font>  IK_MiddleMouse  ,IK_Unknown05   ,IK_Unknown06   ,IK_Unknown07   ,
+<a name="441"></a><font class="source_comment">/*08*/</font>  IK_Backspace    ,IK_Tab         ,IK_Unknown0A   ,IK_Unknown0B   ,
+<a name="442"></a><font class="source_comment">/*0C*/</font>  IK_Unknown0C    ,IK_Enter       ,IK_Unknown0E   ,IK_Unknown0F   ,
+<a name="443"></a><font class="source_comment">/*10*/</font>  IK_Shift        ,IK_Ctrl        ,IK_Alt         ,IK_Pause       ,
+<a name="444"></a><font class="source_comment">/*14*/</font>  IK_CapsLock     ,IK_Unknown15   ,IK_Unknown16   ,IK_Unknown17   ,
+<a name="445"></a><font class="source_comment">/*18*/</font>  IK_Unknown18    ,IK_Unknown19   ,IK_Unknown1A   ,IK_Escape      ,
+<a name="446"></a><font class="source_comment">/*1C*/</font>  IK_Unknown1C    ,IK_Unknown1D   ,IK_Unknown1E   ,IK_Unknown1F   ,
+<a name="447"></a><font class="source_comment">/*20*/</font>  IK_Space        ,IK_PageUp      ,IK_PageDown    ,IK_End         ,
+<a name="448"></a><font class="source_comment">/*24*/</font>  IK_Home         ,IK_Left        ,IK_Up          ,IK_Right       ,
+<a name="449"></a><font class="source_comment">/*28*/</font>  IK_Down         ,IK_Select      ,IK_Print       ,IK_Execute     ,
+<a name="450"></a><font class="source_comment">/*2C*/</font>  IK_PrintScrn    ,IK_Insert      ,IK_Delete      ,IK_Help        ,
+<a name="451"></a><font class="source_comment">/*30*/</font>  IK_0            ,IK_1           ,IK_2           ,IK_3           ,
+<a name="452"></a><font class="source_comment">/*34*/</font>  IK_4            ,IK_5           ,IK_6           ,IK_7           ,
+<a name="453"></a><font class="source_comment">/*38*/</font>  IK_8            ,IK_9           ,IK_Unknown3A   ,IK_Unknown3B   ,
+<a name="454"></a><font class="source_comment">/*3C*/</font>  IK_Unknown3C    ,IK_Unknown3D   ,IK_Unknown3E   ,IK_Unknown3F   ,
+<a name="455"></a><font class="source_comment">/*40*/</font>  IK_Unknown40    ,IK_A           ,IK_B           ,IK_C           ,
+<a name="456"></a><font class="source_comment">/*44*/</font>  IK_D            ,IK_E           ,IK_F           ,IK_G           ,
+<a name="457"></a><font class="source_comment">/*48*/</font>  IK_H            ,IK_I           ,IK_J           ,IK_K           ,
+<a name="458"></a><font class="source_comment">/*4C*/</font>  IK_L            ,IK_M           ,IK_N           ,IK_O           ,
+<a name="459"></a><font class="source_comment">/*50*/</font>  IK_P            ,IK_Q           ,IK_R           ,IK_S           ,
+<a name="460"></a><font class="source_comment">/*54*/</font>  IK_T            ,IK_U           ,IK_V           ,IK_W           ,
+<a name="461"></a><font class="source_comment">/*58*/</font>  IK_X            ,IK_Y           ,IK_Z           ,IK_Unknown5B   ,
+<a name="462"></a><font class="source_comment">/*5C*/</font>  IK_Unknown5C    ,IK_Unknown5D   ,IK_Unknown5E   ,IK_Unknown5F   ,
+<a name="463"></a><font class="source_comment">/*60*/</font>  IK_NumPad0      ,IK_NumPad1     ,IK_NumPad2     ,IK_NumPad3     ,
+<a name="464"></a><font class="source_comment">/*64*/</font>  IK_NumPad4      ,IK_NumPad5     ,IK_NumPad6     ,IK_NumPad7     ,
+<a name="465"></a><font class="source_comment">/*68*/</font>  IK_NumPad8      ,IK_NumPad9     ,IK_GreyStar    ,IK_GreyPlus    ,
+<a name="466"></a><font class="source_comment">/*6C*/</font>  IK_Separator    ,IK_GreyMinus   ,IK_NumPadPeriod,IK_GreySlash   ,
+<a name="467"></a><font class="source_comment">/*70*/</font>  IK_F1           ,IK_F2          ,IK_F3          ,IK_F4          ,
+<a name="468"></a><font class="source_comment">/*74*/</font>  IK_F5           ,IK_F6          ,IK_F7          ,IK_F8          ,
+<a name="469"></a><font class="source_comment">/*78*/</font>  IK_F9           ,IK_F10         ,IK_F11         ,IK_F12         ,
+<a name="470"></a><font class="source_comment">/*7C*/</font>  IK_F13          ,IK_F14         ,IK_F15         ,IK_F16         ,
+<a name="471"></a><font class="source_comment">/*80*/</font>  IK_F17          ,IK_F18         ,IK_F19         ,IK_F20         ,
+<a name="472"></a><font class="source_comment">/*84*/</font>  IK_F21          ,IK_F22         ,IK_F23         ,IK_F24         ,
+<a name="473"></a><font class="source_comment">/*88*/</font>  IK_Unknown88    ,IK_Unknown89   ,IK_Unknown8A   ,IK_Unknown8B   ,
+<a name="474"></a><font class="source_comment">/*8C*/</font>  IK_Unknown8C    ,IK_Unknown8D   ,IK_Unknown8E   ,IK_Unknown8F   ,
+<a name="475"></a><font class="source_comment">/*90*/</font>  IK_NumLock      ,IK_ScrollLock  ,IK_Unknown92   ,IK_Unknown93   ,
+<a name="476"></a><font class="source_comment">/*94*/</font>  IK_Unknown94    ,IK_Unknown95   ,IK_Unknown96   ,IK_Unknown97   ,
+<a name="477"></a><font class="source_comment">/*98*/</font>  IK_Unknown98    ,IK_Unknown99   ,IK_Unknown9A   ,IK_Unknown9B   ,
+<a name="478"></a><font class="source_comment">/*9C*/</font>  IK_Unknown9C    ,IK_Unknown9D   ,IK_Unknown9E   ,IK_Unknown9F   ,
+<a name="479"></a><font class="source_comment">/*A0*/</font>  IK_LShift       ,IK_RShift      ,IK_LControl    ,IK_RControl    ,
+<a name="480"></a><font class="source_comment">/*A4*/</font>  IK_UnknownA4    ,IK_UnknownA5   ,IK_UnknownA6   ,IK_UnknownA7   ,
+<a name="481"></a><font class="source_comment">/*A8*/</font>  IK_UnknownA8    ,IK_UnknownA9   ,IK_UnknownAA   ,IK_UnknownAB   ,
+<a name="482"></a><font class="source_comment">/*AC*/</font>  IK_UnknownAC    ,IK_UnknownAD   ,IK_UnknownAE   ,IK_UnknownAF   ,
+<a name="483"></a><font class="source_comment">/*B0*/</font>  IK_UnknownB0    ,IK_UnknownB1   ,IK_UnknownB2   ,IK_UnknownB3   ,
+<a name="484"></a><font class="source_comment">/*B4*/</font>  IK_UnknownB4    ,IK_UnknownB5   ,IK_UnknownB6   ,IK_UnknownB7   ,
+<a name="485"></a><font class="source_comment">/*B8*/</font>  IK_UnknownB8    ,IK_UnknownB9   ,IK_Semicolon   ,IK_Equals      ,
+<a name="486"></a><font class="source_comment">/*BC*/</font>  IK_Comma        ,IK_Minus       ,IK_Period      ,IK_Slash       ,
+<a name="487"></a><font class="source_comment">/*C0*/</font>  IK_Tilde        ,IK_UnknownC1   ,IK_UnknownC2   ,IK_UnknownC3   ,
+<a name="488"></a><font class="source_comment">/*C4*/</font>  IK_UnknownC4    ,IK_UnknownC5   ,IK_UnknownC6   ,IK_UnknownC7   ,
+<a name="489"></a><font class="source_comment">/*C8*/</font>  IK_Joy1         ,IK_Joy2        ,IK_Joy3        ,IK_Joy4        ,
+<a name="490"></a><font class="source_comment">/*CC*/</font>  IK_Joy5         ,IK_Joy6        ,IK_Joy7        ,IK_Joy8        ,
+<a name="491"></a><font class="source_comment">/*D0*/</font>  IK_Joy9         ,IK_Joy10       ,IK_Joy11       ,IK_Joy12       ,
+<a name="492"></a><font class="source_comment">/*D4*/</font>  IK_Joy13        ,IK_Joy14       ,IK_Joy15       ,IK_Joy16       ,
+<a name="493"></a><font class="source_comment">/*D8*/</font>  IK_UnknownD8    ,IK_UnknownD9   ,IK_UnknownDA   ,IK_LeftBracket ,
+<a name="494"></a><font class="source_comment">/*DC*/</font>  IK_Backslash    ,IK_RightBracket,IK_SingleQuote ,IK_UnknownDF   ,
+<a name="495"></a><font class="source_comment">/*E0*/</font>  IK_JoyX         ,IK_JoyY        ,IK_JoyZ        ,IK_JoyR        ,
+<a name="496"></a><font class="source_comment">/*E4*/</font>  IK_MouseX       ,IK_MouseY      ,IK_MouseZ      ,IK_MouseW      ,
+<a name="497"></a><font class="source_comment">/*E8*/</font>  IK_JoyU         ,IK_JoyV        ,IK_UnknownEA   ,IK_UnknownEB   ,
+<a name="498"></a><font class="source_comment">/*EC*/</font>  IK_MouseWheelUp ,IK_MouseWheelDown,IK_Unknown10E,UK_Unknown10F  ,
+<a name="499"></a><font class="source_comment">/*F0*/</font>  IK_JoyPovUp     ,IK_JoyPovDown  ,IK_JoyPovLeft  ,IK_JoyPovRight ,
+<a name="500"></a><font class="source_comment">/*F4*/</font>  IK_UnknownF4    ,IK_UnknownF5   ,IK_Attn        ,IK_CrSel       ,
+<a name="501"></a><font class="source_comment">/*F8*/</font>  IK_ExSel        ,IK_ErEof       ,IK_Play        ,IK_Zoom        ,
+<a name="502"></a><font class="source_comment">/*FC*/</font>  IK_NoName       ,IK_PA1         ,IK_OEMClear
+<a name="503"></a>};
+<a name="504"></a>
+<a name="505"></a><font class="source_keyword">var</font>(Display) <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\renderiterator.html" class="source">RenderIterator</a></font>&gt; RenderIteratorClass; <font class="source_comment">// class to instantiate as the actor's RenderInterface
+</font><a name="506"></a><font class="source_keyword">var</font> <font class="source_keyword2">transient</font> <font class="source_type"><a href="..\engine\renderiterator.html" class="source">RenderIterator</a></font> RenderInterface;       <font class="source_comment">// abstract iterator initialized in the Rendering engine
+</font><a name="507"></a>
+<a name="508"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="509"></a><font class="source_comment">// natives.
+</font><a name="510"></a>
+<a name="511"></a><font class="source_comment">// Execute a console command in the context of the current level and game engine.
+</font><a name="512"></a><font class="source_keyword2">native</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> ConsoleCommand( <font class="source_keyword">string</font> Command );
+<a name="513"></a>
+<a name="514"></a>
+<a name="515"></a><font class="source_comment">//-----------------------------------------------------------------------------
+</font><a name="516"></a><font class="source_comment">// Network replication.
+</font><a name="517"></a>
+<a name="518"></a><font class="source_keyword">replication</font>
+<a name="519"></a>{
+<a name="520"></a>    <font class="source_comment">// Relationships.
+</font><a name="521"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="522"></a>        Owner, Role, RemoteRole;
+<a name="523"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( bNetOwner && Role==ROLE_Authority )
+<a name="524"></a>        bNetOwner, <font class="source_type"><a href="..\engine\inventory.html" class="source">Inventory</a></font>;
+<a name="525"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( bReplicateInstigator && (RemoteRole&gt;=ROLE_SimulatedProxy) && (Role==ROLE_Authority) )
+<a name="526"></a>        Instigator;
+<a name="527"></a>
+<a name="528"></a>    <font class="source_comment">// Ambient sound.
+</font><a name="529"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( (Role==ROLE_Authority) && (!bNetOwner || !bClientAnim) )
+<a name="530"></a>        <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font>;
+<a name="531"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( <font class="source_type"><a href="..\engine\ambientsound.html" class="source">AmbientSound</a></font>!=<font class="source_keyword">None</font> && Role==ROLE_Authority  && (!bNetOwner || !bClientAnim) )
+<a name="532"></a>        SoundRadius, SoundVolume, SoundPitch;
+<a name="533"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( bDemoRecording )
+<a name="534"></a>        DemoPlaySound;
+<a name="535"></a>
+<a name="536"></a>    <font class="source_comment">// Collision.
+</font><a name="537"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="538"></a>        bCollideActors, bCollideWorld;
+<a name="539"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( (bCollideActors || bCollideWorld) && Role==ROLE_Authority )
+<a name="540"></a>        bProjTarget, bBlockActors, bBlockPlayers, CollisionRadius, CollisionHeight;
+<a name="541"></a>
+<a name="542"></a>    <font class="source_comment">// Location.
+</font><a name="543"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( !bCarriedItem && (bNetInitial || bSimulatedPawn || RemoteRole&lt;ROLE_SimulatedProxy) && Role==ROLE_Authority )
+<a name="544"></a>        Location;
+<a name="545"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( !bCarriedItem && (DrawType==DT_Mesh || DrawType==DT_Brush) && (bNetInitial || bSimulatedPawn || RemoteRole&lt;ROLE_SimulatedProxy) && Role==ROLE_Authority )
+<a name="546"></a>        Rotation;
+<a name="547"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( RemoteRole==ROLE_SimulatedProxy )
+<a name="548"></a>        Base;
+<a name="549"></a>
+<a name="550"></a>    <font class="source_comment">// Velocity.
+</font><a name="551"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( bSimFall || ((RemoteRole==ROLE_SimulatedProxy && (bNetInitial || bSimulatedPawn)) || bIsMover) )
+<a name="552"></a>        Velocity;
+<a name="553"></a>
+<a name="554"></a>    <font class="source_comment">// Physics.
+</font><a name="555"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( bSimFall || (RemoteRole==ROLE_SimulatedProxy && bNetInitial && !bSimulatedPawn) )
+<a name="556"></a>        Physics, Acceleration, bBounce;
+<a name="557"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( RemoteRole==ROLE_SimulatedProxy && Physics==PHYS_Rotating && bNetInitial )
+<a name="558"></a>        bFixedRotationDir, bRotateToDesired, RotationRate, DesiredRotation;
+<a name="559"></a>
+<a name="560"></a>    <font class="source_comment">// Animation. 
+</font><a name="561"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( DrawType==DT_Mesh && ((RemoteRole&lt;=ROLE_SimulatedProxy && (!bNetOwner || !bClientAnim)) || bDemoRecording) )
+<a name="562"></a>        AnimSequence, SimAnim, AnimMinRate, bAnimNotify;
+<a name="563"></a>
+<a name="564"></a>    <font class="source_comment">// Rendering.
+</font><a name="565"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="566"></a>        bHidden, bOnlyOwnerSee;
+<a name="567"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="568"></a>        <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>, DrawScale, DrawType, Style;
+<a name="569"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( DrawType==DT_Sprite && !bHidden && (!bOnlyOwnerSee || bNetOwner) && Role==ROLE_Authority)
+<a name="570"></a>        Sprite;
+<a name="571"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( DrawType==DT_Mesh && Role==ROLE_Authority )
+<a name="572"></a>        <font class="source_type">Mesh</font>, PrePivot, bMeshEnviroMap, Skin, MultiSkins, Fatness, AmbientGlow, ScaleGlow, bUnlit;
+<a name="573"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( DrawType==DT_Brush && Role==ROLE_Authority )
+<a name="574"></a>        <font class="source_type"><a href="..\engine\brush.html" class="source">Brush</a></font>;
+<a name="575"></a>
+<a name="576"></a>    <font class="source_comment">// Lighting.
+</font><a name="577"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="578"></a>        LightType;
+<a name="579"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( LightType!=LT_None && Role==ROLE_Authority )
+<a name="580"></a>        LightEffect, LightBrightness, LightHue, LightSaturation,
+<a name="581"></a>        LightRadius, LightPeriod, LightPhase,
+<a name="582"></a>        VolumeBrightness, VolumeRadius,
+<a name="583"></a>        bSpecialLit;
+<a name="584"></a>
+<a name="585"></a>    <font class="source_comment">// Messages
+</font><a name="586"></a>    <font class="source_keyword">reliable</font> <font class="source_keyword">if</font>( Role&lt;ROLE_Authority )
+<a name="587"></a>        BroadcastMessage, BroadcastLocalizedMessage;
+<a name="588"></a>}
+<a name="589"></a>
+<a name="590"></a><font class="source_comment">//=============================================================================
+</font><a name="591"></a><font class="source_comment">// Actor error handling.
+</font><a name="592"></a>
+<a name="593"></a><font class="source_comment">// Handle an error and kill this one actor.
+</font><a name="594"></a><font class="source_keyword2">native</font>(<font class="source_int">233</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> Error( <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S );
+<a name="595"></a>
+<a name="596"></a><font class="source_comment">//=============================================================================
+</font><a name="597"></a><font class="source_comment">// General functions.
+</font><a name="598"></a>
+<a name="599"></a><font class="source_comment">// Latent functions.
+</font><a name="600"></a><font class="source_keyword2">native</font>(<font class="source_int">256</font>) <font class="source_keyword2">final</font> latent <font class="source_keyword">function</font> Sleep( <font class="source_keyword">float</font> Seconds );
+<a name="601"></a>
+<a name="602"></a><font class="source_comment">// Collision.
+</font><a name="603"></a><font class="source_keyword2">native</font>(<font class="source_int">262</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> SetCollision( <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> NewColActors, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> NewBlockActors, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> NewBlockPlayers );
+<a name="604"></a><font class="source_keyword2">native</font>(<font class="source_int">283</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> SetCollisionSize( <font class="source_keyword">float</font> NewRadius, <font class="source_keyword">float</font> NewHeight );
+<a name="605"></a>
+<a name="606"></a><font class="source_comment">// Movement.
+</font><a name="607"></a><font class="source_keyword2">native</font>(<font class="source_int">266</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> Move( <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Delta );
+<a name="608"></a><font class="source_keyword2">native</font>(<font class="source_int">267</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> SetLocation( <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> NewLocation );
+<a name="609"></a><font class="source_keyword2">native</font>(<font class="source_int">299</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> SetRotation( <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> NewRotation );
+<a name="610"></a><font class="source_keyword2">native</font>(<font class="source_int">3969</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> MoveSmooth( <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Delta );
+<a name="611"></a><font class="source_keyword2">native</font>(<font class="source_int">3971</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> AutonomousPhysics(<font class="source_keyword">float</font> DeltaSeconds);
+<a name="612"></a>
+<a name="613"></a><font class="source_comment">// Relations.
+</font><a name="614"></a><font class="source_keyword2">native</font>(<font class="source_int">298</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> SetBase( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> NewBase );
+<a name="615"></a><font class="source_keyword2">native</font>(<font class="source_int">272</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> SetOwner( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> NewOwner );
+<a name="616"></a>
+<a name="617"></a><font class="source_comment">//=============================================================================
+</font><a name="618"></a><font class="source_comment">// Animation.
+</font><a name="619"></a>
+<a name="620"></a><font class="source_comment">// Animation functions.
+</font><a name="621"></a><font class="source_keyword2">native</font>(<font class="source_int">259</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> PlayAnim( <font class="source_keyword">name</font> Sequence, <font class="source_keyword2">optional</font> <font class="source_keyword">float</font> Rate, <font class="source_keyword2">optional</font> <font class="source_keyword">float</font> TweenTime );
+<a name="622"></a><font class="source_keyword2">native</font>(<font class="source_int">260</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> LoopAnim( <font class="source_keyword">name</font> Sequence, <font class="source_keyword2">optional</font> <font class="source_keyword">float</font> Rate, <font class="source_keyword2">optional</font> <font class="source_keyword">float</font> TweenTime, <font class="source_keyword2">optional</font> <font class="source_keyword">float</font> MinRate );
+<a name="623"></a><font class="source_keyword2">native</font>(<font class="source_int">294</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> TweenAnim( <font class="source_keyword">name</font> Sequence, <font class="source_keyword">float</font> <font class="source_type"><a href="..\core\time.html" class="source">Time</a></font> );
+<a name="624"></a><font class="source_keyword2">native</font>(<font class="source_int">282</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> IsAnimating();
+<a name="625"></a><font class="source_keyword2">native</font>(<font class="source_int">293</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">name</font> GetAnimGroup( <font class="source_keyword">name</font> Sequence );
+<a name="626"></a><font class="source_keyword2">native</font>(<font class="source_int">261</font>) <font class="source_keyword2">final</font> latent <font class="source_keyword">function</font> FinishAnim();
+<a name="627"></a><font class="source_keyword2">native</font>(<font class="source_int">263</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> HasAnim( <font class="source_keyword">name</font> Sequence );
+<a name="628"></a>
+<a name="629"></a><font class="source_comment">// Animation notifications.
+</font><a name="630"></a><font class="source_keyword">event</font> AnimEnd();
+<a name="631"></a>
+<a name="632"></a><font class="source_comment">// Skeletal animation linkup.
+</font><a name="633"></a><font class="source_keyword2">native</font> <font class="source_keyword2">final</font> <font class="source_keyword">function</font> LinkSkelAnim( <font class="source_type">Animation</font> Anim );
+<a name="634"></a>
+<a name="635"></a><font class="source_comment">//=========================================================================
+</font><a name="636"></a><font class="source_comment">// Physics.
+</font><a name="637"></a>
+<a name="638"></a><font class="source_comment">// Physics control.
+</font><a name="639"></a><font class="source_keyword2">native</font>(<font class="source_int">301</font>) <font class="source_keyword2">final</font> latent <font class="source_keyword">function</font> FinishInterpolation();
+<a name="640"></a><font class="source_keyword2">native</font>(<font class="source_int">3970</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> SetPhysics( <font class="source_type"><a href="..\engine\actor.html#EPhysics" class="source">EPhysics</a></font> newPhysics );
+<a name="641"></a>
+<a name="642"></a><font class="source_comment">//=============================================================================
+</font><a name="643"></a><font class="source_comment">// Engine notification functions.
+</font><a name="644"></a>
+<a name="645"></a><font class="source_comment">//
+</font><a name="646"></a><font class="source_comment">// Major notifications.
+</font><a name="647"></a><font class="source_comment">//
+</font><a name="648"></a><font class="source_keyword">event</font> Spawned();
+<a name="649"></a><font class="source_keyword">event</font> Destroyed();
+<a name="650"></a><font class="source_keyword">event</font> Expired();
+<a name="651"></a><font class="source_keyword">event</font> GainedChild( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other );
+<a name="652"></a><font class="source_keyword">event</font> LostChild( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other );
+<a name="653"></a><font class="source_keyword">event</font> Tick( <font class="source_keyword">float</font> DeltaTime );
+<a name="654"></a>
+<a name="655"></a><font class="source_comment">//
+</font><a name="656"></a><font class="source_comment">// Triggers.
+</font><a name="657"></a><font class="source_comment">//
+</font><a name="658"></a><font class="source_keyword">event</font> <font class="source_type"><a href="..\engine\trigger.html" class="source">Trigger</a></font>( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> EventInstigator );
+<a name="659"></a><font class="source_keyword">event</font> UnTrigger( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> EventInstigator );
+<a name="660"></a><font class="source_keyword">event</font> BeginEvent();
+<a name="661"></a><font class="source_keyword">event</font> EndEvent();
+<a name="662"></a>
+<a name="663"></a><font class="source_comment">//
+</font><a name="664"></a><font class="source_comment">// Physics & world interaction.
+</font><a name="665"></a><font class="source_comment">//
+</font><a name="666"></a><font class="source_keyword">event</font> Timer();
+<a name="667"></a><font class="source_keyword">event</font> HitWall( <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal, <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> HitWall );
+<a name="668"></a><font class="source_keyword">event</font> Falling();
+<a name="669"></a><font class="source_keyword">event</font> Landed( <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNormal );
+<a name="670"></a><font class="source_keyword">event</font> ZoneChange( <font class="source_type"><a href="..\engine\zoneinfo.html" class="source">ZoneInfo</a></font> NewZone );
+<a name="671"></a><font class="source_keyword">event</font> Touch( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other );
+<a name="672"></a><font class="source_keyword">event</font> PostTouch( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other ); <font class="source_comment">// called for PendingTouch actor after physics completes
+</font><a name="673"></a><font class="source_keyword">event</font> UnTouch( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other );
+<a name="674"></a><font class="source_keyword">event</font> Bump( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other );
+<a name="675"></a><font class="source_keyword">event</font> BaseChange();
+<a name="676"></a><font class="source_keyword">event</font> Attach( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other );
+<a name="677"></a><font class="source_keyword">event</font> Detach( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other );
+<a name="678"></a><font class="source_keyword">event</font> KillCredit( <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Other );
+<a name="679"></a><font class="source_keyword">event</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> SpecialHandling(<font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> Other);
+<a name="680"></a><font class="source_keyword">event</font> <font class="source_keyword">bool</font> EncroachingOn( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other );
+<a name="681"></a><font class="source_keyword">event</font> EncroachedBy( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other );
+<a name="682"></a><font class="source_keyword">event</font> InterpolateEnd( <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Other );
+<a name="683"></a><font class="source_keyword">event</font> EndedRotation();
+<a name="684"></a>
+<a name="685"></a><font class="source_keyword">event</font> FellOutOfWorld()
+<a name="686"></a>{
+<a name="687"></a>    SetPhysics(PHYS_None);
+<a name="688"></a>    Destroy();
+<a name="689"></a>}   
+<a name="690"></a>
+<a name="691"></a><font class="source_comment">//
+</font><a name="692"></a><font class="source_comment">// Damage and kills.
+</font><a name="693"></a><font class="source_comment">//
+</font><a name="694"></a><font class="source_keyword">event</font> KilledBy( <font class="source_type"><a href="..\engine\pawn.html" class="source">pawn</a></font> EventInstigator );
+<a name="695"></a><font class="source_keyword">event</font> TakeDamage( <font class="source_keyword">int</font> Damage, <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> EventInstigator, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Momentum, <font class="source_keyword">name</font> <font class="source_type"><a href="..\engine\damagetype.html" class="source">DamageType</a></font>);
+<a name="696"></a>
+<a name="697"></a><font class="source_comment">//
+</font><a name="698"></a><font class="source_comment">// Trace a line and see what it collides with first.
+</font><a name="699"></a><font class="source_comment">// Takes this actor's collision properties into account.
+</font><a name="700"></a><font class="source_comment">// Returns first hit actor, Level if hit level, or None if hit nothing.
+</font><a name="701"></a><font class="source_comment">//
+</font><a name="702"></a><font class="source_keyword2">native</font>(<font class="source_int">277</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> Trace
+<a name="703"></a>(
+<a name="704"></a>    <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>      HitLocation,
+<a name="705"></a>    <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>      HitNormal,
+<a name="706"></a>    <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>          TraceEnd,
+<a name="707"></a>    <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> TraceStart,
+<a name="708"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font>   bTraceActors,
+<a name="709"></a>    <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Extent
+<a name="710"></a>);
+<a name="711"></a>
+<a name="712"></a><font class="source_comment">// returns true if did not hit world geometry
+</font><a name="713"></a><font class="source_keyword2">native</font>(<font class="source_int">548</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> FastTrace
+<a name="714"></a>(
+<a name="715"></a>    <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>          TraceEnd,
+<a name="716"></a>    <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> TraceStart
+<a name="717"></a>);
+<a name="718"></a>
+<a name="719"></a><font class="source_comment">//
+</font><a name="720"></a><font class="source_comment">// Spawn an actor. Returns an actor of the specified class, not
+</font><a name="721"></a><font class="source_comment">// of class Actor (this is hardcoded in the compiler). Returns None
+</font><a name="722"></a><font class="source_comment">// if the actor could not be spawned (either the actor wouldn't fit in
+</font><a name="723"></a><font class="source_comment">// the specified location, or the actor list is full).
+</font><a name="724"></a><font class="source_comment">// Defaults to spawning at the spawner's location.
+</font><a name="725"></a><font class="source_comment">//
+</font><a name="726"></a><font class="source_keyword2">native</font>(<font class="source_int">278</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Spawn
+<a name="727"></a>(
+<a name="728"></a>    <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>&gt;      SpawnClass,
+<a name="729"></a>    <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>    SpawnOwner,
+<a name="730"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">name</font>     SpawnTag,
+<a name="731"></a>    <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font>   SpawnLocation,
+<a name="732"></a>    <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font>  SpawnRotation
+<a name="733"></a>);
+<a name="734"></a>
+<a name="735"></a><font class="source_comment">//
+</font><a name="736"></a><font class="source_comment">// Destroy this actor. Returns true if destroyed, false if indestructable.
+</font><a name="737"></a><font class="source_comment">// Destruction is latent. It occurs at the end of the tick.
+</font><a name="738"></a><font class="source_comment">//
+</font><a name="739"></a><font class="source_keyword2">native</font>(<font class="source_int">279</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> Destroy();
+<a name="740"></a>
+<a name="741"></a><font class="source_comment">//=============================================================================
+</font><a name="742"></a><font class="source_comment">// Timing.
+</font><a name="743"></a>
+<a name="744"></a><font class="source_comment">// Causes Timer() events every NewTimerRate seconds.
+</font><a name="745"></a><font class="source_keyword2">native</font>(<font class="source_int">280</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> SetTimer( <font class="source_keyword">float</font> NewTimerRate, <font class="source_keyword">bool</font> bLoop );
+<a name="746"></a>
+<a name="747"></a><font class="source_comment">//=============================================================================
+</font><a name="748"></a><font class="source_comment">// Sound functions.
+</font><a name="749"></a>
+<a name="750"></a><font class="source_comment">// Play a sound effect.
+</font><a name="751"></a><font class="source_keyword2">native</font>(<font class="source_int">264</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> PlaySound
+<a name="752"></a>(
+<a name="753"></a>    <font class="source_type">sound</font>               <font class="source_type">Sound</font>,
+<a name="754"></a>    <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\engine\actor.html#ESoundSlot" class="source">ESoundSlot</a></font> Slot,
+<a name="755"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">float</font>      Volume,
+<a name="756"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font>       bNoOverride,
+<a name="757"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">float</font>      Radius,
+<a name="758"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">float</font>      Pitch
+<a name="759"></a>);
+<a name="760"></a>
+<a name="761"></a><font class="source_comment">// play a sound effect, but don't propagate to a remote owner
+</font><a name="762"></a><font class="source_comment">// (he is playing the sound clientside
+</font><a name="763"></a><font class="source_keyword2">native</font> <font class="source_keyword2">simulated</font> <font class="source_keyword2">final</font> <font class="source_keyword">function</font> PlayOwnedSound
+<a name="764"></a>(
+<a name="765"></a>    <font class="source_type">sound</font>               <font class="source_type">Sound</font>,
+<a name="766"></a>    <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\engine\actor.html#ESoundSlot" class="source">ESoundSlot</a></font> Slot,
+<a name="767"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">float</font>      Volume,
+<a name="768"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font>       bNoOverride,
+<a name="769"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">float</font>      Radius,
+<a name="770"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">float</font>      Pitch
+<a name="771"></a>);
+<a name="772"></a>
+<a name="773"></a><font class="source_keyword2">native</font> <font class="source_keyword2">simulated</font> <font class="source_keyword">event</font> DemoPlaySound
+<a name="774"></a>(
+<a name="775"></a>    <font class="source_type">sound</font>               <font class="source_type">Sound</font>,
+<a name="776"></a>    <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\engine\actor.html#ESoundSlot" class="source">ESoundSlot</a></font> Slot,
+<a name="777"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">float</font>      Volume,
+<a name="778"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font>       bNoOverride,
+<a name="779"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">float</font>      Radius,
+<a name="780"></a>    <font class="source_keyword2">optional</font> <font class="source_keyword">float</font>      Pitch
+<a name="781"></a>);
+<a name="782"></a>
+<a name="783"></a><font class="source_comment">// Get a sound duration.
+</font><a name="784"></a><font class="source_keyword2">native</font> <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">float</font> GetSoundDuration( <font class="source_type">sound</font> <font class="source_type">Sound</font> );
+<a name="785"></a>
+<a name="786"></a><font class="source_comment">//=============================================================================
+</font><a name="787"></a><font class="source_comment">// AI functions.
+</font><a name="788"></a>
+<a name="789"></a><font class="source_comment">//
+</font><a name="790"></a><font class="source_comment">// Inform other creatures that you've made a noise
+</font><a name="791"></a><font class="source_comment">// they might hear (they are sent a HearNoise message)
+</font><a name="792"></a><font class="source_comment">// Senders of MakeNoise should have an instigator if they are not pawns.
+</font><a name="793"></a><font class="source_comment">//
+</font><a name="794"></a><font class="source_keyword2">native</font>(<font class="source_int">512</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> MakeNoise( <font class="source_keyword">float</font> Loudness );
+<a name="795"></a>
+<a name="796"></a><font class="source_comment">//
+</font><a name="797"></a><font class="source_comment">// PlayerCanSeeMe returns true if some player has a line of sight to 
+</font><a name="798"></a><font class="source_comment">// actor's location.
+</font><a name="799"></a><font class="source_comment">//
+</font><a name="800"></a><font class="source_keyword2">native</font>(<font class="source_int">532</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> PlayerCanSeeMe();
+<a name="801"></a>
+<a name="802"></a><font class="source_comment">//=============================================================================
+</font><a name="803"></a><font class="source_comment">// Regular engine functions.
+</font><a name="804"></a>
+<a name="805"></a><font class="source_comment">// Teleportation.
+</font><a name="806"></a><font class="source_keyword">event</font> <font class="source_keyword">bool</font> PreTeleport( <font class="source_type"><a href="..\engine\teleporter.html" class="source">Teleporter</a></font> InTeleporter );
+<a name="807"></a><font class="source_keyword">event</font> PostTeleport( <font class="source_type"><a href="..\engine\teleporter.html" class="source">Teleporter</a></font> OutTeleporter );
+<a name="808"></a>
+<a name="809"></a><font class="source_comment">// Level state.
+</font><a name="810"></a><font class="source_keyword">event</font> BeginPlay();
+<a name="811"></a>
+<a name="812"></a><font class="source_comment">//========================================================================
+</font><a name="813"></a><font class="source_comment">// Disk access.
+</font><a name="814"></a>
+<a name="815"></a><font class="source_comment">// Find files.
+</font><a name="816"></a><font class="source_keyword2">native</font>(<font class="source_int">539</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetMapName( <font class="source_keyword">string</font> NameEnding, <font class="source_keyword">string</font> MapName, <font class="source_keyword">int</font> Dir );
+<a name="817"></a><font class="source_keyword2">native</font>(<font class="source_int">545</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> GetNextSkin( <font class="source_keyword">string</font> Prefix, <font class="source_keyword">string</font> CurrentSkin, <font class="source_keyword">int</font> Dir, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> SkinName, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> SkinDesc );
+<a name="818"></a><font class="source_keyword2">native</font>(<font class="source_int">547</font>) <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetURLMap();
+<a name="819"></a><font class="source_keyword2">native</font> <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">string</font> GetNextInt( <font class="source_keyword">string</font> ClassName, <font class="source_keyword">int</font> Num );
+<a name="820"></a><font class="source_keyword2">native</font> <font class="source_keyword2">final</font> <font class="source_keyword">function</font> GetNextIntDesc( <font class="source_keyword">string</font> ClassName, <font class="source_keyword">int</font> Num, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Entry, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Description );
+<a name="821"></a><font class="source_keyword2">native</font> <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> GetCacheEntry( <font class="source_keyword">int</font> Num, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> <font class="source_type"><a href="..\core\object.html#Guid" class="source">GUID</a></font>, <font class="source_keyword2">out</font> <font class="source_keyword">string</font> Filename );
+<a name="822"></a><font class="source_keyword2">native</font> <font class="source_keyword2">final</font> <font class="source_keyword">function</font> <font class="source_keyword">bool</font> MoveCacheEntry( <font class="source_keyword">string</font> <font class="source_type"><a href="..\core\object.html#Guid" class="source">GUID</a></font>, <font class="source_keyword2">optional</font> <font class="source_keyword">string</font> NewFilename );  
+<a name="823"></a>
+<a name="824"></a>
+<a name="825"></a><font class="source_comment">//=============================================================================
+</font><a name="826"></a><font class="source_comment">// Iterator functions.
+</font><a name="827"></a>
+<a name="828"></a><font class="source_comment">// Iterator functions for dealing with sets of actors.
+</font><a name="829"></a><font class="source_keyword2">native</font>(<font class="source_int">304</font>) <font class="source_keyword2">final</font> <font class="source_keyword2">iterator</font> <font class="source_keyword">function</font> AllActors     ( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>&gt; BaseClass, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>, <font class="source_keyword2">optional</font> <font class="source_keyword">name</font> MatchTag );
+<a name="830"></a><font class="source_keyword2">native</font>(<font class="source_int">305</font>) <font class="source_keyword2">final</font> <font class="source_keyword2">iterator</font> <font class="source_keyword">function</font> ChildActors   ( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>&gt; BaseClass, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> );
+<a name="831"></a><font class="source_keyword2">native</font>(<font class="source_int">306</font>) <font class="source_keyword2">final</font> <font class="source_keyword2">iterator</font> <font class="source_keyword">function</font> BasedActors   ( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>&gt; BaseClass, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> );
+<a name="832"></a><font class="source_keyword2">native</font>(<font class="source_int">307</font>) <font class="source_keyword2">final</font> <font class="source_keyword2">iterator</font> <font class="source_keyword">function</font> TouchingActors( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>&gt; BaseClass, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font> );
+<a name="833"></a><font class="source_keyword2">native</font>(<font class="source_int">309</font>) <font class="source_keyword2">final</font> <font class="source_keyword2">iterator</font> <font class="source_keyword">function</font> TraceActors   ( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>&gt; BaseClass, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLoc, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitNorm, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> End, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Start, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Extent );
+<a name="834"></a><font class="source_keyword2">native</font>(<font class="source_int">310</font>) <font class="source_keyword2">final</font> <font class="source_keyword2">iterator</font> <font class="source_keyword">function</font> RadiusActors  ( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>&gt; BaseClass, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>, <font class="source_keyword">float</font> Radius, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Loc );
+<a name="835"></a><font class="source_keyword2">native</font>(<font class="source_int">311</font>) <font class="source_keyword2">final</font> <font class="source_keyword2">iterator</font> <font class="source_keyword">function</font> VisibleActors ( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>&gt; BaseClass, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>, <font class="source_keyword2">optional</font> <font class="source_keyword">float</font> Radius, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Loc );
+<a name="836"></a><font class="source_keyword2">native</font>(<font class="source_int">312</font>) <font class="source_keyword2">final</font> <font class="source_keyword2">iterator</font> <font class="source_keyword">function</font> VisibleCollidingActors ( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font>&gt; BaseClass, <font class="source_keyword2">out</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> <font class="source_type"><a href="..\engine\actor.html" class="source">Actor</a></font>, <font class="source_keyword2">optional</font> <font class="source_keyword">float</font> Radius, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> Loc, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bIgnoreHidden );
+<a name="837"></a>
+<a name="838"></a><font class="source_comment">//=============================================================================
+</font><a name="839"></a><font class="source_comment">// Color operators
+</font><a name="840"></a><font class="source_keyword2">native</font>(<font class="source_int">549</font>) <font class="source_keyword2">static</font> <font class="source_keyword2">final</font> <font class="source_keyword">operator</font>(<font class="source_int">20</font>)  <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> -     ( <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> A, <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> B );
+<a name="841"></a><font class="source_keyword2">native</font>(<font class="source_int">550</font>) <font class="source_keyword2">static</font> <font class="source_keyword2">final</font> <font class="source_keyword">operator</font>(<font class="source_int">16</font>) <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> *     ( <font class="source_keyword">float</font> A, <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> B );
+<a name="842"></a><font class="source_keyword2">native</font>(<font class="source_int">551</font>) <font class="source_keyword2">static</font> <font class="source_keyword2">final</font> <font class="source_keyword">operator</font>(<font class="source_int">20</font>) <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> +     ( <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> A, <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> B );
+<a name="843"></a><font class="source_keyword2">native</font>(<font class="source_int">552</font>) <font class="source_keyword2">static</font> <font class="source_keyword2">final</font> <font class="source_keyword">operator</font>(<font class="source_int">16</font>) <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> *     ( <font class="source_type"><a href="..\core\object.html#Color" class="source">color</a></font> A, <font class="source_keyword">float</font> B );
+<a name="844"></a>
+<a name="845"></a><font class="source_comment">//=============================================================================
+</font><a name="846"></a><font class="source_comment">// Scripted Actor functions.
+</font><a name="847"></a>
+<a name="848"></a><font class="source_comment">// draw on canvas before flash and fog are applied (used for drawing weapons)
+</font><a name="849"></a><font class="source_keyword">event</font> RenderOverlays( <font class="source_type"><a href="..\engine\canvas.html" class="source">canvas</a></font> <font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> );
+<a name="850"></a>
+<a name="851"></a><font class="source_comment">//
+</font><a name="852"></a><font class="source_comment">// Called immediately before gameplay begins.
+</font><a name="853"></a><font class="source_comment">//
+</font><a name="854"></a><font class="source_keyword">event</font> PreBeginPlay()
+<a name="855"></a>{
+<a name="856"></a>    <font class="source_comment">// Handle autodestruction if desired.
+</font><a name="857"></a>    <font class="source_keyword">if</font>( !bGameRelevant && (<font class="source_type">Level</font>.NetMode != NM_Client) && !<font class="source_type">Level</font>.Game.IsRelevant(Self) )
+<a name="858"></a>        Destroy();
+<a name="859"></a>}
+<a name="860"></a>
+<a name="861"></a><font class="source_comment">//
+</font><a name="862"></a><font class="source_comment">// Broadcast a message to all players.
+</font><a name="863"></a><font class="source_comment">//
+</font><a name="864"></a><font class="source_keyword">event</font> BroadcastMessage( <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Msg, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bBeep, <font class="source_keyword2">optional</font> <font class="source_keyword">name</font> Type )
+<a name="865"></a>{
+<a name="866"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="867"></a>
+<a name="868"></a>    <font class="source_keyword">if</font> (Type == <font class="source_name">''</font>)
+<a name="869"></a>        Type = <font class="source_name">'Event'</font>;
+<a name="870"></a>
+<a name="871"></a>    <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.Game.AllowsBroadcast(self, Len(Msg)) )
+<a name="872"></a>        <font class="source_keyword">for</font>( P=<font class="source_type">Level</font>.PawnList; P!=<font class="source_keyword">None</font>; P=P.nextPawn )
+<a name="873"></a>            <font class="source_keyword">if</font>( P.bIsPlayer || P.IsA(<font class="source_name">'MessagingSpectator'</font>) )
+<a name="874"></a>            {
+<a name="875"></a>                <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.Game != <font class="source_keyword">None</font>) && (<font class="source_type">Level</font>.Game.MessageMutator != <font class="source_keyword">None</font>) )
+<a name="876"></a>                {
+<a name="877"></a>                    <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.Game.MessageMutator.MutatorBroadcastMessage(Self, P, Msg, bBeep, Type) )
+<a name="878"></a>                        P.ClientMessage( Msg, Type, bBeep );
+<a name="879"></a>                } <font class="source_keyword">else</font>
+<a name="880"></a>                    P.ClientMessage( Msg, Type, bBeep );
+<a name="881"></a>            }
+<a name="882"></a>}
+<a name="883"></a>
+<a name="884"></a><font class="source_comment">//
+</font><a name="885"></a><font class="source_comment">// Broadcast a localized message to all players.
+</font><a name="886"></a><font class="source_comment">// Most message deal with 0 to 2 related PRIs.
+</font><a name="887"></a><font class="source_comment">// The LocalMessage class defines how the PRI's and optional actor are used.
+</font><a name="888"></a><font class="source_comment">//
+</font><a name="889"></a><font class="source_keyword">event</font> BroadcastLocalizedMessage( <font class="source_keyword">class</font>&lt;<font class="source_type"><a href="..\engine\localmessage.html" class="source">LocalMessage</a></font>&gt; Message, <font class="source_keyword2">optional</font> <font class="source_keyword">int</font> <font class="source_keyword">Switch</font>, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> RelatedPRI_1, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\engine\playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> RelatedPRI_2, <font class="source_keyword2">optional</font> <font class="source_type"><a href="..\core\object.html" class="source">Object</a></font> OptionalObject )
+<a name="890"></a>{
+<a name="891"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\pawn.html" class="source">Pawn</a></font> P;
+<a name="892"></a>
+<a name="893"></a>    <font class="source_keyword">for</font> ( P=<font class="source_type">Level</font>.PawnList; P != <font class="source_keyword">None</font>; P=P.nextPawn )
+<a name="894"></a>        <font class="source_keyword">if</font> ( P.bIsPlayer || P.IsA(<font class="source_name">'MessagingSpectator'</font>) )
+<a name="895"></a>        {
+<a name="896"></a>            <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.Game != <font class="source_keyword">None</font>) && (<font class="source_type">Level</font>.Game.MessageMutator != <font class="source_keyword">None</font>) )
+<a name="897"></a>            {
+<a name="898"></a>                <font class="source_keyword">if</font> ( <font class="source_type">Level</font>.Game.MessageMutator.MutatorBroadcastLocalizedMessage(Self, P, Message, <font class="source_keyword">Switch</font>, RelatedPRI_1, RelatedPRI_2, OptionalObject) )
+<a name="899"></a>                    P.ReceiveLocalizedMessage( Message, <font class="source_keyword">Switch</font>, RelatedPRI_1, RelatedPRI_2, OptionalObject );
+<a name="900"></a>            } <font class="source_keyword">else</font>
+<a name="901"></a>                P.ReceiveLocalizedMessage( Message, <font class="source_keyword">Switch</font>, RelatedPRI_1, RelatedPRI_2, OptionalObject );
+<a name="902"></a>        }
+<a name="903"></a>}
+<a name="904"></a>
+<a name="905"></a><font class="source_comment">//
+</font><a name="906"></a><font class="source_comment">// Called immediately after gameplay begins.
+</font><a name="907"></a><font class="source_comment">//
+</font><a name="908"></a><font class="source_keyword">event</font> PostBeginPlay();
+<a name="909"></a>
+<a name="910"></a><font class="source_comment">//
+</font><a name="911"></a><font class="source_comment">// Called after PostBeginPlay.
+</font><a name="912"></a><font class="source_comment">//
+</font><a name="913"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">event</font> SetInitialState()
+<a name="914"></a>{
+<a name="915"></a>    bScriptInitialized = <font class="source_keyword">true</font>;
+<a name="916"></a>    <font class="source_keyword">if</font>( InitialState!=<font class="source_name">''</font> )
+<a name="917"></a>        GotoState( InitialState );
+<a name="918"></a>    <font class="source_keyword">else</font>
+<a name="919"></a>        GotoState( <font class="source_name">'Auto'</font> );
+<a name="920"></a>}
+<a name="921"></a>
+<a name="922"></a><font class="source_comment">// called after PostBeginPlay on net client
+</font><a name="923"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">event</font> PostNetBeginPlay();
+<a name="924"></a>
+<a name="925"></a><font class="source_comment">//
+</font><a name="926"></a><font class="source_comment">// Hurt actors within the radius.
+</font><a name="927"></a><font class="source_comment">//
+</font><a name="928"></a><font class="source_keyword2">final</font> <font class="source_keyword">function</font> HurtRadius( <font class="source_keyword">float</font> DamageAmount, <font class="source_keyword">float</font> DamageRadius, <font class="source_keyword">name</font> DamageName, <font class="source_keyword">float</font> Momentum, <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> HitLocation )
+<a name="929"></a>{
+<a name="930"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\engine\actor.html" class="source">actor</a></font> Victims;
+<a name="931"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> damageScale, dist;
+<a name="932"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> dir;
+<a name="933"></a>    
+<a name="934"></a>    <font class="source_keyword">if</font>( bHurtEntry )
+<a name="935"></a>        <font class="source_keyword">return</font>;
+<a name="936"></a>
+<a name="937"></a>    bHurtEntry = <font class="source_keyword">true</font>;
+<a name="938"></a>    <font class="source_keyword">foreach</font> VisibleCollidingActors( <font class="source_keyword">class</font> <font class="source_name">'Actor'</font>, Victims, DamageRadius, HitLocation )
+<a name="939"></a>    {
+<a name="940"></a>        <font class="source_keyword">if</font>( Victims != self )
+<a name="941"></a>        {
+<a name="942"></a>            dir = Victims.Location - HitLocation;
+<a name="943"></a>            dist = FMax(<font class="source_int">1</font>,VSize(dir));
+<a name="944"></a>            dir = dir/dist; 
+<a name="945"></a>            damageScale = <font class="source_int">1</font> - FMax(<font class="source_int">0</font>,(dist - Victims.CollisionRadius)/DamageRadius);
+<a name="946"></a>            Victims.TakeDamage
+<a name="947"></a>            (
+<a name="948"></a>                damageScale * DamageAmount,
+<a name="949"></a>                Instigator, 
+<a name="950"></a>                Victims.Location - <font class="source_int">0.5</font> * (Victims.CollisionHeight + Victims.CollisionRadius) * dir,
+<a name="951"></a>                (damageScale * Momentum * dir),
+<a name="952"></a>                DamageName
+<a name="953"></a>            );
+<a name="954"></a>        } 
+<a name="955"></a>    }
+<a name="956"></a>    bHurtEntry = <font class="source_keyword">false</font>;
+<a name="957"></a>}
+<a name="958"></a>
+<a name="959"></a><font class="source_comment">//
+</font><a name="960"></a><font class="source_comment">// Called when carried onto a new level, before AcceptInventory.
+</font><a name="961"></a><font class="source_comment">//
+</font><a name="962"></a><font class="source_keyword">event</font> TravelPreAccept();
+<a name="963"></a>
+<a name="964"></a><font class="source_comment">//
+</font><a name="965"></a><font class="source_comment">// Called when carried into a new level, after AcceptInventory.
+</font><a name="966"></a><font class="source_comment">//
+</font><a name="967"></a><font class="source_keyword">event</font> TravelPostAccept();
+<a name="968"></a>
+<a name="969"></a><font class="source_comment">//
+</font><a name="970"></a><font class="source_comment">// Called when a scripted texture needs rendering
+</font><a name="971"></a><font class="source_comment">//
+</font><a name="972"></a><font class="source_keyword">event</font> RenderTexture(<font class="source_type"><a href="..\engine\scriptedtexture.html" class="source">ScriptedTexture</a></font> Tex);
+<a name="973"></a>
+<a name="974"></a><font class="source_comment">//
+</font><a name="975"></a><font class="source_comment">// Called by PlayerPawn when this actor becomes its ViewTarget.
+</font><a name="976"></a><font class="source_comment">//
+</font><a name="977"></a><font class="source_keyword">function</font> BecomeViewTarget();
+<a name="978"></a>
+<a name="979"></a><font class="source_comment">//
+</font><a name="980"></a><font class="source_comment">// Returns the string representation of the name of an object without the package
+</font><a name="981"></a><font class="source_comment">// prefixes.
+</font><a name="982"></a><font class="source_comment">//
+</font><a name="983"></a><font class="source_keyword">function</font> <font class="source_keyword">String</font> GetItemName( <font class="source_keyword">string</font> FullName )
+<a name="984"></a>{
+<a name="985"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> pos;
+<a name="986"></a>
+<a name="987"></a>    pos = InStr(FullName, <font class="source_string">"."</font>);
+<a name="988"></a>    <font class="source_keyword">While</font> ( pos != -<font class="source_int">1</font> )
+<a name="989"></a>    {
+<a name="990"></a>        FullName = Right(FullName, Len(FullName) - pos - <font class="source_int">1</font>);
+<a name="991"></a>        pos = InStr(FullName, <font class="source_string">"."</font>);
+<a name="992"></a>    }
+<a name="993"></a>
+<a name="994"></a>    <font class="source_keyword">return</font> FullName;
+<a name="995"></a>}
+<a name="996"></a>
+<a name="997"></a><font class="source_comment">//
+</font><a name="998"></a><font class="source_comment">// Returns the human readable string representation of an object.
+</font><a name="999"></a><font class="source_comment">//
+</font><a name="1000"></a>
+<a name="1001"></a><font class="source_keyword">function</font> <font class="source_keyword">String</font> GetHumanName()
+<a name="1002"></a>{
+<a name="1003"></a>    <font class="source_keyword">return</font> GetItemName(<font class="source_keyword">string</font>(<font class="source_keyword">class</font>));
+<a name="1004"></a>}
+<a name="1005"></a>
+<a name="1006"></a><font class="source_comment">// Set the display properties of an actor.  By setting them through this function, it allows
+</font><a name="1007"></a><font class="source_comment">// the actor to modify other components (such as a Pawn's weapon) or to adjust the result
+</font><a name="1008"></a><font class="source_comment">// based on other factors (such as a Pawn's other inventory wanting to affect the result)
+</font><a name="1009"></a><font class="source_keyword">function</font> SetDisplayProperties(<font class="source_type"><a href="..\engine\actor.html#ERenderStyle" class="source">ERenderStyle</a></font> NewStyle, <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> NewTexture, <font class="source_keyword">bool</font> bLighting, <font class="source_keyword">bool</font> bEnviroMap )
+<a name="1010"></a>{
+<a name="1011"></a>    Style = NewStyle;
+<a name="1012"></a>    <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> = NewTexture;
+<a name="1013"></a>    bUnlit = bLighting;
+<a name="1014"></a>    bMeshEnviromap = bEnviromap;
+<a name="1015"></a>}
+<a name="1016"></a>
+<a name="1017"></a><font class="source_keyword">function</font> SetDefaultDisplayProperties()
+<a name="1018"></a>{
+<a name="1019"></a>    Style = Default.Style;
+<a name="1020"></a>    <font class="source_type"><a href="..\engine\texture.html" class="source">texture</a></font> = Default.<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>;
+<a name="1021"></a>    bUnlit = Default.bUnlit;
+<a name="1022"></a>    bMeshEnviromap = Default.bMeshEnviromap;
+<a name="1023"></a>}
+<a name="1024"></a>
+<a name="1025"></a><font class="source_keyword">defaultproperties</font>
+<a name="1026"></a>{
+<a name="1027"></a>     bDifficulty0=<font class="source_keyword">True</font>
+<a name="1028"></a>     bDifficulty1=<font class="source_keyword">True</font>
+<a name="1029"></a>     bDifficulty2=<font class="source_keyword">True</font>
+<a name="1030"></a>     bDifficulty3=<font class="source_keyword">True</font>
+<a name="1031"></a>     bSinglePlayer=<font class="source_keyword">True</font>
+<a name="1032"></a>     bNet=<font class="source_keyword">True</font>
+<a name="1033"></a>     bNetSpecial=<font class="source_keyword">True</font>
+<a name="1034"></a>     OddsOfAppearing=+<font class="source_int">00001.000000</font>
+<a name="1035"></a>     DrawType=DT_Sprite
+<a name="1036"></a>     <font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font>=S_Actor
+<a name="1037"></a>     DrawScale=+<font class="source_int">00001.000000</font>
+<a name="1038"></a>     bMeshCurvy=<font class="source_keyword">false</font>
+<a name="1039"></a>     SoundRadius=<font class="source_int">32</font>
+<a name="1040"></a>     SoundVolume=<font class="source_int">128</font>
+<a name="1041"></a>     SoundPitch=<font class="source_int">64</font>
+<a name="1042"></a>     TransientSoundVolume=+<font class="source_int">00001.000000</font>
+<a name="1043"></a>     CollisionRadius=+<font class="source_int">00022.000000</font>
+<a name="1044"></a>     CollisionHeight=+<font class="source_int">00022.000000</font>
+<a name="1045"></a>     bJustTeleported=<font class="source_keyword">True</font>
+<a name="1046"></a>     Mass=+<font class="source_int">00100.000000</font>
+<a name="1047"></a>     Role=ROLE_Authority
+<a name="1048"></a>     RemoteRole=ROLE_DumbProxy
+<a name="1049"></a>     NetPriority=+<font class="source_int">00001.000000</font>
+<a name="1050"></a>     ScaleGlow=<font class="source_int">1.0</font>
+<a name="1051"></a>     Fatness=<font class="source_int">128</font>
+<a name="1052"></a>     Style=STY_Normal
+<a name="1053"></a>     bMovable=<font class="source_keyword">True</font>
+<a name="1054"></a>     bHighDetail=<font class="source_keyword">False</font>
+<a name="1055"></a>     VolumeFog=<font class="source_int">0</font>
+<a name="1056"></a>     InitialState=<font class="source_keyword">None</font>
+<a name="1057"></a>     NetUpdateFrequency=<font class="source_int">100</font>
+<a name="1058"></a>     LODBias=<font class="source_int">1.0</font>
+<a name="1059"></a>     SpriteProjForward=<font class="source_int">32.0</font>
+<a name="1060"></a>}
+<a name="1061"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\engine\engine-overview.html">Package</a></td>
+	<td class="header"><a href="..\engine\actor.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#Actor">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="zonetrigger.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="ambientsound.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:23:10.000 - Creation time: Wed 26/5/2004 10:48:05.281 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

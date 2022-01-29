@@ -1,0 +1,1577 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: UMenu.UMenuCustomizeClientWindow</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\umenu\umenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\umenu\umenucustomizeclientwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UMenuCustomizeClientWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="umenuconsolewindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="umenucustomizescrollclient.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\umenu\umenu-overview.html">UMenu</a>.<a href="..\umenu\umenucustomizeclientwindow.html">UMenuCustomizeClientWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+00172<br>
+00173<br>
+00174<br>
+00175<br>
+00176<br>
+00177<br>
+00178<br>
+00179<br>
+00180<br>
+00181<br>
+00182<br>
+00183<br>
+00184<br>
+00185<br>
+00186<br>
+00187<br>
+00188<br>
+00189<br>
+00190<br>
+00191<br>
+00192<br>
+00193<br>
+00194<br>
+00195<br>
+00196<br>
+00197<br>
+00198<br>
+00199<br>
+00200<br>
+00201<br>
+00202<br>
+00203<br>
+00204<br>
+00205<br>
+00206<br>
+00207<br>
+00208<br>
+00209<br>
+00210<br>
+00211<br>
+00212<br>
+00213<br>
+00214<br>
+00215<br>
+00216<br>
+00217<br>
+00218<br>
+00219<br>
+00220<br>
+00221<br>
+00222<br>
+00223<br>
+00224<br>
+00225<br>
+00226<br>
+00227<br>
+00228<br>
+00229<br>
+00230<br>
+00231<br>
+00232<br>
+00233<br>
+00234<br>
+00235<br>
+00236<br>
+00237<br>
+00238<br>
+00239<br>
+00240<br>
+00241<br>
+00242<br>
+00243<br>
+00244<br>
+00245<br>
+00246<br>
+00247<br>
+00248<br>
+00249<br>
+00250<br>
+00251<br>
+00252<br>
+00253<br>
+00254<br>
+00255<br>
+00256<br>
+00257<br>
+00258<br>
+00259<br>
+00260<br>
+00261<br>
+00262<br>
+00263<br>
+00264<br>
+00265<br>
+00266<br>
+00267<br>
+00268<br>
+00269<br>
+00270<br>
+00271<br>
+00272<br>
+00273<br>
+00274<br>
+00275<br>
+00276<br>
+00277<br>
+00278<br>
+00279<br>
+00280<br>
+00281<br>
+00282<br>
+00283<br>
+00284<br>
+00285<br>
+00286<br>
+00287<br>
+00288<br>
+00289<br>
+00290<br>
+00291<br>
+00292<br>
+00293<br>
+00294<br>
+00295<br>
+00296<br>
+00297<br>
+00298<br>
+00299<br>
+00300<br>
+00301<br>
+00302<br>
+00303<br>
+00304<br>
+00305<br>
+00306<br>
+00307<br>
+00308<br>
+00309<br>
+00310<br>
+00311<br>
+00312<br>
+00313<br>
+00314<br>
+00315<br>
+00316<br>
+00317<br>
+00318<br>
+00319<br>
+00320<br>
+00321<br>
+00322<br>
+00323<br>
+00324<br>
+00325<br>
+00326<br>
+00327<br>
+00328<br>
+00329<br>
+00330<br>
+00331<br>
+00332<br>
+00333<br>
+00334<br>
+00335<br>
+00336<br>
+00337<br>
+00338<br>
+00339<br>
+00340<br>
+00341<br>
+00342<br>
+00343<br>
+00344<br>
+00345<br>
+00346<br>
+00347<br>
+00348<br>
+00349<br>
+00350<br>
+00351<br>
+00352<br>
+00353<br>
+00354<br>
+00355<br>
+00356<br>
+00357<br>
+00358<br>
+00359<br>
+00360<br>
+00361<br>
+00362<br>
+00363<br>
+00364<br>
+00365<br>
+00366<br>
+00367<br>
+00368<br>
+00369<br>
+00370<br>
+00371<br>
+00372<br>
+00373<br>
+00374<br>
+00375<br>
+00376<br>
+00377<br>
+00378<br>
+00379<br>
+00380<br>
+00381<br>
+00382<br>
+00383<br>
+00384<br>
+00385<br>
+00386<br>
+00387<br>
+00388<br>
+00389<br>
+00390<br>
+00391<br>
+00392<br>
+00393<br>
+00394<br>
+00395<br>
+00396<br>
+00397<br>
+00398<br>
+00399<br>
+00400<br>
+00401<br>
+00402<br>
+00403<br>
+00404<br>
+00405<br>
+00406<br>
+00407<br>
+00408<br>
+00409<br>
+00410<br>
+00411<br>
+00412<br>
+00413<br>
+00414<br>
+00415<br>
+00416<br>
+00417<br>
+00418<br>
+00419<br>
+00420<br>
+00421<br>
+00422<br>
+00423<br>
+00424<br>
+00425<br>
+00426<br>
+00427<br>
+00428<br>
+00429<br>
+00430<br>
+00431<br>
+00432<br>
+00433<br>
+00434<br>
+00435<br>
+00436<br>
+00437<br>
+00438<br>
+00439<br>
+00440<br>
+00441<br>
+00442<br>
+00443<br>
+00444<br>
+00445<br>
+00446<br>
+00447<br>
+00448<br>
+00449<br>
+00450<br>
+00451<br>
+00452<br>
+00453<br>
+00454<br>
+00455<br>
+00456<br>
+00457<br>
+00458<br>
+00459<br>
+00460<br>
+00461<br>
+00462<br>
+00463<br>
+00464<br>
+00465<br>
+00466<br>
+00467<br>
+00468<br>
+00469<br>
+00470<br>
+00471<br>
+00472<br>
+00473<br>
+00474<br>
+00475<br>
+00476<br>
+00477<br>
+00478<br>
+00479<br>
+00480<br>
+00481<br>
+00482<br>
+00483<br>
+00484<br>
+00485<br>
+00486<br>
+00487<br>
+00488<br>
+00489<br>
+00490<br>
+00491<br>
+00492<br>
+00493<br>
+00494<br>
+00495<br>
+00496<br>
+00497<br>
+00498<br>
+00499<br>
+00500<br>
+00501<br>
+00502<br>
+00503<br>
+00504<br>
+00505<br>
+00506<br>
+00507<br>
+00508<br>
+00509<br>
+00510<br>
+00511<br>
+00512<br>
+00513<br>
+00514<br>
+00515<br>
+00516<br>
+00517<br>
+00518<br>
+00519<br>
+00520<br>
+00521<br>
+00522<br>
+00523<br>
+00524<br>
+00525<br>
+00526<br>
+00527<br>
+00528<br>
+00529<br>
+00530<br>
+00531<br>
+00532<br>
+00533<br>
+00534<br>
+00535<br>
+00536<br>
+00537<br>
+00538<br>
+00539<br>
+00540<br>
+00541<br>
+00542<br>
+00543<br>
+00544<br>
+00545<br>
+00546<br>
+00547<br>
+00548<br>
+00549<br>
+00550<br>
+00551<br>
+00552<br>
+00553<br>
+00554<br>
+00555<br>
+00556<br>
+00557<br>
+00558<br>
+00559<br>
+00560<br>
+00561<br>
+00562<br>
+00563<br>
+00564<br>
+00565<br>
+00566<br>
+00567<br>
+00568<br>
+00569<br>
+00570<br>
+00571<br>
+00572<br>
+00573<br>
+00574<br>
+00575<br>
+00576<br>
+00577<br>
+00578<br>
+00579<br>
+00580<br>
+00581<br>
+00582<br>
+00583<br>
+00584<br>
+00585<br>
+00586<br>
+00587<br>
+00588<br>
+00589<br>
+00590<br>
+00591<br>
+00592<br>
+00593<br>
+00594<br>
+00595<br>
+00596<br>
+00597<br>
+00598<br>
+00599<br>
+00600<br>
+00601<br>
+00602<br>
+00603<br>
+00604<br>
+00605<br>
+00606<br>
+00607<br>
+00608<br>
+00609<br>
+00610<br>
+00611<br>
+00612<br>
+00613<br>
+00614<br>
+00615<br>
+00616<br>
+00617<br>
+00618<br>
+00619<br>
+00620<br>
+00621<br>
+00622<br>
+00623<br>
+00624<br>
+00625<br>
+00626<br>
+00627<br>
+00628<br>
+00629<br>
+00630<br>
+00631<br>
+00632<br>
+00633<br>
+00634<br>
+00635<br>
+00636<br>
+00637<br>
+00638<br>
+00639<br>
+00640<br>
+00641<br>
+00642<br>
+00643<br>
+00644<br>
+00645<br>
+00646<br>
+00647<br>
+00648<br>
+00649<br>
+00650<br>
+00651<br>
+00652<br>
+00653<br>
+00654<br>
+00655<br>
+00656<br>
+00657<br>
+00658<br>
+00659<br>
+00660<br>
+00661<br>
+00662<br>
+00663<br>
+00664<br>
+00665<br>
+00666<br>
+00667<br>
+00668<br>
+00669<br>
+00670<br>
+00671<br>
+00672<br>
+00673<br>
+00674<br>
+00675<br>
+00676<br>
+00677<br>
+00678<br>
+00679<br>
+00680<br>
+00681<br>
+00682<br>
+00683<br>
+00684<br>
+00685<br>
+00686<br>
+00687<br>
+00688<br>
+00689<br>
+00690<br>
+00691<br>
+00692<br>
+00693<br>
+00694<br>
+00695<br>
+00696<br>
+00697<br>
+00698<br>
+00699<br>
+00700<br>
+00701<br>
+00702<br>
+00703<br>
+00704<br>
+00705<br>
+00706<br>
+00707<br>
+00708<br>
+00709<br>
+00710<br>
+00711<br>
+00712<br>
+00713<br>
+00714<br>
+00715<br>
+00716<br>
+00717<br>
+00718<br>
+00719<br>
+00720<br>
+00721<br>
+00722<br>
+00723<br>
+00724<br>
+00725<br>
+00726<br>
+00727<br>
+00728<br>
+00729<br>
+00730<br>
+00731<br>
+00732<br>
+00733<br>
+00734<br>
+00735<br>
+00736<br>
+00737<br>
+00738<br>
+00739<br>
+00740<br>
+00741<br>
+00742<br>
+00743<br>
+00744<br>
+00745<br>
+00746<br>
+00747<br>
+00748<br>
+00749<br>
+00750<br>
+00751<br>
+00752<br>
+00753<br>
+00754<br>
+00755<br>
+00756<br>
+00757<br>
+00758<br>
+00759<br>
+00760<br>
+00761<br>
+00762<br>
+</font></td><td class="source"><pre class="source"><a name="0"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\umenu\umenucustomizeclientwindow.html" class="source">UMenuCustomizeClientWindow</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\umenu\umenupagewindow.html" class="source">UMenuPageWindow</a></font>;
+<a name="2"></a>
+<a name="3"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> LocalizedKeyName[<font class="source_int">255</font>];
+<a name="4"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> RealKeyName[<font class="source_int">255</font>];
+<a name="5"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> BoundKey1[<font class="source_int">100</font>];
+<a name="6"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> BoundKey2[<font class="source_int">100</font>];
+<a name="7"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> KeyNames[<font class="source_int">100</font>];
+<a name="8"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenuraisedbutton.html" class="source">UMenuRaisedButton</a></font> KeyButtons[<font class="source_int">100</font>];
+<a name="9"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenuraisedbutton.html" class="source">UMenuRaisedButton</a></font> SelectedButton;
+<a name="10"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> LabelList[<font class="source_int">100</font>];
+<a name="11"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> AliasNames[<font class="source_int">100</font>];
+<a name="12"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> Selection;
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bPolling;
+<a name="14"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> OrString;
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> CustomizeHelp;
+<a name="16"></a>
+<a name="17"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowsmallbutton.html" class="source">UWindowSmallButton</a></font> DefaultsButton;
+<a name="18"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DefaultsText;
+<a name="19"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> DefaultsHelp;
+<a name="20"></a>
+<a name="21"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> JoystickHeading;
+<a name="22"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> JoystickText;
+<a name="23"></a>
+<a name="24"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> JoyXCombo;
+<a name="25"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> JoyXText;
+<a name="26"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> JoyXHelp;
+<a name="27"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> JoyXOptions[<font class="source_int">2</font>];
+<a name="28"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> JoyXBinding[<font class="source_int">2</font>];
+<a name="29"></a>
+<a name="30"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font> JoyYCombo;
+<a name="31"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> JoyYText;
+<a name="32"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> JoyYHelp;
+<a name="33"></a><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> JoyYOptions[<font class="source_int">2</font>];
+<a name="34"></a><font class="source_keyword">var</font> <font class="source_keyword">string</font> JoyYBinding[<font class="source_int">2</font>];
+<a name="35"></a>
+<a name="36"></a><font class="source_keyword">var</font> <font class="source_keyword">int</font> AliasCount;
+<a name="37"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bLoadedExisting;
+<a name="38"></a><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bJoystick;
+<a name="39"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> JoyDesiredHeight, NoJoyDesiredHeight;
+<a name="40"></a>
+<a name="41"></a><font class="source_keyword">function</font> Created()
+<a name="42"></a>{
+<a name="43"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ButtonWidth, ButtonLeft, ButtonTop, I, J, pos;
+<a name="44"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> LabelWidth, LabelLeft;
+<a name="45"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font> Heading;
+<a name="46"></a>    <font class="source_keyword">local</font> <font class="source_keyword">bool</font> bTop;
+<a name="47"></a>
+<a name="48"></a>    bIgnoreLDoubleClick = <font class="source_keyword">True</font>;
+<a name="49"></a>    bIgnoreMDoubleClick = <font class="source_keyword">True</font>;
+<a name="50"></a>    bIgnoreRDoubleClick = <font class="source_keyword">True</font>;
+<a name="51"></a>
+<a name="52"></a>    bJoystick = <font class="source_keyword">bool</font>(GetPlayerOwner().ConsoleCommand(<font class="source_string">"get windrv.windowsclient usejoystick"</font>));
+<a name="53"></a>
+<a name="54"></a>    <font class="source_keyword">Super</font>.Created();
+<a name="55"></a>
+<a name="56"></a>    SetAcceptsFocus();
+<a name="57"></a>
+<a name="58"></a>    ButtonWidth = WinWidth - <font class="source_int">140</font>;
+<a name="59"></a>    ButtonLeft = WinWidth - ButtonWidth - <font class="source_int">40</font>;
+<a name="60"></a>
+<a name="61"></a>    LabelWidth = WinWidth - <font class="source_int">100</font>;
+<a name="62"></a>    LabelLeft = <font class="source_int">20</font>;
+<a name="63"></a>
+<a name="64"></a>    <font class="source_comment">// Defaults Button
+</font><a name="65"></a>    DefaultsButton = <font class="source_type"><a href="..\uwindow\uwindowsmallbutton.html" class="source">UWindowSmallButton</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowSmallButton'</font>, <font class="source_int">30</font>, <font class="source_int">10</font>, <font class="source_int">48</font>, <font class="source_int">16</font>));
+<a name="66"></a>    DefaultsButton.SetText(DefaultsText);
+<a name="67"></a>    DefaultsButton.SetFont(F_Normal);
+<a name="68"></a>    DefaultsButton.SetHelpText(DefaultsHelp);
+<a name="69"></a>    
+<a name="70"></a>    ButtonTop = <font class="source_int">25</font>;
+<a name="71"></a>    bTop = <font class="source_keyword">True</font>;
+<a name="72"></a>    <font class="source_keyword">for</font> (I=<font class="source_int">0</font>; I&lt;ArrayCount(AliasNames); I++)
+<a name="73"></a>    {
+<a name="74"></a>        <font class="source_keyword">if</font>(AliasNames[I] == <font class="source_string">""</font>)
+<a name="75"></a>            <font class="source_keyword">break</font>;
+<a name="76"></a>
+<a name="77"></a>        j = InStr(LabelList[I], <font class="source_string">","</font>);
+<a name="78"></a>        <font class="source_keyword">if</font>(j != -<font class="source_int">1</font>)
+<a name="79"></a>        {
+<a name="80"></a>            <font class="source_keyword">if</font>(!bTop)
+<a name="81"></a>                ButtonTop += <font class="source_int">10</font>;
+<a name="82"></a>            Heading = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, LabelLeft-<font class="source_int">10</font>, ButtonTop+<font class="source_int">3</font>, WinWidth, <font class="source_int">1</font>));
+<a name="83"></a>            Heading.SetText(Left(LabelList[I], j));
+<a name="84"></a>            Heading.SetFont(F_Bold);
+<a name="85"></a>            LabelList[I] = Mid(LabelList[I], j+<font class="source_int">1</font>);
+<a name="86"></a>            ButtonTop += <font class="source_int">19</font>;
+<a name="87"></a>        }
+<a name="88"></a>        bTop = <font class="source_keyword">False</font>;
+<a name="89"></a>
+<a name="90"></a>        KeyNames[I] = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, LabelLeft, ButtonTop+<font class="source_int">3</font>, LabelWidth, <font class="source_int">1</font>));
+<a name="91"></a>        KeyNames[I].SetText(LabelList[I]);
+<a name="92"></a>        KeyNames[I].SetHelpText(CustomizeHelp);
+<a name="93"></a>        KeyNames[I].SetFont(F_Normal);
+<a name="94"></a>        KeyButtons[I] = <font class="source_type"><a href="..\umenu\umenuraisedbutton.html" class="source">UMenuRaisedButton</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UMenuRaisedButton'</font>, ButtonLeft, ButtonTop, ButtonWidth, <font class="source_int">1</font>));
+<a name="95"></a>        KeyButtons[I].SetHelpText(CustomizeHelp);
+<a name="96"></a>        KeyButtons[I].bAcceptsFocus = <font class="source_keyword">False</font>;
+<a name="97"></a>        KeyButtons[I].bIgnoreLDoubleClick = <font class="source_keyword">True</font>;
+<a name="98"></a>        KeyButtons[I].bIgnoreMDoubleClick = <font class="source_keyword">True</font>;
+<a name="99"></a>        KeyButtons[I].bIgnoreRDoubleClick = <font class="source_keyword">True</font>;
+<a name="100"></a>        ButtonTop += <font class="source_int">19</font>;
+<a name="101"></a>    }
+<a name="102"></a>    AliasCount = I;
+<a name="103"></a>
+<a name="104"></a>    NoJoyDesiredHeight = ButtonTop + <font class="source_int">10</font>;
+<a name="105"></a>
+<a name="106"></a>    <font class="source_comment">// Joystick
+</font><a name="107"></a>    ButtonTop += <font class="source_int">10</font>;
+<a name="108"></a>    JoystickHeading = <font class="source_type"><a href="..\umenu\umenulabelcontrol.html" class="source">UMenuLabelControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UMenuLabelControl'</font>, LabelLeft-<font class="source_int">10</font>, ButtonTop+<font class="source_int">3</font>, WinWidth, <font class="source_int">1</font>));
+<a name="109"></a>    JoystickHeading.SetText(JoystickText);
+<a name="110"></a>    JoystickHeading.SetFont(F_Bold);
+<a name="111"></a>    LabelList[I] = Mid(LabelList[I], j+<font class="source_int">1</font>);
+<a name="112"></a>    ButtonTop += <font class="source_int">19</font>;
+<a name="113"></a>
+<a name="114"></a>    JoyXCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, <font class="source_int">20</font>, ButtonTop, WinWidth - <font class="source_int">40</font>, <font class="source_int">1</font>));
+<a name="115"></a>    JoyXCombo.CancelAcceptsFocus();
+<a name="116"></a>    JoyXCombo.SetText(JoyXText);
+<a name="117"></a>    JoyXCombo.SetHelpText(JoyXHelp);
+<a name="118"></a>    JoyXCombo.SetFont(F_Normal);
+<a name="119"></a>    JoyXCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="120"></a>    JoyXCombo.AddItem(JoyXOptions[<font class="source_int">0</font>]);
+<a name="121"></a>    JoyXCombo.AddItem(JoyXOptions[<font class="source_int">1</font>]);
+<a name="122"></a>    JoyXCombo.EditBoxWidth = ButtonWidth;
+<a name="123"></a>    ButtonTop += <font class="source_int">20</font>;
+<a name="124"></a>
+<a name="125"></a>    JoyYCombo = <font class="source_type"><a href="..\uwindow\uwindowcombocontrol.html" class="source">UWindowComboControl</a></font>(CreateControl(<font class="source_keyword">class</font><font class="source_name">'UWindowComboControl'</font>, <font class="source_int">20</font>, ButtonTop, WinWidth - <font class="source_int">40</font>, <font class="source_int">1</font>));
+<a name="126"></a>    JoyYCombo.CancelAcceptsFocus();
+<a name="127"></a>    JoyYCombo.SetText(JoyYText);
+<a name="128"></a>    JoyYCombo.SetHelpText(JoyYHelp);
+<a name="129"></a>    JoyYCombo.SetFont(F_Normal);
+<a name="130"></a>    JoyYCombo.SetEditable(<font class="source_keyword">False</font>);
+<a name="131"></a>    JoyYCombo.AddItem(JoyYOptions[<font class="source_int">0</font>]);
+<a name="132"></a>    JoyYCombo.AddItem(JoyYOptions[<font class="source_int">1</font>]);
+<a name="133"></a>    JoyYCombo.EditBoxWidth = ButtonWidth;
+<a name="134"></a>    ButtonTop += <font class="source_int">20</font>;
+<a name="135"></a>
+<a name="136"></a>    LoadExistingKeys();
+<a name="137"></a>
+<a name="138"></a>    DesiredWidth = <font class="source_int">220</font>;
+<a name="139"></a>    JoyDesiredHeight = ButtonTop + <font class="source_int">10</font>;
+<a name="140"></a>    DesiredHeight = JoyDesiredHeight;
+<a name="141"></a>}
+<a name="142"></a>
+<a name="143"></a><font class="source_keyword">function</font> WindowShown()
+<a name="144"></a>{
+<a name="145"></a>    <font class="source_keyword">Super</font>.WindowShown();
+<a name="146"></a>    bJoystick = <font class="source_keyword">bool</font>(GetPlayerOwner().ConsoleCommand(<font class="source_string">"get windrv.windowsclient usejoystick"</font>));
+<a name="147"></a>}
+<a name="148"></a>
+<a name="149"></a><font class="source_keyword">function</font> LoadExistingKeys()
+<a name="150"></a>{
+<a name="151"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> I, J, pos;
+<a name="152"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> KeyName;
+<a name="153"></a>    <font class="source_keyword">local</font> <font class="source_keyword">string</font> Alias;
+<a name="154"></a>
+<a name="155"></a>    <font class="source_keyword">for</font> (I=<font class="source_int">0</font>; I&lt;AliasCount; I++)
+<a name="156"></a>    {
+<a name="157"></a>        BoundKey1[I] = <font class="source_int">0</font>;
+<a name="158"></a>        BoundKey2[I] = <font class="source_int">0</font>;
+<a name="159"></a>    }
+<a name="160"></a>
+<a name="161"></a>    <font class="source_keyword">for</font> (I=<font class="source_int">0</font>; I&lt;<font class="source_int">255</font>; I++)
+<a name="162"></a>    {
+<a name="163"></a>        KeyName = GetPlayerOwner().ConsoleCommand( <font class="source_string">"KEYNAME "</font>$i );
+<a name="164"></a>        RealKeyName[i] = KeyName;
+<a name="165"></a>        <font class="source_keyword">if</font> ( KeyName != <font class="source_string">""</font> )
+<a name="166"></a>        {
+<a name="167"></a>            Alias = GetPlayerOwner().ConsoleCommand( <font class="source_string">"KEYBINDING "</font>$KeyName );
+<a name="168"></a>            <font class="source_keyword">if</font> ( Alias != <font class="source_string">""</font> )
+<a name="169"></a>            {
+<a name="170"></a>                pos = InStr(Alias, <font class="source_string">" "</font>);
+<a name="171"></a>                <font class="source_keyword">if</font> ( pos != -<font class="source_int">1</font> )
+<a name="172"></a>                {
+<a name="173"></a>                    <font class="source_keyword">if</font>( !(Left(Alias, pos) ~= <font class="source_string">"taunt"</font>) &&
+<a name="174"></a>                        !(Left(Alias, pos) ~= <font class="source_string">"getweapon"</font>) &&
+<a name="175"></a>                        !(Left(Alias, pos) ~= <font class="source_string">"viewplayernum"</font>) &&
+<a name="176"></a>                        !(Left(Alias, pos) ~= <font class="source_string">"button"</font>) &&
+<a name="177"></a>                        !(Left(Alias, pos) ~= <font class="source_string">"mutate"</font>))
+<a name="178"></a>                        Alias = Left(Alias, pos);
+<a name="179"></a>                }
+<a name="180"></a>                <font class="source_keyword">for</font> (J=<font class="source_int">0</font>; J&lt;AliasCount; J++)
+<a name="181"></a>                {
+<a name="182"></a>                    <font class="source_keyword">if</font> ( AliasNames[J] ~= Alias && AliasNames[J] != <font class="source_string">"None"</font> )
+<a name="183"></a>                    {
+<a name="184"></a>                        <font class="source_keyword">if</font> ( BoundKey1[J] == <font class="source_int">0</font> )
+<a name="185"></a>                            BoundKey1[J] = i;
+<a name="186"></a>                        <font class="source_keyword">else</font>
+<a name="187"></a>                        <font class="source_keyword">if</font> ( BoundKey2[J] == <font class="source_int">0</font>)
+<a name="188"></a>                            BoundKey2[J] = i;
+<a name="189"></a>                    }
+<a name="190"></a>                }
+<a name="191"></a>            }
+<a name="192"></a>        }
+<a name="193"></a>    }
+<a name="194"></a>
+<a name="195"></a>    bLoadedExisting = <font class="source_keyword">False</font>;
+<a name="196"></a>    Alias = GetPlayerOwner().ConsoleCommand( <font class="source_string">"KEYBINDING JoyX"</font> );
+<a name="197"></a>    <font class="source_keyword">if</font>(Alias ~= JoyXBinding[<font class="source_int">0</font>])
+<a name="198"></a>        JoyXCombo.SetSelectedIndex(<font class="source_int">0</font>);
+<a name="199"></a>    <font class="source_keyword">if</font>(Alias ~= JoyXBinding[<font class="source_int">1</font>])
+<a name="200"></a>        JoyXCombo.SetSelectedIndex(<font class="source_int">1</font>);
+<a name="201"></a>
+<a name="202"></a>    Alias = GetPlayerOwner().ConsoleCommand( <font class="source_string">"KEYBINDING JoyY"</font> );
+<a name="203"></a>    <font class="source_keyword">if</font>(Alias ~= JoyYBinding[<font class="source_int">0</font>])
+<a name="204"></a>        JoyYCombo.SetSelectedIndex(<font class="source_int">0</font>);
+<a name="205"></a>    <font class="source_keyword">if</font>(Alias ~= JoyYBinding[<font class="source_int">1</font>])
+<a name="206"></a>        JoyYCombo.SetSelectedIndex(<font class="source_int">1</font>);
+<a name="207"></a>    bLoadedExisting = <font class="source_keyword">True</font>;
+<a name="208"></a>}
+<a name="209"></a>
+<a name="210"></a><font class="source_keyword">function</font> BeforePaint(<font class="source_type"><a href="..\engine\canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y)
+<a name="211"></a>{
+<a name="212"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> ButtonWidth, ButtonLeft, I;
+<a name="213"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> LabelWidth, LabelLeft;
+<a name="214"></a>
+<a name="215"></a>    ButtonWidth = WinWidth - <font class="source_int">135</font>;
+<a name="216"></a>    ButtonLeft = WinWidth - ButtonWidth - <font class="source_int">20</font>;
+<a name="217"></a>
+<a name="218"></a>    DefaultsButton.AutoWidth(C);
+<a name="219"></a>    DefaultsButton.WinLeft = ButtonLeft + ButtonWidth - DefaultsButton.WinWidth;
+<a name="220"></a>
+<a name="221"></a>    LabelWidth = WinWidth - <font class="source_int">100</font>;
+<a name="222"></a>    LabelLeft = <font class="source_int">20</font>;
+<a name="223"></a>
+<a name="224"></a>    <font class="source_keyword">if</font>(bJoystick)
+<a name="225"></a>    {
+<a name="226"></a>        DesiredHeight = JoyDesiredHeight;
+<a name="227"></a>
+<a name="228"></a>        JoystickHeading.ShowWindow();
+<a name="229"></a>        JoyXCombo.ShowWindow();
+<a name="230"></a>        JoyYCombo.ShowWindow();
+<a name="231"></a>
+<a name="232"></a>        JoyXCombo.SetSize(WinWidth - <font class="source_int">40</font>, <font class="source_int">1</font>);
+<a name="233"></a>        JoyXCombo.EditBoxWidth = ButtonWidth;
+<a name="234"></a>
+<a name="235"></a>        JoyYCombo.SetSize(WinWidth - <font class="source_int">40</font>, <font class="source_int">1</font>);
+<a name="236"></a>        JoyYCombo.EditBoxWidth = ButtonWidth;
+<a name="237"></a>    }
+<a name="238"></a>    <font class="source_keyword">else</font>
+<a name="239"></a>    {
+<a name="240"></a>        DesiredHeight = NoJoyDesiredHeight;
+<a name="241"></a>
+<a name="242"></a>        JoystickHeading.HideWindow();
+<a name="243"></a>        JoyXCombo.HideWindow();
+<a name="244"></a>        JoyYCombo.HideWindow();
+<a name="245"></a>    }
+<a name="246"></a>
+<a name="247"></a>    <font class="source_keyword">for</font> (I=<font class="source_int">0</font>; I&lt;AliasCount; I++)
+<a name="248"></a>    {
+<a name="249"></a>        KeyButtons[I].SetSize(ButtonWidth, <font class="source_int">1</font>);
+<a name="250"></a>        KeyButtons[I].WinLeft = ButtonLeft;
+<a name="251"></a>
+<a name="252"></a>        KeyNames[I].SetSize(LabelWidth, <font class="source_int">1</font>);
+<a name="253"></a>        KeyNames[I].WinLeft = LabelLeft;
+<a name="254"></a>    }
+<a name="255"></a>
+<a name="256"></a>    <font class="source_keyword">for</font> (I=<font class="source_int">0</font>; I&lt;AliasCount; I++ )
+<a name="257"></a>    {
+<a name="258"></a>        <font class="source_keyword">if</font> ( BoundKey1[I] == <font class="source_int">0</font> )
+<a name="259"></a>            KeyButtons[I].SetText(<font class="source_string">""</font>);
+<a name="260"></a>        <font class="source_keyword">else</font>
+<a name="261"></a>        <font class="source_keyword">if</font> ( BoundKey2[I] == <font class="source_int">0</font> )
+<a name="262"></a>            KeyButtons[I].SetText(LocalizedKeyName[BoundKey1[I]]);
+<a name="263"></a>        <font class="source_keyword">else</font>
+<a name="264"></a>            KeyButtons[I].SetText(LocalizedKeyName[BoundKey1[I]]$OrString$LocalizedKeyName[BoundKey2[I]]);
+<a name="265"></a>    }
+<a name="266"></a>}
+<a name="267"></a>
+<a name="268"></a><font class="source_keyword">function</font> KeyDown( <font class="source_keyword">int</font> Key, <font class="source_keyword">float</font> X, <font class="source_keyword">float</font> Y )
+<a name="269"></a>{
+<a name="270"></a>    <font class="source_keyword">if</font> (bPolling)
+<a name="271"></a>    {
+<a name="272"></a>        ProcessMenuKey(Key, RealKeyName[Key]);
+<a name="273"></a>        bPolling = <font class="source_keyword">False</font>;
+<a name="274"></a>        SelectedButton.bDisabled = <font class="source_keyword">False</font>;
+<a name="275"></a>    }
+<a name="276"></a>}
+<a name="277"></a>
+<a name="278"></a><font class="source_keyword">function</font> RemoveExistingKey(<font class="source_keyword">int</font> KeyNo, <font class="source_keyword">string</font> KeyName)
+<a name="279"></a>{
+<a name="280"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> I;
+<a name="281"></a>
+<a name="282"></a>    <font class="source_comment">// Remove this key from any existing binding display
+</font><a name="283"></a>    <font class="source_keyword">for</font> ( I=<font class="source_int">0</font>; I&lt;AliasCount; I++ )
+<a name="284"></a>    {
+<a name="285"></a>        <font class="source_keyword">if</font>(I != Selection)
+<a name="286"></a>        {
+<a name="287"></a>            <font class="source_keyword">if</font> ( BoundKey2[I] == KeyNo )
+<a name="288"></a>                BoundKey2[I] = <font class="source_int">0</font>;
+<a name="289"></a>
+<a name="290"></a>            <font class="source_keyword">if</font> ( BoundKey1[I] == KeyNo )
+<a name="291"></a>            {
+<a name="292"></a>                BoundKey1[I] = BoundKey2[I];
+<a name="293"></a>                BoundKey2[I] = <font class="source_int">0</font>;
+<a name="294"></a>            }
+<a name="295"></a>        }
+<a name="296"></a>    }
+<a name="297"></a>}
+<a name="298"></a>
+<a name="299"></a><font class="source_keyword">function</font> SetKey(<font class="source_keyword">int</font> KeyNo, <font class="source_keyword">string</font> KeyName)
+<a name="300"></a>{
+<a name="301"></a>    <font class="source_keyword">if</font> ( BoundKey1[Selection] != <font class="source_int">0</font> )
+<a name="302"></a>    {
+<a name="303"></a>
+<a name="304"></a>        <font class="source_comment">// if this key is already chosen, just clear out other slot
+</font><a name="305"></a>        <font class="source_keyword">if</font>(KeyNo == BoundKey1[Selection])
+<a name="306"></a>        {
+<a name="307"></a>            <font class="source_comment">// if 2 exists, remove it it.
+</font><a name="308"></a>            <font class="source_keyword">if</font>(BoundKey2[Selection] != <font class="source_int">0</font>)
+<a name="309"></a>            {
+<a name="310"></a>                GetPlayerOwner().ConsoleCommand(<font class="source_string">"SET Input "</font>$RealKeyName[BoundKey2[Selection]]);
+<a name="311"></a>                BoundKey2[Selection] = <font class="source_int">0</font>;
+<a name="312"></a>            }
+<a name="313"></a>        }
+<a name="314"></a>        <font class="source_keyword">else</font> 
+<a name="315"></a>        <font class="source_keyword">if</font>(KeyNo == BoundKey2[Selection])
+<a name="316"></a>        {
+<a name="317"></a>            <font class="source_comment">// Remove slot 1
+</font><a name="318"></a>            GetPlayerOwner().ConsoleCommand(<font class="source_string">"SET Input "</font>$RealKeyName[BoundKey1[Selection]]);
+<a name="319"></a>            BoundKey1[Selection] = BoundKey2[Selection];
+<a name="320"></a>            BoundKey2[Selection] = <font class="source_int">0</font>;
+<a name="321"></a>        }
+<a name="322"></a>        <font class="source_keyword">else</font>
+<a name="323"></a>        {
+<a name="324"></a>            <font class="source_comment">// Clear out old slot 2 if it exists
+</font><a name="325"></a>            <font class="source_keyword">if</font>(BoundKey2[Selection] != <font class="source_int">0</font>)
+<a name="326"></a>            {
+<a name="327"></a>                GetPlayerOwner().ConsoleCommand(<font class="source_string">"SET Input "</font>$RealKeyName[BoundKey2[Selection]]);
+<a name="328"></a>                BoundKey2[Selection] = <font class="source_int">0</font>;
+<a name="329"></a>            }
+<a name="330"></a>
+<a name="331"></a>            <font class="source_comment">// move key 1 to key 2, and set ourselves in 1.
+</font><a name="332"></a>            BoundKey2[Selection] = BoundKey1[Selection];
+<a name="333"></a>            BoundKey1[Selection] = KeyNo;
+<a name="334"></a>            GetPlayerOwner().ConsoleCommand(<font class="source_string">"SET Input"</font>@KeyName@AliasNames[Selection]);     
+<a name="335"></a>        }
+<a name="336"></a>    }
+<a name="337"></a>    <font class="source_keyword">else</font>
+<a name="338"></a>    {
+<a name="339"></a>        BoundKey1[Selection] = KeyNo;
+<a name="340"></a>        GetPlayerOwner().ConsoleCommand(<font class="source_string">"SET Input"</font>@KeyName@AliasNames[Selection]);     
+<a name="341"></a>    }
+<a name="342"></a>}
+<a name="343"></a>
+<a name="344"></a><font class="source_keyword">function</font> ProcessMenuKey( <font class="source_keyword">int</font> KeyNo, <font class="source_keyword">string</font> KeyName )
+<a name="345"></a>{
+<a name="346"></a>    <font class="source_keyword">if</font> ( (KeyName == <font class="source_string">""</font>) || (KeyName == <font class="source_string">"Escape"</font>)  
+<a name="347"></a>        || ((KeyNo &gt;= <font class="source_int">0x70</font> ) && (KeyNo &lt;= <font class="source_int">0x79</font>)) <font class="source_comment">// function keys
+</font><a name="348"></a>        || ((KeyNo &gt;= <font class="source_int">0x30</font> ) && (KeyNo &lt;= <font class="source_int">0x39</font>))) <font class="source_comment">// number keys
+</font><a name="349"></a>        <font class="source_keyword">return</font>;
+<a name="350"></a>
+<a name="351"></a>    RemoveExistingKey(KeyNo, KeyName);
+<a name="352"></a>    SetKey(KeyNo, KeyName);
+<a name="353"></a>}
+<a name="354"></a>
+<a name="355"></a><font class="source_keyword">function</font> Notify(<font class="source_type"><a href="..\uwindow\uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></font> C, <font class="source_keyword">byte</font> E)
+<a name="356"></a>{
+<a name="357"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> I;
+<a name="358"></a>
+<a name="359"></a>    <font class="source_keyword">Super</font>.Notify(C, E);
+<a name="360"></a>
+<a name="361"></a>    <font class="source_keyword">if</font>(C == DefaultsButton && E == DE_Click)
+<a name="362"></a>    {
+<a name="363"></a>        GetPlayerOwner().ResetKeyboard();
+<a name="364"></a>        LoadExistingKeys();
+<a name="365"></a>        <font class="source_keyword">return</font>;
+<a name="366"></a>    } 
+<a name="367"></a>
+<a name="368"></a>    <font class="source_keyword">switch</font>(E)
+<a name="369"></a>    {
+<a name="370"></a>    <font class="source_keyword">case</font> DE_Change:
+<a name="371"></a>        <font class="source_keyword">switch</font>(C)
+<a name="372"></a>        {
+<a name="373"></a>        <font class="source_keyword">case</font> JoyXCombo:
+<a name="374"></a>            <font class="source_keyword">if</font>(bLoadedExisting)
+<a name="375"></a>                GetPlayerOwner().ConsoleCommand(<font class="source_string">"SET Input JoyX "</font>$JoyXBinding[JoyXCombo.GetSelectedIndex()]);
+<a name="376"></a>            <font class="source_keyword">break</font>;
+<a name="377"></a>        <font class="source_keyword">case</font> JoyYCombo:
+<a name="378"></a>            <font class="source_keyword">if</font>(bLoadedExisting)
+<a name="379"></a>                GetPlayerOwner().ConsoleCommand(<font class="source_string">"SET Input JoyY "</font>$JoyYBinding[JoyYCombo.GetSelectedIndex()]);
+<a name="380"></a>            <font class="source_keyword">break</font>;
+<a name="381"></a>        }
+<a name="382"></a>        <font class="source_keyword">break</font>;
+<a name="383"></a>    <font class="source_keyword">case</font> DE_Click:
+<a name="384"></a>        <font class="source_keyword">if</font> (bPolling)
+<a name="385"></a>        {
+<a name="386"></a>            bPolling = <font class="source_keyword">False</font>;
+<a name="387"></a>            SelectedButton.bDisabled = <font class="source_keyword">False</font>;
+<a name="388"></a>
+<a name="389"></a>            <font class="source_keyword">if</font>(C == SelectedButton)
+<a name="390"></a>            {
+<a name="391"></a>                ProcessMenuKey(<font class="source_int">1</font>, RealKeyName[<font class="source_int">1</font>]);
+<a name="392"></a>                <font class="source_keyword">return</font>;
+<a name="393"></a>            }
+<a name="394"></a>        }
+<a name="395"></a>
+<a name="396"></a>        <font class="source_keyword">if</font> (<font class="source_type"><a href="..\umenu\umenuraisedbutton.html" class="source">UMenuRaisedButton</a></font>(C) != <font class="source_keyword">None</font>)
+<a name="397"></a>        {
+<a name="398"></a>            SelectedButton = <font class="source_type"><a href="..\umenu\umenuraisedbutton.html" class="source">UMenuRaisedButton</a></font>(C);
+<a name="399"></a>            <font class="source_keyword">for</font> ( I=<font class="source_int">0</font>; I&lt;AliasCount; I++ )
+<a name="400"></a>            {
+<a name="401"></a>                <font class="source_keyword">if</font> (KeyButtons[I] == C)
+<a name="402"></a>                    Selection = I;
+<a name="403"></a>            }
+<a name="404"></a>            bPolling = <font class="source_keyword">True</font>;
+<a name="405"></a>            SelectedButton.bDisabled = <font class="source_keyword">True</font>;
+<a name="406"></a>        }
+<a name="407"></a>        <font class="source_keyword">break</font>;
+<a name="408"></a>    <font class="source_keyword">case</font> DE_RClick:
+<a name="409"></a>        <font class="source_keyword">if</font> (bPolling)
+<a name="410"></a>            {
+<a name="411"></a>                bPolling = <font class="source_keyword">False</font>;
+<a name="412"></a>                SelectedButton.bDisabled = <font class="source_keyword">False</font>;
+<a name="413"></a>
+<a name="414"></a>                <font class="source_keyword">if</font>(C == SelectedButton)
+<a name="415"></a>                {
+<a name="416"></a>                    ProcessMenuKey(<font class="source_int">2</font>, RealKeyName[<font class="source_int">2</font>]);
+<a name="417"></a>                    <font class="source_keyword">return</font>;
+<a name="418"></a>                }
+<a name="419"></a>            }
+<a name="420"></a>        <font class="source_keyword">break</font>;
+<a name="421"></a>    <font class="source_keyword">case</font> DE_MClick:
+<a name="422"></a>        <font class="source_keyword">if</font> (bPolling)
+<a name="423"></a>            {
+<a name="424"></a>                bPolling = <font class="source_keyword">False</font>;
+<a name="425"></a>                SelectedButton.bDisabled = <font class="source_keyword">False</font>;
+<a name="426"></a>
+<a name="427"></a>                <font class="source_keyword">if</font>(C == SelectedButton)
+<a name="428"></a>                {
+<a name="429"></a>                    ProcessMenuKey(<font class="source_int">4</font>, RealKeyName[<font class="source_int">4</font>]);
+<a name="430"></a>                    <font class="source_keyword">return</font>;
+<a name="431"></a>                }           
+<a name="432"></a>            }
+<a name="433"></a>        <font class="source_keyword">break</font>;
+<a name="434"></a>    }
+<a name="435"></a>}
+<a name="436"></a>
+<a name="437"></a><font class="source_keyword">function</font> GetDesiredDimensions(<font class="source_keyword2">out</font> <font class="source_keyword">float</font> W, <font class="source_keyword2">out</font> <font class="source_keyword">float</font> H)
+<a name="438"></a>{   
+<a name="439"></a>    <font class="source_keyword">Super</font>.GetDesiredDimensions(W, H);
+<a name="440"></a>    H = <font class="source_int">200</font>;
+<a name="441"></a>}
+<a name="442"></a>
+<a name="443"></a><font class="source_keyword">defaultproperties</font>
+<a name="444"></a>{
+<a name="445"></a>    OrString=<font class="source_string">" or "</font>
+<a name="446"></a>    AliasNames(<font class="source_int">0</font>)=<font class="source_string">"Fire"</font>
+<a name="447"></a>    AliasNames(<font class="source_int">1</font>)=<font class="source_string">"AltFire"</font>
+<a name="448"></a>    AliasNames(<font class="source_int">2</font>)=<font class="source_string">"MoveForward"</font>
+<a name="449"></a>    AliasNames(<font class="source_int">3</font>)=<font class="source_string">"MoveBackward"</font>
+<a name="450"></a>    AliasNames(<font class="source_int">4</font>)=<font class="source_string">"TurnLeft"</font>
+<a name="451"></a>    AliasNames(<font class="source_int">5</font>)=<font class="source_string">"TurnRight"</font>
+<a name="452"></a>    AliasNames(<font class="source_int">6</font>)=<font class="source_string">"StrafeLeft"</font>
+<a name="453"></a>    AliasNames(<font class="source_int">7</font>)=<font class="source_string">"StrafeRight"</font>
+<a name="454"></a>    AliasNames(<font class="source_int">8</font>)=<font class="source_string">"Jump"</font>
+<a name="455"></a>    AliasNames(<font class="source_int">9</font>)=<font class="source_string">"Duck"</font>
+<a name="456"></a>    AliasNames(<font class="source_int">10</font>)=<font class="source_string">"Look"</font>
+<a name="457"></a>    AliasNames(<font class="source_int">11</font>)=<font class="source_string">"InventoryActivate"</font>
+<a name="458"></a>    AliasNames(<font class="source_int">12</font>)=<font class="source_string">"InventoryNext"</font>
+<a name="459"></a>    AliasNames(<font class="source_int">13</font>)=<font class="source_string">"InventoryPrevious"</font>
+<a name="460"></a>    AliasNames(<font class="source_int">14</font>)=<font class="source_string">"LookUp"</font>
+<a name="461"></a>    AliasNames(<font class="source_int">15</font>)=<font class="source_string">"LookDown"</font>
+<a name="462"></a>    AliasNames(<font class="source_int">16</font>)=<font class="source_string">"CenterView"</font>
+<a name="463"></a>    AliasNames(<font class="source_int">17</font>)=<font class="source_string">"Walking"</font>
+<a name="464"></a>    AliasNames(<font class="source_int">18</font>)=<font class="source_string">"Strafe"</font>
+<a name="465"></a>    AliasNames(<font class="source_int">19</font>)=<font class="source_string">"NextWeapon"</font>
+<a name="466"></a>    AliasNames(<font class="source_int">20</font>)=<font class="source_string">"ThrowWeapon"</font>
+<a name="467"></a>    AliasNames(<font class="source_int">21</font>)=<font class="source_string">"FeignDeath"</font>
+<a name="468"></a>    LabelList(<font class="source_int">0</font>)=<font class="source_string">"Fire"</font>
+<a name="469"></a>    LabelList(<font class="source_int">1</font>)=<font class="source_string">"Alternate Fire"</font>
+<a name="470"></a>    LabelList(<font class="source_int">2</font>)=<font class="source_string">"Move Forward"</font>
+<a name="471"></a>    LabelList(<font class="source_int">3</font>)=<font class="source_string">"Move Backward"</font>
+<a name="472"></a>    LabelList(<font class="source_int">4</font>)=<font class="source_string">"Turn Left"</font>
+<a name="473"></a>    LabelList(<font class="source_int">5</font>)=<font class="source_string">"Turn Right"</font>
+<a name="474"></a>    LabelList(<font class="source_int">6</font>)=<font class="source_string">"Strafe Left"</font>
+<a name="475"></a>    LabelList(<font class="source_int">7</font>)=<font class="source_string">"Strafe Right"</font>
+<a name="476"></a>    LabelList(<font class="source_int">8</font>)=<font class="source_string">"Jump/Up"</font>
+<a name="477"></a>    LabelList(<font class="source_int">9</font>)=<font class="source_string">"Crouch/Down"</font>
+<a name="478"></a>    LabelList(<font class="source_int">10</font>)=<font class="source_string">"Mouse Look"</font>
+<a name="479"></a>    LabelList(<font class="source_int">11</font>)=<font class="source_string">"Activate Item"</font>
+<a name="480"></a>    LabelList(<font class="source_int">12</font>)=<font class="source_string">"Next Item"</font>
+<a name="481"></a>    LabelList(<font class="source_int">13</font>)=<font class="source_string">"Previous Item"</font>
+<a name="482"></a>    LabelList(<font class="source_int">14</font>)=<font class="source_string">"Look Up"</font>
+<a name="483"></a>    LabelList(<font class="source_int">15</font>)=<font class="source_string">"Look Down"</font>
+<a name="484"></a>    LabelList(<font class="source_int">16</font>)=<font class="source_string">"Center View"</font>
+<a name="485"></a>    LabelList(<font class="source_int">17</font>)=<font class="source_string">"Walk"</font>
+<a name="486"></a>    LabelList(<font class="source_int">18</font>)=<font class="source_string">"Strafe"</font>
+<a name="487"></a>    LabelList(<font class="source_int">19</font>)=<font class="source_string">"Next Weapon"</font>
+<a name="488"></a>    LabelList(<font class="source_int">20</font>)=<font class="source_string">"Throw Weapon"</font>
+<a name="489"></a>    LabelList(<font class="source_int">21</font>)=<font class="source_string">"Feign Death"</font>
+<a name="490"></a>    CustomizeHelp=<font class="source_string">"Click the blue rectangle and then press the key to bind to this control."</font>
+<a name="491"></a>    DefaultsText=<font class="source_string">"Reset"</font>
+<a name="492"></a>    DefaultsHelp=<font class="source_string">"Reset all controls to their default settings."</font>
+<a name="493"></a>    JoystickText=<font class="source_string">"Joystick"</font>
+<a name="494"></a>    JoyXText=<font class="source_string">"X Axis"</font>
+<a name="495"></a>    JoyXHelp=<font class="source_string">"Select the behavior for the left-right axis of your joystick."</font>
+<a name="496"></a>    JoyXOptions(<font class="source_int">0</font>)=<font class="source_string">"Strafe Left/Right"</font>
+<a name="497"></a>    JoyXOptions(<font class="source_int">1</font>)=<font class="source_string">"Turn Left/Right"</font>
+<a name="498"></a>    JoyXBinding(<font class="source_int">0</font>)=<font class="source_string">"Axis aStrafe speed=2"</font>
+<a name="499"></a>    JoyXBinding(<font class="source_int">1</font>)=<font class="source_string">"Axis aBaseX speed=0.7"</font>
+<a name="500"></a>    JoyYText=<font class="source_string">"Y Axis"</font>
+<a name="501"></a>    JoyYHelp=<font class="source_string">"Select the behavior for the up-down axis of your joystick."</font>
+<a name="502"></a>    JoyYOptions(<font class="source_int">0</font>)=<font class="source_string">"Move Forward/Back"</font>
+<a name="503"></a>    JoyYOptions(<font class="source_int">1</font>)=<font class="source_string">"Look Up/Down"</font>
+<a name="504"></a>    JoyYBinding(<font class="source_int">0</font>)=<font class="source_string">"Axis aBaseY speed=2"</font>
+<a name="505"></a>    JoyYBinding(<font class="source_int">1</font>)=<font class="source_string">"Axis aLookup speed=-0.4"</font>
+<a name="506"></a>    LocalizedKeyName(<font class="source_int">0</font>)=<font class="source_string">""</font>
+<a name="507"></a>    LocalizedKeyName(<font class="source_int">1</font>)=<font class="source_string">"LeftMouse"</font>
+<a name="508"></a>    LocalizedKeyName(<font class="source_int">2</font>)=<font class="source_string">"RightMouse"</font>
+<a name="509"></a>    LocalizedKeyName(<font class="source_int">3</font>)=<font class="source_string">"Cancel"</font>
+<a name="510"></a>    LocalizedKeyName(<font class="source_int">4</font>)=<font class="source_string">"MiddleMouse"</font>
+<a name="511"></a>    LocalizedKeyName(<font class="source_int">5</font>)=<font class="source_string">"Unknown05"</font>
+<a name="512"></a>    LocalizedKeyName(<font class="source_int">6</font>)=<font class="source_string">"Unknown06"</font>
+<a name="513"></a>    LocalizedKeyName(<font class="source_int">7</font>)=<font class="source_string">"Unknown07"</font>
+<a name="514"></a>    LocalizedKeyName(<font class="source_int">8</font>)=<font class="source_string">"Backspace"</font>
+<a name="515"></a>    LocalizedKeyName(<font class="source_int">9</font>)=<font class="source_string">"Tab"</font>
+<a name="516"></a>    LocalizedKeyName(<font class="source_int">10</font>)=<font class="source_string">"Unknown0A"</font>
+<a name="517"></a>    LocalizedKeyName(<font class="source_int">11</font>)=<font class="source_string">"Unknown0B"</font>
+<a name="518"></a>    LocalizedKeyName(<font class="source_int">12</font>)=<font class="source_string">"Unknown0C"</font>
+<a name="519"></a>    LocalizedKeyName(<font class="source_int">13</font>)=<font class="source_string">"Enter"</font>
+<a name="520"></a>    LocalizedKeyName(<font class="source_int">14</font>)=<font class="source_string">"Unknown0E"</font>
+<a name="521"></a>    LocalizedKeyName(<font class="source_int">15</font>)=<font class="source_string">"Unknown0F"</font>
+<a name="522"></a>    LocalizedKeyName(<font class="source_int">16</font>)=<font class="source_string">"Shift"</font>
+<a name="523"></a>    LocalizedKeyName(<font class="source_int">17</font>)=<font class="source_string">"Ctrl"</font>
+<a name="524"></a>    LocalizedKeyName(<font class="source_int">18</font>)=<font class="source_string">"Alt"</font>
+<a name="525"></a>    LocalizedKeyName(<font class="source_int">19</font>)=<font class="source_string">"Pause"</font>
+<a name="526"></a>    LocalizedKeyName(<font class="source_int">20</font>)=<font class="source_string">"CapsLock"</font>
+<a name="527"></a>    LocalizedKeyName(<font class="source_int">21</font>)=<font class="source_string">"Unknown15"</font>
+<a name="528"></a>    LocalizedKeyName(<font class="source_int">22</font>)=<font class="source_string">"Unknown16"</font>
+<a name="529"></a>    LocalizedKeyName(<font class="source_int">23</font>)=<font class="source_string">"Unknown17"</font>
+<a name="530"></a>    LocalizedKeyName(<font class="source_int">24</font>)=<font class="source_string">"Unknown18"</font>
+<a name="531"></a>    LocalizedKeyName(<font class="source_int">25</font>)=<font class="source_string">"Unknown19"</font>
+<a name="532"></a>    LocalizedKeyName(<font class="source_int">26</font>)=<font class="source_string">"Unknown1A"</font>
+<a name="533"></a>    LocalizedKeyName(<font class="source_int">27</font>)=<font class="source_string">"Escape"</font>
+<a name="534"></a>    LocalizedKeyName(<font class="source_int">28</font>)=<font class="source_string">"Unknown1C"</font>
+<a name="535"></a>    LocalizedKeyName(<font class="source_int">29</font>)=<font class="source_string">"Unknown1D"</font>
+<a name="536"></a>    LocalizedKeyName(<font class="source_int">30</font>)=<font class="source_string">"Unknown1E"</font>
+<a name="537"></a>    LocalizedKeyName(<font class="source_int">31</font>)=<font class="source_string">"Unknown1F"</font>
+<a name="538"></a>    LocalizedKeyName(<font class="source_int">32</font>)=<font class="source_string">"Space"</font>
+<a name="539"></a>    LocalizedKeyName(<font class="source_int">33</font>)=<font class="source_string">"PageUp"</font>
+<a name="540"></a>    LocalizedKeyName(<font class="source_int">34</font>)=<font class="source_string">"PageDown"</font>
+<a name="541"></a>    LocalizedKeyName(<font class="source_int">35</font>)=<font class="source_string">"End"</font>
+<a name="542"></a>    LocalizedKeyName(<font class="source_int">36</font>)=<font class="source_string">"Home"</font>
+<a name="543"></a>    LocalizedKeyName(<font class="source_int">37</font>)=<font class="source_string">"Left"</font>
+<a name="544"></a>    LocalizedKeyName(<font class="source_int">38</font>)=<font class="source_string">"Up"</font>
+<a name="545"></a>    LocalizedKeyName(<font class="source_int">39</font>)=<font class="source_string">"Right"</font>
+<a name="546"></a>    LocalizedKeyName(<font class="source_int">40</font>)=<font class="source_string">"Down"</font>
+<a name="547"></a>    LocalizedKeyName(<font class="source_int">41</font>)=<font class="source_string">"Select"</font>
+<a name="548"></a>    LocalizedKeyName(<font class="source_int">42</font>)=<font class="source_string">"Print"</font>
+<a name="549"></a>    LocalizedKeyName(<font class="source_int">43</font>)=<font class="source_string">"Execute"</font>
+<a name="550"></a>    LocalizedKeyName(<font class="source_int">44</font>)=<font class="source_string">"PrintScrn"</font>
+<a name="551"></a>    LocalizedKeyName(<font class="source_int">45</font>)=<font class="source_string">"Insert"</font>
+<a name="552"></a>    LocalizedKeyName(<font class="source_int">46</font>)=<font class="source_string">"Delete"</font>
+<a name="553"></a>    LocalizedKeyName(<font class="source_int">47</font>)=<font class="source_string">"Help"</font>
+<a name="554"></a>    LocalizedKeyName(<font class="source_int">48</font>)=<font class="source_string">"0"</font>
+<a name="555"></a>    LocalizedKeyName(<font class="source_int">49</font>)=<font class="source_string">"1"</font>
+<a name="556"></a>    LocalizedKeyName(<font class="source_int">50</font>)=<font class="source_string">"2"</font>
+<a name="557"></a>    LocalizedKeyName(<font class="source_int">51</font>)=<font class="source_string">"3"</font>
+<a name="558"></a>    LocalizedKeyName(<font class="source_int">52</font>)=<font class="source_string">"4"</font>
+<a name="559"></a>    LocalizedKeyName(<font class="source_int">53</font>)=<font class="source_string">"5"</font>
+<a name="560"></a>    LocalizedKeyName(<font class="source_int">54</font>)=<font class="source_string">"6"</font>
+<a name="561"></a>    LocalizedKeyName(<font class="source_int">55</font>)=<font class="source_string">"7"</font>
+<a name="562"></a>    LocalizedKeyName(<font class="source_int">56</font>)=<font class="source_string">"8"</font>
+<a name="563"></a>    LocalizedKeyName(<font class="source_int">57</font>)=<font class="source_string">"9"</font>
+<a name="564"></a>    LocalizedKeyName(<font class="source_int">58</font>)=<font class="source_string">"Unknown3A"</font>
+<a name="565"></a>    LocalizedKeyName(<font class="source_int">59</font>)=<font class="source_string">"Unknown3B"</font>
+<a name="566"></a>    LocalizedKeyName(<font class="source_int">60</font>)=<font class="source_string">"Unknown3C"</font>
+<a name="567"></a>    LocalizedKeyName(<font class="source_int">61</font>)=<font class="source_string">"Unknown3D"</font>
+<a name="568"></a>    LocalizedKeyName(<font class="source_int">62</font>)=<font class="source_string">"Unknown3E"</font>
+<a name="569"></a>    LocalizedKeyName(<font class="source_int">63</font>)=<font class="source_string">"Unknown3F"</font>
+<a name="570"></a>    LocalizedKeyName(<font class="source_int">64</font>)=<font class="source_string">"Unknown40"</font>
+<a name="571"></a>    LocalizedKeyName(<font class="source_int">65</font>)=<font class="source_string">"A"</font>
+<a name="572"></a>    LocalizedKeyName(<font class="source_int">66</font>)=<font class="source_string">"B"</font>
+<a name="573"></a>    LocalizedKeyName(<font class="source_int">67</font>)=<font class="source_string">"C"</font>
+<a name="574"></a>    LocalizedKeyName(<font class="source_int">68</font>)=<font class="source_string">"D"</font>
+<a name="575"></a>    LocalizedKeyName(<font class="source_int">69</font>)=<font class="source_string">"E"</font>
+<a name="576"></a>    LocalizedKeyName(<font class="source_int">70</font>)=<font class="source_string">"F"</font>
+<a name="577"></a>    LocalizedKeyName(<font class="source_int">71</font>)=<font class="source_string">"G"</font>
+<a name="578"></a>    LocalizedKeyName(<font class="source_int">72</font>)=<font class="source_string">"H"</font>
+<a name="579"></a>    LocalizedKeyName(<font class="source_int">73</font>)=<font class="source_string">"I"</font>
+<a name="580"></a>    LocalizedKeyName(<font class="source_int">74</font>)=<font class="source_string">"J"</font>
+<a name="581"></a>    LocalizedKeyName(<font class="source_int">75</font>)=<font class="source_string">"K"</font>
+<a name="582"></a>    LocalizedKeyName(<font class="source_int">76</font>)=<font class="source_string">"L"</font>
+<a name="583"></a>    LocalizedKeyName(<font class="source_int">77</font>)=<font class="source_string">"M"</font>
+<a name="584"></a>    LocalizedKeyName(<font class="source_int">78</font>)=<font class="source_string">"N"</font>
+<a name="585"></a>    LocalizedKeyName(<font class="source_int">79</font>)=<font class="source_string">"O"</font>
+<a name="586"></a>    LocalizedKeyName(<font class="source_int">80</font>)=<font class="source_string">"P"</font>
+<a name="587"></a>    LocalizedKeyName(<font class="source_int">81</font>)=<font class="source_string">"Q"</font>
+<a name="588"></a>    LocalizedKeyName(<font class="source_int">82</font>)=<font class="source_string">"R"</font>
+<a name="589"></a>    LocalizedKeyName(<font class="source_int">83</font>)=<font class="source_string">"S"</font>
+<a name="590"></a>    LocalizedKeyName(<font class="source_int">84</font>)=<font class="source_string">"T"</font>
+<a name="591"></a>    LocalizedKeyName(<font class="source_int">85</font>)=<font class="source_string">"U"</font>
+<a name="592"></a>    LocalizedKeyName(<font class="source_int">86</font>)=<font class="source_string">"V"</font>
+<a name="593"></a>    LocalizedKeyName(<font class="source_int">87</font>)=<font class="source_string">"W"</font>
+<a name="594"></a>    LocalizedKeyName(<font class="source_int">88</font>)=<font class="source_string">"X"</font>
+<a name="595"></a>    LocalizedKeyName(<font class="source_int">89</font>)=<font class="source_string">"Y"</font>
+<a name="596"></a>    LocalizedKeyName(<font class="source_int">90</font>)=<font class="source_string">"Z"</font>
+<a name="597"></a>    LocalizedKeyName(<font class="source_int">91</font>)=<font class="source_string">"Unknown5B"</font>
+<a name="598"></a>    LocalizedKeyName(<font class="source_int">92</font>)=<font class="source_string">"Unknown5C"</font>
+<a name="599"></a>    LocalizedKeyName(<font class="source_int">93</font>)=<font class="source_string">"Unknown5D"</font>
+<a name="600"></a>    LocalizedKeyName(<font class="source_int">94</font>)=<font class="source_string">"Unknown5E"</font>
+<a name="601"></a>    LocalizedKeyName(<font class="source_int">95</font>)=<font class="source_string">"Unknown5F"</font>
+<a name="602"></a>    LocalizedKeyName(<font class="source_int">96</font>)=<font class="source_string">"NumPad0"</font>
+<a name="603"></a>    LocalizedKeyName(<font class="source_int">97</font>)=<font class="source_string">"NumPad1"</font>
+<a name="604"></a>    LocalizedKeyName(<font class="source_int">98</font>)=<font class="source_string">"NumPad2"</font>
+<a name="605"></a>    LocalizedKeyName(<font class="source_int">99</font>)=<font class="source_string">"NumPad3"</font>
+<a name="606"></a>    LocalizedKeyName(<font class="source_int">100</font>)=<font class="source_string">"NumPad4"</font>
+<a name="607"></a>    LocalizedKeyName(<font class="source_int">101</font>)=<font class="source_string">"NumPad5"</font>
+<a name="608"></a>    LocalizedKeyName(<font class="source_int">102</font>)=<font class="source_string">"NumPad6"</font>
+<a name="609"></a>    LocalizedKeyName(<font class="source_int">103</font>)=<font class="source_string">"NumPad7"</font>
+<a name="610"></a>    LocalizedKeyName(<font class="source_int">104</font>)=<font class="source_string">"NumPad8"</font>
+<a name="611"></a>    LocalizedKeyName(<font class="source_int">105</font>)=<font class="source_string">"NumPad9"</font>
+<a name="612"></a>    LocalizedKeyName(<font class="source_int">106</font>)=<font class="source_string">"GreyStar"</font>
+<a name="613"></a>    LocalizedKeyName(<font class="source_int">107</font>)=<font class="source_string">"GreyPlus"</font>
+<a name="614"></a>    LocalizedKeyName(<font class="source_int">108</font>)=<font class="source_string">"Separator"</font>
+<a name="615"></a>    LocalizedKeyName(<font class="source_int">109</font>)=<font class="source_string">"GreyMinus"</font>
+<a name="616"></a>    LocalizedKeyName(<font class="source_int">110</font>)=<font class="source_string">"NumPadPeriod"</font>
+<a name="617"></a>    LocalizedKeyName(<font class="source_int">111</font>)=<font class="source_string">"GreySlash"</font>
+<a name="618"></a>    LocalizedKeyName(<font class="source_int">112</font>)=<font class="source_string">"F1"</font>
+<a name="619"></a>    LocalizedKeyName(<font class="source_int">113</font>)=<font class="source_string">"F2"</font>
+<a name="620"></a>    LocalizedKeyName(<font class="source_int">114</font>)=<font class="source_string">"F3"</font>
+<a name="621"></a>    LocalizedKeyName(<font class="source_int">115</font>)=<font class="source_string">"F4"</font>
+<a name="622"></a>    LocalizedKeyName(<font class="source_int">116</font>)=<font class="source_string">"F5"</font>
+<a name="623"></a>    LocalizedKeyName(<font class="source_int">117</font>)=<font class="source_string">"F6"</font>
+<a name="624"></a>    LocalizedKeyName(<font class="source_int">118</font>)=<font class="source_string">"F7"</font>
+<a name="625"></a>    LocalizedKeyName(<font class="source_int">119</font>)=<font class="source_string">"F8"</font>
+<a name="626"></a>    LocalizedKeyName(<font class="source_int">120</font>)=<font class="source_string">"F9"</font>
+<a name="627"></a>    LocalizedKeyName(<font class="source_int">121</font>)=<font class="source_string">"F10"</font>
+<a name="628"></a>    LocalizedKeyName(<font class="source_int">122</font>)=<font class="source_string">"F11"</font>
+<a name="629"></a>    LocalizedKeyName(<font class="source_int">123</font>)=<font class="source_string">"F12"</font>
+<a name="630"></a>    LocalizedKeyName(<font class="source_int">124</font>)=<font class="source_string">"F13"</font>
+<a name="631"></a>    LocalizedKeyName(<font class="source_int">125</font>)=<font class="source_string">"F14"</font>
+<a name="632"></a>    LocalizedKeyName(<font class="source_int">126</font>)=<font class="source_string">"F15"</font>
+<a name="633"></a>    LocalizedKeyName(<font class="source_int">127</font>)=<font class="source_string">"F16"</font>
+<a name="634"></a>    LocalizedKeyName(<font class="source_int">128</font>)=<font class="source_string">"F17"</font>
+<a name="635"></a>    LocalizedKeyName(<font class="source_int">129</font>)=<font class="source_string">"F18"</font>
+<a name="636"></a>    LocalizedKeyName(<font class="source_int">130</font>)=<font class="source_string">"F19"</font>
+<a name="637"></a>    LocalizedKeyName(<font class="source_int">131</font>)=<font class="source_string">"F20"</font>
+<a name="638"></a>    LocalizedKeyName(<font class="source_int">132</font>)=<font class="source_string">"F21"</font>
+<a name="639"></a>    LocalizedKeyName(<font class="source_int">133</font>)=<font class="source_string">"F22"</font>
+<a name="640"></a>    LocalizedKeyName(<font class="source_int">134</font>)=<font class="source_string">"F23"</font>
+<a name="641"></a>    LocalizedKeyName(<font class="source_int">135</font>)=<font class="source_string">"F24"</font>
+<a name="642"></a>    LocalizedKeyName(<font class="source_int">136</font>)=<font class="source_string">"Unknown88"</font>
+<a name="643"></a>    LocalizedKeyName(<font class="source_int">137</font>)=<font class="source_string">"Unknown89"</font>
+<a name="644"></a>    LocalizedKeyName(<font class="source_int">138</font>)=<font class="source_string">"Unknown8A"</font>
+<a name="645"></a>    LocalizedKeyName(<font class="source_int">139</font>)=<font class="source_string">"Unknown8B"</font>
+<a name="646"></a>    LocalizedKeyName(<font class="source_int">140</font>)=<font class="source_string">"Unknown8C"</font>
+<a name="647"></a>    LocalizedKeyName(<font class="source_int">141</font>)=<font class="source_string">"Unknown8D"</font>
+<a name="648"></a>    LocalizedKeyName(<font class="source_int">142</font>)=<font class="source_string">"Unknown8E"</font>
+<a name="649"></a>    LocalizedKeyName(<font class="source_int">143</font>)=<font class="source_string">"Unknown8F"</font>
+<a name="650"></a>    LocalizedKeyName(<font class="source_int">144</font>)=<font class="source_string">"NumLock"</font>
+<a name="651"></a>    LocalizedKeyName(<font class="source_int">145</font>)=<font class="source_string">"ScrollLock"</font>
+<a name="652"></a>    LocalizedKeyName(<font class="source_int">146</font>)=<font class="source_string">"Unknown92"</font>
+<a name="653"></a>    LocalizedKeyName(<font class="source_int">147</font>)=<font class="source_string">"Unknown93"</font>
+<a name="654"></a>    LocalizedKeyName(<font class="source_int">148</font>)=<font class="source_string">"Unknown94"</font>
+<a name="655"></a>    LocalizedKeyName(<font class="source_int">149</font>)=<font class="source_string">"Unknown95"</font>
+<a name="656"></a>    LocalizedKeyName(<font class="source_int">150</font>)=<font class="source_string">"Unknown96"</font>
+<a name="657"></a>    LocalizedKeyName(<font class="source_int">151</font>)=<font class="source_string">"Unknown97"</font>
+<a name="658"></a>    LocalizedKeyName(<font class="source_int">152</font>)=<font class="source_string">"Unknown98"</font>
+<a name="659"></a>    LocalizedKeyName(<font class="source_int">153</font>)=<font class="source_string">"Unknown99"</font>
+<a name="660"></a>    LocalizedKeyName(<font class="source_int">154</font>)=<font class="source_string">"Unknown9A"</font>
+<a name="661"></a>    LocalizedKeyName(<font class="source_int">155</font>)=<font class="source_string">"Unknown9B"</font>
+<a name="662"></a>    LocalizedKeyName(<font class="source_int">156</font>)=<font class="source_string">"Unknown9C"</font>
+<a name="663"></a>    LocalizedKeyName(<font class="source_int">157</font>)=<font class="source_string">"Unknown9D"</font>
+<a name="664"></a>    LocalizedKeyName(<font class="source_int">158</font>)=<font class="source_string">"Unknown9E"</font>
+<a name="665"></a>    LocalizedKeyName(<font class="source_int">159</font>)=<font class="source_string">"Unknown9F"</font>
+<a name="666"></a>    LocalizedKeyName(<font class="source_int">160</font>)=<font class="source_string">"LShift"</font>
+<a name="667"></a>    LocalizedKeyName(<font class="source_int">161</font>)=<font class="source_string">"RShift"</font>
+<a name="668"></a>    LocalizedKeyName(<font class="source_int">162</font>)=<font class="source_string">"LControl"</font>
+<a name="669"></a>    LocalizedKeyName(<font class="source_int">163</font>)=<font class="source_string">"RControl"</font>
+<a name="670"></a>    LocalizedKeyName(<font class="source_int">164</font>)=<font class="source_string">"UnknownA4"</font>
+<a name="671"></a>    LocalizedKeyName(<font class="source_int">165</font>)=<font class="source_string">"UnknownA5"</font>
+<a name="672"></a>    LocalizedKeyName(<font class="source_int">166</font>)=<font class="source_string">"UnknownA6"</font>
+<a name="673"></a>    LocalizedKeyName(<font class="source_int">167</font>)=<font class="source_string">"UnknownA7"</font>
+<a name="674"></a>    LocalizedKeyName(<font class="source_int">168</font>)=<font class="source_string">"UnknownA8"</font>
+<a name="675"></a>    LocalizedKeyName(<font class="source_int">169</font>)=<font class="source_string">"UnknownA9"</font>
+<a name="676"></a>    LocalizedKeyName(<font class="source_int">170</font>)=<font class="source_string">"UnknownAA"</font>
+<a name="677"></a>    LocalizedKeyName(<font class="source_int">171</font>)=<font class="source_string">"UnknownAB"</font>
+<a name="678"></a>    LocalizedKeyName(<font class="source_int">172</font>)=<font class="source_string">"UnknownAC"</font>
+<a name="679"></a>    LocalizedKeyName(<font class="source_int">173</font>)=<font class="source_string">"UnknownAD"</font>
+<a name="680"></a>    LocalizedKeyName(<font class="source_int">174</font>)=<font class="source_string">"UnknownAE"</font>
+<a name="681"></a>    LocalizedKeyName(<font class="source_int">175</font>)=<font class="source_string">"UnknownAF"</font>
+<a name="682"></a>    LocalizedKeyName(<font class="source_int">176</font>)=<font class="source_string">"UnknownB0"</font>
+<a name="683"></a>    LocalizedKeyName(<font class="source_int">177</font>)=<font class="source_string">"UnknownB1"</font>
+<a name="684"></a>    LocalizedKeyName(<font class="source_int">178</font>)=<font class="source_string">"UnknownB2"</font>
+<a name="685"></a>    LocalizedKeyName(<font class="source_int">179</font>)=<font class="source_string">"UnknownB3"</font>
+<a name="686"></a>    LocalizedKeyName(<font class="source_int">180</font>)=<font class="source_string">"UnknownB4"</font>
+<a name="687"></a>    LocalizedKeyName(<font class="source_int">181</font>)=<font class="source_string">"UnknownB5"</font>
+<a name="688"></a>    LocalizedKeyName(<font class="source_int">182</font>)=<font class="source_string">"UnknownB6"</font>
+<a name="689"></a>    LocalizedKeyName(<font class="source_int">183</font>)=<font class="source_string">"UnknownB7"</font>
+<a name="690"></a>    LocalizedKeyName(<font class="source_int">184</font>)=<font class="source_string">"UnknownB8"</font>
+<a name="691"></a>    LocalizedKeyName(<font class="source_int">185</font>)=<font class="source_string">"UnknownB9"</font>
+<a name="692"></a>    LocalizedKeyName(<font class="source_int">186</font>)=<font class="source_string">"Semicolon"</font>
+<a name="693"></a>    LocalizedKeyName(<font class="source_int">187</font>)=<font class="source_string">"Equals"</font>
+<a name="694"></a>    LocalizedKeyName(<font class="source_int">188</font>)=<font class="source_string">"Comma"</font>
+<a name="695"></a>    LocalizedKeyName(<font class="source_int">189</font>)=<font class="source_string">"Minus"</font>
+<a name="696"></a>    LocalizedKeyName(<font class="source_int">190</font>)=<font class="source_string">"Period"</font>
+<a name="697"></a>    LocalizedKeyName(<font class="source_int">191</font>)=<font class="source_string">"Slash"</font>
+<a name="698"></a>    LocalizedKeyName(<font class="source_int">192</font>)=<font class="source_string">"Tilde"</font>
+<a name="699"></a>    LocalizedKeyName(<font class="source_int">193</font>)=<font class="source_string">"UnknownC1"</font>
+<a name="700"></a>    LocalizedKeyName(<font class="source_int">194</font>)=<font class="source_string">"UnknownC2"</font>
+<a name="701"></a>    LocalizedKeyName(<font class="source_int">195</font>)=<font class="source_string">"UnknownC3"</font>
+<a name="702"></a>    LocalizedKeyName(<font class="source_int">196</font>)=<font class="source_string">"UnknownC4"</font>
+<a name="703"></a>    LocalizedKeyName(<font class="source_int">197</font>)=<font class="source_string">"UnknownC5"</font>
+<a name="704"></a>    LocalizedKeyName(<font class="source_int">198</font>)=<font class="source_string">"UnknownC6"</font>
+<a name="705"></a>    LocalizedKeyName(<font class="source_int">199</font>)=<font class="source_string">"UnknownC7"</font>
+<a name="706"></a>    LocalizedKeyName(<font class="source_int">200</font>)=<font class="source_string">"Joy1"</font>
+<a name="707"></a>    LocalizedKeyName(<font class="source_int">201</font>)=<font class="source_string">"Joy2"</font>
+<a name="708"></a>    LocalizedKeyName(<font class="source_int">202</font>)=<font class="source_string">"Joy3"</font>
+<a name="709"></a>    LocalizedKeyName(<font class="source_int">203</font>)=<font class="source_string">"Joy4"</font>
+<a name="710"></a>    LocalizedKeyName(<font class="source_int">204</font>)=<font class="source_string">"Joy5"</font>
+<a name="711"></a>    LocalizedKeyName(<font class="source_int">205</font>)=<font class="source_string">"Joy6"</font>
+<a name="712"></a>    LocalizedKeyName(<font class="source_int">206</font>)=<font class="source_string">"Joy7"</font>
+<a name="713"></a>    LocalizedKeyName(<font class="source_int">207</font>)=<font class="source_string">"Joy8"</font>
+<a name="714"></a>    LocalizedKeyName(<font class="source_int">208</font>)=<font class="source_string">"Joy9"</font>
+<a name="715"></a>    LocalizedKeyName(<font class="source_int">209</font>)=<font class="source_string">"Joy10"</font>
+<a name="716"></a>    LocalizedKeyName(<font class="source_int">210</font>)=<font class="source_string">"Joy11"</font>
+<a name="717"></a>    LocalizedKeyName(<font class="source_int">211</font>)=<font class="source_string">"Joy12"</font>
+<a name="718"></a>    LocalizedKeyName(<font class="source_int">212</font>)=<font class="source_string">"Joy13"</font>
+<a name="719"></a>    LocalizedKeyName(<font class="source_int">213</font>)=<font class="source_string">"Joy14"</font>
+<a name="720"></a>    LocalizedKeyName(<font class="source_int">214</font>)=<font class="source_string">"Joy15"</font>
+<a name="721"></a>    LocalizedKeyName(<font class="source_int">215</font>)=<font class="source_string">"Joy16"</font>
+<a name="722"></a>    LocalizedKeyName(<font class="source_int">216</font>)=<font class="source_string">"UnknownD8"</font>
+<a name="723"></a>    LocalizedKeyName(<font class="source_int">217</font>)=<font class="source_string">"UnknownD9"</font>
+<a name="724"></a>    LocalizedKeyName(<font class="source_int">218</font>)=<font class="source_string">"UnknownDA"</font>
+<a name="725"></a>    LocalizedKeyName(<font class="source_int">219</font>)=<font class="source_string">"LeftBracket"</font>
+<a name="726"></a>    LocalizedKeyName(<font class="source_int">220</font>)=<font class="source_string">"Backslash"</font>
+<a name="727"></a>    LocalizedKeyName(<font class="source_int">221</font>)=<font class="source_string">"RightBracket"</font>
+<a name="728"></a>    LocalizedKeyName(<font class="source_int">222</font>)=<font class="source_string">"SingleQuote"</font>
+<a name="729"></a>    LocalizedKeyName(<font class="source_int">223</font>)=<font class="source_string">"UnknownDF"</font>
+<a name="730"></a>    LocalizedKeyName(<font class="source_int">224</font>)=<font class="source_string">"JoyX"</font>
+<a name="731"></a>    LocalizedKeyName(<font class="source_int">225</font>)=<font class="source_string">"JoyY"</font>
+<a name="732"></a>    LocalizedKeyName(<font class="source_int">226</font>)=<font class="source_string">"JoyZ"</font>
+<a name="733"></a>    LocalizedKeyName(<font class="source_int">227</font>)=<font class="source_string">"JoyR"</font>
+<a name="734"></a>    LocalizedKeyName(<font class="source_int">228</font>)=<font class="source_string">"MouseX"</font>
+<a name="735"></a>    LocalizedKeyName(<font class="source_int">229</font>)=<font class="source_string">"MouseY"</font>
+<a name="736"></a>    LocalizedKeyName(<font class="source_int">230</font>)=<font class="source_string">"MouseZ"</font>
+<a name="737"></a>    LocalizedKeyName(<font class="source_int">231</font>)=<font class="source_string">"MouseW"</font>
+<a name="738"></a>    LocalizedKeyName(<font class="source_int">232</font>)=<font class="source_string">"JoyU"</font>
+<a name="739"></a>    LocalizedKeyName(<font class="source_int">233</font>)=<font class="source_string">"JoyV"</font>
+<a name="740"></a>    LocalizedKeyName(<font class="source_int">234</font>)=<font class="source_string">"UnknownEA"</font>
+<a name="741"></a>    LocalizedKeyName(<font class="source_int">235</font>)=<font class="source_string">"UnknownEB"</font>
+<a name="742"></a>    LocalizedKeyName(<font class="source_int">236</font>)=<font class="source_string">"MouseWheelUp"</font>
+<a name="743"></a>    LocalizedKeyName(<font class="source_int">237</font>)=<font class="source_string">"MouseWheelDown"</font>
+<a name="744"></a>    LocalizedKeyName(<font class="source_int">238</font>)=<font class="source_string">"Unknown10E"</font>
+<a name="745"></a>    LocalizedKeyName(<font class="source_int">239</font>)=<font class="source_string">"Unknown10F"</font>
+<a name="746"></a>    LocalizedKeyName(<font class="source_int">240</font>)=<font class="source_string">"JoyPovUp"</font>
+<a name="747"></a>    LocalizedKeyName(<font class="source_int">241</font>)=<font class="source_string">"JoyPovDown"</font>
+<a name="748"></a>    LocalizedKeyName(<font class="source_int">242</font>)=<font class="source_string">"JoyPovLeft"</font>
+<a name="749"></a>    LocalizedKeyName(<font class="source_int">243</font>)=<font class="source_string">"JoyPovRight"</font>
+<a name="750"></a>    LocalizedKeyName(<font class="source_int">244</font>)=<font class="source_string">"UnknownF4"</font>
+<a name="751"></a>    LocalizedKeyName(<font class="source_int">245</font>)=<font class="source_string">"UnknownF5"</font>
+<a name="752"></a>    LocalizedKeyName(<font class="source_int">246</font>)=<font class="source_string">"Attn"</font>
+<a name="753"></a>    LocalizedKeyName(<font class="source_int">247</font>)=<font class="source_string">"CrSel"</font>
+<a name="754"></a>    LocalizedKeyName(<font class="source_int">248</font>)=<font class="source_string">"ExSel"</font>
+<a name="755"></a>    LocalizedKeyName(<font class="source_int">249</font>)=<font class="source_string">"ErEof"</font>
+<a name="756"></a>    LocalizedKeyName(<font class="source_int">250</font>)=<font class="source_string">"Play"</font>
+<a name="757"></a>    LocalizedKeyName(<font class="source_int">251</font>)=<font class="source_string">"Zoom"</font>
+<a name="758"></a>    LocalizedKeyName(<font class="source_int">252</font>)=<font class="source_string">"NoName"</font>
+<a name="759"></a>    LocalizedKeyName(<font class="source_int">253</font>)=<font class="source_string">"PA1"</font>
+<a name="760"></a>    LocalizedKeyName(<font class="source_int">254</font>)=<font class="source_string">"OEMClear"</font>
+<a name="761"></a>}
+<a name="762"></a></pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\umenu\umenu-overview.html">Package</a></td>
+	<td class="header"><a href="..\umenu\umenucustomizeclientwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#UMenuCustomizeClientWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="umenuconsolewindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="umenucustomizescrollclient.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:24:50.000 - Creation time: Wed 26/5/2004 10:48:51.484 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

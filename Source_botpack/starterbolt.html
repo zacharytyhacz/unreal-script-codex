@@ -1,0 +1,395 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Source: Botpack.StarterBolt</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\starterbolt.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#StarterBolt">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="squarestud.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="stationarypawn.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="..\botpack\botpack-overview.html">Botpack</a>.<a href="..\botpack\starterbolt.html">StarterBolt</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><font class="source_lineno">00001<br>
+00002<br>
+00003<br>
+00004<br>
+00005<br>
+00006<br>
+00007<br>
+00008<br>
+00009<br>
+00010<br>
+00011<br>
+00012<br>
+00013<br>
+00014<br>
+00015<br>
+00016<br>
+00017<br>
+00018<br>
+00019<br>
+00020<br>
+00021<br>
+00022<br>
+00023<br>
+00024<br>
+00025<br>
+00026<br>
+00027<br>
+00028<br>
+00029<br>
+00030<br>
+00031<br>
+00032<br>
+00033<br>
+00034<br>
+00035<br>
+00036<br>
+00037<br>
+00038<br>
+00039<br>
+00040<br>
+00041<br>
+00042<br>
+00043<br>
+00044<br>
+00045<br>
+00046<br>
+00047<br>
+00048<br>
+00049<br>
+00050<br>
+00051<br>
+00052<br>
+00053<br>
+00054<br>
+00055<br>
+00056<br>
+00057<br>
+00058<br>
+00059<br>
+00060<br>
+00061<br>
+00062<br>
+00063<br>
+00064<br>
+00065<br>
+00066<br>
+00067<br>
+00068<br>
+00069<br>
+00070<br>
+00071<br>
+00072<br>
+00073<br>
+00074<br>
+00075<br>
+00076<br>
+00077<br>
+00078<br>
+00079<br>
+00080<br>
+00081<br>
+00082<br>
+00083<br>
+00084<br>
+00085<br>
+00086<br>
+00087<br>
+00088<br>
+00089<br>
+00090<br>
+00091<br>
+00092<br>
+00093<br>
+00094<br>
+00095<br>
+00096<br>
+00097<br>
+00098<br>
+00099<br>
+00100<br>
+00101<br>
+00102<br>
+00103<br>
+00104<br>
+00105<br>
+00106<br>
+00107<br>
+00108<br>
+00109<br>
+00110<br>
+00111<br>
+00112<br>
+00113<br>
+00114<br>
+00115<br>
+00116<br>
+00117<br>
+00118<br>
+00119<br>
+00120<br>
+00121<br>
+00122<br>
+00123<br>
+00124<br>
+00125<br>
+00126<br>
+00127<br>
+00128<br>
+00129<br>
+00130<br>
+00131<br>
+00132<br>
+00133<br>
+00134<br>
+00135<br>
+00136<br>
+00137<br>
+00138<br>
+00139<br>
+00140<br>
+00141<br>
+00142<br>
+00143<br>
+00144<br>
+00145<br>
+00146<br>
+00147<br>
+00148<br>
+00149<br>
+00150<br>
+00151<br>
+00152<br>
+00153<br>
+00154<br>
+00155<br>
+00156<br>
+00157<br>
+00158<br>
+00159<br>
+00160<br>
+00161<br>
+00162<br>
+00163<br>
+00164<br>
+00165<br>
+00166<br>
+00167<br>
+00168<br>
+00169<br>
+00170<br>
+00171<br>
+</font></td><td class="source"><pre class="source"><a name="1"></a><font class="source_comment">//=============================================================================
+</font><a name="2"></a><font class="source_comment">// starterbolt.
+</font><a name="3"></a><font class="source_comment">//=============================================================================
+</font><a name="4"></a><font class="source_keyword">class</font> <font class="source_type"><a href="..\botpack\starterbolt.html" class="source">StarterBolt</a></font> <font class="source_keyword">extends</font> <font class="source_type"><a href="..\botpack\pbolt.html" class="source">pbolt</a></font>;
+<a name="5"></a>
+<a name="6"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=sbolt0 FILE=Textures\Bolt2a_00.bmp GROUP=Skins	//Translucent
+</font><a name="7"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=sbolt1 FILE=Textures\Bolt2a_01.bmp GROUP=Skins	//Translucent
+</font><a name="8"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=sbolt2 FILE=Textures\Bolt2a_02.bmp GROUP=Skins	//Translucent
+</font><a name="9"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=sbolt3 FILE=Textures\Bolt2a_03.bmp GROUP=Skins	//Translucent
+</font><a name="10"></a><font class="source_macro">#exec TEXTURE IMPORT NAME=sbolt4 FILE=Textures\Bolt2a_04.bmp GROUP=Skins	//Translucent
+</font><a name="11"></a><font class="source_macro">#exec MESHMAP SETTEXTURE MESHMAP=pbolt NUM=0 TEXTURE=pbolt0
+</font><a name="12"></a>
+<a name="13"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> OldError, NewError, StartError, AimError; <font class="source_comment">//used for bot aiming
+</font><a name="14"></a><font class="source_keyword">var</font> <font class="source_type"><a href="..\core\object.html#Rotator" class="source">rotator</a></font> AimRotation;
+<a name="15"></a><font class="source_keyword">var</font> <font class="source_keyword">float</font> AnimTime;
+<a name="16"></a>
+<a name="17"></a><font class="source_keyword">replication</font>
+<a name="18"></a>{
+<a name="19"></a>    <font class="source_comment">// Things the server should send to the client.
+</font><a name="20"></a>    <font class="source_keyword">unreliable</font> <font class="source_keyword">if</font>( Role==ROLE_Authority )
+<a name="21"></a>        AimError, NewError, AimRotation;
+<a name="22"></a>}
+<a name="23"></a>
+<a name="24"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> PostBeginPlay()
+<a name="25"></a>{
+<a name="26"></a>    <font class="source_keyword">Super</font>.PostBeginPlay();
+<a name="27"></a>
+<a name="28"></a>    <font class="source_keyword">if</font> ( instigator == <font class="source_keyword">None</font> )
+<a name="29"></a>        <font class="source_keyword">return</font>;
+<a name="30"></a>    <font class="source_keyword">if</font> ( Instigator.IsA(<font class="source_name">'Bot'</font>) && <font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>(Instigator).bNovice )
+<a name="31"></a>        aimerror = <font class="source_int">2200</font> + (<font class="source_int">3</font> - instigator.skill) * <font class="source_int">300</font>;
+<a name="32"></a>    <font class="source_keyword">else</font>
+<a name="33"></a>        aimerror = <font class="source_int">1000</font> + (<font class="source_int">3</font> - instigator.skill) * <font class="source_int">400</font>;
+<a name="34"></a>
+<a name="35"></a>    <font class="source_keyword">if</font> ( FRand() &lt; <font class="source_int">0.5</font> )
+<a name="36"></a>        aimerror *= -<font class="source_int">1</font>;
+<a name="37"></a>}
+<a name="38"></a>
+<a name="39"></a><font class="source_keyword2">simulated</font> <font class="source_keyword">function</font> Tick(<font class="source_keyword">float</font> DeltaTime)
+<a name="40"></a>{
+<a name="41"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\core\object.html#Vector" class="source">vector</a></font> X,Y,Z, AimSpot, DrawOffset, AimStart;
+<a name="42"></a>    <font class="source_keyword">local</font> <font class="source_keyword">int</font> YawErr;
+<a name="43"></a>    <font class="source_keyword">local</font> <font class="source_keyword">float</font> dAdjust;
+<a name="44"></a>    <font class="source_keyword">local</font> <font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font> MyBot;
+<a name="45"></a>
+<a name="46"></a>    AnimTime += DeltaTime;
+<a name="47"></a>    <font class="source_keyword">if</font> ( AnimTime &gt; <font class="source_int">0.05</font> )
+<a name="48"></a>    {
+<a name="49"></a>        AnimTime -= <font class="source_int">0.05</font>;
+<a name="50"></a>        SpriteFrame++;
+<a name="51"></a>        <font class="source_keyword">if</font> ( SpriteFrame == ArrayCount(SpriteAnim) )
+<a name="52"></a>            SpriteFrame = <font class="source_int">0</font>;
+<a name="53"></a>        Skin = SpriteAnim[SpriteFrame];
+<a name="54"></a>    }
+<a name="55"></a>
+<a name="56"></a>    <font class="source_comment">// orient with respect to instigator
+</font><a name="57"></a>    <font class="source_keyword">if</font> ( Instigator != <font class="source_keyword">None</font> )
+<a name="58"></a>    {
+<a name="59"></a>        <font class="source_keyword">if</font> ( (<font class="source_type">Level</font>.NetMode == NM_Client) && (!Instigator.IsA(<font class="source_name">'PlayerPawn'</font>) || (<font class="source_type"><a href="..\engine\playerpawn.html" class="source">PlayerPawn</a></font>(Instigator).<font class="source_type"><a href="..\engine\player.html" class="source">Player</a></font> == <font class="source_keyword">None</font>)) )
+<a name="60"></a>        {
+<a name="61"></a>            SetRotation(AimRotation); 
+<a name="62"></a>            Instigator.ViewRotation = AimRotation;
+<a name="63"></a>            DrawOffset = ((<font class="source_int">0.01</font> * <font class="source_keyword">class</font><font class="source_name">'PulseGun'</font>.Default.PlayerViewOffset) &gt;&gt; Rotation);
+<a name="64"></a>            DrawOffset += (Instigator.EyeHeight * vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">1</font>));
+<a name="65"></a>        }
+<a name="66"></a>        <font class="source_keyword">else</font> 
+<a name="67"></a>        {
+<a name="68"></a>            MyBot = <font class="source_type"><a href="..\botpack\bot.html" class="source">Bot</a></font>(instigator);
+<a name="69"></a>            <font class="source_keyword">if</font> ( MyBot != <font class="source_keyword">None</font>  )
+<a name="70"></a>            {
+<a name="71"></a>                <font class="source_keyword">if</font> ( Instigator.Target == <font class="source_keyword">None</font> )
+<a name="72"></a>                    Instigator.Target = Instigator.Enemy;
+<a name="73"></a>                <font class="source_keyword">if</font> ( Instigator.Target == Instigator.Enemy )
+<a name="74"></a>                {
+<a name="75"></a>                    <font class="source_keyword">if</font> (MyBot.bNovice )
+<a name="76"></a>                        dAdjust = DeltaTime * (<font class="source_int">4</font> + instigator.Skill) * <font class="source_int">0.075</font>;
+<a name="77"></a>                    <font class="source_keyword">else</font>
+<a name="78"></a>                        dAdjust = DeltaTime * (<font class="source_int">4</font> + instigator.Skill) * <font class="source_int">0.12</font>;
+<a name="79"></a>                    <font class="source_keyword">if</font> ( OldError &gt; NewError )
+<a name="80"></a>                        OldError = FMax(OldError - dAdjust, NewError);
+<a name="81"></a>                    <font class="source_keyword">else</font>
+<a name="82"></a>                        OldError = FMin(OldError + dAdjust, NewError);
+<a name="83"></a>
+<a name="84"></a>                    <font class="source_keyword">if</font> ( OldError == NewError )
+<a name="85"></a>                        NewError = FRand() - <font class="source_int">0.5</font>;
+<a name="86"></a>                    <font class="source_keyword">if</font> ( StartError &gt; <font class="source_int">0</font> )
+<a name="87"></a>                        StartError -= DeltaTime;
+<a name="88"></a>                    <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( MyBot.bNovice && (<font class="source_type">Level</font>.TimeSeconds - MyBot.LastPainTime &lt; <font class="source_int">0.2</font>) )
+<a name="89"></a>                        StartError = MyBot.LastPainTime;
+<a name="90"></a>                    <font class="source_keyword">else</font>
+<a name="91"></a>                        StartError = <font class="source_int">0</font>;
+<a name="92"></a>                    AimSpot = <font class="source_int">1.25</font> * Instigator.Target.Velocity + <font class="source_int">0.75</font> * Instigator.Velocity;
+<a name="93"></a>                    <font class="source_keyword">if</font> ( Abs(AimSpot.Z) &lt; <font class="source_int">120</font> )
+<a name="94"></a>                        AimSpot.Z *= <font class="source_int">0.25</font>;
+<a name="95"></a>                    <font class="source_keyword">else</font>
+<a name="96"></a>                        AimSpot.Z *= <font class="source_int">0.5</font>;
+<a name="97"></a>                    <font class="source_keyword">if</font> ( Instigator.Target.Physics == PHYS_Falling )
+<a name="98"></a>                        AimSpot = Instigator.Target.Location - <font class="source_int">0.0007</font> * AimError * OldError * AimSpot;
+<a name="99"></a>                    <font class="source_keyword">else</font>
+<a name="100"></a>                        AimSpot = Instigator.Target.Location - <font class="source_int">0.0005</font> * AimError * OldError * AimSpot;
+<a name="101"></a>                    <font class="source_keyword">if</font> ( (Instigator.Physics == PHYS_Falling) && (Instigator.Velocity.Z &gt; <font class="source_int">0</font>) )
+<a name="102"></a>                        AimSpot = AimSpot - <font class="source_int">0.0003</font> * AimError * OldError * AimSpot;
+<a name="103"></a>
+<a name="104"></a>                    AimStart = Instigator.Location + FireOffset.X * X + FireOffset.Y * Y + (<font class="source_int">1.2</font> * FireOffset.Z - <font class="source_int">2</font>) * Z; 
+<a name="105"></a>                    <font class="source_keyword">if</font> ( FastTrace(AimSpot - vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">10</font>), AimStart) )
+<a name="106"></a>                        AimSpot = AimSpot - vect(<font class="source_int">0</font>,<font class="source_int">0</font>,<font class="source_int">10</font>);
+<a name="107"></a>                    GetAxes(Instigator.Rotation,X,Y,Z);
+<a name="108"></a>                    AimRotation = <font class="source_type"><a href="..\core\object.html#Rotator" class="source">Rotator</a></font>(AimSpot - AimStart);
+<a name="109"></a>                    AimRotation.Yaw = AimRotation.Yaw + (OldError + StartError) * <font class="source_int">0.75</font> * aimerror;
+<a name="110"></a>                    YawErr = (AimRotation.Yaw - (Instigator.Rotation.Yaw & <font class="source_int">65535</font>)) & <font class="source_int">65535</font>;
+<a name="111"></a>                    <font class="source_keyword">if</font> ( (YawErr &gt; <font class="source_int">3000</font>) && (YawErr &lt; <font class="source_int">62535</font>) )
+<a name="112"></a>                    {
+<a name="113"></a>                        <font class="source_keyword">if</font> ( YawErr &lt; <font class="source_int">32768</font> )
+<a name="114"></a>                            AimRotation.Yaw = Instigator.Rotation.Yaw + <font class="source_int">3000</font>;
+<a name="115"></a>                        <font class="source_keyword">else</font>
+<a name="116"></a>                            AimRotation.Yaw = Instigator.Rotation.Yaw - <font class="source_int">3000</font>;
+<a name="117"></a>                    }
+<a name="118"></a>                }
+<a name="119"></a>                <font class="source_keyword">else</font> <font class="source_keyword">if</font> ( Instigator.Target != <font class="source_keyword">None</font> )
+<a name="120"></a>                    AimRotation = <font class="source_type"><a href="..\core\object.html#Rotator" class="source">Rotator</a></font>(Instigator.Target.Location - Instigator.Location);
+<a name="121"></a>                <font class="source_keyword">else</font>
+<a name="122"></a>                    AimRotation = Instigator.ViewRotation;
+<a name="123"></a>                Instigator.ViewRotation = AimRotation;
+<a name="124"></a>                SetRotation(AimRotation);
+<a name="125"></a>            }
+<a name="126"></a>            <font class="source_keyword">else</font>
+<a name="127"></a>            {
+<a name="128"></a>                AimRotation = Instigator.ViewRotation;
+<a name="129"></a>                SetRotation(AimRotation);
+<a name="130"></a>            }
+<a name="131"></a>            Drawoffset = Instigator.<font class="source_type"><a href="..\engine\weapon.html" class="source">Weapon</a></font>.CalcDrawOffset();
+<a name="132"></a>        }
+<a name="133"></a>        GetAxes(Instigator.ViewRotation,X,Y,Z);
+<a name="134"></a>
+<a name="135"></a>        <font class="source_keyword">if</font> ( bCenter )
+<a name="136"></a>        {
+<a name="137"></a>            FireOffset.Z = Default.FireOffset.Z * <font class="source_int">1.5</font>;
+<a name="138"></a>            FireOffset.Y = <font class="source_int">0</font>;
+<a name="139"></a>        }
+<a name="140"></a>        <font class="source_keyword">else</font> 
+<a name="141"></a>        {
+<a name="142"></a>            FireOffset.Z = Default.FireOffset.Z;
+<a name="143"></a>            <font class="source_keyword">if</font> ( bRight )
+<a name="144"></a>                FireOffset.Y = Default.FireOffset.Y;
+<a name="145"></a>            <font class="source_keyword">else</font>
+<a name="146"></a>                FireOffset.Y = -<font class="source_int">1</font> * Default.FireOffset.Y;
+<a name="147"></a>        }
+<a name="148"></a>        SetLocation(Instigator.Location + DrawOffset + FireOffset.X * X + FireOffset.Y * Y + FireOffset.Z * Z);
+<a name="149"></a>    }
+<a name="150"></a>    <font class="source_keyword">else</font>
+<a name="151"></a>        GetAxes(Rotation,X,Y,Z);
+<a name="152"></a>
+<a name="153"></a>    CheckBeam(X, DeltaTime);
+<a name="154"></a>}
+<a name="155"></a>
+<a name="156"></a><font class="source_keyword">defaultproperties</font>
+<a name="157"></a>{
+<a name="158"></a>    SpriteAnim(<font class="source_int">0</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'sbolt0'</font>
+<a name="159"></a>    SpriteAnim(<font class="source_int">1</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'sbolt1'</font>
+<a name="160"></a>    SpriteAnim(<font class="source_int">2</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'sbolt2'</font>
+<a name="161"></a>    SpriteAnim(<font class="source_int">3</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'sbolt3'</font>
+<a name="162"></a>    SpriteAnim(<font class="source_int">4</font>)=<font class="source_type"><a href="..\engine\texture.html" class="source">Texture</a></font><font class="source_name">'sbolt4'</font>
+<a name="163"></a>    RemoteRole=ROLE_SimulatedProxy
+<a name="164"></a>    StartError=+<font class="source_int">0.5</font>
+<a name="165"></a>     LightType=LT_Steady
+<a name="166"></a>     LightEffect=LE_NonIncidence
+<a name="167"></a>     LightRadius=<font class="source_int">5</font>
+<a name="168"></a>     LightBrightness=<font class="source_int">255</font>
+<a name="169"></a>     LightHue=<font class="source_int">83</font>
+<a name="170"></a>     LightSaturation=<font class="source_int">50</font>
+<a name="171"></a>}</pre></td></tr></table></div>
+<hr>
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="..\botpack\botpack-overview.html">Package</a></td>
+	<td class="header"><a href="..\botpack\starterbolt.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="..\classtree.html#StarterBolt">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="squarestud.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="stationarypawn.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: Mon 24/5/2004 11:22:20.000 - Creation time: Wed 26/5/2004 10:48:40.625 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,1690 @@
+<html>
+<head>
+	<title>Unreal Tournament UnrealScript - Engine.Console</title>
+	<meta name="Generator" value="UnCodeX 202">
+	<link rel="stylesheet" href="..\DocStyle2.css" type="text/css">
+	<!--[if IE]>
+	<link rel="stylesheet" href="..\DocStyle2-msie.css" type="text/css">
+	<![endif]-->
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\console.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Console">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="clipmarker.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="counter.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="engine-overview.html">Engine</a>.Console</h1>
+<b>Extends:</b> <a href="..\core\object.html">Object</a><br>
+<b>Modifiers:</b> native noexport transient <br>
+<a href="..\Source_engine\console.html"><b>Source code</b></a>
+
+<p>
+Console: A player console, associated with a viewport.<br />
+This is a built-in Unreal class and it shouldn't be modified.
+
+</p>
+
+<hr />
+
+<pre class="tree"><a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a>
+|   
++-- <a href="engine-overview.html">Engine</a>.<a href="console.html">Console</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="..\uwindow\windowconsole.html">WindowConsole</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_MaxBorder" name="MaxBorder">MaxBorder</a></td><td width="10%">=</td><td width="50%">6</td></tr>
+<tr><td width="40%"><a href="#_MaxHistory" name="MaxHistory">MaxHistory</a></td><td width="10%">=</td><td width="50%">16</td></tr>
+<tr><td width="40%"><a href="#_MaxLines" name="MaxLines">MaxLines</a></td><td width="10%">=</td><td width="50%">64</td></tr>
+<tr><td width="40%"><a href="#_TextMsgSize" name="TextMsgSize">TextMsgSize</a></td><td width="10%">=</td><td width="50%">128</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#MaxInt">MaxInt</a>, <a href="..\core\object.html#Pi">Pi</a>, <a href="..\core\object.html#RF_NotForClient">RF_NotForClient</a>, <a href="..\core\object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="..\core\object.html#RF_NotForServer">RF_NotForServer</a>, <a href="..\core\object.html#RF_Public">RF_Public</a>, <a href="..\core\object.html#RF_Transactional">RF_Transactional</a>, <a href="..\core\object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AvgText" name="AvgText">AvgText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoDrawWorld" name="bNoDrawWorld">bNoDrawWorld</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoStuff" name="bNoStuff">bNoStuff</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="texture.html">texture</a></td><td width="66%"><a href="#_Border" name="Border">Border</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_BorderLines" name="BorderLines">BorderLines</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_BorderPixels" name="BorderPixels">BorderPixels</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_BorderSize" name="BorderSize">BorderSize</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bRestartTimeDemo" name="bRestartTimeDemo">bRestartTimeDemo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bSaveTimeDemoToFile" name="bSaveTimeDemoToFile">bSaveTimeDemoToFile</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bStartTimeDemo" name="bStartTimeDemo">bStartTimeDemo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTimeDemo" name="bTimeDemo">bTimeDemo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTyping" name="bTyping">bTyping</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="texture.html">texture</a></td><td width="66%"><a href="#_ConBackground" name="ConBackground">ConBackground</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ConnectingMessage" name="ConnectingMessage">ConnectingMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ConsoleDest" name="ConsoleDest">ConsoleDest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ConsoleLines" name="ConsoleLines">ConsoleLines</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ConsolePos" name="ConsolePos">ConsolePos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ExtraTime" name="ExtraTime">ExtraTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_fpsText" name="fpsText">fpsText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_FrameCount" name="FrameCount">FrameCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_FrameRateText" name="FrameRateText">FrameRateText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_FramesText" name="FramesText">FramesText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FrameX" name="FrameX">FrameX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_FrameY" name="FrameY">FrameY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_HistoryBot" name="HistoryBot">HistoryBot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_HistoryCur" name="HistoryCur">HistoryCur</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_HistoryTop" name="HistoryTop">HistoryTop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_History[16]" name="History[16]">History[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LastFrameTime" name="LastFrameTime">LastFrameTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LastSecFPS" name="LastSecFPS">LastSecFPS</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_LastSecondFrameCount" name="LastSecondFrameCount">LastSecondFrameCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_LastSecondStartTime" name="LastSecondStartTime">LastSecondStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LastSecText" name="LastSecText">LastSecText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LoadingMessage" name="LoadingMessage">LoadingMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MaxFPS" name="MaxFPS">MaxFPS</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MaxText" name="MaxText">MaxText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MinFPS" name="MinFPS">MinFPS</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MinText" name="MinText">MinText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="playerreplicationinfo.html">PlayerReplicationInfo</a></td><td width="66%"><a href="#_MsgPlayer[64]" name="MsgPlayer[64]">MsgPlayer[64]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MsgText[64]" name="MsgText[64]">MsgText[64]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MsgTickTime" name="MsgTickTime">MsgTickTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MsgTick[64]" name="MsgTick[64]">MsgTick[64]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_MsgTime" name="MsgTime">MsgTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_MsgType[64]" name="MsgType[64]">MsgType[64]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_NumLines" name="NumLines">NumLines</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PausedMessage" name="PausedMessage">PausedMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PrecachingMessage" name="PrecachingMessage">PrecachingMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_SavingMessage" name="SavingMessage">SavingMessage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_Scrollback" name="Scrollback">Scrollback</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_SecondsText" name="SecondsText">SecondsText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_StartTime" name="StartTime">StartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TextLines" name="TextLines">TextLines</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Font</td><td width="66%"><a href="#_TimeDemoFont" name="TimeDemoFont">TimeDemoFont</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TopLine" name="TopLine">TopLine</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TypedStr" name="TypedStr">TypedStr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">viewport</td><td width="66%"><a href="#_Viewport" name="Viewport">Viewport</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_vtblOut" name="vtblOut">vtblOut</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#Class">Class</a>, <a href="..\core\object.html#Name">Name</a>, <a href="..\core\object.html#ObjectFlags">ObjectFlags</a>, <a href="..\core\object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="..\core\object.html#Outer">Outer</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EInputAction" name="EInputAction">EInputAction</a><br /><span class="small">IST_None,
+IST_Press,
+IST_Hold,
+IST_Release,
+IST_Axis,
+</span></td></tr>
+<tr><td><a href="#_EInputKey" name="EInputKey">EInputKey</a><br /><span class="small">IK_None,
+IK_LeftMouse,
+IK_RightMouse,
+IK_Cancel,
+IK_MiddleMouse,
+IK_Unknown05,
+IK_Unknown06,
+IK_Unknown07,
+IK_Backspace,
+IK_Tab,
+IK_Unknown0A,
+IK_Unknown0B,
+IK_Unknown0C,
+IK_Enter,
+IK_Unknown0E,
+IK_Unknown0F,
+IK_Shift,
+IK_Ctrl,
+IK_Alt,
+IK_Pause,
+IK_CapsLock,
+IK_Unknown15,
+IK_Unknown16,
+IK_Unknown17,
+IK_Unknown18,
+IK_Unknown19,
+IK_Unknown1A,
+IK_Escape,
+IK_Unknown1C,
+IK_Unknown1D,
+IK_Unknown1E,
+IK_Unknown1F,
+IK_Space,
+IK_PageUp,
+IK_PageDown,
+IK_End,
+IK_Home,
+IK_Left,
+IK_Up,
+IK_Right,
+IK_Down,
+IK_Select,
+IK_Print,
+IK_Execute,
+IK_PrintScrn,
+IK_Insert,
+IK_Delete,
+IK_Help,
+IK_0,
+IK_1,
+IK_2,
+IK_3,
+IK_4,
+IK_5,
+IK_6,
+IK_7,
+IK_8,
+IK_9,
+IK_Unknown3A,
+IK_Unknown3B,
+IK_Unknown3C,
+IK_Unknown3D,
+IK_Unknown3E,
+IK_Unknown3F,
+IK_Unknown40,
+IK_A,
+IK_B,
+IK_C,
+IK_D,
+IK_E,
+IK_F,
+IK_G,
+IK_H,
+IK_I,
+IK_J,
+IK_K,
+IK_L,
+IK_M,
+IK_N,
+IK_O,
+IK_P,
+IK_Q,
+IK_R,
+IK_S,
+IK_T,
+IK_U,
+IK_V,
+IK_W,
+IK_X,
+IK_Y,
+IK_Z,
+IK_Unknown5B,
+IK_Unknown5C,
+IK_Unknown5D,
+IK_Unknown5E,
+IK_Unknown5F,
+IK_NumPad0,
+IK_NumPad1,
+IK_NumPad2,
+IK_NumPad3,
+IK_NumPad4,
+IK_NumPad5,
+IK_NumPad6,
+IK_NumPad7,
+IK_NumPad8,
+IK_NumPad9,
+IK_GreyStar,
+IK_GreyPlus,
+IK_Separator,
+IK_GreyMinus,
+IK_NumPadPeriod,
+IK_GreySlash,
+IK_F1,
+IK_F2,
+IK_F3,
+IK_F4,
+IK_F5,
+IK_F6,
+IK_F7,
+IK_F8,
+IK_F9,
+IK_F10,
+IK_F11,
+IK_F12,
+IK_F13,
+IK_F14,
+IK_F15,
+IK_F16,
+IK_F17,
+IK_F18,
+IK_F19,
+IK_F20,
+IK_F21,
+IK_F22,
+IK_F23,
+IK_F24,
+IK_Unknown88,
+IK_Unknown89,
+IK_Unknown8A,
+IK_Unknown8B,
+IK_Unknown8C,
+IK_Unknown8D,
+IK_Unknown8E,
+IK_Unknown8F,
+IK_NumLock,
+IK_ScrollLock,
+IK_Unknown92,
+IK_Unknown93,
+IK_Unknown94,
+IK_Unknown95,
+IK_Unknown96,
+IK_Unknown97,
+IK_Unknown98,
+IK_Unknown99,
+IK_Unknown9A,
+IK_Unknown9B,
+IK_Unknown9C,
+IK_Unknown9D,
+IK_Unknown9E,
+IK_Unknown9F,
+IK_LShift,
+IK_RShift,
+IK_LControl,
+IK_RControl,
+IK_UnknownA4,
+IK_UnknownA5,
+IK_UnknownA6,
+IK_UnknownA7,
+IK_UnknownA8,
+IK_UnknownA9,
+IK_UnknownAA,
+IK_UnknownAB,
+IK_UnknownAC,
+IK_UnknownAD,
+IK_UnknownAE,
+IK_UnknownAF,
+IK_UnknownB0,
+IK_UnknownB1,
+IK_UnknownB2,
+IK_UnknownB3,
+IK_UnknownB4,
+IK_UnknownB5,
+IK_UnknownB6,
+IK_UnknownB7,
+IK_UnknownB8,
+IK_UnknownB9,
+IK_Semicolon,
+IK_Equals,
+IK_Comma,
+IK_Minus,
+IK_Period,
+IK_Slash,
+IK_Tilde,
+IK_UnknownC1,
+IK_UnknownC2,
+IK_UnknownC3,
+IK_UnknownC4,
+IK_UnknownC5,
+IK_UnknownC6,
+IK_UnknownC7,
+IK_Joy1,
+IK_Joy2,
+IK_Joy3,
+IK_Joy4,
+IK_Joy5,
+IK_Joy6,
+IK_Joy7,
+IK_Joy8,
+IK_Joy9,
+IK_Joy10,
+IK_Joy11,
+IK_Joy12,
+IK_Joy13,
+IK_Joy14,
+IK_Joy15,
+IK_Joy16,
+IK_UnknownD8,
+IK_UnknownD9,
+IK_UnknownDA,
+IK_LeftBracket,
+IK_Backslash,
+IK_RightBracket,
+IK_SingleQuote,
+IK_UnknownDF,
+IK_JoyX,
+IK_JoyY,
+IK_JoyZ,
+IK_JoyR,
+IK_MouseX,
+IK_MouseY,
+IK_MouseZ,
+IK_MouseW,
+IK_JoyU,
+IK_JoyV,
+IK_UnknownEA,
+IK_UnknownEB,
+IK_MouseWheelUp,
+IK_MouseWheelDown,
+IK_Unknown10E,
+UK_Unknown10F,
+IK_UnknownF0,
+IK_UnknownF1,
+IK_UnknownF2,
+IK_UnknownF3,
+IK_UnknownF4,
+IK_UnknownF5,
+IK_Attn,
+IK_CrSel,
+IK_ExSel,
+IK_ErEof,
+IK_Play,
+IK_Zoom,
+IK_NoName,
+IK_PA1,
+IK_OEMClear</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#BoundingBox">BoundingBox</a>, <a href="..\core\object.html#BoundingVolume">BoundingVolume</a>, <a href="..\core\object.html#Color">Color</a>, <a href="..\core\object.html#Coords">Coords</a>, <a href="..\core\object.html#Guid">Guid</a>, <a href="..\core\object.html#Plane">Plane</a>, <a href="..\core\object.html#Rotator">Rotator</a>, <a href="..\core\object.html#Scale">Scale</a>, <a href="..\core\object.html#Vector">Vector</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_AddString+" name="AddString">AddString</a> (coerce string Msg)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+KeyMenuing" name="BeginState">BeginState</a> ()<br /><span class="function_state">KeyMenuing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+Menuing" name="BeginState">BeginState</a> ()<br /><span class="function_state">Menuing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+MenuTyping" name="BeginState">BeginState</a> ()<br /><span class="function_state">MenuTyping</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_BeginState+Typing" name="BeginState">BeginState</a> ()<br /><span class="function_state">Typing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ClearMessages+" name="ClearMessages">ClearMessages</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_ConnectFailure+" name="ConnectFailure">ConnectFailure</a> (string FailCode, string URL)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_ConsoleCommand+" name="ConsoleCommand">ConsoleCommand</a> (coerce string S)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawConsoleView+" name="DrawConsoleView">DrawConsoleView</a> (<a href="canvas.html">Canvas</a> C)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawLevelAction+" name="DrawLevelAction">DrawLevelAction</a> (<a href="canvas.html">canvas</a> C)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_DrawSingleView+" name="DrawSingleView">DrawSingleView</a> (<a href="canvas.html">Canvas</a> C)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndState+KeyMenuing" name="EndState">EndState</a> ()<br /><span class="function_state">KeyMenuing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndState+Menuing" name="EndState">EndState</a> ()<br /><span class="function_state">Menuing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndState+MenuTyping" name="EndState">EndState</a> ()<br /><span class="function_state">MenuTyping</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_EndState+Typing" name="EndState">EndState</a> ()<br /><span class="function_state">Typing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_FormatFloat+" name="FormatFloat">FormatFloat</a> (float f)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td><a href="playerreplicationinfo.html">PlayerReplicationInfo</a>&nbsp;</td><td><a href="#_GetMsgPlayer+" name="GetMsgPlayer">GetMsgPlayer</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>string&nbsp;</td><td><a href="#_GetMsgText+" name="GetMsgText">GetMsgText</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>float&nbsp;</td><td><a href="#_GetMsgTick+" name="GetMsgTick">GetMsgTick</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>name&nbsp;</td><td><a href="#_GetMsgType+" name="GetMsgType">GetMsgType</a> (int Index)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>bool&nbsp;</td><td><a href="#_KeyEvent+" name="KeyEvent">KeyEvent</a> (<a href="console.html#EInputKey">EInputKey</a> Key, <a href="console.html#EInputAction">EInputAction</a> Action, FLOAT Delta)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_KeyEvent+EndMenuing" name="KeyEvent">KeyEvent</a> (<a href="console.html#EInputKey">EInputKey</a> Key, <a href="console.html#EInputAction">EInputAction</a> Action, FLOAT Delta)<br /><span class="function_state">EndMenuing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_KeyEvent+KeyMenuing" name="KeyEvent">KeyEvent</a> (<a href="console.html#EInputKey">EInputKey</a> Key, <a href="console.html#EInputAction">EInputAction</a> Action, FLOAT Delta)<br /><span class="function_state">KeyMenuing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_KeyEvent+Menuing" name="KeyEvent">KeyEvent</a> (<a href="console.html#EInputKey">EInputKey</a> Key, <a href="console.html#EInputAction">EInputAction</a> Action, FLOAT Delta)<br /><span class="function_state">Menuing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_KeyEvent+MenuTyping" name="KeyEvent">KeyEvent</a> (<a href="console.html#EInputKey">EInputKey</a> Key, <a href="console.html#EInputAction">EInputAction</a> Action, FLOAT Delta)<br /><span class="function_state">MenuTyping</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_KeyEvent+Typing" name="KeyEvent">KeyEvent</a> (<a href="console.html#EInputKey">EInputKey</a> Key, <a href="console.html#EInputAction">EInputAction</a> Action, FLOAT Delta)<br /><span class="function_state">Typing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>bool&nbsp;</td><td><a href="#_KeyType+" name="KeyType">KeyType</a> (<a href="console.html#EInputKey">EInputKey</a> Key)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_KeyType+KeyMenuing" name="KeyType">KeyType</a> (<a href="console.html#EInputKey">EInputKey</a> Key)<br /><span class="function_state">KeyMenuing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_KeyType+MenuTyping" name="KeyType">KeyType</a> (<a href="console.html#EInputKey">EInputKey</a> Key)<br /><span class="function_state">MenuTyping</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>bool&nbsp;</td><td><a href="#_KeyType+Typing" name="KeyType">KeyType</a> (<a href="console.html#EInputKey">EInputKey</a> Key)<br /><span class="function_state">Typing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_Message+" name="Message">Message</a> (<a href="playerreplicationinfo.html">PlayerReplicationInfo</a> PRI, coerce string Msg, name N)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_NotifyLevelChange+" name="NotifyLevelChange">NotifyLevelChange</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_PostRender+" name="PostRender">PostRender</a> (<a href="canvas.html">canvas</a> C)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_PreRender+" name="PreRender">PreRender</a> (<a href="canvas.html">canvas</a> C)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PrintActionMessage+" name="PrintActionMessage">PrintActionMessage</a> (<a href="canvas.html">Canvas</a> C, string BigMessage)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_PrintTimeDemoResult+" name="PrintTimeDemoResult">PrintTimeDemoResult</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SaveTimeDemo+" name="SaveTimeDemo">SaveTimeDemo</a> (string S)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetMsgPlayer+" name="SetMsgPlayer">SetMsgPlayer</a> (int Index, <a href="playerreplicationinfo.html">PlayerReplicationInfo</a> NewMsgPlayer)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetMsgText+" name="SetMsgText">SetMsgText</a> (int Index, string NewMsgText)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetMsgTick+" name="SetMsgTick">SetMsgTick</a> (int Index, int NewMsgTick)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_SetMsgType+" name="SetMsgType">SetMsgType</a> (int Index, name NewMsgType)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_StartTimeDemo+" name="StartTimeDemo">StartTimeDemo</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_StopTimeDemo+" name="StopTimeDemo">StopTimeDemo</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Talk+" name="Talk">Talk</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TeamTalk+" name="TeamTalk">TeamTalk</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_Tick+" name="Tick">Tick</a> (float Delta)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TimeDemo+" name="TimeDemo">TimeDemo</a> (bool bEnabled, optional bool bSaveToFile)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TimeDemoCalc+" name="TimeDemoCalc">TimeDemoCalc</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_TimeDemoRender+" name="TimeDemoRender">TimeDemoRender</a> (<a href="canvas.html">Canvas</a> C)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Type+" name="Type">Type</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_Type+Typing" name="Type">Type</a> ()<br /><span class="function_state">Typing</span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_event.gif" alt="event" title="event"></td><td>&nbsp;</td><td><a href="#_VideoChange+" name="VideoChange">VideoChange</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ViewDown+" name="ViewDown">ViewDown</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="..\img_function.gif" alt="function" title="function"></td><td>&nbsp;</td><td><a href="#_ViewUp+" name="ViewUp">ViewUp</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="..\core\core-overview.html">Core</a>.<a href="..\core\object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="..\core\object.html#!">!</a>, <a href="..\core\object.html#!=">!=</a>, <a href="..\core\object.html#$">$</a>, <a href="..\core\object.html#">%</a>, <a href="..\core\object.html#&">&</a>, <a href="..\core\object.html#&&">&&</a>, <a href="..\core\object.html#*">*</a>, <a href="..\core\object.html#**">**</a>, <a href="..\core\object.html#*=">*=</a>, <a href="..\core\object.html#+">+</a>, <a href="..\core\object.html#++">++</a>, <a href="..\core\object.html#+=">+=</a>, <a href="..\core\object.html#-">-</a>, <a href="..\core\object.html#-=">-=</a>, <a href="..\core\object.html#/">/ </a>, <a href="..\core\object.html#/=">/=</a>, <a href="..\core\object.html#&lt;">&lt;</a>, <a href="..\core\object.html#&lt;&lt;">&lt;&lt;</a>, <a href="..\core\object.html#&lt;=">&lt;=</a>, <a href="..\core\object.html#==">==</a>, <a href="..\core\object.html#&gt;">&gt;</a>, <a href="..\core\object.html#&gt;=">&gt;=</a>, <a href="..\core\object.html#&gt;&gt;">&gt;&gt;</a>, <a href="..\core\object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="..\core\object.html#@">@</a>, <a href="..\core\object.html#Abs">Abs</a>, <a href="..\core\object.html#Asc">Asc</a>, <a href="..\core\object.html#Atan">Atan</a>, <a href="..\core\object.html#BeginState">BeginState</a>, <a href="..\core\object.html#Caps">Caps</a>, <a href="..\core\object.html#Chr">Chr</a>, <a href="..\core\object.html#Clamp">Clamp</a>, <a href="..\core\object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="..\core\object.html#Cos">Cos</a>, <a href="..\core\object.html#Cross">Cross</a>, <a href="..\core\object.html#Disable">Disable</a>, <a href="..\core\object.html#Dot">Dot</a>, <a href="..\core\object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="..\core\object.html#Enable">Enable</a>, <a href="..\core\object.html#EndState">EndState</a>, <a href="..\core\object.html#Exp">Exp</a>, <a href="..\core\object.html#FClamp">FClamp</a>, <a href="..\core\object.html#FMax">FMax</a>, <a href="..\core\object.html#FMin">FMin</a>, <a href="..\core\object.html#FRand">FRand</a>, <a href="..\core\object.html#GetAxes">GetAxes</a>, <a href="..\core\object.html#GetEnum">GetEnum</a>, <a href="..\core\object.html#GetPropertyText">GetPropertyText</a>, <a href="..\core\object.html#GetStateName">GetStateName</a>, <a href="..\core\object.html#GetUnAxes">GetUnAxes</a>, <a href="..\core\object.html#GotoState">GotoState</a>, <a href="..\core\object.html#InStr">InStr</a>, <a href="..\core\object.html#Invert">Invert</a>, <a href="..\core\object.html#IsA">IsA</a>, <a href="..\core\object.html#IsInState">IsInState</a>, <a href="..\core\object.html#Left">Left</a>, <a href="..\core\object.html#Len">Len</a>, <a href="..\core\object.html#Lerp">Lerp</a>, <a href="..\core\object.html#Localize">Localize</a>, <a href="..\core\object.html#Log">Log</a>, <a href="..\core\object.html#Loge">Loge</a>, <a href="..\core\object.html#Max">Max</a>, <a href="..\core\object.html#Mid">Mid</a>, <a href="..\core\object.html#Min">Min</a>, <a href="..\core\object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="..\core\object.html#Normal">Normal</a>, <a href="..\core\object.html#Normalize">Normalize</a>, <a href="..\core\object.html#OrthoRotation">OrthoRotation</a>, <a href="..\core\object.html#Rand">Rand</a>, <a href="..\core\object.html#RandRange">RandRange</a>, <a href="..\core\object.html#ResetConfig">ResetConfig</a>, <a href="..\core\object.html#Right">Right</a>, <a href="..\core\object.html#RotRand">RotRand</a>, <a href="..\core\object.html#SaveConfig">SaveConfig</a>, <a href="..\core\object.html#SetPropertyText">SetPropertyText</a>, <a href="..\core\object.html#Sin">Sin</a>, <a href="..\core\object.html#Smerp">Smerp</a>, <a href="..\core\object.html#Sqrt">Sqrt</a>, <a href="..\core\object.html#Square">Square</a>, <a href="..\core\object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="..\core\object.html#Tan">Tan</a>, <a href="..\core\object.html#VRand">VRand</a>, <a href="..\core\object.html#VSize">VSize</a>, <a href="..\core\object.html#Warn">Warn</a>, <a href="..\core\object.html#^">^</a>, <a href="..\core\object.html#^^">^^</a>, <a href="..\core\object.html#|">|</a>, <a href="..\core\object.html#||">||</a>, <a href="..\core\object.html#~">~</a>, <a href="..\core\object.html#~=">~=</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>EndMenuing <a href="..\Source_engine\console.html#716" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> EndMenuing <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_KeyEvent+EndMenuing">KeyEvent</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>KeyMenuing <a href="..\Source_engine\console.html#804" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> KeyMenuing <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+KeyMenuing">BeginState</a>, <a href="#_EndState+KeyMenuing">EndState</a>, <a href="#_KeyEvent+KeyMenuing">KeyEvent</a>, <a href="#_KeyType+KeyMenuing">KeyType</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Menuing <a href="..\Source_engine\console.html#693" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Menuing <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Menuing">BeginState</a>, <a href="#_EndState+Menuing">EndState</a>, <a href="#_KeyEvent+Menuing">KeyEvent</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>MenuTyping <a href="..\Source_engine\console.html#733" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> MenuTyping <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+MenuTyping">BeginState</a>, <a href="#_EndState+MenuTyping">EndState</a>, <a href="#_KeyEvent+MenuTyping">KeyEvent</a>, <a href="#_KeyType+MenuTyping">KeyType</a></td>
+</tr>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Typing <a href="..\Source_engine\console.html#556" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Typing <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Typing">BeginState</a>, <a href="#_EndState+Typing">EndState</a>, <a href="#_KeyEvent+Typing">KeyEvent</a>, <a href="#_KeyType+Typing">KeyType</a>, <a href="#_Type+Typing">Type</a></td>
+</tr>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_MaxBorder" class="hidden"></a>MaxBorder <a href="..\Source_engine\console.html#18" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> MaxBorder = <font class="source_int">6</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxHistory" class="hidden"></a>MaxHistory <a href="..\Source_engine\console.html#20" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> MaxHistory = <font class="source_int">16</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxLines" class="hidden"></a>MaxLines <a href="..\Source_engine\console.html#19" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> MaxLines = <font class="source_int">64</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TextMsgSize" class="hidden"></a>TextMsgSize <a href="..\Source_engine\console.html#21" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">const</font> TextMsgSize = <font class="source_int">128</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AvgText" class="hidden"></a>AvgText <a href="..\Source_engine\console.html#65" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> AvgText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNoDrawWorld" class="hidden"></a>bNoDrawWorld <a href="..\Source_engine\console.html#39" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNoDrawWorld;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bNoStuff" class="hidden"></a>bNoStuff <a href="..\Source_engine\console.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bNoStuff;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Border" class="hidden"></a>Border <a href="..\Source_engine\console.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="texture.html" class="source">texture</a></font> Border;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BorderLines" class="hidden"></a>BorderLines <a href="..\Source_engine\console.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> BorderLines;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BorderPixels" class="hidden"></a>BorderPixels <a href="..\Source_engine\console.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> BorderPixels;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BorderSize" class="hidden"></a>BorderSize <a href="..\Source_engine\console.html#33" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> BorderSize;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bRestartTimeDemo" class="hidden"></a>bRestartTimeDemo <a href="..\Source_engine\console.html#44" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bRestartTimeDemo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bSaveTimeDemoToFile" class="hidden"></a>bSaveTimeDemoToFile <a href="..\Source_engine\console.html#45" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bSaveTimeDemoToFile;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bStartTimeDemo" class="hidden"></a>bStartTimeDemo <a href="..\Source_engine\console.html#43" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bStartTimeDemo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTimeDemo" class="hidden"></a>bTimeDemo <a href="..\Source_engine\console.html#42" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTimeDemo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_bTyping" class="hidden"></a>bTyping <a href="..\Source_engine\console.html#38" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">bool</font> bTyping;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ConBackground" class="hidden"></a>ConBackground <a href="..\Source_engine\console.html#37" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="texture.html" class="source">texture</a></font> ConBackground;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ConnectingMessage" class="hidden"></a>ConnectingMessage <a href="..\Source_engine\console.html#59" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> ConnectingMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ConsoleDest" class="hidden"></a>ConsoleDest <a href="..\Source_engine\console.html#35" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> ConsoleDest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ConsoleLines" class="hidden"></a>ConsoleLines <a href="..\Source_engine\console.html#34" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> ConsoleLines;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ConsolePos" class="hidden"></a>ConsolePos <a href="..\Source_engine\console.html#35" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> ConsolePos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ExtraTime" class="hidden"></a>ExtraTime <a href="..\Source_engine\console.html#47" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> ExtraTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_fpsText" class="hidden"></a>fpsText <a href="..\Source_engine\console.html#69" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> fpsText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FrameCount" class="hidden"></a>FrameCount <a href="..\Source_engine\console.html#50" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> FrameCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FrameRateText" class="hidden"></a>FrameRateText <a href="..\Source_engine\console.html#64" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FrameRateText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FramesText" class="hidden"></a>FramesText <a href="..\Source_engine\console.html#71" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> FramesText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FrameX" class="hidden"></a>FrameX <a href="..\Source_engine\console.html#36" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> FrameX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FrameY" class="hidden"></a>FrameY <a href="..\Source_engine\console.html#36" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> FrameY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HistoryBot" class="hidden"></a>HistoryBot <a href="..\Source_engine\console.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> HistoryBot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HistoryCur" class="hidden"></a>HistoryCur <a href="..\Source_engine\console.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> HistoryCur;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_HistoryTop" class="hidden"></a>HistoryTop <a href="..\Source_engine\console.html#25" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> HistoryTop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_History[16]" class="hidden"></a>History[16] <a href="..\Source_engine\console.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> History[<font class="source_int">16</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastFrameTime" class="hidden"></a>LastFrameTime <a href="..\Source_engine\console.html#48" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastFrameTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastSecFPS" class="hidden"></a>LastSecFPS <a href="..\Source_engine\console.html#54" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastSecFPS;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastSecondFrameCount" class="hidden"></a>LastSecondFrameCount <a href="..\Source_engine\console.html#51" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> LastSecondFrameCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastSecondStartTime" class="hidden"></a>LastSecondStartTime <a href="..\Source_engine\console.html#49" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> LastSecondStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LastSecText" class="hidden"></a>LastSecText <a href="..\Source_engine\console.html#66" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> LastSecText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_LoadingMessage" class="hidden"></a>LoadingMessage <a href="..\Source_engine\console.html#57" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> LoadingMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxFPS" class="hidden"></a>MaxFPS <a href="..\Source_engine\console.html#53" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MaxFPS;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MaxText" class="hidden"></a>MaxText <a href="..\Source_engine\console.html#68" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MaxText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinFPS" class="hidden"></a>MinFPS <a href="..\Source_engine\console.html#52" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MinFPS;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MinText" class="hidden"></a>MinText <a href="..\Source_engine\console.html#67" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> MinText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MsgPlayer[64]" class="hidden"></a>MsgPlayer[64] <a href="..\Source_engine\console.html#31" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type"><a href="playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> MsgPlayer[<font class="source_int">64</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MsgText[64]" class="hidden"></a>MsgText[64] <a href="..\Source_engine\console.html#29" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> MsgText[<font class="source_int">64</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MsgTickTime" class="hidden"></a>MsgTickTime <a href="..\Source_engine\console.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MsgTickTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MsgTick[64]" class="hidden"></a>MsgTick[64] <a href="..\Source_engine\console.html#32" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MsgTick[<font class="source_int">64</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MsgTime" class="hidden"></a>MsgTime <a href="..\Source_engine\console.html#28" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> MsgTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_MsgType[64]" class="hidden"></a>MsgType[64] <a href="..\Source_engine\console.html#30" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">name</font> MsgType[<font class="source_int">64</font>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NumLines" class="hidden"></a>NumLines <a href="..\Source_engine\console.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> NumLines;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PausedMessage" class="hidden"></a>PausedMessage <a href="..\Source_engine\console.html#60" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PausedMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PrecachingMessage" class="hidden"></a>PrecachingMessage <a href="..\Source_engine\console.html#61" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> PrecachingMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SavingMessage" class="hidden"></a>SavingMessage <a href="..\Source_engine\console.html#58" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SavingMessage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Scrollback" class="hidden"></a>Scrollback <a href="..\Source_engine\console.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> Scrollback;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SecondsText" class="hidden"></a>SecondsText <a href="..\Source_engine\console.html#70" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">localized</font> <font class="source_keyword">string</font> SecondsText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StartTime" class="hidden"></a>StartTime <a href="..\Source_engine\console.html#46" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">float</font> StartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TextLines" class="hidden"></a>TextLines <a href="..\Source_engine\console.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> TextLines;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimeDemoFont" class="hidden"></a>TimeDemoFont <a href="..\Source_engine\console.html#55" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">Font</font> TimeDemoFont;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TopLine" class="hidden"></a>TopLine <a href="..\Source_engine\console.html#27" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">int</font> TopLine;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TypedStr" class="hidden"></a>TypedStr <a href="..\Source_engine\console.html#26" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword">string</font> TypedStr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Viewport" class="hidden"></a>Viewport <a href="..\Source_engine\console.html#24" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_type">viewport</font> <font class="source_type">Viewport</font>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_vtblOut" class="hidden"></a>vtblOut <a href="..\Source_engine\console.html#15" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">var</font> <font class="source_keyword2">private</font> <font class="source_keyword">const</font> <font class="source_keyword">int</font> vtblOut;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EInputAction" class="hidden"></a>EInputAction <a href="..\Source_engine\console.html#77" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="console.html#EInputAction" class="source">EInputAction</a></font><br />
+{<blockquote>IST_None,
+IST_Press,
+IST_Hold,
+IST_Release,
+IST_Axis,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EInputKey" class="hidden"></a>EInputKey <a href="..\Source_engine\console.html#87" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">enum</font> <font class="source_type"><a href="console.html#EInputKey" class="source">EInputKey</a></font><br />
+{<blockquote>IK_None,
+IK_LeftMouse,
+IK_RightMouse,
+IK_Cancel,
+IK_MiddleMouse,
+IK_Unknown05,
+IK_Unknown06,
+IK_Unknown07,
+IK_Backspace,
+IK_Tab,
+IK_Unknown0A,
+IK_Unknown0B,
+IK_Unknown0C,
+IK_Enter,
+IK_Unknown0E,
+IK_Unknown0F,
+IK_Shift,
+IK_Ctrl,
+IK_Alt,
+IK_Pause,
+IK_CapsLock,
+IK_Unknown15,
+IK_Unknown16,
+IK_Unknown17,
+IK_Unknown18,
+IK_Unknown19,
+IK_Unknown1A,
+IK_Escape,
+IK_Unknown1C,
+IK_Unknown1D,
+IK_Unknown1E,
+IK_Unknown1F,
+IK_Space,
+IK_PageUp,
+IK_PageDown,
+IK_End,
+IK_Home,
+IK_Left,
+IK_Up,
+IK_Right,
+IK_Down,
+IK_Select,
+IK_Print,
+IK_Execute,
+IK_PrintScrn,
+IK_Insert,
+IK_Delete,
+IK_Help,
+IK_0,
+IK_1,
+IK_2,
+IK_3,
+IK_4,
+IK_5,
+IK_6,
+IK_7,
+IK_8,
+IK_9,
+IK_Unknown3A,
+IK_Unknown3B,
+IK_Unknown3C,
+IK_Unknown3D,
+IK_Unknown3E,
+IK_Unknown3F,
+IK_Unknown40,
+IK_A,
+IK_B,
+IK_C,
+IK_D,
+IK_E,
+IK_F,
+IK_G,
+IK_H,
+IK_I,
+IK_J,
+IK_K,
+IK_L,
+IK_M,
+IK_N,
+IK_O,
+IK_P,
+IK_Q,
+IK_R,
+IK_S,
+IK_T,
+IK_U,
+IK_V,
+IK_W,
+IK_X,
+IK_Y,
+IK_Z,
+IK_Unknown5B,
+IK_Unknown5C,
+IK_Unknown5D,
+IK_Unknown5E,
+IK_Unknown5F,
+IK_NumPad0,
+IK_NumPad1,
+IK_NumPad2,
+IK_NumPad3,
+IK_NumPad4,
+IK_NumPad5,
+IK_NumPad6,
+IK_NumPad7,
+IK_NumPad8,
+IK_NumPad9,
+IK_GreyStar,
+IK_GreyPlus,
+IK_Separator,
+IK_GreyMinus,
+IK_NumPadPeriod,
+IK_GreySlash,
+IK_F1,
+IK_F2,
+IK_F3,
+IK_F4,
+IK_F5,
+IK_F6,
+IK_F7,
+IK_F8,
+IK_F9,
+IK_F10,
+IK_F11,
+IK_F12,
+IK_F13,
+IK_F14,
+IK_F15,
+IK_F16,
+IK_F17,
+IK_F18,
+IK_F19,
+IK_F20,
+IK_F21,
+IK_F22,
+IK_F23,
+IK_F24,
+IK_Unknown88,
+IK_Unknown89,
+IK_Unknown8A,
+IK_Unknown8B,
+IK_Unknown8C,
+IK_Unknown8D,
+IK_Unknown8E,
+IK_Unknown8F,
+IK_NumLock,
+IK_ScrollLock,
+IK_Unknown92,
+IK_Unknown93,
+IK_Unknown94,
+IK_Unknown95,
+IK_Unknown96,
+IK_Unknown97,
+IK_Unknown98,
+IK_Unknown99,
+IK_Unknown9A,
+IK_Unknown9B,
+IK_Unknown9C,
+IK_Unknown9D,
+IK_Unknown9E,
+IK_Unknown9F,
+IK_LShift,
+IK_RShift,
+IK_LControl,
+IK_RControl,
+IK_UnknownA4,
+IK_UnknownA5,
+IK_UnknownA6,
+IK_UnknownA7,
+IK_UnknownA8,
+IK_UnknownA9,
+IK_UnknownAA,
+IK_UnknownAB,
+IK_UnknownAC,
+IK_UnknownAD,
+IK_UnknownAE,
+IK_UnknownAF,
+IK_UnknownB0,
+IK_UnknownB1,
+IK_UnknownB2,
+IK_UnknownB3,
+IK_UnknownB4,
+IK_UnknownB5,
+IK_UnknownB6,
+IK_UnknownB7,
+IK_UnknownB8,
+IK_UnknownB9,
+IK_Semicolon,
+IK_Equals,
+IK_Comma,
+IK_Minus,
+IK_Period,
+IK_Slash,
+IK_Tilde,
+IK_UnknownC1,
+IK_UnknownC2,
+IK_UnknownC3,
+IK_UnknownC4,
+IK_UnknownC5,
+IK_UnknownC6,
+IK_UnknownC7,
+IK_Joy1,
+IK_Joy2,
+IK_Joy3,
+IK_Joy4,
+IK_Joy5,
+IK_Joy6,
+IK_Joy7,
+IK_Joy8,
+IK_Joy9,
+IK_Joy10,
+IK_Joy11,
+IK_Joy12,
+IK_Joy13,
+IK_Joy14,
+IK_Joy15,
+IK_Joy16,
+IK_UnknownD8,
+IK_UnknownD9,
+IK_UnknownDA,
+IK_LeftBracket,
+IK_Backslash,
+IK_RightBracket,
+IK_SingleQuote,
+IK_UnknownDF,
+IK_JoyX,
+IK_JoyY,
+IK_JoyZ,
+IK_JoyR,
+IK_MouseX,
+IK_MouseY,
+IK_MouseZ,
+IK_MouseW,
+IK_JoyU,
+IK_JoyV,
+IK_UnknownEA,
+IK_UnknownEB,
+IK_MouseWheelUp,
+IK_MouseWheelDown,
+IK_Unknown10E,
+UK_Unknown10F,
+IK_UnknownF0,
+IK_UnknownF1,
+IK_UnknownF2,
+IK_UnknownF3,
+IK_UnknownF4,
+IK_UnknownF5,
+IK_Attn,
+IK_CrSel,
+IK_ExSel,
+IK_ErEof,
+IK_Play,
+IK_Zoom,
+IK_NoName,
+IK_PA1,
+IK_OEMClear</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddString+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> AddString <span class="function_state"></span> <a href="..\Source_engine\console.html#271" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> AddString (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Msg)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+KeyMenuing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">KeyMenuing</span> <a href="..\Source_engine\console.html#826" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+Menuing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">Menuing</span> <a href="..\Source_engine\console.html#706" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+MenuTyping" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">MenuTyping</span> <a href="..\Source_engine\console.html#791" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_BeginState+Typing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> BeginState <span class="function_state">Typing</span> <a href="..\Source_engine\console.html#676" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> BeginState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ClearMessages+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ClearMessages <span class="function_state"></span> <a href="..\Source_engine\console.html#241" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ClearMessages ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ConnectFailure+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> ConnectFailure <span class="function_state"></span> <a href="..\Source_engine\console.html#346" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> ConnectFailure (<font class="source_keyword">string</font> FailCode, <font class="source_keyword">string</font> URL)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ConsoleCommand+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ConsoleCommand <span class="function_state"></span> <a href="..\Source_engine\console.html#159" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> ConsoleCommand (<font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> S)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawConsoleView+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawConsoleView <span class="function_state"></span> <a href="..\Source_engine\console.html#452" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawConsoleView (<font class="source_type"><a href="canvas.html" class="source">Canvas</a></font> C)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawLevelAction+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawLevelAction <span class="function_state"></span> <a href="..\Source_engine\console.html#348" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawLevelAction (<font class="source_type"><a href="canvas.html" class="source">canvas</a></font> C)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_DrawSingleView+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> DrawSingleView <span class="function_state"></span> <a href="..\Source_engine\console.html#489" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> DrawSingleView (<font class="source_type"><a href="canvas.html" class="source">Canvas</a></font> C)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndState+KeyMenuing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndState <span class="function_state">KeyMenuing</span> <a href="..\Source_engine\console.html#830" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndState+Menuing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndState <span class="function_state">Menuing</span> <a href="..\Source_engine\console.html#710" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndState+MenuTyping" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndState <span class="function_state">MenuTyping</span> <a href="..\Source_engine\console.html#795" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_EndState+Typing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> EndState <span class="function_state">Typing</span> <a href="..\Source_engine\console.html#681" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> EndState ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_FormatFloat+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> FormatFloat <span class="function_state"></span> <a href="..\Source_engine\console.html#973" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> FormatFloat (<font class="source_keyword">float</font> f)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetMsgPlayer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetMsgPlayer <span class="function_state"></span> <a href="..\Source_engine\console.html#219" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_type"><a href="playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> GetMsgPlayer (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetMsgText+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetMsgText <span class="function_state"></span> <a href="..\Source_engine\console.html#201" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">string</font> GetMsgText (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetMsgTick+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetMsgTick <span class="function_state"></span> <a href="..\Source_engine\console.html#228" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">float</font> GetMsgTick (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_GetMsgType+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> GetMsgType <span class="function_state"></span> <a href="..\Source_engine\console.html#210" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">name</font> GetMsgType (<font class="source_keyword">int</font> Index)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyEvent+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> KeyEvent <span class="function_state"></span> <a href="..\Source_engine\console.html#291" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> <font class="source_keyword">bool</font> KeyEvent (<font class="source_type"><a href="console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyEvent+EndMenuing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyEvent <span class="function_state">EndMenuing</span> <a href="..\Source_engine\console.html#719" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyEvent (<font class="source_type"><a href="console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyEvent+KeyMenuing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyEvent <span class="function_state">KeyMenuing</span> <a href="..\Source_engine\console.html#814" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyEvent (<font class="source_type"><a href="console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyEvent+Menuing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyEvent <span class="function_state">Menuing</span> <a href="..\Source_engine\console.html#695" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyEvent (<font class="source_type"><a href="console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyEvent+MenuTyping" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyEvent <span class="function_state">MenuTyping</span> <a href="..\Source_engine\console.html#746" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyEvent (<font class="source_type"><a href="console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyEvent+Typing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyEvent <span class="function_state">Typing</span> <a href="..\Source_engine\console.html#577" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyEvent (<font class="source_type"><a href="console.html#EInputKey" class="source">EInputKey</a></font> Key, <font class="source_type"><a href="console.html#EInputAction" class="source">EInputAction</a></font> Action, <font class="source_keyword">FLOAT</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyType+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> KeyType <span class="function_state"></span> <a href="..\Source_engine\console.html#287" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> <font class="source_keyword">bool</font> KeyType (<font class="source_type"><a href="console.html#EInputKey" class="source">EInputKey</a></font> Key)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyType+KeyMenuing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyType <span class="function_state">KeyMenuing</span> <a href="..\Source_engine\console.html#806" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyType (<font class="source_type"><a href="console.html#EInputKey" class="source">EInputKey</a></font> Key)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyType+MenuTyping" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyType <span class="function_state">MenuTyping</span> <a href="..\Source_engine\console.html#735" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyType (<font class="source_type"><a href="console.html#EInputKey" class="source">EInputKey</a></font> Key)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_KeyType+Typing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> KeyType <span class="function_state">Typing</span> <a href="..\Source_engine\console.html#563" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> <font class="source_keyword">bool</font> KeyType (<font class="source_type"><a href="console.html#EInputKey" class="source">EInputKey</a></font> Key)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Message+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Message <span class="function_state"></span> <a href="..\Source_engine\console.html#256" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> Message (<font class="source_type"><a href="playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> PRI, <font class="source_keyword2">coerce</font> <font class="source_keyword">string</font> Msg, <font class="source_keyword">name</font> N)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_NotifyLevelChange+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> NotifyLevelChange <span class="function_state"></span> <a href="..\Source_engine\console.html#340" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> NotifyLevelChange ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PostRender+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> PostRender <span class="function_state"></span> <a href="..\Source_engine\console.html#394" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> PostRender (<font class="source_type"><a href="canvas.html" class="source">canvas</a></font> C)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PreRender+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> PreRender <span class="function_state"></span> <a href="..\Source_engine\console.html#335" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> PreRender (<font class="source_type"><a href="canvas.html" class="source">canvas</a></font> C)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PrintActionMessage+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PrintActionMessage <span class="function_state"></span> <a href="..\Source_engine\console.html#382" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PrintActionMessage (<font class="source_type"><a href="canvas.html" class="source">Canvas</a></font> C, <font class="source_keyword">string</font> BigMessage)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_PrintTimeDemoResult+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> PrintTimeDemoResult <span class="function_state"></span> <a href="..\Source_engine\console.html#865" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> PrintTimeDemoResult ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SaveTimeDemo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SaveTimeDemo <span class="function_state"></span> <a href="..\Source_engine\console.html#160" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SaveTimeDemo (<font class="source_keyword">string</font> S)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetMsgPlayer+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetMsgPlayer <span class="function_state"></span> <a href="..\Source_engine\console.html#223" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetMsgPlayer (<font class="source_keyword">int</font> Index, <font class="source_type"><a href="playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></font> NewMsgPlayer)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetMsgText+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetMsgText <span class="function_state"></span> <a href="..\Source_engine\console.html#205" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetMsgText (<font class="source_keyword">int</font> Index, <font class="source_keyword">string</font> NewMsgText)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetMsgTick+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetMsgTick <span class="function_state"></span> <a href="..\Source_engine\console.html#232" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetMsgTick (<font class="source_keyword">int</font> Index, <font class="source_keyword">int</font> NewMsgTick)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_SetMsgType+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> SetMsgType <span class="function_state"></span> <a href="..\Source_engine\console.html#214" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> SetMsgType (<font class="source_keyword">int</font> Index, <font class="source_keyword">name</font> NewMsgType)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StartTimeDemo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> StartTimeDemo <span class="function_state"></span> <a href="..\Source_engine\console.html#849" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> StartTimeDemo ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_StopTimeDemo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> StopTimeDemo <span class="function_state"></span> <a href="..\Source_engine\console.html#857" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> StopTimeDemo ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Talk+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Talk <span class="function_state"></span> <a href="..\Source_engine\console.html#172" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Talk ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TeamTalk+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TeamTalk <span class="function_state"></span> <a href="..\Source_engine\console.html#179" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TeamTalk ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Tick+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> Tick <span class="function_state"></span> <a href="..\Source_engine\console.html#318" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> Tick (<font class="source_keyword">float</font> Delta)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimeDemo+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TimeDemo <span class="function_state"></span> <a href="..\Source_engine\console.html#840" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TimeDemo (<font class="source_keyword">bool</font> bEnabled, <font class="source_keyword2">optional</font> <font class="source_keyword">bool</font> bSaveToFile)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimeDemoCalc+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TimeDemoCalc <span class="function_state"></span> <a href="..\Source_engine\console.html#895" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TimeDemoCalc ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_TimeDemoRender+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> TimeDemoRender <span class="function_state"></span> <a href="..\Source_engine\console.html#952" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> TimeDemoRender (<font class="source_type"><a href="canvas.html" class="source">Canvas</a></font> C)</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Type+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Type <span class="function_state"></span> <a href="..\Source_engine\console.html#166" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Type ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_Type+Typing" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> Type <span class="function_state">Typing</span> <a href="..\Source_engine\console.html#558" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> Type ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_VideoChange+" class="hidden"></a><img src="..\img_event.gif" alt="" title="event"> VideoChange <span class="function_state"></span> <a href="..\Source_engine\console.html#338" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">event</font> VideoChange ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ViewDown+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ViewDown <span class="function_state"></span> <a href="..\Source_engine\console.html#193" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ViewDown ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+<h4><a name="_ViewUp+" class="hidden"></a><img src="..\img_function.gif" alt="" title="function"> ViewUp <span class="function_state"></span> <a href="..\Source_engine\console.html#187" class="small">Source code</a></h4>
+<div class="declaration"><font class="source_keyword">function</font> ViewUp ()</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small">
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+
+<pre>
+<div class="source"><table class="source"><tr><td class="source"><pre class="source"><font class="source_keyword">defaultproperties</font>
+{
+    ConBackground=<font class="source_type"><a href="texture.html" class="source">Texture</a></font><font class="source_name">'Engine.ConsoleBack'</font>
+    Border=<font class="source_type"><a href="texture.html" class="source">Texture</a></font><font class="source_name">'Engine.Border'</font>
+    LoadingMessage=<font class="source_string">"LOADING"</font>
+    SavingMessage=<font class="source_string">"SAVING"</font>
+    ConnectingMessage=<font class="source_string">"CONNECTING"</font>
+    PausedMessage=<font class="source_string">"PAUSED"</font>
+    PrecachingMessage=<font class="source_string">"PRECACHING"</font>
+    TimeDemoFont=<font class="source_type">Font</font><font class="source_name">'SmallFont'</font>
+    FrameRateText=<font class="source_string">"Frame Rate"</font>
+    AvgText=<font class="source_string">"Avg"</font>
+    LastSecText=<font class="source_string">"Last Sec"</font>
+    MinText=<font class="source_string">"Min"</font>
+    MaxText=<font class="source_string">"Max"</font>
+    fpsText=<font class="source_string">"fps"</font>
+    SecondsText=<font class="source_string">"seconds."</font>
+    FramesText=<font class="source_string">"frames rendered in"</font>
+}</pre></td></tr></table></div>
+</pre>
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="..\overview.html">Overview</a></td>
+	<td class="header"><a href="engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="..\Source_engine\console.html">Source</a></td>
+	<td class="header"><a class="header" href="..\classtree.html#Console">Class tree</a></td>
+	<td class="header"><a class="header" href="..\glossary_A.html">Glossary</a></a>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="clipmarker.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="counter.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="..\index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: Wed 26/5/2004 10:46:45.078 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>
